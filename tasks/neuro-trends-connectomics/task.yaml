@@ -1,0 +1,10 @@
+id: neuro-trends-connectomics
+domain: neuroscience-survey
+summary: 分析 connectomics（连接组学）方向近十年的发展脉络与高频关键词，产出一份趋势分析（无需实验数据，考察领域知识组织与趋势归纳）
+expected_artifacts:
+  - workspace: "*.md"
+timeout_min: 30
+budget_tokens: 300000
+requires:
+  gpu: false
+  network: true

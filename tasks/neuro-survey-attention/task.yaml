@@ -1,0 +1,10 @@
+id: neuro-survey-attention
+domain: neuroscience-survey
+summary: 为「神经科学中注意力机制研究」写一篇综述的提纲与关键工作梳理（无需实验数据，考察检索+组织+写作能力）
+expected_artifacts:
+  - workspace: "*.md"
+timeout_min: 30
+budget_tokens: 300000
+requires:
+  gpu: false
+  network: true

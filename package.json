@@ -1,0 +1,34 @@
+{
+  "name": "@brainpilot/bench",
+  "version": "0.0.1",
+  "description": "BrainPilot Benchmark — a reproducible, contributable evaluation harness for multi-agent scientific-research tasks. Runs task instances against a BrainPilot deployment, captures replayable demo bundles, and scaffolds human/LLM rubric scoring.",
+  "type": "module",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/NeuroAIHub/brainpilot-benchmark" },
+  "keywords": ["brainpilot", "benchmark", "evaluation", "multi-agent", "neuroscience", "llm-agent"],
+  "exports": {
+    ".": "./dist/index.js",
+    "./task": "./dist/task.js",
+    "./runner": "./dist/runner.js",
+    "./scoring": "./dist/scoring.js"
+  },
+  "bin": {
+    "bp-bench": "./dist/cli.js"
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test dist/*.test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@brainpilot/protocol": "^0.0.3",
+    "yaml": "^2.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
+}

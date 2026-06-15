@@ -1,0 +1,4 @@
+- send: 帮我分析 connectomics（连接组学）这个方向近十年的发展脉络：主要阶段、关键技术突破、代表性项目，写成一份趋势分析到 trends.md。
+  then: wait_idle
+- send: 在上面基础上，列出这个方向近年的高频关键词/热点子主题（10 个左右），并简述每个为什么重要，追加到 trends.md。
+  then: wait_idle
