@@ -4,7 +4,7 @@
   "description": "BrainPilot Benchmark — a reproducible, contributable evaluation harness for multi-agent scientific-research tasks. Runs task instances against a BrainPilot deployment, captures replayable demo bundles, and scaffolds human/LLM rubric scoring.",
   "type": "module",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/NeuroAIHub/brainpilot-benchmark" },
+  "repository": { "type": "git", "url": "https://github.com/NeuroAIHub/BrainPilotBench" },
   "keywords": ["brainpilot", "benchmark", "evaluation", "multi-agent", "neuroscience", "llm-agent"],
   "exports": {
     ".": "./dist/index.js",
