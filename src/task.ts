@@ -93,3 +93,12 @@ export function validateTask(t: Partial<Task>): asserts t is Task {
   if (!t.rubric || !Array.isArray(t.rubric.dimensions) || t.rubric.dimensions.length === 0)
     throw new Error(`task ${m.id}: rubric must have at least one dimension`);
 }
+
+/** 任务声明的一个 scorer（从 task.yaml scoring.scorers 解析；详见 loader）。 */
+export interface ScorerSpec {
+  kind: string;
+  rubric?: string;
+  script?: string;
+  parser?: string;
+  [k: string]: unknown;
+}

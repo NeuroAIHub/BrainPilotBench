@@ -19,7 +19,7 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "test": "node --test dist/*.test.js",
+    "test": "node --test \"dist/**/*.test.js\"",
     "prepublishOnly": "npm run build"
   },
   "engines": { "node": ">=22" },
