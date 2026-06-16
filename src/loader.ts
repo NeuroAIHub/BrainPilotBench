@@ -53,9 +53,14 @@ export function answerFor(askUser: Record<string, string>, question: string): st
   return askUser.default;
 }
 
-/** 从 task.yaml 的 `scoring` 段解析 scorer 列表；缺省回落 DEFAULT_SCORERS。 */
+/** 从 task.yaml 的 `scoring` 段解析 scorer 列表；缺省回落 DEFAULT_SCORERS。
+ *  保持 kind 原样(不强转)，让 validateTask 统一把关缺失/非法 kind。 */
 export function parseScorers(scoringRaw: any): ScorerSpec[] {
   const list = scoringRaw?.scorers;
   if (!Array.isArray(list) || list.length === 0) return DEFAULT_SCORERS;
-  return list.map((s: any) => ({ ...s, kind: String(s.kind) }));
+  return list.map((s: any, i: number) => {
+    if (s == null || typeof s !== "object" || Array.isArray(s))
+      throw new Error(`scoring.scorers[${i}] must be a mapping with a 'kind'`);
+    return { ...s };
+  });
 }
