@@ -10,16 +10,17 @@
     ".": "./dist/index.js",
     "./task": "./dist/task.js",
     "./runner": "./dist/runner.js",
-    "./scoring": "./dist/scoring.js"
+    "./scoring": "./dist/scoring.js",
+    "./scorer": "./dist/scorer/index.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"
   },
-  "files": ["dist", "README.md"],
+  "files": ["dist", "!dist/**/*.test.js", "!dist/**/*.test.js.map", "!dist/**/*.test.d.ts", "!dist/**/*.test.d.ts.map", "README.md"],
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "test": "node --test dist/*.test.js",
+    "test": "node --test \"dist/**/*.test.js\"",
     "prepublishOnly": "npm run build"
   },
   "engines": { "node": ">=22" },
