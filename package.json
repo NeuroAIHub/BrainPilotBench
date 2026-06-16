@@ -16,7 +16,7 @@
   "bin": {
     "bp-bench": "./dist/cli.js"
   },
-  "files": ["dist", "README.md"],
+  "files": ["dist", "!dist/**/*.test.js", "!dist/**/*.test.js.map", "!dist/**/*.test.d.ts", "!dist/**/*.test.d.ts.map", "README.md"],
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",

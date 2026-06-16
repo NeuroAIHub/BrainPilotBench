@@ -1,0 +1,7 @@
+# 源码按文本处理，避免含大量 CJK 注释的 .ts 被 git 误判为二进制（无法 diff）
+*.ts text
+*.js text
+*.json text
+*.md text
+*.yaml text
+*.yml text
