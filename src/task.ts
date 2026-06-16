@@ -57,6 +57,8 @@ export interface Task {
   /** Pattern → answer rules for ask_user; `default` is the fallback. */
   askUser: Record<string, string>;
   rubric: Rubric;
+  /** 该任务声明的 scorer 列表（缺省 DEFAULT_SCORERS）。 */
+  scorers: ScorerSpec[];
   /** Absolute path to the task directory (for setup.sh / data.lock resolution). */
   dir: string;
 }
@@ -92,6 +94,12 @@ export function validateTask(t: Partial<Task>): asserts t is Task {
   }
   if (!t.rubric || !Array.isArray(t.rubric.dimensions) || t.rubric.dimensions.length === 0)
     throw new Error(`task ${m.id}: rubric must have at least one dimension`);
+  if (!Array.isArray(t.scorers) || t.scorers.length === 0)
+    throw new Error(`task ${m.id}: scorers must be a non-empty list`);
+  for (const [i, s] of t.scorers.entries()) {
+    if (typeof s.kind !== "string" || !s.kind)
+      throw new Error(`task ${m.id}: scorer ${i} missing 'kind'`);
+  }
 }
 
 /** 任务声明的一个 scorer（从 task.yaml scoring.scorers 解析；详见 loader）。 */
@@ -102,3 +110,6 @@ export interface ScorerSpec {
   parser?: string;
   [k: string]: unknown;
 }
+
+/** 任务未声明 scoring 时的缺省：单 rubric-judge over rubric.yaml（保持今天行为）。 */
+export const DEFAULT_SCORERS: ScorerSpec[] = [{ kind: "rubric-judge", rubric: "rubric.yaml" }];

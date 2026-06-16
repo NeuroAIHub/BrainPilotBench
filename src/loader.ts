@@ -4,7 +4,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, basename } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { type Task, type TaskMeta, type TaskTurn, type Rubric, DEFAULT_RUBRIC, validateTask } from "./task.js";
+import { type Task, type TaskMeta, type TaskTurn, type Rubric, type ScorerSpec, DEFAULT_RUBRIC, DEFAULT_SCORERS, validateTask } from "./task.js";
 
 function readYaml(path: string): any {
   return parseYaml(readFileSync(path, "utf8"));
@@ -37,7 +37,9 @@ export function loadTask(dir: string): Task {
     ? { dimensions: readYaml(rubricPath)?.dimensions ?? DEFAULT_RUBRIC.dimensions }
     : DEFAULT_RUBRIC;
 
-  const task: Task = { meta, turns, askUser, rubric, dir };
+  const scorers = parseScorers(metaRaw.scoring);
+
+  const task: Task = { meta, turns, askUser, rubric, scorers, dir };
   validateTask(task);
   return task;
 }
@@ -49,4 +51,11 @@ export function answerFor(askUser: Record<string, string>, question: string): st
     try { if (new RegExp(pattern, "i").test(question)) return answer; } catch { /* literal */ if (question.includes(pattern)) return answer; }
   }
   return askUser.default;
+}
+
+/** 从 task.yaml 的 `scoring` 段解析 scorer 列表；缺省回落 DEFAULT_SCORERS。 */
+export function parseScorers(scoringRaw: any): ScorerSpec[] {
+  const list = scoringRaw?.scorers;
+  if (!Array.isArray(list) || list.length === 0) return DEFAULT_SCORERS;
+  return list.map((s: any) => ({ ...s, kind: String(s.kind) }));
 }
