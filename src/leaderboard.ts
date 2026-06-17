@@ -15,6 +15,7 @@ export interface LeaderboardCell {
   metric: string;
   /** 该 (task,version) 跨 run 该 metric 的中位数;全 unscored → null。 */
   value: number | null;
+  /** scored = 贡献了有效值的 run 数(每 run 最多算一票);total = 该 (task,version) 的 run 数。scored ≤ total。 */
   coverage: { scored: number; total: number };
 }
 export interface LeaderboardRow {
@@ -47,6 +48,7 @@ export function loadRunScores(runsDir: string): RunScores[] {
 function metricFloats(run: RunScores): Map<string, number[]> {
   const m = new Map<string, number[]>();
   for (const res of run.results) {
+    if (!res || typeof res.kind !== "string") continue; // 坏条目(null/缺 kind)跳过——scores.json 是外部数据
     if (res.unscored) continue; // 整条 unscored → 不贡献任何 metric
     const rubric = res.kind.startsWith("rubric");
     const entries: [string, unknown][] =
@@ -80,23 +82,24 @@ export function buildLeaderboard(
   const tables: CategoryTable[] = [];
   for (const [category, catRuns] of byCat) {
     const metrics = requiredMetricsFor(category, reg); // 列 = 必备集(not-applicable 不成列)
-    // 按 (taskId,version) 聚合
-    const byKey = new Map<string, RunScores[]>();
+    // 按 (taskId,version) 聚合;key 用 JSON 元组(单射,避免 taskId/version 含空格时 split 串味)
+    const byKey = new Map<string, { taskId: string; version: string; runs: RunScores[] }>();
     for (const run of catRuns) {
-      const k = `${run.taskId} ${run.version}`;
-      const arr = byKey.get(k);
-      if (arr) arr.push(run);
-      else byKey.set(k, [run]);
+      const k = JSON.stringify([run.taskId, run.version]);
+      const g = byKey.get(k);
+      if (g) g.runs.push(run);
+      else byKey.set(k, { taskId: run.taskId, version: run.version, runs: [run] });
     }
     const rows: LeaderboardRow[] = [];
-    for (const [k, keyRuns] of byKey) {
-      const [taskId, version] = k.split(" ");
+    for (const { taskId, version, runs: keyRuns } of byKey.values()) {
       const perRun = keyRuns.map(metricFloats); // 每 run 算一次(缓存,避免内层重算)
       const cells: LeaderboardCell[] = metrics.map((metric) => {
+        // 每 run 先塌缩成单一代表值(同 metric 多 scorer 取中位数),再跨 run 聚合——
+        // 保证一个 run 在「跨 run 中位数」里只占一票,coverage.scored = 贡献的 run 数。
         const floats: number[] = [];
         for (const mf of perRun) {
           const fs = mf.get(metric);
-          if (fs) floats.push(...fs);
+          if (fs && fs.length) floats.push(medianFloat(fs)!);
         }
         return { metric, value: medianFloat(floats), coverage: { scored: floats.length, total: keyRuns.length } };
       });
