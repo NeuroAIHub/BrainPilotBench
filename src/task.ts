@@ -45,7 +45,24 @@ export interface TaskMeta {
   timeoutMin: number;
   budgetTokens: number;
   requires: TaskRequirements;
+  /** 类别(track):决定进哪张 leaderboard;缺省回落 domain。 */
+  category?: string;
+  /** Oracle/NOP 门阈值;缺省按 scorer kind 回落 DEFAULT_GATE。 */
+  gate?: TaskGate;
 }
+
+/** task.yaml 的 gate 段:Oracle 必须 ≥ oracleMin、NOP 必须 ≤ nopMax。 */
+export interface TaskGate {
+  oracleMin?: number;
+  nopMax?: number;
+}
+
+/** 缺省门阈值,按 scorer kind 分组(量纲自适应:rubric 1-5、exec 归一化)。 */
+export const DEFAULT_GATE: Record<string, { oracleMin: number; nopMax: number }> = {
+  "rubric-judge": { oracleMin: 4, nopMax: 2 },
+  "rubric-human": { oracleMin: 4, nopMax: 2 },
+  "exec-script": { oracleMin: 1, nopMax: 0 },
+};
 
 export interface Rubric {
   /** Scoring dimensions (each scored 1-5 + comment by a human/LLM judge). */

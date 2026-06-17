@@ -4,7 +4,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, basename } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { type Task, type TaskMeta, type TaskTurn, type Rubric, type ScorerSpec, DEFAULT_RUBRIC, DEFAULT_SCORERS, validateTask } from "./task.js";
+import { type Task, type TaskMeta, type TaskTurn, type Rubric, type ScorerSpec, type TaskGate, DEFAULT_RUBRIC, DEFAULT_SCORERS, validateTask } from "./task.js";
 import { parseDataManifest } from "./data/manifest.js";
 
 function readYaml(path: string): any {
@@ -24,6 +24,8 @@ export function loadTask(dir: string): Task {
     timeoutMin: metaRaw.timeout_min ?? metaRaw.timeoutMin ?? 60,
     budgetTokens: metaRaw.budget_tokens ?? metaRaw.budgetTokens ?? 500000,
     requires: metaRaw.requires ?? {},
+    category: typeof metaRaw.category === "string" ? metaRaw.category : undefined,
+    gate: parseGate(metaRaw.gate),
   };
 
   const turnsRaw = readYaml(join(dir, "prompt", "turns.yaml")) ?? [];
@@ -69,4 +71,13 @@ export function parseScorers(scoringRaw: any): ScorerSpec[] {
       throw new Error(`scoring.scorers[${i}] must be a mapping with a 'kind'`);
     return { ...s };
   });
+}
+
+/** 解析 task.yaml 的 gate 段(snake_case → camelCase);无则 undefined。 */
+export function parseGate(raw: any): TaskGate | undefined {
+  if (raw == null || typeof raw !== "object") return undefined;
+  const g: TaskGate = {};
+  if (typeof raw.oracle_min === "number") g.oracleMin = raw.oracle_min;
+  if (typeof raw.nop_max === "number") g.nopMax = raw.nop_max;
+  return Object.keys(g).length ? g : undefined;
 }
