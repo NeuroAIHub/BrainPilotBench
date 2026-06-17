@@ -42,3 +42,14 @@ test("parseDataManifest: bytes 必须是非负整数", () => {
 test("parseDataManifest: null 列表项报清晰错误", () => {
   assert.throws(() => parseDataManifest({ datasets: [null] }), /datasets\[0\] must be a mapping/);
 });
+
+test("parseDataManifest: name 拒绝路径穿越(../ 、/ 、..)", () => {
+  const bad = (name: string) =>
+    parseDataManifest({ datasets: [{ name, uri: "u", sha256: "a".repeat(64), bytes: 1 }] });
+  assert.throws(() => bad("../../etc/x"), /name must match \[A-Za-z0-9._-\]/);
+  assert.throws(() => bad("sub/dir"), /name must match \[A-Za-z0-9._-\]/);
+  assert.throws(() => bad(".."), /name must match \[A-Za-z0-9._-\]/);
+  assert.equal(
+    parseDataManifest({ datasets: [{ name: "ds_a-1.parquet", uri: "u", sha256: "a".repeat(64), bytes: 1 }] }).datasets[0].name,
+    "ds_a-1.parquet");
+});
