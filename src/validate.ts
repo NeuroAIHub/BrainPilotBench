@@ -12,7 +12,9 @@ import { loadTask } from "./loader.js";
 import type { CategoryRegistry } from "./categories.js";
 import { loadCategories } from "./categories.js";
 import { getScorerModule } from "./scorer/registry.js";
+import "./scorer/index.js"; // 副作用:注册内置 scorer(exec-script 等),让 ./validate 子路径自足
 import { setExecSandbox } from "./scorer/exec.js";
+import { requiredMetricsFor } from "./categories.js";
 import type { ScoreContext } from "./scorer/types.js";
 import { localSubprocessSandbox, type ExecSandbox } from "./sandbox.js";
 
@@ -59,6 +61,17 @@ export function validateTaskSchema(task: Task, reg: CategoryRegistry): Validatio
       if (rel.includes("..")) issues.push({ level: "error", msg: `scorer script 含相对路径穿越: ${rel}` });
       else if (!existsSync(join(task.dir, rel))) issues.push({ level: "error", msg: `exec-script 脚本不存在: ${rel}` });
     }
+  }
+  // category 必备 metric 覆盖:scorer 的静态 outputs 并集须覆盖该类别必备集。
+  // exec-script 的 outputs 是运行时决定(静态返回 []),由 Oracle 门验证产出,故有 exec-script 时跳过静态覆盖检查。
+  const required = requiredMetricsFor(m.category, reg);
+  if (required.length && !task.scorers.some((s) => s.kind === "exec-script")) {
+    const produced = new Set<string>();
+    for (const s of task.scorers) {
+      try { for (const o of getScorerModule(s.kind).outputs(s, task)) produced.add(o); } catch { /* 未知 kind 已由别处报 */ }
+    }
+    const missing = required.filter((r) => !produced.has(r));
+    if (missing.length) issues.push({ level: "error", msg: `category ${m.category} 必备 metric 未被 scorer 覆盖: ${missing.join(", ")}` });
   }
   return issues;
 }
