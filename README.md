@@ -142,6 +142,17 @@ CI runs `validate all` (+ a canary first-line check) on every PR touching `tasks
 
 Each task declares a `category` (in `task.yaml`); `categories.yaml` (repo root) maps each category to its required metric set. The leaderboard groups by category into dense tables (see the architecture doc). Add a new category to `categories.yaml` before using it.
 
+## Leaderboard
+
+`bp-bench leaderboard <runsDir>` reads every `<runsDir>/*/scores.json` and prints **per-category dense tables** — one table per `category`, rows = `task@version`, columns = that category's required metrics (from `categories.yaml`).
+
+Each cell is one of three states (never conflated):
+- **scored** — a real value (median across runs of that task+version). rubric dimensions are normalized 1-5 → [0,1]; exec metrics pass through as-is.
+- **unscored** — shown as `—`; the run produced no value for that metric (judge refusal, infra failure, or an unscored result). **Excluded from the aggregate — never counted as 0 or fail.**
+- **not-applicable** — the metric isn't in the task's category, so it isn't a column at all.
+
+Each cell also shows `(scored/total)` coverage. Tasks declare a `version` in `task.yaml` (default `"unversioned"`); bump it on any breaking spec edit so leaderboard numbers stay comparable across versions.
+
 ## Relationship to the test platform
 
 This benchmark grew out of BrainPilot's "B 线" (quality evaluation). The plumbing is shared in spirit with the test platform (driver, demo-bundle replay, rubric format) but lives here as an independent, citable benchmark — the engine repo's tests gate red/green, this ranks quality.
