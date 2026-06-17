@@ -20,6 +20,7 @@ import { blankScoresheet, leaderboard, type ScoreRecord } from "./scoring.js";
 import { resolveManifest } from "./data/index.js";
 import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { runScorers, type RunBundle } from "./score.js";
+import { validateTask } from "./validate.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -87,6 +88,26 @@ async function main() {
     return;
   }
 
+  if (cmd === "validate") {
+    const which = argv[1];
+    const dirs = which === "all" ? listTaskDirs() : listTaskDirs().filter((d) => d.endsWith("/" + which));
+    if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
+    const repoDir = tasksDir === "tasks" ? "." : tasksDir + "/..";
+    let hadError = false;
+    for (const d of dirs) {
+      const issues = await validateTask(d, repoDir);
+      const errs = issues.filter((i) => i.level === "error");
+      const warns = issues.filter((i) => i.level === "warn");
+      const id = d.split("/").pop();
+      if (!errs.length) console.log(`${G}✓${X} ${id}` + (warns.length ? `  (${warns.length} warn)` : ""));
+      else { hadError = true; console.log(`${Y}✗ ${id}${X}`); }
+      for (const i of errs) console.log(`    ${Y}error${X}: ${i.msg}`);
+      for (const i of warns) console.log(`    warn: ${i.msg}`);
+    }
+    if (hadError) process.exit(1);
+    return;
+  }
+
   if (cmd === "fetch") {
     const which = argv[1];
     const dirs = which === "all" ? listTaskDirs() : listTaskDirs().filter((d) => d.endsWith("/" + which));
@@ -132,7 +153,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> [--judge-model <id>] | leaderboard <runsDir>");
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> [--judge-model <id>] | validate <id|all> | leaderboard <runsDir>");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
