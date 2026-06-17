@@ -42,6 +42,10 @@ function listTaskDirs(): string[] {
 function listAllTaskDirs(): string[] {
   return discoverTaskDirs(taskRoots, { includeExamples: true });
 }
+/** by-id 解析:按 task 声明的 meta.id 匹配(非目录名),与 registry 层一致。 */
+function dirsByTaskId(which: string): string[] {
+  return listAllTaskDirs().filter((d) => { try { return loadTask(d).meta.id === which; } catch { return false; } });
+}
 
 /** 当前 HEAD 的 commit sha;非 git 仓/git 缺失 → 清晰报错退出。 */
 function gitHead(): string {
@@ -71,7 +75,7 @@ async function main() {
     if (!baseUrl) { console.error("需 --base-url"); process.exit(2); }
     const out = arg("--out", "runs")!;
     const version = arg("--version", "unknown")!;
-    const dirs = which === "all" ? listTaskDirs() : listAllTaskDirs().filter((d) => d.endsWith("/" + which));
+    const dirs = which === "all" ? listTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     const runner = new BenchRunner({ baseUrl });
     for (const d of dirs) {
@@ -127,7 +131,7 @@ async function main() {
 
   if (cmd === "validate") {
     const which = argv[1];
-    const dirs = which === "all" ? listAllTaskDirs() : listAllTaskDirs().filter((d) => d.endsWith("/" + which));
+    const dirs = which === "all" ? listAllTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     const repoDir = tasksDir === "tasks" ? "." : tasksDir + "/..";
     let hadError = false;
@@ -147,7 +151,7 @@ async function main() {
 
   if (cmd === "fetch") {
     const which = argv[1];
-    const dirs = which === "all" ? listTaskDirs() : listAllTaskDirs().filter((d) => d.endsWith("/" + which));
+    const dirs = which === "all" ? listTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     for (const d of dirs) {
       const t = loadTask(d);
@@ -172,7 +176,7 @@ async function main() {
     const signals = JSON.parse(readFileSync(join(runDir, "signals.json"), "utf8"));
     const taskId = signals.taskId;
     if (!taskId) { console.error("signals.json 缺 taskId（用新版 run 重跑，或手动补）"); process.exit(2); }
-    const dir = listAllTaskDirs().find((d) => d.endsWith("/" + taskId));
+    const dir = dirsByTaskId(taskId)[0];
     if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
     const t = loadTask(dir);
     const evPath = join(runDir, "events.jsonl");
@@ -220,7 +224,7 @@ async function main() {
     });
     let bad = false;
     for (const v of verdicts) {
-      if (v.ok) console.log(`${G}✓${X} ${v.release}  (${reg.releases.find((r) => r.name === v.release)!.tasks.length} tasks)`);
+      if (v.ok) console.log(`${G}✓${X} ${v.release}  (${reg.releases.find((r) => r.name === v.release)?.tasks?.length ?? 0} tasks)`);
       else { bad = true; console.log(`${Y}✗ ${v.release}${X}`); for (const p of v.problems) console.log(`    ${p}`); }
     }
     if (bad) process.exit(1);

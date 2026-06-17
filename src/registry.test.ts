@@ -100,3 +100,14 @@ test("loadRegistry/saveRegistry: round-trip;不存在→空", () => {
     assert.deepEqual(loadRegistry(p), reg);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
+
+test("verifyRegistry: 损坏形状(缺 tasks / null 条目)→ problem 不崩", () => {
+  // 手改/截断的 registry.json:release 缺 tasks 或含 null 条目。verify 应报 problem,不抛。
+  const deps = { taskById: new Map(), commitExists: () => true, categoryExists: () => true };
+  const noTasks = verifyRegistry({ releases: [{ name: "v1", commit: "c1", frozenAt: "x" } as any] }, deps);
+  assert.equal(noTasks[0].ok, false);
+  assert.ok(noTasks[0].problems.some((p) => /tasks|形状|损坏/.test(p)));
+  const nullEntry = verifyRegistry({ releases: [{ name: "v2", commit: "c2", frozenAt: "x", tasks: [null] } as any] }, deps);
+  assert.equal(nullEntry[0].ok, false);
+  assert.ok(nullEntry[0].problems.some((p) => /非法 task 条目/.test(p)));
+});

@@ -100,7 +100,13 @@ export function verifyRegistry(reg: Registry, deps: VerifyDeps): ReleaseVerdict[
     if (seenNames.has(rel.name)) problems.push(`release 名重复: ${rel.name}`);
     seenNames.add(rel.name);
     if (!deps.commitExists(rel.commit)) problems.push(`commit 不可达(未 push?): ${rel.commit}`);
-    for (const ft of rel.tasks) {
+    const tasks = Array.isArray(rel.tasks) ? rel.tasks : [];
+    if (!Array.isArray(rel.tasks)) problems.push(`release ${rel.name}: tasks 非数组(registry.json 形状损坏)`);
+    for (const ft of tasks) {
+      if (!ft || typeof ft !== "object" || typeof (ft as { id?: unknown }).id !== "string") {
+        problems.push(`release ${rel.name}: 非法 task 条目(应为含 id 的对象)`);
+        continue;
+      }
       const live = deps.taskById.get(ft.id);
       if (!live) { problems.push(`task missing(已删/改名): ${ft.id}`); continue; }
       if (live.meta.version !== ft.version) {

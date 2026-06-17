@@ -27,6 +27,8 @@ jobs:
           node-version: "22"
       - run: npm install --no-audit --no-fund
       - run: npm run build
+      - name: 单元测试(node --test)
+        run: npm test
       - name: canary 检查
         run: node scripts/check-task-canary.mjs
       - name: 任务有效性 + Oracle/NOP 门

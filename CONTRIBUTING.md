@@ -63,7 +63,7 @@ later drifts — forcing a *new* release rather than silent mutation.
 ## Local checks before a maintainer merges
 
 ```bash
-npm ci && npm run build
+npm install && npm run build
 node dist/cli.js validate all      # schema + canary + created_at + Oracle/NOP gate
 npm test
 ```
