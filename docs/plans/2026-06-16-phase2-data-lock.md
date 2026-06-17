@@ -408,13 +408,13 @@ test("file fetcher: 复制本地文件到 destPath", async () => {
   }
 });
 
-test("ossToHttps: 公开桶 oss:// 重写成公共 https 端点", () => {
-  // 约定：oss://<bucket>/<key> + 环境 OSS_PUBLIC_ENDPOINT(默认 oss-cn-hangzhou.aliyuncs.com)
+test("ossToHttps: 公开桶 oss:// 重写成传输加速 https 端点", () => {
+  // 约定：oss://<bucket>/<key> + 环境 OSS_PUBLIC_ENDPOINT(默认 oss-accelerate.aliyuncs.com 全球传输加速)
   const prev = process.env.OSS_PUBLIC_ENDPOINT;
   try {
     delete process.env.OSS_PUBLIC_ENDPOINT;
     assert.equal(ossToHttps("oss://my-bucket/path/to/x.parquet"),
-      "https://my-bucket.oss-cn-hangzhou.aliyuncs.com/path/to/x.parquet");
+      "https://my-bucket.oss-accelerate.aliyuncs.com/path/to/x.parquet");
     process.env.OSS_PUBLIC_ENDPOINT = "oss-cn-beijing.aliyuncs.com";
     assert.equal(ossToHttps("oss://b/k"),
       "https://b.oss-cn-beijing.aliyuncs.com/k");
@@ -475,14 +475,16 @@ export function schemeOf(uri: string): string {
   return m[1].toLowerCase();
 }
 
-/** 公开桶 oss://<bucket>/<key> → https://<bucket>.<endpoint>/<key>。 */
+/** 公开桶 oss://<bucket>/<key> → https://<bucket>.<endpoint>/<key>。
+ *  默认端点 = 传输加速 oss-accelerate.aliyuncs.com(全球就近,无需 AK/SK,公开读直下)。
+ *  可用环境 OSS_PUBLIC_ENDPOINT 覆盖(如区域端点或 CDN 自定义域名)。 */
 export function ossToHttps(uri: string): string {
   const rest = uri.slice("oss://".length);
   const slash = rest.indexOf("/");
   if (slash < 0) throw new Error(`oss uri must be oss://<bucket>/<key>: ${uri}`);
   const bucket = rest.slice(0, slash);
   const key = rest.slice(slash + 1);
-  const endpoint = process.env.OSS_PUBLIC_ENDPOINT || "oss-cn-hangzhou.aliyuncs.com";
+  const endpoint = process.env.OSS_PUBLIC_ENDPOINT || "oss-accelerate.aliyuncs.com";
   return `https://${bucket}.${endpoint}/${key}`;
 }
 
@@ -1083,7 +1085,7 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 # 放在 tasks/<id>/data.lock。run/fetch 时按 uri scheme 拉取、校验 sha256、落本地缓存。
 datasets:
   # 公开只读 OSS 桶（推荐）：oss://<bucket>/<key>，自动重写成公共 https 端点。
-  # 端点默认 oss-cn-hangzhou.aliyuncs.com，可用环境 OSS_PUBLIC_ENDPOINT 覆盖。
+  # 端点默认 oss-accelerate.aliyuncs.com(全球传输加速)，可用环境 OSS_PUBLIC_ENDPOINT 覆盖。
   - name: connectome-mouse-v2
     uri: oss://brainpilot-bench/connectome/mouse-v2/slice-00.parquet
     sha256: 0000000000000000000000000000000000000000000000000000000000000000
@@ -1131,7 +1133,7 @@ Pull a task's datasets explicitly:
 bp-bench fetch <taskId|all>
 ```
 
-See `tasks/_example/data.lock.example`. Public OSS endpoint defaults to `oss-cn-hangzhou.aliyuncs.com` (override with `OSS_PUBLIC_ENDPOINT`).
+See `tasks/_example/data.lock.example`. Public OSS endpoint defaults to `oss-accelerate.aliyuncs.com` (Alibaba Cloud global transfer acceleration — anonymous public-read, no AK/SK; override with `OSS_PUBLIC_ENDPOINT`, e.g. a CDN custom domain).
 ```
 
 - [ ] **Step 4: 提交**
