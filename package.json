@@ -12,7 +12,9 @@
     "./runner": "./dist/runner.js",
     "./scoring": "./dist/scoring.js",
     "./scorer": "./dist/scorer/index.js",
-    "./data": "./dist/data/index.js"
+    "./data": "./dist/data/index.js",
+    "./artifacts": "./dist/artifacts.js",
+    "./score": "./dist/score.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"
