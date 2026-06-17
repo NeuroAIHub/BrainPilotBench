@@ -63,3 +63,17 @@ test("resolveManifest: 解析多条并全部 resolve", async () => {
     assert.ok(out.every((r) => existsSync(r.path)));
   });
 });
+
+test("resolveDataset: 同一数据集并发 resolve 全部成功(临时名随机,不撞名)", async () => {
+  await withTmpXdg(async (dir) => {
+    const body = "concurrent-payload";
+    const sha = createHash("sha256").update(body).digest("hex");
+    const src = join(dir, "c.bin");
+    writeFileSync(src, body);
+    const entry: DatasetEntry = { name: "ds", uri: "file://" + src, sha256: sha, bytes: body.length };
+    const results = await Promise.all(Array.from({ length: 5 }, () => resolveDataset(entry)));
+    assert.ok(results.every((r) => r.path === cachePathFor(sha)));
+    assert.ok(existsSync(cachePathFor(sha)));
+  });
+});
+

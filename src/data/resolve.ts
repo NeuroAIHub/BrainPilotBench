@@ -3,6 +3,7 @@
  * 流式 sha256 校验→原子重命名进内容寻址缓存。校验失败删临时文件、不留半截缓存。
  */
 import { mkdir, rename, rm } from "node:fs/promises";
+import { randomUUID } from "node:crypto";
 import { dirname, join } from "node:path";
 import type { DataManifest, DatasetEntry, ResolvedDataset } from "./types.js";
 import { cachePathFor, isCached, verifySha256 } from "./cache.js";
@@ -16,7 +17,8 @@ export async function resolveDataset(entry: DatasetEntry): Promise<ResolvedDatas
   }
   const dir = dirname(finalPath);
   await mkdir(dir, { recursive: true });
-  const tmp = join(dir, `.tmp-${process.pid}-${entry.name}`);
+  // 临时文件名与 entry.name 无关(随机)：杜绝公开 API 经 name 路径穿越 + 并发 resolve 撞名。
+  const tmp = join(dir, `.tmp-${process.pid}-${randomUUID()}`);
   try {
     await getFetcher(schemeOf(entry.uri))({ uri: entry.uri, destPath: tmp });
     if (!(await verifySha256(tmp, entry.sha256))) {
