@@ -4,3 +4,5 @@ runs/
 *.tsbuildinfo
 .DS_Store
 package-lock.json
+# 内容寻址缓存默认在仓外(XDG)；防御性忽略意外落在仓内的缓存
+.cache/

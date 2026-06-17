@@ -1,0 +1,22 @@
+# data.lock 示例 —— 大数据集 body 永不进 git，按 sha256 内容寻址懒拉取。
+# 放在 tasks/<id>/data.lock。run/fetch 时按 uri scheme 拉取、校验 sha256、落本地缓存。
+datasets:
+  # 公开只读 OSS 桶（推荐）：oss://<bucket>/<key>，自动重写成传输加速 https 端点。
+  # 端点默认 oss-accelerate.aliyuncs.com（全球传输加速、无需 AK/SK、公开读直下），
+  # 可用环境 OSS_PUBLIC_ENDPOINT 覆盖（如区域端点或 CDN 自定义域名）。
+  - name: connectome-mouse-v2
+    uri: oss://brainpilot-bench/connectome/mouse-v2/slice-00.parquet
+    sha256: 0000000000000000000000000000000000000000000000000000000000000000
+    bytes: 87432119123
+    format: parquet
+  # 也支持任意公共 https：
+  - name: atlas-regions
+    uri: https://example.org/datasets/atlas/regions.csv
+    sha256: 1111111111111111111111111111111111111111111111111111111111111111
+    bytes: 1048576
+    format: csv
+  # 本地文件（开发/测试用）：
+  - name: local-fixture
+    uri: file:///abs/path/to/fixture.bin
+    sha256: 2222222222222222222222222222222222222222222222222222222222222222
+    bytes: 1024

@@ -15,6 +15,7 @@ import { join } from "node:path";
 import { loadTask } from "./loader.js";
 import { BenchRunner } from "./runner.js";
 import { blankScoresheet, leaderboard, type ScoreRecord } from "./scoring.js";
+import { resolveManifest } from "./data/index.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -76,7 +77,24 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] | leaderboard <runsDir>");
+  if (cmd === "fetch") {
+    const which = argv[1];
+    const dirs = which === "all" ? listTaskDirs() : listTaskDirs().filter((d) => d.endsWith("/" + which));
+    if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
+    for (const d of dirs) {
+      const t = loadTask(d);
+      if (!t.datasets.length) { console.log(`${B}${t.meta.id}${X}  (无 data.lock，跳过)`); continue; }
+      console.log(`${B}— fetch ${t.meta.id}${X}  (${t.datasets.length} 数据集)`);
+      const resolved = await resolveManifest({ datasets: t.datasets });
+      for (const r of resolved) {
+        const tag = r.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
+        console.log(`  ${tag}  ${r.entry.name}  → ${r.path}`);
+      }
+    }
+    return;
+  }
+
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] | fetch <id|all> | leaderboard <runsDir>");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

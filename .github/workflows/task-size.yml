@@ -1,0 +1,33 @@
+name: task-size
+
+on:
+  pull_request:
+    paths:
+      - "tasks/**"
+  push:
+    branches: [main]
+    paths:
+      - "tasks/**"
+
+jobs:
+  size-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: 检查 tasks/ 改动文件大小（25MB/文件，100MB/总量）
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+            FILES=$(git diff --name-only --diff-filter=ACM "$BASE" "$HEAD" -- 'tasks/**' || true)
+          else
+            FILES=$(git diff --name-only --diff-filter=ACM "${{ github.event.before }}" "${{ github.sha }}" -- 'tasks/**' || true)
+          fi
+          if [ -z "$FILES" ]; then echo "无 tasks/ 改动"; exit 0; fi
+          echo "$FILES" | tr '\n' ' '
+          node scripts/check-task-size.mjs $FILES
