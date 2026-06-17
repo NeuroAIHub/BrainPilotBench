@@ -1,0 +1,2 @@
+- send: 生成一个 results.csv,包含表头 id,score 和恰好 3 行数据。
+  then: wait_idle
