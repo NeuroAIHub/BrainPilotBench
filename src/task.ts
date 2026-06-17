@@ -47,6 +47,8 @@ export interface TaskMeta {
   requires: TaskRequirements;
   /** 任务规范版本;破坏性 spec 改动就 bump,leaderboard 数字据此可比。缺省 "unversioned"。 */
   version: string;
+  /** ISO 日期(YYYY-MM-DD);污染防御一等轴(provenance)。缺失由 validate 报错。 */
+  createdAt?: string;
   /** 类别(track):决定进哪张 leaderboard;缺省回落 domain。 */
   category?: string;
   /** Oracle/NOP 门阈值;缺省按 scorer kind 回落 DEFAULT_GATE。 */

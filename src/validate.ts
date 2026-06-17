@@ -45,6 +45,8 @@ export function validateTaskSchema(task: Task, reg: CategoryRegistry): Validatio
   }
   if (!m.id) issues.push({ level: "error", msg: "缺 id" });
   if (!m.summary) issues.push({ level: "error", msg: "缺 summary" });
+  if (!m.createdAt) issues.push({ level: "error", msg: "缺 created_at(provenance/污染防御)" });
+  else if (!/^\d{4}-\d{2}-\d{2}$/.test(m.createdAt)) issues.push({ level: "error", msg: `created_at 非法,需 YYYY-MM-DD: ${m.createdAt}` });
   if (!m.expectedArtifacts?.length) issues.push({ level: "error", msg: "expected_artifacts 不能为空" });
   for (const a of m.expectedArtifacts ?? []) {
     if (a.workspace.includes("..")) issues.push({ level: "error", msg: `expected_artifacts 含相对路径穿越: ${a.workspace}` });

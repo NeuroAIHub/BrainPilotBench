@@ -25,6 +25,7 @@ export function loadTask(dir: string): Task {
     budgetTokens: metaRaw.budget_tokens ?? metaRaw.budgetTokens ?? 500000,
     requires: metaRaw.requires ?? {},
     version: metaRaw.version != null ? String(metaRaw.version) : "unversioned",
+    createdAt: metaRaw.created_at != null ? String(metaRaw.created_at) : undefined,
     category: typeof metaRaw.category === "string" ? metaRaw.category : undefined,
     gate: parseGate(metaRaw.gate),
   };
