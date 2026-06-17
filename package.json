@@ -15,7 +15,8 @@
     "./data": "./dist/data/index.js",
     "./artifacts": "./dist/artifacts.js",
     "./score": "./dist/score.js",
-    "./judge": "./dist/judge.js"
+    "./judge": "./dist/judge.js",
+    "./sandbox": "./dist/sandbox.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"

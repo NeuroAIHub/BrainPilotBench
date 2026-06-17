@@ -10,5 +10,6 @@ export * from "./data/index.js";
 export * from "./artifacts.js";
 export * from "./score.js";
 export * from "./judge.js";
+export * from "./sandbox.js";
 
 export const BENCH_VERSION = "0.0.1";
