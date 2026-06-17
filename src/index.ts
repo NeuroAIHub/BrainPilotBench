@@ -31,5 +31,7 @@ export * from "./judge.js";
 export * from "./sandbox.js";
 export * from "./validate.js";
 export * from "./categories.js";
+export * from "./metrics.js";
+export * from "./leaderboard.js";
 
 export const BENCH_VERSION = "0.0.1";

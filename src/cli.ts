@@ -16,7 +16,9 @@ import { readdirSync, existsSync, mkdirSync, writeFileSync, readFileSync, statSy
 import { join } from "node:path";
 import { loadTask } from "./loader.js";
 import { BenchRunner } from "./runner.js";
-import { blankScoresheet, leaderboard, type ScoreRecord } from "./scoring.js";
+import { blankScoresheet } from "./scoring.js";
+import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
+import { loadCategories } from "./categories.js";
 import { resolveManifest } from "./data/index.js";
 import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { runScorers, type RunBundle } from "./score.js";
@@ -76,15 +78,29 @@ async function main() {
   }
 
   if (cmd === "leaderboard") {
-    const dir = argv[1] ?? "runs";
-    const recs: ScoreRecord[] = [];
-    for (const d of readdirSync(dir)) {
-      const p = join(dir, d, "scoresheet.json");
-      if (existsSync(p)) { try { recs.push(JSON.parse(readFileSync(p, "utf8"))); } catch {} }
+    const runsDir = argv[1] ?? "runs";
+    const repoDir = tasksDir === "tasks" ? "." : tasksDir + "/..";
+    const reg = loadCategories(repoDir);
+    // taskId → category(task SSOT):用 listTaskDirs 建一次映射。
+    const catById = new Map<string, string | undefined>();
+    for (const d of listTaskDirs()) {
+      try { const t = loadTask(d); catById.set(t.meta.id, t.meta.category); } catch { /* 跳过坏 task */ }
     }
-    const lb = leaderboard(recs);
-    if (!lb.length) { console.log("（无已评分记录）"); return; }
-    for (const row of lb) console.log(`${row.mean.toFixed(2)}  ${row.taskId} @ ${row.version}  (n=${row.n})`);
+    const runs = loadRunScores(runsDir);
+    const tables = buildLeaderboard(runs, (id) => catById.get(id), reg);
+    if (!tables.length) { console.log("（无 scores.json 或无 category 记录）"); return; }
+    for (const tbl of tables) {
+      console.log(`\n${B}# ${tbl.category}${X}`);
+      console.log(`task / version            ` + tbl.metrics.map((m) => m.padEnd(14)).join(""));
+      for (const row of tbl.rows) {
+        const label = `${row.taskId}@${row.version}`.padEnd(26);
+        const cells = row.cells.map((c) => {
+          const v = c.value == null ? `${Y}—${X}` : c.value.toFixed(2);
+          return `${v} (${c.coverage.scored}/${c.coverage.total})`.padEnd(14);
+        }).join("");
+        console.log(`${label}${cells}`);
+      }
+    }
     return;
   }
 

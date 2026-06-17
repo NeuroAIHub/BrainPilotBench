@@ -17,7 +17,9 @@
     "./score": "./dist/score.js",
     "./judge": "./dist/judge.js",
     "./sandbox": "./dist/sandbox.js",
-    "./validate": "./dist/validate.js"
+    "./validate": "./dist/validate.js",
+    "./metrics": "./dist/metrics.js",
+    "./leaderboard": "./dist/leaderboard.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"
