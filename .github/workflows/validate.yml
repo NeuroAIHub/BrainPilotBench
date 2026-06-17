@@ -5,12 +5,14 @@ on:
     paths:
       - "tasks/**"
       - "categories.yaml"
+      - "registry.json"
       - "src/**"
   push:
     branches: [main]
     paths:
       - "tasks/**"
       - "categories.yaml"
+      - "registry.json"
       - "src/**"
 
 jobs:
@@ -29,3 +31,5 @@ jobs:
         run: node scripts/check-task-canary.mjs
       - name: 任务有效性 + Oracle/NOP 门
         run: node dist/cli.js validate all
+      - name: registry 完整性(无 registry.json 时 cli 自身 exit 0)
+        run: node dist/cli.js registry verify

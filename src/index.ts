@@ -33,5 +33,7 @@ export * from "./validate.js";
 export * from "./categories.js";
 export * from "./metrics.js";
 export * from "./leaderboard.js";
+export * from "./discover.js";
+export * from "./registry.js";
 
 export const BENCH_VERSION = "0.0.1";

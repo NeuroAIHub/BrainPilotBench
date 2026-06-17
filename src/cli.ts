@@ -24,6 +24,8 @@ import { resolveManifest } from "./data/index.js";
 import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { runScorers, type RunBundle } from "./score.js";
 import { validateTask } from "./validate.js";
+import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry } from "./registry.js";
+import { execFileSync } from "node:child_process";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -40,6 +42,19 @@ function listTaskDirs(): string[] {
 function listAllTaskDirs(): string[] {
   return discoverTaskDirs(taskRoots, { includeExamples: true });
 }
+
+/** 当前 HEAD 的 commit sha;非 git 仓/git 缺失 → 清晰报错退出。 */
+function gitHead(): string {
+  try { return execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(); }
+  catch { console.error("无法解析 git HEAD(需在 git 仓内且装了 git)"); process.exit(2); }
+}
+/** commit sha 是否可达(已 push/存在于本地对象库)。 */
+function gitCommitExists(sha: string): boolean {
+  try { execFileSync("git", ["cat-file", "-e", `${sha}^{commit}`], { stdio: "ignore" }); return true; }
+  catch { return false; }
+}
+/** registry 路径(默认仓根 registry.json)。 */
+function registryPath(): string { return arg("--registry", "registry.json")!; }
 
 async function main() {
   if (cmd === "list") {
@@ -175,7 +190,44 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> [--judge-model <id>] | validate <id|all> | leaderboard <runsDir>");
+  if (cmd === "freeze") {
+    const name = argv[1];
+    if (!name) { console.error("用法: bp-bench freeze <name> [--ref <git-ref>]（冻结当前 canonical 任务集为不可变发布）"); process.exit(2); }
+    const tasks = listTaskDirs().map((d) => loadTask(d)); // canonical(排除 _* 示例)
+    if (!tasks.length) { console.error("无 canonical 任务可冻结"); process.exit(2); }
+    const release = buildRelease(name, gitHead(), arg("--ref"), new Date().toISOString().slice(0, 10), tasks);
+    const path = registryPath();
+    let reg;
+    try { reg = addRelease(loadRegistry(path), release); }
+    catch (e) { console.error(`${Y}${(e as Error).message}${X}`); process.exit(1); }
+    saveRegistry(path, reg);
+    console.log(`${B}wrote ${path}${X}: ${name} @ ${release.commit.slice(0, 7)}${release.ref ? ` (${release.ref})` : ""}, ${release.tasks.length} tasks`);
+    for (const ft of release.tasks) console.log(`  ${ft.id}@${ft.version}`);
+    return;
+  }
+
+  if (cmd === "registry" && argv[1] === "verify") {
+    const path = registryPath();
+    const reg = loadRegistry(path);
+    if (!reg.releases.length) { console.log("（无 registry.json 或无 release）"); return; }
+    const taskById = new Map(listAllTaskDirs().map((d) => loadTask(d)).map((t) => [t.meta.id, t]));
+    const repoDir = tasksDir === "tasks" ? "." : tasksDir + "/..";
+    const cats = loadCategories(repoDir);
+    const verdicts = verifyRegistry(reg, {
+      taskById,
+      commitExists: gitCommitExists,
+      categoryExists: (c) => c in cats,
+    });
+    let bad = false;
+    for (const v of verdicts) {
+      if (v.ok) console.log(`${G}✓${X} ${v.release}  (${reg.releases.find((r) => r.name === v.release)!.tasks.length} tasks)`);
+      else { bad = true; console.log(`${Y}✗ ${v.release}${X}`); for (const p of v.problems) console.log(`    ${p}`); }
+    }
+    if (bad) process.exit(1);
+    return;
+  }
+
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> [--judge-model <id>] | validate <id|all> | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

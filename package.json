@@ -19,7 +19,9 @@
     "./sandbox": "./dist/sandbox.js",
     "./validate": "./dist/validate.js",
     "./metrics": "./dist/metrics.js",
-    "./leaderboard": "./dist/leaderboard.js"
+    "./leaderboard": "./dist/leaderboard.js",
+    "./discover": "./dist/discover.js",
+    "./registry": "./dist/registry.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"
