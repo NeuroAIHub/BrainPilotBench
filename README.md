@@ -94,6 +94,34 @@ bp-bench score runs/<taskId>-<version>/ --judge-model claude-sonnet-4-6   # comp
 
 **Never commit keys or endpoints.** Put them in your shell env or a git-ignored `.env`. `scores.json` records only the judge model name (`judged by <model>`), never the endpoint or key. A judge refusal, parse failure, or missing credentials yields `unscored` (excluded from aggregates) — never a 0.
 
+## Exec-script scoring (deterministic)
+
+For tasks with a checkable answer, ship a grader with the task and score deterministically — no LLM judge. A task declares:
+
+```yaml
+scoring:
+  scorers:
+    - kind: exec-script
+      script: checks/check.sh   # task-relative; runs offline against the run bundle
+      parser: json
+```
+
+`check.sh` runs in the run-bundle directory (produced artifacts are under `./artifacts/`) and emits a single flat JSON object of `{metric: number}` between sentinels:
+
+```bash
+echo ">>>>> BPB_SCORES"
+echo '{"accuracy": 0.83, "runtime_ok": 1}'
+echo "<<<<< BPB_SCORES"
+```
+
+The grader ships **with the task** (`checks/`) and runs **offline on the captured bundle after the agent finishes** — the agent never sees the grader, so it cannot game it. Missing script, timeout, or no valid `BPB_SCORES` JSON → `unscored` (never 0). See `tasks/_example/exec-task/`.
+
+### Execution isolation & trust boundary
+
+Exec scripts run through a pluggable **`ExecSandbox`**. The shipped implementation is a **local subprocess** (timeout-killed, confined to the bundle dir, credentials stripped from its environment). A local subprocess is **not** strong isolation:
+
+> ⚠️ **Only run exec-script scoring on tasks you trust** (your own, or reviewed). A contributed task's `check.sh` is arbitrary code. Strong isolation (a Docker `ExecSandbox`: no-network, read-only mounts, non-privileged) is a documented seam for running untrusted external tasks — implement and select it before scoring third-party submissions at scale.
+
 ## Relationship to the test platform
 
 This benchmark grew out of BrainPilot's "B 线" (quality evaluation). The plumbing is shared in spirit with the test platform (driver, demo-bundle replay, rubric format) but lives here as an independent, citable benchmark — the engine repo's tests gate red/green, this ranks quality.
