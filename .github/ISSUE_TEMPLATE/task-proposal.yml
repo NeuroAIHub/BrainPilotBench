@@ -1,0 +1,68 @@
+name: Task proposal
+description: Propose a new benchmark task (prose + data pointers only — no code/scripts)
+title: "[task] <short title>"
+labels: ["task-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        BrainPilotBench is curated: you propose, maintainers author + integrate.
+        **Do not paste `task.yaml`, `check.sh`, `solution.sh`, or any executable code here** —
+        proposals are prose + data pointers. See CONTRIBUTING.md.
+  - type: input
+    id: domain
+    attributes:
+      label: Scientific domain
+      placeholder: e.g. neuroscience-survey, connectomics, electrophysiology
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category (track)
+      description: An existing category in categories.yaml, or propose a new one.
+      placeholder: e.g. survey-writing / exec-data-analysis / (new) ...
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: The task / scientific question
+      description: What is the agent asked to do? What does a good answer look like?
+    validations:
+      required: true
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Expected artifacts
+      description: What files should the agent produce? (e.g. a report.md, a results.csv)
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Data source & size
+      description: Where does any required data come from, and roughly how big? (Data bodies are never committed to git — they go to OSS via data.lock.)
+    validations:
+      required: true
+  - type: textarea
+    id: rubric
+    attributes:
+      label: Draft rubric / grading
+      description: For judge-scored tasks, list the dimensions (correctness, completeness, ...). For deterministic tasks, describe what a check script would verify (no code — just the logic).
+    validations:
+      required: true
+  - type: textarea
+    id: contamination
+    attributes:
+      label: Why is this unlikely to be contaminated?
+      description: Is it original / recent / not a famous published result? Could a model have memorized the answer?
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Papers, datasets, or prior art relevant to the task.
+    validations:
+      required: false

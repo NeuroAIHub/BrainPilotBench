@@ -38,17 +38,26 @@ Auto-signals (completed / events / tool calls / errors / duration) are recorded 
 
 ## Contributing a task
 
+BrainPilotBench is **curated** — you propose a task via a *Task Proposal* issue (prose + data
+pointers, **no code**), and maintainers author and integrate the canonical task. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for why (contamination + construct validity need editorial
+judgment) and how. The anatomy below is what a maintainer authors when accepting a proposal.
+
 A task is a directory under `tasks/<id>/`:
 
 | File | Purpose |
 |------|---------|
-| `task.yaml` | id, domain, summary, `expected_artifacts`, `timeout_min`, `budget_tokens`, `requires` |
+| `task.yaml` | id, domain, summary, `category`, `version`, `created_at`, `expected_artifacts`, `timeout_min`, `budget_tokens`, `requires` |
 | `prompt/turns.yaml` | the user turns to inject — `[{send, then}]` |
 | `prompt/ask_user.yaml` | (optional) preset answers for `ask_user` prompts (`pattern → answer`, `default`) |
 | `env/env.patch.yaml` | (optional) deviations from baseline (image/model/mcp/gpu) |
 | `env/setup.sh` | (optional) stage data into the workspace |
 | `data.lock` | (optional) dataset URI + sha256 — **data body never committed** |
 | `rubric.yaml` | scoring dimensions (1-5 + comment) |
+
+Tasks live one-or-more levels under a task root; `--tasks dirA,dirB` discovers multiple roots
+recursively. Directories whose name starts with `_` (e.g. `tasks/_example/`) are templates —
+excluded from `list`/`freeze`, but still gated by `validate all`.
 
 **Design a task so it tests a real research capability**, and prefer tasks that need no proprietary data (knowledge-organization / survey / trend tasks are ideal — see the two seed tasks). If a task needs data, reference it via `data.lock`, never commit the data.
 
@@ -151,7 +160,39 @@ Each cell is one of three states (never conflated):
 - **unscored** — shown as `—`; the run produced no value for that metric (judge refusal, infra failure, or an unscored result). **Excluded from the aggregate — never counted as 0 or fail.**
 - **not-applicable** — the metric isn't in the task's category, so it isn't a column at all.
 
-Each cell also shows `(scored/total)` coverage. Tasks declare a `version` in `task.yaml` (default `"unversioned"`); bump it on any breaking spec edit so leaderboard numbers stay comparable across versions.
+Each cell also shows `(scored/total)` coverage (`scored` = runs that produced a valid value, ≤ total). Tasks declare a `version` in `task.yaml` (default `"unversioned"`); bump it on any breaking spec edit so leaderboard numbers stay comparable across versions.
+
+**Scoring is run by maintainers, not self-reported** (self-reported numbers are gameable). For now the benchmark scores BrainPilot; evaluating an external system will go through a SUT-adapter seam (the next phase's critical path). Running scoring in-house also lets us hold part of the task set back — the strongest contamination defense.
+
+## Frozen releases — `registry.json`
+
+A **release** is an immutable, named snapshot of the task set — what a paper cites
+(`BrainPilotBench-v1`). It pins a git commit (and optionally a pushed ref/tag) plus each task at
+a specific `version`. The benchmark iterates slowly, so named snapshots (`v1`, `v2`, …) are the
+unit of comparability — not a rolling set.
+
+```bash
+bp-bench freeze BrainPilotBench-v1 --ref tested/2026-06-18   # snapshot current canonical tasks
+bp-bench registry verify                                     # CI gate: every pin still holds
+```
+
+`freeze` records the current `git HEAD`, stamps its own `frozenAt` date (task `created_at` is
+self-reported and not trusted for this), and refuses to overwrite an existing release name —
+releases are immutable; cut a new one instead. `registry verify` fails loudly if a frozen task
+was deleted, re-versioned, or its commit isn't reachable (e.g. never pushed) — forcing a new
+release rather than silent drift. With no `registry.json` it's a no-op (exit 0).
+
+`created_at` in each `task.yaml` is a validated provenance field (contamination defense); there
+is intentionally **no** date-cutoff leaderboard filter — at this scale, held-back tasks + named
+snapshots are the contamination control, not date filtering.
+
+## Governance
+
+BrainPilotBench is maintainer-led and curated — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Proposals arrive as issues (no code); maintainers author and merge canonical tasks. The
+canonical surfaces (`tasks/`, `registry.json`, `categories.yaml`) are owned via
+[`.github/CODEOWNERS`](.github/CODEOWNERS); enable **branch protection + "require review from
+Code Owners"** on the default branch in repo settings to enforce it.
 
 ## Relationship to the test platform
 
