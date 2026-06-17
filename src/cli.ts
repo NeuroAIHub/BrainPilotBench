@@ -25,6 +25,7 @@ import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { runScorers, type RunBundle } from "./score.js";
 import { validateTask } from "./validate.js";
 import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry } from "./registry.js";
+import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
 import { execFileSync } from "node:child_process";
 
 const argv = process.argv.slice(2);
@@ -170,12 +171,16 @@ async function main() {
     const judgeModel = arg("--judge-model");
     if (judgeModel) process.env.BPB_JUDGE_MODEL = judgeModel;
     const runDir = argv[1];
-    if (!runDir || !existsSync(join(runDir, "signals.json"))) {
-      console.error("用法: bp-bench score <runDir>（需含 signals.json 的 run 目录）"); process.exit(2);
-    }
-    const signals = JSON.parse(readFileSync(join(runDir, "signals.json"), "utf8"));
-    const taskId = signals.taskId;
-    if (!taskId) { console.error("signals.json 缺 taskId（用新版 run 重跑，或手动补）"); process.exit(2); }
+    if (!runDir) { console.error("用法: bp-bench score <bundle|runDir>（提交 bundle 含 meta.json,或内部 run 含 signals.json）"); process.exit(2); }
+    let meta: SubmissionMeta | null = null;
+    try { meta = loadSubmissionMeta(runDir); }
+    catch (e) { console.error(`${Y}${(e as Error).message}${X}`); process.exit(2); }
+    const sigPath = join(runDir, "signals.json");
+    const signalsRaw: any = existsSync(sigPath) ? JSON.parse(readFileSync(sigPath, "utf8")) : null;
+    const manifest: any = meta ?? signalsRaw;
+    if (!manifest) { console.error("缺 meta.json(提交 bundle)或 signals.json(内部 run)"); process.exit(2); }
+    const taskId = manifest.taskId;
+    if (!taskId) { console.error("清单缺 taskId（meta.json/signals.json）"); process.exit(2); }
     const dir = dirsByTaskId(taskId)[0];
     if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
     const t = loadTask(dir);
@@ -183,7 +188,9 @@ async function main() {
     const events = existsSync(evPath)
       ? readFileSync(evPath, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
       : [];
-    const bundle: RunBundle = { runDir, runId: signals.runId ?? `${taskId}-${signals.version ?? "unknown"}`, version: signals.version ?? "unknown", events, signals };
+    const version = meta ? meta.agent : (signalsRaw.version ?? "unknown");
+    const runId = (meta ? `${taskId}-${meta.agent}` : (signalsRaw.runId ?? `${taskId}-${signalsRaw.version ?? "unknown"}`)).replace(/\s+/g, "-");
+    const bundle: RunBundle = { runDir, runId, version, events, signals: manifest as Record<string, unknown> };
     const scores = await runScorers(t, bundle, new Date().toISOString());
     writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
     console.log(`${B}— score ${taskId}${X}  → ${join(runDir, "scores.json")}`);
@@ -231,7 +238,27 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> [--judge-model <id>] | validate <id|all> | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify");
+  if (cmd === "submit" && argv[1] === "verify") {
+    const dir = argv[2];
+    if (!dir) { console.error("用法: bp-bench submit verify <bundle>（含 meta.json + artifacts/ 的提交目录）"); process.exit(2); }
+    let meta;
+    try { meta = loadSubmissionMeta(dir); }
+    catch (e) { console.error(`${Y}${(e as Error).message}${X}`); process.exit(1); }
+    if (!meta) { console.error(`${Y}✗${X} ${dir}: 缺 meta.json(提交清单)`); process.exit(1); }
+    const taskDir = dirsByTaskId(meta.taskId)[0];
+    if (!taskDir) { console.error(`找不到任务：${meta.taskId}（meta.taskId 指向未知任务）`); process.exit(2); }
+    const issues = verifySubmission(loadTask(taskDir), dir);
+    const errs = issues.filter((i) => i.level === "error");
+    const warns = issues.filter((i) => i.level === "warn");
+    if (!errs.length) console.log(`${G}✓${X} ${meta.taskId} @ ${meta.agent}` + (warns.length ? `  (${warns.length} warn)` : ""));
+    else console.log(`${Y}✗ ${meta.taskId} @ ${meta.agent}${X}`);
+    for (const i of errs) console.log(`    ${Y}error${X}: ${i.msg}`);
+    for (const i of warns) console.log(`    warn: ${i.msg}`);
+    if (errs.length) process.exit(1);
+    return;
+  }
+
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <bundle|runDir> [--judge-model <id>] | validate <id|all> | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

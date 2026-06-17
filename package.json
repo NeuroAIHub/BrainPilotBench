@@ -21,7 +21,8 @@
     "./metrics": "./dist/metrics.js",
     "./leaderboard": "./dist/leaderboard.js",
     "./discover": "./dist/discover.js",
-    "./registry": "./dist/registry.js"
+    "./registry": "./dist/registry.js",
+    "./submission": "./dist/submission.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"
