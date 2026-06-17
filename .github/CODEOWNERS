@@ -1,8 +1,8 @@
 # Canonical benchmark surfaces are maintainer-owned (curated benchmark).
-# Changes to these require maintainer review (enable branch protection +
-# "require review from Code Owners" in repo settings for this to be enforced).
-# NOTE: replace @NeuroAIHub/maintainers with your real GitHub team/users.
+# Changes to these require maintainer review once branch protection +
+# "require review from Code Owners" is enabled in repo settings (deferred
+# until the benchmark goes public — see README "Governance").
 
-/tasks/            @NeuroAIHub/maintainers
-/registry.json     @NeuroAIHub/maintainers
-/categories.yaml   @NeuroAIHub/maintainers
+/tasks/            @NeuroAIHub/BrainPilot
+/registry.json     @NeuroAIHub/BrainPilot
+/categories.yaml   @NeuroAIHub/BrainPilot
