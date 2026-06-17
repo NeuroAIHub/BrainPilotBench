@@ -33,14 +33,33 @@ test("localSubprocessSandbox: 非0退出码如实返回", async () => {
   });
 });
 
-test("localSubprocessSandbox: 超时 → SIGKILL + timedOut", async () => {
+test("localSubprocessSandbox: 超时 → SIGKILL + timedOut + 快速返回(不等孙进程)", async () => {
   await withTmp(async (dir) => {
     const sh = join(dir, "hang.sh");
     writeFileSync(sh, "#!/bin/bash\nsleep 30\n");
     chmodSync(sh, 0o755);
+    const t0 = Date.now();
     const r = await localSubprocessSandbox().run({ command: "/bin/bash", args: [sh], cwd: dir, timeoutMs: 300 });
+    const elapsed = Date.now() - t0;
     assert.equal(r.timedOut, true);
     assert.notEqual(r.exitCode, 0);
+    assert.ok(elapsed < 5000, `run() should return shortly after timeout, took ${elapsed}ms`);
+  });
+});
+
+test("localSubprocessSandbox: 后台孙进程不阻塞返回(成功 grader 里 sleep&)", async () => {
+  await withTmp(async (dir) => {
+    const sh = join(dir, "bg.sh");
+    // 脚本背景化一个长 sleep 后立刻 exit 0:旧实现会在 close 上挂到孙进程死。
+    writeFileSync(sh, "#!/bin/bash\nsleep 30 &\necho done\nexit 0\n");
+    chmodSync(sh, 0o755);
+    const t0 = Date.now();
+    const r = await localSubprocessSandbox().run({ command: "/bin/bash", args: [sh], cwd: dir, timeoutMs: 10000 });
+    const elapsed = Date.now() - t0;
+    assert.equal(r.exitCode, 0);
+    assert.ok(r.stdout.includes("done"));
+    assert.equal(r.timedOut, false);
+    assert.ok(elapsed < 5000, `run() should return on child exit, not wait for backgrounded grandchild; took ${elapsed}ms`);
   });
 });
 

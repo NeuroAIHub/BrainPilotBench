@@ -41,26 +41,43 @@ export function localSubprocessSandbox(opts: { defaultTimeoutMs?: number } = {})
     run(req) {
       return new Promise<ExecResult>((resolve) => {
         const timeoutMs = req.timeoutMs ?? defaultTimeout;
+        // detached: 子进程自成进程组,超时时整组 SIGKILL(否则脚本里 sleep&/孙进程
+        // 不被杀,会一直占着 stdout 管道,让 close 永不触发——await 挂到孙进程自然死。
         const child = spawn(req.command, req.args ?? [], {
           cwd: req.cwd,
           env: scrubbedEnv(),
           stdio: ["ignore", "pipe", "pipe"],
+          detached: true,
         });
         let stdout = "";
         let stderr = "";
         let timedOut = false;
+        let settled = false;
         const CAP = 1024 * 1024;
         child.stdout.on("data", (d) => { if (stdout.length < CAP) stdout += d.toString(); });
         child.stderr.on("data", (d) => { if (stderr.length < CAP) stderr += d.toString(); });
-        const timer = setTimeout(() => { timedOut = true; child.kill("SIGKILL"); }, timeoutMs);
-        child.on("error", (e) => {
+
+        const killGroup = () => {
+          try { if (child.pid != null) process.kill(-child.pid, "SIGKILL"); } catch { /* 组已死 */ }
+          try { child.kill("SIGKILL"); } catch { /* 进程已死 */ }
+        };
+        const done = (exitCode: number | null, extraStderr = "") => {
+          if (settled) return;
+          settled = true;
           clearTimeout(timer);
-          resolve({ stdout, stderr: stderr + String(e), exitCode: null, timedOut });
-        });
-        child.on("close", (code) => {
-          clearTimeout(timer);
-          resolve({ stdout, stderr, exitCode: code, timedOut });
-        });
+          // 断开管道:孤儿孙进程即便仍持有 fd,也不再让本进程的事件循环挂住。
+          try { child.stdout?.destroy(); } catch { /* */ }
+          try { child.stderr?.destroy(); } catch { /* */ }
+          try { child.unref(); } catch { /* */ }
+          resolve({ stdout, stderr: stderr + extraStderr, exitCode, timedOut });
+        };
+        const timer = setTimeout(() => { timedOut = true; killGroup(); }, timeoutMs);
+
+        child.on("error", (e) => done(null, String(e)));
+        // 在 exit(非 close)上结算:exit 表示直接子进程已退,即使孙进程仍占管道也不再等。
+        // 给 stdout 一个微小 drain 窗口,确保已 buffer 的最后一块被收齐(小输出场景 Node
+        // 通常在 exit 前已同步派发 data,这里的延迟只是保险)。
+        child.on("exit", (code) => { setTimeout(() => done(code), 10); });
       });
     },
   };
