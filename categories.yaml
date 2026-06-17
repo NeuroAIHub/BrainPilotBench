@@ -1,0 +1,6 @@
+# 类别(track)注册表:每类别声明必备 metric 集。task.yaml 的 category 必须在此存在,
+# 且其 scorer 产出的 metric 覆盖该集(validate 校验)。leaderboard 按 category 分组出表。
+survey-writing:
+  metrics: [correctness, completeness, methodology, presentation]
+exec-data-analysis:
+  metrics: [rows_ok]

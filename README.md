@@ -122,6 +122,26 @@ Exec scripts run through a pluggable **`ExecSandbox`**. The shipped implementati
 
 > ⚠️ **Only run exec-script scoring on tasks you trust** (your own, or reviewed). A contributed task's `check.sh` is arbitrary code. Strong isolation (a Docker `ExecSandbox`: no-network, read-only mounts, non-privileged) is a documented seam for running untrusted external tasks — implement and select it before scoring third-party submissions at scale.
 
+## Validating a task (contribution gate)
+
+Before a task PR is accepted, it must pass `bp-bench validate`:
+
+```bash
+bp-bench validate <taskId|all>
+```
+
+Checks (all local — no credentials, deployment, or Docker needed):
+- **Schema lint** — canary GUID first line, required fields, non-empty `expected_artifacts`, no `..` path traversal (in artifact globs or scorer scripts), `category` exists in `categories.yaml`, declared `exec-script` has its `checks/` script, `gate.oracle_min > gate.nop_max`.
+- **Two-sided validity gate** (for `exec-script` tasks shipping a `solution/solution.sh`): the **Oracle** (run the reference solution, then score) must **produce metrics** — proving the task is solvable and the grader isn't impossibly strict; an empty **NOP** submission must **fail to produce metrics** — proving the grader isn't trivially passable (the τ-bench "do-nothing scores 1.0" bug). A task with no `solution/` skips the gate with a warning.
+
+> **Grader contract for the NOP side:** your `check.sh` must **withhold** the `BPB_SCORES` sentinel when there are no artifacts (empty submission), so an empty bundle comes back `unscored` rather than emitting a degenerate score. See `tasks/_example/exec-task/checks/check.sh`.
+
+CI runs `validate all` (+ a canary first-line check) on every PR touching `tasks/`, `categories.yaml`, or `src/`. The real-model difficulty signal and the rubric-judge Oracle (which need API credentials / a deployment) are a later layer; this is the local, credential-free门禁.
+
+### Categories
+
+Each task declares a `category` (in `task.yaml`); `categories.yaml` (repo root) maps each category to its required metric set. The leaderboard groups by category into dense tables (see the architecture doc). Add a new category to `categories.yaml` before using it.
+
 ## Relationship to the test platform
 
 This benchmark grew out of BrainPilot's "B 线" (quality evaluation). The plumbing is shared in spirit with the test platform (driver, demo-bundle replay, rubric format) but lives here as an independent, citable benchmark — the engine repo's tests gate red/green, this ranks quality.
