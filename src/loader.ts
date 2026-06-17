@@ -24,6 +24,7 @@ export function loadTask(dir: string): Task {
     timeoutMin: metaRaw.timeout_min ?? metaRaw.timeoutMin ?? 60,
     budgetTokens: metaRaw.budget_tokens ?? metaRaw.budgetTokens ?? 500000,
     requires: metaRaw.requires ?? {},
+    version: metaRaw.version != null ? String(metaRaw.version) : "unversioned",
     category: typeof metaRaw.category === "string" ? metaRaw.category : undefined,
     gate: parseGate(metaRaw.gate),
   };

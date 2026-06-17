@@ -17,7 +17,7 @@ function writeTaskYaml(dir: string, withCanary: boolean): void {
 }
 function execTask(dir: string, category: string | undefined): Task {
   return {
-    meta: { id: "t", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.csv" }], timeoutMin: 5, budgetTokens: 1, requires: {}, category },
+    meta: { id: "t", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.csv" }], timeoutMin: 5, budgetTokens: 1, requires: {}, version: "test", category },
     turns: [{ send: "hi" }], askUser: {},
     rubric: { dimensions: ["x"] },
     scorers: [{ kind: "exec-script", script: "checks/check.sh", parser: "json" }], datasets: [], dir,

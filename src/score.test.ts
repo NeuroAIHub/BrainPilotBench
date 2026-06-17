@@ -9,7 +9,7 @@ import type { Task } from "./task.js";
 
 function fakeTask(scorerKinds: string[]): Task {
   return {
-    meta: { id: "t1", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.md" }], timeoutMin: 5, budgetTokens: 1000, requires: {} },
+    meta: { id: "t1", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.md" }], timeoutMin: 5, budgetTokens: 1000, requires: {}, version: "test" },
     turns: [{ send: "hi" }],
     askUser: {},
     rubric: { dimensions: ["correctness"] },

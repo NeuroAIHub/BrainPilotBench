@@ -23,7 +23,7 @@ test("extractSentinelJson: 无哨兵/非JSON/非扁平number → null", () => {
 
 function execTask(dir: string): Task {
   return {
-    meta: { id: "t", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.csv" }], timeoutMin: 5, budgetTokens: 1, requires: {} },
+    meta: { id: "t", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.csv" }], timeoutMin: 5, budgetTokens: 1, requires: {}, version: "test" },
     turns: [{ send: "hi" }], askUser: {},
     rubric: { dimensions: ["x"] },
     scorers: [{ kind: "exec-script", script: "checks/check.sh", parser: "json" }], datasets: [], dir,

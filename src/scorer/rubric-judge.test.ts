@@ -11,7 +11,7 @@ import type { Task } from "../task.js";
 
 function surveyTask(dir: string): Task {
   return {
-    meta: { id: "t", domain: "d", summary: "写综述提纲", expectedArtifacts: [{ workspace: "*.md" }], timeoutMin: 5, budgetTokens: 1, requires: {} },
+    meta: { id: "t", domain: "d", summary: "写综述提纲", expectedArtifacts: [{ workspace: "*.md" }], timeoutMin: 5, budgetTokens: 1, requires: {}, version: "test" },
     turns: [{ send: "hi" }], askUser: {},
     rubric: { dimensions: ["correctness", "presentation"] },
     scorers: [{ kind: "rubric-judge", rubric: "rubric.yaml" }], datasets: [], dir,
