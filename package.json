@@ -11,7 +11,8 @@
     "./task": "./dist/task.js",
     "./runner": "./dist/runner.js",
     "./scoring": "./dist/scoring.js",
-    "./scorer": "./dist/scorer/index.js"
+    "./scorer": "./dist/scorer/index.js",
+    "./data": "./dist/data/index.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"
