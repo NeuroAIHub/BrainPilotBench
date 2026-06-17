@@ -6,6 +6,7 @@ import { globSync } from "node:fs";
 import { join } from "node:path";
 import type { Task } from "./task.js";
 import { getScorerModule } from "./scorer/registry.js";
+import "./scorer/index.js"; // 副作用:确保内置 scorer(rubric-judge/-human)已注册,引擎自足不靠调用方导入顺序
 import type { ScoreContext } from "./scorer/types.js";
 
 /** run 阶段产出的 bundle(score 阶段的输入)。 */

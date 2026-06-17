@@ -57,8 +57,8 @@ test("runScorers: 跑注册的测试 scorer,收集其 ScoreResult", async () => 
   }
 });
 
-test("runScorers: rubric-judge 桩返回 unscored 被如实记录", async () => {
-  await import("./scorer/index.js"); // 触发 rubric 注册
+test("runScorers: rubric-judge 桩返回 unscored 被如实记录(score.js 自注册内置 scorer)", async () => {
+  // 不显式 import scorer/index——score.js 自身的副作用 import 已注册 rubric-judge
   const dir = mkdtempSync(join(tmpdir(), "bpb-score-"));
   try {
     mkdirSync(join(dir, "artifacts"), { recursive: true });

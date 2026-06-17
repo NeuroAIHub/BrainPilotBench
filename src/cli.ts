@@ -3,12 +3,14 @@
  * cli.ts — bp-bench command-line.
  *
  *   bp-bench list [--tasks <dir>]
- *   bp-bench run <taskId|all> --base-url <url> [--tasks <dir>] [--out <dir>] [--version <tag>]
- *   bp-bench score <runDir> --judge <name>        (生成空 scoresheet 待填)
+ *   bp-bench run <taskId|all> --base-url <url> [--tasks <dir>] [--out <dir>] [--version <tag>] [--workspace-root <dir>]
+ *   bp-bench fetch <taskId|all> [--tasks <dir>]   (按 data.lock 拉取数据集)
+ *   bp-bench score <runDir>                       (离线跑 scorer 写 scores.json)
  *   bp-bench leaderboard <scoresDir>
  *
- * run 的产出：每个 task 一个 run 目录，含 events.jsonl + signals.json + blank scoresheet。
- * 评分由人/LLM 填 scoresheet，leaderboard 汇总。
+ * run 的产出：每个 task 一个 run 目录，含 events.jsonl + signals.json + blank scoresheet
+ * (+ artifacts/ 当 --workspace-root)。score 离线跑任务声明的 scorer 写 scores.json；
+ * 人工 rubric 仍可填 scoresheet，leaderboard 汇总。
  */
 import { readdirSync, existsSync, mkdirSync, writeFileSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
@@ -117,7 +119,7 @@ async function main() {
     const events = existsSync(evPath)
       ? readFileSync(evPath, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
       : [];
-    const bundle: RunBundle = { runDir, runId: signals.runId ?? `${taskId}-${signals.version}`, version: signals.version ?? "unknown", events, signals };
+    const bundle: RunBundle = { runDir, runId: signals.runId ?? `${taskId}-${signals.version ?? "unknown"}`, version: signals.version ?? "unknown", events, signals };
     const scores = await runScorers(t, bundle, new Date().toISOString());
     writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
     console.log(`${B}— score ${taskId}${X}  → ${join(runDir, "scores.json")}`);
