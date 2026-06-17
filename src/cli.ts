@@ -17,6 +17,7 @@ import { BenchRunner } from "./runner.js";
 import { blankScoresheet, leaderboard, type ScoreRecord } from "./scoring.js";
 import { resolveManifest } from "./data/index.js";
 import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
+import { runScorers, type RunBundle } from "./score.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -101,7 +102,33 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] | fetch <id|all> | leaderboard <runsDir>");
+  if (cmd === "score") {
+    const runDir = argv[1];
+    if (!runDir || !existsSync(join(runDir, "signals.json"))) {
+      console.error("用法: bp-bench score <runDir>（需含 signals.json 的 run 目录）"); process.exit(2);
+    }
+    const signals = JSON.parse(readFileSync(join(runDir, "signals.json"), "utf8"));
+    const taskId = signals.taskId;
+    if (!taskId) { console.error("signals.json 缺 taskId（用新版 run 重跑，或手动补）"); process.exit(2); }
+    const dir = listTaskDirs().find((d) => d.endsWith("/" + taskId));
+    if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
+    const t = loadTask(dir);
+    const evPath = join(runDir, "events.jsonl");
+    const events = existsSync(evPath)
+      ? readFileSync(evPath, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
+      : [];
+    const bundle: RunBundle = { runDir, runId: signals.runId ?? `${taskId}-${signals.version}`, version: signals.version ?? "unknown", events, signals };
+    const scores = await runScorers(t, bundle, new Date().toISOString());
+    writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
+    console.log(`${B}— score ${taskId}${X}  → ${join(runDir, "scores.json")}`);
+    for (const r of scores.results) {
+      const v = r.unscored ? `${Y}unscored${X}` : (typeof r.value === "number" ? String(r.value) : JSON.stringify(r.value));
+      console.log(`  ${r.kind}: ${v}${r.verdict ? ` [${r.verdict}]` : ""}`);
+    }
+    return;
+  }
+
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> | leaderboard <runsDir>");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
