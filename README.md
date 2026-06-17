@@ -72,6 +72,28 @@ bp-bench fetch <taskId|all>
 
 See `tasks/_example/data.lock.example`. Public OSS endpoint defaults to `oss-accelerate.aliyuncs.com` (Alibaba Cloud global transfer acceleration — anonymous public-read, no AK/SK; override with `OSS_PUBLIC_ENDPOINT`, e.g. a CDN custom domain). Note: staging fetched data into the agent's workspace is handled by the runtime adapter (a later phase); `fetch` resolves + verifies + caches locally.
 
+## LLM-judge scoring
+
+Rubric scoring is done by an LLM judge. The judge speaks the Anthropic Messages API and is configured **entirely via environment variables — never committed**. Bring your own provider (the official API, or any Anthropic-Messages-compatible gateway):
+
+| Env var | Default | Meaning |
+|---|---|---|
+| `BPB_JUDGE_API_KEY` / `ANTHROPIC_API_KEY` | — | API key (sent as `x-api-key`) |
+| `ANTHROPIC_AUTH_TOKEN` | — | OAuth-token alternative (sent as `Authorization: Bearer`) |
+| `BPB_JUDGE_BASE_URL` / `ANTHROPIC_BASE_URL` | `https://api.anthropic.com` | provider endpoint |
+| `BPB_JUDGE_MODEL` | `claude-opus-4-8` | judge model (override per run with `--judge-model`) |
+| `BPB_JUDGE_VOTES` | `3` | number of judges; per-dimension scores are aggregated by median |
+
+`BPB_JUDGE_*` override `ANTHROPIC_*`, so the judge reuses your existing Anthropic config out of the box, and you can point judging at a different provider when needed.
+
+```bash
+# scores a run bundle; without credentials, rubric scores come back `unscored` (never 0)
+bp-bench score runs/<taskId>-<version>/
+bp-bench score runs/<taskId>-<version>/ --judge-model claude-sonnet-4-6   # compare models
+```
+
+**Never commit keys or endpoints.** Put them in your shell env or a git-ignored `.env`. `scores.json` records only the judge model name (`judged by <model>`), never the endpoint or key. A judge refusal, parse failure, or missing credentials yields `unscored` (excluded from aggregates) — never a 0.
+
 ## Relationship to the test platform
 
 This benchmark grew out of BrainPilot's "B 线" (quality evaluation). The plumbing is shared in spirit with the test platform (driver, demo-bundle replay, rubric format) but lives here as an independent, citable benchmark — the engine repo's tests gate red/green, this ranks quality.

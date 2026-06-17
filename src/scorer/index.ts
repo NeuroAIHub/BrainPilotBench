@@ -7,4 +7,4 @@ export * from "./registry.js";
 import { registerRubricScorers } from "./rubric.js";
 registerRubricScorers();
 
-export { registerRubricScorers, rubricDimensions } from "./rubric.js";
+export * from "./rubric.js";

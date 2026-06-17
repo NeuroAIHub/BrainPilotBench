@@ -9,5 +9,6 @@ export * from "./scorer/index.js";
 export * from "./data/index.js";
 export * from "./artifacts.js";
 export * from "./score.js";
+export * from "./judge.js";
 
 export const BENCH_VERSION = "0.0.1";

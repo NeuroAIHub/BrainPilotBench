@@ -105,6 +105,8 @@ async function main() {
   }
 
   if (cmd === "score") {
+    const judgeModel = arg("--judge-model");
+    if (judgeModel) process.env.BPB_JUDGE_MODEL = judgeModel;
     const runDir = argv[1];
     if (!runDir || !existsSync(join(runDir, "signals.json"))) {
       console.error("用法: bp-bench score <runDir>（需含 signals.json 的 run 目录）"); process.exit(2);
@@ -130,7 +132,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> | leaderboard <runsDir>");
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <runDir> [--judge-model <id>] | leaderboard <runsDir>");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
