@@ -12,9 +12,10 @@
  * (+ artifacts/ 当 --workspace-root)。score 离线跑任务声明的 scorer 写 scores.json；
  * 人工 rubric 仍可填 scoresheet，leaderboard 汇总。
  */
-import { readdirSync, existsSync, mkdirSync, writeFileSync, readFileSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadTask } from "./loader.js";
+import { discoverTaskDirs } from "./discover.js";
 import { BenchRunner } from "./runner.js";
 import { blankScoresheet } from "./scoring.js";
 import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
@@ -29,10 +30,15 @@ const cmd = argv[0];
 const arg = (k: string, d?: string) => { const i = argv.indexOf(k); return i !== -1 ? argv[i + 1] : d; };
 const G = "\x1b[32m", Y = "\x1b[33m", X = "\x1b[0m", B = "\x1b[1m";
 
-const tasksDir = arg("--tasks", "tasks")!;
+const taskRoots = (arg("--tasks", "tasks")!).split(",").map((s) => s.trim()).filter(Boolean);
+const tasksDir = taskRoots[0] ?? "tasks";
+/** canonical 任务(排除 `_*` 示例):list / run all / fetch all / leaderboard / freeze 用。 */
 function listTaskDirs(): string[] {
-  if (!existsSync(tasksDir)) return [];
-  return readdirSync(tasksDir).map((d) => join(tasksDir, d)).filter((p) => statSync(p).isDirectory() && existsSync(join(p, "task.yaml")));
+  return discoverTaskDirs(taskRoots, { includeExamples: false });
+}
+/** 全部任务(含 `_*` 示例):validate all + by-id 查找用(显式点名就该找得到)。 */
+function listAllTaskDirs(): string[] {
+  return discoverTaskDirs(taskRoots, { includeExamples: true });
 }
 
 async function main() {
@@ -50,7 +56,7 @@ async function main() {
     if (!baseUrl) { console.error("需 --base-url"); process.exit(2); }
     const out = arg("--out", "runs")!;
     const version = arg("--version", "unknown")!;
-    const dirs = which === "all" ? listTaskDirs() : listTaskDirs().filter((d) => d.endsWith("/" + which));
+    const dirs = which === "all" ? listTaskDirs() : listAllTaskDirs().filter((d) => d.endsWith("/" + which));
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     const runner = new BenchRunner({ baseUrl });
     for (const d of dirs) {
@@ -106,7 +112,7 @@ async function main() {
 
   if (cmd === "validate") {
     const which = argv[1];
-    const dirs = which === "all" ? listTaskDirs() : listTaskDirs().filter((d) => d.endsWith("/" + which));
+    const dirs = which === "all" ? listAllTaskDirs() : listAllTaskDirs().filter((d) => d.endsWith("/" + which));
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     const repoDir = tasksDir === "tasks" ? "." : tasksDir + "/..";
     let hadError = false;
@@ -126,7 +132,7 @@ async function main() {
 
   if (cmd === "fetch") {
     const which = argv[1];
-    const dirs = which === "all" ? listTaskDirs() : listTaskDirs().filter((d) => d.endsWith("/" + which));
+    const dirs = which === "all" ? listTaskDirs() : listAllTaskDirs().filter((d) => d.endsWith("/" + which));
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     for (const d of dirs) {
       const t = loadTask(d);
@@ -151,7 +157,7 @@ async function main() {
     const signals = JSON.parse(readFileSync(join(runDir, "signals.json"), "utf8"));
     const taskId = signals.taskId;
     if (!taskId) { console.error("signals.json 缺 taskId（用新版 run 重跑，或手动补）"); process.exit(2); }
-    const dir = listTaskDirs().find((d) => d.endsWith("/" + taskId));
+    const dir = listAllTaskDirs().find((d) => d.endsWith("/" + taskId));
     if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
     const t = loadTask(dir);
     const evPath = join(runDir, "events.jsonl");

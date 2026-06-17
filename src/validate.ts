@@ -6,7 +6,7 @@
  */
 import { readFileSync, existsSync, mkdtempSync, mkdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import type { Task } from "./task.js";
 import { loadTask } from "./loader.js";
 import type { CategoryRegistry } from "./categories.js";
@@ -91,7 +91,7 @@ async function execScores(task: Task, runDir: string): Promise<boolean> {
 /** 在 bundle 里跑 solution.sh 生成参考产物(经注入/本地沙箱)。 */
 async function runSolution(task: Task, runDir: string): Promise<void> {
   const sandbox = validateSandbox ?? localSubprocessSandbox();
-  const sol = join(task.dir, "solution", "solution.sh");
+  const sol = resolve(task.dir, "solution", "solution.sh"); // 绝对:沙箱 cwd=bundle,相对会找不到
   await sandbox.run({ command: "/bin/bash", args: [sol], cwd: runDir, timeoutMs: 120_000 });
 }
 

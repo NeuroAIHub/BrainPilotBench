@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { extractSentinelJson, setExecSandbox, resetExecSandbox } from "./exec.js";
 import { getScorerModule } from "./registry.js";
 import "./index.js"; // 注册 exec-script
@@ -84,4 +84,22 @@ test("exec-script: 超时 → unscored", async () => {
     assert.equal(res.unscored, true);
     assert.ok(String(res.explanation).toLowerCase().includes("timeout") || String(res.explanation).toLowerCase().includes("timed"));
   } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
+});
+
+// 回归:task.dir 为相对路径 + bundle 为另一个 cwd 时,脚本路径必须绝对化才找得到(真沙箱)。
+// 旧实现 join(task.dir, rel) 是相对 repo 根的路径,沙箱以 bundle 为 cwd 跑 bash → 找不到脚本 → unscored。
+test("exec-script: 相对 task.dir + 异 cwd bundle 仍能跑(绝对化回归)", async () => {
+  resetExecSandbox(); // 用真 localSubprocessSandbox
+  const absTask = mkdtempSync(join(tmpdir(), "bpb-exectask-"));
+  const bundle = mkdtempSync(join(tmpdir(), "bpb-bundle-"));
+  mkdirSync(join(absTask, "checks"), { recursive: true });
+  writeFileSync(join(absTask, "checks", "check.sh"), "#!/bin/bash\necho '>>>>> BPB_SCORES'\necho '{\"ok\":1}'\necho '<<<<< BPB_SCORES'\n");
+  const relTask = relative(process.cwd(), absTask); // 相对路径 → 复现旧 bug
+  try {
+    const t = execTask(relTask);
+    const scorer = getScorerModule("exec-script").build(t.scorers[0], t);
+    const res = await scorer(ctx(bundle, t) as any); // runDir(cwd)=bundle ≠ task.dir
+    assert.equal(res.unscored, undefined, JSON.stringify(res));
+    assert.deepEqual(res.value, { ok: 1 });
+  } finally { rmSync(absTask, { recursive: true, force: true }); rmSync(bundle, { recursive: true, force: true }); }
 });

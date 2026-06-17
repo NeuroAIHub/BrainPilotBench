@@ -5,7 +5,7 @@
  * 失败(缺脚本/超时/无哨兵/非法 JSON)→ unscored,绝不给 0。
  */
 import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { resolve } from "node:path";
 import type { Task, ScorerSpec } from "../task.js";
 import type { ScorerModule, Scorer, ScoreContext, ScoreResult } from "./types.js";
 import { registerScorer } from "./registry.js";
@@ -43,7 +43,7 @@ const execModule: ScorerModule = {
   build: (spec: ScorerSpec, task: Task): Scorer => {
     return async (ctx: ScoreContext): Promise<ScoreResult> => {
       const rel = typeof spec.script === "string" ? spec.script : "checks/check.sh";
-      const scriptPath = join(task.dir, rel);
+      const scriptPath = resolve(task.dir, rel); // 绝对路径:沙箱以 bundle 为 cwd,相对 task.dir 会找不到
       if (!existsSync(scriptPath)) {
         return { value: {}, unscored: true, explanation: `exec script not found: ${rel}` };
       }
