@@ -1,0 +1,31 @@
+name: validate
+
+on:
+  pull_request:
+    paths:
+      - "tasks/**"
+      - "categories.yaml"
+      - "src/**"
+  push:
+    branches: [main]
+    paths:
+      - "tasks/**"
+      - "categories.yaml"
+      - "src/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - name: canary 检查
+        run: node scripts/check-task-canary.mjs
+      - name: 任务有效性 + Oracle/NOP 门
+        run: node dist/cli.js validate all
