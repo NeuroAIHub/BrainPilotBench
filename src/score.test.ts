@@ -57,8 +57,10 @@ test("runScorers: 跑注册的测试 scorer,收集其 ScoreResult", async () => 
   }
 });
 
-test("runScorers: rubric-judge 桩返回 unscored 被如实记录(score.js 自注册内置 scorer)", async () => {
+test("runScorers: rubric-judge 无凭证返回 unscored(score.js 自注册内置 scorer)", async () => {
   // 不显式 import scorer/index——score.js 自身的副作用 import 已注册 rubric-judge
+  const saved = { k: process.env.ANTHROPIC_API_KEY, b: process.env.BPB_JUDGE_API_KEY, t: process.env.ANTHROPIC_AUTH_TOKEN };
+  delete process.env.ANTHROPIC_API_KEY; delete process.env.BPB_JUDGE_API_KEY; delete process.env.ANTHROPIC_AUTH_TOKEN;
   const dir = mkdtempSync(join(tmpdir(), "bpb-score-"));
   try {
     mkdirSync(join(dir, "artifacts"), { recursive: true });
@@ -67,6 +69,9 @@ test("runScorers: rubric-judge 桩返回 unscored 被如实记录(score.js 自�
     assert.equal(out.results[0].kind, "rubric-judge");
     assert.equal(out.results[0].unscored, true);
   } finally {
+    if (saved.k) process.env.ANTHROPIC_API_KEY = saved.k;
+    if (saved.b) process.env.BPB_JUDGE_API_KEY = saved.b;
+    if (saved.t) process.env.ANTHROPIC_AUTH_TOKEN = saved.t;
     rmSync(dir, { recursive: true, force: true });
   }
 });
