@@ -14,6 +14,7 @@
  * This module defines the types + a minimal YAML-subset loader (zero deps) +
  * validation. Contributors add a task by dropping in a directory matching this.
  */
+import type { DatasetEntry } from "./data/types.js";
 
 export interface TaskTurn {
   /** Message to send to the session. */
@@ -59,6 +60,8 @@ export interface Task {
   rubric: Rubric;
   /** 该任务声明的 scorer 列表（缺省 DEFAULT_SCORERS）。 */
   scorers: ScorerSpec[];
+  /** 该任务声明的数据集（来自 data.lock；无则空数组）。 */
+  datasets: DatasetEntry[];
   /** Absolute path to the task directory (for setup.sh / data.lock resolution). */
   dir: string;
 }

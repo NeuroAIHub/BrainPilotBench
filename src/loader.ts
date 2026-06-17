@@ -5,6 +5,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join, basename } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { type Task, type TaskMeta, type TaskTurn, type Rubric, type ScorerSpec, DEFAULT_RUBRIC, DEFAULT_SCORERS, validateTask } from "./task.js";
+import { parseDataManifest } from "./data/manifest.js";
 
 function readYaml(path: string): any {
   return parseYaml(readFileSync(path, "utf8"));
@@ -39,7 +40,12 @@ export function loadTask(dir: string): Task {
 
   const scorers = parseScorers(metaRaw.scoring);
 
-  const task: Task = { meta, turns, askUser, rubric, scorers, dir };
+  const dataLockPath = join(dir, "data.lock");
+  const datasets = existsSync(dataLockPath)
+    ? parseDataManifest(readYaml(dataLockPath)).datasets
+    : [];
+
+  const task: Task = { meta, turns, askUser, rubric, scorers, datasets, dir };
   validateTask(task);
   return task;
 }
