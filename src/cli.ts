@@ -16,6 +16,7 @@ import { loadTask } from "./loader.js";
 import { BenchRunner } from "./runner.js";
 import { blankScoresheet, leaderboard, type ScoreRecord } from "./scoring.js";
 import { resolveManifest } from "./data/index.js";
+import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -54,10 +55,16 @@ async function main() {
       const runDir = join(out, runId);
       mkdirSync(runDir, { recursive: true });
       writeFileSync(join(runDir, "events.jsonl"), res.events.map((e) => JSON.stringify(e)).join("\n"));
-      writeFileSync(join(runDir, "signals.json"), JSON.stringify({ ...res.signals, reason: res.reason, sessionId: res.sessionId, version }, null, 2));
+      writeFileSync(join(runDir, "signals.json"), JSON.stringify({ taskId: t.meta.id, ...res.signals, reason: res.reason, sessionId: res.sessionId, version }, null, 2));
       // 空 scoresheet（exportedAt 用 run 内最后事件 _ts，避免依赖时钟）
       const lastTs = res.events.length ? res.events[res.events.length - 1]._ts : new Date().toISOString();
       writeFileSync(join(runDir, "scoresheet.json"), JSON.stringify(blankScoresheet(t, runId, version, "", String(lastTs)), null, 2));
+      const wsRoot = arg("--workspace-root");
+      if (wsRoot) {
+        const globs = t.meta.expectedArtifacts.map((a) => a.workspace);
+        const got = await captureArtifacts(filesystemArtifactSource(wsRoot), res.sessionId, globs, join(runDir, "artifacts"));
+        console.log(`  artifacts: ${got.length} 个回收 → ${join(runDir, "artifacts")}`);
+      }
       const tag = res.signals.completed ? `${G}completed${X}` : `${Y}${res.reason}${X}`;
       console.log(`  ${tag}  events=${res.signals.eventCount} content=${res.signals.textContentEvents} tools=${res.signals.toolCalls} errors=${res.signals.errorEvents}  → ${runDir}`);
     }
