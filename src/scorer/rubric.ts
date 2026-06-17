@@ -51,16 +51,23 @@ async function judgeRubric(
   const { system, prompt } = buildJudgePrompt(ctx.task.meta.summary, dims, artifacts);
 
   const perJudge: Record<string, number>[] = [];
+  let refused = 0;
+  let errored = 0;
   for (let i = 0; i < votes; i++) {
     try {
       const text = await client.complete({ system, prompt, model });
       const scores = extractScores(text, dims);
       if (scores) perJudge.push(scores);
     } catch (e) {
-      if (!(e instanceof JudgeRefusal)) { /* 网络/HTTP 错误:这一票作废,继续 */ }
+      if (e instanceof JudgeRefusal) refused++; else errored++; // 这一票作废,继续
     }
   }
-  if (!perJudge.length) return { error: `judge produced no parseable scores (${votes} attempts)` };
+  if (!perJudge.length) {
+    const why = refused && !errored ? "all judges refused"
+      : errored && !refused ? "all judge calls errored"
+      : "judge produced no parseable scores";
+    return { error: `${why} (${votes} attempts: ${refused} refused, ${errored} errored, ${votes - refused - errored} unparseable)` };
+  }
   return { value: aggregateScores(perJudge, dims), n: perJudge.length, votes };
 }
 
