@@ -10,3 +10,5 @@ package-lock.json
 .cache/
 # judge/provider 凭证只走环境变量，绝不进仓
 .env
+# 内部开发文档(设计/计划)——本地保留,不进公开仓
+docs/

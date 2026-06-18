@@ -68,4 +68,4 @@ node dist/cli.js validate all      # schema + canary + created_at + Oracle/NOP g
 npm test
 ```
 
-See `README.md` for the full command reference and `docs/design/` for the architecture.
+See `README.md` for the full command reference and architecture overview.
