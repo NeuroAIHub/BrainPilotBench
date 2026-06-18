@@ -1,0 +1,7 @@
+{
+  "taskId": "example-exec-task",
+  "agent": "example-agent@0.1",
+  "taskVersion": "0.1",
+  "producedAt": "2026-06-18",
+  "notes": "Template submission bundle. Replace artifacts/ with YOUR agent's outputs for the task. See README 'Evaluating your own agent'."
+}

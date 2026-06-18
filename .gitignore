@@ -1,6 +1,8 @@
 node_modules/
 dist/
 runs/
+# score 写进提交 bundle 的产物(示例模板不收评分输出)
+examples/submission/scores.json
 *.tsbuildinfo
 .DS_Store
 package-lock.json

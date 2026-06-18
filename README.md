@@ -36,6 +36,39 @@ bp-bench leaderboard runs/
 
 Auto-signals (completed / events / tool calls / errors / duration) are recorded for context and ranking, **but they do not决定 quality** — that's the rubric scores.
 
+## Evaluating your own agent
+
+The benchmark is split into **run** (collect your agent's output) and **eval** (score + rank).
+The eval half is **system-agnostic**: any agent — any language, any harness — can be evaluated
+today by producing a **submission bundle**, no live driving required.
+
+```
+<bundle>/
+  meta.json            # {taskId, agent, taskVersion?, producedAt?, notes?}
+  artifacts/           # your agent's outputs — must satisfy the task's expected_artifacts globs
+  events.jsonl         # optional trace (reserved for future trajectory scoring)
+```
+
+Flow (see [`examples/submission/`](examples/submission) for a runnable template):
+
+```bash
+# 1. Pick + read a task: tasks/<id>/task.yaml (goal + expected_artifacts),
+#    prompt/turns.yaml (the user turns to give your agent), rubric.yaml / checks/ (how it's judged)
+bp-bench list
+# 2. Run YOUR agent on the task's turns, in a workspace, producing the expected artifacts.
+# 3. Assemble a bundle: write meta.json (taskId + agent) and drop the outputs in artifacts/.
+bp-bench submit verify <bundle>    # check the bundle satisfies the task contract
+# 4. Score (runs the task's DECLARED scorers — you don't pick them; anti-gaming):
+bp-bench score <bundle>            #   · exec tasks: deterministic, no creds
+                                   #   · rubric tasks: needs a judge model (ANTHROPIC_API_KEY / BPB_JUDGE_*); else unscored
+bp-bench leaderboard <bundles-parent>   # per-category table; row = task@agent
+```
+
+> **Not yet automated:** `bp-bench run --base-url` only drives systems that speak BrainPilot's
+> runtime HTTP/SSE contract. A one-command **`run` for any agent** needs the **SUT adapter**
+> (next deliverable); until then, bring your own bundle as above. Scoring is run by maintainers
+> for official leaderboard numbers (self-reported scores are gameable).
+
 ## Contributing a task
 
 BrainPilotBench is **curated** — you propose a task via a *Task Proposal* issue (prose + data
