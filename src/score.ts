@@ -2,7 +2,7 @@
  * score.ts — 离线评分引擎:从 run bundle 构造 ScoreContext、真跑任务声明的 scorer、
  * 收集结果成 RunScores。(SWE-bench run/eval 分离的 eval 侧。)
  */
-import { globSync } from "node:fs";
+import { globSync, statSync } from "node:fs";
 import { join } from "node:path";
 import type { Task } from "./task.js";
 import { getScorerModule } from "./scorer/registry.js";
@@ -36,11 +36,13 @@ export interface RunScores {
   results: ScorerRunResult[];
 }
 
-/** ScoreContext.workspaceFiles 实现:glob 落在 <runDir>/artifacts/,返回绝对路径。 */
+/** ScoreContext.workspaceFiles 实现:glob 落在 <runDir>/artifacts/,只返回**文件**绝对路径(globSync 也匹配目录,需过滤)。 */
 export function bundleWorkspaceFiles(runDir: string): (glob: string) => string[] {
   const artifactsDir = join(runDir, "artifacts");
   return (pattern: string) =>
-    globSync(pattern, { cwd: artifactsDir }).map((rel) => join(artifactsDir, rel));
+    globSync(pattern, { cwd: artifactsDir })
+      .map((rel) => join(artifactsDir, rel))
+      .filter((p) => { try { return statSync(p).isFile(); } catch { return false; } });
 }
 
 /** 跑任务声明的全部 scorer,收集结果。 */

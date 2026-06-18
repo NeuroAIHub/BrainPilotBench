@@ -107,9 +107,9 @@ async function main() {
     const runsDir = argv[1] ?? "runs";
     const repoDir = tasksDir === "tasks" ? "." : tasksDir + "/..";
     const reg = loadCategories(repoDir);
-    // taskId → category(task SSOT):用 listTaskDirs 建一次映射。
+    // taskId → category(task SSOT):用全集(含示例),否则示例任务的 run 会因 categoryOf=undefined 被丢、榜空。
     const catById = new Map<string, string | undefined>();
-    for (const d of listTaskDirs()) {
+    for (const d of listAllTaskDirs()) {
       try { const t = loadTask(d); catById.set(t.meta.id, t.meta.category); } catch { /* 跳过坏 task */ }
     }
     const runs = loadRunScores(runsDir);
@@ -181,6 +181,7 @@ async function main() {
     if (!manifest) { console.error("缺 meta.json(提交 bundle)或 signals.json(内部 run)"); process.exit(2); }
     const taskId = manifest.taskId;
     if (!taskId) { console.error("清单缺 taskId（meta.json/signals.json）"); process.exit(2); }
+    if (meta && (typeof meta.agent !== "string" || !meta.agent)) { console.error("meta.json 缺 agent(被评系统标识;先跑 submit verify)"); process.exit(2); }
     const dir = dirsByTaskId(taskId)[0];
     if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
     const t = loadTask(dir);

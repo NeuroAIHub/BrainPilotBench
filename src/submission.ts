@@ -6,7 +6,7 @@
  *   <bundle>/events.jsonl         可选轨迹(为将来 trajectory 评分预留)
  * verifySubmission 是契约门:格式/产物齐全性校验(不评分;评分由 score 跑任务声明的 scorer)。
  */
-import { readFileSync, existsSync, globSync } from "node:fs";
+import { readFileSync, existsSync, globSync, statSync } from "node:fs";
 import { join } from "node:path";
 import type { Task } from "./task.js";
 
@@ -48,17 +48,18 @@ export function verifySubmission(task: Task, dir: string): SubmissionIssue[] {
   if (typeof meta.taskId !== "string" || !meta.taskId) issues.push({ level: "error", msg: "meta.json 缺 taskId" });
   else if (meta.taskId !== task.meta.id) issues.push({ level: "error", msg: `meta.taskId(${meta.taskId})≠任务 id(${task.meta.id})` });
   if (typeof meta.agent !== "string" || !meta.agent) issues.push({ level: "error", msg: "meta.json 缺 agent(被评系统标识)" });
-  for (const [k, v] of Object.entries(meta)) {
-    if (typeof v === "string" && v.includes("..")) issues.push({ level: "error", msg: `meta.${k} 含路径穿越(..)` });
-  }
 
-  // 产物齐全性:每个 expected_artifacts glob 在 artifacts/ 下至少匹配 1 个文件。
+  // 产物齐全性:每个 expected_artifacts glob 在 artifacts/ 下至少匹配 1 个**文件**
+  // (globSync 也会匹配目录;只数文件,否则 `notreally.csv/` 这种目录会假性通过契约门)。
   const artifactsDir = join(dir, "artifacts");
   for (const a of task.meta.expectedArtifacts) {
     if (a.workspace.includes("..")) { issues.push({ level: "error", msg: `expected_artifacts 含路径穿越: ${a.workspace}` }); continue; }
-    let matched: string[] = [];
-    try { matched = existsSync(artifactsDir) ? globSync(a.workspace, { cwd: artifactsDir }) : []; } catch { matched = []; }
-    if (!matched.length) issues.push({ level: "error", msg: `缺产物(无文件匹配 expected_artifacts): ${a.workspace}` });
+    let files: string[] = [];
+    try {
+      files = (existsSync(artifactsDir) ? globSync(a.workspace, { cwd: artifactsDir }) : [])
+        .filter((rel) => { try { return statSync(join(artifactsDir, rel)).isFile(); } catch { return false; } });
+    } catch { files = []; }
+    if (!files.length) issues.push({ level: "error", msg: `缺产物(无文件匹配 expected_artifacts): ${a.workspace}` });
   }
 
   // 可选 events.jsonl:逐行 JSON.parse,坏行 → warn(不阻断;轨迹是可选物)。

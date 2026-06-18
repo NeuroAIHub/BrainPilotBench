@@ -81,3 +81,21 @@ test("verifySubmission: 坏 events.jsonl 行 → warn 非 error", () => {
     assert.ok(issues.some((i) => i.level === "warn" && /events/i.test(i.msg)));
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
+
+test("verifySubmission: 匹配 glob 的是目录而非文件 → 不算满足(防假性通过)", () => {
+  const dir = makeBundle({ meta: { taskId: "t", agent: "a@1" } });
+  mkdirSync(join(dir, "artifacts", "notreally.csv"), { recursive: true }); // 目录名匹配 *.csv,但无真 CSV 文件
+  writeFileSync(join(dir, "artifacts", "notreally.csv", "inside.txt"), "x");
+  try {
+    const issues = verifySubmission(fakeTask("t", ["*.csv"]), dir);
+    assert.ok(issues.some((i) => i.level === "error" && /\*\.csv/.test(i.msg)), JSON.stringify(issues));
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("verifySubmission: notes 含省略号(..)不应误判为路径穿越", () => {
+  const dir = makeBundle({ meta: { taskId: "t", agent: "a@1", notes: "see fig 2... results are great" }, artifacts: ["results.csv"] });
+  try {
+    const issues = verifySubmission(fakeTask("t", ["*.csv"]), dir);
+    assert.equal(issues.filter((i) => i.level === "error").length, 0, JSON.stringify(issues));
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
