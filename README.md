@@ -1,26 +1,36 @@
 # BrainPilot Benchmark
 
-A reproducible, contributable evaluation harness for multi-agent **scientific-research** tasks, run against a [BrainPilot](https://github.com/NeuroAIHub/BrainPilot) deployment.
+**BrainPilotBench** is a reproducible, curated benchmark for evaluating **multi-agent scientific-research systems** — agents that *do science*: survey and synthesize literature, analyze data, reason over a domain. It is a benchmark, not a test suite: it **scores and ranks** rather than gating pass/fail.
 
-Unlike a test suite (which答 pass/fail), a benchmark **scores and ranks**: it runs task instances, captures a replayable record, and collects human/LLM rubric scores so engine versions can be compared over time.
+It unifies two kinds of grading in one run/eval pipeline — **LLM-as-judge rubrics** (1–5 across dimensions) and **deterministic eval scripts** — and reports a **per-category dense leaderboard** with three explicit states: *scored*, *unscored* (excluded from the aggregate — never counted as 0 or fail), and *not-applicable*. "We couldn't score it" is never conflated with "the system did badly."
 
-> Status: scaffold (v0.0.1). Framework + first neuroscience tasks; not yet a public leaderboard.
+Integrity rests on two things: **curated intake + maintainer-run scoring** (self-reported numbers are gameable) and **contamination defenses** (canary GUIDs, `created_at` provenance, frozen named releases). The evaluation *method* is fully open — this repo is the harness; only task *content* and *official* leaderboard runs are controlled.
+
+**Evaluating any agent** needs no live integration: produce a submission bundle (your agent's outputs + a `meta.json`) and run `bp-bench submit verify → score → leaderboard`. See [Evaluating your own agent](#evaluating-your-own-agent).
+
+> Status: v0 scaffold — the framework is end-to-end (scoring, contribution gate, reproducibility, governance, submission contract); the task corpus is small and growing. Not yet a public leaderboard.
 
 ## What's here
 
 ```
-@brainpilot/bench   — the framework (npm-publishable)
-  task / loader     — task instance format + loading/validation
-  runner            — drives a task against a deployment (thin layer over @brainpilot/protocol)
-  scoring           — rubric scoresheet + leaderboard aggregation
-  cli (bp-bench)    — list / run / leaderboard
+@brainpilot/bench   — the framework (npm-publishable; zero runtime deps beyond protocol + yaml)
+  task / loader            — task instance format + loading/validation
+  scorer/                  — pluggable scorers in one score space: rubric-judge, rubric-human, exec-script
+  score / judge / sandbox  — offline eval engine: run/eval split, LLM judge, deterministic exec grader
+  data/                    — data.lock content-addressed datasets (bodies in OSS, never in git)
+  validate                 — contribution gate (schema + canary + created_at + two-sided Oracle/NOP)
+  leaderboard / metrics    — per-category three-state dense tables
+  registry                 — frozen named releases (freeze / verify)
+  submission               — system-agnostic submission-bundle contract
+  runner                   — drives a task against a BrainPilot deployment (a SUT adapter for arbitrary agents is next)
+  cli (bp-bench)           — list / run / fetch / score / validate / leaderboard / freeze / registry verify / submit verify
 
-tasks/              — the benchmark task set (the "contributed benchmark")
+tasks/              — the benchmark task set (the curated content)
   neuro-survey-attention/      — write a survey outline on attention mechanisms
   neuro-trends-connectomics/   — analyze a decade of connectomics trends
 ```
 
-The **framework** is generic (pin the contract via `@brainpilot/protocol`). The **task set** is the scientific value — that's what contributors add.
+The **framework** is generic and system-agnostic at the eval boundary. The **task set** is the scientific value — that's the curated content maintainers grow over time.
 
 ## Run
 
