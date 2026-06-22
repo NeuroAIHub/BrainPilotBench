@@ -26,6 +26,7 @@ export function loadTask(dir: string): Task {
     requires: metaRaw.requires ?? {},
     version: metaRaw.version != null ? String(metaRaw.version) : "unversioned",
     createdAt: metaRaw.created_at != null ? String(metaRaw.created_at) : undefined,
+    visibility: metaRaw.visibility === "heldout" ? "heldout" : "public", // 规范化;非法值的报错交 validate(读 raw)
     category: typeof metaRaw.category === "string" ? metaRaw.category : undefined,
     gate: parseGate(metaRaw.gate),
   };
