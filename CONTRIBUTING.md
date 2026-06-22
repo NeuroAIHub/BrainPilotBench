@@ -48,6 +48,11 @@ will go through the SUT-adapter seam (next phase); until then the benchmark scor
 Keeping scoring in-house also lets us hold part of the task set back — the strongest
 contamination defense there is.
 
+**Held-out tasks** (`visibility: heldout`) are not proposed through public issues — maintainers
+author and keep them in a private root, mounted at eval time. See the README's *Held-out
+evaluation (OOD)* section. The scoring *method* stays public; only the held-out *instances* are
+withheld.
+
 ## Three "versions" — don't conflate them
 
 | Version | What it pins | Where |

@@ -207,6 +207,28 @@ bp-bench registry verify                                     # CI gate: every pi
 
 `created_at` in each `task.yaml` is a validated provenance field; there is intentionally **no** date-cutoff leaderboard filter — at this scale, held-back tasks + named snapshots are the contamination control.
 
+### Held-out evaluation (OOD)
+
+Final scores should come from tasks the system **hasn't seen** — held-back, to measure generalization rather than overfitting to a public set. This never requires hiding the evaluation *method*: the scoring **mechanism is fully open** (`src/scorer/`, rubric dimensions, how a `check.sh` is written); only the held-out **instances** (a held-out task's prompt, its `solution/`, its concrete rubric values) are withheld.
+
+A task declares `visibility: public | heldout` in `task.yaml` (default `public`). Held-out tasks live **outside the public repo** and are mounted at eval time via multi-root discovery:
+
+```bash
+bp-bench list                                    # public tasks only (default)
+bp-bench list        --tasks tasks,/path/heldout --visibility all       # both
+bp-bench leaderboard runs --tasks tasks,/path/heldout --visibility heldout   # held-out scores only
+bp-bench freeze BrainPilotBench-heldout-v1 --tasks tasks,/path/heldout --visibility heldout
+```
+
+`list` / `leaderboard` / `freeze` default to `public`; `--visibility heldout|all` switches. A **misfiling guard** keeps held-out content out of the public repo: `validate` errors if a `visibility: heldout` task is found in a public task root (override with `--allow-heldout` when validating a private root).
+
+Two ways to hold a task out, by task type:
+
+- **No input data** (survey / synthesis / reasoning tasks — the prompt *is* the task): mark the whole task `visibility: heldout` and keep it in a private root. *(supported now)*
+- **Data-driven** (analyze a private dataset): keep the prompt and grader **public**, but ship the dataset body via `data.lock` from **access-controlled** storage — the public can see how it's scored but can't fetch the data. *(planned next — authenticated `fetch`)*
+
+> Out of scope: a Docker `ExecSandbox` for running *untrusted third-party* task scripts or agent code. The current model is that an agent runs in its own environment and returns a [submission bundle](#evaluate-your-own-agent); strong execution isolation is a separate, later concern (the `ExecSandbox` seam exists for it).
+
 ### Governance
 
 Maintainer-led and curated — see [`CONTRIBUTING.md`](CONTRIBUTING.md). Proposals arrive as issues (no code); maintainers author and merge canonical tasks. The canonical surfaces (`tasks/`, `registry.json`, `categories.yaml`) are owned via [`.github/CODEOWNERS`](.github/CODEOWNERS); enable **branch protection + "require review from Code Owners"** on the default branch to enforce it.
