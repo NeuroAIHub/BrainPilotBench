@@ -7,6 +7,7 @@
 import { readFileSync, existsSync, mkdtempSync, mkdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { parse as parseYaml } from "yaml";
 import type { Task } from "./task.js";
 import { loadTask } from "./loader.js";
 import type { CategoryRegistry } from "./categories.js";
@@ -32,16 +33,27 @@ export function setValidateSandbox(s: ExecSandbox | null): void {
   setExecSandbox(s);
 }
 
-/** 静态 schema 校验(纯本地,不跑脚本)。 */
-export function validateTaskSchema(task: Task, reg: CategoryRegistry): ValidationIssue[] {
+/** 静态 schema 校验(纯本地,不跑脚本)。heldoutAllowed=false(缺省)时,heldout 任务报 error(防误提交进公开仓)。 */
+export function validateTaskSchema(task: Task, reg: CategoryRegistry, opts: { heldoutAllowed?: boolean } = {}): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
   const m = task.meta;
   const yamlPath = join(task.dir, "task.yaml");
   if (existsSync(yamlPath)) {
-    const firstLine = readFileSync(yamlPath, "utf8").split("\n", 1)[0] ?? "";
+    const text = readFileSync(yamlPath, "utf8");
+    const firstLine = text.split("\n", 1)[0] ?? "";
     if (!firstLine.includes(CANARY)) issues.push({ level: "error", msg: "task.yaml 首行缺 canary GUID 注释" });
+    // visibility 枚举校验读 raw(loader 已把非法值规范化成 public,这里抓原始非法值)。
+    let rawVis: unknown;
+    try { rawVis = (parseYaml(text) ?? {}).visibility; } catch { /* yaml 解析失败别处会报 */ }
+    if (rawVis != null && rawVis !== "public" && rawVis !== "heldout") {
+      issues.push({ level: "error", msg: `visibility 非法,需 public|heldout: ${String(rawVis)}` });
+    }
   } else {
     issues.push({ level: "error", msg: "task.yaml 不存在" });
+  }
+  // 误提交守卫:held-out 任务不应出现在公开任务根(用 --tasks 挂私有根 + --allow-heldout)。
+  if (m.visibility === "heldout" && !opts.heldoutAllowed) {
+    issues.push({ level: "error", msg: "held-out 任务出现在公开任务根(held-out 题面应放私有根,用 --tasks tasks,<私有根> --allow-heldout)" });
   }
   if (!m.id) issues.push({ level: "error", msg: "缺 id" });
   if (!m.summary) issues.push({ level: "error", msg: "缺 summary" });
@@ -122,11 +134,11 @@ export async function validateOracleNop(task: Task, _repoDir: string): Promise<V
   return issues;
 }
 
-/** 汇总:schema + oracle/nop。 */
-export async function validateTask(dir: string, repoDir: string): Promise<ValidationIssue[]> {
+/** 汇总:schema + oracle/nop。heldoutAllowed 透传给 schema 守卫(CLI 的 --allow-heldout)。 */
+export async function validateTask(dir: string, repoDir: string, opts: { heldoutAllowed?: boolean } = {}): Promise<ValidationIssue[]> {
   const task = loadTask(dir);
   const reg = loadCategories(repoDir);
-  const issues = validateTaskSchema(task, reg);
+  const issues = validateTaskSchema(task, reg, opts);
   issues.push(...(await validateOracleNop(task, repoDir)));
   return issues;
 }
