@@ -24,7 +24,7 @@ import { resolveManifest } from "./data/index.js";
 import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { runScorers, type RunBundle } from "./score.js";
 import { validateTask } from "./validate.js";
-import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry } from "./registry.js";
+import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
 import { execFileSync } from "node:child_process";
 
@@ -225,8 +225,12 @@ async function main() {
     // canonical(排除 _* 示例)按 visibility 过滤:默认冻 public;--visibility heldout 冻 held-out 评测集。
     const tasks = filterByVisibility(listTaskDirs()).map((d) => loadTask(d));
     if (!tasks.length) { console.error(`无任务可冻结(visibility=${visibility})`); process.exit(2); }
-    const release = buildRelease(name, gitHead(), arg("--ref"), new Date().toISOString().slice(0, 10), tasks);
     const path = registryPath();
+    // 误提交守卫:held-out id/provenance 绝不进公开默认 registry.json(对称于 validate 的守卫)。
+    // 判据=用户是否显式给了 --registry(给了=有意选私有目标,放行)。
+    const freezeErr = checkFreezeVisibility(tasks, argv.includes("--registry"));
+    if (freezeErr) { console.error(`${Y}${freezeErr}${X}`); process.exit(1); }
+    const release = buildRelease(name, gitHead(), arg("--ref"), new Date().toISOString().slice(0, 10), tasks);
     let reg;
     try { reg = addRelease(loadRegistry(path), release); }
     catch (e) { console.error(`${Y}${(e as Error).message}${X}`); process.exit(1); }

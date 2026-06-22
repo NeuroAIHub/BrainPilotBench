@@ -217,10 +217,12 @@ A task declares `visibility: public | heldout` in `task.yaml` (default `public`)
 bp-bench list                                    # public tasks only (default)
 bp-bench list        --tasks tasks,/path/heldout --visibility all       # both
 bp-bench leaderboard runs --tasks tasks,/path/heldout --visibility heldout   # held-out scores only
-bp-bench freeze BrainPilotBench-heldout-v1 --tasks tasks,/path/heldout --visibility heldout
+# Freeze a held-out release into a PRIVATE registry (never the public registry.json):
+bp-bench freeze BrainPilotBench-heldout-v1 --tasks tasks,/path/heldout --visibility heldout \
+  --registry /path/heldout/registry.json
 ```
 
-`list` / `leaderboard` / `freeze` default to `public`; `--visibility heldout|all` switches. A **misfiling guard** keeps held-out content out of the public repo: `validate` errors if a `visibility: heldout` task is found in a public task root (override with `--allow-heldout` when validating a private root).
+`list` / `leaderboard` / `freeze` default to `public`; `--visibility heldout|all` switches. Two **misfiling guards** keep held-out content out of the public repo: `validate` errors if a `visibility: heldout` task is found in a public task root (override with `--allow-heldout` for a private root), and `freeze` refuses to write held-out task ids into the default public `registry.json` (requires an explicit private `--registry` path) — held-out *ids and provenance* never land in a committed public file.
 
 Two ways to hold a task out, by task type:
 

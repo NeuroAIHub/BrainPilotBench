@@ -51,6 +51,26 @@ export function buildRelease(name: string, commit: string, ref: string | undefin
   };
 }
 
+/** 公开默认 registry.json 的文件名(无 --registry 时写到这里=公开仓的提交物)。 */
+export const PUBLIC_REGISTRY = "registry.json";
+
+/**
+ * 冻结误提交守卫:held-out 任务的 id/provenance 绝不能进**公开默认** registry.json
+ * (内容虽扣着,但 id 列表本身就是对手想知道的"哪些题被留作终审")。
+ * 判据 = 用户是否**显式**指定了 --registry:没显式指定(用默认公开路径)且含 held-out → 拦。
+ * 显式给了私有路径 = 用户有意为之,放行(哪怕文件也叫 registry.json,它在私有根里)。
+ * 返回错误消息;通过则返回 null。
+ */
+export function checkFreezeVisibility(tasks: Task[], registryExplicit: boolean): string | null {
+  const heldout = tasks.filter((t) => t.meta.visibility === "heldout");
+  if (!heldout.length) return null;
+  if (!registryExplicit) {
+    return `held-out 任务(${heldout.map((t) => t.meta.id).join(", ")})不能冻进公开默认的 ${PUBLIC_REGISTRY};` +
+      `用 --registry <私有路径> 指定一个不进公开仓的 registry 文件。`;
+  }
+  return null;
+}
+
 /** 追加一个 release;重名 → throw(发布不可变,只能加新版本不能改旧的)。 */
 export function addRelease(reg: Registry, release: RegistryRelease): Registry {
   if (reg.releases.some((r) => r.name === release.name)) {

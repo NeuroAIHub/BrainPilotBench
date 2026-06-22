@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry } from "./registry.js";
+import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import type { Registry } from "./registry.js";
 import type { Task } from "./task.js";
 
@@ -13,6 +13,27 @@ function fakeTask(id: string, version: string, category: string, createdAt?: str
     turns: [{ send: "hi" }], askUser: {}, rubric: { dimensions: ["x"] }, scorers: [{ kind: "rubric-judge" }], datasets: [], dir: `tasks/${id}`,
   };
 }
+
+function heldoutTask(id: string): Task {
+  const t = fakeTask(id, "0.1", "survey-writing", "2026-06-15");
+  t.meta.visibility = "heldout";
+  return t;
+}
+
+test("checkFreezeVisibility: 全 public → null(无论是否显式 --registry)", () => {
+  const pub = [fakeTask("p1", "0.1", "survey-writing", "2026-06-15")];
+  assert.equal(checkFreezeVisibility(pub, false), null);
+  assert.equal(checkFreezeVisibility(pub, true), null);
+});
+
+test("checkFreezeVisibility: held-out + 默认路径(未显式 --registry)→ 报错(含 id)", () => {
+  const err = checkFreezeVisibility([heldoutTask("secret-1")], false);
+  assert.ok(err && /secret-1/.test(err) && /registry\.json/.test(err), String(err));
+});
+
+test("checkFreezeVisibility: held-out + 显式 --registry(私有目标)→ null(放行)", () => {
+  assert.equal(checkFreezeVisibility([heldoutTask("secret-1")], true), null);
+});
 
 test("buildRelease: Task → FrozenTask 投影", () => {
   const rel = buildRelease("BrainPilotBench-v1", "abc123", "tested/x", "2026-06-18", [
