@@ -47,6 +47,19 @@ function listAllTaskDirs(): string[] {
 function dirsByTaskId(which: string): string[] {
   return listAllTaskDirs().filter((d) => { try { return loadTask(d).meta.id === which; } catch { return false; } });
 }
+/** --visibility public|heldout|all(缺省 public):list/leaderboard/freeze 默认只露 public。 */
+const visibility = arg("--visibility", "public")!;
+/** 按 visibility 过滤任务目录(all 不过滤;默认 public 隐藏 held-out)。 */
+function filterByVisibility(dirs: string[]): string[] {
+  if (visibility === "all") return dirs;
+  return dirs.filter((d) => { try { return (loadTask(d).meta.visibility ?? "public") === visibility; } catch { return false; } });
+}
+/** 给定 taskId 集合中,visibility 命中的那部分(leaderboard 行按任务 visibility 过滤)。 */
+function visibleTaskIds(): Set<string> {
+  const ids = new Set<string>();
+  for (const d of filterByVisibility(listAllTaskDirs())) { try { ids.add(loadTask(d).meta.id); } catch { /* skip */ } }
+  return ids;
+}
 
 /** 当前 HEAD 的 commit sha;非 git 仓/git 缺失 → 清晰报错退出。 */
 function gitHead(): string {
@@ -63,9 +76,10 @@ function registryPath(): string { return arg("--registry", "registry.json")!; }
 
 async function main() {
   if (cmd === "list") {
-    for (const d of listTaskDirs()) {
+    for (const d of filterByVisibility(listTaskDirs())) {
       const t = loadTask(d);
-      console.log(`${B}${t.meta.id}${X}  [${t.meta.domain}]  ${t.meta.summary}`);
+      const tag = t.meta.visibility === "heldout" ? `${Y}[heldout]${X} ` : "";
+      console.log(`${tag}${B}${t.meta.id}${X}  [${t.meta.domain}]  ${t.meta.summary}`);
     }
     return;
   }
@@ -112,7 +126,9 @@ async function main() {
     for (const d of listAllTaskDirs()) {
       try { const t = loadTask(d); catById.set(t.meta.id, t.meta.category); } catch { /* 跳过坏 task */ }
     }
-    const runs = loadRunScores(runsDir);
+    // 默认只渲染 public 任务的行(--visibility heldout|all 切换);按任务 visibility 过滤 runs。
+    const visIds = visibleTaskIds();
+    const runs = loadRunScores(runsDir).filter((r) => visIds.has(r.taskId));
     const tables = buildLeaderboard(runs, (id) => catById.get(id), reg);
     if (!tables.length) { console.log("（无 scores.json 或无 category 记录）"); return; }
     for (const tbl of tables) {
@@ -135,9 +151,10 @@ async function main() {
     const dirs = which === "all" ? listAllTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     const repoDir = tasksDir === "tasks" ? "." : tasksDir + "/..";
+    const heldoutAllowed = argv.includes("--allow-heldout");
     let hadError = false;
     for (const d of dirs) {
-      const issues = await validateTask(d, repoDir);
+      const issues = await validateTask(d, repoDir, { heldoutAllowed });
       const errs = issues.filter((i) => i.level === "error");
       const warns = issues.filter((i) => i.level === "warn");
       const id = d.split("/").pop();
@@ -205,8 +222,9 @@ async function main() {
   if (cmd === "freeze") {
     const name = argv[1];
     if (!name) { console.error("用法: bp-bench freeze <name> [--ref <git-ref>]（冻结当前 canonical 任务集为不可变发布）"); process.exit(2); }
-    const tasks = listTaskDirs().map((d) => loadTask(d)); // canonical(排除 _* 示例)
-    if (!tasks.length) { console.error("无 canonical 任务可冻结"); process.exit(2); }
+    // canonical(排除 _* 示例)按 visibility 过滤:默认冻 public;--visibility heldout 冻 held-out 评测集。
+    const tasks = filterByVisibility(listTaskDirs()).map((d) => loadTask(d));
+    if (!tasks.length) { console.error(`无任务可冻结(visibility=${visibility})`); process.exit(2); }
     const release = buildRelease(name, gitHead(), arg("--ref"), new Date().toISOString().slice(0, 10), tasks);
     const path = registryPath();
     let reg;
@@ -259,7 +277,8 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <bundle|runDir> [--judge-model <id>] | validate <id|all> | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
