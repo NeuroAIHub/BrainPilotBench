@@ -20,3 +20,12 @@ datasets:
     uri: file:///abs/path/to/fixture.bin
     sha256: 2222222222222222222222222222222222222222222222222222222222222222
     bytes: 1024
+  # HuggingFace Hub：hf://[datasets/]<owner>/<repo>[@<revision>]/<path>
+  # revision 缺省 "main"；强烈建议 pin 到具体 commit sha(分支可变、sha 不变)。
+  # 私有/gated 数据集：export HF_TOKEN=hf_xxx（永不进 git）；
+  # 自建镜像：HF_ENDPOINT 覆盖端点。
+  - name: gsm8k-train
+    uri: hf://datasets/openai/gsm8k@a1b2c3d4/main/train-00000-of-00001.parquet
+    sha256: 3333333333333333333333333333333333333333333333333333333333333333
+    bytes: 3963202
+    format: parquet

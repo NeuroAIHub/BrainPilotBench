@@ -54,6 +54,35 @@ async function httpsFetch(req: FetchRequest): Promise<void> {
   await pipeline(Readable.fromWeb(res.body as any), createWriteStream(req.destPath));
 }
 
+/** hf://datasets/<owner>/<repo>[@<revision>]/<path>   (数据集)
+ *  hf://<owner>/<repo>[@<revision>]/<path>            (模型，不带 datasets/ 前缀)
+ *  → https://<endpoint>/[datasets/]<owner>/<repo>/resolve/<revision>/<path>
+ *  revision 缺省 "main"；强烈建议 pin 到 commit sha(分支可变、sha 不变;sha256 也会兜底)。
+ *  私有/gated: 设 HF_TOKEN 或 HUGGING_FACE_HUB_TOKEN → Authorization: Bearer(永不进 git)。
+ *  自建镜像/企业版: 用 HF_ENDPOINT 覆盖(默认 https://huggingface.co)。 */
+export function hfResolve(uri: string): { url: string; headers: Record<string, string> } {
+  const rest = uri.slice("hf://".length);
+  const isDataset = rest.startsWith("datasets/");
+  const body = isDataset ? rest.slice("datasets/".length) : rest;
+  const m = /^([^/]+)\/([^/@]+)(?:@([^/]+))?\/(.+)$/.exec(body);
+  if (!m) throw new Error(`hf uri must be hf://[datasets/]<owner>/<repo>[@<rev>]/<path>: ${uri}`);
+  const [, owner, repo, rev = "main", path] = m;
+  const endpoint = (process.env.HF_ENDPOINT || "https://huggingface.co").replace(/\/+$/, "");
+  const prefix = isDataset ? "datasets/" : "";
+  const url = `${endpoint}/${prefix}${owner}/${repo}/resolve/${rev}/${path}`;
+  const headers: Record<string, string> = {};
+  const tok = process.env.HF_TOKEN || process.env.HUGGING_FACE_HUB_TOKEN;
+  if (tok) headers.Authorization = `Bearer ${tok}`;
+  return { url, headers };
+}
+
+/** https 下载(带自定义 headers,给 hf:// 复用)。 */
+async function httpsFetchWithHeaders(url: string, destPath: string, headers: Record<string, string>): Promise<void> {
+  const res = await fetch(url, { headers, redirect: "follow" });
+  if (!res.ok || !res.body) throw new Error(`fetch ${url} → ${res.status}`);
+  await pipeline(Readable.fromWeb(res.body as any), createWriteStream(destPath));
+}
+
 // 内置 fetcher 注册（模块加载即注册一次）。
 registerFetcher("file", async (req) => {
   const srcPath = req.uri.startsWith("file://") ? fileURLToPath(req.uri) : req.uri.slice("file://".length);
@@ -62,4 +91,8 @@ registerFetcher("file", async (req) => {
 registerFetcher("https", httpsFetch);
 registerFetcher("oss", async (req) => {
   await httpsFetch({ uri: ossToHttps(req.uri), destPath: req.destPath });
+});
+registerFetcher("hf", async (req) => {
+  const { url, headers } = hfResolve(req.uri);
+  await httpsFetchWithHeaders(url, req.destPath, headers);
 });
