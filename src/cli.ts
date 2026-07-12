@@ -92,9 +92,17 @@ async function main() {
     const version = arg("--version", "unknown")!;
     const dirs = which === "all" ? listTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
+    const autoFetch = argv.includes("--fetch");
     const runner = new BenchRunner({ baseUrl });
     for (const d of dirs) {
       const t = loadTask(d);
+      if (autoFetch && t.datasets.length) {
+        console.log(`${B}— fetch ${t.meta.id}${X}  (${t.datasets.length} 数据集)`);
+        for (const r of await resolveManifest({ datasets: t.datasets })) {
+          const tag = r.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
+          console.log(`  ${tag}  ${r.entry.name}  → ${r.path}`);
+        }
+      }
       console.log(`${B}— run ${t.meta.id}${X}`);
       const res = await runner.run(t);
       const runId = `${t.meta.id}-${version}`;
@@ -281,7 +289,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] | fetch <id|all> | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] [--fetch] | fetch <id|all> | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
