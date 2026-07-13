@@ -5,12 +5,12 @@ import { parseDataManifest } from "./manifest.js";
 test("parseDataManifest: 解析合法 data.lock", () => {
   const m = parseDataManifest({
     datasets: [
-      { name: "ds-a", uri: "oss://bucket/a.parquet", sha256: "a".repeat(64), bytes: 123, format: "parquet" },
+      { name: "ds-a", uri: "https://example.org/a.parquet", sha256: "a".repeat(64), bytes: 123, format: "parquet" },
     ],
   });
   assert.equal(m.datasets.length, 1);
   assert.equal(m.datasets[0].name, "ds-a");
-  assert.equal(m.datasets[0].uri, "oss://bucket/a.parquet");
+  assert.equal(m.datasets[0].uri, "https://example.org/a.parquet");
   assert.equal(m.datasets[0].sha256, "a".repeat(64));
   assert.equal(m.datasets[0].bytes, 123);
   assert.equal(m.datasets[0].format, "parquet");

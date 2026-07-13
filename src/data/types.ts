@@ -8,7 +8,7 @@
 export interface DatasetEntry {
   /** 任务内唯一名（也用于 stage 时的目标文件名）。 */
   name: string;
-  /** 内容来源；scheme 决定用哪个 fetcher：oss:// / https:// / file:// / hf:// 。 */
+  /** 内容来源；scheme 决定用哪个 fetcher：https:// / file:// / hf:// 。 */
   uri: string;
   /** 内容 sha256（64 位十六进制小写）——内容寻址 + 完整性校验的键。 */
   sha256: string;

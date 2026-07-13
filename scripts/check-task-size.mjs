@@ -3,7 +3,7 @@
  * check-task-size.mjs — 大小门：tasks/ 下单文件 ≤25MB；一组改动文件总量 ≤100MB。
  * 用法：node scripts/check-task-size.mjs <file1> <file2> ...
  *   不带参数：扫描 tasks/ 下所有被 git 跟踪的文件。
- * 超限以非零退出码失败（CI 用）。data body 必须走 data.lock/OSS，不进 git。
+ * 超限以非零退出码失败（CI 用）。data body 必须走 data.lock 引用外部存储，不进 git。
  */
 import { statSync } from "node:fs";
 import { execSync } from "node:child_process";
@@ -31,7 +31,7 @@ for (const f of files) {
 const MB = (n) => (n / 1024 / 1024).toFixed(1) + "MB";
 let failed = false;
 for (const [f, size] of tooBig) {
-  console.error(`✗ ${f} = ${MB(size)} 超过单文件上限 25MB —— 大数据必须走 data.lock/OSS，不进 git`);
+  console.error(`✗ ${f} = ${MB(size)} 超过单文件上限 25MB —— 大数据必须走 data.lock 引用外部存储，不进 git`);
   failed = true;
 }
 if (total > TOTAL) {
