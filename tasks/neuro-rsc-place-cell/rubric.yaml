@@ -1,0 +1,11 @@
+# Rubric for the rubric-human scorer (task.yaml scoring.scorers[1]).
+# Dimensions align with the last 3 required metrics in categories.yaml → neural-analysis.
+# Scored 1-5 by a human reviewer via runs/<runId>/scoresheet.json; unscored (blank) means
+# "we couldn't judge it" — leaderboard shows —, never 0.
+dimensions:
+  - visualization_quality   # 图的清晰度/可读性/信息密度:代表性单细胞 rate-map、群体排序 population map、
+                            # trial-bin 相关热图、firing-rate 动态曲线是否齐全且科学地作图。
+  - trial_bin_analysis      # trial × spatial-bin 结构分析是否合理:是否量化了 trial 间一致性、
+                            # 是否给出相关矩阵/统计,而非仅贴图。
+  - firing_rate_analysis    # firing-rate 动态分析是否合理:trial 间/session 内活动漂移的度量、
+                            # 是否与位置解码/位置细胞相互印证。
