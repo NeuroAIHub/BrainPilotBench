@@ -1,0 +1,28 @@
+# tops-fmri data.lock —— pinned to HF commit shas.
+# 复现规则:改 commit sha = 换数据版本;sha256 保内容一致(校验失败 fetch 会 throw)。
+#
+# Public 侧(agent 可拉,无需 HF_TOKEN):
+#   BrainPilot-Bench/Tasks-Data-Public @ 5be1911c(2026-07-13 initial tops-fmri drop)
+# Private 侧(gated,scorer 只有);拉时需 HF_TOKEN(hf:// scheme 会自动发 Bearer):
+#   BrainPilot-Bench/Tasks-Data-Private @ 03674af4(2026-07-13 initial upload)
+datasets:
+  - name: study3_train.mat
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@5be1911c56a1912abefc81abad5cfa6f240dc0c6/tops-fmri/study3_train.mat
+    sha256: 17ca43dbc6ec53f9d9a1ae7b5ad234160d1dfee96dc5d83c714dd4cf87ae7366
+    bytes: 953887148
+    format: mat
+  - name: public_support.tar.zst
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@5be1911c56a1912abefc81abad5cfa6f240dc0c6/tops-fmri/public_support.tar.zst
+    sha256: 051316b32ffe0b39d32ef1a577d82f6c18e5a90425d9082367566cd7b83204d2
+    bytes: 11780098
+    format: tar.zst
+  - name: private_features.tar.zst
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@03674af44acdfd72b91789d7a49795796f8c3fff/tops-fmri/private_features.tar.zst
+    sha256: e709d9c3fa5ab067dd58d0ad205185423dad7e531bba8c7466e1d24bef924c56
+    bytes: 78545999
+    format: tar.zst
+  - name: private_labels.tar.zst
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@03674af44acdfd72b91789d7a49795796f8c3fff/tops-fmri/private_labels.tar.zst
+    sha256: 95bc997c345fbe7429a5f5f4d850f782faaf9616c3a9074b8e34efa0b5aabb58
+    bytes: 1945
+    format: tar.zst
