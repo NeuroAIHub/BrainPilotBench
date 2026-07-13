@@ -14,6 +14,10 @@
  * run 的产出：每个 task 一个 run 目录，含 events.jsonl + signals.json + blank scoresheet
  * (+ artifacts/ 当 --workspace-root)。score 离线跑任务声明的 scorer 写 scores.json；
  * 人工 rubric 仍可填 scoresheet，leaderboard 汇总。
+ *
+ * auto-setup: 有 --workspace-root 且 task 有 env/setup.sh 时,run 会在 createSession 后、
+ * 发首条 prompt 前，chdir 到 <workspaceRoot>/<sessionId>/ 跑一次 setup.sh。setup 决定如何
+ * stage 公共数据 / export scorer 需要的环境变量;runner 不解释具体动作,只负责调。
  */
 import { installProxyFromEnv } from "./proxy.js";
 installProxyFromEnv();
@@ -98,6 +102,7 @@ async function main() {
     const dirs = which === "all" ? listTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
     const autoFetch = argv.includes("--fetch");
+    const wsRoot = arg("--workspace-root");
     const runner = new BenchRunner({ baseUrl });
     for (const d of dirs) {
       const t = loadTask(d);
@@ -108,8 +113,30 @@ async function main() {
           console.log(`  ${tag}  ${r.entry.name}  → ${r.path}`);
         }
       }
+      // 有 --workspace-root + task 有 env/setup.sh + <wsRoot>/<sid>/ 存在(Runtime
+      // 已建好 session workspace) → 在其中跑一次 setup.sh。stage 数据 / export env
+      // (BPB_*_DIR 等)全由任务侧 setup.sh 决定;runner 只负责调,不解释。
+      const setupPath = join(d, "env", "setup.sh");
+      const hasSetup = wsRoot && existsSync(setupPath);
       console.log(`${B}— run ${t.meta.id}${X}`);
-      const res = await runner.run(t);
+      const res = await runner.run(t, {
+        onSessionReady: hasSetup
+          ? async (sid: string) => {
+              const sessDir = join(wsRoot!, sid);
+              if (!existsSync(sessDir)) {
+                console.error(`  ${Y}skip setup${X}: session dir 不存在(${sessDir}); Runtime 是否为每 session 建了 workspace?`);
+                return;
+              }
+              try {
+                execFileSync("/bin/bash", [setupPath], { cwd: sessDir, stdio: "inherit", timeout: 300_000 });
+                console.log(`  setup: env/setup.sh 已在 ${sessDir} 跑完`);
+              } catch (e) {
+                console.error(`  ${Y}setup 失败${X}: ${(e as Error).message}`);
+                throw e;
+              }
+            }
+          : undefined,
+      });
       const runId = `${t.meta.id}-${version}`;
       const runDir = join(out, runId);
       mkdirSync(runDir, { recursive: true });
@@ -118,7 +145,6 @@ async function main() {
       // 空 scoresheet（exportedAt 用 run 内最后事件 _ts，避免依赖时钟）
       const lastTs = res.events.length ? res.events[res.events.length - 1]._ts : new Date().toISOString();
       writeFileSync(join(runDir, "scoresheet.json"), JSON.stringify(blankScoresheet(t, runId, version, "", String(lastTs)), null, 2));
-      const wsRoot = arg("--workspace-root");
       if (wsRoot) {
         const globs = t.meta.expectedArtifacts.map((a) => a.workspace);
         const got = await captureArtifacts(filesystemArtifactSource(wsRoot), res.sessionId, globs, join(runDir, "artifacts"));

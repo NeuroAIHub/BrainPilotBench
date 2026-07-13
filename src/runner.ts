@@ -145,11 +145,16 @@ export class BenchRunner {
     return reason;
   }
 
-  /** Run a full task: all turns, collect events + auto-signals. */
-  async run(task: Task, opts?: { idleMs?: number }): Promise<RunResult> {
+  /** Run a full task: all turns, collect events + auto-signals.
+   *  `onSessionReady` fires after createSession but before the first prompt is
+   *  sent — this is where the CLI stages workspace data (env/setup.sh) so the
+   *  agent's very first read hits a populated session dir.
+   */
+  async run(task: Task, opts?: { idleMs?: number; onSessionReady?: (sid: string) => Promise<void> }): Promise<RunResult> {
     const idleMs = opts?.idleMs ?? 60000;
     const started = Date.now();
     const sid = await this.createSession();
+    if (opts?.onSessionReady) await opts.onSessionReady(sid);
     const events: any[] = [];
     let reason: RunResult["reason"] = "completed";
     for (const turn of task.turns) {

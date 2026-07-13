@@ -64,9 +64,11 @@ would silently drift the data version.
 
 ## Follow-ups (not blocking merge)
 
-- **SUT adapter**: BPB runner doesn't yet auto-run `env/setup.sh`; today a
-  wrapper needs to invoke it before spinning up the agent. When the SUT
-  adapter lands, this task will benefit automatically (no changes here).
+- **SUT adapter**: `bp-bench run --workspace-root <dir>` now auto-invokes
+  `env/setup.sh` inside `<dir>/<sessionId>/` (see `src/cli.ts` and
+  `src/runner.ts` `onSessionReady` hook). A generic SUT adapter for
+  non-BrainPilot systems is still pending; that unblocks headless / cross-repo
+  runs.
 - **Automated calibration**: `checks/output_schema.json` describes the raw
   metric contract but there's no per-condition tolerance table baked into
   the grader — a real signature's `score` distribution should stabilize
