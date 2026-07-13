@@ -1,0 +1,33 @@
+# Turn 1:一次性抛出全部 5 项子任务与产物契约。数据由 env/setup.sh 预置在 ./data/。
+- send: |
+    请依据 `./data/VRBeltReframe.mat` 完成 RSC(retrosplenial cortex)位置细胞动态分析。
+    实验范式:小鼠 VR belt(90 cm 虚拟跑道)+ 双光子 Ca²⁺ imaging。
+    MAT 文件顶层 keys:
+      - deconv_all       每 session 一个 cell 数组的去卷积神经活动(cells × frames 或 frames × cells)
+      - behavior_vr_all  每 session 的行为 struct(pos_norm / trial / 可选 ts)
+      - tcs_all          成像时间戳(可选,用于时间对齐)
+
+    子任务(全部完成):
+      1) 位置细胞筛选:速度阈值 ≥1 cm/s 筛选跑动帧;occupancy-normalized rate map;
+         每个 trial 内循环平移做 shuffle(建议 500 次)得零分布;真实 spatial information
+         高于该细胞零分布 (1 - place_alpha) 分位数 → 位置细胞。默认 place_alpha=0.025。
+      2) 代表性单细胞可视化 + 群体排序可视化(按峰值位置排序的 population rate-map)。
+      3) 位置解码:Poisson Naive-Bayes,50 个空间 bin,5-fold 按完整 trial 划分
+         (不按帧!),500 次 trial-wise 循环 shuffle 得零分布,报单侧 empirical p-value。
+      4) trial-bin 相关性分析:trial × spatial-bin 矩阵的一致性/相关结构。
+      5) firing-rate 动态分析:trial 间 / session 内的活动漂移。
+
+    产物(必须全交,放当前 workspace 根):
+      - benchmark_summary.json   机器可读结果,结构见 ./checks/output_schema.json
+      - report.md                分析报告(方法/结果/讨论,引用图片)
+      - figures/*.png            所有可视化(至少覆盖子任务 2/4/5)
+
+    关键 JSON 字段(用于自动评分,少一个都会被判 unscored):
+      cross_session_place_cell_stability.place_cell_ratio_mean   (float, [0,1])
+      position_decoding_significance.decoding_significant        (bool)
+      position_decoding_significance.real_median_decoding_error_cm (float, cm)
+      position_decoding_significance.shuffle_median_decoding_error_cm (float, cm)
+
+    参考建议:VR 长度 90 cm、50 bin、fold=5、shuffles=500、seed=7。
+    多 session 聚合:各 session 内取 median,再跨 session 取 median(防大 session 主导)。
+  then: wait_idle

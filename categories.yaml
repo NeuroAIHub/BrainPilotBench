@@ -4,3 +4,8 @@ survey-writing:
   metrics: [correctness, completeness, methodology, presentation]
 exec-data-analysis:
   metrics: [rows_ok]
+neural-analysis:
+  # 神经数据分析类:agent 交 benchmark_summary.json + 分析报告(md/图)。
+  # exec-script 只验数字(BPB_SCORES 中容差比对参考值);报告/可视化维度走 rubric-human 人工审核。
+  metrics: [place_cell_ratio_ok, decoding_significance_ok, decoding_error_within_tolerance,
+            visualization_quality, trial_bin_analysis, firing_rate_analysis]

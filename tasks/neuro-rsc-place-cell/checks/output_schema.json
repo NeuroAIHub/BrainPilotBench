@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "benchmark_summary.json — neuro-rsc-place-cell",
+  "description": "Agent 必须在 workspace 根产出该 JSON;check.sh 只读取其中标记的关键字段。多余字段允许(建议保留 benchmark.py 全量输出以便 rubric 审阅)。",
+  "type": "object",
+  "required": [
+    "cross_session_place_cell_stability",
+    "position_decoding_significance"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "cross_session_place_cell_stability": {
+      "type": "object",
+      "required": ["place_cell_ratio_mean"],
+      "properties": {
+        "n_sessions_evaluated": { "type": "integer", "minimum": 1 },
+        "place_cell_ratio_mean": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "place_cell_ratio_std":  { "type": "number", "minimum": 0.0 }
+      }
+    },
+    "position_decoding_significance": {
+      "type": "object",
+      "required": [
+        "real_median_decoding_error_cm",
+        "shuffle_median_decoding_error_cm",
+        "decoding_significant"
+      ],
+      "properties": {
+        "real_median_decoding_error_cm":    { "type": "number", "minimum": 0.0 },
+        "shuffle_median_decoding_error_cm": { "type": "number", "minimum": 0.0 },
+        "decoding_error_reduction":         { "type": "number" },
+        "decoding_improvement_ratio":       { "type": "number" },
+        "decoding_p_value":                 { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "decoding_significant":             { "type": "boolean" }
+      }
+    },
+    "decoding_stability": {
+      "type": "object",
+      "properties": {
+        "fold_decoding_errors_cm": { "type": "array", "items": { "type": "number" } },
+        "mean_cv_error_cm":        { "type": "number" },
+        "std_cv_error_cm":         { "type": "number" },
+        "cv_decoding_error":       { "type": "number" }
+      }
+    }
+  }
+}

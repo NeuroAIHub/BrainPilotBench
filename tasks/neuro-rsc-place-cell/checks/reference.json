@@ -1,0 +1,11 @@
+{
+  "_comment": "参考值——用于 check.sh 的容差比对。首版基于 benchmark.py 在 VRBeltReframe.mat 上以官方参数(seed=7, 500 shuffles, 全 session, 全细胞, 5-fold trial-grouped) 跑出的期望区间。数值需 maintainer 用真跑一次校准后收窄(见 checks/README.md 校准清单)。",
+  "place_cell_ratio_mean": {
+    "min": 0.10,
+    "max": 0.60,
+    "tolerance_note": "RSC 位置细胞比例典型 15%-45%;区间放宽以容纳数据/实现差异"
+  },
+  "decoding_error_reduction_ratio_min": 0.30,
+  "decoding_significant_expected": true,
+  "decoding_error_relative_tolerance": 0.25
+}

@@ -1,0 +1,8 @@
+# Pinned to BrainPilot-Bench/Tasks-Data-Public@7159b2dd (2026-07-13 initial drop).
+# 复现规则:改 commit sha = 换数据版本;sha256 保内容一致(校验失败 fetch 会 throw)。
+datasets:
+  - name: VRBeltReframe
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@7159b2dd2f3c8cad0167c1ded4b7dd7d7a655460/neuro-rsc-place-cell/VRBeltReframe.mat
+    sha256: 0a5f35ccf29ce6611908f5233b4325bfcc43e63c57e4d3763a4cf7dcea6f0987
+    bytes: 203632523
+    format: mat
