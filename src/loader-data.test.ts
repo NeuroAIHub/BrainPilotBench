@@ -13,7 +13,7 @@ function makeTask(withDataLock: boolean): string {
   writeFileSync(join(dir, "prompt", "turns.yaml"), "- send: hi\n");
   if (withDataLock) {
     writeFileSync(join(dir, "data.lock"),
-      "datasets:\n  - name: ds-a\n    uri: oss://b/a.parquet\n    sha256: " + "a".repeat(64) + "\n    bytes: 42\n    format: parquet\n");
+      "datasets:\n  - name: ds-a\n    uri: https://example.org/a.parquet\n    sha256: " + "a".repeat(64) + "\n    bytes: 42\n    format: parquet\n");
   }
   return dir;
 }
@@ -24,7 +24,7 @@ test("loadTask: 有 data.lock → task.datasets 被解析填充", () => {
     const t = loadTask(dir);
     assert.equal(t.datasets.length, 1);
     assert.equal(t.datasets[0].name, "ds-a");
-    assert.equal(t.datasets[0].uri, "oss://b/a.parquet");
+    assert.equal(t.datasets[0].uri, "https://example.org/a.parquet");
     assert.equal(t.datasets[0].bytes, 42);
   } finally {
     rmSync(dir, { recursive: true, force: true });

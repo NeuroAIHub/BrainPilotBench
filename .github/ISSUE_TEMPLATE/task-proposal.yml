@@ -42,7 +42,7 @@ body:
     id: data
     attributes:
       label: Data source & size
-      description: Where does any required data come from, and roughly how big? (Data bodies are never committed to git — they go to OSS via data.lock.)
+      description: Where does any required data come from, and roughly how big? (Data bodies are never committed to git — reference external storage via data.lock.)
     validations:
       required: true
   - type: textarea
