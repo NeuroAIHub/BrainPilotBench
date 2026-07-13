@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://brainpilot.bench/tops-fmri/output.schema.json",
+  "title": "tops-fmri BPB_SCORES payload",
+  "description": "Flat {str:number} JSON emitted by checks/evaluate_external.py between the BPB_SCORES sentinels. All 9 keys are required so leaderboard columns line up 1:1 with the fmri-analysis category metric set in categories.yaml.",
+  "type": "object",
+  "additionalProperties": {"type": "number"},
+  "required": [
+    "score",
+    "study4_score",
+    "study5_score",
+    "study4_SBP_SP_r",
+    "study4_SBP_REST_r",
+    "study4_CBP_SP_r",
+    "study4_CBP_REST_r",
+    "study5_JP_auc",
+    "study5_UK_auc"
+  ],
+  "properties": {
+    "score": {"description": "Final aggregated 0-1 score = 0.5 * study4_score + 0.5 * study5_score.", "type": "number", "minimum": 0, "maximum": 1},
+    "study4_score": {"description": "Mean of the four Study4 Pearson r (per condition), each clipped to [0,1].", "type": "number", "minimum": 0, "maximum": 1},
+    "study5_score": {"description": "Mean of the two Study5 AUC (per site), each clipped to [0,1].", "type": "number", "minimum": 0, "maximum": 1},
+    "study4_SBP_SP_r":  {"description": "Raw Pearson r between predicted response and hidden pain rating on Study4 SBP_SP.",  "type": "number"},
+    "study4_SBP_REST_r": {"description": "Raw Pearson r on Study4 SBP_REST.",  "type": "number"},
+    "study4_CBP_SP_r":  {"description": "Raw Pearson r on Study4 CBP_SP.",  "type": "number"},
+    "study4_CBP_REST_r": {"description": "Raw Pearson r on Study4 CBP_REST.",  "type": "number"},
+    "study5_JP_auc": {"description": "AUC discriminating CBP vs HC on Study5 JP site.",  "type": "number", "minimum": 0, "maximum": 1},
+    "study5_UK_auc": {"description": "AUC discriminating CBP vs HC on Study5 UK site.",  "type": "number", "minimum": 0, "maximum": 1}
+  }
+}

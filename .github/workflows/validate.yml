@@ -25,6 +25,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      # numpy:数值型任务(tops-fmri 等)的 Oracle solution.sh + exec-script grader 都用它算。
+      # 走 apt 比 pip 快、稳定;文本/文档类任务不受影响(不 import 就不加载)。
+      - name: 装 python 数值依赖(数值型 task 的 solution/grader 用)
+        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends python3-numpy
       - run: npm install --no-audit --no-fund
       - run: npm run build
       - name: 单元测试(node --test)
