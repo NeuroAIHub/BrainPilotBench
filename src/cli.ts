@@ -2,6 +2,9 @@
 /**
  * cli.ts — bp-bench command-line.
  *
+ * proxy 初始化必须在 fetch 之前(fetch/https/hf 拉数据全部经全局 dispatcher)。
+ * BPB_NO_PROXY=1 可关闭(测试/CI/离线场景)。
+ *
  *   bp-bench list [--tasks <dir>]
  *   bp-bench run <taskId|all> --base-url <url> [--tasks <dir>] [--out <dir>] [--version <tag>] [--workspace-root <dir>]
  *   bp-bench fetch <taskId|all> [--tasks <dir>]   (按 data.lock 拉取数据集)
@@ -12,6 +15,8 @@
  * (+ artifacts/ 当 --workspace-root)。score 离线跑任务声明的 scorer 写 scores.json；
  * 人工 rubric 仍可填 scoresheet，leaderboard 汇总。
  */
+import { installProxyFromEnv } from "./proxy.js";
+installProxyFromEnv();
 import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadTask } from "./loader.js";
