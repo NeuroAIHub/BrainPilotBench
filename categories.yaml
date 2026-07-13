@@ -9,3 +9,9 @@ neural-analysis:
   # exec-script 只验数字(BPB_SCORES 中容差比对参考值);报告/可视化维度走 rubric-human 人工审核。
   metrics: [place_cell_ratio_ok, decoding_significance_ok, decoding_error_within_tolerance,
             visualization_quality, trial_bin_analysis, firing_rate_analysis]
+fmri-analysis:
+  # fMRI 外部验证类:agent 提交 apply_signature.py + weights,scorer 在私有 held-out 上
+  # 计算 Pearson r / AUC,聚合 0-1 分。metric 全部由 scorer 从私有 label 算出,agent 看不到。
+  metrics: [score, study4_score, study5_score,
+            study4_SBP_SP_r, study4_SBP_REST_r, study4_CBP_SP_r, study4_CBP_REST_r,
+            study5_JP_auc, study5_UK_auc]
