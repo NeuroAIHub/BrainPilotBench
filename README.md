@@ -113,7 +113,7 @@ Dataset bodies are **never committed to git** (CI enforces ≤25MB/file and ≤1
 | Field | Meaning |
 |------|---------|
 | `name` | dataset name (`[A-Za-z0-9._-]`; used as a cache temp filename) |
-| `uri` | `oss://bucket/key` (public read-only, rewritten to a transfer-acceleration https endpoint), `https://…`, or `file://…` |
+| `uri` | `oss://bucket/key` (public read-only, rewritten to a transfer-acceleration https endpoint), `hf://[datasets/]<owner>/<repo>[@<rev>]/<path>` (HuggingFace Hub; `HF_TOKEN` for gated/private, `HF_ENDPOINT` overrides), `https://…`, or `file://…` |
 | `sha256` | 64-hex (lowercase) content hash — the cache key + integrity check |
 | `bytes` | expected size (audit) |
 | `format` | optional tag (parquet/csv/…) |
