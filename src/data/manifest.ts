@@ -23,12 +23,17 @@ export function parseDataManifest(raw: any): DataManifest {
       throw new Error(`data.lock: datasets[${i}]: sha256 must be 64 hex chars`);
     if (!Number.isInteger(d.bytes) || d.bytes < 0)
       throw new Error(`data.lock: datasets[${i}]: bytes must be a non-negative integer`);
+    if (d.scope != null && d.scope !== "public" && d.scope !== "private")
+      throw new Error(`data.lock: datasets[${i}]: scope must be 'public' or 'private'`);
     return {
       name: d.name,
       uri: d.uri,
       sha256: d.sha256,
       bytes: d.bytes,
       format: typeof d.format === "string" ? d.format : undefined,
+      // Old manifests remain public by default. Normalizing here lets every
+      // downstream caller enforce the same safe default.
+      scope: d.scope === "private" ? "private" : "public",
     };
   });
   return { datasets };

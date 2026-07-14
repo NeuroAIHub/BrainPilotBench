@@ -16,7 +16,15 @@ export interface DatasetEntry {
   bytes: number;
   /** 格式标签（parquet/csv/nii.gz/...），仅元数据。 */
   format?: string;
+  /**
+   * 数据可见范围。缺省为 public，以兼容旧 data.lock。
+   * private 数据只允许 evaluator 显式拉取，绝不能进入 agent workspace。
+   */
+  scope?: DatasetScope;
 }
+
+export type DatasetScope = "public" | "private";
+export type DatasetSelection = DatasetScope | "all";
 
 /** 一个任务的 data.lock 解析结果。 */
 export interface DataManifest {

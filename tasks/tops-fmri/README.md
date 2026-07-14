@@ -35,14 +35,15 @@ The labels never enter the agent workspace. See `checks/README.md`.
 
 ## Data (`data.lock`)
 
-Four content-addressed entries:
+Four content-addressed entries. Public entries are the default fetch scope;
+private entries are evaluator-only and must be requested explicitly.
 
-| Name | Size | Where it lands |
-|---|---|---|
-| `study3_train.mat` | 954 MB | `public_data/whole_participants/FC_and_pain/` (via `env/setup.sh` symlink) |
-| `public_support.tar.zst` | 12 MB | `public_data/atlas/` + `public_data/example_participant/` (untarred) |
-| `private_features.tar.zst` | 75 MB | `$BPB_TOPS_PRIVATE_EVAL_DIR/features/` (scorer only) |
-| `private_labels.tar.zst` | 1.9 KB | `$BPB_TOPS_PRIVATE_EVAL_DIR/labels/` (scorer only) |
+| Name | Scope | Size | Where it lands |
+|---|---|---:|---|
+| `study3_train.mat` | public | 954 MB | `public_data/whole_participants/FC_and_pain/` (via `env/setup.sh` symlink) |
+| `public_support.tar.zst` | public | 12 MB | `public_data/atlas/` + `public_data/example_participant/` (untarred) |
+| `private_features.tar.zst` | private | 75 MB | `$BPB_TOPS_PRIVATE_EVAL_DIR/features/` (evaluator only) |
+| `private_labels.tar.zst` | private | 1.9 KB | `$BPB_TOPS_PRIVATE_EVAL_DIR/labels/` (evaluator only) |
 
 All four entries are pinned to HF commit shas
 (`Tasks-Data-Public@5be1911c…`, `Tasks-Data-Private@03674af4…`). The private
@@ -50,6 +51,25 @@ bundle lives in a **gated** HF dataset that requires `HF_TOKEN` — set it in
 the scorer/runner environment; the BPB `hf://` fetcher forwards it as a
 Bearer token and never persists it. Never fetch from `main`; a moving branch
 would silently drift the data version.
+
+Agent workflow (no private access required):
+
+```bash
+bp-bench fetch tops-fmri                 # public-only by default
+cd <agent-workspace>
+bash <repo>/tasks/tops-fmri/env/setup.sh # defaults to --role agent
+```
+
+Maintainer/evaluator workflow, run only after the agent has exited:
+
+```bash
+bp-bench fetch tops-fmri --private
+export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/path
+bash tasks/tops-fmri/env/setup.sh --role evaluator
+```
+
+The evaluator directory must be outside the agent workspace. Setup no longer
+writes a private path into the agent workspace or its parent directory.
 
 ## Oracle / NOP gate
 

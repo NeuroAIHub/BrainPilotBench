@@ -6,3 +6,4 @@ export * from "./manifest.js";
 export * from "./cache.js";
 export * from "./fetch.js";
 export * from "./resolve.js";
+export * from "./scope.js";

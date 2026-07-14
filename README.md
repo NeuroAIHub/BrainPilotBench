@@ -284,7 +284,9 @@ review.
 
 Large dataset bodies are not committed to Git. A task can declare a
 <code>data.lock</code> manifest containing a URI, SHA-256 digest, expected byte
-size, and format.
+size, format, and an optional <code>scope: public|private</code>. Legacy entries
+default to public. Private entries are evaluator-only and are never fetched by
+an agent run.
 
 Supported URI schemes include:
 
@@ -297,6 +299,10 @@ Fetch and verify data with:
 ~~~bash
 node dist/cli.js fetch neuro-rsc-place-cell
 ~~~
+
+Fetch is public-only by default. Benchmark maintainers can explicitly fetch
+gated evaluator inputs with <code>--private</code>; <code>--all</code> fetches
+both scopes and should not be used in an agent environment.
 
 Resolved datasets are cached by content hash under
 <code>$XDG_CACHE_HOME/brainpilot-bench</code>, or
