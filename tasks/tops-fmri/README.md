@@ -2,6 +2,32 @@
 
 Category: `fmri-analysis` · Domain: `fmri-analysis` · Version `0.1`
 
+## Quick start (Agent user)
+
+Only public Study3 data is required:
+
+```bash
+npm ci && npm run build && npm link
+python3 -m pip install -r tasks/tops-fmri/env/requirements.txt
+bp-bench doctor tops-fmri
+bp-bench fetch tops-fmri --public
+bp-bench run tops-fmri --adapter manual --agent my-agent@1
+```
+
+Run the Agent in the printed workspace, then execute the printed `--resume`
+command. BrainPilot users can replace the last command with:
+
+```bash
+bp-bench run tops-fmri \
+  --adapter brainpilot \
+  --base-url http://127.0.0.1:9001 \
+  --workspace-root /absolute/path/to/BrainPilot/brainpilot/workspaces \
+  --agent brainpilot@local
+```
+
+Private Study4/Study5 data is not needed by Agent users and must never be placed
+in the Agent workspace.
+
 ## What the agent does
 
 Train a **linear** 279 ROI / 38781 edge functional-connectivity signature on
