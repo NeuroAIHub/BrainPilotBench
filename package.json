@@ -43,6 +43,7 @@
   },
   "files": [
     "dist",
+    "docker",
     "!dist/**/*.test.js",
     "!dist/**/*.test.js.map",
     "!dist/**/*.test.d.ts",

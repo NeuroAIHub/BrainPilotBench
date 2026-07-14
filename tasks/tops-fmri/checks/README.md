@@ -38,8 +38,9 @@ Then it calls `evaluate_external.py $PWD`, which:
 - copies `features/*.npz` into a private tmp dir,
 - copies the submitted inference script and models into a separate temporary
   execution root,
-- runs the agent script with Python isolated mode, a minimal environment, no
-  evaluator path/token/proxy variables, and a 120 s hard timeout,
+- runs the agent script with Python isolated mode in a non-root, no-network
+  container with read-only code/models/features, no evaluator
+  path/token/proxy variables, and a 120 s hard timeout,
 - reads back the two prediction CSVs,
 - loads private labels,
 - computes 4 Pearson r + 2 AUC + aggregate 0-1 score, and
@@ -51,9 +52,9 @@ scorer to report a structured <code>private_data_missing</code> or
 <code>scoring_failed</code> state (never zero) — the leaderboard coverage
 convention is preserved.
 
-The local subprocess boundary does not provide kernel-level filesystem or
-network isolation. Official evaluator deployment must still add a separate OS
-identity or no-network container before accepting untrusted submissions.
+Local development may explicitly use the legacy process mode. Official
+evaluation requires `BPB_SUBMISSION_ISOLATION=docker` and an immutable
+`BPB_INFERENCE_IMAGE`; it fails closed when either is unavailable.
 
 ## Metric set
 

@@ -38,6 +38,7 @@ import { BrainPilotAdapter, CommandAdapter, ManualAdapter, type AgentAdapter, ty
 import { buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
 import type { DatasetEntry, FetchProgress } from "./data/types.js";
 import { runDoctor } from "./doctor.js";
+import { dockerImageStatus, dockerStatus } from "./isolation.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -157,6 +158,7 @@ async function main() {
       baseUrl: arg("--base-url"),
       isolation: doctorIsolation,
       dockerBinary: arg("--docker-binary"),
+      inferenceImage: arg("--inference-image"),
     });
     const icons = { pass: `${G}✓${X}`, warn: `${Y}!${X}`, fail: `${Y}✗${X}` };
     for (const check of checks) {
@@ -393,6 +395,39 @@ async function main() {
   if (cmd === "score") {
     const judgeModel = arg("--judge-model");
     if (judgeModel) process.env.BPB_JUDGE_MODEL = judgeModel;
+    const scoreIsolation = arg("--isolation", "process")!;
+    if (!(scoreIsolation === "process" || scoreIsolation === "docker")) {
+      console.error(`未知 isolation: ${scoreIsolation}`); process.exit(2);
+    }
+    const officialScoring = argv.includes("--official");
+    const inferenceImage = arg("--inference-image");
+    const dockerBinary = arg("--docker-binary", "docker")!;
+    if (officialScoring && scoreIsolation !== "docker") {
+      console.error("official scoring requires --isolation docker"); process.exit(2);
+    }
+    if (scoreIsolation === "docker" && !inferenceImage) {
+      console.error("Docker scoring isolation requires --inference-image <image>"); process.exit(2);
+    }
+    if (officialScoring && !/@sha256:[a-f0-9]{64}$/i.test(inferenceImage!)) {
+      console.error("official scoring requires an immutable inference image digest"); process.exit(2);
+    }
+    if (scoreIsolation === "docker") {
+      const daemon = dockerStatus(dockerBinary);
+      if (!daemon.ok) { console.error(`Docker isolation unavailable: ${daemon.output}`); process.exit(2); }
+      const image = dockerImageStatus(inferenceImage!, dockerBinary);
+      if (!image.ok) {
+        console.error(`inference image unavailable: ${inferenceImage}; pull it or build docker/inference/Dockerfile`);
+        process.exit(2);
+      }
+    } else {
+      console.warn(`${Y}warning${X}: submitted inference code will run as a local process; do not use this mode for untrusted official submissions`);
+    }
+    process.env.BPB_SUBMISSION_ISOLATION = scoreIsolation;
+    process.env.BPB_OFFICIAL_SCORING = officialScoring ? "1" : "0";
+    if (inferenceImage) process.env.BPB_INFERENCE_IMAGE = inferenceImage;
+    const inferenceUser = arg("--container-user");
+    if (inferenceUser) process.env.BPB_INFERENCE_USER = inferenceUser;
+    process.env.BPB_DOCKER_BINARY = dockerBinary;
     const runDir = argv[1];
     if (!runDir) { console.error("用法: bp-bench score <bundle>（必须含 meta.json + artifacts/）"); process.exit(2); }
     let meta: SubmissionMeta | null = null;
@@ -508,7 +543,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 

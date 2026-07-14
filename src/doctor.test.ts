@@ -85,3 +85,16 @@ test("runDoctor fails closed when requested Docker isolation is unavailable", as
   assert.equal(docker?.status, "fail");
   assert.match(docker?.fix ?? "", /Docker Desktop|Docker Engine/);
 });
+
+test("runDoctor reports a missing submission inference image", async () => {
+  const checks = await runDoctor({
+    isolation: "docker",
+    inferenceImage: "bpb-inference:test",
+    commandRunner: (command, args) => {
+      if (command === "docker" && args[0] === "image") return { ok: false, output: "no such image" };
+      return { ok: true, output: "1.0" };
+    },
+  });
+  assert.equal(checks.find((check) => check.id === "docker")?.status, "pass");
+  assert.equal(checks.find((check) => check.id === "inference-image")?.status, "fail");
+});

@@ -47,6 +47,15 @@ const execModule: ScorerModule = {
       if (!existsSync(scriptPath)) {
         return { value: {}, unscored: true, state: "scoring_failed", explanation: `exec script not found: ${rel}` };
       }
+      if (process.env.BPB_SUBMISSION_ISOLATION === "docker" && spec.submission_isolation !== "container") {
+        return {
+          value: {}, unscored: true, state: "scoring_failed",
+          explanation: "task scorer does not declare a container-isolated submission program contract",
+        };
+      }
+      if (process.env.BPB_OFFICIAL_SCORING === "1" && process.env.BPB_SUBMISSION_ISOLATION !== "docker") {
+        return { value: {}, unscored: true, state: "scoring_failed", explanation: "official exec scoring requires Docker submission isolation" };
+      }
       const sandbox = injectedSandbox ?? localSubprocessSandbox();
       // 在 bundle 的 runDir 下跑;脚本通过相对路径访问 artifacts/。
       const r = await sandbox.run({ command: "/bin/bash", args: [scriptPath], cwd: ctx.runDir, timeoutMs: 120_000 });

@@ -21,10 +21,12 @@ import csv
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
+import uuid
 from pathlib import Path
 
 import numpy as np
@@ -98,6 +100,93 @@ def copy_feature_inputs(src: Path, dst: Path) -> None:
         shutil.copy2(src / name, dst / name)
 
 
+def _docker_mount(source: Path, target: str, readonly: bool = False) -> str:
+    resolved = str(source.resolve())
+    if "," in resolved or "\n" in resolved or "\r" in resolved:
+        raise ValueError(f"Docker mount path contains an unsupported character: {resolved}")
+    suffix = ",readonly" if readonly else ""
+    return f"type=bind,source={resolved},target={target}{suffix}"
+
+
+def _container_user() -> str:
+    explicit = os.environ.get("BPB_INFERENCE_USER")
+    if explicit:
+        if not re.fullmatch(r"[1-9]\d*:[1-9]\d*", explicit):
+            raise ValueError("BPB_INFERENCE_USER must be a non-root numeric uid:gid")
+        return explicit
+    uid = os.getuid()
+    gid = os.getgid()
+    if uid == 0 or gid == 0:
+        raise ValueError("refusing to run submission inference as root; set BPB_INFERENCE_USER")
+    return f"{uid}:{gid}"
+
+
+def _docker_client_env() -> dict[str, str]:
+    allowed = ["PATH", "HOME", "DOCKER_HOST", "DOCKER_CONTEXT", "DOCKER_TLS_VERIFY", "DOCKER_CERT_PATH"]
+    return {key: os.environ[key] for key in allowed if os.environ.get(key)}
+
+
+def run_agent_inference_process(script: Path, model_dir: Path, features_dir: Path, pred_dir: Path, sandbox_dir: Path) -> None:
+    home_dir = sandbox_dir / "home"
+    tmp_dir = sandbox_dir / "tmp"
+    home_dir.mkdir()
+    tmp_dir.mkdir()
+    agent_env = {
+        "PATH": os.environ.get("PATH", ""),
+        "HOME": str(home_dir),
+        "TMPDIR": str(tmp_dir),
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONHASHSEED": "0",
+    }
+    cmd = [
+        sys.executable, "-I", str(script),
+        "--eval-features-dir", str(features_dir),
+        "--model-dir", str(model_dir),
+        "--out-dir", str(pred_dir),
+    ]
+    subprocess.run(cmd, cwd=sandbox_dir, env=agent_env, check=True, timeout=120)
+
+
+def run_agent_inference_docker(script_dir: Path, model_dir: Path, features_dir: Path, pred_dir: Path) -> None:
+    image = os.environ.get("BPB_INFERENCE_IMAGE", "").strip()
+    if not image:
+        raise ValueError("Docker submission isolation requires BPB_INFERENCE_IMAGE")
+    if os.environ.get("BPB_OFFICIAL_SCORING") == "1" and not re.search(r"@sha256:[0-9a-fA-F]{64}$", image):
+        raise ValueError("official scoring requires an immutable BPB_INFERENCE_IMAGE digest")
+    docker = os.environ.get("BPB_DOCKER_BINARY", "docker")
+    name = f"bpb-inference-{uuid.uuid4().hex[:12]}"
+    cmd = [
+        docker, "run", "--rm", "--init", "--name", name,
+        "--network", "none",
+        "--read-only",
+        "--cap-drop", "ALL",
+        "--security-opt", "no-new-privileges",
+        "--pids-limit", "128",
+        "--cpus", "2",
+        "--memory", "4g",
+        "--user", _container_user(),
+        "--workdir", "/work",
+        "--tmpfs", "/tmp:rw,nosuid,nodev,size=1g",
+        "--env", "HOME=/tmp",
+        "--mount", _docker_mount(script_dir, "/submission/scripts", readonly=True),
+        "--mount", _docker_mount(model_dir, "/submission/models", readonly=True),
+        "--mount", _docker_mount(features_dir, "/input/features", readonly=True),
+        "--mount", _docker_mount(pred_dir, "/output"),
+        "--entrypoint", "python3",
+        image,
+        "-I", "/submission/scripts/apply_signature.py",
+        "--eval-features-dir", "/input/features",
+        "--model-dir", "/submission/models",
+        "--out-dir", "/output",
+    ]
+    docker_env = _docker_client_env()
+    try:
+        subprocess.run(cmd, env=docker_env, check=True, timeout=120)
+    except subprocess.TimeoutExpired:
+        subprocess.run([docker, "rm", "-f", name], env=docker_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        raise
+
+
 def run_agent_inference(run_dir: Path, features_dir: Path, pred_dir: Path, sandbox_dir: Path) -> None:
     submitted_script = run_dir / "artifacts" / "scripts" / "apply_signature.py"
     submitted_models = run_dir / "artifacts" / "models"
@@ -112,29 +201,19 @@ def run_agent_inference(run_dir: Path, features_dir: Path, pred_dir: Path, sandb
     # proxy credentials, or the submission bundle itself.
     script_dir = sandbox_dir / "scripts"
     model_dir = sandbox_dir / "models"
-    home_dir = sandbox_dir / "home"
-    tmp_dir = sandbox_dir / "tmp"
     script_dir.mkdir(parents=True)
-    home_dir.mkdir()
-    tmp_dir.mkdir()
     shutil.copy2(submitted_script, script_dir / "apply_signature.py")
     shutil.copytree(submitted_models, model_dir)
     script = script_dir / "apply_signature.py"
-    agent_env = {
-        "PATH": os.environ.get("PATH", ""),
-        "HOME": str(home_dir),
-        "TMPDIR": str(tmp_dir),
-        "PYTHONNOUSERSITE": "1",
-        "PYTHONHASHSEED": "0",
-    }
-    cmd = [
-        sys.executable, "-I",
-        str(script),
-        "--eval-features-dir", str(features_dir),
-        "--model-dir", str(model_dir),
-        "--out-dir", str(pred_dir),
-    ]
-    subprocess.run(cmd, cwd=sandbox_dir, env=agent_env, check=True, timeout=120)
+    isolation = os.environ.get("BPB_SUBMISSION_ISOLATION", "process")
+    if os.environ.get("BPB_OFFICIAL_SCORING") == "1" and isolation != "docker":
+        raise ValueError("official scoring requires BPB_SUBMISSION_ISOLATION=docker")
+    if isolation == "docker":
+        run_agent_inference_docker(script_dir, model_dir, features_dir, pred_dir)
+    elif isolation == "process":
+        run_agent_inference_process(script, model_dir, features_dir, pred_dir, sandbox_dir)
+    else:
+        raise ValueError(f"unknown BPB_SUBMISSION_ISOLATION: {isolation}")
 
 
 def resolve_private_dir(run_dir: Path) -> Path | None:
