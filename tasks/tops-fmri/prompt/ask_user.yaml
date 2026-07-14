@@ -1,0 +1,19 @@
+# prompt/ask_user.yaml —— 无人值守回答预设。
+#
+# runner.ts 遇到 `user_input_request` 时会用 answerFor(task.askUser, question) 查预设:
+#   - 每个 key 先作正则(i 忽略大小写),失败再回退 substring 匹配 question;
+#   - 命中返回对应 value,都不命中返回 `default`。
+#
+# 关键场景(按 pattern 优先级从上到下):
+#
+# 1) 是否要「继续训练/继续下一步/是否可以开始/是否可以提交」这类推进型询问 → 一律 yes
+#    (task.yaml 的 turn 已经完整给了指令,不需要再等人拍板)。
+# 2) 数据/路径/字段名不确定 → 让 agent 按 prompt 里已声明的公开数据结构自决,
+#    不要在评测中回读外部意见(会污染 held-out 评分)。
+# 3) default 兜底:告诉 agent 这是无人值守评测,请按自己的判断继续,不要再问。
+{
+  "(继续|proceed|continue|go\\s*ahead|下一步|next\\s*step|开始|start|start\\s*training|是否可以|准备好|ready\\s*to|shall\\s*I|should\\s*I)": "是,请继续。这是无人值守 benchmark 评测,请按你已有的信息自行推进,不要再等待确认。",
+  "(选择|which|pick|choose|prefer|哪个|哪一种|option|哪种方法)": "请你自行选择;这是无人值守 benchmark 评测,你的判断即最终决定。请在 report.md 中说明理由。",
+  "(编辑|覆盖|overwrite|replace|delete|删除|清空|reset)": "可以。请按最能满足 task.yaml 要求的方式操作,并在 report.md 中简述。",
+  "default": "这是无人值守 benchmark 评测(BrainPilotBench tops-fmri),没有人可以回答你。请依据 prompt/turns.yaml 与工作目录中已提供的 public_data,自行判断并推进,不要再发起 user_input_request。若确实无法确定,请在 report.md 中记录不确定性与你采取的默认策略。"
+}
