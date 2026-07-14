@@ -79,6 +79,13 @@ npm install
 npm run build
 ~~~
 
+Check task dependencies, disk, proxy, Hugging Face access, cache, and the
+optional BrainPilot runtime before starting a long run:
+
+~~~bash
+node dist/cli.js doctor tops-fmri --base-url http://127.0.0.1:9001
+~~~
+
 Commands below use <code>node dist/cli.js</code>, which works directly from the
 source checkout. Optionally run <code>npm link</code> once and replace it with
 <code>bp-bench</code>.
@@ -323,6 +330,20 @@ both scopes and should not be used in an agent environment.
 Resolved datasets are cached by content hash under
 <code>$XDG_CACHE_HOME/brainpilot-bench</code>, or
 <code>~/.cache/brainpilot-bench</code> by default.
+
+For networks that require a local proxy (including many mainland-China
+setups), no additional proxy package is needed. Point Node at the existing
+local proxy before running <code>doctor</code> or <code>fetch</code>:
+
+~~~bash
+export https_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:7890
+export all_proxy=socks5://127.0.0.1:7890
+~~~
+
+The HTTP(S) proxy is used for downloads while localhost is always bypassed, so
+the same shell can still reach a local BrainPilot deployment. Interrupted HTTP
+and Hugging Face downloads resume from the verified partial cache.
 
 The current runner can fetch datasets with <code>run --fetch</code>, but task
 workspace staging is still adapter-specific. Check the task’s

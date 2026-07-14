@@ -1,12 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, writeFileSync, rmSync, existsSync } from "node:fs";
+import { appendFileSync, mkdtempSync, readFileSync, writeFileSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
 import { resolveDataset, resolveManifest } from "./resolve.js";
 import { cachePathFor } from "./cache.js";
 import type { DatasetEntry } from "./types.js";
+import { DataFetchError, registerFetcher } from "./fetch.js";
 
 function withTmpXdg<T>(fn: (dir: string) => Promise<T>): Promise<T> {
   const prev = process.env.XDG_CACHE_HOME;
@@ -64,7 +65,7 @@ test("resolveManifest: 解析多条并全部 resolve", async () => {
   });
 });
 
-test("resolveDataset: 同一数据集并发 resolve 全部成功(临时名随机,不撞名)", async () => {
+test("resolveDataset: 同一数据集并发 resolve 合并为一个安全下载", async () => {
   await withTmpXdg(async (dir) => {
     const body = "concurrent-payload";
     const sha = createHash("sha256").update(body).digest("hex");
@@ -77,3 +78,25 @@ test("resolveDataset: 同一数据集并发 resolve 全部成功(临时名随机
   });
 });
 
+test("resolveDataset: recoverable network failure keeps and resumes the partial file", async () => {
+  await withTmpXdg(async (dir) => {
+    const body = "abcdef";
+    const sha = createHash("sha256").update(body).digest("hex");
+    let attempt = 0;
+    registerFetcher("flakyresume", async (request) => {
+      attempt++;
+      if (attempt === 1) {
+        writeFileSync(request.destPath, "abc");
+        throw new DataFetchError("connection reset", "network");
+      }
+      appendFileSync(request.destPath, "def");
+    });
+    const entry: DatasetEntry = { name: "resume", uri: "flakyresume://data", sha256: sha, bytes: body.length };
+    await assert.rejects(() => resolveDataset(entry), /connection reset/);
+    const partial = join(dir, "brainpilot-bench", sha, ".partial");
+    assert.equal(readFileSync(partial, "utf8"), "abc");
+    const result = await resolveDataset(entry);
+    assert.equal(result.fetched, true);
+    assert.equal(readFileSync(result.path, "utf8"), body);
+  });
+});

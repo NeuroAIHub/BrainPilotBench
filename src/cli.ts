@@ -32,6 +32,8 @@ import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./sub
 import { execFileSync } from "node:child_process";
 import { BrainPilotAdapter, CommandAdapter, ManualAdapter, type AgentAdapter } from "./adapters.js";
 import { buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
+import type { DatasetEntry, FetchProgress } from "./data/types.js";
+import { runDoctor } from "./doctor.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -83,11 +85,45 @@ function safeRunId(value: string): string {
   return value.replace(/[^A-Za-z0-9._@-]+/g, "-").replace(/^-+|-+$/g, "") || "run";
 }
 
+function formatBytes(bytes: number): string {
+  const units = ["B", "KiB", "MiB", "GiB"];
+  let value = bytes, unit = 0;
+  while (value >= 1024 && unit < units.length - 1) { value /= 1024; unit++; }
+  return `${value.toFixed(unit === 0 ? 0 : 1)} ${units[unit]}`;
+}
+
+function downloadProgress() {
+  const lastBucket = new Map<string, number>();
+  const started = new Map<string, { at: number; bytes: number }>();
+  return (entry: DatasetEntry, progress: FetchProgress) => {
+    const total = progress.totalBytes ?? entry.bytes;
+    const percent = total > 0 ? Math.min(100, Math.floor(progress.downloadedBytes / total * 100)) : 0;
+    const origin = started.get(entry.name) ?? { at: Date.now(), bytes: progress.downloadedBytes };
+    started.set(entry.name, origin);
+    const seconds = Math.max(0.001, (Date.now() - origin.at) / 1000);
+    const speed = Math.max(0, (progress.downloadedBytes - origin.bytes) / seconds);
+    const eta = speed > 0 ? Math.ceil((total - progress.downloadedBytes) / speed) : undefined;
+    const rate = speed > 0 ? `, ${formatBytes(speed)}/s` : "";
+    const remaining = eta !== undefined && eta >= 0 ? `, ETA ${eta}s` : "";
+    if (process.stderr.isTTY) {
+      const resume = progress.resumedFrom > 0 ? `, resumed ${formatBytes(progress.resumedFrom)}` : "";
+      process.stderr.write(`\r  downloading ${entry.name}: ${percent}% (${formatBytes(progress.downloadedBytes)}/${formatBytes(total)}${rate}${remaining}${resume})`);
+      if (progress.downloadedBytes >= total) process.stderr.write("\n");
+      return;
+    }
+    const bucket = Math.floor(percent / 10);
+    if (bucket > (lastBucket.get(entry.name) ?? -1)) {
+      lastBucket.set(entry.name, bucket);
+      console.error(`  downloading ${entry.name}: ${percent}%${rate}${remaining}`);
+    }
+  };
+}
+
 async function fetchPublicTaskData(task: ReturnType<typeof loadTask>): Promise<void> {
   const datasets = selectDatasets(task.datasets, "public");
   if (!datasets.length) return;
   console.log(`${B}— fetch ${task.meta.id}${X}  (${datasets.length} public 数据集)`);
-  for (const result of await resolveManifest({ datasets })) {
+  for (const result of await resolveManifest({ datasets }, { onProgress: downloadProgress() })) {
     const tag = result.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
     console.log(`  ${tag}  ${result.entry.name}  → ${result.path}`);
   }
@@ -100,6 +136,24 @@ async function main() {
       const tag = t.meta.visibility === "heldout" ? `${Y}[heldout]${X} ` : "";
       console.log(`${tag}${B}${t.meta.id}${X}  [${t.meta.domain}]  ${t.meta.summary}`);
     }
+    return;
+  }
+
+  if (cmd === "doctor") {
+    const which = argv[1] && !argv[1].startsWith("--") ? argv[1] : undefined;
+    const dir = which ? dirsByTaskId(which)[0] : undefined;
+    if (which && !dir) { console.error(`找不到任务：${which}`); process.exit(2); }
+    const checks = await runDoctor({
+      task: dir ? loadTask(dir) : undefined,
+      privateData: argv.includes("--private"),
+      baseUrl: arg("--base-url"),
+    });
+    const icons = { pass: `${G}✓${X}`, warn: `${Y}!${X}`, fail: `${Y}✗${X}` };
+    for (const check of checks) {
+      console.log(`${icons[check.status]} ${check.id}: ${check.message}`);
+      if (check.fix) for (const line of check.fix.split("\n")) console.log(`    ${line}`);
+    }
+    if (checks.some((check) => check.status === "fail")) process.exit(1);
     return;
   }
 
@@ -280,7 +334,7 @@ async function main() {
       console.log(`${B}— fetch ${t.meta.id}${X}  (${datasets.length} ${selection!} 数据集)`);
       let resolved;
       try {
-        resolved = await resolveManifest({ datasets });
+        resolved = await resolveManifest({ datasets }, { onProgress: downloadProgress() });
       } catch (e) {
         if (selection === "private" || selection === "all") {
           console.error(`${Y}私有评测数据获取失败。请先获得数据集权限并设置 HF_TOKEN。${X}`);
@@ -393,8 +447,13 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch((e) => {
+  const error = e instanceof Error ? e : new Error(String(e));
+  console.error(`${Y}${error.message}${X}`);
+  if (argv.includes("--verbose") && error.stack) console.error(error.stack);
+  process.exit(1);
+});

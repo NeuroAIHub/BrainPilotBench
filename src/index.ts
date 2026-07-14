@@ -24,6 +24,7 @@ export * from "./loader.js";
 export * from "./runner.js";
 export * from "./adapters.js";
 export * from "./workflow.js";
+export * from "./doctor.js";
 export * from "./scoring.js";
 export * from "./scorer/index.js";
 export * from "./data/index.js";
