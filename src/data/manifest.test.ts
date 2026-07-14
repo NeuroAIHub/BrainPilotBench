@@ -14,6 +14,7 @@ test("parseDataManifest: 解析合法 data.lock", () => {
   assert.equal(m.datasets[0].sha256, "a".repeat(64));
   assert.equal(m.datasets[0].bytes, 123);
   assert.equal(m.datasets[0].format, "parquet");
+  assert.equal(m.datasets[0].scope, "public");
 });
 
 test("parseDataManifest: 空/缺 datasets → 空清单", () => {
@@ -37,6 +38,15 @@ test("parseDataManifest: sha256 必须是 64 位十六进制", () => {
 test("parseDataManifest: bytes 必须是非负整数", () => {
   assert.throws(() => parseDataManifest({ datasets: [{ name: "x", uri: "u", sha256: "a".repeat(64), bytes: -1 }] }),
     /datasets\[0\]: bytes must be a non-negative integer/);
+});
+
+test("parseDataManifest: scope 仅允许 public/private，旧清单缺省 public", () => {
+  const make = (scope?: string) => ({
+    datasets: [{ name: "x", uri: "u", sha256: "a".repeat(64), bytes: 1, ...(scope ? { scope } : {}) }],
+  });
+  assert.equal(parseDataManifest(make()).datasets[0].scope, "public");
+  assert.equal(parseDataManifest(make("private")).datasets[0].scope, "private");
+  assert.throws(() => parseDataManifest(make("secret")), /scope must be 'public' or 'private'/);
 });
 
 test("parseDataManifest: null 列表项报清晰错误", () => {

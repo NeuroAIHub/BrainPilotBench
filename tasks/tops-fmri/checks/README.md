@@ -5,9 +5,9 @@
 The grader runs **offline**, against **agent-invisible** held-out payloads.
 Even with the source in front of them, an agent cannot cheat because:
 
-1. **Labels never enter the workspace.** `env/setup.sh` writes
-   `study4_labels.npz` / `study5_labels.npz` to
-   `$BPB_TOPS_PRIVATE_EVAL_DIR`, which lives **outside** the workspace root.
+1. **Labels never enter the workspace.** Evaluator setup writes
+   `study4_labels.npz` / `study5_labels.npz` to the explicitly configured
+   `$BPB_TOPS_PRIVATE_EVAL_DIR`, which must live **outside** the workspace root.
    The evaluator (running as the scorer, not the agent) reads them; the
    agent process has no file-system path to them.
 2. **The features handed to the agent script come from a scorer-side temp
@@ -29,12 +29,10 @@ run_dir/
 
 `checks/check.sh` (cwd = `run_dir`) locates the private dir in this order:
 
-1. `BPB_TOPS_PRIVATE_EVAL_DIR` env var (set by `env/setup.sh` or CI).
+1. `BPB_TOPS_PRIVATE_EVAL_DIR` env var (set by the evaluator or CI).
 2. `<run_dir>/private_eval/` (used **only** by the Oracle gate — `solution.sh`
    fabricates a dummy 3-sample dataset there so the pipeline can be
    exercised in the 120 s validate sandbox).
-3. `../.tops-fmri.env` (a source-able env file left by setup.sh).
-
 Then it calls `evaluate_external.py $PWD`, which:
 
 - copies `features/*.npz` into a private tmp dir,
@@ -68,7 +66,9 @@ nothing about the real task difficulty.
 
 ```bash
 export XDG_CACHE_HOME=~/.cache
-bp-bench fetch tops-fmri
+bp-bench fetch tops-fmri --private
+export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/path
+bash <bpb-repo>/tasks/tops-fmri/env/setup.sh --role evaluator
 mkdir -p /tmp/bpb-tops-run/artifacts
 cd /tmp/bpb-tops-run
 # ... put a real apply_signature.py + models/ into ./artifacts/ ...

@@ -7,7 +7,7 @@
  *
  *   bp-bench list [--tasks <dir>]
  *   bp-bench run <taskId|all> --base-url <url> [--tasks <dir>] [--out <dir>] [--version <tag>] [--workspace-root <dir>]
- *   bp-bench fetch <taskId|all> [--tasks <dir>]   (按 data.lock 拉取数据集)
+ *   bp-bench fetch <taskId|all> [--public|--private|--all] [--tasks <dir>]
  *   bp-bench score <runDir>                       (离线跑 scorer 写 scores.json)
  *   bp-bench leaderboard <scoresDir>
  *
@@ -29,7 +29,7 @@ import { BenchRunner } from "./runner.js";
 import { blankScoresheet } from "./scoring.js";
 import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
 import { loadCategories } from "./categories.js";
-import { resolveManifest } from "./data/index.js";
+import { resolveManifest, parseDatasetSelection, selectDatasets, type DatasetSelection } from "./data/index.js";
 import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { runScorers, type RunBundle } from "./score.js";
 import { validateTask } from "./validate.js";
@@ -107,8 +107,9 @@ async function main() {
     for (const d of dirs) {
       const t = loadTask(d);
       if (autoFetch && t.datasets.length) {
-        console.log(`${B}— fetch ${t.meta.id}${X}  (${t.datasets.length} 数据集)`);
-        for (const r of await resolveManifest({ datasets: t.datasets })) {
+        const datasets = selectDatasets(t.datasets, "public");
+        console.log(`${B}— fetch ${t.meta.id}${X}  (${datasets.length} public 数据集)`);
+        for (const r of await resolveManifest({ datasets })) {
           const tag = r.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
           console.log(`  ${tag}  ${r.entry.name}  → ${r.path}`);
         }
@@ -210,11 +211,25 @@ async function main() {
     const which = argv[1];
     const dirs = which === "all" ? listTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
+    let selection: DatasetSelection;
+    try { selection = parseDatasetSelection(argv.slice(2)); }
+    catch (e) { console.error(`${Y}${(e as Error).message}${X}`); process.exit(2); }
     for (const d of dirs) {
       const t = loadTask(d);
       if (!t.datasets.length) { console.log(`${B}${t.meta.id}${X}  (无 data.lock，跳过)`); continue; }
-      console.log(`${B}— fetch ${t.meta.id}${X}  (${t.datasets.length} 数据集)`);
-      const resolved = await resolveManifest({ datasets: t.datasets });
+      const datasets = selectDatasets(t.datasets, selection!);
+      if (!datasets.length) { console.log(`${B}${t.meta.id}${X}  (无 ${selection!} 数据，跳过)`); continue; }
+      console.log(`${B}— fetch ${t.meta.id}${X}  (${datasets.length} ${selection!} 数据集)`);
+      let resolved;
+      try {
+        resolved = await resolveManifest({ datasets });
+      } catch (e) {
+        if (selection === "private" || selection === "all") {
+          console.error(`${Y}私有评测数据获取失败。请先获得数据集权限并设置 HF_TOKEN。${X}`);
+          console.error("申请地址: https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private");
+        }
+        throw e;
+      }
       for (const r of resolved) {
         const tag = r.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
         console.log(`  ${tag}  ${r.entry.name}  → ${r.path}`);
@@ -320,7 +335,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] [--fetch] | fetch <id|all> | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] [--fetch] | fetch <id|all> [--public|--private|--all] | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 

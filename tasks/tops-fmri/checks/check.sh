@@ -15,15 +15,10 @@ fi
 
 # 私有目录查找顺序:
 #   1) 环境变量 BPB_TOPS_PRIVATE_EVAL_DIR
-#   2) $PWD/private_eval(Oracle 门用——solution.sh 造在 bundle 本地)
-#   3) 打包同目录里的 ../.tops-fmri.env(env/setup.sh 写的)
+#   2) $PWD/private_eval(仅 Oracle 门用——solution.sh 造在 bundle 本地)
 if [ -z "${BPB_TOPS_PRIVATE_EVAL_DIR:-}" ]; then
   if [ -d "$PWD/private_eval/features" ] && [ -d "$PWD/private_eval/labels" ]; then
     export BPB_TOPS_PRIVATE_EVAL_DIR="$PWD/private_eval"
-  elif [ -f "$PWD/../.tops-fmri.env" ]; then
-    # shellcheck disable=SC1091
-    . "$PWD/../.tops-fmri.env"
-    export BPB_TOPS_PRIVATE_EVAL_DIR
   fi
 fi
 
