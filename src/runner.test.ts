@@ -24,12 +24,23 @@ function makeTask(): Task {
   };
 }
 
-function sseBody(payload: object): ReadableStream<Uint8Array> {
+function sseBody(payload: object | object[]): ReadableStream<Uint8Array> {
+  const enc = new TextEncoder();
+  const events = Array.isArray(payload) ? payload : [payload];
+  return new ReadableStream({
+    start(controller) {
+      controller.enqueue(enc.encode(events.map((event) => `data: ${JSON.stringify(event)}\n\n`).join("")));
+      controller.close();
+    },
+  });
+}
+
+function openSseBody(payload: object[], signal?: AbortSignal | null): ReadableStream<Uint8Array> {
   const enc = new TextEncoder();
   return new ReadableStream({
     start(controller) {
-      controller.enqueue(enc.encode(`data: ${JSON.stringify(payload)}\n\n`));
-      controller.close();
+      controller.enqueue(enc.encode(payload.map((event) => `data: ${JSON.stringify(event)}\n\n`).join("")));
+      signal?.addEventListener("abort", () => controller.error(new Error("aborted")), { once: true });
     },
   });
 }
@@ -66,6 +77,33 @@ test("BenchRunner.run: setup hook runs before the first prompt", async () => {
   assert.equal(result.sessionId, "sid-42");
   assert.ok(order.indexOf("createSession") < order.indexOf("setup"));
   assert.ok(order.indexOf("setup") < order.indexOf("sendMessage"));
+});
+
+test("BenchRunner.run: wait_idle consumes overlapping child runs before completing", async () => {
+  const events = [
+    { type: "RUN_STARTED", run_id: "principal" },
+    { type: "RUN_STARTED", run_id: "engineer" },
+    { type: "RUN_FINISHED", run_id: "principal" },
+    { type: "TOOL_CALL_START", run_id: "engineer" },
+    { type: "RUN_FINISHED", run_id: "engineer" },
+  ];
+  const fetchFn: typeof fetch = async (input, init) => {
+    const url = String(input);
+    if (url.endsWith("/sessions") && init?.method === "POST") {
+      return new Response(JSON.stringify({ id: "sid-multi" }), { status: 200 });
+    }
+    if (url.includes("/messages") && init?.method === "POST") return new Response("", { status: 200 });
+    if (url.includes("/sse/") || url.includes("/events")) {
+      return new Response(openSseBody(events, init?.signal) as any, { status: 200 });
+    }
+    return new Response("not found", { status: 404 });
+  };
+  const task = makeTask();
+  task.turns[0].then = "wait_idle";
+  const result = await new BenchRunner({ baseUrl: "http://runtime", fetchFn, settleMs: 10 }).run(task);
+  assert.equal(result.reason, "completed");
+  assert.equal(result.signals.eventCount, events.length);
+  assert.equal(result.signals.toolCalls, 1);
 });
 
 test("BenchRunner.run: setup failure stops the run before prompting", async () => {

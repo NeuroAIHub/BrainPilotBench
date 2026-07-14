@@ -27,6 +27,8 @@ export interface RunnerOptions {
   baseUrl: string;
   /** Per-event no-activity timeout (ms). Falls back to task.timeoutMin otherwise. */
   idleMs?: number;
+  /** Quiet period after all observed runs finish before declaring session idle. */
+  settleMs?: number;
   fetchFn?: typeof fetch;
 }
 
@@ -49,6 +51,7 @@ export interface RunResult {
 }
 
 const isTerminal = (e: any) => e?.type === "RUN_FINISHED" || e?.type === "RUN_ERROR";
+type TurnResult = "completed" | "timeout" | "stream_end" | "error";
 
 /** Minimal SSE frame parser (multi-line data:, cross-chunk). */
 async function* parseSse(body: ReadableStream<Uint8Array>): AsyncGenerator<any> {
@@ -89,9 +92,13 @@ function decodeFrame(frame: string): any {
 export class BenchRunner {
   private base: string;
   private fetchFn: typeof fetch;
+  private configuredIdleMs?: number;
+  private configuredSettleMs?: number;
   constructor(opts: RunnerOptions) {
     this.base = opts.baseUrl.replace(/\/+$/, "");
     this.fetchFn = opts.fetchFn ?? fetch;
+    this.configuredIdleMs = opts.idleMs;
+    this.configuredSettleMs = opts.settleMs;
   }
   private url(tmpl: string, params?: Record<string, string>) { return this.base + fillPath(tmpl, params); }
 
@@ -117,17 +124,51 @@ export class BenchRunner {
     yield* parseSse(r.body as ReadableStream<Uint8Array>);
   }
 
-  /** Drive one turn to terminal/idle, collecting events into `acc`. */
-  private async driveTurn(sid: string, turn: TaskTurn, task: Task, idleMs: number, acc: any[]): Promise<"terminal" | "idle"> {
+  /** Drive one turn until its declared completion policy is satisfied. */
+  private async driveTurn(
+    sid: string,
+    turn: TaskTurn,
+    task: Task,
+    idleMs: number,
+    settleMs: number,
+    deadline: number,
+    acc: any[],
+  ): Promise<TurnResult> {
     const ctrl = new AbortController();
     const stream = this.stream(sid, ctrl.signal);
     await this.send(sid, turn.send);
+    if (turn.then === "none") return "completed";
+
     let last = Date.now();
-    const timer = setInterval(() => { if (Date.now() - last > idleMs) ctrl.abort(); }, 1000);
-    let reason: "terminal" | "idle" = "idle";
+    let timedOut = false;
+    let settled = false;
+    let sawTerminal = false;
+    let lastTerminalWasError = false;
+    const activeRuns = new Set<string>();
+    const timer = setInterval(() => {
+      const now = Date.now();
+      if (now >= deadline || now - last > idleMs) {
+        timedOut = true;
+        ctrl.abort();
+      } else if ((turn.then ?? "wait_idle") === "wait_idle" && sawTerminal && activeRuns.size === 0 && now - last >= settleMs) {
+        settled = true;
+        ctrl.abort();
+      }
+    }, Math.max(10, Math.min(250, settleMs)));
+    let streamEnded = false;
     try {
       for await (const e of stream) {
         acc.push(e); last = Date.now();
+        const runId = typeof e?.run_id === "string" ? e.run_id : undefined;
+        if ((e?.type === "RUN_STARTED" || (e?.type === "agent_status_update" && e?.status === "running")) && runId) {
+          activeRuns.add(runId);
+        }
+        if (isTerminal(e)) {
+          sawTerminal = true;
+          lastTerminalWasError = e.type === "RUN_ERROR";
+          if (runId) activeRuns.delete(runId);
+        }
+        if (e?.type === "agent_status_update" && e?.status === "idle" && runId) activeRuns.delete(runId);
         // auto-answer ask_user
         if (e.type === "user_input_request") {
           const ans = answerFor(task.askUser, e.question ?? "");
@@ -138,11 +179,20 @@ export class BenchRunner {
             }).catch(() => {});
           }
         }
-        if (isTerminal(e)) { reason = "terminal"; break; }
+        if ((turn.then === "interrupt") && isTerminal(e)) {
+          return lastTerminalWasError ? "error" : "completed";
+        }
       }
-    } catch { /* aborted = idle */ }
+      streamEnded = true;
+    } catch {
+      if (!ctrl.signal.aborted) return "error";
+    }
     finally { clearInterval(timer); ctrl.abort(); }
-    return reason;
+    if (timedOut) return "timeout";
+    if (settled || (streamEnded && sawTerminal && activeRuns.size === 0)) {
+      return lastTerminalWasError ? "error" : "completed";
+    }
+    return "stream_end";
   }
 
   /**
@@ -151,17 +201,21 @@ export class BenchRunner {
    */
   async run(task: Task, opts?: {
     idleMs?: number;
+    settleMs?: number;
     onSessionReady?: (sessionId: string) => Promise<void>;
   }): Promise<RunResult> {
-    const idleMs = opts?.idleMs ?? 60000;
     const started = Date.now();
+    const taskTimeoutMs = task.meta.timeoutMin * 60_000;
+    const deadline = started + taskTimeoutMs;
+    const idleMs = opts?.idleMs ?? this.configuredIdleMs ?? taskTimeoutMs;
+    const settleMs = opts?.settleMs ?? this.configuredSettleMs ?? 500;
     const sid = await this.createSession();
     if (opts?.onSessionReady) await opts.onSessionReady(sid);
     const events: any[] = [];
     let reason: RunResult["reason"] = "completed";
     for (const turn of task.turns) {
-      const r = await this.driveTurn(sid, turn, task, idleMs, events);
-      if (r === "idle") { reason = "timeout"; break; }
+      const result = await this.driveTurn(sid, turn, task, idleMs, settleMs, deadline, events);
+      if (result !== "completed") { reason = result; break; }
     }
     const count = (t: string) => events.filter((e) => e?.type === t).length;
     const errorEvents = count("RUN_ERROR") +
