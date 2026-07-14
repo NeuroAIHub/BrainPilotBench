@@ -75,7 +75,7 @@ cat > artifacts/scripts/apply_signature.py <<'PY'
 #!/usr/bin/env python3
 """Minimal Oracle-side inference: y = fisher_z(x) @ w_raw + b_raw (with w=0 → y=0)."""
 from __future__ import annotations
-import argparse, csv, sys
+import argparse, csv, os, sys
 from pathlib import Path
 import numpy as np
 
@@ -116,6 +116,11 @@ def write_csv(path: Path, group_col: str, groups: dict):
 
 
 def main() -> int:
+    for forbidden in ("BPB_TOPS_PRIVATE_EVAL_DIR", "HF_TOKEN", "HUGGING_FACE_HUB_TOKEN"):
+        if os.environ.get(forbidden):
+            raise RuntimeError(f"evaluator leaked forbidden environment variable: {forbidden}")
+    if Path.cwd().name != "agent-sandbox":
+        raise RuntimeError(f"inference must run in an isolated temporary root, got {Path.cwd()}")
     ap = argparse.ArgumentParser()
     ap.add_argument("--eval-features-dir", required=True)
     ap.add_argument("--model-dir", required=True)

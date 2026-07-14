@@ -32,6 +32,7 @@
     "./validate": "./dist/validate.js",
     "./metrics": "./dist/metrics.js",
     "./leaderboard": "./dist/leaderboard.js",
+    "./leaderboard-format": "./dist/leaderboard-format.js",
     "./discover": "./dist/discover.js",
     "./registry": "./dist/registry.js",
     "./submission": "./dist/submission.js"

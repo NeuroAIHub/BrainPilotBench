@@ -70,6 +70,19 @@ function runShell(command: string, cwd: string, env: NodeJS.ProcessEnv): Promise
   });
 }
 
+function agentEnvironment(workspaceDir: string): NodeJS.ProcessEnv {
+  const env = { ...process.env };
+  for (const key of [
+    "HF_TOKEN", "HUGGING_FACE_HUB_TOKEN", "BPB_TOPS_PRIVATE_EVAL_DIR",
+    "BPB_PRIVATE_EVAL_DIR", "BPB_PRIVATE_LABEL_HASHES",
+  ]) delete env[key];
+  // Prevent Hugging Face libraries from auto-loading the maintainer's saved
+  // token. Public task files are already staged into the workspace.
+  env.HF_HOME = join(workspaceDir, ".bpb", "agent-hf-home");
+  env.BPB_NO_HF_TOKEN_FILE = "1";
+  return env;
+}
+
 export class CommandAdapter implements AgentAdapter {
   readonly kind = "command" as const;
   constructor(private opts: { command: string; workspaceDir: string }) {}
@@ -78,7 +91,7 @@ export class CommandAdapter implements AgentAdapter {
     prepareWorkspace(task, this.opts.workspaceDir);
     const started = Date.now();
     const code = await runShell(this.opts.command, this.opts.workspaceDir, {
-      ...process.env,
+      ...agentEnvironment(this.opts.workspaceDir),
       BPB_TASK_ID: task.meta.id,
       BPB_TASK_PROMPT: join(this.opts.workspaceDir, ".bpb", "TASK_PROMPT.md"),
       BPB_WORKSPACE: this.opts.workspaceDir,

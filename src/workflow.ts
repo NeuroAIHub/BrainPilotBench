@@ -7,6 +7,7 @@ import type { RunResult } from "./runner.js";
 import { blankScoresheet } from "./scoring.js";
 import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { verifySubmission, type SubmissionIssue, type SubmissionMeta } from "./submission.js";
+import { cachePathFor } from "./data/cache.js";
 
 export interface BundleResult {
   runDir: string;
@@ -28,8 +29,23 @@ export function taskPromptMarkdown(task: Task): string {
   return `# ${task.meta.id}\n\n${task.meta.summary}\n\n${turns}\n`;
 }
 
+/** Refuse to start an Agent while benchmark-managed private data is visible. */
+export function assertAgentDataBoundary(task: Task): void {
+  if (process.env.BPB_TOPS_PRIVATE_EVAL_DIR || process.env.BPB_PRIVATE_EVAL_DIR) {
+    throw new Error("private evaluator environment is present; unset it before starting an Agent run");
+  }
+  const cachedPrivate = task.datasets
+    .filter((entry) => entry.scope === "private")
+    .filter((entry) => existsSync(cachePathFor(entry.sha256)))
+    .map((entry) => entry.name);
+  if (cachedPrivate.length) {
+    throw new Error(`private evaluator data exists in the Agent cache (${cachedPrivate.join(", ")}); use a separate evaluator cache and remove it from the Agent environment`);
+  }
+}
+
 /** Prepare a concrete agent workspace using public data only. */
 export function prepareWorkspace(task: Task, workspaceDir: string): { setupRan: boolean; promptPath: string } {
+  assertAgentDataBoundary(task);
   mkdirSync(workspaceDir, { recursive: true });
   // Keep harness-owned files under a hidden directory so broad artifact globs
   // such as "*.md" cannot mistake the task prompt for agent output.

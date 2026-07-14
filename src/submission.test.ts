@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, symlinkSync, writeFileSync, rmSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { loadSubmissionMeta, verifySubmission } from "./submission.js";
@@ -97,5 +98,34 @@ test("verifySubmission: notes 含省略号(..)不应误判为路径穿越", () =
   try {
     const issues = verifySubmission(fakeTask("t", ["*.csv"]), dir);
     assert.equal(issues.filter((i) => i.level === "error").length, 0, JSON.stringify(issues));
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("verifySubmission: rejects artifact symlinks even when they match required globs", () => {
+  const dir = makeBundle({ meta: { taskId: "t", agent: "a@1" } });
+  const outside = join(dir, "outside.csv");
+  writeFileSync(outside, "secret");
+  symlinkSync(outside, join(dir, "artifacts", "results.csv"));
+  try {
+    const issues = verifySubmission(fakeTask("t", ["*.csv"]), dir);
+    assert.ok(issues.some((issue) => issue.level === "error" && /symlink/.test(issue.msg)), JSON.stringify(issues));
+    assert.ok(issues.some((issue) => issue.level === "error" && /缺产物/.test(issue.msg)), JSON.stringify(issues));
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("verifySubmission: rejects private evaluator filenames, hashes, and absolute path assignments", () => {
+  const privateBody = "held-out-label-payload";
+  const privateHash = createHash("sha256").update(privateBody).digest("hex");
+  const task = fakeTask("t", ["*.csv"]);
+  task.datasets = [{ name: "private_labels.tar.zst", scope: "private", uri: "hf://datasets/x/y/labels", sha256: privateHash, bytes: privateBody.length }];
+  const dir = makeBundle({ meta: { taskId: "t", agent: "a@1" }, artifacts: ["results.csv"] });
+  writeFileSync(join(dir, "artifacts", "results.csv"), privateBody);
+  writeFileSync(join(dir, "artifacts", "private_eval"), "x");
+  writeFileSync(join(dir, "artifacts", "leak.md"), "BPB_TOPS_PRIVATE_EVAL_DIR=/secret/evaluator/path\n");
+  try {
+    const issues = verifySubmission(task, dir);
+    assert.ok(issues.some((issue) => /private dataset hash/.test(issue.msg)), JSON.stringify(issues));
+    assert.ok(issues.some((issue) => /private evaluator artifact/.test(issue.msg)), JSON.stringify(issues));
+    assert.ok(issues.some((issue) => /private evaluator path/.test(issue.msg)), JSON.stringify(issues));
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

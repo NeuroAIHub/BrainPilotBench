@@ -82,7 +82,24 @@ test("exec-script: 超时 → unscored", async () => {
     const scorer = getScorerModule("exec-script").build(t.scorers[0], t);
     const res = await scorer(ctx(join(dir, "run"), t) as any);
     assert.equal(res.unscored, true);
+    assert.equal(res.state, "scoring_failed");
     assert.ok(String(res.explanation).toLowerCase().includes("timeout") || String(res.explanation).toLowerCase().includes("timed"));
+  } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("exec-script: missing and denied private evaluator data get structured states", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "bpb-exec-state-"));
+  mkdirSync(join(dir, "checks"), { recursive: true });
+  writeFileSync(join(dir, "checks", "check.sh"), "#!/bin/bash\n:");
+  try {
+    const t = execTask(dir);
+    const scorer = getScorerModule("exec-script").build(t.scorers[0], t);
+    setExecSandbox({ run: async () => ({ stdout: "", stderr: "no private eval data found", exitCode: 0, timedOut: false }) });
+    const missing = await scorer(ctx(join(dir, "run"), t) as any);
+    assert.equal(missing.state, "private_data_missing");
+    setExecSandbox({ run: async () => ({ stdout: "", stderr: "Permission denied", exitCode: 1, timedOut: false }) });
+    const denied = await scorer(ctx(join(dir, "run"), t) as any);
+    assert.equal(denied.state, "private_access_denied");
   } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
 });
 

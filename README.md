@@ -156,7 +156,8 @@ For another Agent, use the manual handoff:
 
 ~~~bash
 bp-bench run tops-fmri --adapter manual --agent my-agent@1
-# Run your Agent in the printed workspace, then execute the printed --resume command.
+# Run your Agent in the printed workspace without evaluator/HF credentials,
+# then execute the printed --resume command.
 ~~~
 
 The private Study4/Study5 evaluator is a separate maintainer workflow described
@@ -412,6 +413,7 @@ dataset perform scoring later, outside the Agent workspace:
 
 ~~~bash
 hf auth login
+export XDG_CACHE_HOME=/absolute/evaluator-only/cache
 bp-bench doctor tops-fmri --private
 bp-bench fetch tops-fmri --private
 
@@ -420,8 +422,10 @@ bash tasks/tops-fmri/env/setup.sh --role evaluator
 bp-bench score "runs/tops-fmri-brainpilot@local"
 ~~~
 
-The evaluator setup rejects destinations inside the Agent workspace. The
-private token, features, labels, and path are not written into the submission.
+The evaluator setup rejects destinations inside the Agent workspace. Agent
+startup also refuses a private evaluator environment or private entries in its
+active cache. The private token, features, labels, and path are not written into
+the submission.
 
 ## Scoring
 
@@ -437,6 +441,31 @@ Each task declares its scorer set. BrainPilotBench currently supports:
 
 Rubric scores are normalized to <code>[0, 1]</code> for leaderboard aggregation.
 Deterministic numerical metrics pass through unchanged.
+
+### Structured run states
+
+The CLI reports <code>ready_to_score</code> after verification. Every completed
+scoring attempt records one of the remaining terminal states in
+<code>scores.json</code>:
+
+| State | Meaning | Next action |
+|---|---|---|
+| <code>ready_to_score</code> | Bundle verification passed; transient pre-score state | Start the evaluator |
+| <code>private_data_missing</code> | A gated evaluator input is not staged | Maintainer fetches private data and runs evaluator setup |
+| <code>private_access_denied</code> | Gated dataset or evaluator filesystem access was denied | Fix organization/token/filesystem permission |
+| <code>submission_invalid</code> | Contract, artifact, leak, symlink, or completion check failed | Correct the submission and verify again |
+| <code>scoring_failed</code> | The scorer crashed, timed out, mutated artifacts, or returned invalid output | Inspect the scorer explanation |
+| <code>scored</code> | At least one valid task-declared score was produced | Include it in aggregation |
+
+Leaderboard output is available as a narrow-terminal-safe table or as JSON,
+Markdown, and CSV:
+
+~~~bash
+bp-bench leaderboard runs --format table
+bp-bench leaderboard runs --format json
+bp-bench leaderboard runs --format markdown
+bp-bench leaderboard runs --format csv
+~~~
 
 ### Three-state leaderboard semantics
 

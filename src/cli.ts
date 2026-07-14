@@ -23,9 +23,10 @@ import { join, resolve } from "node:path";
 import { loadTask } from "./loader.js";
 import { discoverTaskDirs } from "./discover.js";
 import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
+import { renderLeaderboard, type LeaderboardFormat } from "./leaderboard-format.js";
 import { loadCategories } from "./categories.js";
 import { resolveManifest, parseDatasetSelection, selectDatasets, type DatasetSelection } from "./data/index.js";
-import { runScorers, type RunBundle } from "./score.js";
+import { runScorers, type RunBundle, type RunScores } from "./score.js";
 import { validateTask } from "./validate.js";
 import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
@@ -249,6 +250,7 @@ async function main() {
         });
         console.log(`${Y}pending${X}: work in ${execution.workspaceDir}`);
         console.log(`  prompt: ${join(execution.workspaceDir, ".bpb", "TASK_PROMPT.md")}`);
+        console.log("  security: run the Agent without HF_TOKEN or BPB_*_PRIVATE_* evaluator variables");
         console.log(`  resume: bp-bench run ${t.meta.id} --adapter manual --resume ${runDir}`);
         continue;
       }
@@ -283,18 +285,11 @@ async function main() {
     const runs = loadRunScores(runsDir).filter((r) => visIds.has(r.taskId));
     const tables = buildLeaderboard(runs, (id) => catById.get(id), reg);
     if (!tables.length) { console.log("（无 scores.json 或无 category 记录）"); return; }
-    for (const tbl of tables) {
-      console.log(`\n${B}# ${tbl.category}${X}`);
-      console.log(`task / version            ` + tbl.metrics.map((m) => m.padEnd(14)).join(""));
-      for (const row of tbl.rows) {
-        const label = `${row.taskId}@${row.version}`.padEnd(26);
-        const cells = row.cells.map((c) => {
-          const v = c.value == null ? `${Y}—${X}` : c.value.toFixed(2);
-          return `${v} (${c.coverage.scored}/${c.coverage.total})`.padEnd(14);
-        }).join("");
-        console.log(`${label}${cells}`);
-      }
+    const format = arg("--format", "table") as LeaderboardFormat;
+    if (!["table", "json", "markdown", "csv"].includes(format)) {
+      console.error("--format must be table, json, markdown, or csv"); process.exit(2);
     }
+    console.log(renderLeaderboard(tables, format));
     return;
   }
 
@@ -354,17 +349,16 @@ async function main() {
     const judgeModel = arg("--judge-model");
     if (judgeModel) process.env.BPB_JUDGE_MODEL = judgeModel;
     const runDir = argv[1];
-    if (!runDir) { console.error("用法: bp-bench score <bundle|runDir>（提交 bundle 含 meta.json,或内部 run 含 signals.json）"); process.exit(2); }
+    if (!runDir) { console.error("用法: bp-bench score <bundle>（必须含 meta.json + artifacts/）"); process.exit(2); }
     let meta: SubmissionMeta | null = null;
     try { meta = loadSubmissionMeta(runDir); }
     catch (e) { console.error(`${Y}${(e as Error).message}${X}`); process.exit(2); }
+    if (!meta) { console.error("submission_invalid: 缺 meta.json；先生成并验证 submission bundle"); process.exit(2); }
     const sigPath = join(runDir, "signals.json");
     const signalsRaw: any = existsSync(sigPath) ? JSON.parse(readFileSync(sigPath, "utf8")) : null;
-    const manifest: any = meta ?? signalsRaw;
-    if (!manifest) { console.error("缺 meta.json(提交 bundle)或 signals.json(内部 run)"); process.exit(2); }
-    const taskId = manifest.taskId;
-    if (!taskId) { console.error("清单缺 taskId（meta.json/signals.json）"); process.exit(2); }
-    if (meta && (typeof meta.agent !== "string" || !meta.agent)) { console.error("meta.json 缺 agent(被评系统标识;先跑 submit verify)"); process.exit(2); }
+    const taskId = meta.taskId;
+    if (!taskId) { console.error("submission_invalid: meta.json 缺 taskId"); process.exit(2); }
+    if (typeof meta.agent !== "string" || !meta.agent) { console.error("submission_invalid: meta.json 缺 agent"); process.exit(2); }
     const dir = dirsByTaskId(taskId)[0];
     if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
     const t = loadTask(dir);
@@ -372,16 +366,38 @@ async function main() {
     const events = existsSync(evPath)
       ? readFileSync(evPath, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
       : [];
-    const version = meta ? meta.agent : (signalsRaw.version ?? "unknown");
-    const runId = (meta ? `${taskId}-${meta.agent}` : (signalsRaw.runId ?? `${taskId}-${signalsRaw.version ?? "unknown"}`)).replace(/\s+/g, "-");
-    const bundle: RunBundle = { runDir, runId, version, events, signals: manifest as Record<string, unknown> };
-    const scores = await runScorers(t, bundle, new Date().toISOString());
-    writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
-    console.log(`${B}— score ${taskId}${X}  → ${join(runDir, "scores.json")}`);
-    for (const r of scores.results) {
-      const v = r.unscored ? `${Y}unscored${X}` : (typeof r.value === "number" ? String(r.value) : JSON.stringify(r.value));
-      console.log(`  ${r.kind}: ${v}${r.verdict ? ` [${r.verdict}]` : ""}`);
+    const version = meta.agent;
+    const runId = `${taskId}-${meta.agent}`.replace(/\s+/g, "-");
+    const scoredAt = new Date().toISOString();
+    const contractIssues = verifySubmission(t, runDir);
+    const contractErrors = contractIssues.filter((issue) => issue.level === "error");
+    if (signalsRaw?.completed === false) contractErrors.push({ level: "error", msg: "agent run is not completed" });
+    if (contractErrors.length) {
+      const invalid: RunScores = {
+        taskId, runId, version, scoredAt, state: "submission_invalid",
+        explanation: contractErrors.map((issue) => issue.msg).join("; "), results: [],
+      };
+      writeFileSync(join(runDir, "scores.json"), JSON.stringify(invalid, null, 2));
+      console.error(`${Y}submission_invalid${X}: ${invalid.explanation}`);
+      process.exitCode = 1;
+      return;
     }
+    console.log(`${G}ready_to_score${X}: bundle verified; scoring starts after Agent completion`);
+    const bundle: RunBundle = { runDir, runId, version, events, signals: (signalsRaw ?? meta) as Record<string, unknown> };
+    let scores: RunScores;
+    try {
+      scores = await runScorers(t, bundle, scoredAt);
+    } catch (error) {
+      scores = { taskId, runId, version, scoredAt, state: "scoring_failed", explanation: (error as Error).message, results: [] };
+    }
+    writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
+    console.log(`${B}— score ${taskId}${X}  state=${scores.state} → ${join(runDir, "scores.json")}`);
+    if (scores.explanation) console.log(`  ${scores.explanation}`);
+    for (const r of scores.results) {
+      const v = r.unscored ? `${Y}${r.state ?? "scoring_failed"}${X}` : (typeof r.value === "number" ? String(r.value) : JSON.stringify(r.value));
+      console.log(`  ${r.kind}: ${v}${r.verdict ? ` [${r.verdict}]` : ""}${r.explanation ? ` — ${r.explanation}` : ""}`);
+    }
+    if (scores.state !== "scored") process.exitCode = 1;
     return;
   }
 
@@ -439,7 +455,7 @@ async function main() {
     const issues = verifySubmission(loadTask(taskDir), dir);
     const errs = issues.filter((i) => i.level === "error");
     const warns = issues.filter((i) => i.level === "warn");
-    if (!errs.length) console.log(`${G}✓${X} ${meta.taskId} @ ${meta.agent}` + (warns.length ? `  (${warns.length} warn)` : ""));
+    if (!errs.length) console.log(`${G}ready_to_score${X} ${meta.taskId} @ ${meta.agent}` + (warns.length ? `  (${warns.length} warn)` : ""));
     else console.log(`${Y}✗ ${meta.taskId} @ ${meta.agent}${X}`);
     for (const i of errs) console.log(`    ${Y}error${X}: ${i.msg}`);
     for (const i of warns) console.log(`    warn: ${i.msg}`);
@@ -447,7 +463,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
