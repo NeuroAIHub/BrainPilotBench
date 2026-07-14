@@ -1,5 +1,0 @@
-dimensions:
-  - correctness     # 科学正确性：方向划分、代表工作、方法描述是否准确无硬伤
-  - completeness    # 覆盖度：主要方向/争议点是否齐全，提纲是否成体系
-  - methodology     # 过程合理性：是否调用检索/工具佐证，而非纯记忆编造（看回放）
-  - presentation    # 呈现：提纲结构清晰、可读、可直接用于动笔
