@@ -10,7 +10,7 @@
  * SOCKS proxy(socks5://) undici 不支持;此时保留 direct fetch + 给一次性提示。
  * 显式设置 BPB_NO_PROXY=1 → 跳过安装(测试/离线场景),Node 保持默认行为。
  */
-import { ProxyAgent, setGlobalDispatcher } from "undici";
+import { EnvHttpProxyAgent, setGlobalDispatcher } from "undici";
 
 let installed = false;
 
@@ -19,11 +19,10 @@ export function installProxyFromEnv(): boolean {
   if (installed) return true;
   if (process.env.BPB_NO_PROXY) return false;
 
-  const raw =
-    process.env.HTTPS_PROXY || process.env.https_proxy ||
-    process.env.HTTP_PROXY  || process.env.http_proxy  ||
-    process.env.ALL_PROXY   || process.env.all_proxy   || "";
-  const url = raw.trim();
+  const httpsProxy = (process.env.HTTPS_PROXY || process.env.https_proxy || "").trim();
+  const httpProxy = (process.env.HTTP_PROXY || process.env.http_proxy || "").trim();
+  const allProxy = (process.env.ALL_PROXY || process.env.all_proxy || "").trim();
+  const url = httpsProxy || httpProxy || allProxy;
   if (!url) return false;
 
   // undici 不支持 socks:直连,提示一次(不阻塞主流程,curl 走 SOCKS 通 ≠ Node 走 SOCKS 通)。
@@ -34,7 +33,16 @@ export function installProxyFromEnv(): boolean {
   }
 
   try {
-    setGlobalDispatcher(new ProxyAgent(url));
+    // EnvHttpProxyAgent chooses HTTP vs HTTPS per request and respects
+    // NO_PROXY. Always bypass loopback so a remote-data proxy cannot break a
+    // local BrainPilot health check.
+    const existingNoProxy = process.env.NO_PROXY || process.env.no_proxy || "";
+    const noProxy = [existingNoProxy, "localhost", "127.0.0.1", "::1"].filter(Boolean).join(",");
+    setGlobalDispatcher(new EnvHttpProxyAgent({
+      httpsProxy: httpsProxy || (allProxy && !/^socks/i.test(allProxy) ? allProxy : undefined),
+      httpProxy: httpProxy || (allProxy && !/^socks/i.test(allProxy) ? allProxy : undefined),
+      noProxy,
+    }));
     installed = true;
     return true;
   } catch (e) {

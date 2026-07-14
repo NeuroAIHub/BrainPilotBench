@@ -2,6 +2,33 @@
 
 Category: `fmri-analysis` · Domain: `fmri-analysis` · Version `0.1`
 
+## Quick start (Agent user)
+
+Only public Study3 data is required:
+
+```bash
+npm ci && npm run build && npm link
+python3 -m pip install -r tasks/tops-fmri/env/requirements.txt
+bp-bench doctor tops-fmri
+bp-bench fetch tops-fmri --public
+bp-bench run tops-fmri --adapter manual --agent my-agent@1
+```
+
+Run the Agent in the printed workspace without evaluator/Hugging Face
+credentials, then execute the printed `--resume` command. BrainPilot users can
+replace the last command with:
+
+```bash
+bp-bench run tops-fmri \
+  --adapter brainpilot \
+  --base-url http://127.0.0.1:9001 \
+  --workspace-root /absolute/path/to/BrainPilot/brainpilot/workspaces \
+  --agent brainpilot@local
+```
+
+Private Study4/Study5 data is not needed by Agent users and must never be placed
+in the Agent workspace.
+
 ## What the agent does
 
 Train a **linear** 279 ROI / 38781 edge functional-connectivity signature on
@@ -55,6 +82,7 @@ would silently drift the data version.
 Agent workflow (no private access required):
 
 ```bash
+bp-bench doctor tops-fmri
 bp-bench fetch tops-fmri                 # public-only by default
 cd <agent-workspace>
 bash <repo>/tasks/tops-fmri/env/setup.sh # defaults to --role agent
@@ -63,6 +91,7 @@ bash <repo>/tasks/tops-fmri/env/setup.sh # defaults to --role agent
 Maintainer/evaluator workflow, run only after the agent has exited:
 
 ```bash
+export XDG_CACHE_HOME=/absolute/evaluator-only/cache
 bp-bench fetch tops-fmri --private
 export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/path
 bash tasks/tops-fmri/env/setup.sh --role evaluator
@@ -84,11 +113,9 @@ writes a private path into the agent workspace or its parent directory.
 
 ## Follow-ups (not blocking merge)
 
-- **SUT adapter**: `bp-bench run --workspace-root <dir>` now auto-invokes
-  `env/setup.sh` inside `<dir>/<sessionId>/` (see `src/cli.ts` and
-  `src/runner.ts` `onSessionReady` hook). A generic SUT adapter for
-  non-BrainPilot systems is still pending; that unblocks headless / cross-repo
-  runs.
+- **Additional adapters**: the built-in BrainPilot, command, and manual
+  adapters all run public setup before the agent starts. Specialized remote
+  runtimes can implement the same `AgentAdapter` contract.
 - **Automated calibration**: `checks/output_schema.json` describes the raw
   metric contract but there's no per-condition tolerance table baked into
   the grader — a real signature's `score` distribution should stabilize

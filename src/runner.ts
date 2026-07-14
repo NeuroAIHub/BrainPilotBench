@@ -23,7 +23,7 @@ function fillPath(tmpl: string, params: Record<string, string> = {}): string {
 }
 
 export interface RunnerOptions {
-  /** Deployment base URL, e.g. http://127.0.0.1:9001/api */
+  /** Deployment base URL, e.g. http://127.0.0.1:9001 */
   baseUrl: string;
   /** Per-event no-activity timeout (ms). Falls back to task.timeoutMin otherwise. */
   idleMs?: number;
@@ -145,12 +145,14 @@ export class BenchRunner {
     return reason;
   }
 
-  /** Run a full task: all turns, collect events + auto-signals.
-   *  `onSessionReady` fires after createSession but before the first prompt is
-   *  sent — this is where the CLI stages workspace data (env/setup.sh) so the
-   *  agent's very first read hits a populated session dir.
+  /**
+   * Run a full task. onSessionReady is the lifecycle boundary for staging
+   * public data after a session id exists but before the first agent prompt.
    */
-  async run(task: Task, opts?: { idleMs?: number; onSessionReady?: (sid: string) => Promise<void> }): Promise<RunResult> {
+  async run(task: Task, opts?: {
+    idleMs?: number;
+    onSessionReady?: (sessionId: string) => Promise<void>;
+  }): Promise<RunResult> {
     const idleMs = opts?.idleMs ?? 60000;
     const started = Date.now();
     const sid = await this.createSession();

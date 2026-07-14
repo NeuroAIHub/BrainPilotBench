@@ -20,6 +20,8 @@
     ".": "./dist/index.js",
     "./task": "./dist/task.js",
     "./runner": "./dist/runner.js",
+    "./adapters": "./dist/adapters.js",
+    "./doctor": "./dist/doctor.js",
     "./scoring": "./dist/scoring.js",
     "./scorer": "./dist/scorer/index.js",
     "./data": "./dist/data/index.js",
@@ -30,6 +32,7 @@
     "./validate": "./dist/validate.js",
     "./metrics": "./dist/metrics.js",
     "./leaderboard": "./dist/leaderboard.js",
+    "./leaderboard-format": "./dist/leaderboard-format.js",
     "./discover": "./dist/discover.js",
     "./registry": "./dist/registry.js",
     "./submission": "./dist/submission.js"
@@ -49,6 +52,7 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"dist/**/*.test.js\"",
+    "test:docs": "node scripts/docs-smoke.mjs",
     "prepublishOnly": "npm run build"
   },
   "engines": {

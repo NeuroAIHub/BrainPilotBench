@@ -7,6 +7,11 @@ on:
       - "categories.yaml"
       - "registry.json"
       - "src/**"
+      - "package*.json"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "scripts/**"
+      - ".github/workflows/validate.yml"
   push:
     branches: [main]
     paths:
@@ -14,10 +19,19 @@ on:
       - "categories.yaml"
       - "registry.json"
       - "src/**"
+      - "package*.json"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "scripts/**"
+      - ".github/workflows/validate.yml"
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,14 +39,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       # numpy:数值型任务(tops-fmri 等)的 Oracle solution.sh + exec-script grader 都用它算。
-      # 走 apt 比 pip 快、稳定;文本/文档类任务不受影响(不 import 就不加载)。
-      - name: 装 python 数值依赖(数值型 task 的 solution/grader 用)
-        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends python3-numpy
-      - run: npm install --no-audit --no-fund
+      - name: Install numerical grader dependency
+        run: python3 -m pip install --disable-pip-version-check numpy
+      - run: npm ci --no-audit --no-fund
       - run: npm run build
       - name: 单元测试(node --test)
         run: npm test
+      - name: Documentation command smoke test
+        run: npm run test:docs
       - name: canary 检查
         run: node scripts/check-task-canary.mjs
       - name: 任务有效性 + Oracle/NOP 门

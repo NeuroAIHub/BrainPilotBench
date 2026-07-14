@@ -41,8 +41,8 @@ esac
 
 STAGE_TMP="$(mktemp -d)"
 trap 'rm -rf "$STAGE_TMP"' EXIT
-tar -I zstd -xf "$PRIV_F" -C "$STAGE_TMP"
-tar -I zstd -xf "$PRIV_L" -C "$STAGE_TMP"
+zstd -dc "$PRIV_F" | tar -xf - -C "$STAGE_TMP"
+zstd -dc "$PRIV_L" | tar -xf - -C "$STAGE_TMP"
 mkdir -p "$EVAL_DIR/features" "$EVAL_DIR/labels"
 cp -a "$STAGE_TMP/private_features/features/." "$EVAL_DIR/features/"
 cp -a "$STAGE_TMP/private_labels/labels/." "$EVAL_DIR/labels/"

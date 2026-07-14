@@ -7,6 +7,7 @@
 import { readdirSync, existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { RunScores } from "./score.js";
+import type { ScoringState } from "./scorer/types.js";
 import { valueToFloat, medianFloat } from "./metrics.js";
 import type { CategoryRegistry } from "./categories.js";
 import { requiredMetricsFor } from "./categories.js";
@@ -22,6 +23,7 @@ export interface LeaderboardRow {
   taskId: string;
   version: string;
   cells: LeaderboardCell[];
+  states: Partial<Record<Exclude<ScoringState, "ready_to_score">, number>>;
 }
 export interface CategoryTable {
   category: string;
@@ -47,6 +49,7 @@ export function loadRunScores(runsDir: string): RunScores[] {
 /** 从一个 run 收集 (metric → float[]):rubric 维度归一,exec 透传;unscored 整条跳过。 */
 function metricFloats(run: RunScores): Map<string, number[]> {
   const m = new Map<string, number[]>();
+  if (run.state && run.state !== "scored") return m;
   for (const res of run.results) {
     if (!res || typeof res.kind !== "string") continue; // 坏条目(null/缺 kind)跳过——scores.json 是外部数据
     if (res.unscored) continue; // 整条 unscored → 不贡献任何 metric
@@ -103,7 +106,12 @@ export function buildLeaderboard(
         }
         return { metric, value: medianFloat(floats), coverage: { scored: floats.length, total: keyRuns.length } };
       });
-      rows.push({ taskId, version, cells });
+      const states: LeaderboardRow["states"] = {};
+      for (const run of keyRuns) {
+        const state = run.state ?? "scored";
+        states[state] = (states[state] ?? 0) + 1;
+      }
+      rows.push({ taskId, version, cells, states });
     }
     // 行排序:按行内有效 metric 均值降序(全 null 排末尾)
     rows.sort((a, b) => rowScore(b) - rowScore(a));

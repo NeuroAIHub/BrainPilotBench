@@ -29,7 +29,7 @@ ln -sfn "$STUDY3" public_data/whole_participants/FC_and_pain/study3_train.mat
 
 STAGE_TMP="$(mktemp -d)"
 trap 'rm -rf "$STAGE_TMP"' EXIT
-tar -I zstd -xf "$PUBLIC" -C "$STAGE_TMP"
+zstd -dc "$PUBLIC" | tar -xf - -C "$STAGE_TMP"
 rm -rf public_data/atlas public_data/example_participant
 cp -a "$STAGE_TMP/public_support/atlas" public_data/atlas
 cp -a "$STAGE_TMP/public_support/example_participant" public_data/example_participant

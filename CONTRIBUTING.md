@@ -44,7 +44,8 @@ The canonical surfaces — `tasks/`, `registry.json`, `categories.yaml` — are 
 
 Leaderboard numbers are produced by us running the harness against a system, **not**
 self-reported (self-reported scores are gameable). Accepting an external system to evaluate
-will go through the SUT-adapter seam (next phase); until then the benchmark scores BrainPilot.
+uses the built-in BrainPilot, command, or manual adapter and always produces the
+same verified submission-bundle contract.
 Keeping scoring in-house also lets us hold part of the task set back — the strongest
 contamination defense there is.
 
@@ -68,9 +69,10 @@ later drifts — forcing a *new* release rather than silent mutation.
 ## Local checks before a maintainer merges
 
 ```bash
-npm install && npm run build
+npm ci && npm run build
 node dist/cli.js validate all      # schema + canary + created_at + Oracle/NOP gate
 npm test
+npm run test:docs
 ```
 
 See `README.md` for the full command reference and architecture overview.

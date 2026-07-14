@@ -1,0 +1,4 @@
+# Agent-side training/runtime dependencies checked by `bp-bench doctor tops-fmri`.
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3

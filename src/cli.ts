@@ -6,7 +6,8 @@
  * BPB_NO_PROXY=1 可关闭(测试/CI/离线场景)。
  *
  *   bp-bench list [--tasks <dir>]
- *   bp-bench run <taskId|all> --base-url <url> [--tasks <dir>] [--out <dir>] [--version <tag>] [--workspace-root <dir>]
+ *   bp-bench prepare <taskId> [--workspace <dir>] [--fetch]
+ *   bp-bench run <taskId|all> --adapter <brainpilot|command|manual> [adapter options]
  *   bp-bench fetch <taskId|all> [--public|--private|--all] [--tasks <dir>]
  *   bp-bench score <runDir>                       (离线跑 scorer 写 scores.json)
  *   bp-bench leaderboard <scoresDir>
@@ -15,27 +16,28 @@
  * (+ artifacts/ 当 --workspace-root)。score 离线跑任务声明的 scorer 写 scores.json；
  * 人工 rubric 仍可填 scoresheet，leaderboard 汇总。
  *
- * auto-setup: 有 --workspace-root 且 task 有 env/setup.sh 时,run 会在 createSession 后、
- * 发首条 prompt 前，chdir 到 <workspaceRoot>/<sessionId>/ 跑一次 setup.sh。setup 决定如何
- * stage 公共数据 / export scorer 需要的环境变量;runner 不解释具体动作,只负责调。
+ * auto-setup: adapters prepare the concrete Agent workspace before the first
+ * prompt or command. Task-owned env/setup.sh scripts stage public data only.
  */
 import { installProxyFromEnv } from "./proxy.js";
 installProxyFromEnv();
-import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, writeFileSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 import { loadTask } from "./loader.js";
 import { discoverTaskDirs } from "./discover.js";
-import { BenchRunner } from "./runner.js";
-import { blankScoresheet } from "./scoring.js";
 import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
+import { renderLeaderboard, type LeaderboardFormat } from "./leaderboard-format.js";
 import { loadCategories } from "./categories.js";
 import { resolveManifest, parseDatasetSelection, selectDatasets, type DatasetSelection } from "./data/index.js";
-import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
-import { runScorers, type RunBundle } from "./score.js";
+import { runScorers, type RunBundle, type RunScores } from "./score.js";
 import { validateTask } from "./validate.js";
 import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
 import { execFileSync } from "node:child_process";
+import { BrainPilotAdapter, CommandAdapter, ManualAdapter, type AgentAdapter } from "./adapters.js";
+import { buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
+import type { DatasetEntry, FetchProgress } from "./data/types.js";
+import { runDoctor } from "./doctor.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -83,6 +85,54 @@ function gitCommitExists(sha: string): boolean {
 /** registry 路径(默认仓根 registry.json)。 */
 function registryPath(): string { return arg("--registry", "registry.json")!; }
 
+function safeRunId(value: string): string {
+  return value.replace(/[^A-Za-z0-9._@-]+/g, "-").replace(/^-+|-+$/g, "") || "run";
+}
+
+function formatBytes(bytes: number): string {
+  const units = ["B", "KiB", "MiB", "GiB"];
+  let value = bytes, unit = 0;
+  while (value >= 1024 && unit < units.length - 1) { value /= 1024; unit++; }
+  return `${value.toFixed(unit === 0 ? 0 : 1)} ${units[unit]}`;
+}
+
+function downloadProgress() {
+  const lastBucket = new Map<string, number>();
+  const started = new Map<string, { at: number; bytes: number }>();
+  return (entry: DatasetEntry, progress: FetchProgress) => {
+    const total = progress.totalBytes ?? entry.bytes;
+    const percent = total > 0 ? Math.min(100, Math.floor(progress.downloadedBytes / total * 100)) : 0;
+    const origin = started.get(entry.name) ?? { at: Date.now(), bytes: progress.downloadedBytes };
+    started.set(entry.name, origin);
+    const seconds = Math.max(0.001, (Date.now() - origin.at) / 1000);
+    const speed = Math.max(0, (progress.downloadedBytes - origin.bytes) / seconds);
+    const eta = speed > 0 ? Math.ceil((total - progress.downloadedBytes) / speed) : undefined;
+    const rate = speed > 0 ? `, ${formatBytes(speed)}/s` : "";
+    const remaining = eta !== undefined && eta >= 0 ? `, ETA ${eta}s` : "";
+    if (process.stderr.isTTY) {
+      const resume = progress.resumedFrom > 0 ? `, resumed ${formatBytes(progress.resumedFrom)}` : "";
+      process.stderr.write(`\r  downloading ${entry.name}: ${percent}% (${formatBytes(progress.downloadedBytes)}/${formatBytes(total)}${rate}${remaining}${resume})`);
+      if (progress.downloadedBytes >= total) process.stderr.write("\n");
+      return;
+    }
+    const bucket = Math.floor(percent / 10);
+    if (bucket > (lastBucket.get(entry.name) ?? -1)) {
+      lastBucket.set(entry.name, bucket);
+      console.error(`  downloading ${entry.name}: ${percent}%${rate}${remaining}`);
+    }
+  };
+}
+
+async function fetchPublicTaskData(task: ReturnType<typeof loadTask>): Promise<void> {
+  const datasets = selectDatasets(task.datasets, "public");
+  if (!datasets.length) return;
+  console.log(`${B}— fetch ${task.meta.id}${X}  (${datasets.length} public 数据集)`);
+  for (const result of await resolveManifest({ datasets }, { onProgress: downloadProgress() })) {
+    const tag = result.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
+    console.log(`  ${tag}  ${result.entry.name}  → ${result.path}`);
+  }
+}
+
 async function main() {
   if (cmd === "list") {
     for (const d of filterByVisibility(listTaskDirs())) {
@@ -93,66 +143,132 @@ async function main() {
     return;
   }
 
+  if (cmd === "doctor") {
+    const which = argv[1] && !argv[1].startsWith("--") ? argv[1] : undefined;
+    const dir = which ? dirsByTaskId(which)[0] : undefined;
+    if (which && !dir) { console.error(`找不到任务：${which}`); process.exit(2); }
+    const checks = await runDoctor({
+      task: dir ? loadTask(dir) : undefined,
+      privateData: argv.includes("--private"),
+      baseUrl: arg("--base-url"),
+    });
+    const icons = { pass: `${G}✓${X}`, warn: `${Y}!${X}`, fail: `${Y}✗${X}` };
+    for (const check of checks) {
+      console.log(`${icons[check.status]} ${check.id}: ${check.message}`);
+      if (check.fix) for (const line of check.fix.split("\n")) console.log(`    ${line}`);
+    }
+    if (checks.some((check) => check.status === "fail")) process.exit(1);
+    return;
+  }
+
+  if (cmd === "prepare") {
+    const which = argv[1];
+    const dir = dirsByTaskId(which)[0];
+    if (!dir) { console.error(`找不到任务：${which}`); process.exit(2); }
+    const task = loadTask(dir);
+    if (argv.includes("--fetch")) await fetchPublicTaskData(task);
+    const workspaceDir = resolve(arg("--workspace", join(".bpb", "workspaces", `${task.meta.id}-manual`))!);
+    const prepared = prepareWorkspace(task, workspaceDir);
+    console.log(`${G}✓${X} prepared ${task.meta.id} → ${workspaceDir}`);
+    console.log(`  prompt: ${prepared.promptPath}`);
+    console.log(`  setup: ${prepared.setupRan ? "public data staged" : "not required"}`);
+    return;
+  }
+
   if (cmd === "run") {
     const which = argv[1];
-    const baseUrl = arg("--base-url");
-    if (!baseUrl) { console.error("需 --base-url"); process.exit(2); }
     const out = arg("--out", "runs")!;
-    const version = arg("--version", "unknown")!;
+    const adapterKind = arg("--adapter", "brainpilot")!;
+    if (!(["brainpilot", "command", "manual"] as string[]).includes(adapterKind)) {
+      console.error(`未知 adapter: ${adapterKind}`); process.exit(2);
+    }
+    const agent = arg("--agent", arg("--version", `${adapterKind}@unknown`))!;
+
+    const resume = arg("--resume");
+    if (resume) {
+      const runDir = resolve(existsSync(resume) ? resume : join(out, resume));
+      const state = readManualRunState(runDir);
+      const taskDir = dirsByTaskId(state.taskId)[0];
+      if (!taskDir) throw new Error(`找不到任务：${state.taskId}`);
+      const task = loadTask(taskDir);
+      if (which && which !== state.taskId) throw new Error(`resume task mismatch: command=${which}, state=${state.taskId}`);
+      if (task.meta.version !== state.taskVersion) {
+        throw new Error(`task changed since prepare: state=${state.taskVersion}, current=${task.meta.version}`);
+      }
+      const built = await buildSubmissionBundle({
+        task,
+        result: syntheticRunResult(task.meta.id, state.workspaceDir, true, Date.now()),
+        workspaceDir: state.workspaceDir,
+        runDir,
+        agent: state.agent,
+      });
+      const errors = built.issues.filter((issue) => issue.level === "error");
+      for (const issue of built.issues) console.log(`  ${issue.level}: ${issue.msg}`);
+      if (errors.length) throw new Error(`manual submission is incomplete (${errors.length} errors); continue work in ${state.workspaceDir} and resume again`);
+      console.log(`${G}✓${X} resumed and verified ${state.taskId} → ${runDir}`);
+      return;
+    }
+
     const dirs = which === "all" ? listTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
+    if (which === "all" && arg("--run-id")) { console.error("--run-id cannot be used with run all"); process.exit(2); }
     const autoFetch = argv.includes("--fetch");
-    const wsRoot = arg("--workspace-root");
-    const runner = new BenchRunner({ baseUrl });
     for (const d of dirs) {
       const t = loadTask(d);
-      if (autoFetch && t.datasets.length) {
-        const datasets = selectDatasets(t.datasets, "public");
-        console.log(`${B}— fetch ${t.meta.id}${X}  (${datasets.length} public 数据集)`);
-        for (const r of await resolveManifest({ datasets })) {
-          const tag = r.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
-          console.log(`  ${tag}  ${r.entry.name}  → ${r.path}`);
+      if (autoFetch) await fetchPublicTaskData(t);
+      const runId = safeRunId(arg("--run-id", `${t.meta.id}-${agent}`)!);
+      const runDir = resolve(join(out, runId));
+      const configuredRoot = arg("--workspace-root", process.env.BRAINPILOT_WORKSPACE_ROOT);
+      const localRoot = resolve(configuredRoot ?? join(".bpb", "workspaces"));
+      const workspaceDir = resolve(arg("--workspace", join(localRoot, runId))!);
+
+      let adapter: AgentAdapter;
+      if (adapterKind === "brainpilot") {
+        if (!configuredRoot) {
+          console.error("brainpilot adapter 需要 --workspace-root，或设置 BRAINPILOT_WORKSPACE_ROOT");
+          process.exit(2);
         }
+        adapter = new BrainPilotAdapter({
+          baseUrl: arg("--base-url", process.env.BRAINPILOT_BASE_URL ?? "http://127.0.0.1:9001")!,
+          workspaceRoot: localRoot,
+        });
+      } else if (adapterKind === "command") {
+        const command = arg("--command");
+        if (!command) { console.error("command adapter 需要 --command"); process.exit(2); }
+        adapter = new CommandAdapter({ command, workspaceDir });
+      } else {
+        adapter = new ManualAdapter(workspaceDir);
       }
-      // 有 --workspace-root + task 有 env/setup.sh + <wsRoot>/<sid>/ 存在(Runtime
-      // 已建好 session workspace) → 在其中跑一次 setup.sh。stage 数据 / export env
-      // (BPB_*_DIR 等)全由任务侧 setup.sh 决定;runner 只负责调,不解释。
-      const setupPath = join(d, "env", "setup.sh");
-      const hasSetup = wsRoot && existsSync(setupPath);
-      console.log(`${B}— run ${t.meta.id}${X}`);
-      const res = await runner.run(t, {
-        onSessionReady: hasSetup
-          ? async (sid: string) => {
-              const sessDir = join(wsRoot!, sid);
-              if (!existsSync(sessDir)) {
-                console.error(`  ${Y}skip setup${X}: session dir 不存在(${sessDir}); Runtime 是否为每 session 建了 workspace?`);
-                return;
-              }
-              try {
-                execFileSync("/bin/bash", [setupPath], { cwd: sessDir, stdio: "inherit", timeout: 300_000 });
-                console.log(`  setup: env/setup.sh 已在 ${sessDir} 跑完`);
-              } catch (e) {
-                console.error(`  ${Y}setup 失败${X}: ${(e as Error).message}`);
-                throw e;
-              }
-            }
-          : undefined,
+      console.log(`${B}— run ${t.meta.id}${X}  adapter=${adapter.kind}`);
+      const execution = await adapter.run(t);
+      if (execution.status === "pending") {
+        writeManualRunState(runDir, {
+          taskId: t.meta.id,
+          taskVersion: t.meta.version,
+          agent,
+          adapter: "manual",
+          workspaceDir: execution.workspaceDir,
+          createdAt: new Date().toISOString(),
+        });
+        console.log(`${Y}pending${X}: work in ${execution.workspaceDir}`);
+        console.log(`  prompt: ${join(execution.workspaceDir, ".bpb", "TASK_PROMPT.md")}`);
+        console.log("  security: run the Agent without HF_TOKEN or BPB_*_PRIVATE_* evaluator variables");
+        console.log(`  resume: bp-bench run ${t.meta.id} --adapter manual --resume ${runDir}`);
+        continue;
+      }
+
+      const built = await buildSubmissionBundle({
+        task: t,
+        result: execution.result!,
+        workspaceDir: execution.workspaceDir,
+        runDir,
+        agent,
       });
-      const runId = `${t.meta.id}-${version}`;
-      const runDir = join(out, runId);
-      mkdirSync(runDir, { recursive: true });
-      writeFileSync(join(runDir, "events.jsonl"), res.events.map((e) => JSON.stringify(e)).join("\n"));
-      writeFileSync(join(runDir, "signals.json"), JSON.stringify({ taskId: t.meta.id, ...res.signals, reason: res.reason, sessionId: res.sessionId, version }, null, 2));
-      // 空 scoresheet（exportedAt 用 run 内最后事件 _ts，避免依赖时钟）
-      const lastTs = res.events.length ? res.events[res.events.length - 1]._ts : new Date().toISOString();
-      writeFileSync(join(runDir, "scoresheet.json"), JSON.stringify(blankScoresheet(t, runId, version, "", String(lastTs)), null, 2));
-      if (wsRoot) {
-        const globs = t.meta.expectedArtifacts.map((a) => a.workspace);
-        const got = await captureArtifacts(filesystemArtifactSource(wsRoot), res.sessionId, globs, join(runDir, "artifacts"));
-        console.log(`  artifacts: ${got.length} 个回收 → ${join(runDir, "artifacts")}`);
-      }
-      const tag = res.signals.completed ? `${G}completed${X}` : `${Y}${res.reason}${X}`;
-      console.log(`  ${tag}  events=${res.signals.eventCount} content=${res.signals.textContentEvents} tools=${res.signals.toolCalls} errors=${res.signals.errorEvents}  → ${runDir}`);
+      const errors = built.issues.filter((issue) => issue.level === "error");
+      console.log(`  artifacts: ${built.artifacts.length} → ${join(runDir, "artifacts")}`);
+      for (const issue of built.issues) console.log(`  ${issue.level}: ${issue.msg}`);
+      if (errors.length) throw new Error(`submission bundle failed verification (${errors.length} errors): ${runDir}`);
+      console.log(`${G}✓ completed and verified${X} → ${runDir}`);
     }
     return;
   }
@@ -171,18 +287,11 @@ async function main() {
     const runs = loadRunScores(runsDir).filter((r) => visIds.has(r.taskId));
     const tables = buildLeaderboard(runs, (id) => catById.get(id), reg);
     if (!tables.length) { console.log("（无 scores.json 或无 category 记录）"); return; }
-    for (const tbl of tables) {
-      console.log(`\n${B}# ${tbl.category}${X}`);
-      console.log(`task / version            ` + tbl.metrics.map((m) => m.padEnd(14)).join(""));
-      for (const row of tbl.rows) {
-        const label = `${row.taskId}@${row.version}`.padEnd(26);
-        const cells = row.cells.map((c) => {
-          const v = c.value == null ? `${Y}—${X}` : c.value.toFixed(2);
-          return `${v} (${c.coverage.scored}/${c.coverage.total})`.padEnd(14);
-        }).join("");
-        console.log(`${label}${cells}`);
-      }
+    const format = arg("--format", "table") as LeaderboardFormat;
+    if (!["table", "json", "markdown", "csv"].includes(format)) {
+      console.error("--format must be table, json, markdown, or csv"); process.exit(2);
     }
+    console.log(renderLeaderboard(tables, format));
     return;
   }
 
@@ -222,7 +331,7 @@ async function main() {
       console.log(`${B}— fetch ${t.meta.id}${X}  (${datasets.length} ${selection!} 数据集)`);
       let resolved;
       try {
-        resolved = await resolveManifest({ datasets });
+        resolved = await resolveManifest({ datasets }, { onProgress: downloadProgress() });
       } catch (e) {
         if (selection === "private" || selection === "all") {
           console.error(`${Y}私有评测数据获取失败。请先获得数据集权限并设置 HF_TOKEN。${X}`);
@@ -242,17 +351,16 @@ async function main() {
     const judgeModel = arg("--judge-model");
     if (judgeModel) process.env.BPB_JUDGE_MODEL = judgeModel;
     const runDir = argv[1];
-    if (!runDir) { console.error("用法: bp-bench score <bundle|runDir>（提交 bundle 含 meta.json,或内部 run 含 signals.json）"); process.exit(2); }
+    if (!runDir) { console.error("用法: bp-bench score <bundle>（必须含 meta.json + artifacts/）"); process.exit(2); }
     let meta: SubmissionMeta | null = null;
     try { meta = loadSubmissionMeta(runDir); }
     catch (e) { console.error(`${Y}${(e as Error).message}${X}`); process.exit(2); }
+    if (!meta) { console.error("submission_invalid: 缺 meta.json；先生成并验证 submission bundle"); process.exit(2); }
     const sigPath = join(runDir, "signals.json");
     const signalsRaw: any = existsSync(sigPath) ? JSON.parse(readFileSync(sigPath, "utf8")) : null;
-    const manifest: any = meta ?? signalsRaw;
-    if (!manifest) { console.error("缺 meta.json(提交 bundle)或 signals.json(内部 run)"); process.exit(2); }
-    const taskId = manifest.taskId;
-    if (!taskId) { console.error("清单缺 taskId（meta.json/signals.json）"); process.exit(2); }
-    if (meta && (typeof meta.agent !== "string" || !meta.agent)) { console.error("meta.json 缺 agent(被评系统标识;先跑 submit verify)"); process.exit(2); }
+    const taskId = meta.taskId;
+    if (!taskId) { console.error("submission_invalid: meta.json 缺 taskId"); process.exit(2); }
+    if (typeof meta.agent !== "string" || !meta.agent) { console.error("submission_invalid: meta.json 缺 agent"); process.exit(2); }
     const dir = dirsByTaskId(taskId)[0];
     if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
     const t = loadTask(dir);
@@ -260,16 +368,38 @@ async function main() {
     const events = existsSync(evPath)
       ? readFileSync(evPath, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
       : [];
-    const version = meta ? meta.agent : (signalsRaw.version ?? "unknown");
-    const runId = (meta ? `${taskId}-${meta.agent}` : (signalsRaw.runId ?? `${taskId}-${signalsRaw.version ?? "unknown"}`)).replace(/\s+/g, "-");
-    const bundle: RunBundle = { runDir, runId, version, events, signals: manifest as Record<string, unknown> };
-    const scores = await runScorers(t, bundle, new Date().toISOString());
-    writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
-    console.log(`${B}— score ${taskId}${X}  → ${join(runDir, "scores.json")}`);
-    for (const r of scores.results) {
-      const v = r.unscored ? `${Y}unscored${X}` : (typeof r.value === "number" ? String(r.value) : JSON.stringify(r.value));
-      console.log(`  ${r.kind}: ${v}${r.verdict ? ` [${r.verdict}]` : ""}`);
+    const version = meta.agent;
+    const runId = `${taskId}-${meta.agent}`.replace(/\s+/g, "-");
+    const scoredAt = new Date().toISOString();
+    const contractIssues = verifySubmission(t, runDir);
+    const contractErrors = contractIssues.filter((issue) => issue.level === "error");
+    if (signalsRaw?.completed === false) contractErrors.push({ level: "error", msg: "agent run is not completed" });
+    if (contractErrors.length) {
+      const invalid: RunScores = {
+        taskId, runId, version, scoredAt, state: "submission_invalid",
+        explanation: contractErrors.map((issue) => issue.msg).join("; "), results: [],
+      };
+      writeFileSync(join(runDir, "scores.json"), JSON.stringify(invalid, null, 2));
+      console.error(`${Y}submission_invalid${X}: ${invalid.explanation}`);
+      process.exitCode = 1;
+      return;
     }
+    console.log(`${G}ready_to_score${X}: bundle verified; scoring starts after Agent completion`);
+    const bundle: RunBundle = { runDir, runId, version, events, signals: (signalsRaw ?? meta) as Record<string, unknown> };
+    let scores: RunScores;
+    try {
+      scores = await runScorers(t, bundle, scoredAt);
+    } catch (error) {
+      scores = { taskId, runId, version, scoredAt, state: "scoring_failed", explanation: (error as Error).message, results: [] };
+    }
+    writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
+    console.log(`${B}— score ${taskId}${X}  state=${scores.state} → ${join(runDir, "scores.json")}`);
+    if (scores.explanation) console.log(`  ${scores.explanation}`);
+    for (const r of scores.results) {
+      const v = r.unscored ? `${Y}${r.state ?? "scoring_failed"}${X}` : (typeof r.value === "number" ? String(r.value) : JSON.stringify(r.value));
+      console.log(`  ${r.kind}: ${v}${r.verdict ? ` [${r.verdict}]` : ""}${r.explanation ? ` — ${r.explanation}` : ""}`);
+    }
+    if (scores.state !== "scored") process.exitCode = 1;
     return;
   }
 
@@ -327,7 +457,7 @@ async function main() {
     const issues = verifySubmission(loadTask(taskDir), dir);
     const errs = issues.filter((i) => i.level === "error");
     const warns = issues.filter((i) => i.level === "warn");
-    if (!errs.length) console.log(`${G}✓${X} ${meta.taskId} @ ${meta.agent}` + (warns.length ? `  (${warns.length} warn)` : ""));
+    if (!errs.length) console.log(`${G}ready_to_score${X} ${meta.taskId} @ ${meta.agent}` + (warns.length ? `  (${warns.length} warn)` : ""));
     else console.log(`${Y}✗ ${meta.taskId} @ ${meta.agent}${X}`);
     for (const i of errs) console.log(`    ${Y}error${X}: ${i.msg}`);
     for (const i of warns) console.log(`    warn: ${i.msg}`);
@@ -335,8 +465,13 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] [--fetch] | fetch <id|all> [--public|--private|--all] | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch((e) => {
+  const error = e instanceof Error ? e : new Error(String(e));
+  console.error(`${Y}${error.message}${X}`);
+  if (argv.includes("--verbose") && error.stack) console.error(error.stack);
+  process.exit(1);
+});
