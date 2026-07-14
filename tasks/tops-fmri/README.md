@@ -26,6 +26,24 @@ bp-bench run tops-fmri \
   --agent brainpilot@local
 ```
 
+For an untrusted local command Agent, use Docker isolation instead of the
+manual handoff or local process mode:
+
+```bash
+bp-bench doctor tops-fmri --isolation docker
+bp-bench run tops-fmri \
+  --adapter command \
+  --isolation docker \
+  --image "your-agent@sha256:<64-hex-digest>" \
+  --command 'your-agent --prompt "$BPB_TASK_PROMPT"' \
+  --agent your-agent@1 \
+  --official
+```
+
+Network access is disabled unless explicitly enabled with `--network bridge`.
+Only public task data and the Agent workspace are mounted; private Study4/5
+data and evaluator credentials remain outside the container.
+
 Private Study4/Study5 data is not needed by Agent users and must never be placed
 in the Agent workspace.
 

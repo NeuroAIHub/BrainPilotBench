@@ -7,6 +7,7 @@ import { hfResolve, resolveHfToken } from "./data/fetch.js";
 import { isCached } from "./data/cache.js";
 import { selectDatasets } from "./data/scope.js";
 import { detectBrainPilotBaseUrl } from "./adapters.js";
+import { dockerStatus } from "./isolation.js";
 
 export type DoctorStatus = "pass" | "warn" | "fail";
 export interface DoctorCheck {
@@ -21,6 +22,8 @@ export interface DoctorOptions {
   task?: Task;
   privateData?: boolean;
   baseUrl?: string;
+  isolation?: "process" | "docker";
+  dockerBinary?: string;
   fetchFn?: typeof fetch;
   commandRunner?: (command: string, args: string[]) => CommandResult;
   diskFreeBytes?: number;
@@ -132,6 +135,22 @@ export async function runDoctor(options: DoctorOptions = {}): Promise<DoctorChec
   checks.push(proxyRaw && /^socks/i.test(proxyRaw)
     ? { id: "proxy", status: "warn", message: `${proxy}; Node fetch requires an HTTP(S) proxy`, fix: "Set https_proxy=http://127.0.0.1:<port>." }
     : { id: "proxy", status: "pass", message: proxy ? `using ${proxy}` : "direct network (no proxy configured)" });
+
+  if (options.isolation === "docker") {
+    const docker = dockerStatus(options.dockerBinary ?? "docker", command);
+    checks.push(docker.ok
+      ? { id: "docker", status: "pass", message: `Docker daemon available${docker.output ? ` (${docker.output.split("\n")[0]})` : ""}` }
+      : {
+          id: "docker", status: "fail", message: "Docker isolation is unavailable",
+          fix: "Install Docker Desktop (macOS) or Docker Engine (Ubuntu), start the daemon, then rerun this command.",
+        });
+  } else {
+    checks.push({
+      id: "isolation", status: "warn",
+      message: "local process mode is not a security boundary",
+      fix: "For untrusted Agents, use --adapter command --isolation docker --image <image>.",
+    });
+  }
 
   if (options.privateData) {
     checks.push(resolveHfToken()

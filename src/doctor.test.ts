@@ -73,3 +73,15 @@ test("runDoctor distinguishes missing packages, disk, cache, and gated access", 
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test("runDoctor fails closed when requested Docker isolation is unavailable", async () => {
+  const checks = await runDoctor({
+    isolation: "docker",
+    commandRunner: (command) => command === "docker"
+      ? { ok: false, output: "daemon is not running" }
+      : { ok: true, output: "1.0" },
+  });
+  const docker = checks.find((check) => check.id === "docker");
+  assert.equal(docker?.status, "fail");
+  assert.match(docker?.fix ?? "", /Docker Desktop|Docker Engine/);
+});
