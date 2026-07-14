@@ -22,6 +22,8 @@ export type {
 export { DEFAULT_GATE, DEFAULT_RUBRIC, DEFAULT_SCORERS } from "./task.js";
 export * from "./loader.js";
 export * from "./runner.js";
+export * from "./adapters.js";
+export * from "./workflow.js";
 export * from "./scoring.js";
 export * from "./scorer/index.js";
 export * from "./data/index.js";

@@ -20,6 +20,7 @@
     ".": "./dist/index.js",
     "./task": "./dist/task.js",
     "./runner": "./dist/runner.js",
+    "./adapters": "./dist/adapters.js",
     "./scoring": "./dist/scoring.js",
     "./scorer": "./dist/scorer/index.js",
     "./data": "./dist/data/index.js",

@@ -6,7 +6,8 @@
  * BPB_NO_PROXY=1 可关闭(测试/CI/离线场景)。
  *
  *   bp-bench list [--tasks <dir>]
- *   bp-bench run <taskId|all> --base-url <url> [--tasks <dir>] [--out <dir>] [--version <tag>] [--workspace-root <dir>]
+ *   bp-bench prepare <taskId> [--workspace <dir>] [--fetch]
+ *   bp-bench run <taskId|all> --adapter <brainpilot|command|manual> [adapter options]
  *   bp-bench fetch <taskId|all> [--public|--private|--all] [--tasks <dir>]
  *   bp-bench score <runDir>                       (离线跑 scorer 写 scores.json)
  *   bp-bench leaderboard <scoresDir>
@@ -17,21 +18,20 @@
  */
 import { installProxyFromEnv } from "./proxy.js";
 installProxyFromEnv();
-import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, writeFileSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 import { loadTask } from "./loader.js";
 import { discoverTaskDirs } from "./discover.js";
-import { BenchRunner } from "./runner.js";
-import { blankScoresheet } from "./scoring.js";
 import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
 import { loadCategories } from "./categories.js";
 import { resolveManifest, parseDatasetSelection, selectDatasets, type DatasetSelection } from "./data/index.js";
-import { captureArtifacts, filesystemArtifactSource } from "./artifacts.js";
 import { runScorers, type RunBundle } from "./score.js";
 import { validateTask } from "./validate.js";
 import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
 import { execFileSync } from "node:child_process";
+import { BrainPilotAdapter, CommandAdapter, ManualAdapter, type AgentAdapter } from "./adapters.js";
+import { buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -79,6 +79,20 @@ function gitCommitExists(sha: string): boolean {
 /** registry 路径(默认仓根 registry.json)。 */
 function registryPath(): string { return arg("--registry", "registry.json")!; }
 
+function safeRunId(value: string): string {
+  return value.replace(/[^A-Za-z0-9._@-]+/g, "-").replace(/^-+|-+$/g, "") || "run";
+}
+
+async function fetchPublicTaskData(task: ReturnType<typeof loadTask>): Promise<void> {
+  const datasets = selectDatasets(task.datasets, "public");
+  if (!datasets.length) return;
+  console.log(`${B}— fetch ${task.meta.id}${X}  (${datasets.length} public 数据集)`);
+  for (const result of await resolveManifest({ datasets })) {
+    const tag = result.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
+    console.log(`  ${tag}  ${result.entry.name}  → ${result.path}`);
+  }
+}
+
 async function main() {
   if (cmd === "list") {
     for (const d of filterByVisibility(listTaskDirs())) {
@@ -89,44 +103,114 @@ async function main() {
     return;
   }
 
+  if (cmd === "prepare") {
+    const which = argv[1];
+    const dir = dirsByTaskId(which)[0];
+    if (!dir) { console.error(`找不到任务：${which}`); process.exit(2); }
+    const task = loadTask(dir);
+    if (argv.includes("--fetch")) await fetchPublicTaskData(task);
+    const workspaceDir = resolve(arg("--workspace", join(".bpb", "workspaces", `${task.meta.id}-manual`))!);
+    const prepared = prepareWorkspace(task, workspaceDir);
+    console.log(`${G}✓${X} prepared ${task.meta.id} → ${workspaceDir}`);
+    console.log(`  prompt: ${prepared.promptPath}`);
+    console.log(`  setup: ${prepared.setupRan ? "public data staged" : "not required"}`);
+    return;
+  }
+
   if (cmd === "run") {
     const which = argv[1];
-    const baseUrl = arg("--base-url");
-    if (!baseUrl) { console.error("需 --base-url"); process.exit(2); }
     const out = arg("--out", "runs")!;
-    const version = arg("--version", "unknown")!;
+    const adapterKind = arg("--adapter", "brainpilot")!;
+    if (!(["brainpilot", "command", "manual"] as string[]).includes(adapterKind)) {
+      console.error(`未知 adapter: ${adapterKind}`); process.exit(2);
+    }
+    const agent = arg("--agent", arg("--version", `${adapterKind}@unknown`))!;
+
+    const resume = arg("--resume");
+    if (resume) {
+      const runDir = resolve(existsSync(resume) ? resume : join(out, resume));
+      const state = readManualRunState(runDir);
+      const taskDir = dirsByTaskId(state.taskId)[0];
+      if (!taskDir) throw new Error(`找不到任务：${state.taskId}`);
+      const task = loadTask(taskDir);
+      if (which && which !== state.taskId) throw new Error(`resume task mismatch: command=${which}, state=${state.taskId}`);
+      if (task.meta.version !== state.taskVersion) {
+        throw new Error(`task changed since prepare: state=${state.taskVersion}, current=${task.meta.version}`);
+      }
+      const built = await buildSubmissionBundle({
+        task,
+        result: syntheticRunResult(task.meta.id, state.workspaceDir, true, Date.now()),
+        workspaceDir: state.workspaceDir,
+        runDir,
+        agent: state.agent,
+      });
+      const errors = built.issues.filter((issue) => issue.level === "error");
+      for (const issue of built.issues) console.log(`  ${issue.level}: ${issue.msg}`);
+      if (errors.length) throw new Error(`manual submission is incomplete (${errors.length} errors); continue work in ${state.workspaceDir} and resume again`);
+      console.log(`${G}✓${X} resumed and verified ${state.taskId} → ${runDir}`);
+      return;
+    }
+
     const dirs = which === "all" ? listTaskDirs() : dirsByTaskId(which);
     if (!dirs.length) { console.error(`找不到任务：${which}`); process.exit(2); }
+    if (which === "all" && arg("--run-id")) { console.error("--run-id cannot be used with run all"); process.exit(2); }
     const autoFetch = argv.includes("--fetch");
-    const runner = new BenchRunner({ baseUrl });
     for (const d of dirs) {
       const t = loadTask(d);
-      if (autoFetch && t.datasets.length) {
-        const datasets = selectDatasets(t.datasets, "public");
-        console.log(`${B}— fetch ${t.meta.id}${X}  (${datasets.length} public 数据集)`);
-        for (const r of await resolveManifest({ datasets })) {
-          const tag = r.fetched ? `${G}fetched${X}` : `${Y}cached${X}`;
-          console.log(`  ${tag}  ${r.entry.name}  → ${r.path}`);
+      if (autoFetch) await fetchPublicTaskData(t);
+      const runId = safeRunId(arg("--run-id", `${t.meta.id}-${agent}`)!);
+      const runDir = resolve(join(out, runId));
+      const configuredRoot = arg("--workspace-root", process.env.BRAINPILOT_WORKSPACE_ROOT);
+      const localRoot = resolve(configuredRoot ?? join(".bpb", "workspaces"));
+      const workspaceDir = resolve(arg("--workspace", join(localRoot, runId))!);
+
+      let adapter: AgentAdapter;
+      if (adapterKind === "brainpilot") {
+        if (!configuredRoot) {
+          console.error("brainpilot adapter 需要 --workspace-root，或设置 BRAINPILOT_WORKSPACE_ROOT");
+          process.exit(2);
         }
+        adapter = new BrainPilotAdapter({
+          baseUrl: arg("--base-url", process.env.BRAINPILOT_BASE_URL ?? "http://127.0.0.1:9001")!,
+          workspaceRoot: localRoot,
+        });
+      } else if (adapterKind === "command") {
+        const command = arg("--command");
+        if (!command) { console.error("command adapter 需要 --command"); process.exit(2); }
+        adapter = new CommandAdapter({ command, workspaceDir });
+      } else {
+        adapter = new ManualAdapter(workspaceDir);
       }
-      console.log(`${B}— run ${t.meta.id}${X}`);
-      const res = await runner.run(t);
-      const runId = `${t.meta.id}-${version}`;
-      const runDir = join(out, runId);
-      mkdirSync(runDir, { recursive: true });
-      writeFileSync(join(runDir, "events.jsonl"), res.events.map((e) => JSON.stringify(e)).join("\n"));
-      writeFileSync(join(runDir, "signals.json"), JSON.stringify({ taskId: t.meta.id, ...res.signals, reason: res.reason, sessionId: res.sessionId, version }, null, 2));
-      // 空 scoresheet（exportedAt 用 run 内最后事件 _ts，避免依赖时钟）
-      const lastTs = res.events.length ? res.events[res.events.length - 1]._ts : new Date().toISOString();
-      writeFileSync(join(runDir, "scoresheet.json"), JSON.stringify(blankScoresheet(t, runId, version, "", String(lastTs)), null, 2));
-      const wsRoot = arg("--workspace-root");
-      if (wsRoot) {
-        const globs = t.meta.expectedArtifacts.map((a) => a.workspace);
-        const got = await captureArtifacts(filesystemArtifactSource(wsRoot), res.sessionId, globs, join(runDir, "artifacts"));
-        console.log(`  artifacts: ${got.length} 个回收 → ${join(runDir, "artifacts")}`);
+
+      console.log(`${B}— run ${t.meta.id}${X}  adapter=${adapter.kind}`);
+      const execution = await adapter.run(t);
+      if (execution.status === "pending") {
+        writeManualRunState(runDir, {
+          taskId: t.meta.id,
+          taskVersion: t.meta.version,
+          agent,
+          adapter: "manual",
+          workspaceDir: execution.workspaceDir,
+          createdAt: new Date().toISOString(),
+        });
+        console.log(`${Y}pending${X}: work in ${execution.workspaceDir}`);
+        console.log(`  prompt: ${join(execution.workspaceDir, ".bpb", "TASK_PROMPT.md")}`);
+        console.log(`  resume: bp-bench run ${t.meta.id} --adapter manual --resume ${runDir}`);
+        continue;
       }
-      const tag = res.signals.completed ? `${G}completed${X}` : `${Y}${res.reason}${X}`;
-      console.log(`  ${tag}  events=${res.signals.eventCount} content=${res.signals.textContentEvents} tools=${res.signals.toolCalls} errors=${res.signals.errorEvents}  → ${runDir}`);
+
+      const built = await buildSubmissionBundle({
+        task: t,
+        result: execution.result!,
+        workspaceDir: execution.workspaceDir,
+        runDir,
+        agent,
+      });
+      const errors = built.issues.filter((issue) => issue.level === "error");
+      console.log(`  artifacts: ${built.artifacts.length} → ${join(runDir, "artifacts")}`);
+      for (const issue of built.issues) console.log(`  ${issue.level}: ${issue.msg}`);
+      if (errors.length) throw new Error(`submission bundle failed verification (${errors.length} errors): ${runDir}`);
+      console.log(`${G}✓ completed and verified${X} → ${runDir}`);
     }
     return;
   }
@@ -309,7 +393,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | run <id|all> --base-url <url> [--version <tag>] [--workspace-root <dir>] [--fetch] | fetch <id|all> [--public|--private|--all] | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle|runDir> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 

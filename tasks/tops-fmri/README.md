@@ -84,9 +84,9 @@ writes a private path into the agent workspace or its parent directory.
 
 ## Follow-ups (not blocking merge)
 
-- **SUT adapter**: BPB runner doesn't yet auto-run `env/setup.sh`; today a
-  wrapper needs to invoke it before spinning up the agent. When the SUT
-  adapter lands, this task will benefit automatically (no changes here).
+- **Additional adapters**: the built-in BrainPilot, command, and manual
+  adapters all run public setup before the agent starts. Specialized remote
+  runtimes can implement the same `AgentAdapter` contract.
 - **Automated calibration**: `checks/output_schema.json` describes the raw
   metric contract but there's no per-condition tolerance table baked into
   the grader — a real signature's `score` distribution should stabilize
