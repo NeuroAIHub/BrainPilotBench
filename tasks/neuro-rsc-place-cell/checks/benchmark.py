@@ -490,7 +490,13 @@ def compute_rate_maps_and_si(
     occupancy = np.bincount(bin_index, minlength=n_bins).astype(float)
     one_hot = np.eye(n_bins, dtype=float)[bin_index]
     activity = neural_activity[:, mask]
-    activity_sum = activity @ one_hot
+    # NumPy 2.1 on macOS/Accelerate can emit spurious floating-point warnings
+    # for this finite matmul. Suppress only the kernel warning and fail closed
+    # if the result itself is non-finite.
+    with np.errstate(divide="ignore", over="ignore", invalid="ignore"):
+        activity_sum = activity @ one_hot
+    if not np.isfinite(activity_sum).all():
+        raise ValueError("Non-finite activity sum encountered while building rate maps.")
     rate_map = np.divide(
         activity_sum,
         occupancy[None, :],
@@ -647,9 +653,12 @@ def decode_with_folds(
         rate_map = np.clip(rate_map, EPS, None)
         test_activity = selected_activity[:, test_mask].T
         # Poisson log-likelihood up to constants independent of position.
-        log_posterior = test_activity @ np.log(rate_map) - np.sum(
-            rate_map, axis=0, keepdims=True
-        )
+        with np.errstate(divide="ignore", over="ignore", invalid="ignore"):
+            log_posterior = test_activity @ np.log(rate_map) - np.sum(
+                rate_map, axis=0, keepdims=True
+            )
+        if not np.isfinite(log_posterior).all():
+            raise ValueError("Non-finite Poisson log-posterior encountered during decoding.")
         predicted_cm = bin_centers_cm[np.argmax(log_posterior, axis=1)]
         errors = np.abs(predicted_cm - position_cm[test_mask])
         all_errors.append(errors)
@@ -923,7 +932,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.cv_folds != 5:
         parser.error("This benchmark requires exactly 5 cross-validation folds.")
 
-    input_path = Path(args.input).expanduser().resolve()
+    # Keep the user-visible filename instead of resolving content-cache
+    # symlinks to their extensionless `data` target. scipy can read the
+    # symlink, and the `.mat` suffix is part of this CLI's format contract.
+    input_path = Path(args.input).expanduser().absolute()
     output_dir = Path(args.output).expanduser().resolve()
     if not input_path.exists():
         parser.error(f"Input does not exist: {input_path}")

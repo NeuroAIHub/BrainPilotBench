@@ -19,56 +19,64 @@
 |-------------------------------------|------------------------------------------------------------------------|
 | `place_cell_ratio_ok`               | 1 iff `place_cell_ratio_mean ∈ [reference.min, reference.max]`         |
 | `decoding_significance_ok`          | 1 iff `decoding_significant` matches reference expectation (true)      |
-| `decoding_error_within_tolerance`   | 1 iff `1 - real/shuffle >= reduction_min - tolerance`                  |
+| `decoding_error_within_tolerance`   | 1 iff `1 - real/shuffle >= frozen improvement minimum`                 |
+| `score`                             | Equal-weight mean of the three binary checks                           |
 
 Extra observational floats (`*_value`) are also emitted but do NOT belong to the
 category's required-metric set — they're for context on the leaderboard.
 
-## Calibrating `reference.json` (maintainer checklist)
+## Frozen calibration
 
-The first version ships with generous ranges. To tighten:
+Task version 0.2 was calibrated before formal evaluation against the pinned
+dataset SHA-256
+`0a5f35ccf29ce6611908f5233b4325bfcc43e63c57e4d3763a4cf7dcea6f0987`.
+The official command used all 12 sessions, 50 spatial bins, 500 place-cell
+shuffles, 500 decoding shuffles, five trial-grouped folds, all decoder cells,
+and seed 7. It produced:
 
-```bash
-# 1) Run the official reference on the pinned data
-cd /some/scratch/dir
-mkdir -p artifacts data
-ln -sf ~/.cache/brainpilot-bench/0a5f35ccf29ce6611908f5233b4325bfcc43e63c57e4d3763a4cf7dcea6f0987/data \
-       data/VRBeltReframe.mat
-python -m pip install -r $BPB/tasks/neuro-rsc-place-cell/checks/requirements.txt
-python $BPB/tasks/neuro-rsc-place-cell/checks/benchmark.py \
-    --input data/VRBeltReframe.mat \
-    --output artifacts \
-    --sessions all --track-length-cm 90 --n-bins 50 \
-    --place-shuffles 500 --decoding-shuffles 500 \
-    --cv-folds 5 --decoder-cells all --seed 7
-
-# 2) Read the produced fields and update reference.json accordingly:
-python3 -c "
-import json
-s = json.load(open('artifacts/benchmark_summary.json'))
-ratio = s['cross_session_place_cell_stability']['place_cell_ratio_mean']
-sig   = s['position_decoding_significance']['decoding_significant']
-real  = s['position_decoding_significance']['real_median_decoding_error_cm']
-shuf  = s['position_decoding_significance']['shuffle_median_decoding_error_cm']
-print(f'  place_cell_ratio_mean       = {ratio:.4f}')
-print(f'  decoding_significant        = {sig}')
-print(f'  reduction_ratio 1 - real/shuf = {1 - real/shuf:.4f}')
-"
-
-# 3) Set reference.json:
-#    place_cell_ratio_mean.{min,max}    = ratio ± 0.10  (empirical margin)
-#    decoding_significant_expected      = sig
-#    decoding_error_reduction_ratio_min = observed - 0.10
-#    decoding_error_relative_tolerance  = 0.10          (kept narrow post-calibration)
-
-# 4) Re-run `bp-bench validate neuro-rsc-place-cell` — Oracle门must pass.
+```text
+place_cell_ratio_mean             0.3862502045956126
+place_cell_ratio_std              0.1310122746525408
+real_median_decoding_error_cm     7.881120964839798
+shuffle_median_decoding_error_cm  23.575363868784294
+decoding_improvement_ratio        0.6657052247971856
+decoding_p_value                  0.001996007984031936
+decoding_significant              true
 ```
 
-## Why `solution/solution.sh` doesn't call `benchmark.py`
+The SHA-256 was
+`567eed773226b7bfac2a53d09e8f9a27f56aaf6d86c1d414ecd9e26832c0b8bd`
+for a sorted, compact JSON object containing exactly the seven fields printed
+above (using the labels above as keys).
+Independent runs on macOS arm64/Python 3.12.12 and Linux arm64 using
+`python:3.12-slim-bookworm@sha256:d50fb7611f86d04a3b0471b46d7557818d88983fc3136726336b2a4c657aa30b`
+produced identical normalized summaries, session metrics, shuffle distributions,
+and place-cell labels. Cell-level floating-point values agreed within
+`1.2e-15` absolute error.
 
-The Oracle sandbox has a hard **120 s timeout** (`src/validate.ts:107`).
-`benchmark.py` on the 203 MB `.mat` with 500 shuffles takes ~15-30 min — nowhere
-near feasible. The Oracle just synthesizes a summary that satisfies the current
-`reference.json` (proves the grader accepts a valid submission); the real fidelity
-check is running `benchmark.py` yourself against the pinned data (calibration
-steps above), which is a maintainer chore, not a per-PR gate.
+The frozen acceptance region is reference place-cell ratio ±0.10, expected
+decoding significance `true`, and reference decoding improvement minus 0.10.
+Changing any threshold after an evaluated Agent run has started requires a new
+task version and a complete rerun of the comparison matrix.
+
+### Reproduce the reference
+
+```bash
+bp-bench fetch neuro-rsc-place-cell --public
+mkdir -p /tmp/rsc-reference/{data,artifacts}
+ln -sf ~/.cache/brainpilot-bench/0a5f35ccf29ce6611908f5233b4325bfcc43e63c57e4d3763a4cf7dcea6f0987/data \
+  /tmp/rsc-reference/data/VRBeltReframe.mat
+python -m pip install -r tasks/neuro-rsc-place-cell/checks/requirements.txt
+python tasks/neuro-rsc-place-cell/checks/benchmark.py \
+  --input /tmp/rsc-reference/data/VRBeltReframe.mat \
+  --output /tmp/rsc-reference/artifacts \
+  --sessions all --track-length-cm 90 --n-bins 50 \
+  --place-shuffles 500 --decoding-shuffles 500 \
+  --cv-folds 5 --decoder-cells all --seed 7
+```
+
+## Why `solution/solution.sh` remains synthetic
+
+CI intentionally does not download the 203 MB dataset. The Oracle therefore
+synthesizes a valid summary only to prove the scorer accepts a conforming bundle;
+the real reference fidelity is established by the frozen cross-platform run above.

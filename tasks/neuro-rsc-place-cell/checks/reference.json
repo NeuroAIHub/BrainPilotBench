@@ -1,11 +1,21 @@
 {
-  "_comment": "参考值——用于 check.sh 的容差比对。首版基于 benchmark.py 在 VRBeltReframe.mat 上以官方参数(seed=7, 500 shuffles, 全 session, 全细胞, 5-fold trial-grouped) 跑出的期望区间。数值需 maintainer 用真跑一次校准后收窄(见 checks/README.md 校准清单)。",
-  "place_cell_ratio_mean": {
-    "min": 0.10,
-    "max": 0.60,
-    "tolerance_note": "RSC 位置细胞比例典型 15%-45%;区间放宽以容纳数据/实现差异"
+  "_comment": "Frozen from the cross-platform reference run documented in checks/README.md.",
+  "calibration": {
+    "dataset_sha256": "0a5f35ccf29ce6611908f5233b4325bfcc43e63c57e4d3763a4cf7dcea6f0987",
+    "seed": 7,
+    "sessions": 12,
+    "place_shuffles": 500,
+    "decoding_shuffles": 500,
+    "cv_folds": 5,
+    "reference_place_cell_ratio_mean": 0.3862502045956126,
+    "reference_decoding_improvement_ratio": 0.6657052247971856,
+    "reference_decoding_p_value": 0.001996007984031936
   },
-  "decoding_error_reduction_ratio_min": 0.30,
+  "place_cell_ratio_mean": {
+    "min": 0.2862502045956126,
+    "max": 0.4862502045956126,
+    "tolerance_note": "Cross-platform reference mean ±0.10, fixed before formal evaluation."
+  },
   "decoding_significant_expected": true,
-  "decoding_error_relative_tolerance": 0.25
+  "decoding_improvement_ratio_min": 0.5657052247971856
 }
