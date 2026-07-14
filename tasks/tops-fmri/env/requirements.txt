@@ -1,4 +1,7 @@
-# Agent-side training/runtime dependencies checked by `bp-bench doctor tops-fmri`.
-numpy>=1.24
-scipy>=1.10
-scikit-learn>=1.3
+# Agent-side training/runtime set tested on CPython 3.10-3.13 (macOS and Linux).
+# Keep exact pins so a benchmark release can recreate the same numerical stack.
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.6.1
+joblib==1.5.3
+threadpoolctl==3.6.0

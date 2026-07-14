@@ -69,7 +69,7 @@ science research.
 - [Node.js](https://nodejs.org/) 22 or newer
 - npm
 - Git
-- For <code>tops-fmri</code>: Python 3 and
+- For <code>tops-fmri</code>: CPython 3.10–3.13 and
   [zstd](https://facebook.github.io/zstd/) (the task-specific Python packages
   are declared in <code>tasks/tops-fmri/env/requirements.txt</code>)
 
@@ -127,10 +127,17 @@ This workflow uses only public Study3 training data. You do **not** need access
 to the private evaluator dataset.
 
 ~~~bash
-python3 -m pip install -r tasks/tops-fmri/env/requirements.txt
+bash tasks/tops-fmri/env/setup-python.sh
+source .venv/bin/activate
 bp-bench doctor tops-fmri
 bp-bench fetch tops-fmri --public
 ~~~
+
+The setup script creates a project-local <code>.venv</code> and installs the
+release-pinned numerical stack. <code>doctor</code> automatically uses the
+active virtual environment and prints its absolute interpreter path. To select
+one without activating it, pass <code>--python .venv/bin/python</code> or set
+<code>BPB_PYTHON</code> before running the setup script.
 
 If Hugging Face is not directly reachable, export the local proxy variables in
 the [Datasets](#datasets) section and rerun <code>doctor</code>. Downloads resume
@@ -434,6 +441,38 @@ export all_proxy=socks5://127.0.0.1:7890
 The HTTP(S) proxy is used for downloads while localhost is always bypassed, so
 the same shell can still reach a local BrainPilot deployment. Interrupted HTTP
 and Hugging Face downloads resume from the verified partial cache.
+
+### Python package and certificate troubleshooting
+
+The <code>tops-fmri</code> environment supports CPython 3.10–3.13 and pins
+NumPy, SciPy, and scikit-learn versions with binary wheels for macOS and Linux.
+Do not install them into the global or user site; recreate the local environment
+instead:
+
+~~~bash
+rm -rf .venv
+bash tasks/tops-fmri/env/setup-python.sh
+source .venv/bin/activate
+bp-bench doctor tops-fmri
+~~~
+
+If pip reports <code>CERTIFICATE_VERIFY_FAILED</code>, repair the selected
+Python installation's CA store and rerun the script. For a python.org macOS
+installation, the setup script safely falls back to
+<code>/etc/ssl/cert.pem</code> when its bundled CA file is absent. For a durable
+repair, run the bundled certificate installer:
+
+~~~bash
+cert_script="$(find /Applications -maxdepth 2 -name 'Install Certificates.command' -print -quit)"
+open "$cert_script"
+~~~
+
+On Ubuntu, restore the system CA bundle with
+<code>sudo apt-get install --reinstall ca-certificates</code>. Homebrew users
+can reinstall or upgrade <code>python@3.13</code>. Keep the HTTP proxy exports
+above when the network requires them. Never use pip <code>--trusted-host</code>
+or disable TLS verification; those workarounds make dependency downloads
+unsafe.
 
 <code>run --fetch</code> fetches only public entries. Built-in adapters execute
 the task's public setup before the Agent sees its first prompt. Private entries

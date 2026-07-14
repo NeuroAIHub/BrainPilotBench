@@ -8,11 +8,28 @@ Only public Study3 data is required:
 
 ```bash
 npm ci && npm run build && npm link
-python3 -m pip install -r tasks/tops-fmri/env/requirements.txt
+bash tasks/tops-fmri/env/setup-python.sh
+source .venv/bin/activate
 bp-bench doctor tops-fmri
 bp-bench fetch tops-fmri --public
 bp-bench run tops-fmri --adapter manual --agent my-agent@1
 ```
+
+The environment script supports CPython 3.10–3.13, creates the repository-local
+`.venv`, and installs the exact numerical dependency versions tested for this
+release. It never writes to global or user site-packages. Set
+`BPB_PYTHON=/absolute/path/to/python` to select a base interpreter, or
+`BPB_VENV_DIR=/absolute/path` to put the environment elsewhere. `doctor` uses
+an active virtual environment automatically; it also accepts
+`--python /absolute/path/to/python`.
+
+If installation reports `CERTIFICATE_VERIFY_FAILED`, repair the base Python's
+CA certificates before retrying. On macOS the script safely uses the system
+`/etc/ssl/cert.pem` bundle when Python's bundled CA file is absent; a durable
+python.org repair is to run `Install Certificates.command` under
+`/Applications/Python 3.x/`. On Ubuntu, reinstall `ca-certificates`. If PyPI requires a proxy, export
+`https_proxy` and `http_proxy` as HTTP proxy URLs. Do not use `--trusted-host`
+or disable TLS verification.
 
 Run the Agent in the printed workspace without evaluator/Hugging Face
 credentials, then execute the printed `--resume` command. BrainPilot users can

@@ -159,6 +159,7 @@ async function main() {
       isolation: doctorIsolation,
       dockerBinary: arg("--docker-binary"),
       inferenceImage: arg("--inference-image"),
+      pythonBinary: arg("--python"),
     });
     const icons = { pass: `${G}✓${X}`, warn: `${Y}!${X}`, fail: `${Y}✗${X}` };
     for (const check of checks) {
@@ -543,7 +544,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--python <path>] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
