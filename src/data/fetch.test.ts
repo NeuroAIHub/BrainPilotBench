@@ -72,6 +72,42 @@ test("resolveHfToken: supports the standard hf auth login token file", () => {
   }
 });
 
+test("resolveHfToken: separate XDG benchmark cache falls back to the standard login", () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-hf-xdg-token-"));
+  const xdg = join(root, "evaluator-cache");
+  const standard = join(root, ".cache", "huggingface");
+  const previous = {
+    hfHome: process.env.HF_HOME,
+    xdg: process.env.XDG_CACHE_HOME,
+    token: process.env.HF_TOKEN,
+    hubToken: process.env.HUGGING_FACE_HUB_TOKEN,
+    noFile: process.env.BPB_NO_HF_TOKEN_FILE,
+  };
+  try {
+    mkdirSync(standard, { recursive: true });
+    writeFileSync(join(standard, "token"), "hf_standard_login\n");
+    delete process.env.HF_HOME;
+    delete process.env.HF_TOKEN;
+    delete process.env.HUGGING_FACE_HUB_TOKEN;
+    delete process.env.BPB_NO_HF_TOKEN_FILE;
+    process.env.XDG_CACHE_HOME = xdg;
+    assert.equal(resolveHfToken(root), "hf_standard_login");
+
+    process.env.BPB_NO_HF_TOKEN_FILE = "1";
+    assert.equal(resolveHfToken(root), undefined);
+    delete process.env.BPB_NO_HF_TOKEN_FILE;
+    process.env.HF_TOKEN = "hf_explicit";
+    assert.equal(resolveHfToken(root), "hf_explicit");
+  } finally {
+    if (previous.hfHome === undefined) delete process.env.HF_HOME; else process.env.HF_HOME = previous.hfHome;
+    if (previous.xdg === undefined) delete process.env.XDG_CACHE_HOME; else process.env.XDG_CACHE_HOME = previous.xdg;
+    if (previous.token === undefined) delete process.env.HF_TOKEN; else process.env.HF_TOKEN = previous.token;
+    if (previous.hubToken === undefined) delete process.env.HUGGING_FACE_HUB_TOKEN; else process.env.HUGGING_FACE_HUB_TOKEN = previous.hubToken;
+    if (previous.noFile === undefined) delete process.env.BPB_NO_HF_TOKEN_FILE; else process.env.BPB_NO_HF_TOKEN_FILE = previous.noFile;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("https fetcher resumes a partial file with Range and reports progress", async () => {
   const root = mkdtempSync(join(tmpdir(), "bpb-http-resume-"));
   const dest = join(root, "partial");
