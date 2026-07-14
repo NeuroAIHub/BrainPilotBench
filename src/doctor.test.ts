@@ -34,7 +34,11 @@ test("runDoctor reports a fully ready public task without exposing proxy credent
       fetchFn: async (input) => {
         const url = String(input);
         if (url.includes("huggingface.co")) return new Response("", { status: 200 });
-        if (url === "http://runtime/health" || url === "http://runtime/sessions") return new Response("", { status: 200 });
+        // The BrainPilot probe now requires a JSON content-type before it
+        // accepts a candidate base (see detectBrainPilotBaseUrl).
+        if (url === "http://runtime/health" || url === "http://runtime/sessions") {
+          return new Response("{}", { status: 200, headers: { "content-type": "application/json" } });
+        }
         return new Response("", { status: 404 });
       },
     });

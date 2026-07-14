@@ -25,6 +25,12 @@ function baseCandidates(input: string): string[] {
   return [...new Set([base, withoutApi, `${withoutApi}/api`])];
 }
 
+/** JSON content types the Runtime uses on its API endpoints. */
+function isJsonResponse(response: Response): boolean {
+  const contentType = response.headers.get("content-type") ?? "";
+  return contentType.toLowerCase().includes("application/json");
+}
+
 /** Probe both common BrainPilot layouts and return the working API base. */
 export async function detectBrainPilotBaseUrl(input: string, fetchFn: typeof fetch = fetch): Promise<string> {
   const attempts: string[] = [];
@@ -34,11 +40,14 @@ export async function detectBrainPilotBaseUrl(input: string, fetchFn: typeof fet
     attempts.push(`${health} + ${sessions}`);
     try {
       const healthResponse = await fetchFn(health, { headers: { accept: "application/json" } });
-      if (!healthResponse.ok) continue;
-      // /health can be served by a reverse proxy at both levels. A read-only
-      // sessions probe confirms that the runtime routes share this prefix.
+      // Deployments that serve a Runtime API alongside a SPA front-end share
+      // one origin. A SPA fallback route can answer `GET /health` or
+      // `GET /sessions` with `200 text/html`, which used to convince the probe
+      // that the SPA prefix was the API base — subsequent `POST /sessions`
+      // then 404-ed. Require a JSON response before accepting a candidate.
+      if (!healthResponse.ok || !isJsonResponse(healthResponse)) continue;
       const sessionsResponse = await fetchFn(sessions, { headers: { accept: "application/json" } });
-      if (sessionsResponse.ok) return candidate;
+      if (sessionsResponse.ok && isJsonResponse(sessionsResponse)) return candidate;
     } catch { /* try next candidate */ }
   }
   throw new Error(`BrainPilot is not reachable; checked: ${attempts.join(", ")}`);

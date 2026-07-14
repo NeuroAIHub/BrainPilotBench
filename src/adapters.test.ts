@@ -17,10 +17,14 @@ function task(dir: string): Task {
 function runtimeFetch(healthyBase = "http://runtime"): typeof fetch {
   return async (input, init) => {
     const url = String(input);
-    if (url === `${healthyBase}/health`) return new Response("{}", { status: 200 });
-    if (url === `${healthyBase}/sessions` && !init?.method) return new Response("[]", { status: 200 });
+    if (url === `${healthyBase}/health`) {
+      return new Response("{}", { status: 200, headers: { "content-type": "application/json" } });
+    }
+    if (url === `${healthyBase}/sessions` && !init?.method) {
+      return new Response("[]", { status: 200, headers: { "content-type": "application/json" } });
+    }
     if (url.endsWith("/sessions") && init?.method === "POST") {
-      return new Response(JSON.stringify({ id: "session-1" }), { status: 200 });
+      return new Response(JSON.stringify({ id: "session-1" }), { status: 200, headers: { "content-type": "application/json" } });
     }
     if (url.includes("/messages") && init?.method === "POST") return new Response("", { status: 200 });
     if (url.includes("/sse/")) {
@@ -36,10 +40,43 @@ function runtimeFetch(healthyBase = "http://runtime"): typeof fetch {
   };
 }
 
+/**
+ * Runtime API mounted under /api, with a SPA that serves index.html on any
+ * unknown route (including bare `/health` and `/sessions`). The probe must
+ * refuse text/html responses so it keeps looking for the true JSON API root.
+ */
+function spaFrontedFetch(): typeof fetch {
+  const HTML = `<!doctype html><html><body></body></html>`;
+  return async (input, init) => {
+    const url = String(input);
+    if (url.startsWith("http://runtime/api/health")) {
+      return new Response("{}", { status: 200, headers: { "content-type": "application/json" } });
+    }
+    if (url === "http://runtime/api/sessions" && !init?.method) {
+      return new Response("[]", { status: 200, headers: { "content-type": "application/json" } });
+    }
+    if (url.startsWith("http://runtime/") &&
+        (url.endsWith("/health") || url.endsWith("/sessions")) &&
+        !init?.method) {
+      return new Response(HTML, { status: 200, headers: { "content-type": "text/html; charset=utf-8" } });
+    }
+    return new Response("not found", { status: 404 });
+  };
+}
+
 test("detectBrainPilotBaseUrl probes root and /api layouts", async () => {
   assert.equal(await detectBrainPilotBaseUrl("http://runtime/api", runtimeFetch()), "http://runtime");
   assert.equal(await detectBrainPilotBaseUrl("http://runtime", runtimeFetch("http://runtime/api")), "http://runtime/api");
   await assert.rejects(() => detectBrainPilotBaseUrl("http://missing", runtimeFetch("http://other")), /checked:/);
+});
+
+test("detectBrainPilotBaseUrl ignores SPA fallback HTML responses", async () => {
+  // Deployments with a SPA at "/" serve index.html for any unknown path, so
+  // GET /health and GET /sessions both return 200 text/html even though the
+  // real API lives under /api. Accepting either would route POST /sessions to
+  // the SPA and 404. The probe must keep looking until it finds JSON.
+  assert.equal(await detectBrainPilotBaseUrl("http://runtime", spaFrontedFetch()), "http://runtime/api");
+  assert.equal(await detectBrainPilotBaseUrl("http://runtime/api", spaFrontedFetch()), "http://runtime/api");
 });
 
 test("BrainPilotAdapter prepares the session workspace before prompting", async () => {
