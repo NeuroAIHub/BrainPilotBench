@@ -87,6 +87,26 @@ test("exec-script: 超时 → unscored", async () => {
   } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
 });
 
+test("exec-script: Docker scoring fails closed for tasks without an isolation contract", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "bpb-exec-isolation-"));
+  const previous = process.env.BPB_SUBMISSION_ISOLATION;
+  mkdirSync(join(dir, "checks"), { recursive: true });
+  writeFileSync(join(dir, "checks", "check.sh"), "#!/bin/bash\n:");
+  setExecSandbox({ run: async () => { throw new Error("must not run"); } });
+  try {
+    process.env.BPB_SUBMISSION_ISOLATION = "docker";
+    const t = execTask(dir);
+    const scorer = getScorerModule("exec-script").build(t.scorers[0], t);
+    const res = await scorer(ctx(join(dir, "run"), t) as any);
+    assert.equal(res.unscored, true);
+    assert.match(res.explanation ?? "", /does not declare/);
+  } finally {
+    if (previous === undefined) delete process.env.BPB_SUBMISSION_ISOLATION; else process.env.BPB_SUBMISSION_ISOLATION = previous;
+    resetExecSandbox();
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test("exec-script: missing and denied private evaluator data get structured states", async () => {
   const dir = mkdtempSync(join(tmpdir(), "bpb-exec-state-"));
   mkdirSync(join(dir, "checks"), { recursive: true });

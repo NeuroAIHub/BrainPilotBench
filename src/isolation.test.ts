@@ -4,7 +4,7 @@ import { chmodSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } 
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { CommandAdapter } from "./adapters.js";
-import { buildDockerRunSpec, dockerStatus } from "./isolation.js";
+import { buildDockerRunSpec, dockerImageStatus, dockerStatus } from "./isolation.js";
 import type { Task } from "./task.js";
 
 test("buildDockerRunSpec applies the fail-closed container policy", () => {
@@ -56,6 +56,16 @@ test("dockerStatus is injectable for doctor checks", () => {
   assert.deepEqual(
     dockerStatus("docker", (command, args) => ({ ok: command === "docker" && args[0] === "info", output: "27.1" })),
     { ok: true, output: "27.1" },
+  );
+});
+
+test("dockerImageStatus checks the exact requested image without a shell", () => {
+  assert.deepEqual(
+    dockerImageStatus("registry/agent@sha256:" + "a".repeat(64), "docker", (command, args) => ({
+      ok: command === "docker" && args[0] === "image" && args[1] === "inspect",
+      output: args.at(-1) ?? "",
+    })),
+    { ok: true, output: "registry/agent@sha256:" + "a".repeat(64) },
   );
 });
 

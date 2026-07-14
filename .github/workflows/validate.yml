@@ -47,13 +47,16 @@ jobs:
         run: python3 -m pip install --disable-pip-version-check numpy
       - run: npm ci --no-audit --no-fund
       - run: npm run build
-      - name: Prepare Docker isolation smoke image
+      - name: Prepare Docker isolation smoke images
         if: runner.os == 'Linux'
-        run: docker pull alpine:3.20
+        run: |
+          docker pull alpine:3.20
+          docker build -t bpb-inference-test:ci -f docker/inference/Dockerfile .
       - name: 单元测试(node --test)
         run: npm test
         env:
           BPB_DOCKER_TEST: ${{ runner.os == 'Linux' && '1' || '0' }}
+          BPB_TEST_INFERENCE_IMAGE: ${{ runner.os == 'Linux' && 'bpb-inference-test:ci' || '' }}
       - name: Documentation command smoke test
         run: npm run test:docs
       - name: canary 检查

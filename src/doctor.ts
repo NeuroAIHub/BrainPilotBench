@@ -7,7 +7,7 @@ import { hfResolve, resolveHfToken } from "./data/fetch.js";
 import { isCached } from "./data/cache.js";
 import { selectDatasets } from "./data/scope.js";
 import { detectBrainPilotBaseUrl } from "./adapters.js";
-import { dockerStatus } from "./isolation.js";
+import { dockerImageStatus, dockerStatus } from "./isolation.js";
 
 export type DoctorStatus = "pass" | "warn" | "fail";
 export interface DoctorCheck {
@@ -24,6 +24,7 @@ export interface DoctorOptions {
   baseUrl?: string;
   isolation?: "process" | "docker";
   dockerBinary?: string;
+  inferenceImage?: string;
   fetchFn?: typeof fetch;
   commandRunner?: (command: string, args: string[]) => CommandResult;
   diskFreeBytes?: number;
@@ -144,6 +145,15 @@ export async function runDoctor(options: DoctorOptions = {}): Promise<DoctorChec
           id: "docker", status: "fail", message: "Docker isolation is unavailable",
           fix: "Install Docker Desktop (macOS) or Docker Engine (Ubuntu), start the daemon, then rerun this command.",
         });
+    if (docker.ok && options.inferenceImage) {
+      const image = dockerImageStatus(options.inferenceImage, options.dockerBinary ?? "docker", command);
+      checks.push(image.ok
+        ? { id: "inference-image", status: "pass", message: `available: ${options.inferenceImage}` }
+        : {
+            id: "inference-image", status: "fail", message: `not available: ${options.inferenceImage}`,
+            fix: `Pull the image or build it with: docker build -f docker/inference/Dockerfile -t ${options.inferenceImage} .`,
+          });
+    }
   } else {
     checks.push({
       id: "isolation", status: "warn",

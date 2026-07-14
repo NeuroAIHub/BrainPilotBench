@@ -454,13 +454,31 @@ bp-bench fetch tops-fmri --private
 
 export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/tops-fmri
 bash tasks/tops-fmri/env/setup.sh --role evaluator
-bp-bench score "runs/tops-fmri-brainpilot@local"
+
+docker build -t brainpilot-bench-inference:local \
+  -f docker/inference/Dockerfile .
+bp-bench doctor tops-fmri --private \
+  --isolation docker \
+  --inference-image brainpilot-bench-inference:local
+bp-bench score "runs/tops-fmri-brainpilot@local" \
+  --isolation docker \
+  --inference-image brainpilot-bench-inference:local
 ~~~
 
 The evaluator setup rejects destinations inside the Agent workspace. Agent
 startup also refuses a private evaluator environment or private entries in its
 active cache. The private token, features, labels, and path are not written into
-the submission.
+the submission. Docker scoring gives submitted code only read-only copied
+models/features and a writable predictions directory. Labels, credentials,
+host caches, repository paths, and the Docker socket are not mounted; trusted
+metric code reads labels only after inference exits.
+
+Official scoring additionally passes <code>--official</code> and uses an
+immutable trusted image reference such as
+<code>registry.example/bpb-inference@sha256:&lt;digest&gt;</code>. Local
+<code>process</code> scoring remains available for trusted development only.
+If the evaluator CLI itself runs as root, pass a non-root numeric identity with
+<code>--container-user 1000:1000</code>.
 
 ## Scoring
 
@@ -553,11 +571,10 @@ echo "<<<<< BPB_SCORES"
 Graders execute after the agent finishes, against the captured bundle.
 
 > [!WARNING]
-> The current <code>ExecSandbox</code> implementation is a local subprocess with
-> a timeout, a constrained working directory, and stripped credential
-> environment variables. It is **not strong isolation**. Run deterministic
-> graders only from trusted, reviewed tasks. A no-network Docker sandbox is on
-> the roadmap.
+> Task-owned deterministic grader code remains a trusted, reviewed local
+> subprocess. Submission-owned programs are a separate boundary: tasks must
+> declare a container-isolation contract, and official scoring must use
+> <code>--isolation docker</code>. The tops-fMRI scorer implements this split.
 
 ## Integrity and reproducibility
 
@@ -661,8 +678,7 @@ Near-term priorities are:
 - expand the curated public and held-out brain science task sets;
 - add remote-runtime adapters beyond the built-in BrainPilot, command, and
   manual integrations;
-- add strong Docker isolation for deterministic grader execution (Agent
-  command isolation is already available);
+- extend the submission-program isolation contract to future executable tasks;
 - improve managed evaluator deployment and gated-access diagnostics;
 - publish the first immutable benchmark release;
 - open the official leaderboard after sufficient task and run coverage;

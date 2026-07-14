@@ -127,6 +127,17 @@ export function dockerStatus(
   return commandRunner(dockerBinary, ["info", "--format", "{{.ServerVersion}}"]);
 }
 
+export function dockerImageStatus(
+  image: string,
+  dockerBinary = "docker",
+  commandRunner: (command: string, args: string[]) => { ok: boolean; output: string } = (command, args) => {
+    const result = spawnSync(command, args, { encoding: "utf8" });
+    return { ok: result.status === 0, output: `${result.stdout ?? ""}${result.stderr ?? ""}`.trim() };
+  },
+): { ok: boolean; output: string } {
+  return commandRunner(dockerBinary, ["image", "inspect", "--format", "{{.Id}}", image]);
+}
+
 /** Run the container and forcibly remove it if the task time limit expires. */
 export async function runDockerIsolated(options: DockerIsolationOptions): Promise<DockerExecutionResult> {
   const spec = buildDockerRunSpec(options);

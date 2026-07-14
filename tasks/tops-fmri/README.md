@@ -113,10 +113,18 @@ export XDG_CACHE_HOME=/absolute/evaluator-only/cache
 bp-bench fetch tops-fmri --private
 export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/path
 bash tasks/tops-fmri/env/setup.sh --role evaluator
+docker build -t brainpilot-bench-inference:local \
+  -f docker/inference/Dockerfile .
+bp-bench score /absolute/path/to/run-bundle \
+  --isolation docker \
+  --inference-image brainpilot-bench-inference:local
 ```
 
 The evaluator directory must be outside the agent workspace. Setup no longer
 writes a private path into the agent workspace or its parent directory.
+The submitted `apply_signature.py` runs in a no-network, non-root container
+that receives read-only models/features and a writable predictions directory;
+private labels remain available only to the trusted evaluator process.
 
 ## Oracle / NOP gate
 

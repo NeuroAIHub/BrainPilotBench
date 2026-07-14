@@ -29,6 +29,7 @@ scoring:
     - kind: exec-script
       script: checks/check.sh
       parser: json
+      submission_isolation: container
 # Oracle/NOP 门:solution.sh 造一份合法零权重 apply_signature.py + dummy features/labels,
 # 让 check.sh 走通产出指标(数值意义不看,只验 scorer pipeline)。真评测时 features/labels
 # 由 checks/evaluate_external.py 从 $BPB_TOPS_PRIVATE_EVAL_DIR 或仓库根 private_eval/ 读。
