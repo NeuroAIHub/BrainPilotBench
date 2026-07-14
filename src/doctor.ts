@@ -25,10 +25,39 @@ export interface DoctorOptions {
   isolation?: "process" | "docker";
   dockerBinary?: string;
   inferenceImage?: string;
+  pythonBinary?: string;
   fetchFn?: typeof fetch;
   commandRunner?: (command: string, args: string[]) => CommandResult;
   diskFreeBytes?: number;
   cacheChecker?: (sha256: string) => Promise<boolean>;
+}
+
+function selectedPython(explicit?: string): string {
+  if (explicit) return explicit;
+  if (process.env.BPB_PYTHON) return process.env.BPB_PYTHON;
+  if (process.env.VIRTUAL_ENV) {
+    const candidate = process.platform === "win32"
+      ? join(process.env.VIRTUAL_ENV, "Scripts", "python.exe")
+      : join(process.env.VIRTUAL_ENV, "bin", "python");
+    if (existsSync(candidate)) return candidate;
+  }
+  return "python3";
+}
+
+function shellQuote(value: string): string {
+  return `'${value.replaceAll("'", `'"'"'`)}'`;
+}
+
+function pythonInstallFix(task: Task, python: string, interpreter: string): string {
+  const setup = join(task.dir, "env", "setup-python.sh");
+  const install = existsSync(setup)
+    ? `BPB_PYTHON=${shellQuote(interpreter)} bash ${shellQuote(setup)}`
+    : `${shellQuote(python)} -m pip install -r ${shellQuote(join(task.dir, "env", "requirements.txt"))}`;
+  return [
+    install,
+    "If pip reports CERTIFICATE_VERIFY_FAILED, repair Python's CA store; do not disable TLS or use --trusted-host.",
+    "If a proxy is required, set https_proxy and http_proxy to its HTTP URL.",
+  ].join("\n");
 }
 
 const defaultCommandRunner = (command: string, args: string[]): CommandResult => {
@@ -36,7 +65,7 @@ const defaultCommandRunner = (command: string, args: string[]): CommandResult =>
   return { ok: result.status === 0, output: `${result.stdout ?? ""}${result.stderr ?? ""}`.trim() };
 };
 
-function pythonRequirements(task?: Task): Array<{ spec: string; module: string }> {
+function pythonRequirements(task?: Task): Array<{ spec: string; module: string; distribution: string; exactVersion?: string }> {
   if (!task) return [];
   const path = join(task.dir, "env", "requirements.txt");
   if (!existsSync(path)) return [];
@@ -44,7 +73,11 @@ function pythonRequirements(task?: Task): Array<{ spec: string; module: string }
     .map((line) => line.replace(/#.*/, "").trim()).filter(Boolean)
     .map((spec) => {
       const distribution = spec.split(/[<>=!~\[]/, 1)[0].trim();
-      return { spec, module: distribution === "scikit-learn" ? "sklearn" : distribution.replaceAll("-", "_") };
+      const exactVersion = spec.match(/^[^=<>!~]+==([^;\s]+)$/)?.[1];
+      return {
+        spec, distribution, exactVersion,
+        module: distribution === "scikit-learn" ? "sklearn" : distribution.replaceAll("-", "_"),
+      };
     });
 }
 
@@ -88,18 +121,61 @@ export async function runDoctor(options: DoctorOptions = {}): Promise<DoctorChec
     : { id: "npm", status: "fail", message: "npm is not available", fix: "Install npm with Node.js 22+." });
 
   const requirements = pythonRequirements(task);
-  const python = command("python3", ["--version"]);
-  checks.push(python.ok
-    ? { id: "python", status: "pass", message: python.output || "python3 available" }
+  const pythonBinary = selectedPython(options.pythonBinary);
+  const python = command(pythonBinary, ["--version"]);
+  const executable = python.ok
+    ? command(pythonBinary, ["-c", "import sys; print(sys.executable)"])
+    : { ok: false, output: "" };
+  const interpreter = executable.ok && executable.output ? executable.output.split("\n")[0] : pythonBinary;
+  const versionMatch = python.output.match(/Python\s+(\d+)\.(\d+)(?:\.(\d+))?/i);
+  const version = versionMatch ? [Number(versionMatch[1]), Number(versionMatch[2])] : undefined;
+  const supported = !version || (version[0] === 3 && version[1] >= 10 && version[1] <= 13);
+  checks.push(python.ok && supported
+    ? { id: "python", status: "pass", message: `${python.output || "Python available"} at ${interpreter}` }
+    : python.ok
+      ? {
+          id: "python", status: requirements.length ? "fail" : "warn",
+          message: `${python.output || "Python"} at ${interpreter}; tops-fmri supports CPython 3.10-3.13`,
+          fix: "Install CPython 3.10-3.13, then activate its virtual environment or pass --python /absolute/path/to/python.",
+        }
     : {
-        id: "python", status: requirements.length ? "fail" : "warn", message: "python3 is not available",
-        fix: requirements.length ? "Install Python 3 before running this task." : undefined,
+        id: "python", status: requirements.length ? "fail" : "warn", message: `${pythonBinary} is not available`,
+        fix: requirements.length ? "Install CPython 3.10-3.13 or pass --python /absolute/path/to/python." : undefined,
       });
   if (python.ok && requirements.length) {
-    const missing = requirements.filter(({ module }) => !command("python3", ["-c", `import ${module}`]).ok);
-    checks.push(missing.length
-      ? { id: "python-packages", status: "fail", message: `missing: ${missing.map((item) => item.spec).join(", ")}`, fix: `python3 -m pip install -r ${join(task!.dir, "env", "requirements.txt")}` }
-      : { id: "python-packages", status: "pass", message: requirements.map((item) => item.spec).join(", ") });
+    const unavailable = requirements.filter(({ module, distribution, exactVersion }) => {
+      const probe = exactVersion
+        ? `import ${module}; import importlib.metadata as metadata; assert metadata.version(${JSON.stringify(distribution)}) == ${JSON.stringify(exactVersion)}`
+        : `import ${module}`;
+      return !command(pythonBinary, ["-c", probe]).ok;
+    });
+    checks.push(unavailable.length
+      ? {
+          id: "python-packages", status: "fail",
+          message: `missing or incompatible in ${interpreter}: ${unavailable.map((item) => item.spec).join(", ")}`,
+          fix: pythonInstallFix(task!, pythonBinary, interpreter),
+        }
+      : { id: "python-packages", status: "pass", message: `${requirements.map((item) => item.spec).join(", ")} in ${interpreter}` });
+    if (unavailable.length) {
+      const index = command(pythonBinary, [
+        "-c",
+        "import urllib.request; urllib.request.urlopen('https://pypi.org/simple/', timeout=8).close()",
+      ]);
+      if (!index.ok) {
+        const tls = /CERTIFICATE_VERIFY_FAILED|certificate verify failed|unable to get local issuer certificate/i.test(index.output);
+        checks.push({
+          id: "python-index", status: "fail",
+          message: tls
+            ? `Python TLS/CA validation failed for PyPI (${interpreter})`
+            : `PyPI is not reachable from ${interpreter}: ${index.output || "connection failed"}`,
+          fix: tls
+            ? "Repair the interpreter's CA certificates (macOS python.org: run Install Certificates.command; Ubuntu: reinstall ca-certificates). Never disable TLS verification."
+            : "Check network access and set https_proxy/http_proxy to an HTTP proxy before installing packages.",
+        });
+      } else {
+        checks.push({ id: "python-index", status: "pass", message: `PyPI reachable from ${interpreter}` });
+      }
+    }
   }
 
   const setupPath = task ? join(task.dir, "env", "setup.sh") : "";

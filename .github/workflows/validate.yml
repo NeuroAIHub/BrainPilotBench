@@ -26,6 +26,35 @@ on:
       - ".github/workflows/validate.yml"
 
 jobs:
+  python-environment:
+    name: Python environment (${{ matrix.os }}, ${{ matrix.python }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: "3.10"
+          - os: ubuntu-latest
+            python: "3.11"
+          - os: ubuntu-latest
+            python: "3.12"
+          - os: ubuntu-latest
+            python: "3.13"
+          - os: macos-latest
+            python: "3.13"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Create documented tops-fMRI environment
+        run: bash tasks/tops-fmri/env/setup-python.sh
+      - name: Verify isolated numerical imports
+        run: |
+          .venv/bin/python -c 'import sys; assert sys.prefix != sys.base_prefix'
+          .venv/bin/python -c 'import numpy, scipy, sklearn; print(numpy.__version__, scipy.__version__, sklearn.__version__)'
+
   validate:
     strategy:
       fail-fast: false

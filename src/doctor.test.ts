@@ -98,3 +98,95 @@ test("runDoctor reports a missing submission inference image", async () => {
   assert.equal(checks.find((check) => check.id === "docker")?.status, "pass");
   assert.equal(checks.find((check) => check.id === "inference-image")?.status, "fail");
 });
+
+test("runDoctor preserves an explicitly selected Python interpreter", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-doctor-python-"));
+  const selected = join(root, ".venv", "bin", "python");
+  const commands: string[] = [];
+  try {
+    const checks = await runDoctor({
+      task: makeTask(root), pythonBinary: selected, diskFreeBytes: 10_000,
+      cacheChecker: async () => true,
+      commandRunner: (command, args) => {
+        if (command === selected) commands.push(`${command} ${args.join(" ")}`);
+        if (args[0] === "--version") return { ok: true, output: "Python 3.13.5" };
+        if (args[1]?.includes("sys.executable")) return { ok: true, output: selected };
+        return { ok: true, output: "ok" };
+      },
+      fetchFn: async () => new Response("", { status: 200 }),
+    });
+    assert.equal(checks.find((check) => check.id === "python")?.status, "pass");
+    assert.match(checks.find((check) => check.id === "python")?.message ?? "", /\.venv\/bin\/python/);
+    assert.ok(commands.some((value) => value.includes("import sklearn")));
+    assert.equal(commands.every((value) => value.startsWith(selected)), true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("runDoctor rejects unsupported Python for a numerical task", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-doctor-version-"));
+  try {
+    const checks = await runDoctor({
+      task: makeTask(root), diskFreeBytes: 10_000, cacheChecker: async () => true,
+      commandRunner: (_command, args) => args[0] === "--version"
+        ? { ok: true, output: "Python 3.9.18" }
+        : { ok: true, output: "/usr/bin/python3" },
+      fetchFn: async () => new Response("", { status: 200 }),
+    });
+    const python = checks.find((check) => check.id === "python");
+    assert.equal(python?.status, "fail");
+    assert.match(python?.message ?? "", /3\.10-3\.13/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("runDoctor identifies a Python TLS certificate failure", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-doctor-ca-"));
+  try {
+    const checks = await runDoctor({
+      task: makeTask(root), diskFreeBytes: 10_000, cacheChecker: async () => true,
+      commandRunner: (_command, args) => {
+        if (args[0] === "--version") return { ok: true, output: "Python 3.13.5" };
+        if (args[1]?.includes("sys.executable")) return { ok: true, output: "/tmp/.venv/bin/python" };
+        if (args[1] === "import sklearn") return { ok: false, output: "ModuleNotFoundError" };
+        if (args[1]?.includes("urllib.request")) {
+          return { ok: false, output: "ssl.SSLCertVerificationError: CERTIFICATE_VERIFY_FAILED" };
+        }
+        return { ok: true, output: "ok" };
+      },
+      fetchFn: async () => new Response("", { status: 200 }),
+    });
+    const index = checks.find((check) => check.id === "python-index");
+    assert.equal(index?.status, "fail");
+    assert.match(index?.message ?? "", /TLS\/CA/);
+    assert.match(index?.fix ?? "", /Never disable TLS/);
+    assert.match(checks.find((check) => check.id === "python-packages")?.message ?? "", /\.venv\/bin\/python/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("runDoctor verifies exact pinned Python package versions", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-doctor-pin-"));
+  try {
+    const task = makeTask(root);
+    writeFileSync(join(root, "env", "requirements.txt"), "numpy==2.2.6\n");
+    const checks = await runDoctor({
+      task, diskFreeBytes: 10_000, cacheChecker: async () => true,
+      commandRunner: (_command, args) => {
+        if (args[0] === "--version") return { ok: true, output: "Python 3.13.5" };
+        if (args[1]?.includes("sys.executable")) return { ok: true, output: "/tmp/.venv/bin/python" };
+        if (args[1]?.includes("metadata.version")) return { ok: false, output: "AssertionError" };
+        return { ok: true, output: "ok" };
+      },
+      fetchFn: async () => new Response("", { status: 200 }),
+    });
+    const packages = checks.find((check) => check.id === "python-packages");
+    assert.equal(packages?.status, "fail");
+    assert.match(packages?.message ?? "", /numpy==2\.2\.6/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
