@@ -8,6 +8,9 @@ on:
       - "registry.json"
       - "src/**"
       - "package*.json"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "scripts/**"
       - ".github/workflows/validate.yml"
   push:
     branches: [main]
@@ -17,6 +20,9 @@ on:
       - "registry.json"
       - "src/**"
       - "package*.json"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "scripts/**"
       - ".github/workflows/validate.yml"
 
 jobs:
@@ -39,10 +45,12 @@ jobs:
       # numpy:数值型任务(tops-fmri 等)的 Oracle solution.sh + exec-script grader 都用它算。
       - name: Install numerical grader dependency
         run: python3 -m pip install --disable-pip-version-check numpy
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
       - run: npm run build
       - name: 单元测试(node --test)
         run: npm test
+      - name: Documentation command smoke test
+        run: npm run test:docs
       - name: canary 检查
         run: node scripts/check-task-canary.mjs
       - name: 任务有效性 + Oracle/NOP 门

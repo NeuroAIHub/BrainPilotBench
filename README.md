@@ -69,14 +69,18 @@ science research.
 - [Node.js](https://nodejs.org/) 22 or newer
 - npm
 - Git
+- For <code>tops-fmri</code>: Python 3 and
+  [zstd](https://facebook.github.io/zstd/) (the task-specific Python packages
+  are declared in <code>tasks/tops-fmri/env/requirements.txt</code>)
 
 Clone and build the framework:
 
 ~~~bash
 git clone https://github.com/NeuroAIHub/BrainPilotBench.git
 cd BrainPilotBench
-npm install
+npm ci
 npm run build
+npm link
 ~~~
 
 Check task dependencies, disk, proxy, Hugging Face access, cache, and the
@@ -86,9 +90,9 @@ optional BrainPilot runtime before starting a long run:
 node dist/cli.js doctor tops-fmri --base-url http://127.0.0.1:9001
 ~~~
 
-Commands below use <code>node dist/cli.js</code>, which works directly from the
-source checkout. Optionally run <code>npm link</code> once and replace it with
-<code>bp-bench</code>.
+The package is not published yet. <code>npm link</code> exposes the local
+<code>bp-bench</code> command; <code>node dist/cli.js</code> remains an equivalent
+source-checkout fallback.
 
 ### Run the zero-key demo
 
@@ -116,6 +120,47 @@ List the current canonical tasks:
 ~~~bash
 node dist/cli.js list
 ~~~
+
+### Run the tops-fMRI task as an Agent user
+
+This workflow uses only public Study3 training data. You do **not** need access
+to the private evaluator dataset.
+
+~~~bash
+python3 -m pip install -r tasks/tops-fmri/env/requirements.txt
+bp-bench doctor tops-fmri
+bp-bench fetch tops-fmri --public
+~~~
+
+If Hugging Face is not directly reachable, export the local proxy variables in
+the [Datasets](#datasets) section and rerun <code>doctor</code>. Downloads resume
+after interruption.
+
+Run against an already-started BrainPilot deployment:
+
+~~~bash
+bp-bench run tops-fmri \
+  --adapter brainpilot \
+  --base-url http://127.0.0.1:9001 \
+  --workspace-root /absolute/path/to/BrainPilot/brainpilot/workspaces \
+  --agent brainpilot@local
+
+bp-bench submit verify "runs/tops-fmri-brainpilot@local"
+~~~
+
+The adapter creates a session, stages public data before the first prompt,
+waits for the Agent, collects all six required artifacts, writes
+<code>meta.json</code>, and verifies the bundle.
+
+For another Agent, use the manual handoff:
+
+~~~bash
+bp-bench run tops-fmri --adapter manual --agent my-agent@1
+# Run your Agent in the printed workspace, then execute the printed --resume command.
+~~~
+
+The private Study4/Study5 evaluator is a separate maintainer workflow described
+under [Maintainer-only private scoring](#maintainer-only-private-scoring).
 
 ## How it works
 
@@ -185,14 +230,20 @@ Read:
 
 ### 2. Run your agent
 
-Give the task turns to your agent and let it work using its normal tools and
-orchestration. Collect the files matching the task’s
-<code>expected_artifacts</code> patterns.
+Choose the adapter that matches the system:
 
-BrainPilotBench does not require a particular message loop or agent API at this
-stage.
+- <code>brainpilot</code> for the BrainPilot HTTP/SSE runtime;
+- <code>command</code> for a local agent command that reads
+  <code>BPB_TASK_PROMPT</code> and writes to <code>BPB_WORKSPACE</code>;
+- <code>manual</code> for any other harness, using the printed workspace and
+  resume command.
+
+All adapters use the same task contract and produce the same submission bundle.
 
 ### 3. Build a submission bundle
+
+The built-in adapters do this automatically. Use the directory contract below
+only when integrating an external harness directly.
 
 ~~~text
 my-submission/
@@ -291,13 +342,16 @@ node dist/cli.js run tops-fmri --adapter manual --agent "my-agent@1"
 
 ## Task suite
 
-The current public task suite contains three canonical tasks.
+The current public task suite contains four canonical tasks. Runtime depends on
+the Agent; the values below are task time limits rather than guaranteed wall
+times.
 
-| Task | Capability | Expected artifacts | Scoring |
-|---|---|---|---|
-| <code>neuro-survey-attention</code> | Organize a neuroscience survey of attention mechanisms and representative work | Markdown survey outline | Four-dimension LLM rubric |
-| <code>neuro-trends-connectomics</code> | Analyze a decade of connectomics development and recurring themes | Markdown trend report | Default five-dimension LLM rubric |
-| <code>neuro-rsc-place-cell</code> | Analyze RSC calcium-imaging and VR-belt data, including place-cell screening, decoding, trial-bin structure, and firing-rate dynamics | <code>benchmark_summary.json</code>, report, and PNG figures | Deterministic numerical checks plus human rubric |
+| Task | Capability | Public download | Compute | Time limit | Scoring |
+|---|---|---:|---|---:|---|
+| [<code>neuro-survey-attention</code>](tasks/neuro-survey-attention/task.yaml) | Neuroscience attention survey and representative work | None | CPU | 30 min | Four-dimension LLM rubric |
+| [<code>neuro-trends-connectomics</code>](tasks/neuro-trends-connectomics/task.yaml) | Ten-year connectomics trend synthesis | None | CPU | 30 min | Five-dimension LLM rubric |
+| [<code>neuro-rsc-place-cell</code>](tasks/neuro-rsc-place-cell/README.md) | RSC calcium imaging, VR behavior, place-cell analysis, and decoding | 194 MiB | CPU | 60 min | Deterministic checks + human rubric |
+| [<code>tops-fmri</code>](tasks/tops-fmri/README.md) | Train a linear tonic-pain FC signature and package reproducible inference | 922 MiB | CPU; ≥3 GiB free disk recommended | 180 min | Private Study4/5 Pearson r + AUC |
 
 The task corpus is intentionally curated rather than accepting arbitrary task
 code. Scientific construct validity and contamination risk require editorial
@@ -345,9 +399,29 @@ The HTTP(S) proxy is used for downloads while localhost is always bypassed, so
 the same shell can still reach a local BrainPilot deployment. Interrupted HTTP
 and Hugging Face downloads resume from the verified partial cache.
 
-The current runner can fetch datasets with <code>run --fetch</code>, but task
-workspace staging is still adapter-specific. Check the task’s
-<code>env/setup.sh</code> before running a data-backed task.
+<code>run --fetch</code> fetches only public entries. Built-in adapters execute
+the task's public setup before the Agent sees its first prompt. Private entries
+are never fetched or staged by an Agent run.
+
+### Maintainer-only private scoring
+
+External Agent users stop after producing a verified submission bundle.
+Maintainers with access to the gated
+[Tasks-Data-Private](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private)
+dataset perform scoring later, outside the Agent workspace:
+
+~~~bash
+hf auth login
+bp-bench doctor tops-fmri --private
+bp-bench fetch tops-fmri --private
+
+export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/tops-fmri
+bash tasks/tops-fmri/env/setup.sh --role evaluator
+bp-bench score "runs/tops-fmri-brainpilot@local"
+~~~
+
+The evaluator setup rejects destinations inside the Agent workspace. The
+private token, features, labels, and path are not written into the submission.
 
 ## Scoring
 
@@ -524,7 +598,7 @@ Near-term priorities are:
 - add remote-runtime adapters beyond the built-in BrainPilot, command, and
   manual integrations;
 - add strong Docker isolation for deterministic grader execution;
-- add authenticated dataset fetching for private data-backed evaluations;
+- improve managed evaluator deployment and gated-access diagnostics;
 - publish the first immutable benchmark release;
 - open the official leaderboard after sufficient task and run coverage;
 - publish <code>@brainpilot/bench</code> after the CLI contract stabilizes.
@@ -555,9 +629,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete policy.
 ### Development checks
 
 ~~~bash
-npm install
+npm ci
 npm run build
 npm test
+npm run test:docs
 node dist/cli.js validate all
 node scripts/check-task-canary.mjs
 node dist/cli.js registry verify

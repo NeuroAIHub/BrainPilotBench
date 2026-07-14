@@ -51,6 +51,7 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"dist/**/*.test.js\"",
+    "test:docs": "node scripts/docs-smoke.mjs",
     "prepublishOnly": "npm run build"
   },
   "engines": {
