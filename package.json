@@ -21,6 +21,7 @@
     "./task": "./dist/task.js",
     "./runner": "./dist/runner.js",
     "./adapters": "./dist/adapters.js",
+    "./isolation": "./dist/isolation.js",
     "./doctor": "./dist/doctor.js",
     "./scoring": "./dist/scoring.js",
     "./scorer": "./dist/scorer/index.js",

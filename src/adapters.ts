@@ -1,10 +1,11 @@
 /** Reusable adapters for BrainPilot, local commands, and manual agents. */
-import { mkdirSync } from "node:fs";
+import { cpSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, realpathSync, rmSync } from "node:fs";
 import { spawn } from "node:child_process";
 import { join } from "node:path";
 import type { Task } from "./task.js";
 import { BenchRunner, type RunResult } from "./runner.js";
 import { prepareWorkspace, syntheticRunResult } from "./workflow.js";
+import { runDockerIsolated, type DockerExecutionResult, type DockerIsolationOptions } from "./isolation.js";
 
 export type AdapterStatus = "completed" | "pending";
 export interface AdapterResult {
@@ -70,6 +71,49 @@ function runShell(command: string, cwd: string, env: NodeJS.ProcessEnv): Promise
   });
 }
 
+export type CommandIsolation =
+  | { mode: "process" }
+  | {
+      mode: "docker";
+      image: string;
+      dockerBinary?: string;
+      network?: string;
+      cpus?: number;
+      memory?: string;
+      pidsLimit?: number;
+      user?: string;
+    };
+
+export interface CommandAdapterOptions {
+  command: string;
+  workspaceDir: string;
+  isolation?: CommandIsolation;
+  dockerExecutor?: (options: DockerIsolationOptions) => Promise<DockerExecutionResult>;
+}
+
+/** Replace setup-created symlinks with local files before mounting the workspace. */
+function materializeSymlinks(dir: string): void {
+  for (const entry of readdirSync(dir)) {
+    const path = join(dir, entry);
+    const stat = lstatSync(path);
+    if (stat.isSymbolicLink()) {
+      const target = realpathSync(path);
+      const targetStat = lstatSync(target);
+      rmSync(path, { recursive: true, force: true });
+      if (targetStat.isFile()) {
+        try { linkSync(target, path); }
+        catch { cpSync(target, path); }
+      } else if (targetStat.isDirectory()) {
+        cpSync(target, path, { recursive: true, dereference: true });
+      } else {
+        throw new Error(`unsupported setup symlink target: ${path}`);
+      }
+      continue;
+    }
+    if (stat.isDirectory()) materializeSymlinks(path);
+  }
+}
+
 function agentEnvironment(workspaceDir: string): NodeJS.ProcessEnv {
   const env = { ...process.env };
   for (const key of [
@@ -85,17 +129,37 @@ function agentEnvironment(workspaceDir: string): NodeJS.ProcessEnv {
 
 export class CommandAdapter implements AgentAdapter {
   readonly kind = "command" as const;
-  constructor(private opts: { command: string; workspaceDir: string }) {}
+  constructor(private opts: CommandAdapterOptions) {}
 
   async run(task: Task): Promise<AdapterResult> {
+    const isolation = this.opts.isolation ?? { mode: "process" };
+    if (isolation.mode === "docker" && existsSync(this.opts.workspaceDir) && readdirSync(this.opts.workspaceDir).length) {
+      throw new Error(`Docker isolation requires a new empty workspace; remove or change: ${this.opts.workspaceDir}`);
+    }
     prepareWorkspace(task, this.opts.workspaceDir);
     const started = Date.now();
-    const code = await runShell(this.opts.command, this.opts.workspaceDir, {
-      ...agentEnvironment(this.opts.workspaceDir),
-      BPB_TASK_ID: task.meta.id,
-      BPB_TASK_PROMPT: join(this.opts.workspaceDir, ".bpb", "TASK_PROMPT.md"),
-      BPB_WORKSPACE: this.opts.workspaceDir,
-    });
+    let code: number;
+    if (isolation.mode === "docker") {
+      materializeSymlinks(this.opts.workspaceDir);
+      const readonlyInputs = readdirSync(this.opts.workspaceDir).map((entry) => join(this.opts.workspaceDir, entry));
+      const result = await (this.opts.dockerExecutor ?? runDockerIsolated)({
+        ...isolation,
+        command: this.opts.command,
+        workspaceDir: this.opts.workspaceDir,
+        readonlyInputs,
+        taskId: task.meta.id,
+        timeoutMs: task.meta.timeoutMin * 60_000,
+      });
+      if (result.timedOut) throw new Error(`agent container exceeded the ${task.meta.timeoutMin} minute task limit`);
+      code = result.code;
+    } else {
+      code = await runShell(this.opts.command, this.opts.workspaceDir, {
+        ...agentEnvironment(this.opts.workspaceDir),
+        BPB_TASK_ID: task.meta.id,
+        BPB_TASK_PROMPT: join(this.opts.workspaceDir, ".bpb", "TASK_PROMPT.md"),
+        BPB_WORKSPACE: this.opts.workspaceDir,
+      });
+    }
     if (code !== 0) throw new Error(`agent command exited with status ${code}`);
     return {
       status: "completed",

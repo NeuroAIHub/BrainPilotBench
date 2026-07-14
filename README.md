@@ -334,6 +334,41 @@ node dist/cli.js run tops-fmri --adapter command \
   --agent "my-agent@1"
 ~~~
 
+The default <code>process</code> mode is intended only for an Agent you trust.
+For an untrusted or official command Agent, run it inside the built-in Docker
+boundary:
+
+~~~bash
+bp-bench doctor tops-fmri --isolation docker
+
+bp-bench run tops-fmri \
+  --adapter command \
+  --isolation docker \
+  --image "registry.example/my-agent@sha256:<64-hex-digest>" \
+  --command 'my-agent --prompt "$BPB_TASK_PROMPT"' \
+  --agent "my-agent@1" \
+  --official
+~~~
+
+Docker mode mounts only the prepared Agent workspace. Files created before the
+Agent starts—including the task prompt and public task data—are over-mounted
+read-only; the remaining workspace is writable for artifacts. The container
+runs as a non-root user with a read-only root filesystem, no Linux
+capabilities, <code>no-new-privileges</code>, PID/CPU/memory limits, and no
+network by default. No Hugging Face token, evaluator variable, host cache,
+repository path, or Docker socket is passed to the container.
+
+If a task genuinely needs external access, <code>--network bridge</code> is an
+explicit opt-out from the default network denial. Official mode requires an
+immutable image digest. When running the CLI itself as root, also pass a
+non-root numeric identity such as <code>--container-user 1000:1000</code>.
+
+This boundary applies to the local <code>command</code> adapter. A remote
+BrainPilot deployment must isolate its own Agent runtime; the manual adapter is
+never considered an official isolation boundary. Private scoring still starts
+only after the Agent container exits and the captured submission passes bundle
+verification.
+
 Manual agents use a prepare/resume handoff:
 
 ~~~bash
@@ -626,7 +661,8 @@ Near-term priorities are:
 - expand the curated public and held-out brain science task sets;
 - add remote-runtime adapters beyond the built-in BrainPilot, command, and
   manual integrations;
-- add strong Docker isolation for deterministic grader execution;
+- add strong Docker isolation for deterministic grader execution (Agent
+  command isolation is already available);
 - improve managed evaluator deployment and gated-access diagnostics;
 - publish the first immutable benchmark release;
 - open the official leaderboard after sufficient task and run coverage;

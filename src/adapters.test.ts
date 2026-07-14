@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, mkdtempSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { BrainPilotAdapter, CommandAdapter, ManualAdapter, detectBrainPilotBaseUrl } from "./adapters.js";
@@ -71,4 +71,43 @@ test("command and manual adapters share the prepared workspace contract", async 
     if (previousToken === undefined) delete process.env.HF_TOKEN; else process.env.HF_TOKEN = previousToken;
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test("command adapter sends only the prepared workspace to its Docker executor", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-docker-adapter-"));
+  const workspaceDir = join(root, "workspace");
+  try {
+    const result = await new CommandAdapter({
+      command: "agent",
+      workspaceDir,
+      isolation: { mode: "docker", image: "agent:1", user: "1000:1000" },
+      dockerExecutor: async (options) => {
+        assert.equal(options.image, "agent:1");
+        assert.equal(options.workspaceDir, workspaceDir);
+        assert.deepEqual(options.readonlyInputs, [join(workspaceDir, ".bpb")]);
+        assert.equal(options.timeoutMs, 60_000);
+        writeFileSync(join(workspaceDir, "result.txt"), "done");
+        return { code: 0, timedOut: false };
+      },
+    }).run(task(root));
+    assert.equal(result.status, "completed");
+    assert.ok(existsSync(join(workspaceDir, "result.txt")));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("Docker command adapter refuses to mount a reused non-empty workspace", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-docker-reuse-"));
+  try {
+    const workspaceDir = join(root, "workspace");
+    await new ManualAdapter(workspaceDir).run(task(root));
+    await assert.rejects(
+      new CommandAdapter({
+        command: "agent",
+        workspaceDir,
+        isolation: { mode: "docker", image: "agent:1", user: "1000:1000" },
+        dockerExecutor: async () => ({ code: 0, timedOut: false }),
+      }).run(task(root)),
+      /new empty workspace/,
+    );
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });

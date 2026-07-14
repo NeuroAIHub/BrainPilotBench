@@ -7,7 +7,7 @@
  *
  *   bp-bench list [--tasks <dir>]
  *   bp-bench prepare <taskId> [--workspace <dir>] [--fetch]
- *   bp-bench run <taskId|all> --adapter <brainpilot|command|manual> [adapter options]
+ *   bp-bench run <taskId|all> --adapter <brainpilot|command|manual> [--isolation process|docker] [adapter options]
  *   bp-bench fetch <taskId|all> [--public|--private|--all] [--tasks <dir>]
  *   bp-bench score <runDir>                       (离线跑 scorer 写 scores.json)
  *   bp-bench leaderboard <scoresDir>
@@ -34,7 +34,7 @@ import { validateTask } from "./validate.js";
 import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
 import { execFileSync } from "node:child_process";
-import { BrainPilotAdapter, CommandAdapter, ManualAdapter, type AgentAdapter } from "./adapters.js";
+import { BrainPilotAdapter, CommandAdapter, ManualAdapter, type AgentAdapter, type CommandIsolation } from "./adapters.js";
 import { buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
 import type { DatasetEntry, FetchProgress } from "./data/types.js";
 import { runDoctor } from "./doctor.js";
@@ -147,10 +147,16 @@ async function main() {
     const which = argv[1] && !argv[1].startsWith("--") ? argv[1] : undefined;
     const dir = which ? dirsByTaskId(which)[0] : undefined;
     if (which && !dir) { console.error(`找不到任务：${which}`); process.exit(2); }
+    const doctorIsolation = arg("--isolation", "process")!;
+    if (!(doctorIsolation === "process" || doctorIsolation === "docker")) {
+      console.error(`未知 isolation: ${doctorIsolation}`); process.exit(2);
+    }
     const checks = await runDoctor({
       task: dir ? loadTask(dir) : undefined,
       privateData: argv.includes("--private"),
       baseUrl: arg("--base-url"),
+      isolation: doctorIsolation,
+      dockerBinary: arg("--docker-binary"),
     });
     const icons = { pass: `${G}✓${X}`, warn: `${Y}!${X}`, fail: `${Y}✗${X}` };
     for (const check of checks) {
@@ -183,6 +189,30 @@ async function main() {
       console.error(`未知 adapter: ${adapterKind}`); process.exit(2);
     }
     const agent = arg("--agent", arg("--version", `${adapterKind}@unknown`))!;
+    const isolationMode = arg("--isolation", "process")!;
+    if (!(isolationMode === "process" || isolationMode === "docker")) {
+      console.error(`未知 isolation: ${isolationMode}`); process.exit(2);
+    }
+    if (adapterKind !== "command" && isolationMode !== "process") {
+      console.error("本地 Docker isolation 目前仅支持 command adapter；BrainPilot/remote runtime 必须由其部署环境提供隔离");
+      process.exit(2);
+    }
+    const official = argv.includes("--official");
+    if (official && (adapterKind !== "command" || isolationMode !== "docker")) {
+      console.error("--official requires --adapter command --isolation docker");
+      process.exit(2);
+    }
+    const image = arg("--image");
+    if (isolationMode === "docker" && !image) {
+      console.error("Docker isolation 需要 --image <agent-image>"); process.exit(2);
+    }
+    if (official && !/@sha256:[a-f0-9]{64}$/i.test(image!)) {
+      console.error("--official requires an immutable image digest: --image <name>@sha256:<64-hex>");
+      process.exit(2);
+    }
+    if (adapterKind === "command" && isolationMode === "process") {
+      console.warn(`${Y}warning${X}: process isolation is for trusted local development only; use --isolation docker for untrusted Agents`);
+    }
 
     const resume = arg("--resume");
     if (resume) {
@@ -235,7 +265,20 @@ async function main() {
       } else if (adapterKind === "command") {
         const command = arg("--command");
         if (!command) { console.error("command adapter 需要 --command"); process.exit(2); }
-        adapter = new CommandAdapter({ command, workspaceDir });
+        const isolation: CommandIsolation = isolationMode === "docker" ? {
+          mode: "docker",
+          image: image!,
+          dockerBinary: arg("--docker-binary"),
+          network: arg("--network", "none"),
+          cpus: Number(arg("--cpus", "2")),
+          memory: arg("--memory", "4g"),
+          pidsLimit: Number(arg("--pids-limit", "256")),
+          user: arg("--container-user"),
+        } : { mode: "process" };
+        if (isolation.mode === "docker" && t.meta.requires.network && isolation.network === "none") {
+          console.warn(`${Y}network disabled${X}: this task declares network=true; pass --network bridge only if the Agent needs external access`);
+        }
+        adapter = new CommandAdapter({ command, workspaceDir, isolation });
       } else {
         adapter = new ManualAdapter(workspaceDir);
       }
@@ -465,7 +508,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
