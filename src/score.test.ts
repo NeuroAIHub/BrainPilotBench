@@ -51,6 +51,7 @@ test("runScorers: 跑注册的测试 scorer,收集其 ScoreResult", async () => 
     assert.equal(out.results.length, 1);
     assert.equal(out.results[0].kind, "test-count");
     assert.deepEqual(out.results[0].value, { count: 1 });
+    assert.equal(out.state, "scored");
     assert.equal(out.scoredAt, "2026-06-17T00:00:00.000Z");
   } finally {
     rmSync(dir, { recursive: true, force: true });
@@ -68,10 +69,29 @@ test("runScorers: rubric-judge 无凭证返回 unscored(score.js 自注册内置
     const out = await runScorers(fakeTask(["rubric-judge"]), bundle, "ts");
     assert.equal(out.results[0].kind, "rubric-judge");
     assert.equal(out.results[0].unscored, true);
+    assert.equal(out.results[0].state, "scoring_failed");
+    assert.equal(out.state, "scoring_failed");
   } finally {
     if (saved.k) process.env.ANTHROPIC_API_KEY = saved.k;
     if (saved.b) process.env.BPB_JUDGE_API_KEY = saved.b;
     if (saved.t) process.env.ANTHROPIC_AUTH_TOKEN = saved.t;
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test("runScorers: discards results if a scorer mutates submitted artifacts", async () => {
+  registerScorer("test-mutate", {
+    outputs: () => ["ok"],
+    build: () => async (ctx) => {
+      writeFileSync(join(ctx.runDir, "artifacts", "a.md"), "mutated");
+      return { value: { ok: 1 } };
+    },
+  });
+  const dir = mkdtempSync(join(tmpdir(), "bpb-score-mutate-"));
+  try {
+    mkdirSync(join(dir, "artifacts"), { recursive: true });
+    writeFileSync(join(dir, "artifacts", "a.md"), "original");
+    const bundle: RunBundle = { runDir: dir, runId: "t1-v", version: "v", events: [], signals: {} };
+    await assert.rejects(() => runScorers(fakeTask(["test-mutate"]), bundle, "ts"), /changed during scoring/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
 });

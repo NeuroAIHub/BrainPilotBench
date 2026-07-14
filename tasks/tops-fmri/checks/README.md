@@ -36,7 +36,10 @@ run_dir/
 Then it calls `evaluate_external.py $PWD`, which:
 
 - copies `features/*.npz` into a private tmp dir,
-- runs the agent script with a 120 s hard timeout,
+- copies the submitted inference script and models into a separate temporary
+  execution root,
+- runs the agent script with Python isolated mode, a minimal environment, no
+  evaluator path/token/proxy variables, and a 120 s hard timeout,
 - reads back the two prediction CSVs,
 - loads private labels,
 - computes 4 Pearson r + 2 AUC + aggregate 0-1 score, and
@@ -44,8 +47,13 @@ Then it calls `evaluate_external.py $PWD`, which:
 
 The BPB `exec-script` scorer captures that payload. Missing artifacts, bad
 CSVs, non-finite responses, or an agent script that crashes all cause the
-scorer to report **unscored** (never zero) — the leaderboard three-state
+scorer to report a structured <code>private_data_missing</code> or
+<code>scoring_failed</code> state (never zero) — the leaderboard coverage
 convention is preserved.
+
+The local subprocess boundary does not provide kernel-level filesystem or
+network isolation. Official evaluator deployment must still add a separate OS
+identity or no-network container before accepting untrusted submissions.
 
 ## Metric set
 

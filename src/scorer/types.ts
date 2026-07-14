@@ -7,6 +7,14 @@ import type { Task, ScorerSpec } from "../task.js";
 /** dict 值 → 每维度自动出榜；标量值用于单指标 scorer。 */
 export type ScoreValue = Record<string, number> | number;
 
+export type ScoringState =
+  | "ready_to_score"
+  | "private_data_missing"
+  | "private_access_denied"
+  | "submission_invalid"
+  | "scoring_failed"
+  | "scored";
+
 export interface ScoreResult {
   value: ScoreValue;
   verdict?: "pass" | "partial" | "fail";
@@ -14,6 +22,8 @@ export interface ScoreResult {
   raw?: unknown;
   /** judge/基础设施失败 → 排除出聚合，≠ fail、≠ 0。 */
   unscored?: boolean;
+  /** Structured reason when unscored. */
+  state?: Exclude<ScoringState, "ready_to_score" | "submission_invalid" | "scored">;
 }
 
 /** 喂给 scorer 的是"产物 + 轨迹"，不是 agent 本身。 */

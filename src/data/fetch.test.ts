@@ -1,9 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, writeFileSync, readFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { registerFetcher, getFetcher, hasFetcher, listFetchers, schemeOf, hfResolve } from "./fetch.js";
+import { DataFetchError, registerFetcher, getFetcher, hasFetcher, listFetchers, schemeOf, hfResolve, resolveHfToken } from "./fetch.js";
 import "./fetch.js";
 
 test("schemeOf: 取 uri 的 scheme", () => {
@@ -39,9 +39,10 @@ test("file fetcher: 复制本地文件到 destPath", async () => {
 });
 
 test("hfResolve: dataset uri 重写到 /resolve/main/", () => {
-  const prevEp = process.env.HF_ENDPOINT, prevTok = process.env.HF_TOKEN, prevTok2 = process.env.HUGGING_FACE_HUB_TOKEN;
+  const prevEp = process.env.HF_ENDPOINT, prevTok = process.env.HF_TOKEN, prevTok2 = process.env.HUGGING_FACE_HUB_TOKEN, prevNoFile = process.env.BPB_NO_HF_TOKEN_FILE;
   try {
     delete process.env.HF_ENDPOINT; delete process.env.HF_TOKEN; delete process.env.HUGGING_FACE_HUB_TOKEN;
+    process.env.BPB_NO_HF_TOKEN_FILE = "1";
     const { url, headers } = hfResolve("hf://datasets/openai/gsm8k/main/train.parquet");
     assert.equal(url, "https://huggingface.co/datasets/openai/gsm8k/resolve/main/main/train.parquet");
     assert.deepEqual(headers, {});
@@ -49,6 +50,96 @@ test("hfResolve: dataset uri 重写到 /resolve/main/", () => {
     if (prevEp !== undefined) process.env.HF_ENDPOINT = prevEp;
     if (prevTok !== undefined) process.env.HF_TOKEN = prevTok;
     if (prevTok2 !== undefined) process.env.HUGGING_FACE_HUB_TOKEN = prevTok2;
+    if (prevNoFile === undefined) delete process.env.BPB_NO_HF_TOKEN_FILE; else process.env.BPB_NO_HF_TOKEN_FILE = prevNoFile;
+  }
+});
+
+test("resolveHfToken: supports the standard hf auth login token file", () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-hf-token-"));
+  const prevHome = process.env.HF_HOME, prevToken = process.env.HF_TOKEN, prevNoFile = process.env.BPB_NO_HF_TOKEN_FILE;
+  try {
+    mkdirSync(root, { recursive: true });
+    writeFileSync(join(root, "token"), "hf_from_login\n");
+    process.env.HF_HOME = root;
+    delete process.env.HF_TOKEN;
+    delete process.env.BPB_NO_HF_TOKEN_FILE;
+    assert.equal(resolveHfToken(), "hf_from_login");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+    if (prevHome === undefined) delete process.env.HF_HOME; else process.env.HF_HOME = prevHome;
+    if (prevToken === undefined) delete process.env.HF_TOKEN; else process.env.HF_TOKEN = prevToken;
+    if (prevNoFile === undefined) delete process.env.BPB_NO_HF_TOKEN_FILE; else process.env.BPB_NO_HF_TOKEN_FILE = prevNoFile;
+  }
+});
+
+test("https fetcher resumes a partial file with Range and reports progress", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-http-resume-"));
+  const dest = join(root, "partial");
+  writeFileSync(dest, "abc");
+  const originalFetch = globalThis.fetch;
+  let range = "";
+  const seen: number[] = [];
+  try {
+    globalThis.fetch = async (_input, init) => {
+      range = new Headers(init?.headers).get("range") ?? "";
+      return new Response("def", { status: 206 });
+    };
+    await getFetcher("https")({
+      uri: "https://example.test/data",
+      destPath: dest,
+      expectedBytes: 6,
+      onProgress: (progress) => seen.push(progress.downloadedBytes),
+    });
+    assert.equal(range, "bytes=3-");
+    assert.equal(readFileSync(dest, "utf8"), "abcdef");
+    assert.equal(seen.at(-1), 6);
+  } finally {
+    globalThis.fetch = originalFetch;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("https fetcher classifies authentication and authorization failures", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-http-error-"));
+  const originalFetch = globalThis.fetch;
+  try {
+    for (const [status, kind] of [[401, "authentication"], [403, "authorization"]] as const) {
+      globalThis.fetch = async () => new Response("denied", { status });
+      await assert.rejects(
+        () => getFetcher("https")({ uri: "https://example.test/data", destPath: join(root, String(status)) }),
+        (error: any) => error instanceof DataFetchError && error.kind === kind && error.status === status,
+      );
+    }
+  } finally {
+    globalThis.fetch = originalFetch;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("https fetcher distinguishes disk, proxy, and direct-network failures", async () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-http-io-error-"));
+  const originalFetch = globalThis.fetch;
+  const proxyKeys = ["HTTPS_PROXY", "https_proxy", "HTTP_PROXY", "http_proxy"];
+  const previous = Object.fromEntries(proxyKeys.map((key) => [key, process.env[key]]));
+  try {
+    for (const key of proxyKeys) delete process.env[key];
+    const fail = async (error: NodeJS.ErrnoException, kind: string) => {
+      globalThis.fetch = async () => { throw error; };
+      await assert.rejects(
+        () => getFetcher("https")({ uri: "https://example.test/data", destPath: join(root, kind) }),
+        (caught: any) => caught instanceof DataFetchError && caught.kind === kind,
+      );
+    };
+    await fail(Object.assign(new Error("no space"), { code: "ENOSPC" }), "disk");
+    await fail(Object.assign(new Error("offline"), { code: "ENETUNREACH" }), "network");
+    process.env.https_proxy = "http://127.0.0.1:7890";
+    await fail(Object.assign(new Error("proxy refused"), { code: "ECONNREFUSED" }), "proxy");
+  } finally {
+    globalThis.fetch = originalFetch;
+    for (const key of proxyKeys) {
+      if (previous[key] === undefined) delete process.env[key]; else process.env[key] = previous[key];
+    }
+    rmSync(root, { recursive: true, force: true });
   }
 });
 

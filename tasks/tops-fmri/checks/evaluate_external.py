@@ -98,21 +98,43 @@ def copy_feature_inputs(src: Path, dst: Path) -> None:
         shutil.copy2(src / name, dst / name)
 
 
-def run_agent_inference(run_dir: Path, features_dir: Path, pred_dir: Path) -> None:
-    script = run_dir / "artifacts" / "scripts" / "apply_signature.py"
-    model_dir = run_dir / "artifacts" / "models"
-    if not script.exists():
+def run_agent_inference(run_dir: Path, features_dir: Path, pred_dir: Path, sandbox_dir: Path) -> None:
+    submitted_script = run_dir / "artifacts" / "scripts" / "apply_signature.py"
+    submitted_models = run_dir / "artifacts" / "models"
+    if not submitted_script.exists():
         raise ValueError("missing artifacts/scripts/apply_signature.py")
-    if not model_dir.exists():
+    if not submitted_models.exists():
         raise ValueError("missing artifacts/models")
+
+    # The submitted program is untrusted. Give it only copied code/models and
+    # held-out features in a temporary execution root. In particular, do not
+    # pass the evaluator label directory, its environment variable, HF tokens,
+    # proxy credentials, or the submission bundle itself.
+    script_dir = sandbox_dir / "scripts"
+    model_dir = sandbox_dir / "models"
+    home_dir = sandbox_dir / "home"
+    tmp_dir = sandbox_dir / "tmp"
+    script_dir.mkdir(parents=True)
+    home_dir.mkdir()
+    tmp_dir.mkdir()
+    shutil.copy2(submitted_script, script_dir / "apply_signature.py")
+    shutil.copytree(submitted_models, model_dir)
+    script = script_dir / "apply_signature.py"
+    agent_env = {
+        "PATH": os.environ.get("PATH", ""),
+        "HOME": str(home_dir),
+        "TMPDIR": str(tmp_dir),
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONHASHSEED": "0",
+    }
     cmd = [
-        sys.executable,
+        sys.executable, "-I",
         str(script),
         "--eval-features-dir", str(features_dir),
         "--model-dir", str(model_dir),
         "--out-dir", str(pred_dir),
     ]
-    subprocess.run(cmd, cwd=run_dir, check=True, timeout=120)
+    subprocess.run(cmd, cwd=sandbox_dir, env=agent_env, check=True, timeout=120)
 
 
 def resolve_private_dir(run_dir: Path) -> Path | None:
@@ -148,9 +170,11 @@ def main(argv: list[str]) -> int:
             tmp_path = Path(tmp)
             features_dir = tmp_path / "features"
             pred_dir = tmp_path / "predictions"
+            sandbox_dir = tmp_path / "agent-sandbox"
             pred_dir.mkdir()
+            sandbox_dir.mkdir()
             copy_feature_inputs(source_features, features_dir)
-            run_agent_inference(run_dir, features_dir, pred_dir)
+            run_agent_inference(run_dir, features_dir, pred_dir, sandbox_dir)
 
             study4_pred = read_predictions(pred_dir / "study4_predictions.csv", "condition", STUDY4_CONDITIONS)
             study5_pred = read_predictions(pred_dir / "study5_predictions.csv", "site", STUDY5_SITES)
