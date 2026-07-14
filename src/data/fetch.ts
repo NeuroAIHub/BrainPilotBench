@@ -135,13 +135,23 @@ export function hfResolve(uri: string): { url: string; headers: Record<string, s
 }
 
 /** Resolve the standard Hugging Face token without ever logging it. */
-export function resolveHfToken(): string | undefined {
+export function resolveHfToken(userHome = homedir()): string | undefined {
   const fromEnv = process.env.HF_TOKEN || process.env.HUGGING_FACE_HUB_TOKEN;
   if (fromEnv) return fromEnv.trim() || undefined;
   if (process.env.BPB_NO_HF_TOKEN_FILE) return undefined;
-  const home = process.env.HF_HOME || join(process.env.XDG_CACHE_HOME || join(homedir(), ".cache"), "huggingface");
-  try { return readFileSync(join(home, "token"), "utf8").trim() || undefined; }
-  catch { return undefined; }
+  const candidates = process.env.HF_HOME
+    ? [join(process.env.HF_HOME, "token")]
+    : [
+        ...(process.env.XDG_CACHE_HOME ? [join(process.env.XDG_CACHE_HOME, "huggingface", "token")] : []),
+        join(userHome, ".cache", "huggingface", "token"),
+      ];
+  for (const path of [...new Set(candidates)]) {
+    try {
+      const token = readFileSync(path, "utf8").trim();
+      if (token) return token;
+    } catch { /* try the standard login location next */ }
+  }
+  return undefined;
 }
 
 // 内置 fetcher 注册（模块加载即注册一次）。

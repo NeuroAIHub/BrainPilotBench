@@ -109,6 +109,8 @@ bash <repo>/tasks/tops-fmri/env/setup.sh # defaults to --role agent
 Maintainer/evaluator workflow, run only after the agent has exited:
 
 ```bash
+export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
+hf auth login
 export XDG_CACHE_HOME=/absolute/evaluator-only/cache
 bp-bench fetch tops-fmri --private
 export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/path
