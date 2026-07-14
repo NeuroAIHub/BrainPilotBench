@@ -55,6 +55,7 @@ would silently drift the data version.
 Agent workflow (no private access required):
 
 ```bash
+bp-bench doctor tops-fmri
 bp-bench fetch tops-fmri                 # public-only by default
 cd <agent-workspace>
 bash <repo>/tasks/tops-fmri/env/setup.sh # defaults to --role agent

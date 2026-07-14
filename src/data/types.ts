@@ -45,6 +45,15 @@ export interface FetchRequest {
   uri: string;
   /** fetcher 应把内容写到这个绝对路径（cache 提供的临时路径）。 */
   destPath: string;
+  /** 已知的完整对象大小；HTTP fetcher 用于 Range resume 和进度。 */
+  expectedBytes?: number;
+  onProgress?: (progress: FetchProgress) => void;
+}
+
+export interface FetchProgress {
+  downloadedBytes: number;
+  totalBytes?: number;
+  resumedFrom: number;
 }
 
 /** 一个 scheme 的拉取实现（对称于 scorer 注册表）。 */
