@@ -4,6 +4,7 @@
  *   <bundle>/meta.json            提交清单(taskId + agent + 可选 taskVersion/producedAt/notes)
  *   <bundle>/artifacts/<files>    必须满足任务 expected_artifacts 的 glob
  *   <bundle>/events.jsonl         可选轨迹(为将来 trajectory 评分预留)
+ *   <bundle>/telemetry.json       可选标准化过程统计(由 stats 严格校验)
  * verifySubmission 是契约门:格式/产物齐全性校验(不评分;评分由 score 跑任务声明的 scorer)。
  */
 import { createHash } from "node:crypto";

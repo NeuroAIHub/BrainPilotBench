@@ -258,7 +258,8 @@ my-submission/
 ├── meta.json
 ├── artifacts/
 │   └── ... files required by the task ...
-└── events.jsonl          # optional; reserved for trace and trajectory analysis
+├── events.jsonl          # optional lossless harness/provider event trace
+└── telemetry.json        # optional normalized, source-bound process metrics
 ~~~
 
 Example <code>meta.json</code>:
@@ -283,11 +284,50 @@ reproducibility.
 node dist/cli.js submit verify path/to/my-submission
 node dist/cli.js score path/to/my-submission
 node dist/cli.js leaderboard path/to/submissions-parent
+node dist/cli.js stats path/to/submissions-parent --format table
 ~~~
 
 The first command checks the contract before grading. The second writes
 <code>scores.json</code> inside the bundle. The third aggregates every scored
 bundle under the supplied parent directory.
+
+### Auditable process telemetry
+
+Harness-specific collectors can add a versioned <code>telemetry.json</code>
+without changing scoring. Use the exported helper so the normalized record is
+bound to the exact preserved <code>events.jsonl</code> and token totals are
+derived consistently. Official results use maintainer-collected telemetry;
+credentials and private resource contents must never be written to either file.
+
+~~~ts
+import { writeRunTelemetry } from "@brainpilot/bench/telemetry";
+
+writeRunTelemetry(bundleDir, {
+  harness: "my-harness",
+  model: "my-model",
+  condition: "full",
+  domainToolNames: ["get_domain_knowledge_local", "search_papers_local"],
+  tokens: { input: 1200, output: 300, cacheRead: 200, cacheWrite: 0 },
+  domainToolCalls: 4,
+  skillSearches: 2,
+  skillLoads: 1
+});
+~~~
+
+The reported <code>Tokens</code> value is
+<code>input + output + cacheRead + cacheWrite</code>. Every component and count
+is a non-negative integer or explicit <code>null</code>; unavailable data is
+never converted to zero. A skill search is one explicit discovery query. A
+skill load is one successful full skill-body load. Domain tool calls are
+limited to the allowlist recorded in <code>domainToolNames</code>.
+
+For <code>condition: "base"</code>, domain tool calls, skill searches, and skill
+loads must all be measured and equal zero. <code>bp-bench stats</code> fails
+closed on missing telemetry, malformed values, base leakage, or an
+<code>events.jsonl</code> hash mismatch, while still printing rows with
+<code>—</code> for unavailable values. It supports
+<code>table</code>, <code>json</code>, <code>markdown</code>, and
+<code>csv</code> output.
 
 > [!NOTE]
 > Official benchmark results will be produced by maintainers rather than
@@ -325,7 +365,8 @@ A captured run can contain:
 
 ~~~text
 runs/<task>-<version>/
-├── events.jsonl          # normalized event trace
+├── events.jsonl          # lossless source event trace
+├── telemetry.json        # optional normalized process metrics
 ├── signals.json          # completion, event, tool, error, and duration signals
 ├── scoresheet.json       # blank or completed human-review sheet
 ├── artifacts/            # required deliverables collected from the workspace

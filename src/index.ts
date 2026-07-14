@@ -41,5 +41,6 @@ export * from "./leaderboard-format.js";
 export * from "./discover.js";
 export * from "./registry.js";
 export * from "./submission.js";
+export * from "./telemetry.js";
 
 export const BENCH_VERSION = "0.0.1";

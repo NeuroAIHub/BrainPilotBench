@@ -95,3 +95,21 @@ test("runScorers: discards results if a scorer mutates submitted artifacts", asy
     await assert.rejects(() => runScorers(fakeTask(["test-mutate"]), bundle, "ts"), /changed during scoring/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
+
+test("runScorers: discards results if a scorer mutates submitted telemetry", async () => {
+  registerScorer("test-mutate-telemetry", {
+    outputs: () => ["ok"],
+    build: () => async (ctx) => {
+      writeFileSync(join(ctx.runDir, "telemetry.json"), '{"tampered":true}');
+      return { value: { ok: 1 } };
+    },
+  });
+  const dir = mkdtempSync(join(tmpdir(), "bpb-score-telemetry-"));
+  try {
+    mkdirSync(join(dir, "artifacts"), { recursive: true });
+    writeFileSync(join(dir, "artifacts", "a.md"), "original");
+    writeFileSync(join(dir, "telemetry.json"), '{"original":true}');
+    const bundle: RunBundle = { runDir: dir, runId: "t1-v", version: "v", events: [], signals: {} };
+    await assert.rejects(() => runScorers(fakeTask(["test-mutate-telemetry"]), bundle, "ts"), /changed during scoring/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});

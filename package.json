@@ -36,7 +36,8 @@
     "./leaderboard-format": "./dist/leaderboard-format.js",
     "./discover": "./dist/discover.js",
     "./registry": "./dist/registry.js",
-    "./submission": "./dist/submission.js"
+    "./submission": "./dist/submission.js",
+    "./telemetry": "./dist/telemetry.js"
   },
   "bin": {
     "bp-bench": "./dist/cli.js"

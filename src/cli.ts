@@ -11,6 +11,7 @@
  *   bp-bench fetch <taskId|all> [--public|--private|--all] [--tasks <dir>]
  *   bp-bench score <runDir>                       (离线跑 scorer 写 scores.json)
  *   bp-bench leaderboard <scoresDir>
+ *   bp-bench stats <bundle|runsDir> [--format table|json|markdown|csv]
  *
  * run 的产出：每个 task 一个 run 目录，含 events.jsonl + signals.json + blank scoresheet
  * (+ artifacts/ 当 --workspace-root)。score 离线跑任务声明的 scorer 写 scores.json；
@@ -39,6 +40,7 @@ import { buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticR
 import type { DatasetEntry, FetchProgress } from "./data/types.js";
 import { runDoctor } from "./doctor.js";
 import { dockerImageStatus, dockerStatus } from "./isolation.js";
+import { collectTelemetryStats, renderTelemetryStats, type TelemetryFormat } from "./telemetry.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -341,6 +343,19 @@ async function main() {
     return;
   }
 
+  if (cmd === "stats") {
+    const input = argv[1] ?? "runs";
+    const format = arg("--format", "table") as TelemetryFormat;
+    if (!["table", "json", "markdown", "csv"].includes(format)) {
+      console.error("--format must be table, json, markdown, or csv"); process.exit(2);
+    }
+    const rows = collectTelemetryStats(input);
+    if (!rows.length) { console.error(`no submission bundles found under ${input}`); process.exit(2); }
+    console.log(renderTelemetryStats(rows, format));
+    if (rows.some((row) => row.status !== "ok")) process.exitCode = 1;
+    return;
+  }
+
   if (cmd === "validate") {
     const which = argv[1];
     const dirs = which === "all" ? listAllTaskDirs() : dirsByTaskId(which);
@@ -544,7 +559,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | doctor [id] [--private] [--python <path>] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--python <path>] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | stats <bundle|runsDir> [--format table|json|markdown|csv] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 
