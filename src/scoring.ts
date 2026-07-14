@@ -8,8 +8,7 @@
  */
 import { type Task } from "./task.js";
 import { getScorerModule } from "./scorer/registry.js";
-import { registerRubricScorers } from "./scorer/rubric.js";
-registerRubricScorers(); // 确保 rubric-judge/rubric-human 已注册（幂等）
+import "./scorer/index.js"; // 注册全部内置 scorer，避免调用方导入顺序影响 scoresheet
 
 export interface DimensionScore {
   dimension: string;

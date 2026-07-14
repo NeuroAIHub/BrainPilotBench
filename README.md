@@ -237,10 +237,16 @@ Start a BrainPilot deployment, then run:
 
 ~~~bash
 node dist/cli.js run neuro-survey-attention \
-  --base-url http://127.0.0.1:9001/api \
-  --version "brainpilot@your-commit" \
+  --adapter brainpilot \
+  --base-url http://127.0.0.1:9001 \
+  --workspace-root /path/to/brainpilot/workspaces \
+  --agent "brainpilot@your-commit" \
   --out runs/
 ~~~
+
+The adapter probes both root and <code>/api</code>-prefixed Runtime layouts,
+stages public task data before the first prompt, collects required artifacts,
+and writes a submission-compatible <code>meta.json</code> automatically.
 
 Score and aggregate the captured run:
 
@@ -256,15 +262,25 @@ runs/<task>-<version>/
 ├── events.jsonl          # normalized event trace
 ├── signals.json          # completion, event, tool, error, and duration signals
 ├── scoresheet.json       # blank or completed human-review sheet
-├── artifacts/            # collected when --workspace-root is supplied
+├── artifacts/            # required deliverables collected from the workspace
 └── scores.json           # produced by the score command
 ~~~
 
-Use <code>--workspace-root &lt;dir&gt;</code> when the BrainPilot workspace is
-available to the harness and its artifacts should be collected automatically.
+For a local command adapter, the command receives <code>BPB_TASK_PROMPT</code>
+and <code>BPB_WORKSPACE</code>:
 
-A generic live SUT adapter for arbitrary agents is planned. Until then,
-non-BrainPilot systems should use the submission-bundle path above.
+~~~bash
+node dist/cli.js run tops-fmri --adapter command \
+  --command "my-agent --prompt \"\$BPB_TASK_PROMPT\"" \
+  --agent "my-agent@1"
+~~~
+
+Manual agents use a prepare/resume handoff:
+
+~~~bash
+node dist/cli.js run tops-fmri --adapter manual --agent "my-agent@1"
+# Work in the printed workspace, then run the printed --resume command.
+~~~
 
 ## Task suite
 
@@ -469,30 +485,23 @@ The framework and task suite have different responsibilities:
 
 ### Integrate a new agent today
 
-Use the submission-bundle contract. It is stable across languages and does not
-require a live adapter.
-
-A wrapper only needs to:
-
-1. read the task and prompts;
-2. run the agent;
-3. copy expected deliverables into <code>artifacts/</code>;
-4. write <code>meta.json</code>;
-5. call <code>submit verify</code> and <code>score</code>.
+Use the built-in <code>brainpilot</code>, <code>command</code>, or
+<code>manual</code> adapter. All three produce the same submission-bundle
+contract, which remains stable across languages.
 
 ### Add a live adapter
 
-The existing runner targets BrainPilot’s HTTP/SSE runtime contract. A generic
-system-under-test adapter is the next framework milestone. New adapters should
-preserve the agent’s native action loop while returning the same run-bundle
-contract used by offline submissions.
+Implement the exported <code>AgentAdapter</code> interface and return the same
+run-bundle contract used by the built-in adapters. New adapters should preserve
+the agent’s native action loop and keep task setup ahead of the first prompt.
 
 ## Roadmap
 
 Near-term priorities are:
 
 - expand the curated public and held-out brain science task sets;
-- add a generic live SUT adapter for non-BrainPilot agents;
+- add remote-runtime adapters beyond the built-in BrainPilot, command, and
+  manual integrations;
 - add strong Docker isolation for deterministic grader execution;
 - add authenticated dataset fetching for private data-backed evaluations;
 - publish the first immutable benchmark release;
