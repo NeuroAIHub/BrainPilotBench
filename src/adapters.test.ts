@@ -54,9 +54,11 @@ test("BrainPilotAdapter prepares the session workspace before prompting", async 
 
 test("command and manual adapters share the prepared workspace contract", async () => {
   const root = mkdtempSync(join(tmpdir(), "bpb-local-adapter-"));
+  const previousToken = process.env.HF_TOKEN;
   try {
+    process.env.HF_TOKEN = "must-not-reach-agent";
     const commandDir = join(root, "command");
-    const command = await new CommandAdapter({ command: "printf done > result.txt", workspaceDir: commandDir }).run(task(root));
+    const command = await new CommandAdapter({ command: "test -z \"$HF_TOKEN\" && printf done > result.txt", workspaceDir: commandDir }).run(task(root));
     assert.equal(command.status, "completed");
     assert.ok(existsSync(join(commandDir, "result.txt")));
     assert.ok(existsSync(join(commandDir, ".bpb", "TASK_PROMPT.md")));
@@ -65,5 +67,8 @@ test("command and manual adapters share the prepared workspace contract", async 
     const manual = await new ManualAdapter(manualDir).run(task(root));
     assert.equal(manual.status, "pending");
     assert.ok(existsSync(join(manualDir, ".bpb", "TASK_PROMPT.md")));
-  } finally { rmSync(root, { recursive: true, force: true }); }
+  } finally {
+    if (previousToken === undefined) delete process.env.HF_TOKEN; else process.env.HF_TOKEN = previousToken;
+    rmSync(root, { recursive: true, force: true });
+  }
 });

@@ -6,7 +6,8 @@
  *   <bundle>/events.jsonl         可选轨迹(为将来 trajectory 评分预留)
  * verifySubmission 是契约门:格式/产物齐全性校验(不评分;评分由 score 跑任务声明的 scorer)。
  */
-import { readFileSync, existsSync, globSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { readFileSync, existsSync, globSync, lstatSync, statSync } from "node:fs";
 import { join } from "node:path";
 import type { Task } from "./task.js";
 
@@ -49,15 +50,88 @@ export function verifySubmission(task: Task, dir: string): SubmissionIssue[] {
   else if (meta.taskId !== task.meta.id) issues.push({ level: "error", msg: `meta.taskId(${meta.taskId})≠任务 id(${task.meta.id})` });
   if (typeof meta.agent !== "string" || !meta.agent) issues.push({ level: "error", msg: "meta.json 缺 agent(被评系统标识)" });
 
+  const configuredPrivatePath = process.env.BPB_TOPS_PRIVATE_EVAL_DIR;
+  for (const rel of globSync(["**/*", "**/.*", "**/.*/**/*"], { cwd: dir })) {
+    if (rel.startsWith("artifacts/")) continue; // scanned with hashes below
+    const path = join(dir, rel);
+    try {
+      const info = lstatSync(path);
+      if (info.isSymbolicLink()) {
+        issues.push({ level: "error", msg: `submission symlink is forbidden: ${rel}` });
+        continue;
+      }
+      if (!info.isFile()) continue;
+      if (/(^|\/)(?:private(?:_eval|_features|_labels)?|study[45]_(?:features|labels)(?:\.[^/]*)?)(?:\/|$)/i.test(rel)) {
+        issues.push({ level: "error", msg: `possible private evaluator file in submission: ${rel}` });
+      }
+      if (info.size <= 2 * 1024 * 1024 && /\.(?:md|txt|json|jsonl|ya?ml|py|sh|csv)$/i.test(rel)) {
+        const text = readFileSync(path, "utf8");
+        const assignedPrivatePath = /BPB_TOPS_PRIVATE_EVAL_DIR\s*=\s*["']?\//.test(text);
+        const knownPathLeaked = configuredPrivatePath ? text.includes(configuredPrivatePath) : false;
+        if (assignedPrivatePath || knownPathLeaked) issues.push({ level: "error", msg: `submission contains a private evaluator path: ${rel}` });
+      }
+    } catch { issues.push({ level: "error", msg: `submission file cannot be inspected: ${rel}` }); }
+  }
+
   // 产物齐全性:每个 expected_artifacts glob 在 artifacts/ 下至少匹配 1 个**文件**
   // (globSync 也会匹配目录;只数文件,否则 `notreally.csv/` 这种目录会假性通过契约门)。
   const artifactsDir = join(dir, "artifacts");
+  const allArtifactFiles: string[] = [];
+  if (existsSync(artifactsDir)) {
+    for (const rel of globSync(["**/*", "**/.*", "**/.*/**/*"], { cwd: artifactsDir })) {
+      const path = join(artifactsDir, rel);
+      try {
+        const info = lstatSync(path);
+        if (info.isSymbolicLink()) {
+          issues.push({ level: "error", msg: `artifact symlink is forbidden: ${rel}` });
+          continue;
+        }
+        if (info.isFile()) allArtifactFiles.push(rel);
+      } catch { issues.push({ level: "error", msg: `artifact cannot be inspected: ${rel}` }); }
+    }
+  }
+
+  const privateEntries = task.datasets.filter((entry) => entry.scope === "private");
+  const privateHashes = new Set([
+    ...privateEntries.map((entry) => entry.sha256),
+    ...(process.env.BPB_PRIVATE_LABEL_HASHES ?? "").split(",").map((value) => value.trim()).filter(Boolean),
+  ]);
+  const privateSizes = new Set(privateEntries.map((entry) => entry.bytes));
+  for (const rel of allArtifactFiles) {
+    const path = join(artifactsDir, rel);
+    if (/(^|\/)(?:private(?:_eval|_features|_labels)?|study[45]_(?:features|labels)(?:\.[^/]*)?)(?:\/|$)/i.test(rel)) {
+      issues.push({ level: "error", msg: `possible private evaluator artifact: ${rel}` });
+    }
+    let info;
+    try { info = statSync(path); }
+    catch { issues.push({ level: "error", msg: `artifact cannot be scanned: ${rel}` }); continue; }
+    if (privateHashes.size && (privateSizes.has(info.size) || info.size <= 128 * 1024 * 1024)) {
+      try {
+        const digest = createHash("sha256").update(readFileSync(path)).digest("hex");
+        if (privateHashes.has(digest)) issues.push({ level: "error", msg: `artifact matches a private dataset hash: ${rel}` });
+      } catch { issues.push({ level: "error", msg: `artifact hash scan failed: ${rel}` }); }
+    }
+    if (info.size <= 2 * 1024 * 1024 && /\.(?:md|txt|json|ya?ml|py|sh|csv)$/i.test(rel)) {
+      try {
+        const text = readFileSync(path, "utf8");
+        const assignedPrivatePath = /BPB_TOPS_PRIVATE_EVAL_DIR\s*=\s*["']?\//.test(text);
+        const knownPathLeaked = configuredPrivatePath ? text.includes(configuredPrivatePath) : false;
+        if (assignedPrivatePath || knownPathLeaked) {
+          issues.push({ level: "error", msg: `artifact contains a private evaluator path: ${rel}` });
+        }
+      } catch { issues.push({ level: "error", msg: `artifact text scan failed: ${rel}` }); }
+    }
+  }
+
   for (const a of task.meta.expectedArtifacts) {
     if (a.workspace.includes("..")) { issues.push({ level: "error", msg: `expected_artifacts 含路径穿越: ${a.workspace}` }); continue; }
     let files: string[] = [];
     try {
       files = (existsSync(artifactsDir) ? globSync(a.workspace, { cwd: artifactsDir }) : [])
-        .filter((rel) => { try { return statSync(join(artifactsDir, rel)).isFile(); } catch { return false; } });
+        .filter((rel) => {
+          try { const info = lstatSync(join(artifactsDir, rel)); return info.isFile() && !info.isSymbolicLink(); }
+          catch { return false; }
+        });
     } catch { files = []; }
     if (!files.length) issues.push({ level: "error", msg: `缺产物(无文件匹配 expected_artifacts): ${a.workspace}` });
   }

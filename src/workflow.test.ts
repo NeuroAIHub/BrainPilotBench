@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
+import { assertAgentDataBoundary, buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
 import type { Task } from "./task.js";
 
 function task(dir: string): Task {
@@ -55,4 +55,25 @@ test("manual run state round-trips for resume", () => {
     writeManualRunState(root, state);
     assert.deepEqual(readManualRunState(root), state);
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("assertAgentDataBoundary refuses private evaluator env or cache before Agent start", () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-agent-boundary-"));
+  const previousXdg = process.env.XDG_CACHE_HOME, previousEval = process.env.BPB_TOPS_PRIVATE_EVAL_DIR;
+  try {
+    process.env.XDG_CACHE_HOME = root;
+    const t = task(root);
+    t.datasets = [{ name: "labels", scope: "private", uri: "file:///labels", sha256: "b".repeat(64), bytes: 1 }];
+    process.env.BPB_TOPS_PRIVATE_EVAL_DIR = "/private/eval";
+    assert.throws(() => assertAgentDataBoundary(t), /private evaluator environment/);
+    delete process.env.BPB_TOPS_PRIVATE_EVAL_DIR;
+    const cache = join(root, "brainpilot-bench", "b".repeat(64));
+    mkdirSync(cache, { recursive: true });
+    writeFileSync(join(cache, "data"), "x");
+    assert.throws(() => assertAgentDataBoundary(t), /private evaluator data exists/);
+  } finally {
+    if (previousXdg === undefined) delete process.env.XDG_CACHE_HOME; else process.env.XDG_CACHE_HOME = previousXdg;
+    if (previousEval === undefined) delete process.env.BPB_TOPS_PRIVATE_EVAL_DIR; else process.env.BPB_TOPS_PRIVATE_EVAL_DIR = previousEval;
+    rmSync(root, { recursive: true, force: true });
+  }
 });

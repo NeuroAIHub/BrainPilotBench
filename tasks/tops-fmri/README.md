@@ -14,8 +14,9 @@ bp-bench fetch tops-fmri --public
 bp-bench run tops-fmri --adapter manual --agent my-agent@1
 ```
 
-Run the Agent in the printed workspace, then execute the printed `--resume`
-command. BrainPilot users can replace the last command with:
+Run the Agent in the printed workspace without evaluator/Hugging Face
+credentials, then execute the printed `--resume` command. BrainPilot users can
+replace the last command with:
 
 ```bash
 bp-bench run tops-fmri \
@@ -90,6 +91,7 @@ bash <repo>/tasks/tops-fmri/env/setup.sh # defaults to --role agent
 Maintainer/evaluator workflow, run only after the agent has exited:
 
 ```bash
+export XDG_CACHE_HOME=/absolute/evaluator-only/cache
 bp-bench fetch tops-fmri --private
 export BPB_TOPS_PRIVATE_EVAL_DIR=/absolute/evaluator-only/path
 bash tasks/tops-fmri/env/setup.sh --role evaluator

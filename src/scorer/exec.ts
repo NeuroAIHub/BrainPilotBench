@@ -45,15 +45,26 @@ const execModule: ScorerModule = {
       const rel = typeof spec.script === "string" ? spec.script : "checks/check.sh";
       const scriptPath = resolve(task.dir, rel); // 绝对路径:沙箱以 bundle 为 cwd,相对 task.dir 会找不到
       if (!existsSync(scriptPath)) {
-        return { value: {}, unscored: true, explanation: `exec script not found: ${rel}` };
+        return { value: {}, unscored: true, state: "scoring_failed", explanation: `exec script not found: ${rel}` };
       }
       const sandbox = injectedSandbox ?? localSubprocessSandbox();
       // 在 bundle 的 runDir 下跑;脚本通过相对路径访问 artifacts/。
       const r = await sandbox.run({ command: "/bin/bash", args: [scriptPath], cwd: ctx.runDir, timeoutMs: 120_000 });
-      if (r.timedOut) return { value: {}, unscored: true, explanation: "exec script timed out" };
+      if (r.timedOut) return { value: {}, unscored: true, state: "scoring_failed", explanation: "exec script timed out" };
       const scores = extractSentinelJson(r.stdout);
       if (!scores) {
-        return { value: {}, unscored: true, explanation: `exec script produced no valid BPB_SCORES JSON (exit ${r.exitCode})` };
+        const detail = `${r.stderr}\n${r.stdout}`;
+        const state = /permission denied|access denied|forbidden|\b403\b/i.test(detail)
+          ? "private_access_denied"
+          : /no private eval data|private (?:eval )?data.*(?:missing|not found)|private cache missing/i.test(detail)
+            ? "private_data_missing"
+            : "scoring_failed";
+        const hint = state === "private_data_missing"
+          ? "private evaluator data is missing; maintainers should run `bp-bench fetch <task> --private` and evaluator setup"
+          : state === "private_access_denied"
+            ? "private evaluator access was denied; verify gated-dataset permission and evaluator filesystem access"
+            : `exec script produced no valid BPB_SCORES JSON (exit ${r.exitCode})`;
+        return { value: {}, unscored: true, state, explanation: hint };
       }
       return { value: scores, explanation: `exec-script ${rel} (exit ${r.exitCode})` };
     };
