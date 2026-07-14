@@ -71,9 +71,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      # numpy:数值型任务(tops-fmri 等)的 Oracle solution.sh + exec-script grader 都用它算。
-      - name: Install numerical grader dependency
-        run: python3 -m pip install --disable-pip-version-check numpy
+      - name: Install pinned numerical task dependencies
+        run: python3 -m pip install --disable-pip-version-check -r tasks/neuro-rsc-place-cell/checks/requirements.txt
       - run: npm ci --no-audit --no-fund
       - run: npm run build
       - name: Prepare Docker isolation smoke images
