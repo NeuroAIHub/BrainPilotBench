@@ -20,6 +20,7 @@ EOF
   chmod +x "$TMP/curl"
   export PATH="$TMP:$PATH"
   export ARGS_FILE="$TMP/args" BODY_FILE="$TMP/body"
+  unset LARK_NOTIFY_MAX_ATTEMPTS LARK_NOTIFY_BASE_DELAY_SECONDS LARK_NOTIFY_JITTER_SECONDS LARK_NOTIFY_SLEEP_BIN || true
   : > "$ARGS_FILE"; : > "$BODY_FILE"
 }
 
@@ -69,4 +70,54 @@ EOF
   unset LARK_WEBHOOK_SECRET || true
   run bash -c 'echo '\''{"msg_type":"interactive","card":{}}'\'' | bash "'"$SCRIPT"'"'
   [ "$status" -eq 1 ]
+}
+
+@test "rate limit: retries and then succeeds" {
+  echo 0 > "$TMP/count"
+  cat > "$TMP/curl" <<EOF
+#!/usr/bin/env bash
+n=\$(cat "$TMP/count"); n=\$((n+1)); echo "\$n" > "$TMP/count"
+if [ "\$n" -eq 1 ]; then echo '{"code":11232,"msg":"frequency limited"}'; else echo '{"code":0,"msg":"success"}'; fi
+EOF
+  chmod +x "$TMP/curl"
+  export LARK_WEBHOOK_URL="https://example.invalid/hook"
+  export LARK_NOTIFY_MAX_ATTEMPTS=3 LARK_NOTIFY_BASE_DELAY_SECONDS=0 LARK_NOTIFY_JITTER_SECONDS=0
+  run bash -c 'echo '\''{"msg_type":"interactive","card":{}}'\'' | bash "'"$SCRIPT"'"'
+  [ "$status" -eq 0 ]
+  [ "$(cat "$TMP/count")" -eq 2 ]
+}
+
+@test "retry_after: uses the server hint" {
+  echo 0 > "$TMP/count"
+  cat > "$TMP/curl" <<EOF
+#!/usr/bin/env bash
+n=\$(cat "$TMP/count"); n=\$((n+1)); echo "\$n" > "$TMP/count"
+if [ "\$n" -eq 1 ]; then echo '{"code":11232,"retry_after":3}'; else echo '{"code":0}'; fi
+EOF
+  cat > "$TMP/sleep" <<EOF
+#!/usr/bin/env bash
+echo "\$1" >> "$TMP/sleeps"
+EOF
+  chmod +x "$TMP/curl" "$TMP/sleep"
+  export LARK_WEBHOOK_URL="https://example.invalid/hook"
+  export LARK_NOTIFY_MAX_ATTEMPTS=2 LARK_NOTIFY_BASE_DELAY_SECONDS=0 LARK_NOTIFY_JITTER_SECONDS=0
+  export LARK_NOTIFY_SLEEP_BIN="$TMP/sleep"
+  run bash -c 'echo '\''{"msg_type":"interactive","card":{}}'\'' | bash "'"$SCRIPT"'"'
+  [ "$status" -eq 0 ]
+  [ "$(cat "$TMP/sleeps")" = "3" ]
+}
+
+@test "rate limit: fails after bounded attempts" {
+  echo 0 > "$TMP/count"
+  cat > "$TMP/curl" <<EOF
+#!/usr/bin/env bash
+n=\$(cat "$TMP/count"); n=\$((n+1)); echo "\$n" > "$TMP/count"
+echo '{"code":11232,"msg":"frequency limited"}'
+EOF
+  chmod +x "$TMP/curl"
+  export LARK_WEBHOOK_URL="https://example.invalid/hook"
+  export LARK_NOTIFY_MAX_ATTEMPTS=3 LARK_NOTIFY_BASE_DELAY_SECONDS=0 LARK_NOTIFY_JITTER_SECONDS=0
+  run bash -c 'echo '\''{"msg_type":"interactive","card":{}}'\'' | bash "'"$SCRIPT"'"'
+  [ "$status" -eq 1 ]
+  [ "$(cat "$TMP/count")" -eq 3 ]
 }
