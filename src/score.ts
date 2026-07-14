@@ -44,7 +44,7 @@ export interface RunScores {
 export async function snapshotArtifacts(runDir: string): Promise<Record<string, string>> {
   const artifactsDir = join(runDir, "artifacts");
   const snapshot: Record<string, string> = {};
-  for (const name of ["meta.json", "events.jsonl", "signals.json"]) {
+  for (const name of ["meta.json", "events.jsonl", "signals.json", "telemetry.json"]) {
     const path = join(runDir, name);
     try { if (statSync(path).isFile()) snapshot[`$${name}`] = await sha256File(path); }
     catch { /* optional root file absent */ }
