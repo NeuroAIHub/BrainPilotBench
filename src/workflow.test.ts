@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { assertAgentDataBoundary, buildSubmissionBundle, prepareWorkspace, readManualRunState, syntheticRunResult, writeManualRunState } from "./workflow.js";
 import type { Task } from "./task.js";
 
@@ -25,6 +25,19 @@ test("prepareWorkspace writes the prompt and runs task setup", () => {
     assert.equal(prepared.setupRan, true);
     assert.ok(existsSync(join(workspace, "setup.marker")));
     assert.match(readFileSync(prepared.promptPath, "utf8"), /Turn 2[\s\S]*second/);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("prepareWorkspace resolves a relative task root before changing cwd", () => {
+  const root = mkdtempSync(join(tmpdir(), "bpb-relative-prepare-"));
+  try {
+    const taskDir = join(root, "task");
+    const workspace = join(root, "elsewhere", "workspace");
+    mkdirSync(join(taskDir, "env"), { recursive: true });
+    writeFileSync(join(taskDir, "env", "setup.sh"), "#!/bin/bash\nset -eu\nprintf staged > relative.marker\n");
+    const prepared = prepareWorkspace(task(relative(process.cwd(), taskDir)), workspace);
+    assert.equal(prepared.setupRan, true);
+    assert.ok(existsSync(join(workspace, "relative.marker")));
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 

@@ -1,6 +1,6 @@
 /** End-to-end workspace preparation and submission bundle assembly. */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { basename, dirname, join } from "node:path";
+import { basename, dirname, join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import type { Task } from "./task.js";
 import type { RunResult } from "./runner.js";
@@ -52,7 +52,9 @@ export function prepareWorkspace(task: Task, workspaceDir: string): { setupRan: 
   mkdirSync(join(workspaceDir, ".bpb"), { recursive: true });
   const promptPath = join(workspaceDir, ".bpb", "TASK_PROMPT.md");
   writeFileSync(promptPath, taskPromptMarkdown(task));
-  const setupPath = join(task.dir, "env", "setup.sh");
+  // setup runs with cwd switched to the Agent workspace, so task-relative
+  // paths must be resolved while we are still in the benchmark repository.
+  const setupPath = resolve(task.dir, "env", "setup.sh");
   if (!existsSync(setupPath)) return { setupRan: false, promptPath };
   execFileSync("/bin/bash", [setupPath, "--role", "agent"], {
     cwd: workspaceDir,
