@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { parseScorers, loadTask } from "./loader.js";
 import { DEFAULT_SCORERS } from "./task.js";
 
-const SURVEY = fileURLToPath(new URL("../tasks/neuro-survey-attention", import.meta.url));
+const RUBRIC_TASK = fileURLToPath(new URL("../test/fixtures/rubric-task", import.meta.url));
 
 test("parseScorers: 缺省回落 DEFAULT_SCORERS", () => {
   assert.deepEqual(parseScorers(undefined), DEFAULT_SCORERS);
@@ -21,8 +21,8 @@ test("parseScorers: 解析显式 scorers，保留 kind 与配置字段", () => {
   assert.equal(out[1].script, "checks/check.sh");
 });
 
-test("loadTask: 种子任务无 scoring 字段 → scorers == DEFAULT_SCORERS", () => {
-  const t = loadTask(SURVEY);
+test("loadTask: 无 scoring 字段 → scorers == DEFAULT_SCORERS", () => {
+  const t = loadTask(RUBRIC_TASK);
   assert.deepEqual(t.scorers, DEFAULT_SCORERS);
 });
 

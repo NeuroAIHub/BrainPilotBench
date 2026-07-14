@@ -1,0 +1,2 @@
+- send: Write a test artifact.
+  then: wait_idle

@@ -41,7 +41,7 @@ test("loadTask: 无 data.lock → task.datasets 为空数组", () => {
   }
 });
 
-test("loadTask: 种子任务(无 data.lock)仍 datasets=[]", () => {
-  const SURVEY = join(process.cwd(), "tasks", "neuro-survey-attention");
-  assert.deepEqual(loadTask(SURVEY).datasets, []);
+test("loadTask: fixture task without data.lock still has datasets=[]", () => {
+  const fixture = join(process.cwd(), "test", "fixtures", "rubric-task");
+  assert.deepEqual(loadTask(fixture).datasets, []);
 });

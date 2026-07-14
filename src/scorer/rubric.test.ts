@@ -5,17 +5,17 @@ import { loadTask } from "../loader.js";
 import { getScorerModule } from "./registry.js";
 import "./index.js"; // 触发 rubric 注册
 
-const SURVEY = fileURLToPath(new URL("../../tasks/neuro-survey-attention", import.meta.url));
-const TRENDS = fileURLToPath(new URL("../../tasks/neuro-trends-connectomics", import.meta.url));
+const RUBRIC_TASK = fileURLToPath(new URL("../../test/fixtures/rubric-task", import.meta.url));
+const DEFAULT_RUBRIC_TASK = fileURLToPath(new URL("../../test/fixtures/default-rubric-task", import.meta.url));
 
 test("rubric-judge 注册并对有 rubric.yaml 的任务给出 4 维", () => {
-  const t = loadTask(SURVEY);
+  const t = loadTask(RUBRIC_TASK);
   const dims = getScorerModule("rubric-judge").outputs(t.scorers[0], t);
   assert.deepEqual(dims, ["correctness", "completeness", "methodology", "presentation"]);
 });
 
 test("rubric 对无 rubric.yaml 的任务回落 DEFAULT_RUBRIC 5 维", () => {
-  const t = loadTask(TRENDS);
+  const t = loadTask(DEFAULT_RUBRIC_TASK);
   const dims = getScorerModule("rubric-judge").outputs(t.scorers[0], t);
   assert.deepEqual(dims, ["correctness", "completeness", "methodology", "reproducibility", "presentation"]);
 });
@@ -25,7 +25,7 @@ test("rubric.build().score() 无凭证返回 unscored（Phase 3 承重墙）", a
   const saved = { k: process.env.ANTHROPIC_API_KEY, b: process.env.BPB_JUDGE_API_KEY, t: process.env.ANTHROPIC_AUTH_TOKEN };
   delete process.env.ANTHROPIC_API_KEY; delete process.env.BPB_JUDGE_API_KEY; delete process.env.ANTHROPIC_AUTH_TOKEN;
   try {
-    const t = loadTask(SURVEY);
+    const t = loadTask(RUBRIC_TASK);
     const scorer = getScorerModule("rubric-human").build(t.scorers[0], t);
     const res = await scorer({ task: t, runDir: "/tmp", events: [], signals: {}, workspaceFiles: () => [] });
     assert.equal(res.unscored, true);

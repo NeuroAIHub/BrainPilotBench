@@ -4,25 +4,25 @@ import { fileURLToPath } from "node:url";
 import { loadTask } from "./loader.js";
 import { blankScoresheet, scoresheetDimensions } from "./scoring.js";
 
-const SURVEY = fileURLToPath(new URL("../tasks/neuro-survey-attention", import.meta.url));
-const TRENDS = fileURLToPath(new URL("../tasks/neuro-trends-connectomics", import.meta.url));
+const RUBRIC_TASK = fileURLToPath(new URL("../test/fixtures/rubric-task", import.meta.url));
+const DEFAULT_RUBRIC_TASK = fileURLToPath(new URL("../test/fixtures/default-rubric-task", import.meta.url));
 
 test("scoresheetDimensions: 默认单 rubric scorer = rubric 维度", () => {
-  assert.deepEqual(scoresheetDimensions(loadTask(SURVEY)),
+  assert.deepEqual(scoresheetDimensions(loadTask(RUBRIC_TASK)),
     ["correctness", "completeness", "methodology", "presentation"]);
-  assert.deepEqual(scoresheetDimensions(loadTask(TRENDS)),
+  assert.deepEqual(scoresheetDimensions(loadTask(DEFAULT_RUBRIC_TASK)),
     ["correctness", "completeness", "methodology", "reproducibility", "presentation"]);
 });
 
-test("blankScoresheet: survey 逐字节 golden 不变", () => {
-  const t = loadTask(SURVEY);
-  const sheet = blankScoresheet(t, "neuro-survey-attention-vTEST", "vTEST", "", "2026-06-15T00:00:00.000Z");
+test("blankScoresheet: custom-rubric fixture golden remains stable", () => {
+  const t = loadTask(RUBRIC_TASK);
+  const sheet = blankScoresheet(t, "test-rubric-task-vTEST", "vTEST", "", "2026-07-14T00:00:00.000Z");
   const golden = JSON.stringify({
-    taskId: "neuro-survey-attention",
-    runId: "neuro-survey-attention-vTEST",
+    taskId: "test-rubric-task",
+    runId: "test-rubric-task-vTEST",
     version: "vTEST",
     judge: "",
-    scoredAt: "2026-06-15T00:00:00.000Z",
+    scoredAt: "2026-07-14T00:00:00.000Z",
     dimensions: [
       { dimension: "correctness", score: 0, comment: "" },
       { dimension: "completeness", score: 0, comment: "" },
@@ -33,8 +33,8 @@ test("blankScoresheet: survey 逐字节 golden 不变", () => {
   assert.equal(JSON.stringify(sheet, null, 2), golden);
 });
 
-test("blankScoresheet: trends 回落 DEFAULT_RUBRIC 5 维", () => {
-  const t = loadTask(TRENDS);
+test("blankScoresheet: fixture without rubric falls back to DEFAULT_RUBRIC", () => {
+  const t = loadTask(DEFAULT_RUBRIC_TASK);
   const sheet = blankScoresheet(t, "x", "v", "", "ts");
   assert.deepEqual(sheet.dimensions.map((d) => d.dimension),
     ["correctness", "completeness", "methodology", "reproducibility", "presentation"]);

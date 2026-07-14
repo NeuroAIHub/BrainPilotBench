@@ -265,7 +265,7 @@ Example <code>meta.json</code>:
 
 ~~~json
 {
-  "taskId": "neuro-survey-attention",
+  "taskId": "tops-fmri",
   "agent": "my-research-agent@2026-07-13",
   "taskVersion": "0.1",
   "producedAt": "2026-07-13",
@@ -302,7 +302,7 @@ runtime HTTP/SSE contract.
 Start a BrainPilot deployment, then run:
 
 ~~~bash
-node dist/cli.js run neuro-survey-attention \
+node dist/cli.js run tops-fmri \
   --adapter brainpilot \
   --base-url http://127.0.0.1:9001 \
   --workspace-root /path/to/brainpilot/workspaces \
@@ -317,7 +317,7 @@ and writes a submission-compatible <code>meta.json</code> automatically.
 Score and aggregate the captured run:
 
 ~~~bash
-node dist/cli.js score "runs/neuro-survey-attention-brainpilot@your-commit"
+node dist/cli.js score "runs/tops-fmri-brainpilot@your-commit"
 node dist/cli.js leaderboard runs/
 ~~~
 
@@ -385,14 +385,12 @@ node dist/cli.js run tops-fmri --adapter manual --agent "my-agent@1"
 
 ## Task suite
 
-The current public task suite contains four canonical tasks. Runtime depends on
+The current public task suite contains two canonical tasks. Runtime depends on
 the Agent; the values below are task time limits rather than guaranteed wall
 times.
 
 | Task | Capability | Public download | Compute | Time limit | Scoring |
 |---|---|---:|---|---:|---|
-| [<code>neuro-survey-attention</code>](tasks/neuro-survey-attention/task.yaml) | Neuroscience attention survey and representative work | None | CPU | 30 min | Four-dimension LLM rubric |
-| [<code>neuro-trends-connectomics</code>](tasks/neuro-trends-connectomics/task.yaml) | Ten-year connectomics trend synthesis | None | CPU | 30 min | Five-dimension LLM rubric |
 | [<code>neuro-rsc-place-cell</code>](tasks/neuro-rsc-place-cell/README.md) | RSC calcium imaging, VR behavior, place-cell analysis, and decoding | 194 MiB | CPU | 60 min | Deterministic checks + human rubric |
 | [<code>tops-fmri</code>](tasks/tops-fmri/README.md) | Train a linear tonic-pain FC signature and package reproducible inference | 922 MiB | CPU; ≥3 GiB free disk recommended | 180 min | Private Study4/5 Pearson r + AUC |
 
