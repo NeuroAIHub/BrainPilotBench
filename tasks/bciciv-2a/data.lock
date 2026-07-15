@@ -1,0 +1,23 @@
+# bciciv-2a data.lock —— pinned to HF commit shas.
+# 复现规则:改 commit sha = 换数据版本;sha256 保内容一致(校验失败 fetch 会 throw)。
+#
+# Public 侧(agent 可拉,无需 HF_TOKEN):
+#   BrainPilot-Bench/Tasks-Data-Public @ acce5609(2026-07-15 bciciv-2a + sleep-edf initial drop)
+# Private 侧(gated,scorer/maintainer 才有);拉时需 HF_TOKEN(hf:// scheme 自动发 Bearer):
+#   BrainPilot-Bench/Tasks-Data-Private @ 6e21f98a(2026-07-15 bciciv-2a + sleep-edf held-out)
+#
+# 评测端两个都要:public 里的 A0xT.gdf 是 scorer 训练用的输入(不是 agent 交的);
+# private 里的 A0xE.gdf + A0xE.mat 只 scorer 读。
+datasets:
+  - name: public.tar.zst
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@acce5609c72e76425566a287b1b46130ddc49d79/bciciv-2a/public.tar.zst
+    sha256: a61fb8ecc83f826324ffb7ae578c546768b4ac975018340b5f2fdad3734b09a5
+    bytes: 202714474
+    format: tar.zst
+  - name: private.tar.zst
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@6e21f98ad8bfe4dcddabd9ec6467b4d78a4a5d63/bciciv-2a/private.tar.zst
+    sha256: 69dab17fe8d8b56d4d13e576cfa50ad0cb6b64a76de61c4f8534bc172c17e113
+    bytes: 204729583
+    format: tar.zst

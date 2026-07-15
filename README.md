@@ -434,6 +434,7 @@ times.
 |---|---|---:|---|---:|---|
 | [<code>neuro-rsc-place-cell</code>](tasks/neuro-rsc-place-cell/README.md) | RSC calcium imaging, VR behavior, place-cell analysis, and decoding | 194 MiB | CPU | 60 min | Deterministic checks + human rubric |
 | [<code>tops-fmri</code>](tasks/tops-fmri/README.md) | Train a linear tonic-pain FC signature and package reproducible inference | 922 MiB | CPU; ≥3 GiB free disk recommended | 180 min | Private Study4/5 Pearson r + AUC |
+| [<code>bciciv-2a</code>](tasks/bciciv-2a/README.md) | Design a PyTorch <code>MIAgentModel</code> for 4-class motor-imagery EEG decoding; the scorer trains and infers per subject | 194 MiB | GPU (≥ 1 CUDA-capable, e.g. A10) | 180 min | Private session-E accuracy + Cohen's kappa (primary: mean_kappa) |
 
 The task corpus is intentionally curated rather than accepting arbitrary task
 code. Scientific construct validity and contamination risk require editorial

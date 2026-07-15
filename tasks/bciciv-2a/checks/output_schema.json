@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://brainpilot.bench/bciciv-2a/output.schema.json",
+  "title": "bciciv-2a BPB_SCORES payload",
+  "description": "Flat {str:number} JSON emitted by checks/evaluate_external.py between the BPB_SCORES sentinels. score = mean_kappa (BCI Competition IV official primary metric, clipped to [0,1]); mean_accuracy / mean_macro_f1 are auxiliary aggregate metrics; per-subject accuracy + kappa give diagnostic detail. All 22 keys line up with the eeg-motor-imagery category metric set in categories.yaml.",
+  "type": "object",
+  "additionalProperties": {"type": "number"},
+  "required": [
+    "score",
+    "mean_accuracy",
+    "mean_kappa",
+    "mean_macro_f1",
+    "subject_1_acc", "subject_2_acc", "subject_3_acc", "subject_4_acc", "subject_5_acc",
+    "subject_6_acc", "subject_7_acc", "subject_8_acc", "subject_9_acc",
+    "subject_1_kappa", "subject_2_kappa", "subject_3_kappa", "subject_4_kappa", "subject_5_kappa",
+    "subject_6_kappa", "subject_7_kappa", "subject_8_kappa", "subject_9_kappa"
+  ],
+  "properties": {
+    "score": {"description": "Primary leaderboard metric = mean of per-subject Cohen's kappa, clipped to [0,1]. Kappa can be negative for pathological classifiers; clipping to 0 keeps the leaderboard bounded.", "type": "number", "minimum": 0, "maximum": 1},
+    "mean_accuracy":  {"description": "Mean of per-subject session-E accuracy over 9 subjects.", "type": "number", "minimum": 0, "maximum": 1},
+    "mean_kappa":     {"description": "Mean of per-subject session-E Cohen's kappa over 9 subjects; may be negative for very bad classifiers.", "type": "number"},
+    "mean_macro_f1":  {"description": "Mean of per-subject session-E macro-F1 over 9 subjects.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_1_acc":  {"description": "Session-E accuracy on subject 1 (A01E.gdf, 288 trials).", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_2_acc":  {"description": "Session-E accuracy on subject 2.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_3_acc":  {"description": "Session-E accuracy on subject 3.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_4_acc":  {"description": "Session-E accuracy on subject 4.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_5_acc":  {"description": "Session-E accuracy on subject 5.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_6_acc":  {"description": "Session-E accuracy on subject 6.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_7_acc":  {"description": "Session-E accuracy on subject 7.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_8_acc":  {"description": "Session-E accuracy on subject 8.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_9_acc":  {"description": "Session-E accuracy on subject 9.", "type": "number", "minimum": 0, "maximum": 1},
+    "subject_1_kappa":{"description": "Session-E Cohen's kappa on subject 1; can be negative.", "type": "number"},
+    "subject_2_kappa":{"description": "Session-E Cohen's kappa on subject 2.", "type": "number"},
+    "subject_3_kappa":{"description": "Session-E Cohen's kappa on subject 3.", "type": "number"},
+    "subject_4_kappa":{"description": "Session-E Cohen's kappa on subject 4.", "type": "number"},
+    "subject_5_kappa":{"description": "Session-E Cohen's kappa on subject 5.", "type": "number"},
+    "subject_6_kappa":{"description": "Session-E Cohen's kappa on subject 6.", "type": "number"},
+    "subject_7_kappa":{"description": "Session-E Cohen's kappa on subject 7.", "type": "number"},
+    "subject_8_kappa":{"description": "Session-E Cohen's kappa on subject 8.", "type": "number"},
+    "subject_9_kappa":{"description": "Session-E Cohen's kappa on subject 9.", "type": "number"}
+  }
+}
