@@ -1,33 +1,39 @@
-# Turn 1:一次性抛出全部 5 项子任务与产物契约。数据由 env/setup.sh 预置在 ./data/。
+# Turn 1: provide all five subtasks and the complete artifact contract at once.
+# Data is staged under ./data/ by env/setup.sh.
 - send: |
-    请依据 `./data/VRBeltReframe.mat` 完成 RSC(retrosplenial cortex)位置细胞动态分析。
-    实验范式:小鼠 VR belt(90 cm 虚拟跑道)+ 双光子 Ca²⁺ imaging。
-    MAT 文件顶层 keys:
-      - deconv_all       每 session 一个 cell 数组的去卷积神经活动(cells × frames 或 frames × cells)
-      - behavior_vr_all  每 session 的行为 struct(pos_norm / trial / 可选 ts)
-      - tcs_all          成像时间戳(可选,用于时间对齐)
+    Using `./data/VRBeltReframe.mat`, complete an analysis of place-cell dynamics in the retrosplenial cortex (RSC).
+    Experimental paradigm: a mouse running on a 90 cm virtual-reality belt during two-photon Ca²⁺ imaging.
+    Top-level keys in the MAT file:
+      - deconv_all       One cell array per session containing deconvolved neural activity (cells × frames or frames × cells)
+      - behavior_vr_all  One behavioral struct per session (pos_norm / trial / optional ts)
+      - tcs_all          Imaging timestamps (optional; for temporal alignment)
 
-    子任务(全部完成):
-      1) 位置细胞筛选:速度阈值 ≥1 cm/s 筛选跑动帧;occupancy-normalized rate map;
-         每个 trial 内循环平移做 shuffle(建议 500 次)得零分布;真实 spatial information
-         高于该细胞零分布 (1 - place_alpha) 分位数 → 位置细胞。默认 place_alpha=0.025。
-      2) 代表性单细胞可视化 + 群体排序可视化(按峰值位置排序的 population rate-map)。
-      3) 位置解码:Poisson Naive-Bayes,50 个空间 bin,5-fold 按完整 trial 划分
-         (不按帧!),500 次 trial-wise 循环 shuffle 得零分布,报单侧 empirical p-value。
-      4) trial-bin 相关性分析:trial × spatial-bin 矩阵的一致性/相关结构。
-      5) firing-rate 动态分析:trial 间 / session 内的活动漂移。
+    Complete all of the following subtasks:
+      1) Place-cell screening: retain running frames using a speed threshold of ≥1 cm/s; compute
+         occupancy-normalized rate maps; construct a null distribution by circularly shifting activity
+         within each trial (500 shuffles recommended); classify a cell as a place cell when its observed
+         spatial information exceeds the (1 - place_alpha) quantile of that cell's null distribution.
+         Use place_alpha=0.025 by default.
+      2) Visualize representative single cells and the sorted population rate map (sorted by peak position).
+      3) Position decoding: use Poisson Naive Bayes with 50 spatial bins and five-fold cross-validation
+         split by complete trials (not by frames). Construct a null distribution with 500 trial-wise
+         circular shuffles and report a one-sided empirical p-value.
+      4) Trial-bin correlation analysis: characterize consistency and correlation structure in the
+         trial × spatial-bin matrix.
+      5) Firing-rate dynamics: analyze activity drift across trials and within sessions.
 
-    产物(必须全交,放当前 workspace 根):
-      - benchmark_summary.json   机器可读结果,结构见 ./checks/output_schema.json
-      - report.md                分析报告(方法/结果/讨论,引用图片)
-      - figures/*.png            所有可视化(至少覆盖子任务 2/4/5)
+    Submit every artifact below in the current workspace root:
+      - benchmark_summary.json   Machine-readable results following ./checks/output_schema.json
+      - report.md                Analysis report covering methods, results, and discussion, with figures cited
+      - figures/*.png            All visualizations, covering at least subtasks 2, 4, and 5
 
-    关键 JSON 字段(用于自动评分,少一个都会被判 unscored):
+    Required JSON fields used for automatic scoring (omitting any field makes the run unscored):
       cross_session_place_cell_stability.place_cell_ratio_mean   (float, [0,1])
       position_decoding_significance.decoding_significant        (bool)
       position_decoding_significance.real_median_decoding_error_cm (float, cm)
       position_decoding_significance.shuffle_median_decoding_error_cm (float, cm)
 
-    参考建议:VR 长度 90 cm、50 bin、fold=5、shuffles=500、seed=7。
-    多 session 聚合:各 session 内取 median,再跨 session 取 median(防大 session 主导)。
+    Recommended settings: 90 cm VR track, 50 bins, five folds, 500 shuffles, and seed 7.
+    Multi-session aggregation: take the median within each session and then the median across sessions,
+    so that larger sessions do not dominate the result.
   then: wait_idle
