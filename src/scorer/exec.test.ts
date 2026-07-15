@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, relative } from "node:path";
-import { extractSentinelJson, setExecSandbox, resetExecSandbox } from "./exec.js";
+import { extractSentinelJson, resolveExecTimeoutMs, setExecSandbox, resetExecSandbox } from "./exec.js";
 import { getScorerModule } from "./registry.js";
 import "./index.js"; // 注册 exec-script
 import type { ExecSandbox } from "../sandbox.js";
@@ -21,9 +21,9 @@ test("extractSentinelJson: 无哨兵/非JSON/非扁平number → null", () => {
   assert.equal(extractSentinelJson('>>>>> BPB_SCORES\n{"a": {"b":1}}\n<<<<< BPB_SCORES'), null); // 非扁平
 });
 
-function execTask(dir: string): Task {
+function execTask(dir: string, timeoutMin = 5): Task {
   return {
-    meta: { id: "t", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.csv" }], timeoutMin: 5, budgetTokens: 1, requires: {}, version: "test" },
+    meta: { id: "t", domain: "d", summary: "s", expectedArtifacts: [{ workspace: "*.csv" }], timeoutMin, budgetTokens: 1, requires: {}, version: "test" },
     turns: [{ send: "hi" }], askUser: {},
     rubric: { dimensions: ["x"] },
     scorers: [{ kind: "exec-script", script: "checks/check.sh", parser: "json" }], datasets: [], dir,
@@ -120,6 +120,53 @@ test("exec-script: missing and denied private evaluator data get structured stat
     setExecSandbox({ run: async () => ({ stdout: "", stderr: "Permission denied", exitCode: 1, timedOut: false }) });
     const denied = await scorer(ctx(join(dir, "run"), t) as any);
     assert.equal(denied.state, "private_access_denied");
+  } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
+});
+
+// resolveExecTimeoutMs: 训练类 task 需要长 timeout,旧硬编码 120_000 会 kill 掉长跑 scorer。
+test("resolveExecTimeoutMs: task.timeoutMin=5 → 300_000ms(向后兼容 tops-fmri/rsc)", () => {
+  const t = execTask("/tmp/x", 5);
+  assert.equal(resolveExecTimeoutMs(t), 300_000);
+});
+
+test("resolveExecTimeoutMs: task.timeoutMin=180 → 10_800_000ms(EEG 训练类可跑 3 小时)", () => {
+  const t = execTask("/tmp/x", 180);
+  assert.equal(resolveExecTimeoutMs(t), 180 * 60_000);
+});
+
+test("resolveExecTimeoutMs: BPB_EXEC_SCORER_MAX_TIMEOUT_MIN 环境变量作硬上限,可截断 task 请求", () => {
+  const t = execTask("/tmp/x", 180);
+  const previous = process.env.BPB_EXEC_SCORER_MAX_TIMEOUT_MIN;
+  try {
+    process.env.BPB_EXEC_SCORER_MAX_TIMEOUT_MIN = "30";
+    assert.equal(resolveExecTimeoutMs(t), 30 * 60_000); // task 想要 180,cap 到 30
+    // 非法值/负值 → 回落默认 240 上限,不影响 180 的请求
+    process.env.BPB_EXEC_SCORER_MAX_TIMEOUT_MIN = "not-a-number";
+    assert.equal(resolveExecTimeoutMs(t), 180 * 60_000);
+    process.env.BPB_EXEC_SCORER_MAX_TIMEOUT_MIN = "-1";
+    assert.equal(resolveExecTimeoutMs(t), 180 * 60_000);
+  } finally {
+    if (previous === undefined) delete process.env.BPB_EXEC_SCORER_MAX_TIMEOUT_MIN;
+    else process.env.BPB_EXEC_SCORER_MAX_TIMEOUT_MIN = previous;
+  }
+});
+
+test("resolveExecTimeoutMs: task.timeoutMin=1 → 仍保 120_000ms 下限(避免 script 极短意外 kill)", () => {
+  const t = execTask("/tmp/x", 1);
+  assert.equal(resolveExecTimeoutMs(t), 120_000);
+});
+
+test("exec-script: 超时 error message 携带派生分钟值", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "bpb-exec-"));
+  mkdirSync(join(dir, "checks"), { recursive: true });
+  writeFileSync(join(dir, "checks", "check.sh"), "#!/bin/bash\n:");
+  setExecSandbox({ run: async () => ({ stdout: "", stderr: "", exitCode: null, timedOut: true }) });
+  try {
+    const t = execTask(dir, 180);
+    const scorer = getScorerModule("exec-script").build(t.scorers[0], t);
+    const res = await scorer(ctx(join(dir, "run"), t) as any);
+    assert.equal(res.unscored, true);
+    assert.match(res.explanation ?? "", /timed out after 180 min/);
   } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
 });
 
