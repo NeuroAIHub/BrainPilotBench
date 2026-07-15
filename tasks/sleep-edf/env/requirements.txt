@@ -1,0 +1,10 @@
+# Evaluator-side (scorer) Python environment for sleep-edf.
+# The agent workspace only needs torch + numpy to import the submitted
+# SleepAgentModel; the heavy stack (mne for EDF I/O, sklearn for metrics)
+# is required by the scorer's evaluate_external.py.
+# Pinned so a benchmark release can recreate the same numerical stack.
+torch==2.7.0
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.6.1
+mne==1.10.1

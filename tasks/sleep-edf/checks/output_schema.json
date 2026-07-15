@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://brainpilot.bench/sleep-edf/output.schema.json",
+  "title": "sleep-edf BPB_SCORES payload",
+  "description": "Flat {str:number} JSON emitted by checks/evaluate_external.py between the BPB_SCORES sentinels. score = test_kappa (Cohen's kappa on subjects 16-19, clipped to [0,1]); test_accuracy / test_balanced_accuracy / test_macro_f1 are auxiliary aggregates; per-class recalls (wake/n1/n2/n3/rem) give diagnostic detail. All 10 keys line up with the eeg-sleep-staging category metric set in categories.yaml.",
+  "type": "object",
+  "additionalProperties": {"type": "number"},
+  "required": [
+    "score",
+    "test_accuracy",
+    "test_balanced_accuracy",
+    "test_macro_f1",
+    "test_kappa",
+    "wake_recall",
+    "n1_recall",
+    "n2_recall",
+    "n3_recall",
+    "rem_recall"
+  ],
+  "properties": {
+    "score":                  {"description": "Primary leaderboard metric = Cohen's kappa on subjects 16-19, clipped to [0,1]. Kappa can be negative for pathological classifiers; clipping to 0 keeps the leaderboard bounded.", "type": "number", "minimum": 0, "maximum": 1},
+    "test_kappa":             {"description": "Cohen's kappa on the concatenated subject-16..19 predictions; may be negative for very bad classifiers.", "type": "number"},
+    "test_accuracy":          {"description": "Plain accuracy on subjects 16-19.", "type": "number", "minimum": 0, "maximum": 1},
+    "test_balanced_accuracy": {"description": "Balanced accuracy (macro-recall) on subjects 16-19; robust to Wake dominance.", "type": "number", "minimum": 0, "maximum": 1},
+    "test_macro_f1":          {"description": "Macro-averaged F1 across Wake/N1/N2/N3/REM.", "type": "number", "minimum": 0, "maximum": 1},
+    "wake_recall":            {"description": "Per-class recall for Wake (label 0) on subjects 16-19.", "type": "number", "minimum": 0, "maximum": 1},
+    "n1_recall":              {"description": "Per-class recall for N1 (label 1) on subjects 16-19; typically the hardest class.", "type": "number", "minimum": 0, "maximum": 1},
+    "n2_recall":              {"description": "Per-class recall for N2 (label 2) on subjects 16-19.", "type": "number", "minimum": 0, "maximum": 1},
+    "n3_recall":              {"description": "Per-class recall for N3 = merged stage 3+4 (label 3) on subjects 16-19.", "type": "number", "minimum": 0, "maximum": 1},
+    "rem_recall":             {"description": "Per-class recall for REM (label 4) on subjects 16-19.", "type": "number", "minimum": 0, "maximum": 1}
+  }
+}

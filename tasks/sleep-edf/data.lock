@@ -1,0 +1,30 @@
+# sleep-edf data.lock —— pinned to HF commit shas.
+# 复现规则:改 commit sha = 换数据版本;sha256 保内容一致(校验失败 fetch 会 throw)。
+#
+# Public 侧(agent 可拉,无需 HF_TOKEN):
+#   BrainPilot-Bench/Tasks-Data-Public @ acce5609(2026-07-15 bciciv-2a + sleep-edf initial drop)
+# Private 侧(gated,scorer/maintainer 才有);拉时需 HF_TOKEN(hf:// scheme 自动发 Bearer):
+#   BrainPilot-Bench/Tasks-Data-Private @ 6e21f98a(2026-07-15 bciciv-2a + sleep-edf held-out)
+#
+# Public 拆两包:public-main = subjects 0-15,主口径评测所需;loso-supplement =
+# subjects 16-19 的公开镜像(供想跑 20-fold LOSO 的 agent 单独拉;主口径评测不需要)。
+# Private = subjects 16-19 的私有 EDF + Hypnogram(scorer only)。
+datasets:
+  - name: public-main.tar.zst
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@acce5609c72e76425566a287b1b46130ddc49d79/sleep-edf/public-main.tar.zst
+    sha256: 4878fe56696cf3614328b07b990116c8459dc232a09612a59c13ab1903824d76
+    bytes: 979263250
+    format: tar.zst
+  - name: loso-supplement.tar.zst
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@acce5609c72e76425566a287b1b46130ddc49d79/sleep-edf/loso-supplement.tar.zst
+    sha256: 15305144631a17eb1cf4e74abee1e0361228874d4c2f1c8cad2a2f0560ae3d31
+    bytes: 246263414
+    format: tar.zst
+  - name: private.tar.zst
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@6e21f98ad8bfe4dcddabd9ec6467b4d78a4a5d63/sleep-edf/private.tar.zst
+    sha256: bd5550c3643b2da0c89b571fd7b03fee19dcb67744400a0cc49ea5cef74d1d1a
+    bytes: 244544893
+    format: tar.zst
