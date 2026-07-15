@@ -426,7 +426,7 @@ node dist/cli.js run tops-fmri --adapter manual --agent "my-agent@1"
 
 ## Task suite
 
-The current public task suite contains two canonical tasks. Runtime depends on
+The current public task suite contains four canonical tasks. Runtime depends on
 the Agent; the values below are task time limits rather than guaranteed wall
 times.
 
