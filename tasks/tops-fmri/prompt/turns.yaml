@@ -1,8 +1,339 @@
-# prompt/turns.yaml —— tops-fmri 单轮提示。原文来自源仓库 prompt.md,已去除对
-# private_eval 本地路径的引用(agent 工作区不含 held-out;那些说明只用于 scorer 契约)。
-[
-  {
-    "send": "你是一个机器学习 brain decoding 专家。请完成一个严格外部验证范式的 fMRI functional-connectivity signature 任务。\n\n\n## 公开数据路径\n\n工作目录中会提供:\n\n```text\npublic_data/\n  atlas/\n    Fan_et_al_atlas_r279_MNI_2mm.nii\n    Fan_et_al_atlas_r279_MNI_3mm.nii\n    cluster_Fan_Net_r279.mat\n  example_participant/\n    FC/example_dFC_binned_task-CAPS.mat\n    FC/example_dFC_binned_task-REST.mat\n    ROI/example_ROI_mean_timeseries_task-CAPS.mat\n    ROI/example_ROI_mean_timeseries_task-REST.mat\n    pain_rating/example_pain_rating_task-CAPS.mat\n    pain_rating/example_pain_rating_task-REST.mat\n  whole_participants/FC_and_pain/study3_train.mat\n```\n\n`public_data/whole_participants/FC_and_pain/study3_train.mat` 只包含 MATLAB 顶层 key:\n\n```text\nStudy3\n```\n\n\nStudy3 字段:\n\n```text\nStudy3.dfc_5bin_dat.{REST,CAPS,QUIN,ODOR}\nStudy3.pain_5bin_dat.{REST,CAPS,QUIN,ODOR}\nStudy3.dfc_10bin_dat.{REST,CAPS,QUIN,ODOR}\nStudy3.pain_10bin_dat.{REST,CAPS,QUIN,ODOR}\nStudy3.dfc_avg_dat.{REST,CAPS,QUIN,ODOR}\nStudy3.pain_avg_dat.{REST,CAPS,QUIN,ODOR}\n```\n\n推荐主训练数据:\n\n```text\nStudy3.dfc_5bin_dat.REST / CAPS: 每个 subject 一个 (38781, 5) 矩阵\nStudy3.pain_5bin_dat.REST / CAPS: 每个 subject 一个 (5, 1) rating 向量\n```\n\n每个 FC 向量有 38781 条 edge,对应 279 ROI 的上三角边:\n\n```text\n279 * 278 / 2 = 38781\n```\n\n如果发现字段 shape 异常,必须在 report 中说明。\n\n## 私有外部验证数据接口\n\n下面信息只用于你**编写通用 inference 脚本**——你自己的工作目录里**不会**出现私有 features 或 labels。benchmark 平台会在评分阶段用自己的 features 目录调用你交的脚本。\n\n评分时 benchmark 平台会用如下命令运行:\n\n```bash\npython3 artifacts/scripts/apply_signature.py \\\n  --eval-features-dir <EVAL_FEATURES_DIR> \\\n  --model-dir artifacts/models \\\n  --out-dir <PREDICTIONS_DIR>\n```\n\n其中 `<EVAL_FEATURES_DIR>` 是一个只含 features 的临时目录:\n\n```text\n<EVAL_FEATURES_DIR>/study4_features.npz\n<EVAL_FEATURES_DIR>/study5_features.npz\n```\n\n**你的脚本不会收到 labels;**不要在训练或推理脚本里尝试读 `labels/`、任何 `study4_labels*`、`study5_labels*`,也不要访问工作区外的任何路径。\n\n`study4_features.npz` 的 key 和 array shape:\n\n```text\nSBP_SP    -> (70, 38781)\nSBP_REST  -> (53, 38781)\nCBP_SP    -> (25, 38781)\nCBP_REST  -> (20, 38781)\n```\n\n`study5_features.npz` 的 key 和 array shape:\n\n```text\nJP -> (63, 38781)\nUK -> (34, 38781)\n```\n\n注意:Study5 feature 文件只按 site 给出 `JP` 和 `UK`,不会暴露 CBP/HC 分组字段名。Study5 标签由 benchmark 平台私有保存。\n\n私有 feature matrix 可能包含少量 NaN。你的 `apply_signature.py` 必须用不依赖 Study4/5 label 的固定规则处理非有限值,例如在 `input_transform` 后使用 `np.nan_to_num(..., nan=0.0, posinf=0.0, neginf=0.0)`,或使用完全由 Study3 训练数据预先确定的 imputation 规则。不要在私有 eval X 上重新 fit imputer/scaler/PCA。\n\n## Final Signature Contract\n\n最终提交必须是一个 linear edge-space connectivity signature。\n\n你可以在 Study3 上尝试 PCR、ridge regression、elastic net / lasso、PLS regression、robust regression、stability selection、subject-level bagging、seed ensemble of linear models,或者其他能被还原成 38781 edge-space 线性权重的算法。\n\n无论训练过程如何,最终用于 benchmark 外部验证的模型必须数学等价于:\n\n```text\nsignature_response = transformed_x @ w_raw + b_raw\n```\n\n其中:\n\n- `x` 是原始 FC edge vector,shape 为 `(38781,)`。\n- `transformed_x` 必须仍然是 shape `(38781,)` 的 edge vector。\n- `transformed_x` 只能是:\n  - `x` 本身,或\n  - 对 `x` 做逐元素 Fisher-z / `arctanh`,并为数值稳定性 clip 到有限范围。\n- 如遇 NaN/inf,必须使用不依赖私有 label 的固定规则处理,并确保最终 `signature_response` 是有限标量。\n- `w_raw` 必须是 shape `(38781,)` 的一维向量。\n- `b_raw` 必须是标量。\n- `w_raw` 的 edge 顺序必须与输入 feature 的 38781 edge 顺序一致。\n\n## FC edge ordering 验证\n\n在训练和导出最终 signature 前,必须确认 38781 维 FC feature 的 edge ordering。\n\n1. 不得直接假设输入顺序等于:\n\n   ```python\n   np.triu_indices(279, k=1)\n   ```\n\n2. 优先通过以下信息确认 edge ordering:\n   - `example_participant/ROI/` 和 `example_participant/FC/` 的对应关系。\n\n3. 至少检查以下候选顺序:\n\n   - upper triangle, row-major, `i < j`。\n   - upper triangle, MATLAB column-major。\n   - lower triangle, MATLAB column-major。\n   - MATLAB `squareform` 或本地生成代码实际采用的顺序。\n\n4. 将验证过程和结果保存到:\n\n   ```text\n   results/edge_order_validation.json\n   ```\n\n   文件中至少记录:\n\n   - 检查过的候选顺序。\n   - 每种候选顺序与 example FC 的一致性指标。\n   - 最终采用的 edge ordering。\n   - 验证依据。\n   - 是否能够可靠映射到具体 ROI pair。\n\n5. `w_raw` 必须保持与 Study3 输入 feature 完全相同的顺序。\n\n6. `scripts/apply_signature.py` 必须直接按输入 feature 的现有列顺序计算 response,不得对私有 eval feature 进行 edge 重排。\n\n7. `signature_manifest.json` 中的 `edge_order` 必须填写实际验证得到的顺序。只有在确认后,才能填写:\n\n   ```json\n   \"upper_triangle_row_major_i_lt_j\"\n   ```\n\n8. 如果无法确认具体 ROI-pair 顺序:\n\n   - 仍可按原始 feature 顺序训练和推理。\n   - 不得对单条权重进行解剖或 ROI-pair 层面的解释。\n   - `signature_manifest.json` 中应填写:\n\n     ```json\n     \"source_feature_order_preserved_but_roi_mapping_unverified\"\n     ```\n\n   - 必须在 `report.md` 中明确说明这一限制。\n\n允许的策略包括但不限于:\n\n- PCR,并将 PCA/regression pipeline 等价还原为 38781 维 `w_raw`。\n- ridge / elastic net / lasso / PLS 等线性模型。\n- 多个 subject split、seed 或 bootstrap 得到的线性 signature,然后平均 `w_raw` 和 `b_raw`。\n- feature filtering 或 stability selection,只要最终仍输出完整 38781 维 `w_raw`,未选中特征权重为 0。\n\n不允许最终外部验证使用无法还原成 38781 edge 权重的黑盒模型,例如:\n\n- random forest / XGBoost / kernel SVM。\n- neural network。\n- kNN。\n- 任意非线性 ensemble。\n- 需要在私有 eval X 上重新 fit、重新选择特征、重新估计 PCA/scaler 的 transductive 方法。\n\n可以在探索阶段比较这些方法,但最终 submitted signature 和 `apply_signature.py` 必须只使用提交的 38781 维线性 signature 生成外部验证 response。\n\n## 必须提交的 inference 脚本接口\n\n你必须提交:\n\n```text\nscripts/apply_signature.py\n```\n\n**脚本必须输出:**\n\n```text\n<PREDICTIONS_DIR>/study4_predictions.csv\n<PREDICTIONS_DIR>/study5_predictions.csv\n```\n\n`study4_predictions.csv` 必须包含列:\n\n```csv\ncondition,sample_id,signature_response\n```\n\n要求:\n\n- `condition` 只能是 `SBP_SP`, `SBP_REST`, `CBP_SP`, `CBP_REST`。\n- 每个 condition 的 `sample_id` 必须是从 0 到 n-1 的连续整数。\n- 行顺序可以任意,但 `sample_id` 必须对应输入 feature matrix 的行号。\n\n`study5_predictions.csv` 必须包含列:\n\n```csv\nsite,sample_id,signature_response\n```\n\n要求:\n\n- `site` 只能是 `JP`, `UK`。\n- 每个 site 的 `sample_id` 必须是从 0 到 n-1 的连续整数。\n- 行顺序可以任意,但 `sample_id` 必须对应输入 feature matrix 的行号。\n\n你的脚本不能输出 Study4 r、Study5 AUC 或最终 score;这些由 benchmark 平台私下计算。\n\n为了保证 benchmark scorer 可移植,`scripts/apply_signature.py` 必须只依赖 Python 标准库和 `numpy`。不要在 inference 脚本中依赖 `pandas`、`sklearn`、`joblib`、`scipy` 或其他非标准运行时依赖。训练脚本可以使用额外依赖,但最终外部验证入口必须轻量、可直接运行。\n\n## 必须提交的模型格式\n\n必须提交:\n\n```text\nmodels/study3_signature_weights.npz\nmodels/signature_manifest.json\n```\n\n`study3_signature_weights.npz` 必须包含:\n\n```text\nw_raw: shape (38781,)\nb_raw: scalar\n```\n\n`signature_manifest.json` 必须包含:\n\n```json\n{\n  \"n_rois\": 279,\n  \"n_edges\": 38781,\n  \"edge_order\": \"verified_edge_order\",\n  \"input_transform\": \"none_or_fisher_z\",\n  \"response_direction\": \"higher_means_more_pain\",\n  \"training_method\": \"PCR/ridge/elastic_net/PLS/etc\",\n  \"study3_split_strategy\": \"subject_level_split_description\",\n  \"weights_are_averaged_over_splits_or_seeds\": true\n}\n```\n\n其中:\n\n- `edge_order` 必须替换为 `results/edge_order_validation.json` 中实际验证得到的值。\n- 如果无法可靠确认 ROI-pair 顺序,但已保持原始 feature 顺序,则使用:\n  `source_feature_order_preserved_but_roi_mapping_unverified`。\n\n不建议依赖 pickle/joblib 作为唯一模型格式。可以额外保存训练 pipeline 方便复现,但外部验证必须能仅凭 `w_raw`、`b_raw`、`signature_manifest.json` 和 `apply_signature.py` 运行。\n\n\n## Study3 训练和模型选择要求\n\n1. 使用 Study3 的 CAPS 和 REST 条件训练 tonic pain signature。\n2. 优先使用 `dfc_5bin_dat` 和 `pain_5bin_dat`。\n3. 按 subject split 做 Study3 内部 held-out 测试,不能让同一 subject 的不同 time bins 同时进入 train 和 test。\n4. 所有超参数、预处理选择、模型选择,都必须只基于 Study3 training/validation 或 Study3 held-out 的内部结果。\n5. 不要使用任何外部预训练 signature 权重。\n6. 不要根据任何 Study4/5 反馈调整模型。\n\nStudy3 内部结果至少报告:\n\n- overall Pearson r:所有 held-out test bins 的预测值 vs 真实 pain rating。\n- within-subject mean r:每个 held-out subject 内部,跨 CAPS+REST bins 的预测值和真实值相关,然后报告均值。\n- CAPS vs REST forced-choice accuracy:每个 held-out subject 的平均 CAPS response 是否大于平均 REST response。\n- response direction check:CAPS mean response 是否高于 REST mean response。\n- 至少一个 baseline,例如 CAPS mean FC minus REST mean FC,或一个简单 ridge/PCR baseline。\n\n如果时间允许,建议做至少 3 个 random seeds 的 subject split,报告 mean/std,并选择稳定、方向一致的最终 signature,而不是只优化单次 split 分数。\n\n\n## 最终交付\n\n请把产物保存到当前工作目录,满足以下结构:\n\n```text\nreport.md\nmodels/study3_signature_weights.npz\nmodels/signature_manifest.json\nscripts/apply_signature.py\nscripts/*.py\nresults/study3_train_test_results.csv\nresults/edge_order_validation.json\nresults/model_card.json\n```\n\n`results/model_card.json` 应包含:\n\n```json\n{\n  \"final_model\": \"method_name\",\n  \"input_transform\": \"none_or_fisher_z\",\n  \"n_edges\": 38781,\n  \"study3_split_seed_or_seeds\": [42],\n  \"study3_overall_r\": 0.0,\n  \"study3_within_subject_mean_r\": 0.0,\n  \"study3_caps_vs_rest_accuracy\": 0.0,\n  \"signature_weight_file\": \"models/study3_signature_weights.npz\",\n  \"inference_script\": \"scripts/apply_signature.py\"\n}\n```\n\n报告 `report.md` 必须说明:\n\n- Study3 数据读取和 subject split。\n- 模型训练方法和选择理由。\n- `w_raw`、`b_raw`、`input_transform` 和 edge ordering。\n- edge ordering 的验证方法、验证依据和结果。\n- 如果 ROI-pair 顺序无法可靠确认,明确说明仅保留原始 feature 顺序,并禁止进行单条连接的解剖解释。\n- `scripts/apply_signature.py` 的运行命令、输出格式,以及推理阶段不进行 edge 重排的说明。\n- Study3 held-out 结果和 baseline 对比。\n- 明确声明 Study4/Study5 由 benchmark 平台私有外部验证;你没有在任务执行阶段读取其标签或最终指标,也没有提交 Study4/Study5 r/AUC/score。\n",
-    "then": "wait_idle"
-  }
-]
+# Single-turn prompt for tops-fmri. Adapted from the source repository's prompt.md.
+# References to local private_eval paths are omitted because the Agent workspace contains no
+# held-out data; those details belong only to the scorer contract.
+- send: |
+    You are an expert in machine-learning-based brain decoding. Complete an fMRI functional-connectivity signature task under a strict external-validation paradigm.
+
+    ## Public data paths
+
+    The working directory contains:
+
+    ```text
+    public_data/
+      atlas/
+        Fan_et_al_atlas_r279_MNI_2mm.nii
+        Fan_et_al_atlas_r279_MNI_3mm.nii
+        cluster_Fan_Net_r279.mat
+      example_participant/
+        FC/example_dFC_binned_task-CAPS.mat
+        FC/example_dFC_binned_task-REST.mat
+        ROI/example_ROI_mean_timeseries_task-CAPS.mat
+        ROI/example_ROI_mean_timeseries_task-REST.mat
+        pain_rating/example_pain_rating_task-CAPS.mat
+        pain_rating/example_pain_rating_task-REST.mat
+      whole_participants/FC_and_pain/study3_train.mat
+    ```
+
+    `public_data/whole_participants/FC_and_pain/study3_train.mat` contains only the following top-level MATLAB key:
+
+    ```text
+    Study3
+    ```
+
+    Study3 fields:
+
+    ```text
+    Study3.dfc_5bin_dat.{REST,CAPS,QUIN,ODOR}
+    Study3.pain_5bin_dat.{REST,CAPS,QUIN,ODOR}
+    Study3.dfc_10bin_dat.{REST,CAPS,QUIN,ODOR}
+    Study3.pain_10bin_dat.{REST,CAPS,QUIN,ODOR}
+    Study3.dfc_avg_dat.{REST,CAPS,QUIN,ODOR}
+    Study3.pain_avg_dat.{REST,CAPS,QUIN,ODOR}
+    ```
+
+    Recommended primary training data:
+
+    ```text
+    Study3.dfc_5bin_dat.REST / CAPS: one (38781, 5) matrix per subject
+    Study3.pain_5bin_dat.REST / CAPS: one (5, 1) rating vector per subject
+    ```
+
+    Each FC vector contains 38,781 edges corresponding to the upper-triangular edges among 279 ROIs:
+
+    ```text
+    279 * 278 / 2 = 38781
+    ```
+
+    If you find unexpected field shapes, document them in the report.
+
+    ## Private external-validation interface
+
+    The following information is provided only so that you can **write a general-purpose inference script**. Private features and labels will **not** appear in your workspace. During scoring, the benchmark platform will invoke your submitted script with its own features directory.
+
+    The benchmark platform will run:
+
+    ```bash
+    python3 artifacts/scripts/apply_signature.py \
+      --eval-features-dir <EVAL_FEATURES_DIR> \
+      --model-dir artifacts/models \
+      --out-dir <PREDICTIONS_DIR>
+    ```
+
+    `<EVAL_FEATURES_DIR>` is a temporary directory containing features only:
+
+    ```text
+    <EVAL_FEATURES_DIR>/study4_features.npz
+    <EVAL_FEATURES_DIR>/study5_features.npz
+    ```
+
+    **Your script will not receive labels.** Do not attempt to read `labels/`, any `study4_labels*` or `study5_labels*` file, or any path outside the workspace from either the training or inference script.
+
+    Keys and array shapes in `study4_features.npz`:
+
+    ```text
+    SBP_SP    -> (70, 38781)
+    SBP_REST  -> (53, 38781)
+    CBP_SP    -> (25, 38781)
+    CBP_REST  -> (20, 38781)
+    ```
+
+    Keys and array shapes in `study5_features.npz`:
+
+    ```text
+    JP -> (63, 38781)
+    UK -> (34, 38781)
+    ```
+
+    Note that the Study5 feature file exposes only the site keys `JP` and `UK`; it does not expose CBP/HC group field names. The benchmark platform keeps the Study5 labels private.
+
+    The private feature matrices may contain a small number of NaN values. `apply_signature.py` must handle non-finite values using a fixed rule that does not depend on Study4/5 labels. For example, after `input_transform`, use `np.nan_to_num(..., nan=0.0, posinf=0.0, neginf=0.0)`, or use an imputation rule determined entirely from the Study3 training data. Do not refit an imputer, scaler, or PCA on private evaluation X.
+
+    ## Final signature contract
+
+    The final submission must be a linear edge-space connectivity signature.
+
+    On Study3, you may try PCR, ridge regression, elastic net / lasso, PLS regression, robust regression, stability selection, subject-level bagging, an ensemble of linear models across seeds, or any other method that can be reduced to 38,781 linear edge-space weights.
+
+    Regardless of the training procedure, the model used for benchmark external validation must be mathematically equivalent to:
+
+    ```text
+    signature_response = transformed_x @ w_raw + b_raw
+    ```
+
+    where:
+
+    - `x` is the raw FC edge vector with shape `(38781,)`.
+    - `transformed_x` must remain an edge vector with shape `(38781,)`.
+    - `transformed_x` may only be:
+      - `x` itself, or
+      - an element-wise Fisher-z / `arctanh` transform of `x`, clipped to a finite range for numerical stability.
+    - NaN/inf values must be handled with a fixed rule independent of private labels, and the final `signature_response` must be a finite scalar.
+    - `w_raw` must be a one-dimensional vector with shape `(38781,)`.
+    - `b_raw` must be a scalar.
+    - The edge order in `w_raw` must match the 38,781-edge order of the input features.
+
+    ## FC edge-order validation
+
+    Before training and exporting the final signature, determine the edge ordering of the 38,781-dimensional FC features.
+
+    1. Do not simply assume that the input order equals:
+
+       ```python
+       np.triu_indices(279, k=1)
+       ```
+
+    2. Preferentially determine edge ordering from the correspondence between:
+       - `example_participant/ROI/` and `example_participant/FC/`.
+
+    3. At minimum, test the following candidate orderings:
+
+       - upper triangle, row-major, `i < j`;
+       - upper triangle, MATLAB column-major;
+       - lower triangle, MATLAB column-major;
+       - the ordering actually used by MATLAB `squareform` or the local generation code.
+
+    4. Save the validation procedure and results to:
+
+       ```text
+       results/edge_order_validation.json
+       ```
+
+       The file must record at least:
+
+       - candidate orderings tested;
+       - the consistency metric between each candidate ordering and the example FC;
+       - the final edge ordering used;
+       - the evidence supporting that choice;
+       - whether individual edges can be mapped reliably to specific ROI pairs.
+
+    5. `w_raw` must preserve exactly the same order as the Study3 input features.
+
+    6. `scripts/apply_signature.py` must compute responses directly from the existing column order of the input features and must not reorder edges in private evaluation features.
+
+    7. In `signature_manifest.json`, `edge_order` must contain the ordering established by validation. Use the following value only after it has been confirmed:
+
+       ```json
+       "upper_triangle_row_major_i_lt_j"
+       ```
+
+    8. If you cannot determine the specific ROI-pair order:
+
+       - you may still train and perform inference in the original feature order;
+       - you must not interpret individual weights anatomically or at the ROI-pair level;
+       - use the following value in `signature_manifest.json`:
+
+         ```json
+         "source_feature_order_preserved_but_roi_mapping_unverified"
+         ```
+
+       - state this limitation explicitly in `report.md`.
+
+    Permitted strategies include, but are not limited to:
+
+    - PCR, with the PCA/regression pipeline reduced equivalently to a 38,781-dimensional `w_raw`;
+    - linear models such as ridge, elastic net, lasso, or PLS;
+    - linear signatures trained on multiple subject splits, seeds, or bootstrap samples, followed by averaging `w_raw` and `b_raw`;
+    - feature filtering or stability selection, provided the final output is still a complete 38,781-dimensional `w_raw`, with zero weights for unselected features.
+
+    The final external-validation model must not be a black-box model that cannot be reduced to 38,781 edge weights. Disallowed examples include:
+
+    - random forest / XGBoost / kernel SVM;
+    - neural networks;
+    - kNN;
+    - any nonlinear ensemble;
+    - transductive methods that refit, reselect features, or re-estimate PCA/scalers on private evaluation X.
+
+    You may compare such methods during exploration, but the final submitted signature and `apply_signature.py` must generate the external-validation response using only the submitted 38,781-dimensional linear signature.
+
+    ## Required inference-script interface
+
+    Submit:
+
+    ```text
+    scripts/apply_signature.py
+    ```
+
+    **The script must produce:**
+
+    ```text
+    <PREDICTIONS_DIR>/study4_predictions.csv
+    <PREDICTIONS_DIR>/study5_predictions.csv
+    ```
+
+    `study4_predictions.csv` must contain these columns:
+
+    ```csv
+    condition,sample_id,signature_response
+    ```
+
+    Requirements:
+
+    - `condition` must be one of `SBP_SP`, `SBP_REST`, `CBP_SP`, or `CBP_REST`.
+    - Within each condition, `sample_id` must be consecutive integers from 0 to n-1.
+    - Rows may appear in any order, but `sample_id` must correspond to the row index in the input feature matrix.
+
+    `study5_predictions.csv` must contain these columns:
+
+    ```csv
+    site,sample_id,signature_response
+    ```
+
+    Requirements:
+
+    - `site` must be either `JP` or `UK`.
+    - Within each site, `sample_id` must be consecutive integers from 0 to n-1.
+    - Rows may appear in any order, but `sample_id` must correspond to the row index in the input feature matrix.
+
+    Your script must not output Study4 r, Study5 AUC, or the final score; the benchmark platform computes these privately.
+
+    To keep the benchmark scorer portable, `scripts/apply_signature.py` may depend only on the Python standard library and `numpy`. Do not use `pandas`, `sklearn`, `joblib`, `scipy`, or any other non-standard runtime dependency in the inference script. Training scripts may use additional dependencies, but the final external-validation entry point must remain lightweight and directly executable.
+
+    ## Required model format
+
+    Submit:
+
+    ```text
+    models/study3_signature_weights.npz
+    models/signature_manifest.json
+    ```
+
+    `study3_signature_weights.npz` must contain:
+
+    ```text
+    w_raw: shape (38781,)
+    b_raw: scalar
+    ```
+
+    `signature_manifest.json` must contain:
+
+    ```json
+    {
+      "n_rois": 279,
+      "n_edges": 38781,
+      "edge_order": "verified_edge_order",
+      "input_transform": "none_or_fisher_z",
+      "response_direction": "higher_means_more_pain",
+      "training_method": "PCR/ridge/elastic_net/PLS/etc",
+      "study3_split_strategy": "subject_level_split_description",
+      "weights_are_averaged_over_splits_or_seeds": true
+    }
+    ```
+
+    In this manifest:
+
+    - replace `edge_order` with the value established in `results/edge_order_validation.json`;
+    - if the ROI-pair order cannot be established reliably but the original feature order is preserved, use `source_feature_order_preserved_but_roi_mapping_unverified`.
+
+    Do not rely on pickle/joblib as the only model format. You may additionally save the training pipeline for reproducibility, but external validation must run using only `w_raw`, `b_raw`, `signature_manifest.json`, and `apply_signature.py`.
+
+    ## Study3 training and model-selection requirements
+
+    1. Train the tonic-pain signature using the Study3 CAPS and REST conditions.
+    2. Prefer `dfc_5bin_dat` and `pain_5bin_dat`.
+    3. Perform internal held-out testing in Study3 using subject-level splits. Different time bins from the same subject must not appear in both training and test sets.
+    4. Base all hyperparameter, preprocessing, and model choices only on Study3 training/validation data or Study3 internal held-out results.
+    5. Do not use externally pretrained signature weights.
+    6. Do not adjust the model using any Study4/5 feedback.
+
+    Report at least the following internal Study3 results:
+
+    - overall Pearson r: predicted versus true pain ratings across all held-out test bins;
+    - within-subject mean r: within each held-out subject, correlate predictions with true ratings across CAPS+REST bins, then report the mean across subjects;
+    - CAPS-versus-REST forced-choice accuracy: whether the mean CAPS response exceeds the mean REST response for each held-out subject;
+    - response-direction check: whether the mean CAPS response exceeds the mean REST response;
+    - at least one baseline, such as mean CAPS FC minus mean REST FC, or a simple ridge/PCR baseline.
+
+    If time permits, use subject splits from at least three random seeds, report mean and standard deviation, and select a stable signature with a consistent response direction rather than optimizing a single split.
+
+    ## Final deliverables
+
+    Save the artifacts in the current working directory using this structure:
+
+    ```text
+    report.md
+    models/study3_signature_weights.npz
+    models/signature_manifest.json
+    scripts/apply_signature.py
+    scripts/*.py
+    results/study3_train_test_results.csv
+    results/edge_order_validation.json
+    results/model_card.json
+    ```
+
+    `results/model_card.json` must contain:
+
+    ```json
+    {
+      "final_model": "method_name",
+      "input_transform": "none_or_fisher_z",
+      "n_edges": 38781,
+      "study3_split_seed_or_seeds": [42],
+      "study3_overall_r": 0.0,
+      "study3_within_subject_mean_r": 0.0,
+      "study3_caps_vs_rest_accuracy": 0.0,
+      "signature_weight_file": "models/study3_signature_weights.npz",
+      "inference_script": "scripts/apply_signature.py"
+    }
+    ```
+
+    `report.md` must describe:
+
+    - Study3 data loading and subject-level splitting;
+    - the training method and model-selection rationale;
+    - `w_raw`, `b_raw`, `input_transform`, and edge ordering;
+    - the edge-order validation method, evidence, and result;
+    - if the ROI-pair order cannot be established reliably, an explicit statement that only the original feature order is preserved and that individual connections must not be interpreted anatomically;
+    - how to run `scripts/apply_signature.py`, its output format, and confirmation that inference does not reorder edges;
+    - Study3 held-out results and baseline comparisons;
+    - an explicit statement that the benchmark platform evaluates Study4/Study5 privately, that you did not access their labels or final metrics during task execution, and that you did not submit Study4/Study5 r, AUC, or score values.
+  then: wait_idle
