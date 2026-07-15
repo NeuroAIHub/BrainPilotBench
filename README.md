@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>🧠 BrainPilotBench</h1>
+<h1><img src="https://brainpilot.chat/images/brainpilot-icon-light.png" alt="BrainPilot icon" height="42"/> BrainPilotBench</h1>
 
 <p><strong>Evaluating Agents for Brain Science Research.</strong></p>
 
@@ -20,9 +20,11 @@ repeatable way.
 
 <p>
   <a href="#quick-start">Quick Start</a> ·
+  <a href="#leaderboard">Leaderboard</a> ·
   <a href="#how-it-works">How It Works</a> ·
   <a href="#evaluate-your-agent">Evaluate Your Agent</a> ·
   <a href="#task-suite">Task Suite</a> ·
+  <a href="https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public">Public Data</a> ·
   <a href="#scoring">Scoring</a> ·
   <a href="#contributing">Contributing</a>
 </p>
@@ -44,9 +46,10 @@ return a valid submission bundle, it can be evaluated.
 > [!IMPORTANT]
 > **Project status: v0.** The run, submission, scoring, validation, data-fetching,
 > release-freezing, and leaderboard pipelines are implemented. The public task
-> corpus is still small and growing, and there is not yet an official public
-> leaderboard. The <code>@brainpilot/bench</code> package is not yet published to
-> npm; use a source checkout for now.
+> corpus is still small and growing. The official public leaderboard page is
+> available, while formal benchmark entries are still being prepared. The
+> <code>@brainpilot/bench</code> package is not yet published to npm; use a source
+> checkout for now.
 
 ## Why BrainPilotBench
 
@@ -61,6 +64,24 @@ BrainPilotBench is designed around a simple question:
 That makes the benchmark suitable for multi-agent research systems, coding
 agents, domain assistants, custom harnesses, and future systems applied to brain
 science research.
+
+## Leaderboard
+
+The canonical leaderboard and complete submission ledger are maintained on the
+BrainPilot website. The link below opens the leaderboard section directly.
+
+<p align="center">
+  <a href="https://brainpilot.chat/bench#leaderboard"><strong>View the BrainPilotBench leaderboard →</strong></a>
+</p>
+
+<!-- LEADERBOARD:START -->
+<p align="center"><em>Official four-task results will be shown here after the formal evaluation runs are complete.</em></p>
+<!-- LEADERBOARD:END -->
+
+The public task data are hosted in the
+[BrainPilot-Bench/Tasks-Data-Public](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public)
+repository on Hugging Face. Evaluator-only data remain gated and are never
+exposed to an Agent run.
 
 ## Quick start
 
@@ -443,7 +464,10 @@ review.
 
 ### Datasets
 
-Large dataset bodies are not committed to Git. A task can declare a
+Large dataset bodies are not committed to Git. Public task artifacts are hosted
+in the
+[Tasks-Data-Public](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public)
+dataset on Hugging Face. A task can declare a
 <code>data.lock</code> manifest containing a URI, SHA-256 digest, expected byte
 size, format, and an optional <code>scope: public|private</code>. Legacy entries
 default to public. Private entries are evaluator-only and are never fetched by
@@ -762,7 +786,8 @@ Near-term priorities are:
 - extend the submission-program isolation contract to future executable tasks;
 - improve managed evaluator deployment and gated-access diagnostics;
 - publish the first immutable benchmark release;
-- open the official leaderboard after sufficient task and run coverage;
+- publish the first verified leaderboard entries after sufficient task and run
+  coverage;
 - publish <code>@brainpilot/bench</code> after the CLI contract stabilizes.
 
 Roadmap items are plans, not current capabilities.
