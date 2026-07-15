@@ -15,3 +15,13 @@ fmri-analysis:
   metrics: [score, study4_score, study5_score,
             study4_SBP_SP_r, study4_SBP_REST_r, study4_CBP_SP_r, study4_CBP_REST_r,
             study5_JP_auc, study5_UK_auc]
+eeg-motor-imagery:
+  # EEG 运动想象解码类:agent 提交 PyTorch MIAgentModel 类,scorer 对 9 个 subject
+  # 各自独立训练(session T 内 230/58 stratified split)、在私有 session E 288-trial
+  # 上盲测,汇报 per-subject accuracy + Cohen's kappa,主指标 mean_kappa。metric
+  # 由 scorer 从私有 A0xE.mat classlabel 算出,agent 看不到。
+  metrics: [score, mean_accuracy, mean_kappa, mean_macro_f1,
+            subject_1_acc, subject_2_acc, subject_3_acc, subject_4_acc, subject_5_acc,
+            subject_6_acc, subject_7_acc, subject_8_acc, subject_9_acc,
+            subject_1_kappa, subject_2_kappa, subject_3_kappa, subject_4_kappa, subject_5_kappa,
+            subject_6_kappa, subject_7_kappa, subject_8_kappa, subject_9_kappa]
