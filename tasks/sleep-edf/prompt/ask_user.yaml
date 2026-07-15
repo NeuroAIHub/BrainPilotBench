@@ -1,0 +1,12 @@
+# prompt/ask_user.yaml — unattended default answers.
+#
+# When the runner (runner.ts) receives a `user_input_request` event it calls
+# answerFor(task.askUser, question): each key is tried first as a
+# case-insensitive regex, then as a substring against the question. The first
+# match returns its value; if none match, `default` is returned.
+{
+  "(continue|proceed|go\\s*ahead|next\\s*step|start|start\\s*training|ready\\s*to|shall\\s*I|should\\s*I|can\\s*I|may\\s*I)": "Yes, please continue. This is an unattended benchmark run; use the information you already have and do not wait for further confirmation.",
+  "(choose|pick|prefer|which|option|approach|which\\s*method)": "Please decide on your own; this is an unattended benchmark run and your judgment is final. Record the rationale in report.md.",
+  "(overwrite|replace|delete|reset|clear|clean\\s*up)": "Yes. Do whatever best satisfies task.yaml, and note the choice briefly in report.md.",
+  "default": "This is an unattended benchmark run (BrainPilotBench sleep-edf); no human is available to answer. Rely on prompt/turns.yaml and the `public_data/` already staged in your workspace, and proceed on your own without issuing further user_input_request events. If a decision is genuinely unresolvable, document the uncertainty and your default choice in report.md and continue."
+}

@@ -25,3 +25,10 @@ eeg-motor-imagery:
             subject_6_acc, subject_7_acc, subject_8_acc, subject_9_acc,
             subject_1_kappa, subject_2_kappa, subject_3_kappa, subject_4_kappa, subject_5_kappa,
             subject_6_kappa, subject_7_kappa, subject_8_kappa, subject_9_kappa]
+eeg-sleep-staging:
+  # EEG 睡眠分期类:agent 提交 PyTorch SleepAgentModel 类,scorer 用 subjects 0-13
+  # 训练 + 14-15 早停 + 私有 subjects 16-19 盲测,汇报 per-class recall + 聚合 5 类
+  # 指标,主指标 test_kappa。metric 由 scorer 从私有 subject-16-19 hypnogram 算出,
+  # agent 看不到。
+  metrics: [score, test_accuracy, test_balanced_accuracy, test_macro_f1, test_kappa,
+            wake_recall, n1_recall, n2_recall, n3_recall, rem_recall]
