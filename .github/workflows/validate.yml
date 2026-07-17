@@ -2,16 +2,6 @@ name: validate
 
 on:
   pull_request:
-    paths:
-      - "tasks/**"
-      - "categories.yaml"
-      - "registry.json"
-      - "src/**"
-      - "package*.json"
-      - "README.md"
-      - "CONTRIBUTING.md"
-      - "scripts/**"
-      - ".github/workflows/validate.yml"
   push:
     branches: [main]
     paths:
@@ -24,6 +14,9 @@ on:
       - "CONTRIBUTING.md"
       - "scripts/**"
       - ".github/workflows/validate.yml"
+
+permissions:
+  contents: read
 
 jobs:
   python-environment:
@@ -93,3 +86,17 @@ jobs:
         run: node dist/cli.js validate all
       - name: registry 完整性(无 registry.json 时 cli 自身 exit 0)
         run: node dist/cli.js registry verify
+
+  required:
+    name: required
+    if: always()
+    needs: [python-environment, validate]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require successful validation jobs
+        env:
+          PYTHON_RESULT: ${{ needs.python-environment.result }}
+          VALIDATE_RESULT: ${{ needs.validate.result }}
+        run: |
+          test "$PYTHON_RESULT" = success
+          test "$VALIDATE_RESULT" = success

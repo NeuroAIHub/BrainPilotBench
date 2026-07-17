@@ -125,6 +125,22 @@ set it in the scorer/runner environment; the BPB `hf://` fetcher forwards
 it as a Bearer token and never persists it. Never fetch from `main`; a
 moving branch would silently drift the data version.
 
+### Data source and citations
+
+The Sleep-EDF recordings are distributed through PhysioNet. Please cite both
+the dataset study and the PhysioNet resource when using this task or its data:
+
+> Kemp, B., Zwinderman, A. H., Tuk, B., Kamphuisen, H. A. C., & Oberye,
+> J. J. L. (2000). Analysis of a sleep-dependent neuronal feedback loop: the
+> slow-wave microcontinuity of the EEG. *IEEE Transactions on Biomedical
+> Engineering, 47*(9), 1185–1194. https://doi.org/10.1109/10.867928
+
+> Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov,
+> P. Ch., Mark, R. G., Mietus, J. E., Moody, G. B., Peng, C.-K., & Stanley,
+> H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new
+> research resource for complex physiologic signals. *Circulation, 101*(23),
+> e215–e220. https://doi.org/10.1161/01.CIR.101.23.E215
+
 Agent workflow (no private access required):
 
 ```bash

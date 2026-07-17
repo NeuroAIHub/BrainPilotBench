@@ -114,6 +114,17 @@ the scorer/runner environment; the BPB `hf://` fetcher forwards it as a
 Bearer token and never persists it. Never fetch from `main`; a moving branch
 would silently drift the data version.
 
+### Data source and citation
+
+The tonic-pain functional-connectivity data and external validation cohorts
+originate from the study below. Please cite it when using this task or its
+data:
+
+> Lee, J.-J., Kim, H. J., Čeko, M., Park, B.-y., Lee, S. A., Park, H., Roy, M.,
+> Kim, S.-G., Wager, T. D., & Woo, C.-W. (2021). A neuroimaging biomarker for
+> sustained experimental and clinical pain. *Nature Medicine, 27*(1), 174–182.
+> https://doi.org/10.1038/s41591-020-1142-7
+
 Agent workflow (no private access required):
 
 ```bash

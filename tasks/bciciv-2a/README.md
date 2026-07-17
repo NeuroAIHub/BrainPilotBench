@@ -115,6 +115,16 @@ the scorer/runner environment; the BPB `hf://` fetcher forwards it as a
 Bearer token and never persists it. Never fetch from `main`; a moving branch
 would silently drift the data version.
 
+### Data source and citation
+
+The recordings are from BCI Competition IV data set 2a. Please cite the
+competition review when using this task or its data:
+
+> Tangermann, M., Müller, K.-R., Aertsen, A., Birbaumer, N., Braun, C.,
+> Brunner, C., Leeb, R., Mehring, C., Miller, K. J., Müller-Putz, G. R., et al.
+> (2012). Review of the BCI Competition IV. *Frontiers in Neuroscience, 6*, 55.
+> https://doi.org/10.3389/fnins.2012.00055
+
 Agent workflow (no private access required):
 
 ```bash
