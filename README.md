@@ -29,6 +29,11 @@ agents can complete real brain science workflows and produce verifiable research
 
 ---
 
+## 📰 News
+
+- **2026-07-18** — BrainPilot was showcased at the “Intelligence in the Physical World” Science Forum at WAIC 2026. Follow us for the latest updates.
+- **2026-07-17** — BrainPilotBench-v0 was released as open source. It provides four real brain-science tasks for agent-agnostic, artifact-based evaluation of the code, figures, models, and reports produced by scientific agents.
+
 BrainPilotBench evaluates systems that search and synthesize neuroscience literature,
 analyze neural and behavioral data, write code, and produce figures, models, and reports.
 The interface is agent-agnostic: any system that completes a task and returns a valid
@@ -211,6 +216,8 @@ data provenance, scoring design, and contamination risk before adding a task.
 
 ## Citation
 
+If BrainPilotBench has helped your work, we welcome you to cite our work!
+
 If you use BrainPilotBench-v0 or its reference evaluation, cite the technical report:
 
 ~~~bibtex
@@ -233,10 +240,14 @@ evaluated harness–model configuration.
 
 ## Community
 
-- [Open an issue](https://github.com/NeuroAIHub/BrainPilotBench/issues)
-- [Explore BrainPilot](https://github.com/NeuroAIHub/BrainPilot)
-- [Join the BrainPilot Feishu community](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0far82db-f790-412e-9217-58ae67df4313)
-- Contact: [thu_neuroai@mail.tsinghua.edu.cn](mailto:thu_neuroai@mail.tsinghua.edu.cn)
+Questions, ideas, or just want to say hi? Join the BrainPilot community:
+
+- 💬 **[Join the BrainPilot Slack →](https://join.slack.com/t/brainpilot/shared_invite/zt-43pbjtuz5-AiuRez0RIYkzhIsmDQtv8A)**
+- 🪶 **[Join the BrainPilot Feishu group →](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0far82db-f790-412e-9217-58ae67df4313)**
+- 📧 **Contact:** [thu_neuroai@mail.tsinghua.edu.cn](mailto:thu_neuroai@mail.tsinghua.edu.cn)
+
+You can also [open an issue](https://github.com/NeuroAIHub/BrainPilot/issues/new/choose)
+or start a discussion.
 
 ## License
 
