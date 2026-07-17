@@ -15,12 +15,13 @@ repeatable way.
   <img src="https://img.shields.io/badge/status-v0-orange.svg?style=flat-square" alt="Status: v0"/>
   <img src="https://img.shields.io/badge/Node.js-%E2%89%A522-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js >= 22"/>
   <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="MIT license"/>
+  <a href="https://arxiv.org/abs/2607.15079"><img src="https://img.shields.io/badge/Paper-arXiv%3A2607.15079-B31B1B?style=flat-square" alt="BrainPilot technical report"/></a>
   <a href="https://github.com/NeuroAIHub/BrainPilotBench/stargazers"><img src="https://img.shields.io/github/stars/NeuroAIHub/BrainPilotBench?style=flat-square" alt="GitHub stars"/></a>
 </p>
 
 <p>
   <a href="#quick-start">Quick Start</a> ·
-  <a href="#leaderboard">Leaderboard</a> ·
+  <a href="#reference-evaluation">Results</a> ·
   <a href="#how-it-works">How It Works</a> ·
   <a href="#evaluate-your-agent">Evaluate Your Agent</a> ·
   <a href="#task-suite">Task Suite</a> ·
@@ -46,8 +47,9 @@ return a valid submission bundle, it can be evaluated.
 > [!IMPORTANT]
 > **Project status: v0.** The run, submission, scoring, validation, data-fetching,
 > release-freezing, and leaderboard pipelines are implemented. The public task
-> corpus is still small and growing. The official public leaderboard page is
-> available, while formal benchmark entries are still being prepared. The
+> corpus currently contains four tasks and remains preliminary. All four tasks
+> have completed runs in the technical report's reference evaluation; an official
+> aggregate leaderboard has not yet been released. The
 > <code>@brainpilot/bench</code> package is not yet published to npm; use a source
 > checkout for now.
 
@@ -65,13 +67,25 @@ That makes the benchmark suitable for multi-agent research systems, coding
 agents, domain assistants, custom harnesses, and future systems applied to brain
 science research.
 
-## Leaderboard
+## Reference evaluation
 
-The canonical leaderboard and complete submission ledger are maintained on the
-BrainPilot website. The link below opens the leaderboard section directly.
+The [BrainPilot technical report](https://arxiv.org/abs/2607.15079) presents a
+preliminary reference evaluation of seven harness–backbone configurations on all
+four BrainPilotBench-v0 tasks: RSC, TOPS-fMRI, BCI IV 2a, and Sleep-EDF.
+BrainPilot matched or approached the strongest evaluated configurations on
+multiple tasks, with a performance–cost trade-off across backbones.
 
 <p align="center">
-  <a href="https://brainpilot.chat/bench#leaderboard"><strong>View the BrainPilotBench leaderboard →</strong></a>
+  <img src="assets/readme/brainpilotbench-v0-results.png" alt="BrainPilotBench-v0 performance, cost, and resource-use comparison across four completed tasks" width="100%"/>
+</p>
+
+Except for the BrainPilot RSC result, which follows the report's stated selection
+of the higher of two runs, all results are single runs. `F` denotes the absence of
+a valid primary score and is distinct from `0.00`. These results are reference
+runs from the technical report rather than an official aggregate leaderboard.
+
+<p align="center">
+  <a href="https://brainpilot.chat/bench#leaderboard"><strong>Explore the BrainPilotBench-v0 evaluation →</strong></a>
 </p>
 
 <!-- LEADERBOARD:START -->
@@ -830,8 +844,24 @@ and task-size limits on relevant changes.
 
 ## Citation
 
-A formal citation will accompany the first frozen public release. Until then,
-cite the repository and include:
+If you use the reference evaluation, cite the technical report:
+
+~~~bibtex
+@misc{li2026brainpilotautomatingbraindiscovery,
+  title={BrainPilot: Automating Brain Discovery with Agentic Research},
+  author={Haoxuan Li and Tianci Gao and Jianhe Li and Yang Fan and Runze Shi
+    and Weiran Wang and Tianxiang Zhao and Zezhao Wu and Xiaoyang Jiang
+    and Qihui Zhang and Jia Li and Xiao Xiao and Kai Du and Xiaoxuan Jia
+    and Chao Xie and Lu Mi},
+  year={2026},
+  eprint={2607.15079},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2607.15079}
+}
+~~~
+
+Also record:
 
 - the repository URL;
 - the evaluated Git commit;
