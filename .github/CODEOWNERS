@@ -3,6 +3,6 @@
 # "require review from Code Owners" is enabled in repo settings (deferred
 # until the benchmark goes public — see README "Governance").
 
-/tasks/            @NeuroAIHub/BrainPilot
-/registry.json     @NeuroAIHub/BrainPilot
-/categories.yaml   @NeuroAIHub/BrainPilot
+/tasks/            @NeuroAIHub/brainpilot
+/registry.json     @NeuroAIHub/brainpilot
+/categories.yaml   @NeuroAIHub/brainpilot

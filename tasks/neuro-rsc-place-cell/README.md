@@ -53,6 +53,16 @@ Pinned to `BrainPilot-Bench/Tasks-Data-Public@7159b2dd` (2026-07-13 drop). See
 `data.lock` for uri + sha256. `env/setup.sh` symlinks the cached file to
 `./data/VRBeltReframe.mat`.
 
+### Data source and citation
+
+The recordings and virtual-reality behavior originate from the study below.
+Please cite it when using this task or its data:
+
+> Mao, D., Molina, L. A., Bonin, V., & McNaughton, B. L. (2020). Vision and
+> locomotion combine to drive path integration sequences in mouse
+> retrosplenial cortex. *Current Biology, 30*(9), 1680–1688.e4.
+> https://doi.org/10.1016/j.cub.2020.02.070
+
 ## Files
 
 | Path                        | Purpose                                                    |

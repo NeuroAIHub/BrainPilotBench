@@ -2,12 +2,13 @@ name: task-size
 
 on:
   pull_request:
-    paths:
-      - "tasks/**"
   push:
     branches: [main]
     paths:
       - "tasks/**"
+
+permissions:
+  contents: read
 
 jobs:
   size-gate:
