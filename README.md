@@ -18,6 +18,7 @@ agents can complete real brain science workflows and produce verifiable research
 
 <p>
   <a href="#reference-evaluation">Results</a> ·
+  <a href="https://brainpilot.chat/bench">Leaderboard</a> ·
   <a href="#task-suite">Tasks</a> ·
   <a href="#quick-start">Quick Start</a> ·
   <a href="#evaluate-your-agent">Evaluate Your Agent</a> ·
@@ -40,10 +41,9 @@ The interface is agent-agnostic: any system that completes a task and returns a 
 submission bundle can be evaluated.
 
 > [!IMPORTANT]
-> **BrainPilotBench-v0 is preliminary.** The current public suite contains four tasks.
-> All four have completed runs in the technical report, but an official aggregate
-> leaderboard has not yet been released. The package is not yet published to npm;
-> use a source checkout.
+> **BrainPilotBench-v0 is preliminary because the current public suite contains four tasks.**
+> All four have completed runs in the technical report. The package is not yet published
+> to npm; use a source checkout.
 
 ## Why BrainPilotBench
 
@@ -69,7 +69,7 @@ a performance–cost trade-off across backbones.
 Except for the BrainPilot RSC result, which follows the report's stated selection of the
 higher of two runs, all results are single runs. <code>F</code> denotes the absence of a
 valid primary score and is distinct from <code>0.00</code>. These are reference runs from
-the technical report rather than an official aggregate leaderboard.
+the technical report.
 
 <p align="center">
   <a href="https://brainpilot.chat/bench#leaderboard"><strong>Explore the BrainPilotBench-v0 evaluation →</strong></a>
