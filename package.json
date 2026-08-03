@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "@brainpilot/protocol": "^0.0.3",
-    "undici": "^8.7.0",
+    "undici": "^8.9.0",
     "yaml": "^2.5.0"
   },
   "devDependencies": {
