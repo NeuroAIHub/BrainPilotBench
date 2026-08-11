@@ -60,8 +60,8 @@ mirror for cross-subject LOSO training) is off by default; opt in with
 
 Design a PyTorch `nn.Module` **SleepAgentModel** that classifies a
 `(B, 1, 3000)` tensor of preprocessed Fpz-Cz sleep EEG (30 s epoch at
-100 Hz) into 5 sleep stages (Wake / N1 / N2 / N3 / REM). The submitted
-file goes to:
+100 Hz, microvolts) into 5 sleep stages (Wake / N1 / N2 / N3 / REM).
+The submitted file goes to:
 
 - `EEG_sleep/sleep_agent_model.py` in the agent's workspace.
 
@@ -92,8 +92,9 @@ subject 16-19 EDF or hypnogram — those recordings come from
    - Loads all recordings for subjects 0-13 / 14-15 / 16-19, applying the
      frozen preprocessing (pick `EEG Fpz-Cz`, 0.3-35 Hz bandpass, resample
      to 100 Hz, head/tail Wake crop to 30 min each, 30 s non-overlapping
-     epoching, `Sleep stage 3` and `Sleep stage 4` merged into label 3,
-     `Movement time` / `Sleep stage ?` dropped).
+     epoching, scale MNE volts to microvolts, `Sleep stage 3` and
+     `Sleep stage 4` merged into label 3, `Movement time` / `Sleep stage ?`
+     dropped).
    - Trains once with Adam lr=1e-3, batch 64, class-weighted CrossEntropyLoss,
      up to 20 epochs, early-stops on val loss (patience 5).
    - Predicts every 30 s epoch on subjects 16-19; writes

@@ -50,9 +50,9 @@ Otherwise it calls `evaluate_external.py $PWD`, which:
   - Loads all recordings for subjects 0-13 (train), 14-15 (val), and
     16-19 (test), applying the frozen preprocessing (pick `EEG Fpz-Cz`,
     0.3-35 Hz bandpass, resample to 100 Hz, head/tail Wake crop to
-    30 min each, 30 s non-overlapping epoching, `Sleep stage 3` and
-    `Sleep stage 4` merged into label 3, `Movement time` / `Sleep stage ?`
-    dropped).
+    30 min each, 30 s non-overlapping epoching, scale MNE volts to
+    microvolts, `Sleep stage 3` and `Sleep stage 4` merged into label 3,
+    `Movement time` / `Sleep stage ?` dropped).
   - Trains a fresh `SleepAgentModel()` with Adam lr=1e-3, batch 64,
     class-weighted CrossEntropyLoss (inverse-frequency weights over
     the train pool), up to 20 epochs, early-stops on val loss with

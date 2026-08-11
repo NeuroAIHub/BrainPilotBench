@@ -11,8 +11,9 @@ process. It:
   2. For every subject in --train-subjects and --val-subjects, loads both
      PSG + Hypnogram recordings, does the frozen preprocessing (pick
      `EEG Fpz-Cz`, 0.3-35 Hz bandpass, resample to 100 Hz, crop head/tail
-     Wake to 30 min each, cut into non-overlapping 30 s epochs) → per-epoch
-     features (1, 3000) plus labels 0..4 from the hypnogram annotations.
+     Wake to 30 min each, cut into non-overlapping 30 s epochs, scale
+     MNE volts to microvolts) → per-epoch features (1, 3000) plus labels
+     0..4 from the hypnogram annotations.
   3. Concatenates train epochs across subjects 0-13 → one big pool with a
      class-weighted CrossEntropyLoss. Trains a fresh SleepAgentModel with
      Adam lr=1e-3, batch 64, up to 20 epochs, early-stops on val loss
@@ -51,6 +52,7 @@ WINDOW_S = 30.0
 N_TIMES = int(round(WINDOW_S * SFREQ_TARGET))  # 3000
 EEG_CHANNEL = "EEG Fpz-Cz"
 CROP_WAKE_MINS = 30
+MICROVOLTS_PER_VOLT = 1e6
 
 # Hypnogram annotation → BPB label mapping.
 LABEL_MAPPING = {
@@ -71,12 +73,19 @@ EARLY_STOP_PATIENCE = 5
 SEED = 42
 
 
+def _to_microvolts(data: np.ndarray) -> np.ndarray:
+    """Convert MNE's SI-unit EEG arrays to microvolts (the sleep-staging
+    community convention — MOABB/braindecode expose µV-scale arrays)."""
+    return (np.asarray(data) * MICROVOLTS_PER_VOLT).astype(np.float32)
+
+
 def load_subject_recording(psg_path: Path, hyp_path: Path) -> tuple[np.ndarray, np.ndarray]:
     """Return (X: (N,1,3000), y: (N,) labels 0..4) for one PSG + Hypnogram pair.
 
     Applies: single-channel pick, 0.3-35 Hz filter, resample to 100 Hz,
     head/tail Wake crop (30 min each), 30 s non-overlapping epoching,
-    label mapping. `Movement time` / `Sleep stage ?` epochs are dropped.
+    label mapping, V→µV scaling. `Movement time` / `Sleep stage ?` epochs
+    are dropped.
     """
     if not psg_path.exists():
         raise RuntimeError(f"missing PSG file: {psg_path}")
@@ -120,7 +129,7 @@ def load_subject_recording(psg_path: Path, hyp_path: Path) -> tuple[np.ndarray, 
         tmin=0.0, tmax=WINDOW_S - 1.0 / SFREQ_TARGET,
         baseline=None, preload=True, proj=False, verbose="ERROR",
     )
-    X = epochs.get_data().astype(np.float32)
+    X = _to_microvolts(epochs.get_data())
     # inv: event_id integer → BPB label
     id_to_desc = {v: k for k, v in event_id.items()}
     y = np.asarray(
