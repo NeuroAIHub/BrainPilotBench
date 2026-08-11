@@ -51,9 +51,10 @@ Otherwise it calls `evaluate_external.py $PWD`, which:
   - Imports the submitted `MIAgentModel` from a scorer-controlled copy
     of `mi_agent_model.py` in a sandbox temp dir.
   - Loads that subject's session-T GDF, does the frozen preprocessing
-    (22 EEG channels, 4-38 Hz bandpass, resample to 128 Hz, 4-second
-    epochs starting at each 768 cue) → `(288, 22, 512)` features plus
-    labels extracted from GDF annotations 769-772 (mapped to 1..4).
+    (22 EEG channels, 4-38 Hz bandpass, cue-relative `[0, 4 s)` epochs
+    starting at annotations 769-772, resample to 128 Hz, scale MNE volts
+    to microvolts) → `(288, 22, 512)` features. The cue annotation maps
+    directly to labels 1..4; session E uses annotation 783.
   - Splits by the manifest indices, trains with Adam lr=1e-3, batch 64,
     up to 100 epochs, early-stops on val loss with patience 20.
   - Loads that subject's session-E GDF, predicts on the 288 held-out

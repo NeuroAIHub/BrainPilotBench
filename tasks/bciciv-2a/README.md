@@ -56,8 +56,8 @@ in the Agent workspace.
 ## What the agent does
 
 Design a PyTorch `nn.Module` **MIAgentModel** that classifies a `(B, 22, 512)`
-tensor of preprocessed motor-imagery EEG into 4 classes
-(left hand / right hand / feet / tongue). The submitted file goes to:
+tensor of cue-relative, 4–38 Hz motor-imagery EEG (128 Hz, microvolts) into
+4 classes (left hand / right hand / feet / tongue). The submitted file goes to:
 
 - `EEG_MI/mi_agent_model.py` in the agent's workspace.
 
@@ -87,7 +87,8 @@ session-E GDF or labels — the exact 288 hidden labels come from
    (`train_and_infer.py`) with a 25 min budget:
    - Imports the submitted `MIAgentModel` from a scorer-controlled copy.
    - Loads session-T GDF, preprocesses (22 EEG channels, 4-38 Hz
-     bandpass, resample 250→128 Hz, 4 s window per 768 cue) → `(288, 22, 512)`.
+     bandpass, cue-relative `[0, 4 s)` window at annotations 769–772,
+     resample 250→128 Hz, scale V→µV) → `(288, 22, 512)`.
    - Trains a fresh instance with Adam lr=1e-3, batch 64, ≤100 epochs,
      early stop on val loss (patience 20).
    - Loads session-E GDF, predicts 288 held-out labels, writes CSV back.
