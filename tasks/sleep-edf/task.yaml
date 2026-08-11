@@ -3,7 +3,7 @@ id: sleep-edf
 created_at: 2026-07-15
 domain: eeg-sleep-staging
 category: eeg-sleep-staging
-version: "0.1"
+version: "0.2"
 summary: >-
   5-class sleep-staging on Sleep-EDF Cassette (20 subjects, single-channel
   Fpz-Cz EEG, 30 s epochs → Wake / N1 / N2 / N3 / REM). Subjects 0-13 are

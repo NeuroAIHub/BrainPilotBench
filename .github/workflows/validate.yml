@@ -49,6 +49,8 @@ jobs:
           .venv/bin/python -c 'import numpy, scipy, sklearn; print(numpy.__version__, scipy.__version__, sklearn.__version__)'
       - name: Verify bciciv-2a preprocessing contract
         run: .venv/bin/python -m unittest tasks/bciciv-2a/checks/test_preprocessing_contract.py
+      - name: Verify sleep-edf preprocessing contract
+        run: .venv/bin/python -m unittest tasks/sleep-edf/checks/test_preprocessing_contract.py
 
   validate:
     strategy:
