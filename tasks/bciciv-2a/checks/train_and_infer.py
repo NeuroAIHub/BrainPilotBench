@@ -9,9 +9,10 @@ process (one call per subject). It:
      site-packages / no evaluator env vars, so the agent's model code cannot
      escape to read private labels or the label file path.
   2. Loads the T-session GDF for the given subject, does the frozen
-     preprocessing (22 EEG channels, 4-38 Hz bandpass, resample to 128 Hz,
-     0-4 s window per 768 cue) → (288, 22, 512) features + (288,) labels
-     from GDF annotations 769/770/771/772 mapped to 1..4.
+     preprocessing (22 EEG channels, 4-38 Hz bandpass, cue-relative [0,4 s)
+     epochs, resample to 128 Hz, scale to microvolts) → (288, 22, 512)
+     features + (288,) labels from GDF annotations 769/770/771/772 mapped
+     to 1..4.
   3. Splits the 288 trials by the manifest's fixed stratified 230/58
      train_trial_indices / val_trial_indices (seed=42).
   4. Trains a fresh `MIAgentModel()` with Adam lr=1e-3, batch 64, up to 100
@@ -50,9 +51,12 @@ TMIN = 0.0
 TMAX = 4.0
 N_CH = 22
 N_TIMES = int(round((TMAX - TMIN) * SFREQ_TARGET))  # 512
-CUE_ANNOTATION = "768"                              # trial-start marker
+EXPECTED_TRIALS = 288
+TRIAL_START_ANNOTATION = "768"
 CLASS_ANNOTATIONS = {"769": 1, "770": 2, "771": 3, "772": 4}
-UNKNOWN_ANNOTATION = "783"                          # E-session cue (label hidden)
+UNKNOWN_ANNOTATION = "783"
+CUE_OFFSET_S = 2.0
+MICROVOLTS_PER_VOLT = 1e6
 
 # Training hyperparameters — frozen so per-subject metrics are comparable.
 LR = 1e-3
@@ -62,56 +66,105 @@ EARLY_STOP_PATIENCE = 20
 SEED = 42
 
 
+def _resolve_cue_events(
+    events: np.ndarray,
+    ann_dict: dict[str, int],
+    sfreq: float,
+    source_name: str,
+) -> tuple[np.ndarray, np.ndarray | None]:
+    """Select MI cue events and labels, validating the Dataset 2a timeline."""
+    present_class_annotations = set(CLASS_ANNOTATIONS).intersection(ann_dict)
+    has_unknown_annotation = UNKNOWN_ANNOTATION in ann_dict
+
+    if present_class_annotations and has_unknown_annotation:
+        raise RuntimeError(f"{source_name}: contains both labeled and unknown cue annotations")
+
+    if present_class_annotations:
+        missing = set(CLASS_ANNOTATIONS).difference(ann_dict)
+        if missing:
+            raise RuntimeError(f"{source_name}: missing class cue annotations {sorted(missing)}")
+        event_id_to_label = {
+            ann_dict[annotation]: label
+            for annotation, label in CLASS_ANNOTATIONS.items()
+        }
+        cue_ids = np.asarray(list(event_id_to_label), dtype=events.dtype)
+        cue_events = events[np.isin(events[:, 2], cue_ids)]
+        labels = np.asarray(
+            [event_id_to_label[int(event_id)] for event_id in cue_events[:, 2]],
+            dtype=np.int64,
+        )
+        counts = np.bincount(labels, minlength=5)[1:]
+        if not np.array_equal(counts, np.full(4, EXPECTED_TRIALS // 4)):
+            raise RuntimeError(f"{source_name}: unexpected class counts {counts.tolist()}")
+    elif has_unknown_annotation:
+        cue_id = ann_dict[UNKNOWN_ANNOTATION]
+        cue_events = events[events[:, 2] == cue_id]
+        labels = None
+    else:
+        expected = sorted([*CLASS_ANNOTATIONS, UNKNOWN_ANNOTATION])
+        raise RuntimeError(f"{source_name}: no MI cue annotation; expected one of {expected}")
+
+    if len(cue_events) != EXPECTED_TRIALS:
+        raise RuntimeError(
+            f"{source_name}: found {len(cue_events)} MI cues, expected {EXPECTED_TRIALS}"
+        )
+
+    if TRIAL_START_ANNOTATION not in ann_dict:
+        raise RuntimeError(f"{source_name}: no '{TRIAL_START_ANNOTATION}' trial-start annotation")
+    trial_start_id = ann_dict[TRIAL_START_ANNOTATION]
+    trial_starts = events[events[:, 2] == trial_start_id]
+    if len(trial_starts) != len(cue_events):
+        raise RuntimeError(
+            f"{source_name}: found {len(trial_starts)} trial starts for {len(cue_events)} MI cues"
+        )
+
+    offsets = cue_events[:, 0] - trial_starts[:, 0]
+    expected_offset = CUE_OFFSET_S * sfreq
+    if not np.all(np.abs(offsets - expected_offset) <= 1.0):
+        unique_offsets = np.unique(offsets).tolist()
+        raise RuntimeError(
+            f"{source_name}: MI cues are not {CUE_OFFSET_S:g} s after trial starts; "
+            f"sample offsets={unique_offsets} at sfreq={sfreq:g}"
+        )
+
+    return cue_events, labels
+
+
+def _to_microvolts(data: np.ndarray) -> np.ndarray:
+    """Convert MNE's SI-unit EEG arrays to MOABB's microvolt array contract."""
+    return (np.asarray(data) * MICROVOLTS_PER_VOLT).astype(np.float32)
+
+
 def load_epochs(gdf_path: Path) -> tuple[np.ndarray, np.ndarray | None]:
-    """Return (X: (288,22,512), y: (288,) with labels 1..4 or None for E session)."""
+    """Return cue-relative microvolt epochs and labels for one Dataset 2a session."""
     raw = mne.io.read_raw_gdf(str(gdf_path), preload=True, verbose="ERROR")
     eeg_names = [c for c in raw.ch_names if c.startswith("EEG-")]
     if len(eeg_names) < N_CH:
         raise RuntimeError(f"{gdf_path.name}: expected >= {N_CH} EEG-* channels, got {len(eeg_names)}")
     raw.pick(eeg_names[:N_CH])
     raw.filter(BAND_L, BAND_H, verbose="ERROR")
-    raw.resample(SFREQ_TARGET, verbose="ERROR")
 
     events, ann_dict = mne.events_from_annotations(raw, verbose="ERROR")
     ann_dict = {str(k): int(v) for k, v in ann_dict.items()}
+    native_sfreq = float(raw.info["sfreq"])
+    cue_events, labels = _resolve_cue_events(
+        events, ann_dict, native_sfreq, gdf_path.name
+    )
 
-    if CUE_ANNOTATION not in ann_dict:
-        raise RuntimeError(f"{gdf_path.name}: no '{CUE_ANNOTATION}' cue annotation")
-    cue_id = ann_dict[CUE_ANNOTATION]
-    cue_events = events[events[:, 2] == cue_id]
-
-    # tmax uses inclusive/exclusive quirk in MNE: to get exactly N_TIMES samples,
-    # pass tmax = TMAX - 1/sfreq so mne's ceil-based length gives 512.
+    # MNE includes tmax. Exclude one native sample before epoch resampling to
+    # define the benchmark's explicit cue-relative half-open interval [0, 4 s).
+    native_tmax = TMAX - 1.0 / native_sfreq
+    cue_ids = sorted(set(int(event_id) for event_id in cue_events[:, 2]))
     epochs = mne.Epochs(
-        raw, cue_events, event_id=cue_id,
-        tmin=TMIN, tmax=TMAX - 1.0 / SFREQ_TARGET,
+        raw, cue_events, event_id=cue_ids,
+        tmin=TMIN, tmax=native_tmax,
         baseline=None, preload=True, verbose="ERROR", proj=False,
     )
-    X = epochs.get_data().astype(np.float32)
-    if X.shape != (288, N_CH, N_TIMES):
-        raise RuntimeError(f"{gdf_path.name}: bad epoch shape {X.shape}, expected (288, {N_CH}, {N_TIMES})")
-
-    # Labels from GDF: T-session encodes class via annotations 769-772 near
-    # each cue; E-session uses 783 (unknown), so we must fall back to the
-    # .mat file (handled by the caller with --label-mat).
-    has_class_ann = any(k in ann_dict for k in CLASS_ANNOTATIONS)
-    if not has_class_ann:
-        return X, None
-
-    class_ann_ids = {ann_dict[k]: v for k, v in CLASS_ANNOTATIONS.items() if k in ann_dict}
-    # For each cue sample, find the next class annotation within a 4-second window.
-    labels = np.full(len(cue_events), -1, dtype=np.int64)
-    for i, cue_sample in enumerate(cue_events[:, 0]):
-        window_lo = cue_sample
-        window_hi = cue_sample + int(round(4.0 * raw.info["sfreq"]))
-        mask = (events[:, 0] >= window_lo) & (events[:, 0] <= window_hi) & \
-               np.isin(events[:, 2], list(class_ann_ids.keys()))
-        matches = events[mask]
-        if len(matches):
-            labels[i] = class_ann_ids[matches[0, 2]]
-
-    if (labels == -1).any():
-        raise RuntimeError(f"{gdf_path.name}: could not resolve labels for {int((labels==-1).sum())} trials")
+    epochs.resample(SFREQ_TARGET, verbose="ERROR")
+    X = _to_microvolts(epochs.get_data())
+    expected_shape = (EXPECTED_TRIALS, N_CH, N_TIMES)
+    if X.shape != expected_shape:
+        raise RuntimeError(f"{gdf_path.name}: bad epoch shape {X.shape}, expected {expected_shape}")
     return X, labels
 
 

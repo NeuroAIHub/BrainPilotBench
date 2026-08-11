@@ -3,7 +3,7 @@ id: bciciv-2a
 created_at: 2026-07-15
 domain: eeg-motor-imagery
 category: eeg-motor-imagery
-version: "0.1"
+version: "0.2"
 summary: >-
   4-class motor-imagery decoding on BCI Competition IV Dataset 2a
   (9 subjects, within-subject cross-session: session T for training,
