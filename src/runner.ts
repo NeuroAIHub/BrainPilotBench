@@ -30,6 +30,8 @@ export interface RunnerOptions {
   /** Quiet period after all observed runs finish before declaring session idle. */
   settleMs?: number;
   fetchFn?: typeof fetch;
+  /** Session-wide reasoning effort shared by every BrainPilot agent. */
+  thinkingLevel?: "off" | "low" | "medium" | "high";
 }
 
 export interface RunResult {
@@ -94,21 +96,40 @@ export class BenchRunner {
   private fetchFn: typeof fetch;
   private configuredIdleMs?: number;
   private configuredSettleMs?: number;
+  private thinkingLevel?: "off" | "low" | "medium" | "high";
   constructor(opts: RunnerOptions) {
     this.base = opts.baseUrl.replace(/\/+$/, "");
     this.fetchFn = opts.fetchFn ?? fetch;
     this.configuredIdleMs = opts.idleMs;
     this.configuredSettleMs = opts.settleMs;
+    const thinkingLevel = opts.thinkingLevel ?? process.env.BPB_THINKING_LEVEL;
+    if (thinkingLevel && !["off", "low", "medium", "high"].includes(thinkingLevel)) {
+      throw new Error(`invalid BPB_THINKING_LEVEL: ${thinkingLevel}`);
+    }
+    this.thinkingLevel = thinkingLevel as RunnerOptions["thinkingLevel"];
   }
   private url(tmpl: string, params?: Record<string, string>) { return this.base + fillPath(tmpl, params); }
 
   async createSession(): Promise<string> {
     const r = await this.fetchFn(this.url(RUNTIME_ROUTES.createSession.path), {
       method: RUNTIME_ROUTES.createSession.method,
-      headers: { "content-type": "application/json" }, body: "{}",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(this.thinkingLevel ? { thinkingLevel: this.thinkingLevel } : {}),
     });
     if (!r.ok) throw new Error(`createSession ${r.status}`);
-    return (await r.json()).id;
+    const created = await r.json() as {
+      id: string;
+      session?: { thinkingLevel?: string };
+    };
+    if (this.thinkingLevel) {
+      const observed = created.session?.thinkingLevel;
+      if (observed !== this.thinkingLevel) {
+        throw new Error(
+          `createSession thinking level mismatch: requested ${this.thinkingLevel}, observed ${observed ?? "missing"}`,
+        );
+      }
+    }
+    return created.id;
   }
   private async send(sid: string, content: string): Promise<void> {
     const r = await this.fetchFn(this.url(RUNTIME_ROUTES.sendMessage.path, { id: sid }), {
