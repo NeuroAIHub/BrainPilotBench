@@ -1,6 +1,6 @@
 # tops-fmri — Tonic Pain Signature (linear FC, external validation)
 
-Category: `fmri-analysis` · Domain: `fmri-analysis` · Version `0.1`
+Category: `fmri-analysis` · Domain: `fmri-analysis` · Version `0.2`
 
 ## Quick start (Agent user)
 
@@ -89,11 +89,22 @@ methods are explicitly disallowed for the final submission.
 3. Invokes the agent's `apply_signature.py --eval-features-dir <tmp>
    --model-dir artifacts/models --out-dir <tmp>` with a 120 s hard timeout.
 4. Reads `study{4,5}_predictions.csv`, loads the **private** labels, computes
-   Study4 Pearson r (per condition) + Study5 AUC (per site), aggregates to
+   Study4 Pearson r (per condition) + raw Study5 AUC (per site), then maps each
+   AUC to `max(0, 2·AUC−1)` so chance is zero before aggregating
    `score = 0.5·study4_score + 0.5·study5_score`.
 5. Emits 9 keys between `>>>>> BPB_SCORES` / `<<<<< BPB_SCORES` sentinels.
 
 The labels never enter the agent workspace. See `checks/README.md`.
+
+### Score compatibility
+
+Task v0.2 chance-centers Study5 AUC before aggregation. Scores produced by
+v0.1 used raw AUC in the subgroup score and must not be mixed with v0.2
+scores. Historical v0.1 results remain unchanged; a fresh v0.2 reference
+formula baseline is re-aggregated from the preserved raw diagnostics and
+frozen in `checks/test_metrics.py`. Raw Pearson r and AUC diagnostics keep
+their original definitions; an end-to-end evaluator rerun can confirm the
+same baseline before release without rewriting v0.1 history.
 
 ## Data (`data.lock`)
 

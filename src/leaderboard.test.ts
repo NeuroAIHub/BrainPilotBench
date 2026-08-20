@@ -129,3 +129,39 @@ test("buildLeaderboard: taskId/version 含空格不串味(单射 key + 透传 la
   assert.ok(sw.rows.every((r) => r.taskId === "t1"));
 });
 
+test("buildLeaderboard: 默认排除 lifecycle/grader 不合格 run,诊断模式可显式纳入", () => {
+  const runs = [
+    {
+      taskId: "t1", runId: "completed", version: "v1", scoredAt: "x", state: "scored",
+      leaderboardEligible: true,
+      results: [{ kind: "rubric-judge", value: { correctness: 5, completeness: 5 } }],
+    },
+    {
+      taskId: "t1", runId: "timeout", version: "v1", scoredAt: "x", state: "scored",
+      runState: "timeout", runCompleted: false, leaderboardEligible: false,
+      results: [{ kind: "rubric-judge", value: { correctness: 1, completeness: 1 } }],
+    },
+  ] as any;
+  const official = buildLeaderboard(runs, catOf, REG).find((t) => t.category === "survey-writing")!;
+  const officialCorrectness = official.rows[0].cells.find((c) => c.metric === "correctness")!;
+  assert.deepEqual(officialCorrectness.coverage, { scored: 1, total: 1 });
+  assert.equal(officialCorrectness.value, 1);
+
+  const diagnostic = buildLeaderboard(runs, catOf, REG, { includeIneligible: true })
+    .find((t) => t.category === "survey-writing")!;
+  const diagnosticCorrectness = diagnostic.rows[0].cells.find((c) => c.metric === "correctness")!;
+  assert.deepEqual(diagnosticCorrectness.coverage, { scored: 2, total: 2 });
+  assert.equal(diagnosticCorrectness.value, 0.5);
+});
+
+test("buildLeaderboard: non-lifecycle grader failures retain coverage semantics", () => {
+  const runs = [{
+    taskId: "t1", runId: "grader-failed", version: "v1", scoredAt: "x",
+    state: "scoring_failed", runCompleted: true, graderState: "scoring_failed", leaderboardEligible: false,
+    results: [],
+  }] as any;
+  const table = buildLeaderboard(runs, catOf, REG).find((t) => t.category === "survey-writing")!;
+  assert.equal(table.rows[0].states.scoring_failed, 1);
+  assert.deepEqual(table.rows[0].cells[0].coverage, { scored: 0, total: 1 });
+  assert.equal(table.rows[0].cells[0].value, null);
+});

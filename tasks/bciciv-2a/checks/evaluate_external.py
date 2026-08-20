@@ -200,6 +200,8 @@ def run_child_docker(
     val_idx: list[int],
     out_csv: Path,
     sandbox_dir: Path,
+    *,
+    use_gpu: bool = True,
 ) -> None:
     import re, uuid
     image = os.environ.get("BPB_INFERENCE_IMAGE", "").strip()
@@ -214,6 +216,7 @@ def run_child_docker(
     out_dir.mkdir(parents=True, exist_ok=True)
     train_gdf_dir = train_gdf.parent
     test_gdf_dir = test_gdf.parent
+    gpu_args = ["--gpus", "all"] if use_gpu else []
     cmd = [
         docker, "run", "--rm", "--init", "--name", name,
         "--network", "none",
@@ -221,7 +224,7 @@ def run_child_docker(
         "--cap-drop", "ALL",
         "--security-opt", "no-new-privileges",
         "--pids-limit", "256",
-        "--gpus", "all",
+        *gpu_args,
         "--memory", "12g",
         "--user", _container_user(),
         "--workdir", "/work",

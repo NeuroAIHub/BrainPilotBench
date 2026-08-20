@@ -72,10 +72,15 @@ export function buildLeaderboard(
   runs: RunScores[],
   categoryOf: (taskId: string) => string | undefined,
   reg: CategoryRegistry,
+  opts: { includeIneligible?: boolean } = {},
 ): CategoryTable[] {
   // 1) 按 category 分组 runs。
   const byCat = new Map<string, RunScores[]>();
   for (const run of runs) {
+    // Official tables exclude explicitly incomplete lifecycle attempts. Valid
+    // completed attempts whose grader failed remain visible in the coverage
+    // denominator/state counts, preserving the benchmark's unscored semantics.
+    if (!opts.includeIneligible && run.runCompleted === false) continue;
     const cat = categoryOf(run.taskId);
     if (!cat) continue; // 无 category 的 task 不进分类表
     const arr = byCat.get(cat);

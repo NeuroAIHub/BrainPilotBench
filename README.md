@@ -194,6 +194,9 @@ scoring independent of the agent language, model provider, and orchestration fra
 - Deterministic metrics, held-out evaluation, and expert rubrics are used where appropriate.
 - A valid score of <code>0.00</code>, an unscored run, and a metric that does not apply are
   represented as different states.
+- Artifact validity, Agent lifecycle, and grader outcome are recorded independently. A
+  timed-out run with a valid bundle is still graded, but is excluded from the official
+  leaderboard by default; use <code>--include-ineligible</code> only for diagnostics.
 - Public inputs are pinned by content hash; evaluator-only inputs remain outside the agent
   workspace.
 - Official results are produced from preserved artifacts and run metadata rather than

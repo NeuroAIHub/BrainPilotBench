@@ -22,16 +22,24 @@ def _load_runner_module():
     torch_nn = types.ModuleType("torch.nn")
     torch.nn = torch_nn
 
-    sys.modules["mne"] = mne
-    sys.modules["torch"] = torch
-    sys.modules["torch.nn"] = torch_nn
-
-    path = Path(__file__).with_name("train_and_infer.py")
-    spec = importlib.util.spec_from_file_location("bci2a_train_and_infer", path)
-    module = importlib.util.module_from_spec(spec)
-    assert spec.loader is not None
-    spec.loader.exec_module(module)
-    return module
+    names = ("mne", "torch", "torch.nn")
+    previous = {name: sys.modules.get(name) for name in names}
+    try:
+        sys.modules["mne"] = mne
+        sys.modules["torch"] = torch
+        sys.modules["torch.nn"] = torch_nn
+        path = Path(__file__).with_name("train_and_infer.py")
+        spec = importlib.util.spec_from_file_location("bci2a_train_and_infer", path)
+        module = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(module)
+        return module
+    finally:
+        for name, old in previous.items():
+            if old is None:
+                sys.modules.pop(name, None)
+            else:
+                sys.modules[name] = old
 
 
 RUNNER = _load_runner_module()

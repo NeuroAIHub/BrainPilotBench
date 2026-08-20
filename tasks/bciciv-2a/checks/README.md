@@ -105,6 +105,18 @@ leaderboard coverage convention is preserved.
 `0.0` (chance-level kappa = 0). This is **only** to verify the scorer
 pipeline; it says nothing about the real task difficulty.
 
+## Real-path CI smoke
+
+The fast Oracle remains intentionally data-free. A separate required CI job
+builds a deterministic synthetic RawArray and runs the production MNE
+cue-selection, filtering, epoching, resampling, and microvolt conversion path.
+It then imports a submitted `MIAgentModel`, performs one real optimizer step,
+runs inference, and computes the real accuracy/kappa/F1 functions. A Linux
+Docker smoke additionally executes the task's own child-launch code and checks
+that model/data mounts are read-only, the network and host paths are hidden,
+and only the prediction directory is writable. No official EEG or private
+labels are embedded in these fixtures.
+
 ## Local end-to-end sanity check
 
 ```bash

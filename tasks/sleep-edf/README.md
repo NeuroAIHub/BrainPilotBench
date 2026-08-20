@@ -1,6 +1,6 @@
 # sleep-edf — 5-class Sleep Staging (Sleep-EDF Cassette)
 
-Category: `eeg-sleep-staging` · Domain: `eeg-sleep-staging` · Version `0.1`
+Category: `eeg-sleep-staging` · Domain: `eeg-sleep-staging` · Version `0.3`
 
 ## Quick start (Agent user)
 
@@ -78,6 +78,12 @@ batch 64, class-weighted CE, up to 20 epochs, patience 5 on val loss),
 then predicts every 30 s epoch on subjects 16-19. Agents are never given
 subject 16-19 EDF or hypnogram — those recordings come from
 `Tasks-Data-Private/sleep-edf/private.tar.zst`.
+
+Task v0.3 clarifies that temporal convolutions and TCNs can model long-range
+structure only within the provided 30 s waveform. The single-epoch
+`(B, 1, 3000)` interface contains no adjacent epochs and therefore cannot
+encode cross-epoch sleep-stage transitions. The scorer is otherwise unchanged
+from v0.2.
 
 ## What the grader does (`checks/check.sh`)
 

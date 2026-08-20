@@ -30,7 +30,7 @@ import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
 import { renderLeaderboard, type LeaderboardFormat } from "./leaderboard-format.js";
 import { loadCategories } from "./categories.js";
 import { resolveManifest, parseDatasetSelection, selectDatasets, type DatasetSelection } from "./data/index.js";
-import { runScorers, type RunBundle, type RunScores } from "./score.js";
+import { classifyRunScores, runScorers, type RunBundle, type RunScores } from "./score.js";
 import { validateTask } from "./validate.js";
 import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
@@ -316,7 +316,9 @@ async function main() {
       console.log(`  artifacts: ${built.artifacts.length} → ${join(runDir, "artifacts")}`);
       for (const issue of built.issues) console.log(`  ${issue.level}: ${issue.msg}`);
       if (errors.length) throw new Error(`submission bundle failed verification (${errors.length} errors): ${runDir}`);
-      console.log(`${G}✓ completed and verified${X} → ${runDir}`);
+      const lifecycle = execution.result!.reason;
+      const lifecycleColor = lifecycle === "completed" ? G : Y;
+      console.log(`${lifecycleColor}✓ bundle verified (run=${lifecycle})${X} → ${runDir}`);
     }
     return;
   }
@@ -333,7 +335,9 @@ async function main() {
     // 默认只渲染 public 任务的行(--visibility heldout|all 切换);按任务 visibility 过滤 runs。
     const visIds = visibleTaskIds();
     const runs = loadRunScores(runsDir).filter((r) => visIds.has(r.taskId));
-    const tables = buildLeaderboard(runs, (id) => catById.get(id), reg);
+    const tables = buildLeaderboard(runs, (id) => catById.get(id), reg, {
+      includeIneligible: argv.includes("--include-ineligible"),
+    });
     if (!tables.length) { console.log("（无 scores.json 或无 category 记录）"); return; }
     const format = arg("--format", "table") as LeaderboardFormat;
     if (!["table", "json", "markdown", "csv"].includes(format)) {
@@ -467,18 +471,17 @@ async function main() {
     const scoredAt = new Date().toISOString();
     const contractIssues = verifySubmission(t, runDir);
     const contractErrors = contractIssues.filter((issue) => issue.level === "error");
-    if (signalsRaw?.completed === false) contractErrors.push({ level: "error", msg: "agent run is not completed" });
     if (contractErrors.length) {
-      const invalid: RunScores = {
+      const invalid = classifyRunScores({
         taskId, runId, version, scoredAt, state: "submission_invalid",
         explanation: contractErrors.map((issue) => issue.msg).join("; "), results: [],
-      };
+      }, "invalid", signalsRaw);
       writeFileSync(join(runDir, "scores.json"), JSON.stringify(invalid, null, 2));
       console.error(`${Y}submission_invalid${X}: ${invalid.explanation}`);
       process.exitCode = 1;
       return;
     }
-    console.log(`${G}ready_to_score${X}: bundle verified; scoring starts after Agent completion`);
+    console.log(`${G}ready_to_score${X}: bundle verified; starting artifact scoring`);
     const bundle: RunBundle = { runDir, runId, version, events, signals: (signalsRaw ?? meta) as Record<string, unknown> };
     let scores: RunScores;
     try {
@@ -486,8 +489,12 @@ async function main() {
     } catch (error) {
       scores = { taskId, runId, version, scoredAt, state: "scoring_failed", explanation: (error as Error).message, results: [] };
     }
+    scores = classifyRunScores(scores, "valid", signalsRaw);
     writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
-    console.log(`${B}— score ${taskId}${X}  state=${scores.state} → ${join(runDir, "scores.json")}`);
+    console.log(`${B}— score ${taskId}${X}  grader=${scores.graderState} run=${scores.runState} eligible=${scores.leaderboardEligible} → ${join(runDir, "scores.json")}`);
+    if (!scores.leaderboardEligible && scores.leaderboardExclusionReason) {
+      console.warn(`${Y}leaderboard_ineligible${X}: ${scores.leaderboardExclusionReason}`);
+    }
     if (scores.explanation) console.log(`  ${scores.explanation}`);
     for (const r of scores.results) {
       const v = r.unscored ? `${Y}${r.state ?? "scoring_failed"}${X}` : (typeof r.value === "number" ? String(r.value) : JSON.stringify(r.value));
@@ -559,7 +566,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | doctor [id] [--private] [--python <path>] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | stats <bundle|runsDir> [--format table|json|markdown|csv] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--python <path>] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | stats <bundle|runsDir> [--format table|json|markdown|csv] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] [--include-ineligible] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 

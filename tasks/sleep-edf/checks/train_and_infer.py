@@ -79,34 +79,30 @@ def _to_microvolts(data: np.ndarray) -> np.ndarray:
     return (np.asarray(data) * MICROVOLTS_PER_VOLT).astype(np.float32)
 
 
-def load_subject_recording(psg_path: Path, hyp_path: Path) -> tuple[np.ndarray, np.ndarray]:
-    """Return (X: (N,1,3000), y: (N,) labels 0..4) for one PSG + Hypnogram pair.
+def preprocess_recording(
+    raw: mne.io.BaseRaw,
+    annotations: mne.Annotations,
+    source_name: str,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Apply the production preprocessing contract to an already-loaded recording.
 
-    Applies: single-channel pick, 0.3-35 Hz filter, resample to 100 Hz,
-    head/tail Wake crop (30 min each), 30 s non-overlapping epoching,
-    label mapping, V→µV scaling. `Movement time` / `Sleep stage ?` epochs
-    are dropped.
+    The injectable Raw/Annotations boundary lets CI use a compact deterministic
+    fixture while production still enters through MNE's EDF readers.
     """
-    if not psg_path.exists():
-        raise RuntimeError(f"missing PSG file: {psg_path}")
-    if not hyp_path.exists():
-        raise RuntimeError(f"missing hypnogram file: {hyp_path}")
-
-    raw = mne.io.read_raw_edf(str(psg_path), preload=False, verbose="ERROR")
+    raw = raw.copy()
     if EEG_CHANNEL not in raw.ch_names:
-        raise RuntimeError(f"{psg_path.name}: expected channel '{EEG_CHANNEL}', got {raw.ch_names}")
+        raise RuntimeError(f"{source_name}: expected channel '{EEG_CHANNEL}', got {raw.ch_names}")
     raw.pick([EEG_CHANNEL])
     raw.load_data(verbose="ERROR")
     raw.filter(BAND_L, BAND_H, verbose="ERROR")
     raw.resample(SFREQ_TARGET, verbose="ERROR")
 
-    ann = mne.read_annotations(str(hyp_path))
-    raw.set_annotations(ann)
+    raw.set_annotations(annotations)
 
     # Head/tail Wake crop: keep at most 30 min of Wake at each end.
     # Following the SleepPhysionet convention: find the first and last
     # non-Wake annotation, extend by CROP_WAKE_MINS minutes on each side.
-    non_wake = [(o, d) for o, d, desc in zip(ann.onset, ann.duration, ann.description)
+    non_wake = [(o, d) for o, d, desc in zip(annotations.onset, annotations.duration, annotations.description)
                 if desc in LABEL_MAPPING and LABEL_MAPPING[desc] != 0]
     if non_wake:
         first_nw = min(o for o, _ in non_wake)
@@ -122,7 +118,7 @@ def load_subject_recording(psg_path: Path, hyp_path: Path) -> tuple[np.ndarray, 
     # event_id restricted to the six known Sleep stage strings; drops "?" and "Movement time"
     event_id = {k: ann_dict[k] for k in LABEL_MAPPING if k in ann_dict}
     if not event_id:
-        raise RuntimeError(f"{hyp_path.name}: no recognized sleep-stage annotations in {list(ann_dict)}")
+        raise RuntimeError(f"{source_name}: no recognized sleep-stage annotations in {list(ann_dict)}")
 
     epochs = mne.Epochs(
         raw, events, event_id=event_id,
@@ -137,10 +133,28 @@ def load_subject_recording(psg_path: Path, hyp_path: Path) -> tuple[np.ndarray, 
         dtype=np.int64,
     )
     if X.shape[0] == 0:
-        raise RuntimeError(f"{psg_path.name}: no valid 30 s epochs after crop")
+        raise RuntimeError(f"{source_name}: no valid 30 s epochs after crop")
     if X.shape[1:] != (1, N_TIMES):
-        raise RuntimeError(f"{psg_path.name}: bad epoch shape {X.shape}, expected (N, 1, {N_TIMES})")
+        raise RuntimeError(f"{source_name}: bad epoch shape {X.shape}, expected (N, 1, {N_TIMES})")
     return X, y
+
+
+def load_subject_recording(psg_path: Path, hyp_path: Path) -> tuple[np.ndarray, np.ndarray]:
+    """Return (X: (N,1,3000), y: (N,) labels 0..4) for one PSG + Hypnogram pair.
+
+    Applies: single-channel pick, 0.3-35 Hz filter, resample to 100 Hz,
+    head/tail Wake crop (30 min each), 30 s non-overlapping epoching,
+    label mapping, V→µV scaling. `Movement time` / `Sleep stage ?` epochs
+    are dropped.
+    """
+    if not psg_path.exists():
+        raise RuntimeError(f"missing PSG file: {psg_path}")
+    if not hyp_path.exists():
+        raise RuntimeError(f"missing hypnogram file: {hyp_path}")
+
+    raw = mne.io.read_raw_edf(str(psg_path), preload=False, verbose="ERROR")
+    annotations = mne.read_annotations(str(hyp_path))
+    return preprocess_recording(raw, annotations, psg_path.name)
 
 
 def load_subjects(subject_ids: list[int], manifest: dict, edf_root: Path) -> tuple[np.ndarray, np.ndarray]:
@@ -189,30 +203,27 @@ def load_manifest(manifest_dir: Path) -> dict:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
-def train_and_predict(
+def fit_model_from_arrays(
     model_source: Path,
-    train_subjects: list[int],
-    val_subjects: list[int],
-    test_subjects: list[int],
-    train_edf_root: Path,
-    test_edf_root: Path,
-    manifest: dict,
+    Xtr: np.ndarray,
+    ytr: np.ndarray,
+    Xva: np.ndarray,
+    yva: np.ndarray,
     device: torch.device,
-) -> list[tuple[int, int, int]]:
-    """Return list of (subject_id, epoch_id, predicted_label) rows for the test set."""
+    *,
+    max_epochs: int = MAX_EPOCHS,
+    batch_size: int = BATCH_SIZE,
+    seed: int = SEED,
+) -> nn.Module:
+    """Shared model-import/training path used by production and CI smoke tests."""
+    if Xtr.shape[1:] != (1, N_TIMES) or Xva.shape[1:] != (1, N_TIMES):
+        raise RuntimeError("Sleep arrays do not match the (N, 1, 3000) model contract")
+    if ytr.shape != (len(Xtr),) or yva.shape != (len(Xva),):
+        raise RuntimeError("Sleep labels do not align with their feature arrays")
+
     agent_module = load_agent_module(model_source)
-
-    torch.manual_seed(SEED)
-    np.random.seed(SEED)
-
-    print(f"sleep-edf: loading train subjects {train_subjects}", file=sys.stderr, flush=True)
-    Xtr, ytr = load_subjects(train_subjects, manifest, train_edf_root)
-    print(f"  train pool: X.shape={Xtr.shape}, class counts={np.bincount(ytr, minlength=N_CLASSES).tolist()}",
-          file=sys.stderr, flush=True)
-
-    print(f"sleep-edf: loading val subjects {val_subjects}", file=sys.stderr, flush=True)
-    Xva, yva = load_subjects(val_subjects, manifest, train_edf_root)
-    print(f"  val pool: X.shape={Xva.shape}", file=sys.stderr, flush=True)
+    torch.manual_seed(seed)
+    np.random.seed(seed)
 
     Xtr_t = torch.tensor(Xtr, dtype=torch.float32)
     ytr_t = torch.tensor(ytr, dtype=torch.long)
@@ -233,18 +244,17 @@ def train_and_predict(
 
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
     criterion = nn.CrossEntropyLoss(weight=class_weights)
-
     loader = torch.utils.data.DataLoader(
         torch.utils.data.TensorDataset(Xtr_t, ytr_t),
-        batch_size=BATCH_SIZE, shuffle=True,
-        generator=torch.Generator().manual_seed(SEED),
+        batch_size=batch_size, shuffle=True,
+        generator=torch.Generator().manual_seed(seed),
         num_workers=0, pin_memory=(device.type == "cuda"),
     )
 
     best_val_loss = float("inf")
     best_state = None
     stale = 0
-    for epoch in range(MAX_EPOCHS):
+    for epoch in range(max_epochs):
         model.train()
         for xb, yb in loader:
             xb = xb.to(device, non_blocking=True)
@@ -254,20 +264,18 @@ def train_and_predict(
             loss.backward()
             optimizer.step()
 
-        # Val loss (mini-batched to fit memory on large val pool)
         model.eval()
         val_loss_num = 0.0
         val_count = 0
         with torch.no_grad():
-            for i in range(0, len(Xva_t), BATCH_SIZE):
-                bx = Xva_t[i:i + BATCH_SIZE].to(device)
-                by = yva_t[i:i + BATCH_SIZE].to(device)
+            for i in range(0, len(Xva_t), batch_size):
+                bx = Xva_t[i:i + batch_size].to(device)
+                by = yva_t[i:i + batch_size].to(device)
                 logits = model(bx)
                 loss = criterion(logits, by)
                 val_loss_num += float(loss.item()) * bx.shape[0]
                 val_count += bx.shape[0]
         val_loss = val_loss_num / max(val_count, 1)
-
         print(f"  epoch {epoch+1:3d}: val_loss={val_loss:.4f}", file=sys.stderr, flush=True)
 
         if val_loss < best_val_loss - 1e-4:
@@ -283,6 +291,48 @@ def train_and_predict(
     if best_state is not None:
         model.load_state_dict(best_state)
     model.eval()
+    return model
+
+
+def predict_array(
+    model: nn.Module,
+    X: np.ndarray,
+    device: torch.device,
+    *,
+    batch_size: int = BATCH_SIZE,
+) -> np.ndarray:
+    """Run the production batched inference path on one preprocessed recording."""
+    if X.shape[1:] != (1, N_TIMES):
+        raise RuntimeError("Sleep inference array does not match the (N, 1, 3000) model contract")
+    X_t = torch.tensor(X, dtype=torch.float32)
+    preds_list = []
+    with torch.no_grad():
+        for i in range(0, len(X_t), batch_size):
+            logits = model(X_t[i:i + batch_size].to(device))
+            preds_list.append(torch.argmax(logits, dim=1).cpu().numpy())
+    return np.concatenate(preds_list)
+
+
+def train_and_predict(
+    model_source: Path,
+    train_subjects: list[int],
+    val_subjects: list[int],
+    test_subjects: list[int],
+    train_edf_root: Path,
+    test_edf_root: Path,
+    manifest: dict,
+    device: torch.device,
+) -> list[tuple[int, int, int]]:
+    """Return list of (subject_id, epoch_id, predicted_label) rows for the test set."""
+    print(f"sleep-edf: loading train subjects {train_subjects}", file=sys.stderr, flush=True)
+    Xtr, ytr = load_subjects(train_subjects, manifest, train_edf_root)
+    print(f"  train pool: X.shape={Xtr.shape}, class counts={np.bincount(ytr, minlength=N_CLASSES).tolist()}",
+          file=sys.stderr, flush=True)
+
+    print(f"sleep-edf: loading val subjects {val_subjects}", file=sys.stderr, flush=True)
+    Xva, yva = load_subjects(val_subjects, manifest, train_edf_root)
+    print(f"  val pool: X.shape={Xva.shape}", file=sys.stderr, flush=True)
+    model = fit_model_from_arrays(model_source, Xtr, ytr, Xva, yva, device)
 
     # Inference on test subjects — process one subject at a time to keep memory bounded.
     rows: list[tuple[int, int, int]] = []
@@ -297,13 +347,7 @@ def train_and_predict(
                 psg_path=test_edf_root / rec["psg"],
                 hyp_path=test_edf_root / rec["hypnogram"],
             )
-            X_t = torch.tensor(X, dtype=torch.float32)
-            preds_list = []
-            with torch.no_grad():
-                for i in range(0, len(X_t), BATCH_SIZE):
-                    logits = model(X_t[i:i + BATCH_SIZE].to(device))
-                    preds_list.append(torch.argmax(logits, dim=1).cpu().numpy())
-            preds = np.concatenate(preds_list)
+            preds = predict_array(model, X, device)
             for j, p in enumerate(preds):
                 rows.append((sid, epoch_offset + j, int(p)))
             epoch_offset += len(preds)

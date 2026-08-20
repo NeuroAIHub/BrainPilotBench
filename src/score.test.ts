@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runScorers, bundleWorkspaceFiles, type RunBundle } from "./score.js";
+import { classifyRunScores, lifecycleFromSignals, runScorers, bundleWorkspaceFiles, type RunBundle } from "./score.js";
 import { registerScorer } from "./scorer/registry.js";
 import type { Task } from "./task.js";
 
@@ -112,4 +112,42 @@ test("runScorers: discards results if a scorer mutates submitted telemetry", asy
     const bundle: RunBundle = { runDir: dir, runId: "t1-v", version: "v", events: [], signals: {} };
     await assert.rejects(() => runScorers(fakeTask(["test-mutate-telemetry"]), bundle, "ts"), /changed during scoring/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("lifecycleFromSignals: preserves explicit terminal reasons and tolerates external bundles", () => {
+  assert.deepEqual(lifecycleFromSignals({ completed: false, reason: "timeout" }), { state: "timeout", completed: false });
+  assert.deepEqual(lifecycleFromSignals({ completed: false }), { state: "incomplete", completed: false });
+  assert.deepEqual(lifecycleFromSignals({ completed: true, reason: "completed" }), { state: "completed", completed: true });
+  assert.deepEqual(lifecycleFromSignals(undefined), { state: "unknown", completed: null });
+});
+
+test("classifyRunScores: valid timed-out artifacts keep grader scores but are leaderboard-ineligible", () => {
+  const classified = classifyRunScores({
+    taskId: "t1", runId: "r", version: "v", scoredAt: "ts", state: "scored",
+    results: [{ kind: "exec-script", value: { score: 0.8 } }],
+  }, "valid", { completed: false, reason: "timeout" });
+  assert.equal(classified.state, "scored");
+  assert.equal(classified.artifactState, "valid");
+  assert.equal(classified.runState, "timeout");
+  assert.equal(classified.graderState, "scored");
+  assert.equal(classified.leaderboardEligible, false);
+  assert.equal(classified.results[0].value && (classified.results[0].value as any).score, 0.8);
+});
+
+test("classifyRunScores: invalid artifacts record that the grader did not run", () => {
+  const classified = classifyRunScores({
+    taskId: "t1", runId: "r", version: "v", scoredAt: "ts", state: "submission_invalid", results: [],
+  }, "invalid", { completed: false, reason: "error" });
+  assert.equal(classified.artifactState, "invalid");
+  assert.equal(classified.graderState, "not_run");
+  assert.equal(classified.leaderboardEligible, false);
+});
+
+test("classifyRunScores: completed valid grader failures are independently ineligible", () => {
+  const classified = classifyRunScores({
+    taskId: "t1", runId: "r", version: "v", scoredAt: "ts", state: "scoring_failed", results: [],
+  }, "valid", { completed: true, reason: "completed" });
+  assert.equal(classified.graderState, "scoring_failed");
+  assert.equal(classified.leaderboardEligible, false);
+  assert.equal(classified.leaderboardExclusionReason, "grader state is scoring_failed");
 });
