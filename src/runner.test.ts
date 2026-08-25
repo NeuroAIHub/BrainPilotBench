@@ -66,6 +66,32 @@ function tracer() {
   return { order, fetchFn };
 }
 
+test("BenchRunner.createSession: forwards the session thinking level", async () => {
+  let body: unknown;
+  const fetchFn: typeof fetch = async (_input, init) => {
+    body = JSON.parse(String(init?.body));
+    return new Response(JSON.stringify({
+      id: "sid-thinking",
+      session: { thinkingLevel: "high" },
+    }), { status: 200 });
+  };
+  const runner = new BenchRunner({ baseUrl: "http://runtime", fetchFn, thinkingLevel: "high" });
+  assert.equal(await runner.createSession(), "sid-thinking");
+  assert.deepEqual(body, { thinkingLevel: "high" });
+});
+
+test("BenchRunner.createSession: rejects a silently downgraded thinking level", async () => {
+  const fetchFn: typeof fetch = async () => new Response(JSON.stringify({
+    id: "sid-thinking",
+    session: { thinkingLevel: "medium" },
+  }), { status: 200 });
+  const runner = new BenchRunner({ baseUrl: "http://runtime", fetchFn, thinkingLevel: "high" });
+  await assert.rejects(
+    runner.createSession(),
+    /thinking level mismatch: requested high, observed medium/,
+  );
+});
+
 test("BenchRunner.run: setup hook runs before the first prompt", async () => {
   const { order, fetchFn } = tracer();
   const result = await new BenchRunner({ baseUrl: "http://runtime", fetchFn }).run(makeTask(), {
