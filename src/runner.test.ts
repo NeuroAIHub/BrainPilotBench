@@ -80,6 +80,27 @@ test("BenchRunner.createSession: forwards the session thinking level", async () 
   assert.deepEqual(body, { thinkingLevel: "high" });
 });
 
+test("BenchRunner.createSession: forwards BPB_THINKING_LEVEL used by the adapter", async (t) => {
+  const previous = process.env.BPB_THINKING_LEVEL;
+  t.after(() => {
+    if (previous === undefined) delete process.env.BPB_THINKING_LEVEL;
+    else process.env.BPB_THINKING_LEVEL = previous;
+  });
+  process.env.BPB_THINKING_LEVEL = "high";
+
+  let body: unknown;
+  const fetchFn: typeof fetch = async (_input, init) => {
+    body = JSON.parse(String(init?.body));
+    return new Response(JSON.stringify({
+      id: "sid-thinking-env",
+      session: { thinkingLevel: "high" },
+    }), { status: 201 });
+  };
+  const runner = new BenchRunner({ baseUrl: "http://runtime", fetchFn });
+  assert.equal(await runner.createSession(), "sid-thinking-env");
+  assert.deepEqual(body, { thinkingLevel: "high" });
+});
+
 test("BenchRunner.createSession: rejects a silently downgraded thinking level", async () => {
   const fetchFn: typeof fetch = async () => new Response(JSON.stringify({
     id: "sid-thinking",
