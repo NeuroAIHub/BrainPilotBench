@@ -45,6 +45,27 @@ function openSseBody(payload: object[], signal?: AbortSignal | null): ReadableSt
   });
 }
 
+function delayedSseBody(
+  initial: object[],
+  delayed: object,
+  delayMs: number,
+  signal?: AbortSignal | null,
+): ReadableStream<Uint8Array> {
+  const enc = new TextEncoder();
+  return new ReadableStream({
+    start(controller) {
+      controller.enqueue(enc.encode(initial.map((event) => `data: ${JSON.stringify(event)}\n\n`).join("")));
+      const timer = setTimeout(() => {
+        controller.enqueue(enc.encode(`data: ${JSON.stringify(delayed)}\n\n`));
+      }, delayMs);
+      signal?.addEventListener("abort", () => {
+        clearTimeout(timer);
+        controller.error(new Error("aborted"));
+      }, { once: true });
+    },
+  });
+}
+
 function tracer() {
   const order: string[] = [];
   const fetchFn: typeof fetch = async (input, init) => {
@@ -130,6 +151,40 @@ test("BenchRunner.run: wait_idle consumes overlapping child runs before completi
   assert.equal(result.reason, "completed");
   assert.equal(result.signals.eventCount, events.length);
   assert.equal(result.signals.toolCalls, 1);
+});
+
+test("BenchRunner.run: wait_idle does not finish while Runtime workState remains active", async () => {
+  const initial = [
+    { type: "RUN_STARTED", run_id: "principal" },
+    { type: "RUN_FINISHED", run_id: "principal" },
+    {
+      type: "CUSTOM",
+      name: "session_state",
+      value: { runState: { active: false }, workState: { active: true } },
+    },
+    { type: "agent_status_update", name: "engineer", status: "idle", run_id: "engineer" },
+  ];
+  const finalIdle = {
+    type: "CUSTOM",
+    name: "session_state",
+    value: { runState: { active: false }, workState: { active: false } },
+  };
+  const fetchFn: typeof fetch = async (input, init) => {
+    const url = String(input);
+    if (url.endsWith("/sessions") && init?.method === "POST") {
+      return new Response(JSON.stringify({ id: "sid-work-state" }), { status: 200 });
+    }
+    if (url.includes("/messages") && init?.method === "POST") return new Response("", { status: 200 });
+    if (url.includes("/sse/") || url.includes("/events")) {
+      return new Response(delayedSseBody(initial, finalIdle, 50, init?.signal) as any, { status: 200 });
+    }
+    return new Response("not found", { status: 404 });
+  };
+  const task = makeTask();
+  task.turns[0].then = "wait_idle";
+  const result = await new BenchRunner({ baseUrl: "http://runtime", fetchFn, settleMs: 10 }).run(task);
+  assert.equal(result.reason, "completed");
+  assert.equal(result.signals.eventCount, initial.length + 1);
 });
 
 test("BenchRunner.run: setup failure stops the run before prompting", async () => {
