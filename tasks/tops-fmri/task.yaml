@@ -3,7 +3,7 @@ id: tops-fmri
 created_at: 2026-07-13
 domain: fmri-analysis
 category: fmri-analysis
-version: "0.1"
+version: "0.2"
 summary: >-
   用公开 Study3 fMRI dynamic-FC 训练一个 279 ROI / 38781 edge 的**线性** tonic-pain
   connectivity signature,提交权重 w_raw/b_raw 和 numpy-only apply_signature.py;
@@ -24,7 +24,8 @@ requires:
 scoring:
   scorers:
     # exec-script:scorer 在私有 features 上运行 agent 的 apply_signature.py,读私有
-    # labels 算 Study4 r + Study5 AUC + 汇总 0-1 score。9 项 metric 全部由 scorer 产出,
+    # labels 算 Study4 r + Study5 raw AUC；AUC 以 max(0,2*AUC-1) 对齐 chance=0 后
+    # 汇总 0-1 score。9 项 metric 全部由 scorer 产出,
     # 与 categories.yaml `fmri-analysis` 必备集对齐。
     - kind: exec-script
       script: checks/check.sh

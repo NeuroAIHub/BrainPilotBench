@@ -108,6 +108,19 @@ leaderboard coverage convention is preserved.
 `0.0` (chance-level kappa = 0). This is **only** to verify the scorer
 pipeline; it says nothing about the real task difficulty.
 
+## Real-path CI smoke
+
+The fast Oracle remains intentionally data-free. A separate required CI job
+builds a deterministic synthetic RawArray plus sleep-stage annotations and
+runs the production MNE filtering, crop, epoching, label mapping, and
+microvolt conversion path. It then imports a submitted `SleepAgentModel`,
+performs one real optimizer step, runs inference, and computes the complete
+production metric payload. A Linux Docker smoke additionally executes the
+task's own child-launch code and checks that model/data mounts are read-only,
+the network and host paths are hidden, and only the prediction directory is
+writable. No official EDF recording or private hypnogram is embedded in these
+fixtures.
+
 ## Local end-to-end sanity check
 
 ```bash

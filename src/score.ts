@@ -10,6 +10,16 @@ import "./scorer/index.js"; // 副作用:确保内置 scorer(rubric-judge/-human
 import type { ScoreContext, ScoringState } from "./scorer/types.js";
 import { sha256File } from "./data/cache.js";
 
+export type ArtifactState = "valid" | "invalid";
+export type RunLifecycleState = "completed" | "timeout" | "stream_end" | "error" | "incomplete" | "unknown";
+export type GraderState = "not_run" | Exclude<ScoringState, "ready_to_score" | "submission_invalid">;
+
+export interface RunLifecycle {
+  state: RunLifecycleState;
+  /** null means the bundle did not include lifecycle evidence. */
+  completed: boolean | null;
+}
+
 /** run 阶段产出的 bundle(score 阶段的输入)。 */
 export interface RunBundle {
   runDir: string;
@@ -35,9 +45,71 @@ export interface RunScores {
   runId: string;
   version: string;
   scoredAt: string;
+  /** Legacy aggregate state retained for existing score consumers. */
   state: Exclude<ScoringState, "ready_to_score">;
   explanation?: string;
   results: ScorerRunResult[];
+  /** Independent submission-contract result. Missing only on legacy scores.json. */
+  artifactState?: ArtifactState;
+  /** Independent Agent/harness lifecycle result. Missing only on legacy scores.json. */
+  runState?: RunLifecycleState;
+  runCompleted?: boolean | null;
+  /** Independent grader result; `not_run` is reserved for invalid submissions. */
+  graderState?: GraderState;
+  /** Official leaderboards exclude false; diagnostics may opt in explicitly. */
+  leaderboardEligible?: boolean;
+  leaderboardExclusionReason?: string;
+}
+
+/** Normalize optional signals.json lifecycle evidence without rejecting external bundles. */
+export function lifecycleFromSignals(signals: unknown): RunLifecycle {
+  if (!signals || typeof signals !== "object") return { state: "unknown", completed: null };
+  const raw = signals as Record<string, unknown>;
+  const completed = typeof raw.completed === "boolean" ? raw.completed : null;
+  const reason = raw.reason;
+  if (completed === false) {
+    if (reason === "timeout" || reason === "stream_end" || reason === "error") {
+      return { state: reason, completed: false };
+    }
+    return { state: "incomplete", completed: false };
+  }
+  if (reason === "timeout" || reason === "stream_end" || reason === "error") {
+    return { state: reason, completed: false };
+  }
+  if (completed === true || reason === "completed") return { state: "completed", completed: true };
+  return { state: "unknown", completed: null };
+}
+
+/** Attach the three independent evaluation axes and derive official eligibility. */
+export function classifyRunScores(
+  scores: RunScores,
+  artifactState: ArtifactState,
+  signals: unknown,
+): RunScores {
+  const lifecycle = lifecycleFromSignals(signals);
+  const graderState: GraderState = artifactState === "invalid"
+    ? "not_run"
+    : scores.state === "submission_invalid"
+      ? "not_run"
+      : scores.state;
+  const lifecycleEligible = lifecycle.completed !== false;
+  const leaderboardEligible = artifactState === "valid" && graderState === "scored" && lifecycleEligible;
+  const leaderboardExclusionReason = leaderboardEligible
+    ? undefined
+    : artifactState === "invalid"
+      ? "submission artifacts are invalid"
+      : graderState !== "scored"
+        ? `grader state is ${graderState}`
+        : `agent run ended with ${lifecycle.state}`;
+  return {
+    ...scores,
+    artifactState,
+    runState: lifecycle.state,
+    runCompleted: lifecycle.completed,
+    graderState,
+    leaderboardEligible,
+    leaderboardExclusionReason,
+  };
 }
 
 /** Content snapshot used to prove scorers did not mutate submitted artifacts. */

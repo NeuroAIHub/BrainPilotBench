@@ -1,6 +1,6 @@
 # bciciv-2a — 4-class Motor Imagery decoding (BCI Competition IV 2a)
 
-Category: `eeg-motor-imagery` · Domain: `eeg-motor-imagery` · Version `0.1`
+Category: `eeg-motor-imagery` · Domain: `eeg-motor-imagery` · Version `0.2`
 
 ## Quick start (Agent user)
 

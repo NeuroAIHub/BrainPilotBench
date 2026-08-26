@@ -19,7 +19,7 @@
   "properties": {
     "score": {"description": "Final aggregated 0-1 score = 0.5 * study4_score + 0.5 * study5_score.", "type": "number", "minimum": 0, "maximum": 1},
     "study4_score": {"description": "Mean of the four Study4 Pearson r (per condition), each clipped to [0,1].", "type": "number", "minimum": 0, "maximum": 1},
-    "study5_score": {"description": "Mean of the two Study5 AUC (per site), each clipped to [0,1].", "type": "number", "minimum": 0, "maximum": 1},
+    "study5_score": {"description": "Mean chance-centered Study5 discrimination score: max(0, 2*AUC-1) per site, so chance AUC=0.5 maps to 0.", "type": "number", "minimum": 0, "maximum": 1},
     "study4_SBP_SP_r":  {"description": "Raw Pearson r between predicted response and hidden pain rating on Study4 SBP_SP.",  "type": "number"},
     "study4_SBP_REST_r": {"description": "Raw Pearson r on Study4 SBP_REST.",  "type": "number"},
     "study4_CBP_SP_r":  {"description": "Raw Pearson r on Study4 CBP_SP.",  "type": "number"},

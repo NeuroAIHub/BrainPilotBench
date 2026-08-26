@@ -71,6 +71,7 @@ def _resolve_cue_events(
     ann_dict: dict[str, int],
     sfreq: float,
     source_name: str,
+    expected_trials: int = EXPECTED_TRIALS,
 ) -> tuple[np.ndarray, np.ndarray | None]:
     """Select MI cue events and labels, validating the Dataset 2a timeline."""
     present_class_annotations = set(CLASS_ANNOTATIONS).intersection(ann_dict)
@@ -94,7 +95,9 @@ def _resolve_cue_events(
             dtype=np.int64,
         )
         counts = np.bincount(labels, minlength=5)[1:]
-        if not np.array_equal(counts, np.full(4, EXPECTED_TRIALS // 4)):
+        if expected_trials % 4 != 0:
+            raise RuntimeError(f"{source_name}: expected trial count must be divisible by 4")
+        if not np.array_equal(counts, np.full(4, expected_trials // 4)):
             raise RuntimeError(f"{source_name}: unexpected class counts {counts.tolist()}")
     elif has_unknown_annotation:
         cue_id = ann_dict[UNKNOWN_ANNOTATION]
@@ -104,9 +107,9 @@ def _resolve_cue_events(
         expected = sorted([*CLASS_ANNOTATIONS, UNKNOWN_ANNOTATION])
         raise RuntimeError(f"{source_name}: no MI cue annotation; expected one of {expected}")
 
-    if len(cue_events) != EXPECTED_TRIALS:
+    if len(cue_events) != expected_trials:
         raise RuntimeError(
-            f"{source_name}: found {len(cue_events)} MI cues, expected {EXPECTED_TRIALS}"
+            f"{source_name}: found {len(cue_events)} MI cues, expected {expected_trials}"
         )
 
     if TRIAL_START_ANNOTATION not in ann_dict:
@@ -135,12 +138,20 @@ def _to_microvolts(data: np.ndarray) -> np.ndarray:
     return (np.asarray(data) * MICROVOLTS_PER_VOLT).astype(np.float32)
 
 
-def load_epochs(gdf_path: Path) -> tuple[np.ndarray, np.ndarray | None]:
-    """Return cue-relative microvolt epochs and labels for one Dataset 2a session."""
-    raw = mne.io.read_raw_gdf(str(gdf_path), preload=True, verbose="ERROR")
+def preprocess_raw(
+    raw: mne.io.BaseRaw,
+    source_name: str,
+    expected_trials: int = EXPECTED_TRIALS,
+) -> tuple[np.ndarray, np.ndarray | None]:
+    """Apply the production preprocessing contract to an already-loaded recording.
+
+    The injectable Raw boundary lets CI use a small deterministic synthetic EEG
+    fixture while production still enters through MNE's GDF reader.
+    """
+    raw = raw.copy().load_data(verbose="ERROR")
     eeg_names = [c for c in raw.ch_names if c.startswith("EEG-")]
     if len(eeg_names) < N_CH:
-        raise RuntimeError(f"{gdf_path.name}: expected >= {N_CH} EEG-* channels, got {len(eeg_names)}")
+        raise RuntimeError(f"{source_name}: expected >= {N_CH} EEG-* channels, got {len(eeg_names)}")
     raw.pick(eeg_names[:N_CH])
     raw.filter(BAND_L, BAND_H, verbose="ERROR")
 
@@ -148,7 +159,7 @@ def load_epochs(gdf_path: Path) -> tuple[np.ndarray, np.ndarray | None]:
     ann_dict = {str(k): int(v) for k, v in ann_dict.items()}
     native_sfreq = float(raw.info["sfreq"])
     cue_events, labels = _resolve_cue_events(
-        events, ann_dict, native_sfreq, gdf_path.name
+        events, ann_dict, native_sfreq, source_name, expected_trials
     )
 
     # MNE includes tmax. Exclude one native sample before epoch resampling to
@@ -162,10 +173,16 @@ def load_epochs(gdf_path: Path) -> tuple[np.ndarray, np.ndarray | None]:
     )
     epochs.resample(SFREQ_TARGET, verbose="ERROR")
     X = _to_microvolts(epochs.get_data())
-    expected_shape = (EXPECTED_TRIALS, N_CH, N_TIMES)
+    expected_shape = (expected_trials, N_CH, N_TIMES)
     if X.shape != expected_shape:
-        raise RuntimeError(f"{gdf_path.name}: bad epoch shape {X.shape}, expected {expected_shape}")
+        raise RuntimeError(f"{source_name}: bad epoch shape {X.shape}, expected {expected_shape}")
     return X, labels
+
+
+def load_epochs(gdf_path: Path) -> tuple[np.ndarray, np.ndarray | None]:
+    """Return cue-relative microvolt epochs and labels for one Dataset 2a session."""
+    raw = mne.io.read_raw_gdf(str(gdf_path), preload=True, verbose="ERROR")
+    return preprocess_raw(raw, gdf_path.name)
 
 
 def load_agent_module(model_source: Path):
@@ -188,20 +205,50 @@ def train_one_subject(
     device: torch.device,
 ) -> np.ndarray:
     """Train fresh MIAgentModel, return (288,) predictions in 1..4 for E session."""
-    agent_module = load_agent_module(model_source)
-
     X_train_all, y_train_all = load_epochs(train_gdf)  # (288, 22, 512), (288,) labels 1..4
     if y_train_all is None:
         raise RuntimeError(f"{train_gdf.name}: T-session GDF must contain class annotations")
     X_test, _ = load_epochs(test_gdf)  # E session, labels hidden — parent scorer holds them
 
-    # Sanity: split indices must cover all 288 trials without overlap
+    return train_from_arrays(
+        model_source=model_source,
+        X_train_all=X_train_all,
+        y_train_all=y_train_all,
+        X_test=X_test,
+        train_idx=train_idx,
+        val_idx=val_idx,
+        device=device,
+    )
+
+
+def train_from_arrays(
+    model_source: Path,
+    X_train_all: np.ndarray,
+    y_train_all: np.ndarray,
+    X_test: np.ndarray,
+    train_idx: np.ndarray,
+    val_idx: np.ndarray,
+    device: torch.device,
+    *,
+    max_epochs: int = MAX_EPOCHS,
+    batch_size: int = BATCH_SIZE,
+    seed: int = SEED,
+) -> np.ndarray:
+    """Shared model-import/training/inference path used by production and CI smoke tests."""
+    agent_module = load_agent_module(model_source)
+    trial_count = len(X_train_all)
+    if X_train_all.shape[1:] != (N_CH, N_TIMES) or X_test.shape[1:] != (N_CH, N_TIMES):
+        raise RuntimeError("BCI arrays do not match the (N, 22, 512) model contract")
+    if y_train_all.shape != (trial_count,):
+        raise RuntimeError(f"training labels have shape {y_train_all.shape}, expected ({trial_count},)")
+
+    # Sanity: split indices must cover all training trials without overlap.
     train_set = set(train_idx.tolist())
     val_set = set(val_idx.tolist())
     if not train_set.isdisjoint(val_set):
         raise RuntimeError("train/val indices overlap")
-    if train_set | val_set != set(range(288)):
-        raise RuntimeError("train + val indices must cover 288 T-session trials")
+    if train_set | val_set != set(range(trial_count)):
+        raise RuntimeError(f"train + val indices must cover {trial_count} T-session trials")
 
     Xtr = torch.tensor(X_train_all[train_idx], dtype=torch.float32)
     ytr = torch.tensor(y_train_all[train_idx] - 1, dtype=torch.long)  # 1..4 → 0..3
@@ -209,8 +256,8 @@ def train_one_subject(
     yva = torch.tensor(y_train_all[val_idx] - 1, dtype=torch.long)
     Xte = torch.tensor(X_test, dtype=torch.float32)
 
-    torch.manual_seed(SEED)
-    np.random.seed(SEED)
+    torch.manual_seed(seed)
+    np.random.seed(seed)
 
     model = agent_module.MIAgentModel().to(device)
     # Contract sanity: 2-sample dummy pass must give (2, 4)
@@ -225,14 +272,14 @@ def train_one_subject(
 
     train_ds = torch.utils.data.TensorDataset(Xtr, ytr)
     loader = torch.utils.data.DataLoader(
-        train_ds, batch_size=BATCH_SIZE, shuffle=True,
-        generator=torch.Generator().manual_seed(SEED),
+        train_ds, batch_size=batch_size, shuffle=True,
+        generator=torch.Generator().manual_seed(seed),
     )
 
     best_val_loss = float("inf")
     best_state = None
     stale = 0
-    for epoch in range(MAX_EPOCHS):
+    for epoch in range(max_epochs):
         model.train()
         for xb, yb in loader:
             xb = xb.to(device, non_blocking=True)
@@ -263,8 +310,8 @@ def train_one_subject(
     # Inference on E session — batched to fit in GPU memory
     preds = []
     with torch.no_grad():
-        for i in range(0, len(Xte), BATCH_SIZE):
-            batch = Xte[i:i + BATCH_SIZE].to(device)
+        for i in range(0, len(Xte), batch_size):
+            batch = Xte[i:i + batch_size].to(device)
             logits = model(batch)
             preds.append(torch.argmax(logits, dim=1).cpu().numpy())
     return (np.concatenate(preds) + 1).astype(np.int64)  # back to 1..4

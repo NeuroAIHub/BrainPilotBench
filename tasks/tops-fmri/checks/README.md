@@ -43,7 +43,8 @@ Then it calls `evaluate_external.py $PWD`, which:
   path/token/proxy variables, and a 120 s hard timeout,
 - reads back the two prediction CSVs,
 - loads private labels,
-- computes 4 Pearson r + 2 AUC + aggregate 0-1 score, and
+- computes 4 Pearson r + 2 raw AUC values, chance-centers the AUC subscores,
+  and aggregates a 0-1 score, and
 - emits a flat JSON payload between `>>>>> BPB_SCORES` / `<<<<< BPB_SCORES`.
 
 The BPB `exec-script` scorer captures that payload. Missing artifacts, bad
@@ -60,16 +61,21 @@ evaluation requires `BPB_SUBMISSION_ISOLATION=docker` and an immutable
 
 The nine keys are the `fmri-analysis` category metric set in
 `categories.yaml`. `score` is the primary leaderboard column; `study4_score`
-and `study5_score` are subgroup summaries; the last six raw r / AUC keys are
-diagnostic (they can be negative for r, so are not clipped in the raw output).
+is the mean positive Pearson r and `study5_score` is the mean of
+`max(0, 2·AUC−1)`, aligning both subgroup chance baselines at zero. The last
+six raw r / AUC keys are unchanged diagnostics.
+
+This formula change defines task v0.2. Do not compare its headline score
+directly with v0.1, which aggregated raw AUC. Historical raw diagnostic values
+remain interpretable. `test_metrics.py` freezes the v0.2 re-aggregation of the
+preserved reference raw metrics so the new formula baseline cannot drift.
 
 ## Oracle numbers are meaningless
 
 `solution/solution.sh` synthesizes a **zero-weight** signature and three-row
-label vectors; the Oracle run's `score` will be around 0.5 (chance-level AUC,
-zero r → clipped to 0, averaged 0.5×0 + 0.5×0.5 ≈ 0.25 depending on which
-condition ties). This is **only** to verify the scorer pipeline; it says
-nothing about the real task difficulty.
+label vectors. Constant responses produce zero Pearson r and chance AUC 0.5;
+after chance alignment the Oracle headline `score` is 0. This is **only** to
+verify the scorer pipeline; it says nothing about the real task difficulty.
 
 ## Local end-to-end sanity check
 

@@ -160,6 +160,8 @@ def run_child_docker(
     train_subjects: list[int],
     val_subjects: list[int],
     test_subjects: list[int],
+    *,
+    use_gpu: bool = True,
 ) -> None:
     import re, uuid
     image = os.environ.get("BPB_INFERENCE_IMAGE", "").strip()
@@ -171,6 +173,7 @@ def run_child_docker(
     name = f"bpb-sleep-{uuid.uuid4().hex[:8]}"
     out_dir = out_csv.parent
     out_dir.mkdir(parents=True, exist_ok=True)
+    gpu_args = ["--gpus", "all"] if use_gpu else []
     cmd = [
         docker, "run", "--rm", "--init", "--name", name,
         "--network", "none",
@@ -178,7 +181,7 @@ def run_child_docker(
         "--cap-drop", "ALL",
         "--security-opt", "no-new-privileges",
         "--pids-limit", "256",
-        "--gpus", "all",
+        *gpu_args,
         "--memory", "16g",
         "--user", _container_user(),
         "--workdir", "/work",
@@ -305,6 +308,34 @@ def load_manifest(private_dir: Path) -> dict:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
+def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
+    """Compute the production metric payload from aligned epoch labels."""
+    y_true = np.asarray(y_true, dtype=np.int64)
+    y_pred = np.asarray(y_pred, dtype=np.int64)
+    if y_true.shape != y_pred.shape:
+        raise ValueError(f"prediction shape {y_pred.shape} does not match labels {y_true.shape}")
+    if not np.isfinite(y_pred).all():
+        raise ValueError("non-finite predictions")
+    labels_all = [0, 1, 2, 3, 4]
+    test_accuracy = float(accuracy_score(y_true, y_pred))
+    test_balanced_accuracy = float(balanced_accuracy_score(y_true, y_pred))
+    test_macro_f1 = float(f1_score(y_true, y_pred, labels=labels_all, average="macro", zero_division=0))
+    test_kappa = float(cohen_kappa_score(y_true, y_pred, labels=labels_all))
+    per_class_recall = recall_score(
+        y_true, y_pred, labels=labels_all, average=None, zero_division=0,
+    )
+    out = {
+        "score": max(0.0, min(1.0, test_kappa)),
+        "test_kappa": test_kappa,
+        "test_accuracy": test_accuracy,
+        "test_balanced_accuracy": test_balanced_accuracy,
+        "test_macro_f1": test_macro_f1,
+    }
+    for name, recall in zip(CLASS_NAMES, per_class_recall):
+        out[f"{name}_recall"] = float(recall)
+    return out
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("run_dir", type=Path)
@@ -402,31 +433,10 @@ def main(argv: list[str]) -> int:
     y_true = np.asarray(y_true_all, dtype=np.int64)
     y_pred = np.asarray(y_pred_all, dtype=np.int64)
 
-    if not np.isfinite(y_pred).all():
-        return _fail("non-finite predictions")
-
-    labels_all = [0, 1, 2, 3, 4]
-    test_accuracy = float(accuracy_score(y_true, y_pred))
-    test_balanced_accuracy = float(balanced_accuracy_score(y_true, y_pred))
-    test_macro_f1 = float(f1_score(y_true, y_pred, labels=labels_all, average="macro", zero_division=0))
-    test_kappa = float(cohen_kappa_score(y_true, y_pred, labels=labels_all))
-    per_class_recall = recall_score(
-        y_true, y_pred, labels=labels_all, average=None, zero_division=0,
-    )
-    per_class_recall = [float(r) for r in per_class_recall]
-
-    # score is the primary leaderboard column: clip kappa to [0,1].
-    score = max(0.0, min(1.0, test_kappa))
-
-    out = {
-        "score": score,
-        "test_kappa": test_kappa,
-        "test_accuracy": test_accuracy,
-        "test_balanced_accuracy": test_balanced_accuracy,
-        "test_macro_f1": test_macro_f1,
-    }
-    for name, recall in zip(CLASS_NAMES, per_class_recall):
-        out[f"{name}_recall"] = recall
+    try:
+        out = compute_metrics(y_true, y_pred)
+    except Exception as e:
+        return _fail(str(e))
 
     emit_scores(out)
     return 0

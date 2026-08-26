@@ -47,10 +47,32 @@ jobs:
         run: |
           .venv/bin/python -c 'import sys; assert sys.prefix != sys.base_prefix'
           .venv/bin/python -c 'import numpy, scipy, sklearn; print(numpy.__version__, scipy.__version__, sklearn.__version__)'
+      - name: Verify TOPS-fMRI metric baseline contract
+        run: .venv/bin/python -m unittest tasks/tops-fmri/checks/test_metrics.py
       - name: Verify bciciv-2a preprocessing contract
         run: .venv/bin/python -m unittest tasks/bciciv-2a/checks/test_preprocessing_contract.py
       - name: Verify sleep-edf preprocessing contract
         run: .venv/bin/python -m unittest tasks/sleep-edf/checks/test_preprocessing_contract.py
+
+  eeg-real-path-smoke:
+    name: EEG real-path smoke (Ubuntu, Python 3.12)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned EEG evaluator dependencies
+        run: |
+          # CPU-only CI smoke: avoid downloading the multi-GB CUDA runtime used by official GPU scoring.
+          python3 -m pip install --disable-pip-version-check \
+            --index-url https://download.pytorch.org/whl/cpu "torch==2.7.0"
+          python3 -m pip install --disable-pip-version-check \
+            -r tasks/bciciv-2a/env/requirements.txt
+      - name: Exercise BCI preprocessing, model import, training, inference, and metrics
+        run: python3 -m unittest tasks/bciciv-2a/checks/test_real_path_smoke.py
+      - name: Exercise Sleep preprocessing, model import, training, inference, and metrics
+        run: python3 -m unittest tasks/sleep-edf/checks/test_real_path_smoke.py
 
   validate:
     strategy:
@@ -82,6 +104,14 @@ jobs:
         env:
           BPB_DOCKER_TEST: ${{ runner.os == 'Linux' && '1' || '0' }}
           BPB_TEST_INFERENCE_IMAGE: ${{ runner.os == 'Linux' && 'bpb-inference-test:ci' || '' }}
+      - name: EEG evaluator Docker mount/isolation smoke
+        if: runner.os == 'Linux'
+        run: |
+          python3 -m unittest tasks/bciciv-2a/checks/test_docker_isolation.py
+          python3 -m unittest tasks/sleep-edf/checks/test_docker_isolation.py
+        env:
+          BPB_DOCKER_TEST: "1"
+          BPB_TEST_INFERENCE_IMAGE: bpb-inference-test:ci
       - name: Documentation command smoke test
         run: npm run test:docs
       - name: canary 检查
@@ -94,13 +124,15 @@ jobs:
   required:
     name: required
     if: always()
-    needs: [python-environment, validate]
+    needs: [python-environment, eeg-real-path-smoke, validate]
     runs-on: ubuntu-latest
     steps:
       - name: Require successful validation jobs
         env:
           PYTHON_RESULT: ${{ needs.python-environment.result }}
+          EEG_RESULT: ${{ needs.eeg-real-path-smoke.result }}
           VALIDATE_RESULT: ${{ needs.validate.result }}
         run: |
           test "$PYTHON_RESULT" = success
+          test "$EEG_RESULT" = success
           test "$VALIDATE_RESULT" = success

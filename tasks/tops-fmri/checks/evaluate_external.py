@@ -94,6 +94,28 @@ def auc_score(scores: np.ndarray, labels: np.ndarray) -> float:
     return float((wins + 0.5 * ties) / (pos.size * neg.size))
 
 
+def chance_centered_auc(auc: float) -> float:
+    """Map chance AUC=0.5 to 0 and perfect AUC=1 to 1.
+
+    Below-chance direction is clipped like negative Pearson r in Study4;
+    raw AUC remains available in the diagnostic output.
+    """
+    return max(0.0, min(1.0, 2.0 * float(auc) - 1.0))
+
+
+def aggregate_scores(study4_rs: dict[str, float], study5_aucs: dict[str, float]) -> tuple[float, float, float]:
+    """Return chance-aligned (final, Study4, Study5) scores."""
+    study4_score = float(np.mean([
+        max(0.0, min(1.0, study4_rs[condition]))
+        for condition in STUDY4_CONDITIONS
+    ]))
+    study5_score = float(np.mean([
+        chance_centered_auc(study5_aucs[site])
+        for site in STUDY5_SITES
+    ]))
+    return 0.5 * study4_score + 0.5 * study5_score, study4_score, study5_score
+
+
 def copy_feature_inputs(src: Path, dst: Path) -> None:
     dst.mkdir(parents=True, exist_ok=True)
     for name in ["study4_features.npz", "study5_features.npz"]:
@@ -283,12 +305,11 @@ def main(argv: list[str]) -> int:
     except Exception as e:
         return _fail(str(e))
 
-    study4_score = float(np.mean([max(0.0, min(1.0, study4_rs[c])) for c in STUDY4_CONDITIONS]))
-    study5_score = float(np.mean([max(0.0, min(1.0, study5_aucs[s])) for s in STUDY5_SITES]))
-    score = 0.5 * study4_score + 0.5 * study5_score
+    score, study4_score, study5_score = aggregate_scores(study4_rs, study5_aucs)
 
     # BPB exec scorer 要求扁平 {str:number}——r/auc 的负值也是有效数字,直接透传;score 与
-    # study{4,5}_score 已 clip 到 [0,1](聚合已抹平方向),leaderboard 主排序看 score。
+    # study4_score clips negative r; study5_score chance-centers AUC before clipping.
+    # Raw r/AUC stay untouched for diagnostics; leaderboard primary sorting uses score.
     out = {
         "score": score,
         "study4_score": study4_score,
