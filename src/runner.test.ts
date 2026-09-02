@@ -101,6 +101,27 @@ test("BenchRunner.createSession: forwards the session thinking level", async () 
   assert.deepEqual(body, { thinkingLevel: "high" });
 });
 
+test("BenchRunner.createSession: forwards BPB_THINKING_LEVEL used by the adapter", async (t) => {
+  const previous = process.env.BPB_THINKING_LEVEL;
+  t.after(() => {
+    if (previous === undefined) delete process.env.BPB_THINKING_LEVEL;
+    else process.env.BPB_THINKING_LEVEL = previous;
+  });
+  process.env.BPB_THINKING_LEVEL = "high";
+
+  let body: unknown;
+  const fetchFn: typeof fetch = async (_input, init) => {
+    body = JSON.parse(String(init?.body));
+    return new Response(JSON.stringify({
+      id: "sid-thinking-env",
+      session: { thinkingLevel: "high" },
+    }), { status: 201 });
+  };
+  const runner = new BenchRunner({ baseUrl: "http://runtime", fetchFn });
+  assert.equal(await runner.createSession(), "sid-thinking-env");
+  assert.deepEqual(body, { thinkingLevel: "high" });
+});
+
 test("BenchRunner.createSession: rejects a silently downgraded thinking level", async () => {
   const fetchFn: typeof fetch = async () => new Response(JSON.stringify({
     id: "sid-thinking",
@@ -180,6 +201,34 @@ test("BenchRunner.run: wait_idle does not finish while Runtime workState remains
     }
     return new Response("not found", { status: 404 });
   };
+  const task = makeTask();
+  task.turns[0].then = "wait_idle";
+  const result = await new BenchRunner({ baseUrl: "http://runtime", fetchFn, settleMs: 10 }).run(task);
+  assert.equal(result.reason, "completed");
+  assert.equal(result.signals.eventCount, initial.length + 1);
+});
+
+test("BenchRunner.run: background job state protects runtimes without workState", async () => {
+  const initial = [
+    { type: "RUN_STARTED", run_id: "engineer" },
+    { type: "CUSTOM", name: "background_job_state", value: { id: "job-1", status: "running" } },
+    { type: "RUN_FINISHED", run_id: "engineer" },
+  ];
+  const completed = {
+    type: "CUSTOM", name: "background_job_state", value: { id: "job-1", status: "completed" },
+  };
+  const fetchFn: typeof fetch = async (input, init) => {
+    const url = String(input);
+    if (url.endsWith("/sessions") && init?.method === "POST") {
+      return new Response(JSON.stringify({ id: "sid-background-legacy" }), { status: 200 });
+    }
+    if (url.includes("/messages") && init?.method === "POST") return new Response("", { status: 200 });
+    if (url.includes("/sse/") || url.includes("/events")) {
+      return new Response(delayedSseBody(initial, completed, 50, init?.signal) as any, { status: 200 });
+    }
+    return new Response("not found", { status: 404 });
+  };
+
   const task = makeTask();
   task.turns[0].then = "wait_idle";
   const result = await new BenchRunner({ baseUrl: "http://runtime", fetchFn, settleMs: 10 }).run(task);

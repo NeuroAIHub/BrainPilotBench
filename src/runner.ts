@@ -173,13 +173,15 @@ export class BenchRunner {
     let sawTerminal = false;
     let lastTerminalWasError = false;
     const activeRuns = new Set<string>();
+    const activeBackgroundJobs = new Set<string>();
     let workStateActive: boolean | undefined;
     const timer = setInterval(() => {
       const now = Date.now();
       // New Runtime versions aggregate Principal, experts, subagents, delivery
       // loops, tools, and background jobs into workState. Fall back to the
       // legacy run-id heuristic only until an authoritative snapshot appears.
-      const wholeSessionActive = workStateActive ?? activeRuns.size > 0;
+      const wholeSessionActive = workStateActive
+        ?? (activeRuns.size > 0 || activeBackgroundJobs.size > 0);
       if (now >= deadline || now - last > idleMs) {
         timedOut = true;
         ctrl.abort();
@@ -194,6 +196,12 @@ export class BenchRunner {
         acc.push(e); last = Date.now();
         const observedWorkActive = runtimeWorkActive(e);
         if (observedWorkActive !== undefined) workStateActive = observedWorkActive;
+        if (e?.type === "CUSTOM" && e?.name === "background_job_state") {
+          const jobId = typeof e?.value?.id === "string" ? e.value.id : undefined;
+          const status = e?.value?.status;
+          if (jobId && (status === "queued" || status === "running")) activeBackgroundJobs.add(jobId);
+          else if (jobId) activeBackgroundJobs.delete(jobId);
+        }
         const runId = typeof e?.run_id === "string" ? e.run_id : undefined;
         if ((e?.type === "RUN_STARTED" || (e?.type === "agent_status_update" && e?.status === "running")) && runId) {
           activeRuns.add(runId);
@@ -224,7 +232,8 @@ export class BenchRunner {
     }
     finally { clearInterval(timer); ctrl.abort(); }
     if (timedOut) return "timeout";
-    const wholeSessionActive = workStateActive ?? activeRuns.size > 0;
+    const wholeSessionActive = workStateActive
+      ?? (activeRuns.size > 0 || activeBackgroundJobs.size > 0);
     if (settled || (streamEnded && sawTerminal && !wholeSessionActive)) {
       return lastTerminalWasError ? "error" : "completed";
     }
