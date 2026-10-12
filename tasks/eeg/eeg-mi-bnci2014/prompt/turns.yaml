@@ -1,0 +1,15 @@
+- send: >-
+    Develop an EEG motor-imagery classifier using public_data/train.npz and
+    public_data/val.npz. Read public_data/task_spec.json for the frozen native
+    contract: x has shape [B,22,480], 120 Hz, four seconds; y is an integer in
+    0..3. Preserve the existing subject-grouped split. Do not substitute the
+    within-subject session-T/E protocol from the separate bciciv-2a task.
+    Submit seed-0, seed-1 and seed-2 directories under submission/, each containing
+    model.py, config.json and weights.safetensors. model.py defines
+    Model(torch.nn.Module), initialized with the config dictionary; forward(x)
+    returns normalized class probabilities [B,4]. Limit parameters and all saved
+    numeric tensor elements to 10 million. Inference must use only x and saved
+    state, without network or external files. Include report.md with methods and
+    public-validation results. This collection entry scores public validation
+    only; these scores are not private Test results or independent research acceptance.
+  then: wait_idle

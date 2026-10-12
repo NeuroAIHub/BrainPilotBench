@@ -70,6 +70,18 @@ test("manual run state round-trips for resume", () => {
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
+test("Agent boundary rejects archive roots and new task evaluator variables", () => {
+  for (const key of ["BPB_LOCAL_DATA_ROOT", "BPB_BRAIN_AGE_EVALUATOR_DIR", "BPB_BRAIN_AGE_EVALUATOR_ARCHIVE"]) {
+    const previous = process.env[key];
+    try {
+      process.env[key] = "/private/archives";
+      assert.throws(() => assertAgentDataBoundary(task(".")), /unset BPB_LOCAL_DATA_ROOT|private evaluator environment/);
+    } finally {
+      if (previous === undefined) delete process.env[key]; else process.env[key] = previous;
+    }
+  }
+});
+
 test("assertAgentDataBoundary refuses private evaluator env or cache before Agent start", () => {
   const root = mkdtempSync(join(tmpdir(), "bpb-agent-boundary-"));
   const previousXdg = process.env.XDG_CACHE_HOME, previousEval = process.env.BPB_TOPS_PRIVATE_EVAL_DIR;

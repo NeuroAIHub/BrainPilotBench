@@ -10,6 +10,7 @@ import { join } from "node:path";
 
 /** 缓存根目录：尊重 XDG_CACHE_HOME，否则 ~/.cache。 */
 export function cacheDir(): string {
+  if (process.env.BPB_CACHE_ROOT) return process.env.BPB_CACHE_ROOT;
   const base = process.env.XDG_CACHE_HOME || join(homedir(), ".cache");
   return join(base, "brainpilot-bench");
 }

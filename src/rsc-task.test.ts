@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 
-const TASK_DIR = join(process.cwd(), "tasks", "neuro-rsc-place-cell");
+const TASK_DIR = join(process.cwd(), "tasks", "calcium-imaging", "neuro-rsc-place-cell");
 const SETUP = join(TASK_DIR, "env", "setup.sh");
 const BENCHMARK = join(TASK_DIR, "checks", "benchmark.py");
 const CHECK = join(TASK_DIR, "checks", "check.sh");

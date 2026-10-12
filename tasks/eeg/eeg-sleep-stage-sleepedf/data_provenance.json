@@ -1,0 +1,37 @@
+{
+  "schema": "bpb-eeg-native-data-provenance/1",
+  "status": "frozen_data_exported_public_package_candidate_not_accepted",
+  "task_id": "eeg-sleep-stage-sleepedf",
+  "source_task_id": "sleep_stage/default",
+  "source_task_version": "bpb-native-full-20261012-v1",
+  "source_science_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "raw_acceptance_receipt_sha256": "313c63d2796318293cab873fbdcb0cf7789b382ba323cbacf15a2703ff9471f3",
+  "resolved_full_config_sha256": "e20223f749e8246ae7d1b61ce3fbbe21fb6ad7f17d7d100fd0072e99fffea2fe",
+  "producer_snapshot": {
+    "name": "sleep-stage-v3",
+    "export_classification_native_sha256": "b17a15f2f55ff3c350a3d615bbe30784291a5df78edbbc52ce4c353e8a3f9df4",
+    "prepare_sha256": "9af2cdcc75e1a71b68cc3c8be09f97e67c6d8eb8adb8412a5064b350a4884b38",
+    "paths_sha256": "93a3381a9ac3b01c6cb6f6e6f72865e67c602288ccf85711f76428846abc56e3",
+    "verify_export_sha256": "56d7a6884b7182aead4c86f2d2dfebae18b4f913e99790925b19d4bf315fbdc9"
+  },
+  "native_export_complete_sha256": "6db0a773dd8d8da5c0dcee322f2ba65c949bec25192d32abb766a05dd495fa01",
+  "trusted_export_run_receipt_sha256": "f409c14d2d3c70de994344fe6363ef1245fc34eab4b696a0095d742f2e66cb9e",
+  "public_package_prepared_sha256": "1602499414e53516b8c5f97e61f73bc486ae18f5f4cbd2a392913bd24cb7ca25",
+  "new_source_task_spec_sha256": "6d0d40390a3d6374e41b2539caaf45068745c066824cbb06a9e4304cee518609",
+  "public_package_data_files": {
+    "train.npz": {"sha256": "00f6c6af70a999a1bd2d2279bedda692e8e2b9b608b76f484f29e7e04711920c", "bytes": 3355930942},
+    "val.npz": {"sha256": "d1fab30ad522958020651c4fdc9882c67af64ab3b20d13fa46f3b0a62115050d", "bytes": 1096749858},
+    "train-groups.json": {"sha256": "462a5d6e9bb987b034f064e4674f7dff1d8665d1e431a4c0c06e8912e047910f", "bytes": 329004},
+    "val-groups.json": {"sha256": "a6af6a87dc1ac23f63264c341f406a4d9243a99e40f916860cd8449bbf3ced86", "bytes": 114480}
+  },
+  "sample_counts": {"train": 116493, "val": 38071, "private_test": 41656},
+  "subject_group_counts": {"train": 46, "val": 16, "private_test": 16},
+  "input_shape": [2, 3600],
+  "sample_frequency_hz": 120,
+  "class_mapping": {"N1": 0, "N2": 1, "N3": 2, "R": 3, "W": 4},
+  "private_test_consumed": false,
+  "model_fitted": false,
+  "agent_run_started": false,
+  "public_score_run": false,
+  "published": false
+}

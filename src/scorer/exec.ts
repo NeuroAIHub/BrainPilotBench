@@ -32,8 +32,8 @@ const END = "<<<<< BPB_SCORES";
 const DEFAULT_MAX_TIMEOUT_MIN = 240;
 const MIN_EXEC_TIMEOUT_MS = 120_000; // 兼容 tops-fmri 时代:即使 task.timeoutMin=1 也留够 120s
 
-export function resolveExecTimeoutMs(task: Task): number {
-  const taskMin = task.meta.timeoutMin;
+export function resolveExecTimeoutMs(task: Task, scorerMinutes?: number): number {
+  const taskMin = scorerMinutes ?? task.meta.timeoutMin ?? DEFAULT_MAX_TIMEOUT_MIN;
   const capRaw = process.env.BPB_EXEC_SCORER_MAX_TIMEOUT_MIN;
   const capMin = Number.isFinite(Number(capRaw)) && Number(capRaw) > 0
     ? Number(capRaw)
@@ -87,14 +87,14 @@ const execModule: ScorerModule = {
       const sandbox = injectedSandbox ?? localSubprocessSandbox();
       // 在 bundle 的 runDir 下跑;脚本通过相对路径访问 artifacts/。
       // timeoutMs 由 task.meta.timeoutMin 派生(见 resolveExecTimeoutMs 注释)。
-      const timeoutMs = resolveExecTimeoutMs(task);
+      const timeoutMs = resolveExecTimeoutMs(task, typeof spec.timeout_min === "number" ? spec.timeout_min : undefined);
       const r = await sandbox.run({ command: "/bin/bash", args: [scriptPath], cwd: ctx.runDir, timeoutMs });
       if (r.timedOut) {
         const timeoutMin = Math.round(timeoutMs / 60_000);
         return { value: {}, unscored: true, state: "scoring_failed", explanation: `exec script timed out after ${timeoutMin} min` };
       }
       const scores = extractSentinelJson(r.stdout);
-      if (!scores) {
+      if (!scores || r.exitCode !== 0) {
         const detail = `${r.stderr}\n${r.stdout}`;
         const state = /permission denied|access denied|forbidden|\b403\b/i.test(detail)
           ? "private_access_denied"

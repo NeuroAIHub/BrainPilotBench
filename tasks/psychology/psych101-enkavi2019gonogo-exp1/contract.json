@@ -1,0 +1,41 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-enkavi2019gonogo-exp1",
+  "experiment_id": "enkavi2019gonogo/exp1.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "byte-next-20261012-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 370,
+      "responses": 120140,
+      "bytes": 6044114,
+      "sha256": "e81e2a288b24c83079815321da9fce243a1798f4aa419f98db064482762fdc18"
+    },
+    "valid": {
+      "rows": 93,
+      "responses": 30377,
+      "bytes": 1520838,
+      "sha256": "ee2c963b3f0f9a88e9933ef9021310fdd2a998aee4e76ebdab49b422a5544213"
+    }
+  },
+  "response_space_profile": "byte_next_v1",
+  "response_space_size": 257,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "metric_version": "utf8-byte-eos-v1",
+  "score_scope": "public_marked_response_validation_only",
+  "response_target_policy": "Only literal <<...>> response spans; unmarked events remain context",
+  "byte_vocabulary_size": 257,
+  "eos_symbol": 256,
+  "scoring_timeout_min": 180,
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

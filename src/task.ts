@@ -42,8 +42,10 @@ export interface TaskMeta {
   summary: string;
   /** Declared outputs — checked for existence; also the bundle collection whitelist. */
   expectedArtifacts: ExpectedArtifact[];
-  timeoutMin: number;
-  budgetTokens: number;
+  /** null means no research time/token limit; evaluator limits remain finite. */
+  timeoutMin: number | null;
+  budgetTokens: number | null;
+  evaluation?: { primaryMetric: { id: string; direction: "maximize" | "minimize"; unit?: string }; profile?: string };
   requires: TaskRequirements;
   /** 任务规范版本;破坏性 spec 改动就 bump,leaderboard 数字据此可比。缺省 "unversioned"。 */
   version: string;
@@ -108,10 +110,15 @@ export function validateTask(t: Partial<Task>): asserts t is Task {
   if (!m.summary) throw new Error(`task ${m.id}: missing summary`);
   if (!Array.isArray(m.expectedArtifacts) || m.expectedArtifacts.length === 0)
     throw new Error(`task ${m.id}: expectedArtifacts must be a non-empty list`);
-  if (!Number.isFinite(m.timeoutMin) || m.timeoutMin <= 0)
-    throw new Error(`task ${m.id}: timeoutMin must be > 0`);
-  if (!Number.isFinite(m.budgetTokens) || m.budgetTokens <= 0)
-    throw new Error(`task ${m.id}: budgetTokens must be > 0`);
+  if (m.timeoutMin !== null && (!Number.isFinite(m.timeoutMin) || m.timeoutMin <= 0))
+    throw new Error(`task ${m.id}: timeoutMin must be > 0 or null`);
+  if (m.budgetTokens !== null && (!Number.isFinite(m.budgetTokens) || m.budgetTokens <= 0))
+    throw new Error(`task ${m.id}: budgetTokens must be > 0 or null`);
+  const primary = m.evaluation?.primaryMetric;
+  if (m.evaluation && (!primary?.id || !["maximize", "minimize"].includes(primary.direction)))
+    throw new Error(`task ${m.id}: evaluation.primary_metric requires id and maximize|minimize direction`);
+  if (m.evaluation?.profile !== undefined && (typeof m.evaluation.profile !== "string" || !m.evaluation.profile.trim()))
+    throw new Error(`task ${m.id}: evaluation.profile must be a non-empty string`);
   if (!Array.isArray(t.turns) || t.turns.length === 0)
     throw new Error(`task ${m.id}: prompt/turns.yaml must have at least one turn`);
   for (const [i, turn] of t.turns.entries()) {
@@ -125,6 +132,8 @@ export function validateTask(t: Partial<Task>): asserts t is Task {
   for (const [i, s] of t.scorers.entries()) {
     if (typeof s.kind !== "string" || !s.kind)
       throw new Error(`task ${m.id}: scorer ${i} missing 'kind'`);
+    if (s.timeout_min !== undefined && (typeof s.timeout_min !== "number" || !Number.isFinite(s.timeout_min) || s.timeout_min <= 0))
+      throw new Error(`task ${m.id}: scorer ${i} timeout_min must be finite and > 0`);
   }
 }
 

@@ -1,0 +1,98 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-cvep-thielen2015",
+  "source_task_id": "cvep/thielen2015",
+  "source_task_version": "expanded-three-seed-20260923-thielen15-v1",
+  "source_task_spec_sha256": "a59f22dba2f714ac5e67f742309c0c2cca35667b26e8ad461e56c50f09f64f6d",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "thielen2015",
+  "kind": "classification",
+  "input_shape": [
+    64,
+    120
+  ],
+  "output_size": 36,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 1,
+  "label_mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "11": 11,
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "17": 17,
+    "18": 18,
+    "19": 19,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 24,
+    "25": 25,
+    "26": 26,
+    "27": 27,
+    "28": 28,
+    "29": 29,
+    "30": 30,
+    "31": 31,
+    "32": 32,
+    "33": 33,
+    "34": 34,
+    "35": 35
+  },
+  "split_type": "native SklearnSplit; rule=subject-disjoint; split_by=subject",
+  "train_samples": 2592,
+  "valid_samples": 1296,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-balanced-accuracy-complete-classes",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {
+      "sha256": "598da6b73e6c5fbff82a36f13d49dbc5fc02d38cab62ee0e58c625d21b661849",
+      "bytes": 79647466
+    },
+    "val.npz": {
+      "sha256": "c1749118f46e776ca28828b134d9ad32c547c24e920986a7efb5ad3ed7398d99",
+      "bytes": 39823978
+    },
+    "train-groups.json": {
+      "sha256": "15158b4293c91585f6b2ce4f61af3b0ee2b6f7710bd9017d42f313421a17702f",
+      "bytes": 177959
+    },
+    "val-groups.json": {
+      "sha256": "1ed37c5b34b238f60c54fd43aec2a5347822181b7cb54e418cbceed7542c7aae",
+      "bytes": 88535
+    }
+  },
+  "source_public_file_sha256": {
+    "TASK.md": "d1bdda3d1587d1ef2b8a68a80956205518780d459752fc8ca0332f1663643712",
+    "data/train-groups.json": "15158b4293c91585f6b2ce4f61af3b0ee2b6f7710bd9017d42f313421a17702f",
+    "data/train.npz": "598da6b73e6c5fbff82a36f13d49dbc5fc02d38cab62ee0e58c625d21b661849",
+    "data/val-groups.json": "1ed37c5b34b238f60c54fd43aec2a5347822181b7cb54e418cbceed7542c7aae",
+    "data/val.npz": "c1749118f46e776ca28828b134d9ad32c547c24e920986a7efb5ad3ed7398d99",
+    "environment.json": "4e278c768fb7bf1d153b6043224e050ef681593a3d2abb88e2285b7defeeec39",
+    "prompt.txt": "d5a45c91ff2ccd5a04288a96bc754609c643be8bb54377cebebb3c5946d025ad",
+    "task_spec.json": "a59f22dba2f714ac5e67f742309c0c2cca35667b26e8ad461e56c50f09f64f6d",
+    "tools/full_runtime/__init__.py": "c043ca7f49037e90be488f6b785d41ebb42c528dd73fa076477e5bb25e627ff0",
+    "tools/full_runtime/artifact.py": "0478f82550f1faf752adc22a1624193ad63c1f7725aff0310acd658b27c63d0d",
+    "tools/full_runtime/evaluate.py": "3c322fca8f50e16a41cdca344ce064dc3e92cee651bed1dcbbace190cb6f7c97",
+    "tools/validate.py": "09f70711b8087515c40fc8f79ddcd85c491484472fdbd381266ad208137f533f"
+  },
+  "availability_status": "frozen_manifest_bound_not_downloaded_here",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

@@ -1,0 +1,1458 @@
+{
+  "schema": "bpb-psych101-public-source-index/1",
+  "source_package_version": "published-20261002-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "public_rows": 60092,
+  "public_responses": 10681650,
+  "source_index_sha256": "dbee0fe8046442a2964f85e76b936073794efaed423b0f978663aa79130722dc",
+  "task_count": 76,
+  "split_count": 152,
+  "scope": "public_train_valid_only_no_test_or_controller_inventory",
+  "tasks": [
+    {
+      "task_id": "psych101-badham2017deficits-exp1",
+      "experiment_id": "badham2017deficits/exp1.csv",
+      "source_slug": "badham2017deficits-exp1",
+      "splits": {
+        "train": {
+          "rows": 68,
+          "responses": 23920,
+          "bytes": 1851180,
+          "sha256": "857bbe097d50e0c2ac54706414ad0af241e303c0359a8a83385b6a7f27d0de9f"
+        },
+        "valid": {
+          "rows": 17,
+          "responses": 5856,
+          "bytes": 453497,
+          "sha256": "99cdd063b349063af8f09752b7710123894d476ac453a3ae25a3817ba3060436"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-bahrami2020four-exp",
+      "experiment_id": "bahrami2020four/exp.csv",
+      "source_slug": "bahrami2020four-exp",
+      "splits": {
+        "train": {
+          "rows": 695,
+          "responses": 100693,
+          "bytes": 4082778,
+          "sha256": "ca9bbe22b3bdc003175f55cffd52455335fea20f96b0133b163c45030fe70ee5"
+        },
+        "valid": {
+          "rows": 174,
+          "responses": 25259,
+          "bytes": 1023999,
+          "sha256": "214295005ff2df3d07926c1fedce16273df787357976567a0415243f3237b5b8"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-collsioo2023mcpl-exp1-775cd1984f",
+      "experiment_id": "collsiöö2023MCPL/exp1.csv",
+      "source_slug": "collsioo2023MCPL-exp1-775cd1984f",
+      "splits": {
+        "train": {
+          "rows": 56,
+          "responses": 15680,
+          "bytes": 2387600,
+          "sha256": "a7c1ca9145c45359cf2d8589f5696accd8138aafd2ef55e332b01d6406c07662"
+        },
+        "valid": {
+          "rows": 14,
+          "responses": 3920,
+          "bytes": 639552,
+          "sha256": "ae702c2b31033c26fb4541baa5e5569c6f451f3edfe0288dedef6c5d5070b1de"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-collsioo2023mcpl-exp2-6bd18ff5bf",
+      "experiment_id": "collsiöö2023MCPL/exp2.csv",
+      "source_slug": "collsioo2023MCPL-exp2-6bd18ff5bf",
+      "splits": {
+        "train": {
+          "rows": 59,
+          "responses": 16520,
+          "bytes": 2552476,
+          "sha256": "1479e04bcb338ff2a56a533f669534e87996fff9ee62cc411f4495f74ca6eea5"
+        },
+        "valid": {
+          "rows": 15,
+          "responses": 4200,
+          "bytes": 648580,
+          "sha256": "cf50c90a69fdff1b0097d0084f2d1bdf2ec0c9990cb3aedc7a7cf2bdbdb01136"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-collsioo2023mcpl-exp3-c372064286",
+      "experiment_id": "collsiöö2023MCPL/exp3.csv",
+      "source_slug": "collsioo2023MCPL-exp3-c372064286",
+      "splits": {
+        "train": {
+          "rows": 70,
+          "responses": 9660,
+          "bytes": 1604678,
+          "sha256": "0588725c15cbe0641041c17c0af710a4b881998fd0e6902bec121842df831030"
+        },
+        "valid": {
+          "rows": 18,
+          "responses": 2484,
+          "bytes": 421189,
+          "sha256": "2a993b9054a2112939a1808262a687bf4eea198f22e85a16aeb00748eb99519e"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-cox2017information-exp1",
+      "experiment_id": "cox2017information/exp1.csv",
+      "source_slug": "cox2017information-exp1",
+      "splits": {
+        "train": {
+          "rows": 339,
+          "responses": 87354,
+          "bytes": 6949664,
+          "sha256": "5a473e692a91d296093d1133475e37ba1ee25a99c2d7a381a74d2976167a959d"
+        },
+        "valid": {
+          "rows": 85,
+          "responses": 21847,
+          "bytes": 1734610,
+          "sha256": "923d2918031524df0a543df03d4ba7fd303507df54a88aeb7ee3e13dddfebffa"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-enkavi2019adaptivenback-exp1",
+      "experiment_id": "enkavi2019adaptivenback/exp1.csv",
+      "source_slug": "enkavi2019adaptivenback-exp1",
+      "splits": {
+        "train": {
+          "rows": 376,
+          "responses": 160707,
+          "bytes": 6772496,
+          "sha256": "2da7a75ba135c69949e51d10c8cfb89fec7d429d3bc9c3dfe69f9eaaf5f6ab17"
+        },
+        "valid": {
+          "rows": 94,
+          "responses": 40114,
+          "bytes": 1694452,
+          "sha256": "50cc280a3f364c15447ad42a57b5147255c2460bf907cc091b6713dabadf432c"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-enkavi2019digitspan-exp1",
+      "experiment_id": "enkavi2019digitspan/exp1.csv",
+      "source_slug": "enkavi2019digitspan-exp1",
+      "splits": {
+        "train": {
+          "rows": 377,
+          "responses": 77357,
+          "bytes": 4543926,
+          "sha256": "5f228bd4caaf2e72af5f6cb9cffef45e9529c40bc2b40e37a3c08c43590f1721"
+        },
+        "valid": {
+          "rows": 95,
+          "responses": 19655,
+          "bytes": 1148477,
+          "sha256": "89355be1e134d502e44c9eb640c1bd65565be8b8d3155b0d7bcf3a4b4c25c213"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-enkavi2019gonogo-exp1",
+      "experiment_id": "enkavi2019gonogo/exp1.csv",
+      "source_slug": "enkavi2019gonogo-exp1",
+      "splits": {
+        "train": {
+          "rows": 370,
+          "responses": 120140,
+          "bytes": 6044114,
+          "sha256": "e81e2a288b24c83079815321da9fce243a1798f4aa419f98db064482762fdc18"
+        },
+        "valid": {
+          "rows": 93,
+          "responses": 30377,
+          "bytes": 1520838,
+          "sha256": "ee2c963b3f0f9a88e9933ef9021310fdd2a998aee4e76ebdab49b422a5544213"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-enkavi2019recentprobes-exp1",
+      "experiment_id": "enkavi2019recentprobes/exp1.csv",
+      "source_slug": "enkavi2019recentprobes-exp1",
+      "splits": {
+        "train": {
+          "rows": 376,
+          "responses": 27703,
+          "bytes": 2936299,
+          "sha256": "d385781ae6a97151443a99855d4b0c7721643656e0f1a93066de4b0f33a65723"
+        },
+        "valid": {
+          "rows": 95,
+          "responses": 7011,
+          "bytes": 742083,
+          "sha256": "8199cfdd78cd1ff6177498126948937c0b4fadcb0837b41c5f01cb712d1b3d80"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-feng2021dynamics-exp1",
+      "experiment_id": "feng2021dynamics/exp1.csv",
+      "source_slug": "feng2021dynamics-exp1",
+      "splits": {
+        "train": {
+          "rows": 20,
+          "responses": 22400,
+          "bytes": 2395912,
+          "sha256": "29c8467a23a487b33176cce6b4768ac47f630fe183a06fb7e5fe464592fba241"
+        },
+        "valid": {
+          "rows": 6,
+          "responses": 6720,
+          "bytes": 718777,
+          "sha256": "54369c27bf26bd520075a49aa4bcdf56f90f750bae3e2bb8441f01ba33d5d602"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-flesch2018comparing-exp1",
+      "experiment_id": "flesch2018comparing/exp1.csv",
+      "source_slug": "flesch2018comparing-exp1",
+      "splits": {
+        "train": {
+          "rows": 256,
+          "responses": 153600,
+          "bytes": 25493933,
+          "sha256": "f6f95d964dc74e77eff9c450026084ded7f0909a16b503ffe817490b8d7ce52c"
+        },
+        "valid": {
+          "rows": 64,
+          "responses": 38400,
+          "bytes": 6373487,
+          "sha256": "9907ebeb7e93393b384ad5c977f65f4bdcff300e34a0526e2d264de9bcefb167"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-frey2017cct-exp1",
+      "experiment_id": "frey2017cct/exp1.csv",
+      "source_slug": "frey2017cct-exp1",
+      "splits": {
+        "train": {
+          "rows": 1094,
+          "responses": 488721,
+          "bytes": 57125740,
+          "sha256": "b8a2329400e3c519b986eebb9e458fc8978c28e78f8063129f7999882429a6b3"
+        },
+        "valid": {
+          "rows": 274,
+          "responses": 124578,
+          "bytes": 14475128,
+          "sha256": "247384de10dd95f52c509eb7d0b746b63e6854c44157c090c4ed97388f43ef15"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-frey2017risk-exp1",
+      "experiment_id": "frey2017risk/exp1.csv",
+      "source_slug": "frey2017risk-exp1",
+      "splits": {
+        "train": {
+          "rows": 1064,
+          "responses": 1196413,
+          "bytes": 10333171,
+          "sha256": "45498e934fd5856dbfadb541afc405bc1c8cccaf729282823022f38c4b75595e"
+        },
+        "valid": {
+          "rows": 267,
+          "responses": 300561,
+          "bytes": 2594967,
+          "sha256": "4fe9ff412f267f7b0c215633e2601c8adfa9f1a8193d8c66f8f68fa864ffc4fc"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp1",
+      "experiment_id": "garcia2023experiential/exp1.csv",
+      "source_slug": "garcia2023experiential-exp1",
+      "splits": {
+        "train": {
+          "rows": 69,
+          "responses": 14904,
+          "bytes": 2340730,
+          "sha256": "8a4ad51b88cd03426add05a32825136ee28a47edae318ac8f07545785d90dcc3"
+        },
+        "valid": {
+          "rows": 18,
+          "responses": 3888,
+          "bytes": 610627,
+          "sha256": "59f848e582c56876f7fedbed314aa75ecf384c86f7b498b0232b1ae0731ab90c"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp2",
+      "experiment_id": "garcia2023experiential/exp2.csv",
+      "source_slug": "garcia2023experiential-exp2",
+      "splits": {
+        "train": {
+          "rows": 69,
+          "responses": 14904,
+          "bytes": 2340840,
+          "sha256": "75b16e9a69196c2fdb734cfd9eb034a2d012c73055aaecccc43fbf5ec30eb29c"
+        },
+        "valid": {
+          "rows": 18,
+          "responses": 3888,
+          "bytes": 610665,
+          "sha256": "26c66291c929dd3d13851b540ab60078d9512246fc21ddc96e4627c62f3608ec"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp3",
+      "experiment_id": "garcia2023experiential/exp3.csv",
+      "source_slug": "garcia2023experiential-exp3",
+      "splits": {
+        "train": {
+          "rows": 68,
+          "responses": 14688,
+          "bytes": 2306857,
+          "sha256": "3d425726bb76e97f135847ccc15b1574ad374e605466ab1c049ebd5ca6f01ed5"
+        },
+        "valid": {
+          "rows": 18,
+          "responses": 3888,
+          "bytes": 610689,
+          "sha256": "d50e53f8a54eff71b998b4d033fa7a5e2208c12aa6fbacc4e1cc8fd1fe9fba3a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp4",
+      "experiment_id": "garcia2023experiential/exp4.csv",
+      "source_slug": "garcia2023experiential-exp4",
+      "splits": {
+        "train": {
+          "rows": 68,
+          "responses": 11424,
+          "bytes": 1812788,
+          "sha256": "b3518bb6ab74c0c021ac21e2b7f2010c0f45649e3475a9bec469dc6c0164c792"
+        },
+        "valid": {
+          "rows": 18,
+          "responses": 3024,
+          "bytes": 479840,
+          "sha256": "22eedea6ea05fae08abbdd78bb7591437ac7e8f71e4937617f342d69488844ea"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-gershman2018deconstructing-exp1",
+      "experiment_id": "gershman2018deconstructing/exp1.csv",
+      "source_slug": "gershman2018deconstructing-exp1",
+      "splits": {
+        "train": {
+          "rows": 32,
+          "responses": 6400,
+          "bytes": 255325,
+          "sha256": "d0c88491ad5015dea4494954231f615c2925017af69e14b7869778e1fc5bf78a"
+        },
+        "valid": {
+          "rows": 8,
+          "responses": 1600,
+          "bytes": 63760,
+          "sha256": "2ff6e2ebda2d3c8c66cc19ccb5d838f6ac84c2a673091a6691fb886389350865"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-gershman2018deconstructing-exp2",
+      "experiment_id": "gershman2018deconstructing/exp2.csv",
+      "source_slug": "gershman2018deconstructing-exp2",
+      "splits": {
+        "train": {
+          "rows": 32,
+          "responses": 6400,
+          "bytes": 257465,
+          "sha256": "90881ca9378be2de8f9d8eeae94bba38f51c175e80e9ffbdc10fb5978a39e6f1"
+        },
+        "valid": {
+          "rows": 8,
+          "responses": 1600,
+          "bytes": 64327,
+          "sha256": "0bd0b1aad65d4d0b5614a429ab8d585914e492061f5a1b7d4b15f3bb4b2537e3"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-gershman2020reward-exp1",
+      "experiment_id": "gershman2020reward/exp1.csv",
+      "source_slug": "gershman2020reward-exp1",
+      "splits": {
+        "train": {
+          "rows": 59,
+          "responses": 31989,
+          "bytes": 1833155,
+          "sha256": "cf87d0a90a57f540d699cf27469d14a8c3bae2426370bd3c72fe6b00a7abaea1"
+        },
+        "valid": {
+          "rows": 15,
+          "responses": 8550,
+          "bytes": 488998,
+          "sha256": "610ab2f904690b64a4fc7be40f5f48ffb7abce526fde612ee135a59eab474d99"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-hebart2023things-exp1",
+      "experiment_id": "hebart2023things/exp1.csv",
+      "source_slug": "hebart2023things-exp1",
+      "splits": {
+        "train": {
+          "rows": 8897,
+          "responses": 2082920,
+          "bytes": 125148769,
+          "sha256": "07dd7d4313f6e88a05e00177631f4fa19000599d5857753a8e04c3105a65e7a6"
+        },
+        "valid": {
+          "rows": 2225,
+          "responses": 528320,
+          "bytes": 31732940,
+          "sha256": "483d2df54bbaa5b334ec0f631bfd8fbf4f8187e09799b941605a6f41abd8559b"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-hilbig2014generalized-exp1",
+      "experiment_id": "hilbig2014generalized/exp1.csv",
+      "source_slug": "hilbig2014generalized-exp1",
+      "splits": {
+        "train": {
+          "rows": 58,
+          "responses": 5568,
+          "bytes": 469908,
+          "sha256": "ab5743c40491ff6671409a4ed4627db3acfa9c16b61c05b2bdbf6ab7796d1f92"
+        },
+        "valid": {
+          "rows": 15,
+          "responses": 1440,
+          "bytes": 121529,
+          "sha256": "1b4ebb6718439b512fbcd6a09d708e3d6d2283d3b82964eb837338e83080516c"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-jansen2021dunningkruger-exp1",
+      "experiment_id": "jansen2021dunningkruger/exp1.csv",
+      "source_slug": "jansen2021dunningkruger-exp1",
+      "splits": {
+        "train": {
+          "rows": 2553,
+          "responses": 71484,
+          "bytes": 25383271,
+          "sha256": "401cd3cecd60efcd77265f5c2a557b31310a9d6c3335ac3197977ae71b38b806"
+        },
+        "valid": {
+          "rows": 639,
+          "responses": 17892,
+          "bytes": 6353308,
+          "sha256": "77b308b32eb3a3b5ae234f1dd8d705256eaab237a17f8449fa032c9078aa480a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-kool2016when-exp1",
+      "experiment_id": "kool2016when/exp1.csv",
+      "source_slug": "kool2016when-exp1",
+      "splits": {
+        "train": {
+          "rows": 143,
+          "responses": 17232,
+          "bytes": 2245378,
+          "sha256": "66b07671a123b3213564758660714c86d8fd130352cbe17ad09e2af51dfe8f56"
+        },
+        "valid": {
+          "rows": 36,
+          "responses": 4218,
+          "bytes": 568553,
+          "sha256": "512c2eba2d1c4a9ee408e1a1de03fd9db75adeaf735ae87a95fda8186ab7dadc"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-kool2016when-exp2",
+      "experiment_id": "kool2016when/exp2.csv",
+      "source_slug": "kool2016when-exp2",
+      "splits": {
+        "train": {
+          "rows": 150,
+          "responses": 36356,
+          "bytes": 3268511,
+          "sha256": "badd9e3352b1f162a9b1e19eb603cdf1a092559fb37a0f89372dd28e2b4d24c1"
+        },
+        "valid": {
+          "rows": 38,
+          "responses": 9235,
+          "bytes": 828314,
+          "sha256": "ac170c8b9432ed959b8c65ee64eded0f925e05f79065030a3500033f3aaae821"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-kool2017cost-exp1",
+      "experiment_id": "kool2017cost/exp1.csv",
+      "source_slug": "kool2017cost-exp1",
+      "splits": {
+        "train": {
+          "rows": 74,
+          "responses": 14420,
+          "bytes": 2945891,
+          "sha256": "ba8010c7eb14cbe50b867402a8852ec4830812bc633335d6ac46d6fefb1fc211"
+        },
+        "valid": {
+          "rows": 19,
+          "responses": 3755,
+          "bytes": 757398,
+          "sha256": "381478a40ee30c1d83552ccb9256cca104739a06f55fc09f26839d968f1ab23c"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-kool2017cost-exp2",
+      "experiment_id": "kool2017cost/exp2.csv",
+      "source_slug": "kool2017cost-exp2",
+      "splits": {
+        "train": {
+          "rows": 70,
+          "responses": 27610,
+          "bytes": 2878694,
+          "sha256": "9c77783db7997ebfb1937dad9d2c4f4e94be408324a4b01830ce06d8c89731da"
+        },
+        "valid": {
+          "rows": 18,
+          "responses": 7076,
+          "bytes": 739986,
+          "sha256": "9479167fddfb60c60b0f40d6efea826855514403a79853178c1d6bef5fa57176"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-krueger2022identifying-exp1",
+      "experiment_id": "krueger2022identifying/exp1.csv",
+      "source_slug": "krueger2022identifying-exp1",
+      "splits": {
+        "train": {
+          "rows": 1404,
+          "responses": 403672,
+          "bytes": 23088557,
+          "sha256": "ee34f23f14a228769205a754f5f3e2427fdde469e1d889ef262e80e8bf55bd4c"
+        },
+        "valid": {
+          "rows": 351,
+          "responses": 96056,
+          "bytes": 5546904,
+          "sha256": "c2ab057db2dfa68b8b0eae97cbf7284e37ab369103506ee2c11048e15aaf26e4"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-kumar2023disentangling-exp1",
+      "experiment_id": "kumar2023disentangling/exp1.csv",
+      "source_slug": "kumar2023disentangling-exp1",
+      "splits": {
+        "train": {
+          "rows": 565,
+          "responses": 256371,
+          "bytes": 33917523,
+          "sha256": "1d94892f102917a0e038890f4e22f16b14edb2a1e6683e45e145a259109241a6"
+        },
+        "valid": {
+          "rows": 142,
+          "responses": 65367,
+          "bytes": 8644895,
+          "sha256": "b7664fab1daea3424e1e8fd08a19a93d72b04d843bcd83cf1d7ec7c59fc201d2"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-lefebvre2017behavioural-exp1",
+      "experiment_id": "lefebvre2017behavioural/exp1.csv",
+      "source_slug": "lefebvre2017behavioural-exp1",
+      "splits": {
+        "train": {
+          "rows": 35,
+          "responses": 3360,
+          "bytes": 358428,
+          "sha256": "ac4c263c8e3455897ed5372fa1a486722dd24895d0bd687abaaac44ee59c9b4d"
+        },
+        "valid": {
+          "rows": 9,
+          "responses": 864,
+          "bytes": 92167,
+          "sha256": "257dc2d503b9cf090c14743b4e06864a4b653e32ded5251ae1dea16fe3770b35"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-lefebvre2017behavioural-exp2",
+      "experiment_id": "lefebvre2017behavioural/exp2.csv",
+      "source_slug": "lefebvre2017behavioural-exp2",
+      "splits": {
+        "train": {
+          "rows": 26,
+          "responses": 2496,
+          "bytes": 267424,
+          "sha256": "e58487c52c046f881c746ced627aac97016132fd0130b0b6a61e8bd5193ef0f1"
+        },
+        "valid": {
+          "rows": 7,
+          "responses": 672,
+          "bytes": 72033,
+          "sha256": "c035c7d3c1747b91ad8eb84d0f2ade0f0c8fbcaccf5e8bf75b88b52205ad52da"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-levering2020revisiting-exp1",
+      "experiment_id": "levering2020revisiting/exp1.csv",
+      "source_slug": "levering2020revisiting-exp1",
+      "splits": {
+        "train": {
+          "rows": 100,
+          "responses": 16600,
+          "bytes": 975524,
+          "sha256": "94204752788df097739c8077142b36b9ba4bf1118da6ff28388c2ec72a4c8d16"
+        },
+        "valid": {
+          "rows": 26,
+          "responses": 4316,
+          "bytes": 253635,
+          "sha256": "85450e9c2673df1ea5b3e29a6bda5d850ab9edf5df05e357f29028e1d89516ce"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-levering2020revisiting-exp2",
+      "experiment_id": "levering2020revisiting/exp2.csv",
+      "source_slug": "levering2020revisiting-exp2",
+      "splits": {
+        "train": {
+          "rows": 81,
+          "responses": 13446,
+          "bytes": 790168,
+          "sha256": "3c0d880084c44398920d4ad620f0dae34c59639c899ad366a38c37ddbddb0dba"
+        },
+        "valid": {
+          "rows": 21,
+          "responses": 3486,
+          "bytes": 204856,
+          "sha256": "95d2b5366ed12d42a6cdc2c2f28053a2766555f0d8229b5f42f154fdce81a952"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-ludwig2023human-exp0",
+      "experiment_id": "ludwig2023human/exp0.csv",
+      "source_slug": "ludwig2023human-exp0",
+      "splits": {
+        "train": {
+          "rows": 47,
+          "responses": 16830,
+          "bytes": 2087379,
+          "sha256": "e463178df046040403a065821c44a0b3386e92d131e91c847460cd8da9ab8f8e"
+        },
+        "valid": {
+          "rows": 12,
+          "responses": 4320,
+          "bytes": 535942,
+          "sha256": "b83cac60e1a79c4a068f4dc93ed5b2ed227135be102ef51dfa8347ccc8c3ca1e"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-ludwig2023human-exp1",
+      "experiment_id": "ludwig2023human/exp1.csv",
+      "source_slug": "ludwig2023human-exp1",
+      "splits": {
+        "train": {
+          "rows": 15,
+          "responses": 5400,
+          "bytes": 668925,
+          "sha256": "7caf01f8ae4ea37671e0b59353a6839f5f95ffeec933adb2d4e3d032bd686311"
+        },
+        "valid": {
+          "rows": 4,
+          "responses": 1440,
+          "bytes": 178430,
+          "sha256": "b8d4b53781d3069dd5ce7173e021ecea977d1bead648b342f3fcc767272495bc"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-ludwig2023human-exp2",
+      "experiment_id": "ludwig2023human/exp2.csv",
+      "source_slug": "ludwig2023human-exp2",
+      "splits": {
+        "train": {
+          "rows": 14,
+          "responses": 5012,
+          "bytes": 621401,
+          "sha256": "47e25ad89f8d3b2344b2fb0bcf5354a095349ee197045c9f5d29d50dc1b6831b"
+        },
+        "valid": {
+          "rows": 4,
+          "responses": 1440,
+          "bytes": 178595,
+          "sha256": "4ea755b24cbad2f1f20822938d23802476f490a1267e83702a1bb0da8848b882"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-peterson2021using-exp1",
+      "experiment_id": "peterson2021using/exp1.csv",
+      "source_slug": "peterson2021using-exp1",
+      "splits": {
+        "train": {
+          "rows": 10988,
+          "responses": 877795,
+          "bytes": 148787515,
+          "sha256": "273ba10b3b1bf1d952811488eaaaadb6d78d8701d19dd7210d7518985b0f5918"
+        },
+        "valid": {
+          "rows": 2747,
+          "responses": 219580,
+          "bytes": 37209036,
+          "sha256": "397d6f6b4f34ceb061e56dcdad988f3473defa4e54fea3375797f6531b5ac86a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-plonsky2018when-exp1",
+      "experiment_id": "plonsky2018when/exp1.csv",
+      "source_slug": "plonsky2018when-exp1",
+      "splits": {
+        "train": {
+          "rows": 172,
+          "responses": 129000,
+          "bytes": 11297995,
+          "sha256": "2ef5bafe52deba350a569078d39daf05ab2bd2babf0ec31632391e48fddf3584"
+        },
+        "valid": {
+          "rows": 44,
+          "responses": 33000,
+          "bytes": 2888065,
+          "sha256": "7895575a1ae21f79142709e81ca8009dd1d78db11ab60cc887162bccbb4b6e05"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-popov2023intent-exp1",
+      "experiment_id": "popov2023intent/exp1.csv",
+      "source_slug": "popov2023intent-exp1",
+      "splits": {
+        "train": {
+          "rows": 34,
+          "responses": 4569,
+          "bytes": 702872,
+          "sha256": "ed73c006b0da7fec0b80b9e0363999764ed7a670e01488c1a751cba91318fc03"
+        },
+        "valid": {
+          "rows": 9,
+          "responses": 1362,
+          "bytes": 194259,
+          "sha256": "033d56574884cdd1fb65e8e18eb7c268f5dd6d770a7659e9976de159e327e834"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-popov2023intent-exp2",
+      "experiment_id": "popov2023intent/exp2.csv",
+      "source_slug": "popov2023intent-exp2",
+      "splits": {
+        "train": {
+          "rows": 33,
+          "responses": 4568,
+          "bytes": 560385,
+          "sha256": "6f771e5e48923b17645896b22d5713ec48958b5469d38caea303b7941a5070a6"
+        },
+        "valid": {
+          "rows": 9,
+          "responses": 1284,
+          "bytes": 162230,
+          "sha256": "31c6a259a5dd86dbe2cc7c158a6b983eeab7fb735661fbd95b7ce2b33465c342"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-popov2023intent-exp3",
+      "experiment_id": "popov2023intent/exp3.csv",
+      "source_slug": "popov2023intent-exp3",
+      "splits": {
+        "train": {
+          "rows": 37,
+          "responses": 5355,
+          "bytes": 834915,
+          "sha256": "83dcd8bbc82faa675ef9e056a068cc33d0dd41ab29dcb8e394e2f4ad8b9ac68c"
+        },
+        "valid": {
+          "rows": 10,
+          "responses": 1511,
+          "bytes": 246106,
+          "sha256": "22b47a831e6fb4b96390ce6aae22d72e9d9470fa699ac0f992e6b16aebe51df9"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-ruggeri2022globalizability-exp1",
+      "experiment_id": "ruggeri2022globalizability/exp1.csv",
+      "source_slug": "ruggeri2022globalizability-exp1",
+      "splits": {
+        "train": {
+          "rows": 9549,
+          "responses": 113837,
+          "bytes": 16402145,
+          "sha256": "7d17ed91d7489958af4e34303447b3bd9a8b1a6caf50a2c6aa1d143798f06caf"
+        },
+        "valid": {
+          "rows": 2388,
+          "responses": 28399,
+          "bytes": 4093281,
+          "sha256": "a470c197ec0db3c24e792fc6d7337e8283484c7eab687c89f98e7b2b0734a0e9"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-sadeghiyeh2020temporal-exp1",
+      "experiment_id": "sadeghiyeh2020temporal/exp1.csv",
+      "source_slug": "sadeghiyeh2020temporal-exp1",
+      "splits": {
+        "train": {
+          "rows": 62,
+          "responses": 20188,
+          "bytes": 2178150,
+          "sha256": "4a9998036e12a8e2198272a98e929a3997c1b219ea41d85e6020f59b9c592497"
+        },
+        "valid": {
+          "rows": 16,
+          "responses": 5148,
+          "bytes": 557327,
+          "sha256": "093c13f51d994e7c356b9a9b6e2ebf160a563644175123250af1d5e993b5826a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp1",
+      "experiment_id": "schulz2020finding/exp1.csv",
+      "source_slug": "schulz2020finding-exp1",
+      "splits": {
+        "train": {
+          "rows": 88,
+          "responses": 26400,
+          "bytes": 1355038,
+          "sha256": "fff5870f2b5a9ae7ebe687a639a94572f09374cfe1ef3bdc45e92f6d73c08586"
+        },
+        "valid": {
+          "rows": 22,
+          "responses": 6600,
+          "bytes": 338686,
+          "sha256": "0fdd9cd0dfac5edbae6108f18675e137f0c2272c437fd6edf38177ac678ccf39"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp2",
+      "experiment_id": "schulz2020finding/exp2.csv",
+      "source_slug": "schulz2020finding-exp2",
+      "splits": {
+        "train": {
+          "rows": 57,
+          "responses": 17100,
+          "bytes": 877463,
+          "sha256": "fd9f7df5dbedda2b80089093024cd51b6f756a92f63b63bae7f2f8e0ab7b5f33"
+        },
+        "valid": {
+          "rows": 15,
+          "responses": 4500,
+          "bytes": 230984,
+          "sha256": "10b50a8509eced7f42c490221033b9b6beabbe449c6fc22386e759cddf59caea"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp3",
+      "experiment_id": "schulz2020finding/exp3.csv",
+      "source_slug": "schulz2020finding-exp3",
+      "splits": {
+        "train": {
+          "rows": 89,
+          "responses": 26700,
+          "bytes": 1369770,
+          "sha256": "760e0d21e71bd44785a943e8bb518a525be172a661be79a59a93a8bf91c0f2bc"
+        },
+        "valid": {
+          "rows": 23,
+          "responses": 6900,
+          "bytes": 353998,
+          "sha256": "502592849a26f221e80514da54374ece337c280a0f8f4626a92c2b026f126f70"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp4",
+      "experiment_id": "schulz2020finding/exp4.csv",
+      "source_slug": "schulz2020finding-exp4",
+      "splits": {
+        "train": {
+          "rows": 79,
+          "responses": 23700,
+          "bytes": 1216303,
+          "sha256": "d23c3e96185e8d66c5be072fe8097406247b8154f6aff0c9a40e601851f20dde"
+        },
+        "valid": {
+          "rows": 20,
+          "responses": 6000,
+          "bytes": 307849,
+          "sha256": "a467349423490a3b5f374b6aeaad098832adf5bb2021c621065775c34674fb9a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp5",
+      "experiment_id": "schulz2020finding/exp5.csv",
+      "source_slug": "schulz2020finding-exp5",
+      "splits": {
+        "train": {
+          "rows": 112,
+          "responses": 33600,
+          "bytes": 1827357,
+          "sha256": "48d3b509c51645c8060c8901656a0696b7bf0928921fb126ce189e91a55daf5c"
+        },
+        "valid": {
+          "rows": 29,
+          "responses": 8700,
+          "bytes": 473154,
+          "sha256": "864bd42a17b841033cc87feee6c887067abeda7581a3a11372ba3fb030af8a1a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-somerville2017charting-exp1",
+      "experiment_id": "somerville2017charting/exp1.csv",
+      "source_slug": "somerville2017charting-exp1",
+      "splits": {
+        "train": {
+          "rows": 62,
+          "responses": 34720,
+          "bytes": 3733183,
+          "sha256": "70054dd4f1ed12c218ca18efc7c27aa6874788ebd7df4d2192e829ef4bb05175"
+        },
+        "valid": {
+          "rows": 16,
+          "responses": 8960,
+          "bytes": 963413,
+          "sha256": "0a9ccd643106694ebf51552067e7b6bb023a1c7ede82669b7b48481bfa6afbb2"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-speekenbrink2008learning-exp1",
+      "experiment_id": "speekenbrink2008learning/exp1.csv",
+      "source_slug": "speekenbrink2008learning-exp1",
+      "splits": {
+        "train": {
+          "rows": 18,
+          "responses": 3600,
+          "bytes": 389287,
+          "sha256": "7f5235b3adab7c11bf95db1bcd22089680e8884b45e5e955f6b0fd7efbcc63d5"
+        },
+        "valid": {
+          "rows": 5,
+          "responses": 1000,
+          "bytes": 108056,
+          "sha256": "6ef8872d9fe53e1ffe4ecb457ba55f903a7aebaa712304e8b077bd881d49e578"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-steingroever2015data-exp1",
+      "experiment_id": "steingroever2015data/exp1.csv",
+      "source_slug": "steingroever2015data-exp1",
+      "splits": {
+        "train": {
+          "rows": 328,
+          "responses": 32800,
+          "bytes": 1754811,
+          "sha256": "4bc5f8870ce72cfc9eca9c1d02d18200b271de82cb4dd68d084aada4a8eef993"
+        },
+        "valid": {
+          "rows": 82,
+          "responses": 8200,
+          "bytes": 438794,
+          "sha256": "ed36c7d90ef98e926169c62ca3bb2bfada173e644d9fd3ab27d82511c264fdc6"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-steingroever2015data-exp2",
+      "experiment_id": "steingroever2015data/exp2.csv",
+      "source_slug": "steingroever2015data-exp2",
+      "splits": {
+        "train": {
+          "rows": 10,
+          "responses": 950,
+          "bytes": 51045,
+          "sha256": "d81eb42d7c58d73ed8cef45b4e601f582ed9544c23471494005d557354c7785e"
+        },
+        "valid": {
+          "rows": 3,
+          "responses": 285,
+          "bytes": 15351,
+          "sha256": "792eb70faef3cc8d899b810f54c88753aa2eb9c0f2b382504fcd58eaf22ca574"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-steingroever2015data-exp3",
+      "experiment_id": "steingroever2015data/exp3.csv",
+      "source_slug": "steingroever2015data-exp3",
+      "splits": {
+        "train": {
+          "rows": 70,
+          "responses": 10500,
+          "bytes": 542332,
+          "sha256": "a72a86334fad5b578d983b2e83f6f37a6b95195f7c5f8c3696132a9b3cb5b822"
+        },
+        "valid": {
+          "rows": 18,
+          "responses": 2700,
+          "bytes": 139313,
+          "sha256": "91cb1cdd9e3f6ced966e0503185ea145742719cf83d8108cd4d2d9e278ef8e01"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp2",
+      "experiment_id": "tomov2020discovery/exp2.csv",
+      "source_slug": "tomov2020discovery-exp2",
+      "splits": {
+        "train": {
+          "rows": 175,
+          "responses": 62939,
+          "bytes": 9693320,
+          "sha256": "04f5b5c52c09e2d5e885961c38ff7dd9a18f8e4089d83801effda6176b514dac"
+        },
+        "valid": {
+          "rows": 44,
+          "responses": 16043,
+          "bytes": 2466074,
+          "sha256": "8fb1f23fbebaa102f7ec2bf64e3a295778213564c8614e219c873b048145a055"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp4",
+      "experiment_id": "tomov2020discovery/exp4.csv",
+      "source_slug": "tomov2020discovery-exp4",
+      "splits": {
+        "train": {
+          "rows": 53,
+          "responses": 15018,
+          "bytes": 2401222,
+          "sha256": "42541b3804f0a61c9441c3fc4820c587bf15353ca6e0b1642185de9bfa9789c6"
+        },
+        "valid": {
+          "rows": 14,
+          "responses": 3863,
+          "bytes": 620328,
+          "sha256": "56836f26a5864b5ca2dd226a4000a3c9375a5ffd3a5e7d4eb229eaeb1cfedbd3"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp5",
+      "experiment_id": "tomov2020discovery/exp5.csv",
+      "source_slug": "tomov2020discovery-exp5",
+      "splits": {
+        "train": {
+          "rows": 276,
+          "responses": 60223,
+          "bytes": 9755091,
+          "sha256": "ff06cddea207136fb96b934d7da4c21172fef9b61ef6572f39f5d7c5b6e18fab"
+        },
+        "valid": {
+          "rows": 70,
+          "responses": 16187,
+          "bytes": 2614130,
+          "sha256": "d5403ab1898cbe7ef3f7ea3258f282cacde43945ea4ba86870ad075151241e1a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp7",
+      "experiment_id": "tomov2020discovery/exp7.csv",
+      "source_slug": "tomov2020discovery-exp7",
+      "splits": {
+        "train": {
+          "rows": 125,
+          "responses": 42549,
+          "bytes": 6825975,
+          "sha256": "668c0f4e5432577a39cbd8adbdbac78287942a97622e3fd9d27bae3bb74d81fe"
+        },
+        "valid": {
+          "rows": 32,
+          "responses": 11101,
+          "bytes": 1775500,
+          "sha256": "a2ba41b694fb475ac0b8b4199679155b534d0f3108cc6289ed8ac460897df298"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-tomov2021multitask-exp1",
+      "experiment_id": "tomov2021multitask/exp1.csv",
+      "source_slug": "tomov2021multitask-exp1",
+      "splits": {
+        "train": {
+          "rows": 156,
+          "responses": 31512,
+          "bytes": 4358375,
+          "sha256": "bf139581ad8e750fdb1a6f508e267855980da435cd30f8b633d2d75580d623d1"
+        },
+        "valid": {
+          "rows": 40,
+          "responses": 8080,
+          "bytes": 1117601,
+          "sha256": "4ad311f8ed743eed27c3746f5615b58832897ad3af4b336329e655f63da3fd20"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-tomov2021multitask-exp3",
+      "experiment_id": "tomov2021multitask/exp3.csv",
+      "source_slug": "tomov2021multitask-exp3",
+      "splits": {
+        "train": {
+          "rows": 147,
+          "responses": 29694,
+          "bytes": 4106788,
+          "sha256": "c6fd9557cb189c1e5645f9575785d82e1910700cd993b28b2f6f5456fed81aa6"
+        },
+        "valid": {
+          "rows": 37,
+          "responses": 7474,
+          "bytes": 1033707,
+          "sha256": "c1323c3af080718d117eec4ddaf228bfea15e52b4969b5da540dfda399029289"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-waltz2020differential-exp1",
+      "experiment_id": "waltz2020differential/exp1.csv",
+      "source_slug": "waltz2020differential-exp1",
+      "splits": {
+        "train": {
+          "rows": 28,
+          "responses": 11900,
+          "bytes": 1273776,
+          "sha256": "679650312da00cb3a6e44fa67ec4f3d24b9e66070bf6a3ccb67521543557b742"
+        },
+        "valid": {
+          "rows": 8,
+          "responses": 3390,
+          "bytes": 363575,
+          "sha256": "ee3ab46e74560e170b4789aac59b8826cfd94600e19938639bca652d82da9002"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp1",
+      "experiment_id": "wilson2014humans/exp1.csv",
+      "source_slug": "wilson2014humans-exp1",
+      "splits": {
+        "train": {
+          "rows": 21,
+          "responses": 23520,
+          "bytes": 2515723,
+          "sha256": "ffd53bffa5d3fbf60ec4e28b385c48b7ac006ef9d311724a8afded4893d6148c"
+        },
+        "valid": {
+          "rows": 6,
+          "responses": 6720,
+          "bytes": 718760,
+          "sha256": "6cfca346da9cece86962d2447748bd00a8f49a9e8a365b494e3390b2f12b65a5"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp2",
+      "experiment_id": "wilson2014humans/exp2.csv",
+      "source_slug": "wilson2014humans-exp2",
+      "splits": {
+        "train": {
+          "rows": 5,
+          "responses": 2800,
+          "bytes": 301034,
+          "sha256": "f27a1ad4fa21d8484640fa235046c182f7597ab0bf661199cf51e3e7105d61ed"
+        },
+        "valid": {
+          "rows": 2,
+          "responses": 1120,
+          "bytes": 120410,
+          "sha256": "5807f17d6254488c5b6926e8eb2a4382e401e40c5418f829a65a6b2490b76da4"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp3",
+      "experiment_id": "wilson2014humans/exp3.csv",
+      "source_slug": "wilson2014humans-exp3",
+      "splits": {
+        "train": {
+          "rows": 54,
+          "responses": 30346,
+          "bytes": 3260628,
+          "sha256": "b1c621e70b9cae2d1889b89fd3b904460fb6cf7aceddd7e71ec8bdeccb47069d"
+        },
+        "valid": {
+          "rows": 14,
+          "responses": 7729,
+          "bytes": 832604,
+          "sha256": "fb86cc10a3496a3aacbdab2f6777c7b94caa000255e57c6bfa9df41d9f4b1d88"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp4",
+      "experiment_id": "wilson2014humans/exp4.csv",
+      "source_slug": "wilson2014humans-exp4",
+      "splits": {
+        "train": {
+          "rows": 64,
+          "responses": 35840,
+          "bytes": 3853242,
+          "sha256": "fe149743bd7e488dfa907d1bfca13d22091e445274542440e341bd41c4db41d6"
+        },
+        "valid": {
+          "rows": 16,
+          "responses": 8960,
+          "bytes": 963293,
+          "sha256": "4d1069a3204b1f9dd985472794600ac1d5b90ab9ae3980bbbe50eefa6659433c"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp5",
+      "experiment_id": "wilson2014humans/exp5.csv",
+      "source_slug": "wilson2014humans-exp5",
+      "splits": {
+        "train": {
+          "rows": 31,
+          "responses": 17360,
+          "bytes": 1866430,
+          "sha256": "35ac3ac524c87e95b5a7e7ac232634134bef555004ccc0c452a17f5326a9a05e"
+        },
+        "valid": {
+          "rows": 8,
+          "responses": 4480,
+          "bytes": 481647,
+          "sha256": "20a981951d38f8e93d304fda4125f28c244e2c5921d0bc02498f661b483393ae"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wise2019acomputational-exp1",
+      "experiment_id": "wise2019acomputational/exp1.csv",
+      "source_slug": "wise2019acomputational-exp1",
+      "splits": {
+        "train": {
+          "rows": 45,
+          "responses": 14400,
+          "bytes": 2194926,
+          "sha256": "5369d1c4dfe49f5f1f2f3dcdae55ddaa9ea35c838a61797306e53dc2b1b2a867"
+        },
+        "valid": {
+          "rows": 12,
+          "responses": 3840,
+          "bytes": 585542,
+          "sha256": "9b2866bbcb59c05b3b7418d98bf876822694be30e81735e8581bc062fbd0e112"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wu2018generalisation-exp1",
+      "experiment_id": "wu2018generalisation/exp1.csv",
+      "source_slug": "wu2018generalisation-exp1",
+      "splits": {
+        "train": {
+          "rows": 62,
+          "responses": 7440,
+          "bytes": 485173,
+          "sha256": "dd531a397dc67ef5a3858756dce554585e4dea745a1cbc0209b06aac5fffe147"
+        },
+        "valid": {
+          "rows": 16,
+          "responses": 1920,
+          "bytes": 125209,
+          "sha256": "0de6546b917eaa23195acffe9bb42fc4c0aee163ae2e06f5f3af4da823ec6bc6"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wu2023chunking-exp1",
+      "experiment_id": "wu2023chunking/exp1.csv",
+      "source_slug": "wu2023chunking-exp1",
+      "splits": {
+        "train": {
+          "rows": 105,
+          "responses": 105000,
+          "bytes": 8053070,
+          "sha256": "9a56b7cff4f637ede9eb7120fafab2dd0879916084da2c336b6e4ee90bf28bed"
+        },
+        "valid": {
+          "rows": 27,
+          "responses": 27000,
+          "bytes": 2071732,
+          "sha256": "8d605b0027d4ce768ad6b7a996ca948dabeba653e197aa343c13baaaa666e3b9"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wu2023chunking-exp2",
+      "experiment_id": "wu2023chunking/exp2.csv",
+      "source_slug": "wu2023chunking-exp2",
+      "splits": {
+        "train": {
+          "rows": 84,
+          "responses": 84000,
+          "bytes": 6435643,
+          "sha256": "6e55a756c9f3df88fcd7b6d32d1aafb07d6b944db466cb4c195326f88d0cbe64"
+        },
+        "valid": {
+          "rows": 22,
+          "responses": 22000,
+          "bytes": 1685088,
+          "sha256": "967f9ca4585dd6f3c8735d318ba31440bbae869a21dce102b66355159d5d75e3"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wulff2018description-exp1",
+      "experiment_id": "wulff2018description/exp1.csv",
+      "source_slug": "wulff2018description-exp1",
+      "splits": {
+        "train": {
+          "rows": 1584,
+          "responses": 22918,
+          "bytes": 5203080,
+          "sha256": "2e13d4c243fab7848596d86fc24099683cd7ca11d8670f1ab222a2f29bce4322"
+        },
+        "valid": {
+          "rows": 397,
+          "responses": 5235,
+          "bytes": 1201400,
+          "sha256": "1634f2e5fe0ae12606f0ff91ecf125ddad3274b897e84445953b0dd51815cf3a"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-wulff2018sampling-exp1",
+      "experiment_id": "wulff2018sampling/exp1.csv",
+      "source_slug": "wulff2018sampling-exp1",
+      "splits": {
+        "train": {
+          "rows": 3153,
+          "responses": 824679,
+          "bytes": 37925178,
+          "sha256": "ca0c13011bac71f96c9befb61e097e916a52302aaa129a0ad4e1b456d9be3cad"
+        },
+        "valid": {
+          "rows": 789,
+          "responses": 190570,
+          "bytes": 8809901,
+          "sha256": "060cdbae151e4921dc69634175892f1ee6c945ea374ce8c446587029ea373a5d"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-xiong2023neural-exp1",
+      "experiment_id": "xiong2023neural/exp1.csv",
+      "source_slug": "xiong2023neural-exp1",
+      "splits": {
+        "train": {
+          "rows": 24,
+          "responses": 112200,
+          "bytes": 4063077,
+          "sha256": "aab1e80701ac4bce8f552e45450e65b0971b3a7a2ae8c29c2f55dd8c7aa073fb"
+        },
+        "valid": {
+          "rows": 6,
+          "responses": 28800,
+          "bytes": 1042921,
+          "sha256": "1991bd5e2c00da9827924b25d21f2f547b220d167c51a378846d5fdeaec6b691"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-zhu2020bayesian-exp1",
+      "experiment_id": "zhu2020bayesian/exp1.csv",
+      "source_slug": "zhu2020bayesian-exp1",
+      "splits": {
+        "train": {
+          "rows": 44,
+          "responses": 5280,
+          "bytes": 709531,
+          "sha256": "947fdaa74ce247ef42eaa66d18d65844ab24f257661b1c7888e71d4a9c152f51"
+        },
+        "valid": {
+          "rows": 11,
+          "responses": 1320,
+          "bytes": 177397,
+          "sha256": "5d15a34b8537d937ab15985556d68fae46387630c5067e80248163df73db8772"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-zhu2020bayesian-exp2",
+      "experiment_id": "zhu2020bayesian/exp2.csv",
+      "source_slug": "zhu2020bayesian-exp2",
+      "splits": {
+        "train": {
+          "rows": 58,
+          "responses": 10440,
+          "bytes": 1384449,
+          "sha256": "db1b4c9474072ff18d9af51a4a52242b97dcd8860098dae6daa54cf8c3d6e010"
+        },
+        "valid": {
+          "rows": 15,
+          "responses": 2700,
+          "bytes": 358045,
+          "sha256": "d426c938c58ac54c8fa57068669806dea2446171c0dd999ca7ee3237be975423"
+        }
+      }
+    },
+    {
+      "task_id": "psych101-zorowitz2023data-exp1",
+      "experiment_id": "zorowitz2023data/exp1.csv",
+      "source_slug": "zorowitz2023data-exp1",
+      "splits": {
+        "train": {
+          "rows": 111,
+          "responses": 44622,
+          "bytes": 4378850,
+          "sha256": "0f19fc193c226101c969767c91864946ecaa444daee2767ef162aef2d311ab95"
+        },
+        "valid": {
+          "rows": 28,
+          "responses": 11256,
+          "bytes": 1104657,
+          "sha256": "33f510d27eb305ae135845359f98c488a34a97e11ec7531bc13f11b1b1558293"
+        }
+      }
+    }
+  ]
+}

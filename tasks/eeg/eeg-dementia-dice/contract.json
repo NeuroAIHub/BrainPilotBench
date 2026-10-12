@@ -1,0 +1,52 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-dementia-dice",
+  "source_task_id": "dementia_diagnosis/default",
+  "source_task_version": "expanded-three-seed-20261012-dice-v2",
+  "source_task_spec_sha256": "399ebe36be2d4cfcb8b255af491c70699521165930f8c7eaf99ea3627d634834",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "Miltiadous2023Dice",
+  "kind": "classification",
+  "input_shape": [
+    19,
+    600
+  ],
+  "output_size": 3,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 5,
+  "label_mapping": {
+    "alzheimers": 0,
+    "dementia": 1,
+    "healthy": 2
+  },
+  "split_type": "native SklearnSplit; rule=subject-disjoint; split_by=subject",
+  "train_samples": 8323,
+  "valid_samples": 2863,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-balanced-accuracy-complete-classes",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {
+      "sha256": "0496424023996ec4317d4d24cee1aadf3dd68a842f4b87af9b4c9ba68ab8283e",
+      "bytes": 379595874
+    },
+    "val.npz": {
+      "sha256": "bfb0bab49ac87c6e340752a5b2962dcbcf283c26504bb865439d2b10564ead5a",
+      "bytes": 130576194
+    },
+    "train-groups.json": {
+      "sha256": "f524d325e834e99cb07b35d205718488d08d0f8f8c68f0e1c639ebc22e938b07",
+      "bytes": 573398
+    },
+    "val-groups.json": {
+      "sha256": "84576f4794c81ea8ad041df8cad203bf897badce7a3fda98046d36984b03f183",
+      "bytes": 196658
+    }
+  },
+  "source_public_file_sha256": null,
+  "availability_status": "prepared_public_packet_not_downloaded_here",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

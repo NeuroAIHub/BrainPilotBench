@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case ssvep/default; frozen task_spec SHA-256 9cd728f7038f36b7783f9f0d04d657789dd19100111791522342892803471216.
+datasets:
+  - name: eeg-ssvep-wang2017-train-npz
+    uri: local://eeg-ssvep-wang2017/expanded-three-seed-20260923-wang17-v1/train.npz
+    sha256: 845ceb783c4866940344f9c136781656c3559fb291fb1bec0bdd921a89fe8e9c
+    bytes: 589862890
+    scope: public
+  - name: eeg-ssvep-wang2017-val-npz
+    uri: local://eeg-ssvep-wang2017/expanded-three-seed-20260923-wang17-v1/val.npz
+    sha256: f03a557f641cc00589d0686b0de78e756246efd40508e417491f05cf7ba553a8
+    bytes: 206452330
+    scope: public
+  - name: eeg-ssvep-wang2017-train-groups-json
+    uri: local://eeg-ssvep-wang2017/expanded-three-seed-20260923-wang17-v1/train-groups.json
+    sha256: 93f179e1aec42562e3031144d51025544c043ff9cf08f98e4b4dc2662a36d43d
+    bytes: 330311
+    scope: public
+  - name: eeg-ssvep-wang2017-val-groups-json
+    uri: local://eeg-ssvep-wang2017/expanded-three-seed-20260923-wang17-v1/val-groups.json
+    sha256: 1007de9e9a986ca4838a3ee86ace362c966e6df1484116445e900efe0b14fa3f
+    bytes: 115031
+    scope: public

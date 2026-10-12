@@ -12,6 +12,19 @@ const REG: CategoryRegistry = {
 };
 const catOf = (id: string) => (id === "ex" ? "exec-data-analysis" : "survey-writing");
 
+test("different evaluation profiles cannot merge or rank together", () => {
+  const runs = ["closed-v1", "bytes-eos-v1"].map((evaluationProfile, i) => ({
+    taskId: "psych", taskVersion: "v1", evaluationProfile,
+    primaryMetric: { id: "nll", direction: "minimize" as const },
+    runId: `r${i}`, version: "agent", scoredAt: "today", state: "scored" as const,
+    results: [{ kind: "exec-script", value: { nll: i + 1 } }],
+  }));
+  const rows = buildLeaderboard(runs, () => "psych", { psych: { metrics: ["nll"] } })[0].rows;
+  assert.equal(rows.length, 2);
+  assert.equal(rows[0].evaluationProfile, "bytes-eos-v1");
+  assert.equal(rows[0].cells[0].coverage.total, 1);
+});
+
 test("buildLeaderboard: rubric 归一 + 跨 run 中位数 + coverage", () => {
   const runs = [
     { taskId: "t1", runId: "t1-v1-a", version: "v1", scoredAt: "x", results: [{ kind: "rubric-judge", value: { correctness: 5, completeness: 3 } }] },
@@ -127,5 +140,45 @@ test("buildLeaderboard: taskId/version 含空格不串味(单射 key + 透传 la
   const versions = sw.rows.map((r) => r.version).sort();
   assert.deepEqual(versions, ["2 draft", "2 final"]);
   assert.ok(sw.rows.every((r) => r.taskId === "t1"));
+});
+
+test("buildLeaderboard: Psych NLL sorts by declared minimize primary metric, not diagnostic", () => {
+  const reg: CategoryRegistry = { "psychology-behavior": { metrics: ["mean_response_nll", "diagnostic"] } };
+  const primaryMetric = { id: "mean_response_nll", direction: "minimize", unit: "nats/response" };
+  const runs = [
+    { taskId: "psych", taskVersion: "protocol-v1", primaryMetric, runId: "high", version: "agent-high", results: [{ kind: "exec-script", value: { mean_response_nll: 0.8, diagnostic: 10000 } }] },
+    { taskId: "psych", taskVersion: "protocol-v1", primaryMetric, runId: "low", version: "agent-low", results: [{ kind: "exec-script", value: { mean_response_nll: 0.3, diagnostic: 0 } }] },
+    { taskId: "psych", taskVersion: "protocol-v1", primaryMetric, runId: "missing", version: "agent-diagnostic", results: [{ kind: "exec-script", value: { diagnostic: 99999 } }] },
+  ] as any;
+  const table = buildLeaderboard(runs, () => "psychology-behavior", reg)[0];
+  assert.deepEqual(table.rows.map(row => row.version), ["agent-low", "agent-high", "agent-diagnostic"]);
+  assert.deepEqual(table.rows.map(row => row.cells.find(cell => cell.metric === "mean_response_nll")?.value), [0.3, 0.8, null]);
+  assert.equal(table.rows[0].primaryMetric?.direction, "minimize");
+});
+
+test("buildLeaderboard: brain-age MAE minimizes even when the auxiliary score points the other way", () => {
+  const reg: CategoryRegistry = { "brain-age": { metrics: ["test_mae", "score"] } };
+  const primaryMetric = { id: "test_mae", direction: "minimize", unit: "years" };
+  const runs = [
+    { taskId: "brain-age", taskVersion: "task-v1", primaryMetric, runId: "a", version: "agent-a", results: [{ kind: "exec-script", value: { test_mae: 4, score: 0.1 } }] },
+    { taskId: "brain-age", taskVersion: "task-v1", primaryMetric, runId: "b", version: "agent-b", results: [{ kind: "exec-script", value: { test_mae: 9, score: 0.9 } }] },
+  ] as any;
+  const rows = buildLeaderboard(runs, () => "brain-age", reg)[0].rows;
+  assert.deepEqual(rows.map(row => row.version), ["agent-a", "agent-b"]);
+});
+
+test("buildLeaderboard: changed task protocol stays in a separate row even for the same agent version", () => {
+  const reg: CategoryRegistry = { "psychology-behavior": { metrics: ["mean_response_nll"] } };
+  const primaryMetric = { id: "mean_response_nll", direction: "minimize" };
+  const runs = [
+    { taskId: "psych", taskVersion: "task-v1", primaryMetric, runId: "one", version: "agent-v1", results: [{ kind: "exec-script", value: { mean_response_nll: 0.2 } }] },
+    { taskId: "psych", taskVersion: "task-v2", primaryMetric, runId: "two", version: "agent-v1", results: [{ kind: "exec-script", value: { mean_response_nll: 0.7 } }] },
+  ] as any;
+  const rows = buildLeaderboard(runs, () => "psychology-behavior", reg)[0].rows;
+  assert.equal(rows.length, 2);
+  assert.deepEqual(rows.map(row => [row.taskVersion, row.cells[0].value, row.cells[0].coverage]), [
+    ["task-v1", 0.2, { scored: 1, total: 1 }],
+    ["task-v2", 0.7, { scored: 1, total: 1 }],
+  ]);
 });
 

@@ -1,0 +1,48 @@
+{
+  "schema_version": "bpb-eeg-candidate/1",
+  "schema": "bpb-eeg-preparation-candidate/1",
+  "id": "eeg-sleep-onset-sleepedf",
+  "task_id": "eeg-sleep-onset-sleepedf",
+  "status": "preparation_ready_data_pending",
+  "title": "Sleep-EDF cassette sleep onset",
+  "source_project": "NeuralBench-Agent-Bench",
+  "upstream_repository": "https://github.com/facebookresearch/neuroai",
+  "upstream_source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "source_task_id": "sleep_onset/default",
+  "source_recipe": null,
+  "dataset_group_id": "Kemp2000Analysis",
+  "dataset_name": "Sleep-EDF cassette",
+  "paradigm": "sleep_onset",
+  "task_kind": "regression",
+  "input_description": "5秒EEG窗口；具体通道/采样率以冻结task_spec为准",
+  "output_description": "[B,1] 秒数预测",
+  "native_split_description": "S：原生subject分组；保留两次种子33、stratify和真实membership，不把约60/20/20当精确样本比例",
+  "primary_metric": {
+    "id": "BinnedMAE",
+    "name": "BinnedMAE",
+    "source_log_name": "bmae",
+    "direction": "minimize",
+    "unit": "seconds"
+  },
+  "frozen_task_spec_sha256": null,
+  "frozen_public_bundle_sha256": null,
+  "private_evaluator_binding_sha256": null,
+  "integration_note": "Data-only pinned preparation recipe is available. Frozen full task export, public package, scorer, Agent run and private Test have not been accepted.",
+  "domain": "eeg",
+  "source_dataset": "Kemp2000Analysis",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "preparation_id_aliases": [
+    "agenteeg-sleep-onset-sleepedf"
+  ],
+  "source_evidence": {
+    "task_protocol_index": "NeuralBench-Agent-Bench/artifacts/project-overview-20260920/task-protocols.json",
+    "d_handoff": "operator record eeg-d-expansion-20261012/CURRENT.md (not public task data)",
+    "upstream_science_source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36"
+  },
+  "preparation": "preparation.json",
+  "setup_entry": "env/prepare.py",
+  "verification_entry": "checks/verify_export.py",
+  "runnable": false,
+  "validated": false,
+  "reason": "No frozen full native train/validation/Test export, task spec hash, input shape, or data.lock archive hashes have been accepted."
+}

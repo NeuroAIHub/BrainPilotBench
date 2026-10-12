@@ -1,0 +1,16 @@
+# Agent 侧与评测侧共用的 Python 环境。
+#
+# 本任务需要：numpy（矩阵运算）、networkx（贪心模块度社区检测）、
+# scikit-learn（NMI / 调整兰德分数）、scipy（度数相关的显著性检验）、
+# pandas + openpyxl（env/setup-*.sh 读取 data.lock 里的 xlsx）。
+# Python 3.12-3.13 required by numpy==2.5.1. Versions are fixed so the
+# benchmark can rebuild one numerical stack. The final worker image is pinned
+# by digest when used for official scoring.
+# 版本固定，使 benchmark 发布能重建同一套数值栈——评测端的统计量要与
+# agent 提交的数值在容差内比对，"数值栈飘了"会变成假失败。
+numpy==2.5.1
+scipy==1.18.0
+scikit-learn==1.9.0
+networkx==3.6.1
+pandas==3.0.5
+openpyxl==3.1.5

@@ -31,8 +31,11 @@ export function taskPromptMarkdown(task: Task): string {
 
 /** Refuse to start an Agent while benchmark-managed private data is visible. */
 export function assertAgentDataBoundary(task: Task): void {
-  if (process.env.BPB_TOPS_PRIVATE_EVAL_DIR || process.env.BPB_PRIVATE_EVAL_DIR) {
+  if (Object.entries(process.env).some(([key, value]) => value && /^BPB_.*(?:PRIVATE|EVALUATOR)(?:_|$)/.test(key))) {
     throw new Error("private evaluator environment is present; unset it before starting an Agent run");
+  }
+  if (process.env.BPB_LOCAL_DATA_ROOT) {
+    throw new Error("unset BPB_LOCAL_DATA_ROOT after fetching and before starting an Agent; the archive directory may also contain evaluator data");
   }
   const cachedPrivate = task.datasets
     .filter((entry) => entry.scope === "private")

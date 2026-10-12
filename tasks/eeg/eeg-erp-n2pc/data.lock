@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case n2pc/default; frozen task_spec SHA-256 94da6cdeef82ffc51b83067386c12bb86c2e5ac2b36c202e4247ae66dc0cdaea.
+datasets:
+  - name: eeg-erp-n2pc-train-npz
+    uri: local://eeg-erp-n2pc/expanded-three-seed-20260923-n2pc-v1/train.npz
+    sha256: 35410eb22a209bb3770be6dd60ef078a9eed151ba90c0a767477502d1cfcd8c6
+    bytes: 110610706
+    scope: public
+  - name: eeg-erp-n2pc-val-npz
+    uri: local://eeg-erp-n2pc/expanded-three-seed-20260923-n2pc-v1/val.npz
+    sha256: 12ab5e38b594ecf97c4501795e39918fc55e7fcb5248d049b976208dd2f5a86a
+    bytes: 37029050
+    scope: public
+  - name: eeg-erp-n2pc-train-groups-json
+    uri: local://eeg-erp-n2pc/expanded-three-seed-20260923-n2pc-v1/train-groups.json
+    sha256: fe44f0636a5e3eccfa8b6654fd78c27973fa1d739c700e2cc7efec6a00728dc9
+    bytes: 528824
+    scope: public
+  - name: eeg-erp-n2pc-val-groups-json
+    uri: local://eeg-erp-n2pc/expanded-three-seed-20260923-n2pc-v1/val-groups.json
+    sha256: 2012545e710063ba9e5f2891f3a545820987868dd028a553609bb141dad3c3da
+    bytes: 176441
+    scope: public

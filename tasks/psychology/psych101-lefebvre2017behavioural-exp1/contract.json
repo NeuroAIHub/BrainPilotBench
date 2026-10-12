@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-lefebvre2017behavioural-exp1",
+  "experiment_id": "lefebvre2017behavioural/exp1.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "lefebvre-casino-agent-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 35,
+      "responses": 3360,
+      "bytes": 358428,
+      "sha256": "ac4c263c8e3455897ed5372fa1a486722dd24895d0bd687abaaac44ee59c9b4d"
+    },
+    "valid": {
+      "rows": 9,
+      "responses": 864,
+      "bytes": 92167,
+      "sha256": "257dc2d503b9cf090c14743b4e06864a4b653e32ded5251ae1dea16fe3770b35"
+    }
+  },
+  "response_space_profile": "casino_two_machine_v1",
+  "response_space_size": 2,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "score_scope": "public_validation_only",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

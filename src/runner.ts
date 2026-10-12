@@ -226,7 +226,7 @@ export class BenchRunner {
     onSessionReady?: (sessionId: string) => Promise<void>;
   }): Promise<RunResult> {
     const started = Date.now();
-    const taskTimeoutMs = task.meta.timeoutMin * 60_000;
+    const taskTimeoutMs = task.meta.timeoutMin === null ? Infinity : task.meta.timeoutMin * 60_000;
     const deadline = started + taskTimeoutMs;
     const idleMs = opts?.idleMs ?? this.configuredIdleMs ?? taskTimeoutMs;
     const settleMs = opts?.settleMs ?? this.configuredSettleMs ?? 500;

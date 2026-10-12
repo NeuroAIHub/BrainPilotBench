@@ -22,6 +22,9 @@ export interface LeaderboardCell {
 export interface LeaderboardRow {
   taskId: string;
   version: string;
+  taskVersion?: string;
+  primaryMetric?: RunScores["primaryMetric"];
+  evaluationProfile?: string;
   cells: LeaderboardCell[];
   states: Partial<Record<Exclude<ScoringState, "ready_to_score">, number>>;
 }
@@ -86,15 +89,15 @@ export function buildLeaderboard(
   for (const [category, catRuns] of byCat) {
     const metrics = requiredMetricsFor(category, reg); // 列 = 必备集(not-applicable 不成列)
     // 按 (taskId,version) 聚合;key 用 JSON 元组(单射,避免 taskId/version 含空格时 split 串味)
-    const byKey = new Map<string, { taskId: string; version: string; runs: RunScores[] }>();
+    const byKey = new Map<string, { taskId: string; version: string; taskVersion?: string; primaryMetric?: RunScores["primaryMetric"]; evaluationProfile?: string; runs: RunScores[] }>();
     for (const run of catRuns) {
-      const k = JSON.stringify([run.taskId, run.version]);
+      const k = JSON.stringify([run.taskId, run.taskVersion ?? null, run.version, run.primaryMetric ?? null, run.evaluationProfile ?? null]);
       const g = byKey.get(k);
       if (g) g.runs.push(run);
-      else byKey.set(k, { taskId: run.taskId, version: run.version, runs: [run] });
+      else byKey.set(k, { taskId: run.taskId, taskVersion: run.taskVersion, primaryMetric: run.primaryMetric, evaluationProfile: run.evaluationProfile, version: run.version, runs: [run] });
     }
     const rows: LeaderboardRow[] = [];
-    for (const { taskId, version, runs: keyRuns } of byKey.values()) {
+    for (const { taskId, version, taskVersion, primaryMetric, evaluationProfile, runs: keyRuns } of byKey.values()) {
       const perRun = keyRuns.map(metricFloats); // 每 run 算一次(缓存,避免内层重算)
       const cells: LeaderboardCell[] = metrics.map((metric) => {
         // 每 run 先塌缩成单一代表值(同 metric 多 scorer 取中位数),再跨 run 聚合——
@@ -111,10 +114,17 @@ export function buildLeaderboard(
         const state = run.state ?? "scored";
         states[state] = (states[state] ?? 0) + 1;
       }
-      rows.push({ taskId, version, cells, states });
+      rows.push({ taskId, version, ...(taskVersion === undefined ? {} : { taskVersion }), ...(primaryMetric === undefined ? {} : { primaryMetric }), ...(evaluationProfile === undefined ? {} : { evaluationProfile }), cells, states });
     }
     // 行排序:按行内有效 metric 均值降序(全 null 排末尾)
-    rows.sort((a, b) => rowScore(b) - rowScore(a));
+    rows.sort((a, b) => {
+      // Different task protocols are not a shared numeric ranking.
+      if (a.primaryMetric || b.primaryMetric) {
+        const group = a.taskId.localeCompare(b.taskId) || (a.taskVersion ?? "").localeCompare(b.taskVersion ?? "") || (a.evaluationProfile ?? "").localeCompare(b.evaluationProfile ?? "");
+        if (group) return group;
+      }
+      return rowScore(b) - rowScore(a);
+    });
     tables.push({ category, metrics, rows });
   }
   tables.sort((a, b) => a.category.localeCompare(b.category));
@@ -123,6 +133,10 @@ export function buildLeaderboard(
 
 /** 一行的排序键:有效格子均值(全 null → -Infinity 排末尾)。 */
 function rowScore(row: LeaderboardRow): number {
+  if (row.primaryMetric) {
+    const value = row.cells.find(c => c.metric === row.primaryMetric!.id)?.value;
+    return value == null ? -Infinity : value * (row.primaryMetric.direction === "minimize" ? -1 : 1);
+  }
   const vals = row.cells.map((c) => c.value).filter((v): v is number => v != null);
   return vals.length ? vals.reduce((s, v) => s + v, 0) / vals.length : -Infinity;
 }

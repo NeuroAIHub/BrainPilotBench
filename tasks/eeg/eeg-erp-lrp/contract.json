@@ -1,0 +1,64 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-erp-lrp",
+  "source_task_id": "lrp/default",
+  "source_task_version": "expanded-three-seed-20260923-lrp-v1",
+  "source_task_spec_sha256": "380cfb689779f1579429b496c27804180898b0c51abb31192a1e8063a46c81d7",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "ERP_CORE",
+  "kind": "classification",
+  "input_shape": [
+    30,
+    120
+  ],
+  "output_size": 2,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 1,
+  "label_mapping": {
+    "NonTarget": 0,
+    "Target": 1
+  },
+  "split_type": "native SklearnSplit; rule=subject-disjoint; split_by=subject",
+  "train_samples": 9591,
+  "valid_samples": 3194,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-balanced-accuracy-complete-classes",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {
+      "sha256": "336cfba3d9d04170d9c66c35c9abc86887c17134aec2c4d9f6bb88ca47562dd6",
+      "bytes": 138187618
+    },
+    "val.npz": {
+      "sha256": "35ee58fb36115e7b1a0297612a1d6777ac4f0977346de4cb8c9325b55137d301",
+      "bytes": 46019642
+    },
+    "train-groups.json": {
+      "sha256": "90ac45fe8d0854005570ea624754bcad8ffca8a0cbd52c56b339a49e1c711cc4",
+      "bytes": 660890
+    },
+    "val-groups.json": {
+      "sha256": "1e70d8aed1479176cec5bca409aa5a37bc223d3dce7a9605f9e1297caeb567e9",
+      "bytes": 219497
+    }
+  },
+  "source_public_file_sha256": {
+    "TASK.md": "9017bfab97ee8c53fbe4a804a340f4355160603f32dc65970bb961d329215fa8",
+    "data/train-groups.json": "90ac45fe8d0854005570ea624754bcad8ffca8a0cbd52c56b339a49e1c711cc4",
+    "data/train.npz": "336cfba3d9d04170d9c66c35c9abc86887c17134aec2c4d9f6bb88ca47562dd6",
+    "data/val-groups.json": "1e70d8aed1479176cec5bca409aa5a37bc223d3dce7a9605f9e1297caeb567e9",
+    "data/val.npz": "35ee58fb36115e7b1a0297612a1d6777ac4f0977346de4cb8c9325b55137d301",
+    "environment.json": "4e278c768fb7bf1d153b6043224e050ef681593a3d2abb88e2285b7defeeec39",
+    "prompt.txt": "fc659d6a69215fbc6f4838e8fb27d4111a7c736d1351f67cb000baf2112d0822",
+    "task_spec.json": "380cfb689779f1579429b496c27804180898b0c51abb31192a1e8063a46c81d7",
+    "tools/full_runtime/__init__.py": "c043ca7f49037e90be488f6b785d41ebb42c528dd73fa076477e5bb25e627ff0",
+    "tools/full_runtime/artifact.py": "0478f82550f1faf752adc22a1624193ad63c1f7725aff0310acd658b27c63d0d",
+    "tools/full_runtime/evaluate.py": "3c322fca8f50e16a41cdca344ce064dc3e92cee651bed1dcbbace190cb6f7c97",
+    "tools/validate.py": "09f70711b8087515c40fc8f79ddcd85c491484472fdbd381266ad208137f533f"
+  },
+  "availability_status": "frozen_manifest_bound_not_downloaded_here",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

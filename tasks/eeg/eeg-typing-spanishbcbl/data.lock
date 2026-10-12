@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case typing/default; frozen task_spec SHA-256 5e482fdbb948102d728d1a992a2683796cda22999a4f07caaa3531aa3d9ebeae.
+datasets:
+  - name: eeg-typing-spanishbcbl-train-npz
+    uri: local://eeg-typing-spanishbcbl/d-typing-full-v3-20261012-r1/train.npz
+    sha256: 26f19a535102cf1fc7cfeb1407d7018112804812d3cb734f96895ff49482a98b
+    bytes: 2567269526
+    scope: public
+  - name: eeg-typing-spanishbcbl-val-npz
+    uri: local://eeg-typing-spanishbcbl/d-typing-full-v3-20261012-r1/val.npz
+    sha256: 172fb690288aecb4c4cbb0b67f6896d5f58fac751dc6e2a363757790b0833a09
+    bytes: 963839282
+    scope: public
+  - name: eeg-typing-spanishbcbl-train-groups-json
+    uri: local://eeg-typing-spanishbcbl/d-typing-full-v3-20261012-r1/train-groups.json
+    sha256: 63482046030e8610633bcd3ec8481443d482d6cde472e9134a1b27f96151b972
+    bytes: 6125043
+    scope: public
+  - name: eeg-typing-spanishbcbl-val-groups-json
+    uri: local://eeg-typing-spanishbcbl/d-typing-full-v3-20261012-r1/val-groups.json
+    sha256: 6b07e13c4502bfcafc227dbc8a31d92b82f6d6824abc29483c206681d45f6f19
+    bytes: 2292753
+    scope: public

@@ -9,7 +9,7 @@ export interface DockerIsolationOptions {
   readonlyInputs: string[];
   command: string;
   taskId: string;
-  timeoutMs: number;
+  timeoutMs: number | null;
   dockerBinary?: string;
   network?: string;
   cpus?: number;
@@ -148,7 +148,7 @@ export async function runDockerIsolated(options: DockerIsolationOptions): Promis
   return new Promise((resolvePromise, reject) => {
     const child = spawn(spec.binary, spec.args, { stdio: "inherit", env: process.env });
     let timedOut = false;
-    const timer = setTimeout(() => {
+    const timer = options.timeoutMs === null ? undefined : setTimeout(() => {
       timedOut = true;
       spawnSync(spec.binary, ["rm", "-f", spec.containerName], { stdio: "ignore", env: process.env });
     }, options.timeoutMs);

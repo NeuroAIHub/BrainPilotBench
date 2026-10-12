@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case mental_arithmetic/default; frozen task_spec SHA-256 c40a51ff2271599e3db4640eb08e4224a3156795563eb367749ca890a294f242.
+datasets:
+  - name: eeg-mental-arithmetic-zyma2019-train-npz
+    uri: local://eeg-mental-arithmetic-zyma2019/expanded-three-seed-20260923-zyma-v1/train.npz
+    sha256: b7a78a8b50ccedd4cc95ec6a461936fa09d14ffa9998d7cd1c43a6d7f350f16b
+    bytes: 47336378
+    scope: public
+  - name: eeg-mental-arithmetic-zyma2019-val-npz
+    uri: local://eeg-mental-arithmetic-zyma2019/expanded-three-seed-20260923-zyma-v1/val.npz
+    sha256: ae24b225a95ce052782ec5bc1e8d3ed9326edff1d8c75425281b3cb349e38745
+    bytes: 16179186
+    scope: public
+  - name: eeg-mental-arithmetic-zyma2019-train-groups-json
+    uri: local://eeg-mental-arithmetic-zyma2019/expanded-three-seed-20260923-zyma-v1/train-groups.json
+    sha256: 751723780033da617c495700f10b84d8a7ff0ad5671c629a52b61d67fc807345
+    bytes: 67159
+    scope: public
+  - name: eeg-mental-arithmetic-zyma2019-val-groups-json
+    uri: local://eeg-mental-arithmetic-zyma2019/expanded-three-seed-20260923-zyma-v1/val-groups.json
+    sha256: 40f14d4c7125d761a1d9869b903f25181d2215b4b850add16327487d2a5c6480
+    bytes: 23027
+    scope: public

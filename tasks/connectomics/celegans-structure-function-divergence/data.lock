@@ -1,0 +1,91 @@
+# celegans-structure-function-divergence data.lock —— 全部来源已钉死（2026-09-16）。
+#
+# 复现规则：改 commit sha / URL = 换数据版本；sha256 保内容一致（校验失败 fetch 会 throw）。
+# 本 lock 的每个 sha256 都在 2026-09-16 于**声明的那次 commit 下**重新下载并逐字节比对过
+# （见下方 "核对记录"），不是从本地副本回填的。
+#
+# 来源侧说明（与框架既有的 hf:// 形态的差别）：
+#   - 本题的数据源为**公开可下载的第一手测量**，因此直接用 https:// 锁定到具体 commit，
+#     不经过 gated HF 仓库。框架的 fetcher 支持 https/file/hf 三种 scheme，故这**是**
+#     可被 `fetch` 直接拉取并校验的 lock，不是占位。
+#   - 若日后要迁到 `hf://datasets/BrainPilot-Bench/...@<sha>/`，只需替换 uri 并保留
+#     sha256/bytes（内容不变则校验值不变）。
+#   - **scope=private 的含义是"不进 agent 工作区"，不是"保密"**：这三份连接组本身
+#     公开可下载，隔离靠 ① workspace 隔离 ② 评测容器无网络（requires.network=false）。
+#
+# 上游来源与许可：
+#   (A) 信号传播图谱（输入侧，CC-BY-4.0）
+#       Randi, Sharma, Dvali, Leifer, "Neural signal propagation atlas of C. elegans",
+#       Nature 623, 406–414 (2023). DOI 10.1038/s41586-023-06683-4
+#       官方正式发布：DANDI 001075（NWB, CC-BY-4.0, OpenAccess, 113 subjects）
+#                     OSF 10.17605/OSF.IO/E2SYT（机器可读处理后数据）
+#       本 lock 采用的文件是该图谱的 Figure 2a 导出（df_over_f + alpha=1-q_val 两张表），
+#       经 qsimeon/worm-graph 以同样许可转存；如需从第一手来源重建，见 checks/README.md。
+#   (B) 连接组（真值侧）
+#       - witvliet_2020_7 / _8：Witvliet et al., Nature 596, 257–261 (2021)
+#         （注意：_7 是纯体神经系统导出，**不含咽部神经元**，题面已声明）
+#       - aconnectome_white_1986_whole.csv：White et al. 1986，经 openworm/c302 整理
+#       - cook2019_matlab_ready.zip：Cook et al., Nature 571, 63–71 (2019)，
+#         经 wormwiring.org 发布的 MATLAB-ready 包（含 GHermChem.mat / GHermElec_Sym.mat）
+#   (C) 规范神经元名单（300 个，含 CANL/CANR 排除说明）随仓携带
+#       checks/neuron_labels_canonical_300.txt
+#       sha256 799bf7e546fb0539c34c3852bf83f3171ae367a3f0f2ddb43b925c76f8a83dd2 (2805 bytes)
+#       来源：qsimeon/worm-data-preprocess 的 _main_utils.py 中硬编码的 NEURON_LABELS
+#       @ d8e7257dfee4e6e782b3edf317e20b4a57553e77
+#         sha256 6d1875f5f2ea9775cfc88fbe061c98d144c62eaca6d412b07cd888eda5d52e1b (8375 bytes)
+#
+# 核对记录（2026-09-16，均已在上游 commit 下重新下载比对）：
+#   qsimeon/worm-graph   data/raw/* 最近 commit = f1d6175e0ccc574ace49ce537a3641806ddc6c2d
+#   openworm/c302        c302/data/aconnectome_white_1986_whole.csv commit = f47b5a12db3a3e1d825ac838a5d7007554b55a1a
+#   wormwiring.org       cook2019 zip HTTP 200，Content-Length 与下列 bytes 一致
+#
+# 构建产物（由 env/setup-*.sh 从下列源文件生成，不进 data.lock 的拉取清单；
+# 派生产物摘要由每次构建的私有验收回执记录，不能把来源 hash 当作产物 hash）：
+#   public/signaling.npz                      ← CElegansFunctionalConnectivity.xlsx
+#   public/connectome_witvliet_2020_7.npz     ← witvliet_2020_7.csv
+#   public/neuron_metadata.csv                ← neuron_master_sheet.csv
+#   private/signaling.npz                     ← 同一份 xlsx
+#   private/versions/witvliet_2020_8.npz      ← witvliet_2020_8.csv
+#   private/versions/cook_2019.npz            ← cook2019_matlab_ready.zip（两张 .mat）
+#   private/versions/white_1986_whole.npz     ← aconnectome_white_1986_whole.csv
+
+datasets:
+  # ---------------- public（agent 可拉；评测输入与参考连接组） ----------------
+  - name: CElegansFunctionalConnectivity.xlsx
+    scope: public
+    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/CElegansFunctionalConnectivity.xlsx
+    sha256: f02c68c9a2d34fe7b5aa8c7d74d8aca9ea9676d647e794ba99abbbff1b6350e5
+    bytes: 996970
+    format: xlsx
+  - name: witvliet_2020_7.csv
+    scope: public
+    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/witvliet_2020_7.csv
+    sha256: 613bfa8fb52f0ec85d65c5a878f6a40620e6c960337a4d1d1ac2ffa2af2d6e57
+    bytes: 54935
+    format: tsv
+  - name: neuron_master_sheet.csv
+    scope: public
+    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/neuron_master_sheet.csv
+    sha256: f3273b529c7542cf6b1d61b438d0e87526e32166b74d464fcaefe4700d87a558
+    bytes: 11701
+    format: csv
+
+  # ---------------- private（仅 evaluator 可见；扫描/评测用，不进 agent 工作区） ----------------
+  - name: witvliet_2020_8.csv
+    scope: private
+    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/witvliet_2020_8.csv
+    sha256: d6627c50f4295291e68c071e001e1e302b03d2d472a7f251f90cb36839e9be1a
+    bytes: 54974
+    format: tsv
+  - name: aconnectome_white_1986_whole.csv
+    scope: private
+    uri: https://raw.githubusercontent.com/openworm/c302/f47b5a12db3a3e1d825ac838a5d7007554b55a1a/c302/data/aconnectome_white_1986_whole.csv
+    sha256: 768d2b16557d768b51f81548f630adb45d76c1f99586e8fd4c90279293cc9dae
+    bytes: 64492
+    format: tsv
+  - name: cook2019_matlab_ready.zip
+    scope: private
+    uri: https://wormwiring.org/matlab%20scripts/Premaratne%20MATLAB-ready%20files%20.zip
+    sha256: 734202acc42c30a5cce882e695bb2efa333ade5b76345d7e35908342ee640b2c
+    bytes: 160062
+    format: zip

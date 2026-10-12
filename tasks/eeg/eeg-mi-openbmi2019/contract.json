@@ -1,0 +1,64 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-mi-openbmi2019",
+  "source_task_id": "motor_imagery/lee2019mi",
+  "source_task_version": "expanded-three-seed-20260923-openbmi-mi-v1",
+  "source_task_spec_sha256": "91a195cd77f560c3abf4e2681f2af62b6c50ded558f158d9e551ad56638a46b0",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "OpenBMI_Lee2019",
+  "kind": "classification",
+  "input_shape": [
+    62,
+    480
+  ],
+  "output_size": 2,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 4,
+  "label_mapping": {
+    "1": 0,
+    "2": 1
+  },
+  "split_type": "native SklearnSplit; rule=subject-disjoint; split_by=subject",
+  "train_samples": 6400,
+  "valid_samples": 2200,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-balanced-accuracy-complete-classes",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {
+      "sha256": "ea43e278de6439293998a9d076367f69a3085290aacee0e8af42da5f48b59d85",
+      "bytes": 761907690
+    },
+    "val.npz": {
+      "sha256": "19885a053b59af387aa165fa6ff68c786bd7b4789f972b25bcd279626538b56e",
+      "bytes": 261906090
+    },
+    "train-groups.json": {
+      "sha256": "f558e37be16b79601b3b5e0955517b8b5a8d1be9f57532bceccc221080ad4244",
+      "bytes": 440711
+    },
+    "val-groups.json": {
+      "sha256": "4c9985941754ff09aebcccf817c7099625ca2cb18444be198586b7092e7a45aa",
+      "bytes": 150911
+    }
+  },
+  "source_public_file_sha256": {
+    "TASK.md": "24e7cbb6b388a7bdcfa866c56dc05f12e3ec3d16f4dd2d2a76d544231bcfa17f",
+    "data/train-groups.json": "f558e37be16b79601b3b5e0955517b8b5a8d1be9f57532bceccc221080ad4244",
+    "data/train.npz": "ea43e278de6439293998a9d076367f69a3085290aacee0e8af42da5f48b59d85",
+    "data/val-groups.json": "4c9985941754ff09aebcccf817c7099625ca2cb18444be198586b7092e7a45aa",
+    "data/val.npz": "19885a053b59af387aa165fa6ff68c786bd7b4789f972b25bcd279626538b56e",
+    "environment.json": "4e278c768fb7bf1d153b6043224e050ef681593a3d2abb88e2285b7defeeec39",
+    "prompt.txt": "06a4aa91cbdfc0bf397196729aadda73c1b21317cdd2985f2c3b805d2137a7a8",
+    "task_spec.json": "91a195cd77f560c3abf4e2681f2af62b6c50ded558f158d9e551ad56638a46b0",
+    "tools/full_runtime/__init__.py": "c043ca7f49037e90be488f6b785d41ebb42c528dd73fa076477e5bb25e627ff0",
+    "tools/full_runtime/artifact.py": "0478f82550f1faf752adc22a1624193ad63c1f7725aff0310acd658b27c63d0d",
+    "tools/full_runtime/evaluate.py": "3c322fca8f50e16a41cdca344ce064dc3e92cee651bed1dcbbace190cb6f7c97",
+    "tools/validate.py": "09f70711b8087515c40fc8f79ddcd85c491484472fdbd381266ad208137f533f"
+  },
+  "availability_status": "frozen_manifest_bound_not_downloaded_here",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

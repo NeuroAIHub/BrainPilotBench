@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case p3/lee2019erp; frozen task_spec SHA-256 1720770bf3689641c80ea7ebed95d965be651c739a83213a94c68cc48137beaa.
+datasets:
+  - name: eeg-p3-openbmi2019-train-npz
+    uri: local://eeg-p3-openbmi2019/expanded-three-seed-20260923-openbmi-p3-v1/train.npz
+    sha256: 7bc96205e6dd2d3df058aaf938cb7e76307940e4af320cf03f9396b113f58272
+    bytes: 7887329878
+    scope: public
+  - name: eeg-p3-openbmi2019-val-npz
+    uri: local://eeg-p3-openbmi2019/expanded-three-seed-20260923-openbmi-p3-v1/val.npz
+    sha256: af5396ec7d15957bef84acee4399c71997589a026e364487d7d26bcf9ed99370
+    bytes: 2711270038
+    scope: public
+  - name: eeg-p3-openbmi2019-train-groups-json
+    uri: local://eeg-p3-openbmi2019/expanded-three-seed-20260923-openbmi-p3-v1/train-groups.json
+    sha256: 098d95216a6ca1f5b3b2f0f5df7a88c70834bac4d0c2f567465494b5b58df92f
+    bytes: 18701271
+    scope: public
+  - name: eeg-p3-openbmi2019-val-groups-json
+    uri: local://eeg-p3-openbmi2019/expanded-three-seed-20260923-openbmi-p3-v1/val-groups.json
+    sha256: f02d7f2527be2006a774fc16ad41982318238918dd63547375f70dbd6c5dfb11
+    bytes: 6364711
+    scope: public

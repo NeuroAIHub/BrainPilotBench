@@ -1,0 +1,18 @@
+- send: |-
+    Task: Sleep-EDF cassette sleep-stage classification, shared with AgentEEGBench.
+    Native source case: sleep_stage/default. Use only public_data/train.npz and
+    public_data/val.npz for research, fitting, diagnostics and model selection.
+    Each contains x and y. Input x is float32 [B, 2, 3600], sampled at 120 Hz
+    over 30 seconds. Labels are N1=0, N2=1, N3=2, R=3 and W=4.
+    Predict normalized probabilities for all five classes, shape [B, 5].
+    The frozen native split groups by subject. Read public_data/task_spec.json
+    for exact data hashes, grouping records and metric profile.
+    Private Test data and labels are unavailable; no Test feedback is returned.
+    Submit one chosen final method with seeds 0, 1 and 2. Each seed directory
+    under submission/ must contain model.py, config.json and weights.safetensors.
+    model.py must define Model(torch.nn.Module) with Model(config) and forward(x).
+    Each submitted model must reload its own weights and infer without training,
+    network access or task-file access. Parameters and saved numerical state
+    must each remain at or below 10 million elements.
+    The public validation metric is five-class balanced accuracy; higher is better.
+    There is no required research duration or improvement threshold.

@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-speekenbrink2008learning-exp1",
+  "experiment_id": "speekenbrink2008learning/exp1.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "sampling-agent-20261006-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 18,
+      "responses": 3600,
+      "bytes": 389287,
+      "sha256": "7f5235b3adab7c11bf95db1bcd22089680e8884b45e5e955f6b0fd7efbcc63d5"
+    },
+    "valid": {
+      "rows": 5,
+      "responses": 1000,
+      "bytes": 108056,
+      "sha256": "6ef8872d9fe53e1ffe4ecb457ba55f903a7aebaa712304e8b077bd881d49e578"
+    }
+  },
+  "response_space_profile": "speekenbrink_weather_v1",
+  "response_space_size": 2,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "score_scope": "public_validation_only",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case motor_imagery/zhou2016; frozen task_spec SHA-256 f24b704214152c3d6425814dc475c35dabdc1d3c1ad62634c80986b271b26e9e.
+datasets:
+  - name: eeg-mi-zhou2016-train-npz
+    uri: local://eeg-mi-zhou2016/expanded-three-seed-20260923-zhou-v1/train.npz
+    sha256: ae94ca4b4343ae6747eae3fc6e8bf0cf3ec84de93e1b6cb8d42707036f412682
+    bytes: 16509722
+    scope: public
+  - name: eeg-mi-zhou2016-val-npz
+    uri: local://eeg-mi-zhou2016/expanded-three-seed-20260923-zhou-v1/val.npz
+    sha256: e187d24a55be23ca88d1fb42491ae27d77a3a80cb2c3bcf222ec7f4d5f363e9f
+    bytes: 15756858
+    scope: public
+  - name: eeg-mi-zhou2016-train-groups-json
+    uri: local://eeg-mi-zhou2016/expanded-three-seed-20260923-zhou-v1/train-groups.json
+    sha256: 04c4d613080168968e485ce77050acabdf3f8f6ca5363c575adddd3896734e71
+    bytes: 45556
+    scope: public
+  - name: eeg-mi-zhou2016-val-groups-json
+    uri: local://eeg-mi-zhou2016/expanded-three-seed-20260923-zhou-v1/val-groups.json
+    sha256: 7cac650a6e4708e48a1337ae521bea840479a698f03f6fc1f885a0570a3069b3
+    bytes: 43484
+    scope: public

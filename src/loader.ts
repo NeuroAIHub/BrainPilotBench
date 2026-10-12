@@ -21,8 +21,9 @@ export function loadTask(dir: string): Task {
     summary: metaRaw.summary ?? "",
     expectedArtifacts: (metaRaw.expected_artifacts ?? metaRaw.expectedArtifacts ?? []).map((a: any) =>
       typeof a === "string" ? { workspace: a } : { workspace: a.workspace }),
-    timeoutMin: metaRaw.timeout_min ?? metaRaw.timeoutMin ?? 60,
-    budgetTokens: metaRaw.budget_tokens ?? metaRaw.budgetTokens ?? 500000,
+    timeoutMin: metaRaw.timeout_min !== undefined ? metaRaw.timeout_min : (metaRaw.timeoutMin !== undefined ? metaRaw.timeoutMin : 60),
+    budgetTokens: metaRaw.budget_tokens !== undefined ? metaRaw.budget_tokens : (metaRaw.budgetTokens !== undefined ? metaRaw.budgetTokens : 500000),
+    evaluation: metaRaw.evaluation === undefined ? undefined : { primaryMetric: metaRaw.evaluation?.primary_metric, ...(metaRaw.evaluation?.profile === undefined ? {} : { profile: metaRaw.evaluation.profile }) },
     requires: metaRaw.requires ?? {},
     version: metaRaw.version != null ? String(metaRaw.version) : "unversioned",
     createdAt: metaRaw.created_at != null ? String(metaRaw.created_at) : undefined,

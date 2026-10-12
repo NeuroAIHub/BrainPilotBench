@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case cvep/thielen2015; frozen task_spec SHA-256 a59f22dba2f714ac5e67f742309c0c2cca35667b26e8ad461e56c50f09f64f6d.
+datasets:
+  - name: eeg-cvep-thielen2015-train-npz
+    uri: local://eeg-cvep-thielen2015/expanded-three-seed-20260923-thielen15-v1/train.npz
+    sha256: 598da6b73e6c5fbff82a36f13d49dbc5fc02d38cab62ee0e58c625d21b661849
+    bytes: 79647466
+    scope: public
+  - name: eeg-cvep-thielen2015-val-npz
+    uri: local://eeg-cvep-thielen2015/expanded-three-seed-20260923-thielen15-v1/val.npz
+    sha256: c1749118f46e776ca28828b134d9ad32c547c24e920986a7efb5ad3ed7398d99
+    bytes: 39823978
+    scope: public
+  - name: eeg-cvep-thielen2015-train-groups-json
+    uri: local://eeg-cvep-thielen2015/expanded-three-seed-20260923-thielen15-v1/train-groups.json
+    sha256: 15158b4293c91585f6b2ce4f61af3b0ee2b6f7710bd9017d42f313421a17702f
+    bytes: 177959
+    scope: public
+  - name: eeg-cvep-thielen2015-val-groups-json
+    uri: local://eeg-cvep-thielen2015/expanded-three-seed-20260923-thielen15-v1/val-groups.json
+    sha256: 1ed37c5b34b238f60c54fd43aec2a5347822181b7cb54e418cbceed7542c7aae
+    bytes: 88535
+    scope: public

@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case motor_execution/schirrmeister2017; frozen task_spec SHA-256 f6885cfd00c5bfb697022f0134df2bf488a36cd3a6f0bec933cd6d7251473b77.
+datasets:
+  - name: eeg-me-highgamma2017-train-npz
+    uri: local://eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/train.npz
+    sha256: ed3c5caa5fb016f4c70ba05d678cf6d2395a6856c326868186b8983c702c836e
+    bytes: 1495084898
+    scope: public
+  - name: eeg-me-highgamma2017-val-npz
+    uri: local://eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/val.npz
+    sha256: ceb7df542a1400bda45668b250876995867dbbac49d0215fde47dce04fc92ea5
+    bytes: 545611370
+    scope: public
+  - name: eeg-me-highgamma2017-train-groups-json
+    uri: local://eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/train-groups.json
+    sha256: 464220265a836f939932dda2b03c80d361c3ae2a3d83e080078a2fbb5a866e10
+    bytes: 558770
+    scope: public
+  - name: eeg-me-highgamma2017-val-groups-json
+    uri: local://eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/val-groups.json
+    sha256: 807239bc0a149f2f78a815687a5d9396eb7ffe8a9ed063ec8a4fd603e8925799
+    bytes: 203351
+    scope: public

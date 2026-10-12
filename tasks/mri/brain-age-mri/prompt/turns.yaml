@@ -1,0 +1,11 @@
+- send: >-
+    Build a brain-age model using only the 449 public T1-weighted structural MRI
+    images and their ages in public_data/. You may choose a public-only validation
+    split and preprocessing method. Submit scripts/predict.py, a frozen model and
+    models/model_manifest.json, your training code/configuration, public validation
+    predictions, and report.md. The inference script must accept --input-dir,
+    --input-manifest, --model-dir, and --output-csv. Its output CSV must have exactly
+    subject_id,predicted_age, with one finite numeric prediction per input subject.
+    The evaluator holds 112 different images and their ages; do not request or use
+    evaluator-only files. Describe the public validation design and limitations.
+  then: wait_idle

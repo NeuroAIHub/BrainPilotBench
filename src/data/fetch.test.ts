@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, symlinkSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { DataFetchError, registerFetcher, getFetcher, hasFetcher, listFetchers, schemeOf, hfResolve, resolveHfToken } from "./fetch.js";
@@ -213,4 +213,47 @@ test("registerFetcher: 可注册自定义 scheme", async () => {
   registerFetcher("memtest", async (req) => { called = req.uri; });
   await getFetcher("memtest")({ uri: "memtest://x", destPath: "/dev/null" });
   assert.equal(called, "memtest://x");
+});
+
+test("local:// copies a downloaded archive only from BPB_LOCAL_DATA_ROOT", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "bpb-local-"));
+  const previous = process.env.BPB_LOCAL_DATA_ROOT;
+  try {
+    const root = join(dir, "provided");
+    mkdirSync(join(root, "nested"), { recursive: true });
+    writeFileSync(join(root, "nested", "agent_data.zip"), "small-test-archive");
+    process.env.BPB_LOCAL_DATA_ROOT = root;
+    assert.equal(hasFetcher("local"), true);
+    const dest = join(dir, "copied.zip");
+    await getFetcher("local")({ uri: "local://nested/agent_data.zip", destPath: dest });
+    assert.equal(readFileSync(dest, "utf8"), "small-test-archive");
+  } finally {
+    if (previous === undefined) delete process.env.BPB_LOCAL_DATA_ROOT;
+    else process.env.BPB_LOCAL_DATA_ROOT = previous;
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("local:// rejects missing root, traversal and symlink escapes without copying", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "bpb-local-boundary-"));
+  const previous = process.env.BPB_LOCAL_DATA_ROOT;
+  try {
+    const root = join(dir, "provided");
+    mkdirSync(root);
+    const secret = join(dir, "outside.bin");
+    writeFileSync(secret, "outside");
+    symlinkSync(secret, join(root, "escape.bin"));
+    const dest = join(dir, "must-not-exist");
+    delete process.env.BPB_LOCAL_DATA_ROOT;
+    await assert.rejects(() => getFetcher("local")({ uri: "local://escape.bin", destPath: dest }), /BPB_LOCAL_DATA_ROOT/);
+    process.env.BPB_LOCAL_DATA_ROOT = root;
+    for (const uri of ["local://../outside.bin", "local://%2e%2e%2foutside.bin", "local:///outside.bin", "local://escape.bin"]) {
+      await assert.rejects(() => getFetcher("local")({ uri, destPath: dest }), /inside BPB_LOCAL_DATA_ROOT|stay inside BPB_LOCAL_DATA_ROOT/);
+      assert.equal(existsSync(dest), false, uri);
+    }
+  } finally {
+    if (previous === undefined) delete process.env.BPB_LOCAL_DATA_ROOT;
+    else process.env.BPB_LOCAL_DATA_ROOT = previous;
+    rmSync(dir, { recursive: true, force: true });
+  }
 });

@@ -30,8 +30,8 @@ import { loadRunScores, buildLeaderboard } from "./leaderboard.js";
 import { renderLeaderboard, type LeaderboardFormat } from "./leaderboard-format.js";
 import { loadCategories } from "./categories.js";
 import { resolveManifest, parseDatasetSelection, selectDatasets, type DatasetSelection } from "./data/index.js";
-import { runScorers, type RunBundle, type RunScores } from "./score.js";
-import { validateTask } from "./validate.js";
+import { runScorers, scoreMetadataForTask, type RunBundle, type RunScores } from "./score.js";
+import { validateTask, validateTaskSchema } from "./validate.js";
 import { buildRelease, addRelease, loadRegistry, saveRegistry, verifyRegistry, checkFreezeVisibility } from "./registry.js";
 import { loadSubmissionMeta, verifySubmission, type SubmissionMeta } from "./submission.js";
 import { execFileSync } from "node:child_process";
@@ -364,7 +364,9 @@ async function main() {
     const heldoutAllowed = argv.includes("--allow-heldout");
     let hadError = false;
     for (const d of dirs) {
-      const issues = await validateTask(d, repoDir, { heldoutAllowed });
+      const issues = argv.includes("--schema-only")
+        ? validateTaskSchema(loadTask(d), loadCategories(repoDir), { heldoutAllowed })
+        : await validateTask(d, repoDir, { heldoutAllowed });
       const errs = issues.filter((i) => i.level === "error");
       const warns = issues.filter((i) => i.level === "warn");
       const id = d.split("/").pop();
@@ -470,7 +472,7 @@ async function main() {
     if (signalsRaw?.completed === false) contractErrors.push({ level: "error", msg: "agent run is not completed" });
     if (contractErrors.length) {
       const invalid: RunScores = {
-        taskId, runId, version, scoredAt, state: "submission_invalid",
+        taskId, ...scoreMetadataForTask(t), runId, version, scoredAt, state: "submission_invalid",
         explanation: contractErrors.map((issue) => issue.msg).join("; "), results: [],
       };
       writeFileSync(join(runDir, "scores.json"), JSON.stringify(invalid, null, 2));
@@ -484,7 +486,7 @@ async function main() {
     try {
       scores = await runScorers(t, bundle, scoredAt);
     } catch (error) {
-      scores = { taskId, runId, version, scoredAt, state: "scoring_failed", explanation: (error as Error).message, results: [] };
+      scores = { taskId, ...scoreMetadataForTask(t), runId, version, scoredAt, state: "scoring_failed", explanation: (error as Error).message, results: [] };
     }
     writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
     console.log(`${B}— score ${taskId}${X}  state=${scores.state} → ${join(runDir, "scores.json")}`);

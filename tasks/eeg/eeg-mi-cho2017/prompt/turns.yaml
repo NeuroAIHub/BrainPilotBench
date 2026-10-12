@@ -1,0 +1,18 @@
+- send: |-
+    Task: Cho2017 motor imagery. Native source case: motor_imagery/cho2017.
+    Public data are in public_data/train.npz and public_data/val.npz; each contains x and y.
+    Input x has shape [B, 64, 480]. Class labels are 0..1;
+    output class probabilities have shape [B, 2]. Sampling rate is 120 Hz.
+    The frozen split is native SklearnSplit; rule=subject-disjoint; split_by=subject. Read public_data/task_spec.json for the exact
+    label mapping, data hashes, grouping files and native metric profile.
+    You may use train and valid for research, fitting, diagnostics and model selection.
+    The private Test data and labels are unavailable; no Test feedback is returned.
+    Submit one chosen final method with seeds 0, 1 and 2. Each seed directory under
+    submission/ must contain model.py, config.json and weights.safetensors.
+    model.py must define Model(torch.nn.Module) with Model(config) and forward(x).
+    Each submitted model must reload from its own saved weights and output normalized
+    probabilities without training, network access or task-file access during inference.
+    Parameters and saved numerical state must each remain at or below 10 million elements.
+    Extra files are ignored; missing required files fail the declared delivery contract.
+    The public validation metric is native-balanced-accuracy-complete-classes; higher is better.
+    There is no fixed research duration or required improvement threshold.

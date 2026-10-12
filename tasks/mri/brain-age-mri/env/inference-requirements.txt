@@ -1,0 +1,4 @@
+# Minimal isolated submitted-inference environment (Python 3.11).
+numpy==2.2.6
+scipy==1.15.3
+nibabel==5.3.2

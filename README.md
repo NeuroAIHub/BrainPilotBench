@@ -5,8 +5,9 @@
 <p><strong>Evaluating agents for brain science research.</strong></p>
 
 <p>
-BrainPilotBench is an open evaluation framework and curated task suite for testing whether
-agents can complete real brain science workflows and produce verifiable research artifacts.
+BrainPilotBench is a shared collection of brain-science tasks, environments,
+data preparation scripts, submission contracts, and scoring tools.
+Independent research projects can reuse the same versioned tasks.
 </p>
 
 <p>
@@ -41,9 +42,9 @@ The interface is agent-agnostic: any system that completes a task and returns a 
 submission bundle can be evaluated.
 
 > [!IMPORTANT]
-> **BrainPilotBench-v0 is preliminary because the current public suite contains four tasks.**
-> All four have completed runs in the technical report. The package is not yet published
-> to npm; use a source checkout.
+> The published BrainPilotBench-v0 results cover four tasks. The shared collection
+> below is an integration candidate, not a new benchmark release or a set of
+> completed Agent comparisons. The package is not yet published to npm; use a source checkout.
 
 ## Why BrainPilotBench
 
@@ -77,20 +78,46 @@ the technical report.
 
 ## Task suite
 
-BrainPilotBench-v0 contains four canonical public tasks:
+The four original tasks retain their IDs, versions, and scientific protocols.
+Their directories are now grouped by data domain:
 
 | Task | Capability | Compute | Primary scoring |
 |---|---|---|---|
-| [<code>neuro-rsc-place-cell</code>](tasks/neuro-rsc-place-cell/README.md) | RSC calcium imaging, virtual-reality behavior, place-cell analysis, and decoding | CPU | Deterministic checks + human rubric |
-| [<code>tops-fmri</code>](tasks/tops-fmri/README.md) | Functional-connectivity modeling and held-out tonic-pain prediction | CPU | Study4 Pearson r + Study5 AUC |
-| [<code>bciciv-2a</code>](tasks/bciciv-2a/README.md) | Four-class motor-imagery EEG decoding | GPU | Held-out accuracy + Cohen's kappa |
-| [<code>sleep-edf</code>](tasks/sleep-edf/README.md) | Five-class sleep staging | GPU | Held-out Cohen's kappa + per-class recall |
+| [<code>neuro-rsc-place-cell</code>](tasks/calcium-imaging/neuro-rsc-place-cell/README.md) | RSC calcium imaging, virtual-reality behavior, place-cell analysis, and decoding | CPU | Deterministic checks + human rubric |
+| [<code>tops-fmri</code>](tasks/mri/tops-fmri/README.md) | Functional-connectivity modeling and held-out tonic-pain prediction | CPU | Study4 Pearson r + Study5 AUC |
+| [<code>bciciv-2a</code>](tasks/eeg/bciciv-2a/README.md) | Four-class motor-imagery EEG decoding | GPU | Held-out accuracy + Cohen's kappa |
+| [<code>sleep-edf</code>](tasks/eeg/sleep-edf/README.md) | Five-class sleep staging | GPU | Held-out Cohen's kappa + per-class recall |
 
 Task-specific setup, data requirements, prompts, expected artifacts, and scoring details
 are documented in each task directory.
 
-Public task data are available from
+The [shared collection](docs/shared-task-collection.md) adds EEG, behavioral,
+connectomics and structural-MRI task packages. The [machine-readable catalog](tasks/catalog.json)
+distinguishes runnable entries, structurally checked entries, and metadata-only
+candidates. `bp-bench list` includes runnable task packages only.
+
+| Added task family | Task entry | Integration validation |
+|---|---|---|
+| EEG native protocols | [BCI-IV-2a native split](tasks/eeg/eeg-mi-bnci2014/README.md), 21 imported packages, and [full native Sleep-EDF](tasks/eeg/eeg-sleep-stage-sleepedf/README.md) | One real reference; shared scorer regression; other task contracts checked without retraining |
+| Psychology | [76 public-validation tasks](tasks/psychology/README.md) | 22 categorical interfaces and 54 versioned byte-sequence interfaces; representative and contract checks |
+| Connectomics | [C. elegans](tasks/connectomics/celegans-structure-function-divergence/README.md) | Real-data reference through isolated scoring |
+| MRI | [Structural MRI brain age](tasks/mri/brain-age-mri/README.md) | Public model fit and one frozen held-out reference evaluation |
+
+AgentEEGBench, Psych101-Agent-Bench, and a future MRI research benchmark remain
+independent projects. They can pin this collection's Git commit, task ID, task
+version, and data hashes. This repository does not import their experiment queues,
+controllers, provider settings, histories, or a top-level `runtimes/` layer.
+
+The [coverage expansion record](docs/coverage-expansion.md) lists 105 runnable
+interfaces, four EEG preparation recipes that still need full data exports, and
+one task withheld from activation. A runnable interface still needs its pinned
+data package. It does not mean that a full Agent experiment was completed.
+New EEG and Psych entries currently score public validation, not private Test.
+
+The four original tasks use public data from
 [BrainPilot-Bench/Tasks-Data-Public](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public).
+New packages remain in owner-only preparation; see the
+[data preparation record](docs/data-preparation.md) for available copies and gaps.
 Evaluator-only data remain gated and are never exposed to an agent run.
 
 ## Quick start

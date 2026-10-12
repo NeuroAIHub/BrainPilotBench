@@ -1,0 +1,6 @@
+{
+  "taskId": "eeg-mi-bnci2014",
+  "taskVersion": "0.1-public-validation",
+  "agent": "fixed-ridge-reference@1",
+  "notes": "Public validation only; fixed train-only reference; no private Test."
+}

@@ -46,8 +46,14 @@ test("runScorers: 跑注册的测试 scorer,收集其 ScoreResult", async () => 
     mkdirSync(join(dir, "artifacts"), { recursive: true });
     writeFileSync(join(dir, "artifacts", "a.md"), "x");
     const bundle: RunBundle = { runDir: dir, runId: "t1-v", version: "v", events: [], signals: {} };
-    const out = await runScorers(fakeTask(["test-count"]), bundle, "2026-06-17T00:00:00.000Z");
+    const task = fakeTask(["test-count"]);
+    task.meta.version = "science-v2";
+    task.meta.evaluation = { primaryMetric: { id: "count", direction: "maximize", unit: "items" }, profile: "public-v2" };
+    const out = await runScorers(task, bundle, "2026-06-17T00:00:00.000Z");
     assert.equal(out.taskId, "t1");
+    assert.equal(out.taskVersion, "science-v2");
+    assert.deepEqual(out.primaryMetric, { id: "count", direction: "maximize", unit: "items" });
+    assert.equal(out.evaluationProfile, "public-v2");
     assert.equal(out.results.length, 1);
     assert.equal(out.results[0].kind, "test-count");
     assert.deepEqual(out.results[0].value, { count: 1 });
@@ -71,6 +77,8 @@ test("runScorers: rubric-judge 无凭证返回 unscored(score.js 自注册内置
     assert.equal(out.results[0].unscored, true);
     assert.equal(out.results[0].state, "scoring_failed");
     assert.equal(out.state, "scoring_failed");
+    assert.equal(out.taskVersion, "test");
+    assert.equal(out.primaryMetric, undefined);
   } finally {
     if (saved.k) process.env.ANTHROPIC_API_KEY = saved.k;
     if (saved.b) process.env.BPB_JUDGE_API_KEY = saved.b;

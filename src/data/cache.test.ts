@@ -6,6 +6,17 @@ import { join } from "node:path";
 import { createHash } from "node:crypto";
 import { cacheDir, cachePathFor, isCached, verifySha256 } from "./cache.js";
 
+test("cacheDir honors the explicit task setup cache root", () => {
+  const previous = process.env.BPB_CACHE_ROOT;
+  try {
+    process.env.BPB_CACHE_ROOT = "/tmp/bpb-explicit-cache";
+    assert.equal(cacheDir(), "/tmp/bpb-explicit-cache");
+    assert.equal(cachePathFor("a".repeat(64)), join("/tmp/bpb-explicit-cache", "a".repeat(64), "data"));
+  } finally {
+    if (previous === undefined) delete process.env.BPB_CACHE_ROOT; else process.env.BPB_CACHE_ROOT = previous;
+  }
+});
+
 test("cacheDir: 尊重 XDG_CACHE_HOME，回落 ~/.cache", () => {
   const prev = process.env.XDG_CACHE_HOME;
   try {

@@ -1,0 +1,8 @@
+# Psych-101 public source only. Official gated Test is intentionally absent.
+datasets:
+  - name: prompts_training.jsonl
+    scope: public
+    uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
+    sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
+    bytes: 859179475
+    format: jsonl

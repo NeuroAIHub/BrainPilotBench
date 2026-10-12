@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "celegans-structure-function-divergence / divergence/contract.json",
+  "description": "提交的分析器自述契约文档。评分器直接检查必需字段与冻结常量；本文件的其余 JSON Schema 约束不作运行时完整校验。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["analysis_class", "methods", "protocol_version", "alpha_threshold",
+               "community_method", "hub_fraction", "hub_tie_break", "hub_significance",
+               "null_model", "edge_definition"],
+  "properties": {
+    "analysis_class": {
+      "const": "DivergenceAnalysis",
+      "description": "类名必须与题面一致"
+    },
+    "methods": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "必须包含 analyze"
+    },
+    "analyze_signature": {
+      "type": "string",
+      "description": "analyze 的签名自述（可选摘要）"
+    },
+    "protocol_version": {
+      "const": "1.0",
+      "description": "冻结的协议版本，不可改"
+    },
+    "alpha_threshold": {
+      "const": 0.95,
+      "description": "显著传播边的阈值（alpha = 1 - q_val），冻结"
+    },
+    "community_method": {
+      "const": "greedy_modularity",
+      "description": "社区检测方法（Clauset-Newman-Moore），冻结"
+    },
+    "hub_fraction": {
+      "const": 0.1,
+      "description": "hub 取前 10%（k = max(5, round(0.1N))），冻结"
+    },
+    "hub_tie_break": {
+      "const": "neuron_id_ascending",
+      "description": "前 k 名并列时的破除规则（按神经元 id 升序），冻结。作用：使排名与数组行序无关"
+    },
+    "hub_significance": {
+      "const": "two_sided_pearson_t_alpha_0.05",
+      "description": "度数相关显著性的检验口径（双侧 Pearson、t 分布、α=0.05），冻结"
+    },
+    "null_model": {
+      "const": "degree_preserving_swap",
+      "description": "模块对齐的零模型（度保持双边交换），冻结"
+    },
+    "edge_definition": {
+      "const": "abs_weight_max_symmetrised",
+      "description": "信号边的定义：|w| 的 max 对称化，对角置零，冻结"
+    },
+    "judgment_thresholds": {
+      "type": "object",
+      "description": "判断题阈值的自述（与题面一致；scorer 用自己的一份，本字段仅供核对）",
+      "properties": {
+        "edge_weak_lift_max": { "type": "number" },
+        "modules_low_nmi_max": { "type": "number" },
+        "modules_above_null_z_min": { "type": "number" },
+        "pharynx_enrich_min": { "type": "number" },
+        "hub_corr_alpha": { "type": "number" }
+      }
+    }
+  }
+}

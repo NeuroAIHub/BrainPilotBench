@@ -34,10 +34,23 @@ export interface RunScores {
   taskId: string;
   runId: string;
   version: string;
+  /** Task protocol version, distinct from the submitting agent version. */
+  taskVersion?: string;
+  primaryMetric?: NonNullable<Task["meta"]["evaluation"]>["primaryMetric"];
+  evaluationProfile?: string;
   scoredAt: string;
   state: Exclude<ScoringState, "ready_to_score">;
   explanation?: string;
   results: ScorerRunResult[];
+}
+
+/** Attach the selected task protocol to every scored and unscored result. */
+export function scoreMetadataForTask(task: Task): Pick<RunScores, "taskVersion" | "primaryMetric" | "evaluationProfile"> {
+  return {
+    taskVersion: task.meta.version,
+    primaryMetric: task.meta.evaluation?.primaryMetric,
+    evaluationProfile: task.meta.evaluation?.profile,
+  };
 }
 
 /** Content snapshot used to prove scorers did not mutate submitted artifacts. */
@@ -116,5 +129,5 @@ export async function runScorers(task: Task, bundle: RunBundle, scoredAt: string
       : results.some((result) => result.state === "private_data_missing")
         ? "private_data_missing"
         : "scoring_failed";
-  return { taskId: task.meta.id, runId: bundle.runId, version: bundle.version, scoredAt, state, results };
+  return { taskId: task.meta.id, ...scoreMetadataForTask(task), runId: bundle.runId, version: bundle.version, scoredAt, state, results };
 }

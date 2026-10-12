@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 
-const SETUP = join(process.cwd(), "tasks", "tops-fmri", "env", "setup.sh");
+const SETUP = join(process.cwd(), "tasks", "mri", "tops-fmri", "env", "setup.sh");
 const PUBLIC_SHAS = [
   "17ca43dbc6ec53f9d9a1ae7b5ad234160d1dfee96dc5d83c714dd4cf87ae7366",
   "051316b32ffe0b39d32ef1a577d82f6c18e5a90425d9082367566cd7b83204d2",

@@ -1,0 +1,42 @@
+# Candidate qualitative-review rubric. It is not an automatic scorer.
+# Review only evidence available from the public reconstruction and submitted
+# report/code. Do not use evaluator-only reconstructions or expected answers.
+dimensions:
+  - correctness
+  - evidence
+  - consistency
+  - methodology
+  - calibration
+  - presentation
+criteria:
+  correctness:
+    look_at: [divergence/divergence_analysis.py, divergence/contract.json]
+    core: The analyzer implements the declared protocol from its input arrays without version-specific constants.
+    five: All defined statistics, missing-value rules, graph construction, and output branches are implemented and traceable.
+    two: The submitted code returns constants or omits required computations.
+    note: Numerical agreement is scored separately by the objective scorer.
+  evidence:
+    look_at: [report.md]
+    core: Each scientific conclusion cites a computed value and the comparison level used to interpret it.
+    five: Values, units, thresholds, and the public reconstruction are identifiable for every main conclusion.
+    two: Conclusions are unsupported or values cannot be traced to the submitted implementation.
+  consistency:
+    look_at: [report.md]
+    core: The report distinguishes evidence from the public reconstruction from claims about other reconstructions.
+    five: It states the observed scope and explains which quantities may vary with coverage, neuron identity, or threshold choice.
+    two: It claims to have measured evaluator-only reconstructions.
+  methodology:
+    look_at: [report.md, divergence/divergence_analysis.py]
+    core: The report explains missing pairs, chance levels, null models, community construction, and hub definition.
+    five: The choices follow the task protocol and their limitations are stated.
+    two: Key choices are absent or conflict with the protocol.
+  calibration:
+    look_at: [report.md]
+    core: Claim strength follows the public measurements and acknowledges undecidable cases.
+    five: It avoids conclusions that exceed the measured reconstruction and identifies boundary cases.
+    two: It turns descriptive overlap, a null result, or missing coverage into an unsupported categorical claim.
+  presentation:
+    look_at: [report.md]
+    core: A reader can link each result to its method, comparison, and conclusion.
+    five: The report is concise and every quantity is labeled.
+    two: The report is too ambiguous to check.

@@ -1,0 +1,28 @@
+{
+  "task_id": "motor_imagery/tangermann2012",
+  "task_version": "full-autonomous-20260918-v1",
+  "kind": "classification",
+  "input_shape": [22, 480],
+  "output_size": 4,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 4,
+  "label_mapping": {"1": 0, "2": 1, "3": 2, "4": 3},
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "split_type": "native subject-grouped",
+  "train_samples": 2880,
+  "valid_samples": 1152,
+  "data_hashes": {
+    "train.npz": "73dbd5047396c6d3c64144ca1cf0de7fa0ae40b9b2a6e03af3a137d0d67a47c0",
+    "val.npz": "c5076f0a536396660dd818eaf8439abf66e27dc0f51c0f7815de93baa2610e83"
+  },
+  "provenance": {
+    "source_project": "AgentEEGBench",
+    "upstream_science_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+    "original_public_task_spec_sha256": "dadff50d8a6dbaf4569ec1248383045bb1b4782411df29bdf4e06d26da9e58da",
+    "collection_profile": "public-validation-only; seed triplet artifact convention; no private Test import"
+  }
+}

@@ -1,0 +1,11 @@
+# Zyma mental arithmetic
+
+Candidate integration status: public-validation runnable definition; no private Test is imported or rerun. Scientific source case `mental_arithmetic/default`, frozen source task version `expanded-three-seed-20260923-zyma-v1`, source SHA `a8092dc10956038e445ff0e07f9c0c7e03a10d36`, original public task_spec SHA-256 `c40a51ff2271599e3db4640eb08e4224a3156795563eb367749ca890a294f242`.
+
+The task-specific `contract.json` binds input [20, 600], 2 classes, 120 Hz, native split `native SklearnSplit; rule=subject-disjoint; split_by=subject`, label mapping, train/valid sample counts, metric profile `native-balanced-accuracy-complete-classes`, and exact SHA-256 and byte length of four public files. The source data were previously prepared under the cited native protocol. No EEG arrays are committed here; `availability_status=frozen_manifest_bound_not_downloaded_here` means the public bytes must be supplied or fetched into a hash-verified local cache before an Agent starts.
+
+Before public scoring, run `bash tasks/eeg/_shared/setup-python.sh` from the repository root and set `BPB_EEG_PYTHON` to its printed pinned NumPy 2.2.6 environment. This is separate from the Docker image that executes submitted model code.
+
+The four `local://` paths in `data.lock` are task-scoped. A maintainer may stage the matching public package under `BPB_LOCAL_DATA_ROOT/eeg-mental-arithmetic-zyma2019/expanded-three-seed-20260923-zyma-v1/`, run `bp-bench fetch eeg-mental-arithmetic-zyma2019 --public`, then unset `BPB_LOCAL_DATA_ROOT` before Agent execution. Alternatively, use a public-only package directory with `BPB_EEG_PUBLIC_PACKAGE_DIR`; setup verifies its original task_spec SHA and every public file SHA/size. Private Test files and source-private bindings must not be placed in either public location.
+
+`env/setup.sh` copies only public train/val and group metadata into the Agent workspace. `checks/check.sh` uses the shared, task-agnostic public-validation scorer: it keeps validation y in the trusted parent and executes only the submitted nine required seed files in isolated Docker inference. It refuses official private Test scoring. This task has not independently passed a new BrainPilotBench Agent run; the original accepted source episode and a later BPB validation are distinct lifecycle records.

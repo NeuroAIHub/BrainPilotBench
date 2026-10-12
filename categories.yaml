@@ -2,6 +2,16 @@
 # 且其 scorer 产出的 metric 覆盖该集(validate 校验)。leaderboard 按 category 分组出表。
 survey-writing:
   metrics: [correctness, completeness, methodology, presentation]
+eeg-native-classification:
+  metrics: [balanced_accuracy]
+eeg-native-regression:
+  metrics: [BinnedMAE]
+psychology-behavior:
+  metrics: [mean_response_nll]
+mri-brain-age:
+  metrics: [test_mae]
+structure-function-divergence:
+  metrics: [score]
 exec-data-analysis:
   metrics: [rows_ok]
 neural-analysis:

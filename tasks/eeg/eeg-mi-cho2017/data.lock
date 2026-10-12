@@ -1,0 +1,23 @@
+# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Source case motor_imagery/cho2017; frozen task_spec SHA-256 357a540d7d644d524a19c9fbb4646a15ce28812a9ae8c7d9c60aa01a333987eb.
+datasets:
+  - name: eeg-mi-cho2017-train-npz
+    uri: local://eeg-mi-cho2017/expanded-three-seed-20260923-cho-v1/train.npz
+    sha256: 7a179ac00f4f80a8fb78ccdc259a10d8dd73da61e04258c9b4adebadecec5371
+    bytes: 752075050
+    scope: public
+  - name: eeg-mi-cho2017-val-npz
+    uri: local://eeg-mi-cho2017/expanded-three-seed-20260923-cho-v1/val.npz
+    sha256: f73e5697d6ba99ff5421b1e62609e4d1ccf34a8f2f1294d23a7bcecc53951942
+    bytes: 270354090
+    scope: public
+  - name: eeg-mi-cho2017-train-groups-json
+    uri: local://eeg-mi-cho2017/expanded-three-seed-20260923-cho-v1/train-groups.json
+    sha256: cd30a89b9bcf6f91d260744cb3a1c6a9386c61a803513032177d50b5e1903ca6
+    bytes: 421391
+    scope: public
+  - name: eeg-mi-cho2017-val-groups-json
+    uri: local://eeg-mi-cho2017/expanded-three-seed-20260923-cho-v1/val-groups.json
+    sha256: 176ca0c1adddd53eacf0f07d1f42f99a056df30ef27906b2d7bcca961182ab06
+    bytes: 150911
+    scope: public

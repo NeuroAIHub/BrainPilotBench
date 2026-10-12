@@ -1,0 +1,23 @@
+# Public train/validation only. A maintainer supplies these hash-bound files.
+# New BrainPilotBench native spec SHA-256 6d0d40390a3d6374e41b2539caaf45068745c066824cbb06a9e4304cee518609.
+datasets:
+  - name: eeg-sleep-stage-sleepedf-train-npz
+    uri: local://eeg-sleep-stage-sleepedf/bpb-native-full-20261012-v1/train.npz
+    sha256: 00f6c6af70a999a1bd2d2279bedda692e8e2b9b608b76f484f29e7e04711920c
+    bytes: 3355930942
+    scope: public
+  - name: eeg-sleep-stage-sleepedf-val-npz
+    uri: local://eeg-sleep-stage-sleepedf/bpb-native-full-20261012-v1/val.npz
+    sha256: d1fab30ad522958020651c4fdc9882c67af64ab3b20d13fa46f3b0a62115050d
+    bytes: 1096749858
+    scope: public
+  - name: eeg-sleep-stage-sleepedf-train-groups-json
+    uri: local://eeg-sleep-stage-sleepedf/bpb-native-full-20261012-v1/train-groups.json
+    sha256: 462a5d6e9bb987b034f064e4674f7dff1d8665d1e431a4c0c06e8912e047910f
+    bytes: 329004
+    scope: public
+  - name: eeg-sleep-stage-sleepedf-val-groups-json
+    uri: local://eeg-sleep-stage-sleepedf/bpb-native-full-20261012-v1/val-groups.json
+    sha256: a6af6a87dc1ac23f63264c341f406a4d9243a99e40f916860cd8449bbf3ced86
+    bytes: 114480
+    scope: public
