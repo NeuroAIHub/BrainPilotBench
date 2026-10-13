@@ -99,6 +99,32 @@ def stage_from_source(source: Path, target: Path, spec: dict) -> None:
                 (validation if str(row["participant"]) in valid else train).write(payload)
 
 
+def cached_published_splits(spec: dict) -> dict[str, Path] | None:
+    """Use both content-addressed public splits, or the original source fallback.
+
+    A half-fetched package is an error: silently reconstructing it from the
+    historical source would hide a failed published-package fetch.
+    """
+    base = Path(os.environ.get("BPB_CACHE_ROOT") or
+                Path(os.environ.get("XDG_CACHE_HOME") or (Path.home() / ".cache")) / "brainpilot-bench")
+    paths = {split: base / spec["splits"][split]["sha256"] / "data"
+             for split in ("train", "valid")}
+    present = {split: path.exists() or path.is_symlink() for split, path in paths.items()}
+    # resolve.ts writes .partial under a per-SHA .fetch.lock before renaming to
+    # data. A failed transfer can leave .partial behind; it is not zero cache.
+    attempted = {split: any(marker.exists() or marker.is_symlink()
+                            for marker in (path.parent / ".partial", path.parent / ".fetch.lock"))
+                 for split, path in paths.items()}
+    if not any(present.values()) and not any(attempted.values()):
+        return None
+    if not all(present.values()):
+        missing = ", ".join(f"{split}.jsonl" for split in paths if not present[split])
+        raise ValueError(f"Incomplete cached public package: missing {missing}; fetch both published splits")
+    for split, path in paths.items():
+        checked_split(path, spec, split)
+    return paths
+
+
 def prepare(contract_path: Path, output: Path, source: Path | None, published_dir: Path | None) -> None:
     spec = json.loads(contract_path.read_text(encoding="utf-8"))
     if spec.get("schema") != "bpb-psych101-public-contract/1":
@@ -117,9 +143,14 @@ def prepare(contract_path: Path, output: Path, source: Path | None, published_di
             for split in ("train", "valid"):
                 shutil.copyfile(published_dir / f"{split}.jsonl", target / f"{split}.jsonl")
         else:
-            if source.is_symlink() or not source.is_file():
-                raise ValueError("Missing or linked public source")
-            stage_from_source(source, target, spec)
+            cached = cached_published_splits(spec)
+            if cached is not None:
+                for split, path in cached.items():
+                    shutil.copyfile(path, target / f"{split}.jsonl")
+            else:
+                if source.is_symlink() or not source.is_file():
+                    raise ValueError("Missing or linked public source")
+                stage_from_source(source, target, spec)
         for split in ("train", "valid"):
             checked_split(target / f"{split}.jsonl", spec, split)
         shutil.copyfile(contract_path, target / "spec.json")

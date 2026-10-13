@@ -83,6 +83,7 @@ jobs:
           python3 -B tasks/eeg/_preparation/test_module_origins.py
           python3 -B tasks/eeg/_preparation/test_seizure_contract.py
           python3 -B tasks/psychology/_shared/test_stage_public_packet.py
+          python3 -B tasks/psychology/_shared/test_published_cache.py
           # Byte protocol's Docker integration cases skip without its pinned image.
           python3 -B tasks/psychology/_shared/test_byte_protocol.py
       - name: Prepare Docker isolation smoke images
