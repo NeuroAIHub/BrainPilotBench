@@ -57,6 +57,13 @@ subject names are replaced by consistent opaque group IDs, preserving native
 subject membership. Never publish `private/`, `lineage/`, the full
 `complete.json`, or the evaluator binding with the Agent package.
 
+If a verifier fails after the native exporter writes `complete.json`, keep
+the original run status as failed. A separate full verification of that
+existing export can create a recovery receipt with schema
+`bpb-eeg-existing-export-recovery/1`. This receipt records the old failure
+and its status hash. It does not turn the original run into a success.
+Package the public files only after the recovery check passes.
+
 An export receipt proves data serialization and role separation only. A task
 becomes runnable after its exact array shapes, labels, split membership, four
 file hashes, inference API, scorer, and isolated real-path smoke are reviewed

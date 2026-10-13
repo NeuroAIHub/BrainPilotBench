@@ -64,7 +64,13 @@ def fixture(root: Path, recipe: dict) -> dict:
     if kind == "regression":
         report.update(metric={"name": "BinnedMAE", "log_name": "bmae", "bin_edges": recipe["bin_edges"]},
                       target_definition=recipe["target_definition"],
-                      protocol={"profile": {"cap_s": recipe["cap_s"]}, "groups": group_report},
+                      protocol={"profile": {"task_id": recipe["source_task_id"],
+                                            "target": {"name": "SleepOnsetTargetExtractor",
+                                                       "cap_s": recipe["cap_s"]}},
+                                "target": {"name": "SleepOnsetTargetExtractor", "cap_s": recipe["cap_s"]},
+                                "resolved_target": {"class": "SleepOnsetTargetExtractor",
+                                                    "cap_s": recipe["cap_s"]},
+                                "groups": group_report},
                       generic_export_sha256=recipe["vendor_files"]["export_classification_native.py"],
                       contract_module={"sha256": recipe["vendor_files"]["sleep_special_contract.py"]})
     else:
@@ -79,7 +85,7 @@ def main() -> None:
     cache = Path.cwd() / ".cache" / "eeg-d-expansion"
     cache.mkdir(parents=True, exist_ok=True)
     tested = []
-    for task_id in ("eeg-sleep-stage-hmc", "eeg-sleep-onset-hmc"):
+    for task_id in ("eeg-sleep-stage-hmc", "eeg-sleep-onset-hmc", "eeg-sleep-onset-sleepedf"):
         recipe = json.loads((ROOT / task_id / "preparation.json").read_text(encoding="utf-8"))
         recipe["expected_subjects"] = 3  # synthetic population only
         with tempfile.TemporaryDirectory(prefix=f"{task_id}-synthetic-", dir=cache) as directory:
@@ -88,6 +94,22 @@ def main() -> None:
             passed = verify_export(recipe, output)
             assert passed["files_checked"] == 7
             manifest = json.loads((output / "complete.json").read_text(encoding="utf-8"))
+            if recipe["target_kind"] == "regression":
+                assert "cap_s" not in manifest["protocol"]["profile"]
+                for path in (("profile", "target"), ("target",), ("resolved_target",)):
+                    altered = json.loads((output / "complete.json").read_text(encoding="utf-8"))
+                    target = altered["protocol"]
+                    for key in path:
+                        target = target[key]
+                    target["cap_s"] = recipe["cap_s"] - 1
+                    (output / "complete.json").write_text(json.dumps(altered), encoding="utf-8")
+                    try:
+                        verify_export(recipe, output)
+                    except ValueError as error:
+                        assert "onset cap changed" in str(error), error
+                    else:
+                        raise AssertionError(f"onset cap drift at {path} was accepted")
+                    (output / "complete.json").write_text(json.dumps(manifest), encoding="utf-8")
             test_lineage = output / "lineage/test.jsonl"
             original = test_lineage.read_text(encoding="utf-8")
             test_lineage.write_text(json.dumps({"index": 0, "subject": "private-original-identity-train"}) + "\n", encoding="utf-8")

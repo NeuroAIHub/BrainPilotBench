@@ -29,7 +29,9 @@
 #         经 wormwiring.org 发布的 MATLAB-ready 包（含 GHermChem.mat / GHermElec_Sym.mat）
 #   (C) 规范神经元名单（300 个，含 CANL/CANR 排除说明）随仓携带
 #       checks/neuron_labels_canonical_300.txt
-#       sha256 799bf7e546fb0539c34c3852bf83f3171ae367a3f0f2ddb43b925c76f8a83dd2 (2805 bytes)
+#       bundled LF text: sha256 331b28e55feb7e543ee509c394f48ddf621eb9bcf9ad34d129045b515d6e61b5 (2505 bytes)
+#       original CRLF label rows: sha256 799bf7e546fb0539c34c3852bf83f3171ae367a3f0f2ddb43b925c76f8a83dd2 (2805 bytes)
+#       Only the 300 label-row line endings differ; the ordered neuron names are identical.
 #       来源：qsimeon/worm-data-preprocess 的 _main_utils.py 中硬编码的 NEURON_LABELS
 #       @ d8e7257dfee4e6e782b3edf317e20b4a57553e77
 #         sha256 6d1875f5f2ea9775cfc88fbe061c98d144c62eaca6d412b07cd888eda5d52e1b (8375 bytes)

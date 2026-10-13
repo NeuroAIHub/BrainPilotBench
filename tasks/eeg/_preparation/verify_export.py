@@ -66,8 +66,15 @@ def verify_fields(recipe: dict, report: dict) -> dict:
             raise ValueError("native onset target definition drifted")
         if report.get("declared_subjects") != recipe["expected_subjects"]:
             raise ValueError("onset declared subject count drifted")
-        if (report.get("protocol") or {}).get("profile", {}).get("cap_s") != recipe["cap_s"]:
-            raise ValueError("onset cap changed")
+        protocol = report.get("protocol") or {}
+        cap_locations = {
+            "profile.target": (protocol.get("profile") or {}).get("target") or {},
+            "target": protocol.get("target") or {},
+            "resolved_target": protocol.get("resolved_target") or {},
+        }
+        for location, target in cap_locations.items():
+            if target.get("cap_s") != recipe["cap_s"]:
+                raise ValueError(f"onset cap changed in protocol.{location}")
     else:
         primary = (report.get("protocol") or {}).get("primary_metric") or {}
         if primary.get("name") != "Accuracy" or primary.get("log_name") != "bal_acc":

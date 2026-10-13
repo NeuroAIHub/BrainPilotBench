@@ -13,6 +13,7 @@ from zipfile import ZipFile
 
 from paths import canonical_new_path, disjoint
 from sleep_special_contract import assign_bin
+import verify_export as verifier_module
 from verify_export import safe_file, verify_export
 
 
@@ -107,13 +108,49 @@ def merge_split(root: Path, split: str, manifest: dict, recipe: dict,
                     raise ValueError(f"{split}: packaged array header shape mismatch")
 
 
+def verify_recovery_origin(receipt: dict, export_dir: Path, receipt_path: Path) -> None:
+    if receipt.get("original_run_success") is not False:
+        raise ValueError("recovery receipt must preserve the original run failure")
+    original = receipt.get("original_run")
+    if (not isinstance(original, dict) or
+            original.get("status") != "failed_partial_output_preserved" or
+            type(original.get("return_code")) is not int or original["return_code"] == 0):
+        raise ValueError("recovery receipt lacks the original failed status and nonzero return code")
+    status_path = Path(original.get("status_path", ""))
+    if status_path.is_symlink() or not status_path.is_file() or \
+            digest(status_path) != original.get("status_sha256"):
+        raise ValueError("original failed status file does not match the recovery receipt")
+    prior = json.loads(status_path.read_text(encoding="utf-8"))
+    if (prior.get("status") != original["status"] or
+            prior.get("return_code") != original["return_code"] or
+            prior.get("abort_reason") is not None or
+            Path(prior.get("output", "")).resolve(strict=True) != export_dir.resolve(strict=True) or
+            prior.get("manifest_sha256") != receipt.get("calibration_manifest_sha256") or
+            Path(prior.get("receipt", "")) == receipt_path):
+        raise ValueError("original failed run does not bind this export and calibration")
+    prior_receipt = Path(prior.get("receipt", ""))
+    if prior_receipt.exists() or prior_receipt.is_symlink():
+        raise ValueError("the original failed run unexpectedly has a receipt")
+    if receipt.get("recovery_verifier_sha256") != digest(Path(verifier_module.__file__).resolve()):
+        raise ValueError("recovery verifier hash differs from the package verifier")
+
+
 def trusted_receipt(recipe: dict, export_dir: Path, receipt_path: Path) -> dict:
     if receipt_path.is_symlink() or not receipt_path.is_file() or receipt_path.stat().st_size > 1024 * 1024:
         raise ValueError("trusted preparation receipt is missing, linked, or oversized")
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
-    if (receipt.get("schema") != "bpb-eeg-native-export-run-receipt/1"
-            or receipt.get("status") != "native_data_exported_and_checked"
-            or receipt.get("trusted_preparation_receipt") is not True
+    schema = receipt.get("schema")
+    recovery = False
+    if schema == "bpb-eeg-native-export-run-receipt/1":
+        if receipt.get("status") != "native_data_exported_and_checked":
+            raise ValueError("preparation receipt has the wrong original-run status")
+    elif schema == "bpb-eeg-existing-export-recovery/1":
+        if receipt.get("status") != "existing_native_export_reverified":
+            raise ValueError("recovery receipt has the wrong verification status")
+        recovery = True
+    else:
+        raise ValueError("unknown preparation or recovery receipt schema")
+    if (receipt.get("trusted_preparation_receipt") is not True
             or receipt.get("task_id") != recipe["task_id"]
             or receipt.get("source_sha") != recipe["source_sha"]
             or receipt.get("vendor_files") != recipe["vendor_files"]):
@@ -131,6 +168,8 @@ def trusted_receipt(recipe: dict, export_dir: Path, receipt_path: Path) -> dict:
     for field in ("source", "raw_data_root"):
         if not Path(receipt.get(field, "")).resolve(strict=True).is_dir():
             raise ValueError(f"trusted receipt {field} is no longer accessible")
+    if recovery:
+        verify_recovery_origin(receipt, export_dir, receipt_path)
     return receipt
 
 

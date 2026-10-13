@@ -1,10 +1,10 @@
-# Public data preparation — 2026-10-12
+# Public data preparation — 2026-10-13
 
 Status: owner-only preparation. No new data package has been uploaded.
 The collection has 105 task interfaces and five EEG candidates.
 Interface readiness, data availability, and model validation are separate states.
 
-## Verified copies
+## First-batch verified copies
 
 | Selection | Tasks | Public files | Data bytes |
 |---|---:|---:|---:|
@@ -46,12 +46,37 @@ The MRI public copy contains `agent_data.zip`, not `evaluator_data.zip`.
 The worm copy contains three public sources, not held-out reconstruction answers.
 This preparation does not add model fits or repeat private Test evaluation.
 
+The first-batch delivery manifest lists exactly 101 packages and 246 public
+files. It contains relative target names, sizes, and hashes, not maintainer paths.
+A separate internal inventory maps those files to their current storage.
+Neither a delivery namespace nor a hosting destination has been published.
+
+## Additional data candidates
+
+HMC sleep stage has a completed native export and a verified public package.
+Its four public files total 9,269,836,884 bytes. The public arrays contain
+80,171 train and 27,105 validation windows, with shape `[6, 3600]` per window.
+The 90 train and 30 validation subject groups do not overlap.
+Independent checks covered all four file hashes, array headers, sampled values,
+group membership, and the separate evaluator binding. No model was trained or scored.
+
+The trusted preparation receipt binds the source, producer, calibration, and
+completed export. The standalone structure checker does not establish that binding
+by itself. The HMC package remains separate from the frozen first batch until
+its runnable task contract and real preparation path are reviewed.
+
+MRI and worm evaluator inputs also have separate verified copies: four files,
+930,292,976 bytes. They are excluded from every public manifest. Preparation
+did not open their target labels or repeat private scoring. It did not import
+the independent EEG or Psych projects' official Test packets.
+
 ## Remaining data work
 
 | Selection | Current state | Required next check |
 |---|---|---|
-| Native HMC stage | Data-only export started after two memory admission checks; no completed package | Verify the completed export, public package, and scoring contract |
-| Native HMC onset, Sleep-EDF onset | Full native configurations resolved; arrays are not materialized | Export, verify, and bind scoring contracts |
+| Native HMC stage | Export and four-file public package verified; candidate only | Freeze the runnable contract and check its real preparation path |
+| Native Sleep-EDF onset | Export completed; the wrapper failed on an incorrect checker field lookup | Recheck the existing export with the corrected checker and create a separate recovery receipt |
+| Native HMC onset | Full native configuration and guarded export inputs prepared | Export, verify, and bind the scoring contract |
 | CHB-MIT | Full native configuration resolved; strict `sum` adapter passes bounded checks | Run a full data-only export, retaining native labels and rejecting non-one-hot targets |
 | Thielen2021 | Withheld | Remains outside activation under the existing research scope |
 
@@ -59,9 +84,11 @@ No running export counts as a prepared package. No reconstructed file replaces
 a frozen file unless its size and SHA-256 match. A mismatch needs a separate
 task version, not an edited hash under the old identity.
 
-HMC sleep stage first failed its memory admission check. A later pair of checks
-passed, and one isolated data-only export started. This is parallel preparation,
-not part of the completed data totals. The other full exports have not started.
+Sleep-EDF onset kept the correct 600-second target cap. The checker read the
+wrong location within its report. The corrected checker requires matching caps
+in all three native target records. Recovery preserves the original failed run
+and producer hashes; it does not rerun raw preprocessing or relabel that run
+as successful. New exports still require fresh resource and input checks.
 No automatic retry or recurring monitor was scheduled.
 
 The four legacy tasks retain their original pinned download references. They
@@ -99,3 +126,6 @@ Local receipts are under `.cache/psych101-public-staging/`,
 `.cache/eeg-public-staging/`, `.cache/public-data-candidate/`, and
 `.cache/eeg-d-expansion/actual-prep/`. They retain exact source and output
 locations, producer hashes, job identities, and verification results.
+Delivery metadata are in `.cache/data-delivery-20261013/`.
+The internal inventory and `.cache/private-data-candidate/` must not be uploaded
+with public data.
