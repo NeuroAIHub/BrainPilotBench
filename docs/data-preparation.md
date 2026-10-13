@@ -65,6 +65,18 @@ completed export. The standalone structure checker does not establish that bindi
 by itself. The HMC package remains separate from the frozen first batch until
 its runnable task contract and real preparation path are reviewed.
 
+Sleep-EDF onset also has a verified four-file public candidate: 141,899,355 bytes.
+Its arrays contain 21,840 train and 7,680 validation windows, with shape
+`[2, 600]` per window. Targets remain within the native 0–600-second range.
+Its 46 train and 16 validation subject groups do not overlap.
+The corrected checker verified all 1,376 export files before packaging.
+Independent package checks confirmed the four hashes, array shapes, targets,
+and group separation. The original wrapper failure remains in its own record.
+
+Together, the first batch and these two candidates contain 103 public packages,
+254 data files, and 42,084,706,383 bytes. The candidates have separate manifests;
+they do not change the first batch's 105 runnable interfaces.
+
 MRI and worm evaluator inputs also have separate verified copies: four files,
 930,292,976 bytes. They are excluded from every public manifest. Preparation
 did not open their target labels or repeat private scoring. It did not import
@@ -75,9 +87,9 @@ the independent EEG or Psych projects' official Test packets.
 | Selection | Current state | Required next check |
 |---|---|---|
 | Native HMC stage | Export and four-file public package verified; candidate only | Freeze the runnable contract and check its real preparation path |
-| Native Sleep-EDF onset | Export completed; the wrapper failed on an incorrect checker field lookup | Recheck the existing export with the corrected checker and create a separate recovery receipt |
-| Native HMC onset | Full native configuration and guarded export inputs prepared | Export, verify, and bind the scoring contract |
-| CHB-MIT | Full native configuration resolved; strict `sum` adapter passes bounded checks | Run a full data-only export, retaining native labels and rejecting non-one-hot targets |
+| Native Sleep-EDF onset | Existing export recovered and four-file public package verified; candidate only | Freeze its regression contract and check its real preparation path |
+| Native HMC onset | Inputs verified; export not started because memory admission failed | Recheck capacity, then export and verify the data |
+| CHB-MIT | Inputs and strict `sum` profile verified; memory admission failed | Run a full data-only export when capacity permits, retaining native labels |
 | Thielen2021 | Withheld | Remains outside activation under the existing research scope |
 
 No running export counts as a prepared package. No reconstructed file replaces
@@ -126,6 +138,7 @@ Local receipts are under `.cache/psych101-public-staging/`,
 `.cache/eeg-public-staging/`, `.cache/public-data-candidate/`, and
 `.cache/eeg-d-expansion/actual-prep/`. They retain exact source and output
 locations, producer hashes, job identities, and verification results.
-Delivery metadata are in `.cache/data-delivery-20261013/`.
+First-batch delivery metadata are in `.cache/data-delivery-20261013/`.
+The HMC and onset candidates use separate incremental delivery directories.
 The internal inventory and `.cache/private-data-candidate/` must not be uploaded
 with public data.
