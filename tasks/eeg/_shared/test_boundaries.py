@@ -49,11 +49,34 @@ class SharedEegBoundaryTests(unittest.TestCase):
                 lock = (task / "data.lock").read_text()
                 self.assertEqual(lock.count("scope: public"), 4)
                 self.assertNotIn("scope: private", lock)
+                records = []
+                for line in lock.splitlines():
+                    if line.startswith("  - name: "):
+                        records.append({"name": line.removeprefix("  - name: ")})
+                    elif line.startswith("    ") and records:
+                        key, separator, value = line.strip().partition(": ")
+                        if separator:
+                            self.assertNotIn(key, records[-1])
+                            records[-1][key] = value
+                self.assertEqual(len(records), 4)
+                self.assertTrue(all(set(record) == {"name", "uri", "sha256", "bytes", "scope"}
+                                    for record in records))
+                by_uri = {record["uri"]: record for record in records}
+                self.assertEqual(len(by_uri), 4)
+                prefix = ("hf://datasets/BrainPilot-Bench/Tasks-Data-Public@"
+                          "09240a63ce2ec96050313c59221291114ff8df6f/"
+                          "bpb-public-data-20261013-v1")
+                expected_uris = {f"{prefix}/{task.name}/{contract['source_task_version']}/{name}"
+                                 for name in prepare.FILES}
+                self.assertEqual(set(by_uri), expected_uris)
                 for name, entry in contract["data_files"].items():
                     self.assertEqual(len(entry["sha256"]), 64)
                     self.assertGreater(entry["bytes"], 0)
-                    self.assertIn(entry["sha256"], lock)
-                    self.assertIn(f"local://{task.name}/{contract['source_task_version']}/{name}", lock)
+                    uri = f"{prefix}/{task.name}/{contract['source_task_version']}/{name}"
+                    record = by_uri[uri]
+                    self.assertEqual(record["scope"], "public")
+                    self.assertEqual(record["sha256"], entry["sha256"])
+                    self.assertEqual(int(record["bytes"]), entry["bytes"])
 
     def test_prepare_binds_each_public_file_and_no_extra(self):
         with tempfile.TemporaryDirectory() as temp:

@@ -71,8 +71,9 @@ The EEG and Psych caches and prepared workspaces matched their frozen file hashe
 The MRI archive retained its completed full public readback and earlier reference validation.
 It was not downloaded or trained again for this address update.
 
-The update also passed build, 41 data-related unit tests, collection/catalog checks,
-schema validation, and the documentation smoke check.
+The update also passed build, 41 data-related unit tests, nine EEG synthetic tests,
+collection/catalog checks, schema validation, and the documentation smoke check.
+The EEG contract test now checks the exact hosted URI, scope, hash, and size of each file.
 These checks do not run all task references or establish new model results.
 The four original data locks, private entries, task versions, and scientific contracts remain unchanged.
 Local smoke evidence is under `.cache/published-fetch-smoke-20261013/`.
