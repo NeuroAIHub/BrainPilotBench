@@ -4,7 +4,20 @@ Source experiment: `zorowitz2023data/exp1.csv`; published public package `publis
 
 ## Public data
 
-`data.lock` pins the 859,179,475-byte Apache-2.0 public source at a fixed revision and SHA-256. Run `bp-bench fetch psych101-zorowitz2023data-exp1 --public`; `env/setup.sh --role agent` reconstructs this experiment's participant-group train/valid split and verifies the exact published split hashes. Or set `BPB_PSYCH101_PUBLIC_TASK_DIR` to a verified directory containing this experiment's public `train.jsonl` and `valid.jsonl`. No maintainer path or private Test is required.
+For this task, `data.lock` pins public `train.jsonl` and `valid.jsonl` at one immutable Hugging Face commit. It records the size and SHA-256 of each file.
+
+From the repository root, run:
+
+```sh
+node dist/cli.js fetch psych101-zorowitz2023data-exp1 --public
+node dist/cli.js prepare psych101-zorowitz2023data-exp1 --workspace /absolute/new-workspace
+```
+
+The fetch command checks both file sizes and SHA-256 hashes. Prepare reads the content-addressed cached splits and creates `public_data/`. It does not download or rebuild the original 859,179,475-byte source.
+
+If you have an existing verified public package, set `BPB_PSYCH101_PUBLIC_TASK_DIR` to its task directory. That directory must contain `train.jsonl` and `valid.jsonl`. The setup helper checks both hashes.
+
+The task helpers need Python 3.11–3.13 and the standard library only. No package installation is required. The package does not contain official private Test data.
 
 ## Inference and score
 

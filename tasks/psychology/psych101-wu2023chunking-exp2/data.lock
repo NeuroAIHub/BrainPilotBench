@@ -1,8 +1,18 @@
 # Psych-101 public source only. Official gated Test is intentionally absent.
+# Original public source provenance (no longer fetched by this lock):
+#   uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
+#   sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
+#   bytes: 859179475
 datasets:
-  - name: prompts_training.jsonl
+  - name: train.jsonl
     scope: public
-    uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
-    sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
-    bytes: 859179475
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-wu2023chunking-exp2/published-20261002-v1/train.jsonl
+    sha256: 6e55a756c9f3df88fcd7b6d32d1aafb07d6b944db466cb4c195326f88d0cbe64
+    bytes: 6435643
+    format: jsonl
+  - name: valid.jsonl
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-wu2023chunking-exp2/published-20261002-v1/valid.jsonl
+    sha256: 967f9ca4585dd6f3c8735d318ba31440bbae869a21dce102b66355159d5d75e3
+    bytes: 1685088
     format: jsonl

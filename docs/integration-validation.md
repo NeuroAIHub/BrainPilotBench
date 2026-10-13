@@ -2,6 +2,8 @@
 
 This record describes the initial 19-interface stage and its four real references.
 The current inventory and subsequent checks are in [coverage-expansion.md](coverage-expansion.md).
+Public hosting and download checks from 2026-10-13 are recorded in [data-preparation.md](data-preparation.md).
+The remaining-work section below describes the historical first-stage snapshot.
 
 Historical validation baseline: `feat/shared-task-collection`, based on
 `1bb49ede1ab99a4d370f066d431d59926ea1c1ad`. This record is not a release or

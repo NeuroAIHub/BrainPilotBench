@@ -1,23 +1,23 @@
-# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Public train/valid only; pinned HF downloads are verified by size and SHA-256.
 # Source case n170/default; frozen task_spec SHA-256 409270becb55fe9967c40d58585f83dcfdb33286ac06703cbfa236a236088cdd.
 datasets:
   - name: eeg-erp-n170-train-npz
-    uri: local://eeg-erp-n170/expanded-three-seed-20260923-n170-v1/train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-n170/expanded-three-seed-20260923-n170-v1/train.npz
     sha256: d31f5e40edecf63fdc7a8b85e47fa3731419065d53bdfadde702b0226d12f831
     bytes: 110653930
     scope: public
   - name: eeg-erp-n170-val-npz
-    uri: local://eeg-erp-n170/expanded-three-seed-20260923-n170-v1/val.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-n170/expanded-three-seed-20260923-n170-v1/val.npz
     sha256: 08cad07023e7adb0fc641a3dbda4d08e995433f2b675d8a72e198cd1052f38fc
     bytes: 36884970
     scope: public
   - name: eeg-erp-n170-train-groups-json
-    uri: local://eeg-erp-n170/expanded-three-seed-20260923-n170-v1/train-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-n170/expanded-three-seed-20260923-n170-v1/train-groups.json
     sha256: 39c693225b9afd534ff45d18367ab2a2d9b8332e50d8f43cfa73ffaffaace1dd
     bytes: 529031
     scope: public
   - name: eeg-erp-n170-val-groups-json
-    uri: local://eeg-erp-n170/expanded-three-seed-20260923-n170-v1/val-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-n170/expanded-three-seed-20260923-n170-v1/val-groups.json
     sha256: 6ce60029af0ffca2b22753b7d25edd9cef22858f9f192b9ff01c9a833ab87341
     bytes: 175751
     scope: public

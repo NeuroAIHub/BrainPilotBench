@@ -13,21 +13,23 @@ contributor evidence, not as independent provenance verification.
 
 ## Data and roles
 
-`data.lock` pins both complete ZIPs by bytes and SHA-256. Its `local://` URIs
-resolve below `BPB_LOCAL_DATA_ROOT`, which must contain `agent_data.zip` and
-`evaluator_data.zip`. There is no public distribution URL yet. The public ZIP
-contains images, `subjects.csv`, and `ages.csv`; the evaluator ZIP contains
+`data.lock` pins both complete ZIPs by bytes and SHA-256.
+The public `agent_data.zip` uses an immutable Hugging Face download URL.
+Only the private `evaluator_data.zip` retains a `local://` URI beneath `BPB_LOCAL_DATA_ROOT`.
+The public ZIP contains images, `subjects.csv`, and `ages.csv`; the evaluator ZIP contains
 images, `subjects.csv`, and `labels/true_ages.csv`.
 
-In a trusted preparation environment, set `BPB_LOCAL_DATA_ROOT` to the folder
-holding the original, unchanged archives. Then run:
+From the repository root, fetch and prepare the public archive:
 
 ```sh
-bp-bench fetch brain-age-mri --public
-bp-bench fetch brain-age-mri --private   # evaluator only, in a separate cache/identity
+node dist/cli.js fetch brain-age-mri --public
+node dist/cli.js prepare brain-age-mri --workspace /absolute/new-agent-workspace
 bash tasks/mri/brain-age-mri/env/setup-python.sh
-unset BPB_LOCAL_DATA_ROOT   # before starting an Agent; archives may include evaluator data
 ```
+
+For private evaluation, use a separate trusted cache and process.
+Set `BPB_LOCAL_DATA_ROOT` to the private archive directory before `bp-bench fetch brain-age-mri --private`.
+Unset it before starting an Agent. Public preparation does not require the private archive.
 
 `bp-bench fetch` uses the content-addressed cache. `env/setup.sh` stages an
 archive from that cache by default. For local preparation, the explicit
@@ -47,8 +49,7 @@ bash tasks/mri/brain-age-mri/env/setup.sh --role evaluator \
 
 Keep the evaluator archive, extracted ages, prediction files, and score output
 outside the Agent workspace. Never mount the full contribution ZIP into an
-Agent container. The current local data URI and local Docker image must be
-replaced or separately distributed before public release.
+Agent container. Private evaluator distribution and inference-image publication remain separate release steps.
 
 ## Submission contract
 

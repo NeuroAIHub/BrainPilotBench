@@ -55,19 +55,19 @@ datasets:
   # ---------------- public（agent 可拉；评测输入与参考连接组） ----------------
   - name: CElegansFunctionalConnectivity.xlsx
     scope: public
-    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/CElegansFunctionalConnectivity.xlsx
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/celegans-structure-function-divergence/0.6/CElegansFunctionalConnectivity.xlsx
     sha256: f02c68c9a2d34fe7b5aa8c7d74d8aca9ea9676d647e794ba99abbbff1b6350e5
     bytes: 996970
     format: xlsx
   - name: witvliet_2020_7.csv
     scope: public
-    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/witvliet_2020_7.csv
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/celegans-structure-function-divergence/0.6/witvliet_2020_7.csv
     sha256: 613bfa8fb52f0ec85d65c5a878f6a40620e6c960337a4d1d1ac2ffa2af2d6e57
     bytes: 54935
     format: tsv
   - name: neuron_master_sheet.csv
     scope: public
-    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/neuron_master_sheet.csv
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/celegans-structure-function-divergence/0.6/neuron_master_sheet.csv
     sha256: f3273b529c7542cf6b1d61b438d0e87526e32166b74d464fcaefe4700d87a558
     bytes: 11701
     format: csv

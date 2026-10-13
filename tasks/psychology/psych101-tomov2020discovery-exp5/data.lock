@@ -1,8 +1,18 @@
 # Psych-101 public source only. Official gated Test is intentionally absent.
+# Original public source provenance (no longer fetched by this lock):
+#   uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
+#   sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
+#   bytes: 859179475
 datasets:
-  - name: prompts_training.jsonl
+  - name: train.jsonl
     scope: public
-    uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
-    sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
-    bytes: 859179475
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-tomov2020discovery-exp5/published-20261002-v1/train.jsonl
+    sha256: ff06cddea207136fb96b934d7da4c21172fef9b61ef6572f39f5d7c5b6e18fab
+    bytes: 9755091
+    format: jsonl
+  - name: valid.jsonl
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-tomov2020discovery-exp5/published-20261002-v1/valid.jsonl
+    sha256: d5403ab1898cbe7ef3f7ea3258f282cacde43945ea4ba86870ad075151241e1a
+    bytes: 2614130
     format: jsonl

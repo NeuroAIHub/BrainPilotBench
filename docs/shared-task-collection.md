@@ -26,23 +26,25 @@ Each executable task has a README, task YAML, prompt, data lock, environment
 preparation and scorer entry. Candidate metadata has no `task.yaml`, so automatic
 discovery cannot mistake it for an executable task. The catalog records all
 entries and their status; it does not publish research performance rankings.
+The catalog's `data_access` describes public Agent inputs.
+`private_data_access`, when present, describes the separate evaluator data route.
 
 ## Data and environment
 
 Large arrays and MRI files stay outside Git. Existing published data URLs remain
-pinned to immutable revisions and SHA-256 hashes. `local://name` entries refer to
-maintainer-provided archives beneath `BPB_LOCAL_DATA_ROOT`; they are not download
-URLs. Fetch verifies their hashes and copies them into the content cache.
-Unset `BPB_LOCAL_DATA_ROOT` before starting an Agent. Use separate public and
-evaluator caches. The launcher rejects evaluator environment variables and a
-private cache visible to an Agent.
+pinned to immutable revisions and SHA-256 hashes. The first 101 added tasks have
+246 public data files at Hugging Face revision
+[`09240a63ce2ec96050313c59221291114ff8df6f`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1).
+The revision also holds one selection manifest. Anonymous downloads verified
+the SHA-256 hashes of all 247 paths. The original four tasks keep their older
+data references. All four EEG preparation entries are outside this batch,
+including two with owner-held public packages.
 
-The new EEG and brain-age entries do not yet have permanent public data mirrors.
-Their local package route is tested and documented. A recipient still needs those
-packages; cloning the repository alone does not download them. Psych can use the
-frozen published public package or reconstruct it from the pinned public source.
-The representative run tested the published-package route, not the full source
-download/reconstruction route. The worm task fetched its pinned source files.
+Run `bp-bench fetch <task-id> --public` to load a task's pinned public files.
+The fetcher checks each size and SHA-256. `local://` remains a maintainer supply
+route for unpublished data. It is not a public download URL. Unset
+`BPB_LOCAL_DATA_ROOT` before starting an Agent. Keep public and evaluator caches
+separate. The launcher rejects a private cache visible to an Agent.
 
 Each task owns its environment instructions. CPU Docker images are built locally
 and evaluated by immutable ID/digest; no images were published. A successful
@@ -50,15 +52,19 @@ macOS/arm64 integration run does not verify Linux/amd64 or GPU compatibility.
 
 ## Low-cost validation
 
-The current integration runs exactly four representative references: native EEG
+The integration includes four representative reference checks: native EEG
 BCI-IV-2a, Psych Lefebvre exp1, C. elegans and brain age. EEG and Psych use public
 train/valid only; historical private Test results are not replayed. The two new
 contributions use their own reference-evaluation paths. These runs check data,
 environment, saved artifacts, inference and scoring; they are not Agent research
 experiments. No paid model calls are needed.
 
-Other executable family members receive structure and contract checks only.
-Four EEG entries remain preparation-only until their frozen data packages exist.
+This data publication has full byte-level readback. The follow-up limits fetch
+and preparation to a small representative check. It does not rerun all 101 tasks.
+Other family members have structure and contract checks. Some also have input
+checks against real public data. Four EEG entries remain preparation-only.
+HMC stage and Sleep-EDF onset have public candidate packages, but no runnable
+task contracts.
 Thielen2021 remains withheld under the earlier research scope choice. A checked
 schema is not evidence of a completed data run. New Psych sequence interfaces
 have a separate metric version. They do not inherit historical token-based scores.
@@ -96,8 +102,10 @@ Legacy tasks without this block retain their optional-version submission contrac
 
 ## Integration and publication
 
-This branch prepares a collection candidate. It does not merge, release, publish
-data/images, update the Cloud catalog, or change the independent research projects.
-Issues #63 and #65 remain deferred. Source/data terms and any hosting work belong
-to the concrete publication review; the contributor's MRI source and split
-assurance is accepted for this integration and is not a request for more evidence.
+The first public-data batch is published at the fixed Hugging Face revision above.
+This branch is not merged into main. It does not publish an npm package or image,
+update the Cloud catalog, or change the independent research projects. Private
+evaluator files and all four EEG preparation entries are not in the public batch.
+Issues #63 and #65 remain deferred. The contributor's MRI source and split
+assurance is accepted for this integration. No further source or split evidence
+is required for this integration.

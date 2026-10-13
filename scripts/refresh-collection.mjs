@@ -41,7 +41,14 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
   if (referenceChecks.has(id)) row.validation_record = "docs/integration-validation.md";
   if (publicOnly) row.data_status = referenceChecks.has(id)
     ? "representative_public_package_prepared" : (contract.availability_status ?? "manifest_bound_package_required");
-  row.data_access = task.datasets.some(d => d.uri.startsWith("local://"))
+  const publicDatasets = task.datasets.filter(d => d.scope === "public");
+  if (publicDatasets.length && publicDatasets.every(d =>
+    /^hf:\/\/datasets\/BrainPilot-Bench\/Tasks-Data-Public@[0-9a-f]{40}\/bpb-public-data-[^/]+\//.test(d.uri)))
+    row.data_status = "published_public_package";
+  row.data_access = publicDatasets.some(d => d.uri.startsWith("local://"))
+    ? "maintainer_package_required" : "pinned_source_download";
+  const privateDatasets = task.datasets.filter(d => d.scope === "private");
+  if (privateDatasets.length) row.private_data_access = privateDatasets.some(d => d.uri.startsWith("local://"))
     ? "maintainer_package_required" : "pinned_source_download";
   tasks.push(row);
 }

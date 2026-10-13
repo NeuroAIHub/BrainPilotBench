@@ -1,8 +1,18 @@
 # Psych-101 public source only. Official gated Test is intentionally absent.
+# Original public source provenance (no longer fetched by this lock):
+#   uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
+#   sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
+#   bytes: 859179475
 datasets:
-  - name: prompts_training.jsonl
+  - name: train.jsonl
     scope: public
-    uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
-    sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
-    bytes: 859179475
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-lefebvre2017behavioural-exp1/published-20261002-v1/train.jsonl
+    sha256: ac4c263c8e3455897ed5372fa1a486722dd24895d0bd687abaaac44ee59c9b4d
+    bytes: 358428
+    format: jsonl
+  - name: valid.jsonl
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-lefebvre2017behavioural-exp1/published-20261002-v1/valid.jsonl
+    sha256: 257dc2d503b9cf090c14743b4e06864a4b653e32ded5251ae1dea16fe3770b35
+    bytes: 92167
     format: jsonl

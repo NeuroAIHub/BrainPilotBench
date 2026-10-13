@@ -10,7 +10,10 @@ The primary metric is `score` (fraction, maximize). `stat_match_rate`, `judgment
 
 `data.lock` lists three public and three evaluator-only source files with expected byte counts and SHA-256 hashes. The scripts under `env/` build the public and private arrays from those sources. A private evaluator directory must be provided through `BPB_PRIVATE_EVAL_DIR` outside the task and Agent workspace. The evaluator has no task-local private-data fallback.
 
-Source availability and content hashes were checked during integration. Licenses and redistribution terms still require maintainer review before publication. The names and locations of evaluator-only sources in `data.lock` do not make their generated arrays available to the Agent.
+The three public sources are mirrored at the immutable Hugging Face revision in `data.lock`.
+From the repository root, run `node dist/cli.js fetch celegans-structure-function-divergence --public`.
+Their sizes and SHA-256 hashes are unchanged from the pinned upstream sources.
+Evaluator-only sources and generated arrays remain outside this public data publication.
 
 ## Submission and scoring boundary
 

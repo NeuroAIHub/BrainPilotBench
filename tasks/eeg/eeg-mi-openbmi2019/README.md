@@ -6,6 +6,10 @@ The task-specific `contract.json` binds input [62, 480], 2 classes, 120 Hz, nati
 
 Before public scoring, run `bash tasks/eeg/_shared/setup-python.sh` from the repository root and set `BPB_EEG_PYTHON` to its printed pinned NumPy 2.2.6 environment. This is separate from the Docker image that executes submitted model code.
 
-The four `local://` paths in `data.lock` are task-scoped. A maintainer may stage the matching public package under `BPB_LOCAL_DATA_ROOT/eeg-mi-openbmi2019/expanded-three-seed-20260923-openbmi-mi-v1/`, run `bp-bench fetch eeg-mi-openbmi2019 --public`, then unset `BPB_LOCAL_DATA_ROOT` before Agent execution. Alternatively, use a public-only package directory with `BPB_EEG_PUBLIC_PACKAGE_DIR`; setup verifies its original task_spec SHA and every public file SHA/size. Private Test files and source-private bindings must not be placed in either public location.
+`data.lock` pins four public files to an immutable Hugging Face revision. You do not need `BPB_LOCAL_DATA_ROOT`.
+
+From the repository root, run `node dist/cli.js fetch eeg-mi-openbmi2019 --public`. Then run `node dist/cli.js prepare eeg-mi-openbmi2019 --workspace /absolute/new-workspace`.
+
+For a public-only local package, set `BPB_EEG_PUBLIC_PACKAGE_DIR` to its directory. The setup script checks the original `task_spec.json` SHA-256 and each public file's SHA-256 and size. Do not put private Test files or source-private bindings in that directory or the Agent workspace.
 
 `env/setup.sh` copies only public train/val and group metadata into the Agent workspace. `checks/check.sh` uses the shared, task-agnostic public-validation scorer: it keeps validation y in the trusted parent and executes only the submitted nine required seed files in isolated Docker inference. It refuses official private Test scoring. This task has not independently passed a new BrainPilotBench Agent run; the original accepted source episode and a later BPB validation are distinct lifecycle records.

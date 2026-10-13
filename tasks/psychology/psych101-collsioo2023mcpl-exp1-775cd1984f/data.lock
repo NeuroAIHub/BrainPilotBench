@@ -1,8 +1,18 @@
 # Psych-101 public source only. Official gated Test is intentionally absent.
+# Original public source provenance (no longer fetched by this lock):
+#   uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
+#   sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
+#   bytes: 859179475
 datasets:
-  - name: prompts_training.jsonl
+  - name: train.jsonl
     scope: public
-    uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
-    sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
-    bytes: 859179475
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-collsioo2023mcpl-exp1-775cd1984f/published-20261002-v1/train.jsonl
+    sha256: a7c1ca9145c45359cf2d8589f5696accd8138aafd2ef55e332b01d6406c07662
+    bytes: 2387600
+    format: jsonl
+  - name: valid.jsonl
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-collsioo2023mcpl-exp1-775cd1984f/published-20261002-v1/valid.jsonl
+    sha256: ae702c2b31033c26fb4541baa5e5569c6f451f3edfe0288dedef6c5d5070b1de
+    bytes: 639552
     format: jsonl

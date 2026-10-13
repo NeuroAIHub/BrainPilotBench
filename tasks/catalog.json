@@ -20,7 +20,8 @@
       "validation": "legacy_retained_structure_checked",
       "evaluation_scope": "task_defined",
       "primary_metric": null,
-      "data_access": "pinned_source_download"
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
     },
     {
       "task_id": "brain-age-mri",
@@ -36,7 +37,9 @@
         "unit": "years"
       },
       "validation_record": "docs/integration-validation.md",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download",
+      "private_data_access": "maintainer_package_required"
     },
     {
       "task_id": "celegans-structure-function-divergence",
@@ -52,7 +55,9 @@
         "unit": "fraction"
       },
       "validation_record": "docs/integration-validation.md",
-      "data_access": "pinned_source_download"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-cvep-thielen2015",
@@ -69,8 +74,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "cvep/thielen2015",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-cvep-thielen2021",
@@ -101,8 +106,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "dementia_diagnosis/default",
-      "data_status": "prepared_public_packet_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-erp-ern",
@@ -119,8 +124,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "ern/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-erp-lrp",
@@ -137,8 +142,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "lrp/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-erp-mmn",
@@ -155,8 +160,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "mismatch_negativity/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-erp-n170",
@@ -173,8 +178,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "n170/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-erp-n2pc",
@@ -191,8 +196,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "n2pc/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-erp-n400",
@@ -209,8 +214,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "n400/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-erp-p3",
@@ -227,8 +232,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "p3/kappenman2021p3",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-me-highgamma2017",
@@ -245,8 +250,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_execution/schirrmeister2017",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-me-ofner2017",
@@ -263,8 +268,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_execution/ofner2017",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-mental-arithmetic-zyma2019",
@@ -281,8 +286,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "mental_arithmetic/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-mi-barachant2012",
@@ -299,8 +304,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/barachant2012",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-mi-bnci2014",
@@ -317,8 +322,8 @@
       },
       "source_task_id": "motor_imagery/tangermann2012",
       "validation_record": "docs/integration-validation.md",
-      "data_status": "representative_public_package_prepared",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-mi-cho2017",
@@ -335,8 +340,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/cho2017",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-mi-eegmmidb",
@@ -353,8 +358,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/schalk2004bci2000",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-mi-openbmi2019",
@@ -371,8 +376,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/lee2019mi",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-mi-zhou2016",
@@ -389,8 +394,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/zhou2016",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-p3-openbmi2019",
@@ -407,8 +412,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "p3/lee2019erp",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-seizure-chbmit",
@@ -493,8 +498,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "sleep_stage/default",
-      "data_status": "owner_staged_public_package_not_published",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-ssvep-openbmi2019",
@@ -511,8 +516,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "ssvep/lee2019ssvep",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-ssvep-wang2017",
@@ -529,8 +534,8 @@
       },
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "ssvep/default",
-      "data_status": "frozen_manifest_bound_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "eeg-typing-spanishbcbl",
@@ -547,8 +552,8 @@
       },
       "evaluation_profile": "native-typing-sparse-macro-torchmetrics-1.9",
       "source_task_id": "typing/default",
-      "data_status": "prepared_public_packet_not_downloaded_here",
-      "data_access": "maintainer_package_required"
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
     },
     {
       "task_id": "neuro-rsc-place-cell",
@@ -576,7 +581,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "badham2017deficits/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -594,7 +599,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "bahrami2020four/exp.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -612,7 +617,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "collsiöö2023MCPL/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -630,7 +635,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "collsiöö2023MCPL/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -648,7 +653,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "collsiöö2023MCPL/exp3.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -666,7 +671,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "cox2017information/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -684,7 +689,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019adaptivenback/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -702,7 +707,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019digitspan/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -720,7 +725,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019gonogo/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -738,7 +743,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019recentprobes/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -756,7 +761,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "feng2021dynamics/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -774,7 +779,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "flesch2018comparing/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -792,7 +797,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "frey2017cct/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -810,7 +815,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "frey2017risk/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -828,7 +833,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -846,7 +851,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -864,7 +869,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp3.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -882,7 +887,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp4.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -899,7 +904,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "gershman2018deconstructing/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -916,7 +921,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "gershman2018deconstructing/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -934,7 +939,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "gershman2020reward/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -952,7 +957,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "hebart2023things/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -969,7 +974,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "hilbig2014generalized/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -987,7 +992,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "jansen2021dunningkruger/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1005,7 +1010,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2016when/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1023,7 +1028,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2016when/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1041,7 +1046,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2017cost/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1059,7 +1064,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2017cost/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1077,7 +1082,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "krueger2022identifying/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1095,7 +1100,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kumar2023disentangling/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1113,7 +1118,7 @@
       },
       "source_task_id": "lefebvre2017behavioural/exp1.csv",
       "validation_record": "docs/integration-validation.md",
-      "data_status": "representative_public_package_prepared",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1130,7 +1135,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "lefebvre2017behavioural/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1148,7 +1153,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "levering2020revisiting/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1166,7 +1171,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "levering2020revisiting/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1184,7 +1189,7 @@
       },
       "evaluation_profile": "ludwig_left_right_v1",
       "source_task_id": "ludwig2023human/exp0.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1202,7 +1207,7 @@
       },
       "evaluation_profile": "ludwig_left_right_v1",
       "source_task_id": "ludwig2023human/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1219,7 +1224,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "ludwig2023human/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1237,7 +1242,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "peterson2021using/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1255,7 +1260,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "plonsky2018when/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1273,7 +1278,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "popov2023intent/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1291,7 +1296,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "popov2023intent/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1309,7 +1314,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "popov2023intent/exp3.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1327,7 +1332,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "ruggeri2022globalizability/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1345,7 +1350,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "sadeghiyeh2020temporal/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1363,7 +1368,7 @@
       },
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1380,7 +1385,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "schulz2020finding/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1398,7 +1403,7 @@
       },
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp3.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1416,7 +1421,7 @@
       },
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp4.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1434,7 +1439,7 @@
       },
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp5.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1452,7 +1457,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "somerville2017charting/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1469,7 +1474,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "speekenbrink2008learning/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1486,7 +1491,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "steingroever2015data/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1503,7 +1508,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "steingroever2015data/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1520,7 +1525,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "steingroever2015data/exp3.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1538,7 +1543,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1556,7 +1561,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp4.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1574,7 +1579,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp5.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1592,7 +1597,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp7.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1610,7 +1615,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2021multitask/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1628,7 +1633,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2021multitask/exp3.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1646,7 +1651,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "waltz2020differential/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1664,7 +1669,7 @@
       },
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1682,7 +1687,7 @@
       },
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1700,7 +1705,7 @@
       },
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp3.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1718,7 +1723,7 @@
       },
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp4.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1735,7 +1740,7 @@
         "unit": "nats/response"
       },
       "source_task_id": "wilson2014humans/exp5.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1753,7 +1758,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wise2019acomputational/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1771,7 +1776,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wu2018generalisation/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1789,7 +1794,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wu2023chunking/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1807,7 +1812,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wu2023chunking/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1825,7 +1830,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wulff2018description/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1843,7 +1848,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wulff2018sampling/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1861,7 +1866,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "xiong2023neural/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1879,7 +1884,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "zhu2020bayesian/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1897,7 +1902,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "zhu2020bayesian/exp2.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1915,7 +1920,7 @@
       },
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "zorowitz2023data/exp1.csv",
-      "data_status": "manifest_bound_package_required",
+      "data_status": "published_public_package",
       "data_access": "pinned_source_download"
     },
     {
@@ -1927,7 +1932,8 @@
       "validation": "legacy_retained_structure_checked",
       "evaluation_scope": "task_defined",
       "primary_metric": null,
-      "data_access": "pinned_source_download"
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
     },
     {
       "task_id": "tops-fmri",
@@ -1938,7 +1944,8 @@
       "validation": "legacy_retained_structure_checked",
       "evaluation_scope": "task_defined",
       "primary_metric": null,
-      "data_access": "pinned_source_download"
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
     }
   ]
 }

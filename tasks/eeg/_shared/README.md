@@ -7,7 +7,13 @@ The Sleep-EDF spec is a new BrainPilotBench version, not an old research task sp
 The public package excludes Test inputs, Test labels, prior scores, private bindings,
 and remote host paths.
 
-`data.lock` uses `local://<BPB-task-id>/<source-task-version>/<public-filename>` for four public files. The URI is a task-scoped **supply location**, not evidence that the bytes have been copied to this checkout. A maintainer supplies the public package under `BPB_LOCAL_DATA_ROOT`, runs `bp-bench fetch <id> --public`, then removes `BPB_LOCAL_DATA_ROOT` before Agent execution. The fetcher verifies the recorded SHA-256 and byte count. Some historical Ceph packet-master tar files contain both `public/` and `private/`; never mount or pass such an archive to an Agent.
+The first-batch `data.lock` files point to four public files per task at Hugging Face
+revision `09240a63ce2ec96050313c59221291114ff8df6f`. Run
+`bp-bench fetch <id> --public` to fill the content cache. The fetcher checks each
+file's size and SHA-256. `local://` remains an owner-only supply route for
+unpublished packages. It is not required for the published first batch. Some
+historical Ceph archives contain both `public/` and `private/` files. Never
+pass such an archive to an Agent.
 
 For an owner-held mixed archive, run the maintainer-only helper outside any Agent workspace. `python tasks/eeg/_shared/stage-public-from-archive.py --plan --task tasks/eeg/<id> --archive <packet-master.tar>` checks the tar index, the original small public task-spec hash, member paths, sizes, duplicates and link types without writing files. Then run the same command with `--extract --output-root <absolute-private-staging-root>` instead of `--plan`. Extraction copies only the four contract-declared `public/data/` files, checks their exact bytes and SHA-256, and atomically creates `<root>/<id>/<source-version>/` at mode 0700. It refuses an existing destination. The mixed archive, its private/Test members and the original task spec are never copied into this staging tree. Supply that root as `BPB_LOCAL_DATA_ROOT` only for the maintainer's fetch. A plan checks metadata but does not prove the large public-file hashes; only a completed extraction does. The setup script also accepts `BPB_EEG_PUBLIC_PACKAGE_DIR` pointing to an existing public-only package; it verifies the original `task_spec.json` SHA and all four public file hashes before copying anything to the Agent workspace.
 

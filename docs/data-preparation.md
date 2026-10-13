@@ -1,10 +1,11 @@
 # Public data preparation — 2026-10-13
 
-Status: owner-only preparation. No new data package has been uploaded.
-The collection has 105 task interfaces and five EEG candidates.
+Status: the first public-data batch is published at a fixed Hugging Face revision.
+The collection has 105 runnable interfaces: 101 added tasks and four original tasks.
+It also has four EEG preparation entries and one withheld EEG candidate.
 Interface readiness, data availability, and model validation are separate states.
 
-## First-batch verified copies
+## Published first batch
 
 | Selection | Tasks | Public files | Data bytes |
 |---|---:|---:|---:|
@@ -16,10 +17,10 @@ Interface readiness, data availability, and model validation are separate states
 | C. elegans public source files | 1 | 3 | 1,063,606 |
 | Total | 101 | 246 | 32,672,970,144 |
 
-These totals exclude manifests, evaluator data, and the four retained legacy
-tasks. Each copied data file was read back and checked against its frozen SHA-256.
-Data stay outside Git. The large EEG and Psych copies remain on shared storage;
-MRI, BCI, and worm copies are staged locally.
+These totals exclude the selection manifest, evaluator data, and the four retained
+original tasks. The published namespace contains 246 data files and one selection
+manifest. All 247 paths passed anonymous download and SHA-256 checks.
+Data stay outside Git. Source copies remain on shared storage or local staging.
 
 Psych preparation checked all 60,092 public rows and 10,681,650 marked responses.
 The packet contains only train and validation files. It excludes official Test.
@@ -46,10 +47,35 @@ The MRI public copy contains `agent_data.zip`, not `evaluator_data.zip`.
 The worm copy contains three public sources, not held-out reconstruction answers.
 This preparation does not add model fits or repeat private Test evaluation.
 
-The first-batch delivery manifest lists exactly 101 packages and 246 public
-files. It contains relative target names, sizes, and hashes, not maintainer paths.
-A separate internal inventory maps those files to their current storage.
-Neither a delivery namespace nor a hosting destination has been published.
+The first-batch selection manifest lists 101 tasks and 246 public data files.
+It contains target names, sizes, and hashes, but no maintainer source paths.
+The files are under `bpb-public-data-20261013-v1/` in
+[BrainPilot-Bench/Tasks-Data-Public](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1)
+at revision `09240a63ce2ec96050313c59221291114ff8df6f`.
+The uploaded selection manifest retains its historical candidate status.
+The separate publication receipt records the completed data publication and 247 public
+readbacks. The internal source inventory was not uploaded.
+
+## Representative download checks
+
+The 2026-10-13 address update used separate empty caches for these checks:
+
+| Task | Newly downloaded public bytes | Check |
+|---|---:|---|
+| EEG AlexMI (`eeg-mi-barachant2012`) | 11,825,808 | Four-file fetch and workspace preparation passed |
+| Psych Lefebvre exp1 | 450,595 | Two-split fetch and workspace preparation passed without the original source file |
+| C. elegans | 1,063,606 | Three-file public fetch and hash checks passed |
+
+These downloads used the pinned Hugging Face revision without a token.
+The EEG and Psych caches and prepared workspaces matched their frozen file hashes.
+The MRI archive retained its completed full public readback and earlier reference validation.
+It was not downloaded or trained again for this address update.
+
+The update also passed build, 41 data-related unit tests, collection/catalog checks,
+schema validation, and the documentation smoke check.
+These checks do not run all task references or establish new model results.
+The four original data locks, private entries, task versions, and scientific contracts remain unchanged.
+Local smoke evidence is under `.cache/published-fetch-smoke-20261013/`.
 
 ## Additional data candidates
 
@@ -73,9 +99,9 @@ The corrected checker verified all 1,376 export files before packaging.
 Independent package checks confirmed the four hashes, array shapes, targets,
 and group separation. The original wrapper failure remains in its own record.
 
-Together, the first batch and these two candidates contain 103 public packages,
-254 data files, and 42,084,706,383 bytes. The candidates have separate manifests;
-they do not change the first batch's 105 runnable interfaces.
+Together, the published batch and these two owner-held candidates contain 103
+public packages, 254 data files, and 42,084,706,383 bytes. The two candidates
+were not uploaded. They do not change the collection's 105 runnable interfaces.
 
 MRI and worm evaluator inputs also have separate verified copies: four files,
 930,292,976 bytes. They are excluded from every public manifest. Preparation
@@ -101,7 +127,6 @@ wrong location within its report. The corrected checker requires matching caps
 in all three native target records. Recovery preserves the original failed run
 and producer hashes; it does not rerun raw preprocessing or relabel that run
 as successful. New exports still require fresh resource and input checks.
-No automatic retry or recurring monitor was scheduled.
 
 The four legacy tasks retain their original pinned download references. They
 are not included in the new-copy totals above. Their unchanged task definitions
@@ -110,16 +135,17 @@ All six pinned public URLs returned HTTP 200 to fresh HEAD requests. Their
 reported lengths and linked SHA-256 metadata match `data.lock`. This checks
 availability and server metadata, not freshly downloaded content hashes.
 
-## Using an available packet
+## Using public data
 
-For imported EEG, the maintained layout is
-`<root>/<task-id>/<source-task-version>/<file>`. Set `BPB_LOCAL_DATA_ROOT`
-to that root, then run the task's public fetch and preparation commands.
-The fetcher verifies `data.lock`; it does not accept a same-named file by itself.
+For the published first batch, run `bp-bench fetch <task-id> --public` to load
+the files named in `data.lock`. The fetcher checks each file's size and SHA-256.
+The owner-only `BPB_LOCAL_DATA_ROOT` route remains a preparation fallback for
+unpublished packages. It is not required for the published first batch.
 
-For Psych, set `BPB_PSYCH101_PUBLIC_TASK_DIR` to the packet's
-`public-tasks/<task-id>` directory. Follow that task's README for preparation
-and public scoring. The scorer verifies both split hashes before model execution.
+For Psych, use the published public fetch or set
+`BPB_PSYCH101_PUBLIC_TASK_DIR` to a verified packet's
+`public-tasks/<task-id>` directory. The scorer checks both split hashes before
+model execution. The packet route is an optional maintainer source.
 
 Use the individual MRI and worm README commands with their verified public
 sources. Evaluator-only inputs stay in a separate maintainer-controlled location.
@@ -128,17 +154,19 @@ The four real reference checks are recorded in
 
 ## Publication boundary
 
-Before upload, select an exact destination and immutable data version.
-Upload only the public allowlist, verify downloaded hashes, then replace
-maintainer-only references with those verified download locations.
-Keep private evaluator distribution separate. Repository publication, data
-upload, and the Bench page update each need their concrete targets approved.
+The first public-data batch is complete at the fixed Hugging Face revision above.
+The public selection contains no private evaluator file or prepared EEG candidate.
+The 247 anonymous readbacks prove hosted bytes, not model performance.
+Repository merge, package or image release, and the Bench page update remain
+separate actions. Keep private evaluator distribution separate.
 
 Local receipts are under `.cache/psych101-public-staging/`,
 `.cache/eeg-public-staging/`, `.cache/public-data-candidate/`, and
 `.cache/eeg-d-expansion/actual-prep/`. They retain exact source and output
 locations, producer hashes, job identities, and verification results.
 First-batch delivery metadata are in `.cache/data-delivery-20261013/`.
+The final local publication receipt is in
+`.cache/hf-public-upload-20261013/recovery-v1/publication-receipt.json`.
 The HMC and onset candidates use separate incremental delivery directories.
 The internal inventory and `.cache/private-data-candidate/` must not be uploaded
 with public data.

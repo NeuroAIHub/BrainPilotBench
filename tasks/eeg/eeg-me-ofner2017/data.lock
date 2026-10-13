@@ -1,23 +1,23 @@
-# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Public train/valid only; pinned HF downloads are verified by size and SHA-256.
 # Source case motor_execution/ofner2017; frozen task_spec SHA-256 3c9ad67215971572900a65311d278ba41296d15bf97e80c4198bc7ce37e7a963.
 datasets:
   - name: eeg-me-ofner2017-train-npz
-    uri: local://eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/train.npz
     sha256: a64012be5c296b306c17293bab8a9a79a98334d184db4dafd7b521ca6239f92f
     bytes: 332065930
     scope: public
   - name: eeg-me-ofner2017-val-npz
-    uri: local://eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/val.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/val.npz
     sha256: 9339bc8d92a1151f2b0f932fc974f7c7f522eea5358bec829d0d16e55ad5f707
     bytes: 110688970
     scope: public
   - name: eeg-me-ofner2017-train-groups-json
-    uri: local://eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/train-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/train-groups.json
     sha256: 23f6e8109c4b38d35a46a934a17d7a15d7ed44c2026481bf239765842efb3f9f
     bytes: 259931
     scope: public
   - name: eeg-me-ofner2017-val-groups-json
-    uri: local://eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/val-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-ofner2017/expanded-three-seed-20260923-ofner-v1/val-groups.json
     sha256: cb5d3a0fde63672d83778badf1d5f1c24c1988d6df8635890b95fdc4388fb80c
     bytes: 86051
     scope: public

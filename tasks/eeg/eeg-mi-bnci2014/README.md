@@ -12,17 +12,14 @@ independent research acceptance. AgentEEGBench remains a separate research proje
 
 ## Prepare
 
-Obtain the frozen public `train.npz` and `val.npz` from the task maintainer.
-No stable public mirror is published yet. Both hashes are checked before use.
-Data bodies stay outside Git. From the repository root:
+`data.lock` pins public `train.npz` and `val.npz` to the published Hugging Face revision.
+Fetch checks their sizes and SHA-256 hashes. Data bodies stay outside Git.
+From the repository root:
 
 ```bash
-export BPB_LOCAL_DATA_ROOT=/path/to/frozen-public-package
 node dist/cli.js fetch eeg-mi-bnci2014 --public
-unset BPB_LOCAL_DATA_ROOT
-export BPB_EEG_PUBLIC_DATA_DIR=/path/to/frozen-public-package
-mkdir -p .cache/eeg/workspace
-(cd .cache/eeg/workspace && bash ../../../tasks/eeg/eeg-mi-bnci2014/env/setup.sh --role agent)
+node dist/cli.js prepare eeg-mi-bnci2014 --workspace .cache/eeg/workspace
+export BPB_EEG_PUBLIC_DATA_DIR="$PWD/.cache/eeg/workspace/public_data"
 docker build -t bpb-eeg-reference:local tasks/eeg/eeg-mi-bnci2014/env
 export BPB_EEG_IMAGE=$(docker image inspect --format '{{.Id}}' bpb-eeg-reference:local)
 bash tasks/eeg/eeg-mi-bnci2014/env/setup-python.sh

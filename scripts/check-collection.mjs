@@ -224,6 +224,17 @@ if (catalog) {
           fail(`catalog ${id}: primary metric mismatch`);
         if (kind === "runnable" && entry.task_version !== runnables.get(id).task.meta.version)
           fail(`catalog ${id}: task version mismatch`);
+        if (kind === "runnable") {
+          const datasets = runnables.get(id).task.datasets;
+          const access = rows => rows.some(d => d.uri.startsWith("local://"))
+            ? "maintainer_package_required" : "pinned_source_download";
+          if (entry.data_access !== access(datasets.filter(d => d.scope === "public")))
+            fail(`catalog ${id}: public data access mismatch`);
+          const privateDatasets = datasets.filter(d => d.scope === "private");
+          const privateAccess = privateDatasets.length ? access(privateDatasets) : undefined;
+          if (entry.private_data_access !== privateAccess)
+            fail(`catalog ${id}: private data access mismatch`);
+        }
       } else {
         const metadataPath = insideRepo(entry.metadata_file, `catalog ${id} metadata_file`);
         if (metadataPath !== psychMetadataPath) fail(`catalog ${id}: psychology metadata_file mismatch`);

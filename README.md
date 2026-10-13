@@ -44,7 +44,8 @@ submission bundle can be evaluated.
 > [!IMPORTANT]
 > The published BrainPilotBench-v0 results cover four tasks. The shared collection
 > below is an integration candidate, not a new benchmark release or a set of
-> completed Agent comparisons. The package is not yet published to npm; use a source checkout.
+> completed Agent comparisons. This branch is not merged into main or published to npm.
+> Use a source checkout. The first public-data batch is published separately on Hugging Face.
 
 ## Why BrainPilotBench
 
@@ -98,7 +99,7 @@ candidates. `bp-bench list` includes runnable task packages only.
 
 | Added task family | Task entry | Integration validation |
 |---|---|---|
-| EEG native protocols | [BCI-IV-2a native split](tasks/eeg/eeg-mi-bnci2014/README.md), 21 imported packages, and [full native Sleep-EDF](tasks/eeg/eeg-sleep-stage-sleepedf/README.md) | One real reference; shared scorer regression; other task contracts checked without retraining |
+| EEG native protocols | [BCI-IV-2a native split](tasks/eeg/eeg-mi-bnci2014/README.md), 21 imported packages, and [full native Sleep-EDF](tasks/eeg/eeg-sleep-stage-sleepedf/README.md) | One real reference and shared scorer checks, without retraining other tasks |
 | Psychology | [76 public-validation tasks](tasks/psychology/README.md) | 22 categorical interfaces and 54 versioned byte-sequence interfaces; representative and contract checks |
 | Connectomics | [C. elegans](tasks/connectomics/celegans-structure-function-divergence/README.md) | Real-data reference through isolated scoring |
 | MRI | [Structural MRI brain age](tasks/mri/brain-age-mri/README.md) | Public model fit and one frozen held-out reference evaluation |
@@ -109,16 +110,18 @@ version, and data hashes. This repository does not import their experiment queue
 controllers, provider settings, histories, or a top-level `runtimes/` layer.
 
 The [coverage expansion record](docs/coverage-expansion.md) lists 105 runnable
-interfaces, four EEG preparation recipes that still need full data exports, and
-one task withheld from activation. A runnable interface still needs its pinned
-data package. It does not mean that a full Agent experiment was completed.
-New EEG and Psych entries currently score public validation, not private Test.
+interfaces: four original tasks and 101 added tasks. It also lists four EEG
+preparation recipes and one withheld candidate. An interface is not a completed
+Agent experiment. New EEG and Psych tasks score public validation, not private Test.
 
-The four original tasks use public data from
-[BrainPilot-Bench/Tasks-Data-Public](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public).
-New packages remain in owner-only preparation; see the
-[data preparation record](docs/data-preparation.md) for available copies and gaps.
-Evaluator-only data remain gated and are never exposed to an agent run.
+The 101 added tasks have 246 public data files at the
+[fixed Hugging Face revision](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1).
+The revision also contains one selection manifest. All 247 paths passed anonymous
+download and SHA-256 checks. The four original tasks retain their existing data
+references. This data release does not add model results or a benchmark release.
+The two prepared EEG candidates, other preparation entries, and evaluator-only
+data are not in this public batch.
+See the [data preparation record](docs/data-preparation.md) for the exact scope.
 
 ## Quick start
 

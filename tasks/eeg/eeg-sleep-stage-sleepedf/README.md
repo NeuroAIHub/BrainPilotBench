@@ -1,6 +1,6 @@
 # Sleep-EDF cassette sleep staging
 
-Status: registered public-validation interface with an owner-staged data package.
+Status: registered public-validation interface with a published public data package.
 The real data preparation and shared scoring contract checks passed.
 This is not a new model result or private Test acceptance.
 
@@ -16,8 +16,8 @@ The public validation metric is five-class balanced accuracy.
 
 The public package has four files: `train.npz`, `val.npz`, and two group files.
 The group files contain opaque subject IDs with no overlap between the splits.
-The package is in owner-only staging. No public download URL exists.
-The `data.lock` file names task-scoped local files and their exact hashes.
+The package is published in the first BrainPilotBench public-data batch.
+The `data.lock` file pins its Hugging Face revision, file sizes, and SHA-256 hashes.
 
 `source-task-spec.json` is a new BrainPilotBench source spec.
 It is not a spec from the independent AgentEEGBench research project.
@@ -43,15 +43,15 @@ From the repository root, install the trusted NumPy environment:
 bash tasks/eeg/_shared/setup-python.sh
 ```
 
-Set `BPB_EEG_PYTHON` to the printed interpreter. Place the four public files under
-`BPB_LOCAL_DATA_ROOT/eeg-sleep-stage-sleepedf/bpb-native-full-20261012-v1/`, then fetch:
+Set `BPB_EEG_PYTHON` to the printed interpreter. Fetch and prepare the public data:
 
 ```sh
-bp-bench fetch eeg-sleep-stage-sleepedf --public
+node dist/cli.js fetch eeg-sleep-stage-sleepedf --public
+node dist/cli.js prepare eeg-sleep-stage-sleepedf --workspace /absolute/new-workspace
 ```
 
-Unset `BPB_LOCAL_DATA_ROOT` before Agent execution. The setup command reads the
-verified cache and copies only public files into the workspace. Alternatively,
+The setup command reads the verified cache and copies only public files into the workspace.
+The public download route does not require `BPB_LOCAL_DATA_ROOT`. Alternatively,
 set `BPB_EEG_PUBLIC_PACKAGE_DIR` to a public package with the byte-identical
 `source-task-spec.json` named `task_spec.json` and the four files under `data/`.
 

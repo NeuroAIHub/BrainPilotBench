@@ -1,23 +1,23 @@
-# Public train/valid only; contents are supplied by the maintainer and verified by SHA-256.
+# Public train/valid only; pinned HF downloads are verified by size and SHA-256.
 # Source case motor_imagery/barachant2012; frozen task_spec SHA-256 50ec768f0db636ef563b0edc490b546c3cf679284278a792b299ae6b2828554b.
 datasets:
   - name: eeg-mi-barachant2012-train-npz
-    uri: local://eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/train.npz
     sha256: 816167be0282e15ade9c2f034eb17cdf61aefbf25912e6b936fc2d224ea1da33
     bytes: 8850154
     scope: public
   - name: eeg-mi-barachant2012-val-npz
-    uri: local://eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/val.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/val.npz
     sha256: aabb8cfbdc42e0ea9efd66f15a40f6074148ff4c2ec5166db8f5bb2491e8dfb9
     bytes: 2950378
     scope: public
   - name: eeg-mi-barachant2012-train-groups-json
-    uri: local://eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/train-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/train-groups.json
     sha256: ec9b985b90347ccfa9381c3836b70cbb9fff268cac1b86b6a3ab6dda98963bf8
     bytes: 18876
     scope: public
   - name: eeg-mi-barachant2012-val-groups-json
-    uri: local://eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/val-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-barachant2012/expanded-three-seed-20260923-alexmi-v1/val-groups.json
     sha256: b1fe7b62808e8c2235fbf89fa1996f3c0f9fcc8e3143bcd48a1d3bb889e2997b
     bytes: 6400
     scope: public
