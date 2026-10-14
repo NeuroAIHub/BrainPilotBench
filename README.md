@@ -36,12 +36,8 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 
 ## Project news
 
-- **2026-10-14 — Expanded task collection.** [PR #70](https://github.com/NeuroAIHub/BrainPilotBench/pull/70) is merged into main.
-  The repository now includes 101 new tasks across EEG, psychology, structural MRI, and connectomics, bringing the total to 105.
-  Task pages and domain indexes now describe research goals, data, submissions, and scoring.
+- **2026-10-14 — Expanded task collection.** The repository now includes 101 new tasks across EEG, psychology, structural MRI, and connectomics, bringing the total to 105.
   **Agent benchmark results for the new tasks are pending.**
-- **2026-10-13 — Public data published.** The [first public-data batch](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1) provides 246 files (32.67 GB) for the 101 new tasks.
-  Private evaluator data remain separate.
 - **2026-07-18** — BrainPilot was showcased at the “Intelligence in the Physical World” Science Forum at WAIC 2026. Follow us for the latest updates.
 - **2026-07-17** — BrainPilotBench-v0 was released as open source. It provides four real brain-science tasks for agent-agnostic, artifact-based evaluation of the code, figures, models, and reports produced by scientific agents.
 
