@@ -1,5 +1,7 @@
 # Shared EEG public-validation contract
 
+For task summaries and lifecycle status, see the [EEG task index](../README.md).
+
 These helpers serve 21 imported native protocols and the new full Sleep-EDF stage task.
 Each task has an independent ID and source version. Its `contract.json` binds
 the source spec, commit, shapes, label mapping, split, counts, metric, and public file hashes.

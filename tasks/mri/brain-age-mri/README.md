@@ -1,15 +1,28 @@
-# Brain age from structural MRI — candidate task 0.1-candidate
+# Age Prediction from Structural MRI
 
-Predict chronological age from anonymized T1-weighted structural MRI. The Agent
-receives 449 public images and ages. A separate evaluator holds 112 images and
-ages. `test_mae` (years, lower is better) is the primary metric. The scorer also
-reports Pearson *r*, R², and a derived 0–1 `score`; the derived value does not
-replace MAE in task ranking.
+[Task collection](../../../README.md#task-suite) · [Data lock](data.lock) · [Task specification](task.yaml)
 
-This task is a candidate, not a published BrainPilotBench release. The
-contributing colleagues' assurance about source, permission, subject mapping,
-and split integrity was accepted by the owner. That assurance is recorded as
-contributor evidence, not as independent provenance verification.
+The agent develops a model that predicts chronological age from T1-weighted brain MRI.
+Model development uses public images and age labels. Evaluation uses a separate
+set of held-out subjects.
+
+> [!NOTE]
+> **Agent benchmark results: not yet available.**
+> Public data and evaluation code are available. The reference implementation checks below are separate from agent benchmark results.
+
+## Task at a glance
+
+| Field | Details |
+|---|---|
+| Task ID | `brain-age-mri` |
+| Task version | `0.1-candidate` |
+| Public data | MRI scans and chronological ages for 449 subjects |
+| Submission | A saved model, inference code, training code/configuration, public validation predictions, and a report |
+| Primary metric | Mean absolute error in years (`test_mae`), lower is better |
+| Evaluation | 112 held-out subjects with evaluator-controlled age labels |
+
+Pearson *r*, R², and a derived 0–1 `score` are additional diagnostics.
+They do not replace MAE as the primary metric.
 
 ## Data and roles
 
@@ -93,7 +106,9 @@ the public reference directory as the long-term score store. The research
 timeout is 180 minutes; the submitted
 inference limit is 30 minutes. Keep these limits separate.
 
-## Maintainer reference and current evidence
+<a id="maintainer-reference-and-current-evidence"></a>
+
+## Reference implementation checks
 
 `reference/generate_reference.py` trains a deliberately coarse voxel/Ridge
 baseline on public subjects only. Its fixed low-cost configuration is an 8³
@@ -113,3 +128,15 @@ subjects for training, then scored the frozen model once on 112 hidden subjects
 in Docker. Exact metrics, digests, timing, limitations, and private evaluator
 receipts live only in `.cache/brain-age/evidence.json`; private labels and
 results are not part of this task directory.
+
+<details>
+<summary>Source and integration record</summary>
+
+This task is a candidate, not a published BrainPilotBench release. The
+contributing colleagues' assurance about source, permission, subject mapping,
+and split integrity was accepted by the owner. That assurance is recorded as
+contributor evidence, not as independent provenance verification.
+The task version remains `0.1-candidate`. Public data publication does not change
+its scientific protocol or establish an agent benchmark result.
+
+</details>

@@ -1,20 +1,33 @@
 # Shared task collection
 
-BrainPilotBench stores task definitions, task-specific environments, pinned data
-references, preparation scripts, submission contracts, and scoring entry points.
-Research projects use those tasks at a fixed Git commit and task version. Their
-Agent implementations, scheduling, credentials and research records stay separate.
-There is no top-level `runtimes/` directory.
+[Task suite](../README.md#task-suite) · [EEG](../tasks/eeg/README.md) · [Psychology](../tasks/psychology/README.md) · [Public data](data-preparation.md)
+
+BrainPilotBench brings brain-science and behavioral research tasks into one shared collection.
+Each task describes the problem, available data, required outputs, and evaluation method.
+Researchers can use the same task definitions with different agents and research workflows.
+
+> [!IMPORTANT]
+> **Agent benchmark results for the 101 new tasks are not yet available.**
+> Public data and evaluation code are available. Representative reference checks are not agent benchmark results.
+> Published BrainPilotBench-v0 results cover the four original tasks only.
+
+AgentEEGBench, Psych101-Agent-Bench, and future specialized research benchmarks
+remain independent projects. They can reuse a task at a fixed Git commit and version.
+Their agents, experiment scheduling, credentials, and research records stay separate.
+This repository does not add a top-level `runtimes/` layer.
 
 ## Layout and identity
 
-| Domain | Contents |
+| Domain | Research tasks |
 |---|---|
-| `tasks/eeg/` | Two original tasks, 23 native public-validation tasks, four preparation-only recipes, one withheld candidate |
-| `tasks/mri/` | TOPS fMRI and structural-MRI brain age |
-| `tasks/psychology/` | 76 public-validation tasks: 22 categorical and 54 byte-sequence interfaces |
-| `tasks/connectomics/` | C. elegans structure–function divergence |
-| `tasks/calcium-imaging/` | Original RSC place-cell task |
+| [EEG](../tasks/eeg/README.md) | 23 new classification tasks and two original v0 tasks |
+| [MRI](../tasks/mri/brain-age-mri/README.md) | Structural-MRI age prediction and the original TOPS fMRI task |
+| [Psychology](../tasks/psychology/README.md) | 76 behavioral modeling tasks, with categorical or byte-sequence response interfaces |
+| [Connectomics](../tasks/connectomics/celegans-structure-function-divergence/README.md) | Anatomical connectivity and signal propagation in C. elegans |
+| [Calcium imaging](../tasks/calcium-imaging/neuro-rsc-place-cell/README.md) | The original RSC place-cell task |
+
+The collection has 105 runnable task packages. Four EEG preparation entries and
+one withheld EEG candidate remain outside that count.
 
 Use task IDs in CLI commands; directory moves do not change them. Old directory
 paths in external scripts must be updated. The four original task YAML files
@@ -50,9 +63,11 @@ Each task owns its environment instructions. CPU Docker images are built locally
 and evaluated by immutable ID/digest; no images were published. A successful
 macOS/arm64 integration run does not verify Linux/amd64 or GPU compatibility.
 
-## Low-cost validation
+<a id="low-cost-validation"></a>
 
-The integration includes four representative reference checks: native EEG
+## Reference implementation checks
+
+Four reference implementations check representative evaluation paths: native EEG
 BCI-IV-2a, Psych Lefebvre exp1, C. elegans and brain age. EEG and Psych use public
 train/valid only; historical private Test results are not replayed. The two new
 contributions use their own reference-evaluation paths. These runs check data,
@@ -83,7 +98,7 @@ npm run test:docs
 `test:collection` checks task IDs, paths, required files, metadata and metric
 directions. It does not fetch data, install Python environments, train models, or
 launch all reference solutions. Real-run commands and evidence are documented in
-each representative task and `docs/integration-validation.md`.
+each representative task and [the reference-check record](integration-validation.md).
 
 Use `evaluation.primary_metric` to declare the ranking metric, direction and
 unit. Diagnostic counts are not ranking scores. Results record task version

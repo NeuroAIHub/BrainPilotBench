@@ -1,5 +1,10 @@
 # First-stage reference validation — 2026-10-12
 
+> [!NOTE]
+> **Reference implementation checks, not agent benchmark results.**
+> The numbers below describe four pipeline checks during task integration.
+> They are not scores for an agent evaluated on the 101 newly added tasks.
+
 This record describes the initial 19-interface stage and its four real references.
 The current inventory and subsequent checks are in [coverage-expansion.md](coverage-expansion.md).
 Public hosting and download checks from 2026-10-13 are recorded in [data-preparation.md](data-preparation.md).
