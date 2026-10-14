@@ -20,6 +20,7 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 </p>
 
 <p>
+  <a href="#project-news">News</a> ·
   <a href="#task-suite">Tasks</a> ·
   <a href="#quick-start">Quick Start</a> ·
   <a href="#evaluation-status">Evaluation Status</a> ·
@@ -32,6 +33,19 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 </div>
 
 ---
+
+## Project news
+
+- **2026-10-14 — Expanded task collection.** [PR #70](https://github.com/NeuroAIHub/BrainPilotBench/pull/70) is merged into main.
+  The repository now includes 101 new tasks across EEG, psychology, structural MRI, and connectomics, bringing the total to 105.
+  Task pages and domain indexes now describe research goals, data, submissions, and scoring.
+  **Agent benchmark results for the new tasks are pending.**
+- **2026-10-13 — Public data published.** The [first public-data batch](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1) provides 246 files (32.67 GB) for the 101 new tasks.
+  Private evaluator data remain separate.
+- **2026-07-18** — BrainPilot was showcased at the “Intelligence in the Physical World” Science Forum at WAIC 2026. Follow us for the latest updates.
+- **2026-07-17** — BrainPilotBench-v0 was released as open source. It provides four real brain-science tasks for agent-agnostic, artifact-based evaluation of the code, figures, models, and reports produced by scientific agents.
+
+## Overview
 
 BrainPilotBench is a benchmark and shared task collection for evaluating AI agents
 on brain-science and behavioral research problems. Agents analyze data, develop
@@ -51,9 +65,8 @@ code. Independent research projects can reuse the same versioned tasks.
 >
 > Published **BrainPilotBench-v0 results cover only the four original tasks**.
 
-The expanded collection is available on the `feat/shared-task-collection` branch
-in [PR #70](https://github.com/NeuroAIHub/BrainPilotBench/pull/70). It is not yet
-merged into main or distributed through npm. Use the source checkout below.
+These task packages are now part of main. Use the source checkout below.
+The expanded collection is not yet distributed through npm.
 
 ## Task suite
 
@@ -134,14 +147,6 @@ the technical report.
   <a href="https://brainpilot.chat/bench#leaderboard"><strong>Explore the BrainPilotBench-v0 evaluation →</strong></a>
 </p>
 
-<details>
-<summary>Project news</summary>
-
-- **2026-07-18** — BrainPilot was showcased at the “Intelligence in the Physical World” Science Forum at WAIC 2026. Follow us for the latest updates.
-- **2026-07-17** — BrainPilotBench-v0 was released as open source. It provides four real brain-science tasks for agent-agnostic, artifact-based evaluation of the code, figures, models, and reports produced by scientific agents.
-
-</details>
-
 ## Quick start
 
 ### Requirements
@@ -151,12 +156,11 @@ the technical report.
 - Git
 - Any task-specific Python, CPU, GPU, or storage requirements listed in its task README
 
-Clone the repository and select the task-collection branch:
+Clone and build from main:
 
 ~~~bash
 git clone https://github.com/NeuroAIHub/BrainPilotBench.git
 cd BrainPilotBench
-git switch feat/shared-task-collection
 npm ci
 npm run build
 npm link
