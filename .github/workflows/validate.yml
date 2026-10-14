@@ -42,15 +42,15 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Create documented tops-fMRI environment
-        run: bash tasks/tops-fmri/env/setup-python.sh
+        run: bash tasks/mri/tops-fmri/env/setup-python.sh
       - name: Verify isolated numerical imports
         run: |
           .venv/bin/python -c 'import sys; assert sys.prefix != sys.base_prefix'
           .venv/bin/python -c 'import numpy, scipy, sklearn; print(numpy.__version__, scipy.__version__, sklearn.__version__)'
       - name: Verify bciciv-2a preprocessing contract
-        run: .venv/bin/python -m unittest tasks/bciciv-2a/checks/test_preprocessing_contract.py
+        run: .venv/bin/python -m unittest tasks/eeg/bciciv-2a/checks/test_preprocessing_contract.py
       - name: Verify sleep-edf preprocessing contract
-        run: .venv/bin/python -m unittest tasks/sleep-edf/checks/test_preprocessing_contract.py
+        run: .venv/bin/python -m unittest tasks/eeg/sleep-edf/checks/test_preprocessing_contract.py
 
   validate:
     strategy:
@@ -69,9 +69,23 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install pinned numerical task dependencies
-        run: python3 -m pip install --disable-pip-version-check -r tasks/neuro-rsc-place-cell/checks/requirements.txt
+        run: python3 -m pip install --disable-pip-version-check -r tasks/calcium-imaging/neuro-rsc-place-cell/checks/requirements.txt
       - run: npm ci --no-audit --no-fund
       - run: npm run build
+      - name: Public task contracts and preparation (synthetic only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B tasks/eeg/_shared/test_boundaries.py
+          python3 -B tasks/eeg/_preparation/test_contract.py
+          python3 -B tasks/eeg/_preparation/test_package_public.py
+          python3 -B tasks/eeg/_preparation/test_paths.py
+          python3 -B tasks/eeg/_preparation/test_module_origins.py
+          python3 -B tasks/eeg/_preparation/test_seizure_contract.py
+          python3 -B tasks/psychology/_shared/test_stage_public_packet.py
+          python3 -B tasks/psychology/_shared/test_published_cache.py
+          # Byte protocol's Docker integration cases skip without its pinned image.
+          python3 -B tasks/psychology/_shared/test_byte_protocol.py
       - name: Prepare Docker isolation smoke images
         if: runner.os == 'Linux'
         run: |
@@ -86,8 +100,16 @@ jobs:
         run: npm run test:docs
       - name: canary 检查
         run: node scripts/check-task-canary.mjs
-      - name: 任务有效性 + Oracle/NOP 门
-        run: node dist/cli.js validate all
+      - name: Collection structure (no data downloads or reference training)
+        run: |
+          npm run test:collection
+          npm run catalog:check
+          node dist/cli.js validate all --schema-only
+      - name: Legacy task Oracle/NOP gates
+        run: |
+          for task in example-exec-task bciciv-2a sleep-edf tops-fmri neuro-rsc-place-cell; do
+            node dist/cli.js validate "$task"
+          done
       - name: registry 完整性(无 registry.json 时 cli 自身 exit 0)
         run: node dist/cli.js registry verify
 

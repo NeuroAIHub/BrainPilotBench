@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-schulz2020finding-exp4",
+  "experiment_id": "schulz2020finding/exp4.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "family-profile-20261012-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 79,
+      "responses": 23700,
+      "bytes": 1216303,
+      "sha256": "d23c3e96185e8d66c5be072fe8097406247b8154f6aff0c9a40e601851f20dde"
+    },
+    "valid": {
+      "rows": 20,
+      "responses": 6000,
+      "bytes": 307849,
+      "sha256": "a467349423490a3b5f374b6aeaad098832adf5bb2021c621065775c34674fb9a"
+    }
+  },
+  "response_space_profile": "schulz_eight_option_v1",
+  "response_space_size": 8,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "score_scope": "public_validation_only",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

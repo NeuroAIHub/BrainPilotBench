@@ -1,0 +1,69 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-me-ofner2017",
+  "source_task_id": "motor_execution/ofner2017",
+  "source_task_version": "expanded-three-seed-20260923-ofner-v1",
+  "source_task_spec_sha256": "3c9ad67215971572900a65311d278ba41296d15bf97e80c4198bc7ce37e7a963",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "ofner2017-execution",
+  "kind": "classification",
+  "input_shape": [
+    61,
+    360
+  ],
+  "output_size": 7,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 3,
+  "label_mapping": {
+    "1536": 0,
+    "1537": 1,
+    "1538": 2,
+    "1539": 3,
+    "1540": 4,
+    "1541": 5,
+    "1542": 6
+  },
+  "split_type": "native SklearnSplit; rule=subject-disjoint; split_by=subject",
+  "train_samples": 3780,
+  "valid_samples": 1260,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-balanced-accuracy-complete-classes",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {
+      "sha256": "a64012be5c296b306c17293bab8a9a79a98334d184db4dafd7b521ca6239f92f",
+      "bytes": 332065930
+    },
+    "val.npz": {
+      "sha256": "9339bc8d92a1151f2b0f932fc974f7c7f522eea5358bec829d0d16e55ad5f707",
+      "bytes": 110688970
+    },
+    "train-groups.json": {
+      "sha256": "23f6e8109c4b38d35a46a934a17d7a15d7ed44c2026481bf239765842efb3f9f",
+      "bytes": 259931
+    },
+    "val-groups.json": {
+      "sha256": "cb5d3a0fde63672d83778badf1d5f1c24c1988d6df8635890b95fdc4388fb80c",
+      "bytes": 86051
+    }
+  },
+  "source_public_file_sha256": {
+    "TASK.md": "9886f09b60e5f86ea776bd063ae1841bea9f77d2d3367554982ecfbdc471f8dc",
+    "data/train-groups.json": "23f6e8109c4b38d35a46a934a17d7a15d7ed44c2026481bf239765842efb3f9f",
+    "data/train.npz": "a64012be5c296b306c17293bab8a9a79a98334d184db4dafd7b521ca6239f92f",
+    "data/val-groups.json": "cb5d3a0fde63672d83778badf1d5f1c24c1988d6df8635890b95fdc4388fb80c",
+    "data/val.npz": "9339bc8d92a1151f2b0f932fc974f7c7f522eea5358bec829d0d16e55ad5f707",
+    "environment.json": "4e278c768fb7bf1d153b6043224e050ef681593a3d2abb88e2285b7defeeec39",
+    "prompt.txt": "435040eb9fe629c11e47402b75598cdb35d046c5e41e1218259ae69fbec61310",
+    "task_spec.json": "3c9ad67215971572900a65311d278ba41296d15bf97e80c4198bc7ce37e7a963",
+    "tools/full_runtime/__init__.py": "c043ca7f49037e90be488f6b785d41ebb42c528dd73fa076477e5bb25e627ff0",
+    "tools/full_runtime/artifact.py": "0478f82550f1faf752adc22a1624193ad63c1f7725aff0310acd658b27c63d0d",
+    "tools/full_runtime/evaluate.py": "3c322fca8f50e16a41cdca344ce064dc3e92cee651bed1dcbbace190cb6f7c97",
+    "tools/validate.py": "09f70711b8087515c40fc8f79ddcd85c491484472fdbd381266ad208137f533f"
+  },
+  "availability_status": "frozen_manifest_bound_not_downloaded_here",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

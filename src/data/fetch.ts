@@ -3,12 +3,12 @@
  * 内置：file://（本地复制）、https://（Node 全局 fetch）、hf://（Hugging Face Hub）。
  */
 import { createWriteStream, readFileSync } from "node:fs";
-import { copyFile, stat } from "node:fs/promises";
+import { copyFile, stat, realpath } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { Readable, Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import { homedir } from "node:os";
-import { join } from "node:path";
+import { join, resolve, relative, isAbsolute, sep } from "node:path";
 import type { Fetcher, FetchRequest } from "./types.js";
 
 const REGISTRY = new Map<string, Fetcher>();
@@ -158,6 +158,20 @@ export function resolveHfToken(userHome = homedir()): string | undefined {
 registerFetcher("file", async (req) => {
   const srcPath = req.uri.startsWith("file://") ? fileURLToPath(req.uri) : req.uri.slice("file://".length);
   await copyFile(srcPath, req.destPath);
+});
+/** Portable references to user-provided archives; the normal cache verifies SHA-256. */
+registerFetcher("local", async (req) => {
+  const rootInput = process.env.BPB_LOCAL_DATA_ROOT;
+  if (!rootInput) throw new Error("local:// data requires BPB_LOCAL_DATA_ROOT pointing to your downloaded archives");
+  const name = decodeURIComponent(req.uri.slice("local://".length));
+  if (!name || isAbsolute(name) || name.includes("\\") || name.includes("\0") || name.split("/").includes(".."))
+    throw new Error("local:// data path must stay inside BPB_LOCAL_DATA_ROOT");
+  const root = await realpath(rootInput);
+  const source = await realpath(resolve(root, name));
+  const rel = relative(root, source);
+  if (rel === ".." || rel.startsWith(`..${sep}`) || isAbsolute(rel) || !(await stat(source)).isFile())
+    throw new Error("local:// data must be a file inside BPB_LOCAL_DATA_ROOT");
+  await copyFile(source, req.destPath);
 });
 registerFetcher("https", httpsFetch);
 registerFetcher("hf", async (req) => {

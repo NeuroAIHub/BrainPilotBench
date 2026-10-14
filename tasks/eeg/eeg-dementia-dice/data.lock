@@ -1,0 +1,23 @@
+# Public train/valid only; pinned HF downloads are verified by size and SHA-256.
+# Source case dementia_diagnosis/default; frozen task_spec SHA-256 399ebe36be2d4cfcb8b255af491c70699521165930f8c7eaf99ea3627d634834.
+datasets:
+  - name: eeg-dementia-dice-train-npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-dementia-dice/expanded-three-seed-20261012-dice-v2/train.npz
+    sha256: 0496424023996ec4317d4d24cee1aadf3dd68a842f4b87af9b4c9ba68ab8283e
+    bytes: 379595874
+    scope: public
+  - name: eeg-dementia-dice-val-npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-dementia-dice/expanded-three-seed-20261012-dice-v2/val.npz
+    sha256: bfb0bab49ac87c6e340752a5b2962dcbcf283c26504bb865439d2b10564ead5a
+    bytes: 130576194
+    scope: public
+  - name: eeg-dementia-dice-train-groups-json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-dementia-dice/expanded-three-seed-20261012-dice-v2/train-groups.json
+    sha256: f524d325e834e99cb07b35d205718488d08d0f8f8c68f0e1c639ebc22e938b07
+    bytes: 573398
+    scope: public
+  - name: eeg-dementia-dice-val-groups-json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-dementia-dice/expanded-three-seed-20261012-dice-v2/val-groups.json
+    sha256: 84576f4794c81ea8ad041df8cad203bf897badce7a3fda98046d36984b03f183
+    bytes: 196658
+    scope: public

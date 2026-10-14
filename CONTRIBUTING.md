@@ -70,9 +70,18 @@ later drifts — forcing a *new* release rather than silent mutation.
 
 ```bash
 npm ci && npm run build
-node dist/cli.js validate all      # schema + canary + created_at + Oracle/NOP gate
+node dist/cli.js validate all --schema-only  # Does not execute task code or download data.
+npm run test:collection
 npm test
 npm run test:docs
 ```
 
 See `README.md` for the full command reference and architecture overview.
+
+Place new tasks under `tasks/<domain>/<task-id>/` and add them to `tasks/catalog.json`.
+Data-only proposals use metadata records, not placeholder `task.yaml` files.
+For a family import, run one representative on real data and validate the other
+defined interfaces structurally. Run standalone contributions separately.
+Record exactly which task ran; do not label every family member as tested.
+Use `bp-bench validate <id>` for an explicitly prepared reference/NOP gate.
+It may execute a reference solution; it is not a cheap structure-only command.

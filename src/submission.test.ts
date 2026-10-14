@@ -66,6 +66,28 @@ test("verifySubmission: 缺 agent → error", () => {
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
+test("verifySubmission refuses an explicitly different scientific task version", () => {
+  const dir = makeBundle({ meta: { taskId: "t", taskVersion: "0.0", agent: "a@1" }, artifacts: ["results.csv"] });
+  try {
+    assert.ok(verifySubmission(fakeTask("t", ["*.csv"]), dir).some(i => i.level === "error" && i.msg.includes("taskVersion")));
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("verifySubmission requires a non-empty matching taskVersion for explicit evaluation tasks", () => {
+  const task = fakeTask("t", ["*.csv"]);
+  task.meta.evaluation = { primaryMetric: { id: "accuracy", direction: "maximize" } };
+  for (const taskVersion of [undefined, null, "", " ", "0.0"]) {
+    const dir = makeBundle({ meta: { taskId: "t", taskVersion, agent: "a@1" }, artifacts: ["results.csv"] });
+    try {
+      const errors = verifySubmission(task, dir).filter((issue) => issue.level === "error");
+      assert.ok(errors.some((issue) => issue.msg.includes("taskVersion")), JSON.stringify(errors));
+    } finally { rmSync(dir, { recursive: true, force: true }); }
+  }
+  const valid = makeBundle({ meta: { taskId: "t", taskVersion: "0.1", agent: "a@1" }, artifacts: ["results.csv"] });
+  try { assert.deepEqual(verifySubmission(task, valid).filter((issue) => issue.level === "error"), []); }
+  finally { rmSync(valid, { recursive: true, force: true }); }
+});
+
 test("verifySubmission: 缺某 expected_artifact → error 含该 glob", () => {
   const dir = makeBundle({ meta: { taskId: "t", agent: "a@1" }, artifacts: ["results.csv"] }); // 缺 *.png
   try {

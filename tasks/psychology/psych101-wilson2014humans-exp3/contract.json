@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-wilson2014humans-exp3",
+  "experiment_id": "wilson2014humans/exp3.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "family-profile-20261012-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 54,
+      "responses": 30346,
+      "bytes": 3260628,
+      "sha256": "b1c621e70b9cae2d1889b89fd3b904460fb6cf7aceddd7e71ec8bdeccb47069d"
+    },
+    "valid": {
+      "rows": 14,
+      "responses": 7729,
+      "bytes": 832604,
+      "sha256": "fb86cc10a3496a3aacbdab2f6777c7b94caa000255e57c6bfa9df41d9f4b1d88"
+    }
+  },
+  "response_space_profile": "wilson_two_machine_v1",
+  "response_space_size": 2,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "score_scope": "public_validation_only",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

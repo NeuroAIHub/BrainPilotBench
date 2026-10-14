@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 
-const EVALUATOR = join(process.cwd(), "tasks", "tops-fmri", "checks", "evaluate_external.py");
+const EVALUATOR = join(process.cwd(), "tasks", "mri", "tops-fmri", "checks", "evaluate_external.py");
 
 test("tops-fMRI Docker inference cannot read labels, host credentials, or the network", {
   skip: process.env.BPB_DOCKER_TEST !== "1" || !process.env.BPB_TEST_INFERENCE_IMAGE

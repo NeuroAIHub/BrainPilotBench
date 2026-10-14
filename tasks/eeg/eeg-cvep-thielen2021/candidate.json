@@ -1,0 +1,26 @@
+{
+  "schema_version": "bpb-eeg-candidate/1",
+  "id": "eeg-cvep-thielen2021",
+  "status": "metadata_only_not_runnable",
+  "title": "Thielen2021 cVEP",
+  "source_project": "NeuralBench-Agent-Bench",
+  "upstream_repository": "https://github.com/facebookresearch/neuroai",
+  "upstream_source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "source_task_id": "cvep/default",
+  "source_recipe": null,
+  "dataset_group_id": "thielen2021",
+  "dataset_name": "Thielen2021",
+  "paradigm": "cvep",
+  "task_kind": "classification",
+  "input_description": "4秒EEG窗口；具体通道/采样率以冻结task_spec为准",
+  "output_description": "[B,20] 类别概率",
+  "native_split_description": "S：原生subject分组；保留两次种子33、stratify和真实membership，不把约60/20/20当精确样本比例",
+  "primary_metric": {
+    "id": "balanced_accuracy",
+    "direction": "maximize"
+  },
+  "frozen_task_spec_sha256": null,
+  "frozen_public_bundle_sha256": null,
+  "private_evaluator_binding_sha256": null,
+  "integration_note": "Candidate metadata only. No task.yaml, data.lock, executable scorer, or Agent run is created by this card. Resolve exact task version and artifacts from current owner receipts before activation."
+}

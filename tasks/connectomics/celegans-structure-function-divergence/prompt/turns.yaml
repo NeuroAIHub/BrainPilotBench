@@ -1,0 +1,242 @@
+# prompt/turns.yaml — celegans-structure-function-divergence 题面。
+# 协议与阈值来源：本任务 task.yaml 的 scoring 段 + checks/README.md；
+# 科学背景来源：Randi et al., Nature 623, 406–414 (2023)；
+#             Dvali et al., PRX Life 3, 033021 (2025)。
+- send: |-
+    You are a computational neuroscientist studying the relationship between the wiring
+    of a nervous system and the signals that actually propagate through it.
+
+    ## Scientific question
+
+    In C. elegans the synaptic connectome has been reconstructed in full by electron
+    microscopy, so the anatomical wiring is known independently of any functional
+    recording. Separately, a causal **signal propagation atlas** has been measured by
+    optogenetically activating individual neurons while imaging the whole brain: for
+    many pairs of neurons we know the sign, strength and causal direction of the
+    signal that one exerts on the other.
+
+    These two descriptions of the same brain are obtained by independent measurement
+    techniques. Your job is **not** to predict one from the other. It is to quantify,
+    to the best of the available data, **how far they diverge** — and to report which
+    published-style conclusions hold when you measure them yourself.
+
+    ## What you are given
+
+    `public/signaling.npz` — the signal propagation atlas:
+      - `matrix`     : (N, N) float, the measured propagation strength (df/f) from the
+                       neuron in row i to the neuron in column j; not symmetric and
+                       not sign-symmetric
+      - `alpha`      : (N, N) float in [0, 1], significance as `alpha = 1 - q_value`
+      - `neuron_ids` : (N,) the neuron name of each row/column
+
+    `public/connectome_witvliet_2020_7.npz` — one electron-microscopy connectome:
+      - `adjacency`  : (N', N') uint8, undirected, chemical and electrical synapses
+                       unioned, `max(A, A^T)` symmetrised
+      - `neuron_ids` : (N',) names, aligned with the adjacency
+
+    `public/neuron_metadata.csv` — per-neuron class, neurotransmitter and coordinates.
+
+    The two files need not have the same neuron order: intersect them by name, and note
+    that different connectome reconstructions cover different subsets of neurons. Some
+    reconstructions are somatic-only and contain **no pharyngeal neurons at all**.
+
+    ## What to submit
+
+    All paths below are relative to **your workspace, which is your current working
+    directory** (the BPB workspace is your cwd; it is not `/workspace/`). Note that
+    `report.md` goes at the workspace root, while the two code artifacts live in a
+    `divergence/` subdirectory.
+
+    `divergence/divergence_analysis.py` — a module defining exactly one class:
+
+        class DivergenceAnalysis:
+            def analyze(self, signaling, alpha, adjacency, neuron_ids) -> dict:
+                ...
+
+    `signaling`, `alpha`, `adjacency` are numpy arrays restricted to the common neurons
+    (same order for all three); `neuron_ids` is that common order as a list of strings.
+    Return a plain dict with these sections:
+
+        {
+          "edge":        {"auroc": float, "lift": float},
+          "modules":     {"nmi": float, "nmi_null_z": float, "ars": float},
+          "hub_overlap": {"k": int, "overlap": int, "null_z": float,
+                          "degree_corr": float},
+          "pharynx":     {"computable": bool,
+                          "coassignment": float, "enrichment": float,
+                          "coassignment_signaling": float, "enrichment_signaling": float},
+          "judgments":   {"edge_consistency_weak": bool,
+                          "modules_low_but_above_null": bool,
+                          "pharynx_distinct_in_anatomy": bool | None,
+                          "pharynx_distinct_in_signaling": bool | None,
+                          "hub_degree_corr_significant": bool | None},
+        }
+
+    `divergence/contract.json` — a self-describing contract, validated before scoring:
+
+        {
+          "analysis_class": "DivergenceAnalysis",
+          "methods": ["analyze"],
+          "analyze_signature": "analyze(signaling, alpha, adjacency, neuron_ids) -> dict",
+          "protocol_version": "1.0",
+          "alpha_threshold": 0.95,
+          "community_method": "greedy_modularity",
+          "hub_fraction": 0.1,
+          "hub_tie_break": "neuron_id_ascending",
+          "hub_significance": "two_sided_pearson_t_alpha_0.05",
+          "null_model": "degree_preserving_swap",
+          "edge_definition": "abs_weight_max_symmetrised"
+        }
+
+    `report.md` — a short scientific report (see the requirements below).
+
+    ## Frozen protocol
+
+    Your numbers are compared against an independent recomputation, so the protocol is
+    fixed. Deviating from it will cost you points on the statistics.
+
+    1. **Signalling edge weights**: `S = max(|matrix|, |matrix|^T)` with the diagonal
+       zeroed. **The signalling matrix has missing entries (`NaN`) — roughly a third of
+       the pairs, and unevenly distributed across neurons.** Any pair whose symmetrised
+       weight is not finite is *unmeasured* and must be dropped from every statistic
+       that ranks pairs (the edge-level `auroc` / `lift` therefore run over the measured
+       pairs only, not over all `N(N-1)/2`). Never substitute a value for a missing
+       entry, and never rank it.
+    2. **Significant signalling subgraph**: an undirected edge exists when
+       `alpha >= 0.95` in **either** direction; `np.fill_diagonal(T, 0)`. `alpha` has no
+       missing entries, so this graph is always complete.
+    3. **Communities**: greedy modularity (Clauset–Newman–Moore) computed on the
+       **binary topology** — weight 1 for every edge — for both the anatomical graph and
+       the significant signalling subgraph. (Weighted variants are not accepted: the
+       protocol is frozen to the binary-topology form for cross-reconstruction stability,
+       and one consequence is that `S` is only used for the edge-level ranking.)
+       Report the agreement between the two partitions **two ways**: `nmi` (which you then
+       read against the degree-preserving null) and the **adjusted Rand score `ars`**.
+       Both are required: `ars` is the summary the source paper reports, while the null
+       test is what makes `nmi` interpretable. On the same pair of partitions `ars` is
+       always ≤ `nmi`.
+    4. **Null model for module alignment**: degree-preserving double-edge swaps on the
+       anatomical graph, `3 x E` swaps per replicate, `10` replicates, seeded so that
+       your result is reproducible. Report `nmi_null_z` — you may implement the seeding
+       in any way, since the comparison has tolerance.
+    5. **Hub agreement**: asked for in **two ways**, and both are required.
+       (a) *Degree correlation*: Pearson `r` between the anatomical degree vector and the
+       significant-signalling degree vector, over the same `N` neurons —
+       `degree_corr`. This is the summary the source paper reports for "do structural
+       hubs occupy positions of influence in the signalling network", and it is the
+       threshold-free one.
+       (b) *Top-`k` overlap*: each network contributes its top 10% of neurons as hubs,
+       `k = max(5, round(0.1 * N))` — **by degree**, in the anatomical graph and in the
+       significant signalling subgraph respectively. Both rankings are on degrees, so
+       neither is affected by the missing entries in `S`. Break ties in the top-`k`
+       selection by neuron id, ascending — the ranking must not depend on the row order
+       of the arrays you are handed. This one depends on the arbitrary choice of `k`, so
+       report it as a descriptive and say so.
+       The null for (b) is **hypergeometric**: `E[overlap] = k^2 / N`, and
+       `sd = sqrt(k*(k/N)*(1-k/N)*(N-k)/(N-1))`; report `null_z = (overlap - E) / sd`.
+       (c) *Is the correlation significant?* Test (a) with a **two-sided Pearson test**
+       against `r = 0` at `alpha = 0.05` (t statistic, `N - 2` degrees of freedom) and
+       answer `hub_degree_corr_significant` below. The correlation itself is not a
+       yes/no question, but whether it holds up is — and that is the difference between
+       reporting a number and reporting a finding.
+    6. **Edge-level consistency**: over all unordered pairs, rank by `S` and score
+       against the anatomical edge indicator. Report `auroc` and
+       `lift = AUPRC / chance`, where `chance` is the **analytic** expected average
+       precision under a random ordering,
+       `E[AP] = H_n/n + (m-1)/(n-1) * (1 - H_n/n)`, with `H_n` the n-th harmonic number.
+       (Using the edge density as the chance level is not accepted: it inflates `lift`
+       by roughly one percent at this scale.)
+    7. **Pharynx**: pharyngeal neurons are `I1L/R, I2L/R, I3, I4, I5, I6, M1, M2L/R,
+       M3L/R, M4, M5, MC1DL/DR/VL/VR, MCL, MCR, MI, NSML/R`. `coassignment` is the
+       fraction of pharyngeal pairs that fall in the same community;
+       `enrichment` is that fraction divided by the expected co-assignment rate under
+       the observed community sizes, `sum_c C(|c|,2) / C(N,2)`. Compute this on **both
+       graphs** — against the anatomical communities (`coassignment` / `enrichment`)
+       and against the significant-signalling communities (`coassignment_signaling` /
+       `enrichment_signaling`) — using each graph's own baseline. If fewer than 5
+       pharyngeal neurons are present, report `"computable": false` and `NaN` for all
+       four numbers — and set both pharynx judgments to `null`.
+
+    ## Judgment questions
+
+    Answer each one **from the numbers you computed**, for the data actually in front of
+    you:
+
+    - `edge_consistency_weak` — `lift < 2.0`
+    - `modules_low_but_above_null` — `nmi < 0.30` **and** `nmi_null_z > 2.0`
+    - `pharynx_distinct_in_anatomy` — `enrichment >= 2.0` (or `null` if not computable)
+    - `pharynx_distinct_in_signaling` — `enrichment_signaling >= 2.0` (or `null` if not
+      computable)
+    - `hub_degree_corr_significant` — is the degree correlation of protocol step 5(a)
+      significantly positive at `alpha = 0.05`? Report `null` if `0.05 < p <= 0.10`:
+      **there the one-sided and two-sided tests disagree**, so the answer is decided by
+      a convention rather than by the data. This is a different kind of undecidable from
+      the grey zones below — it is a free implementation choice, not proximity to a
+      threshold.
+
+    The top-`k` overlap of protocol step 5(b) deliberately carries **no** judgment:
+    `overlap` is an integer, so `null_z` moves in steps of `1/sd` (about 0.84 here),
+    which makes any threshold near zero a coin flip on quantisation rather than a
+    finding. Report the number and say in your report what it does and does not
+    support. The degree correlation of 5(a) has no such problem (it is continuous), so
+    it is the hub quantity that *does* get a judgment — its significance, not its value.
+
+    Judgments whose driving statistic sits close to its threshold are treated as
+    undecidable by the scorer and are simply not counted, so do not force a guess.
+    Where a question is not decidable for a given connectome reconstruction, say so in
+    your report rather than answering anyway.
+
+    ## How you are scored
+
+        score = stat_match_rate × (0.5 + 0.5 × judgment_skill)
+
+    `stat_match_rate` is the fraction of your reported statistics that land within
+    tolerance of an independent recomputation. `judgment_skill` is your judgment
+    accuracy **minus** the accuracy of the best constant guess, rescaled to `[0, 1]`:
+    answering a question the same way every time earns nothing, because at this scale
+    most questions have the same answer on every reconstruction. The judgment factor
+    therefore acts as a 0.5x-1.0x gate rather than as half the score: reporting a
+    conclusion you did not compute cannot earn points, while getting the judgments right
+    doubles what your numbers are worth.
+
+    ## Constraints
+
+    - Your pipeline is run on **several connectome reconstructions you have not been
+      given** (different neuron subsets, different reconstructions). It must be generic:
+      nothing may be hardcoded to a particular version, and every number must be
+      computed from the arrays passed in.
+    - The analysis runs without network access and without a GPU. Each reconstruction is
+      small (N < 200); the whole evaluation takes seconds.
+    - `numpy`, `networkx` and `scikit-learn` are available.
+
+    ## `report.md` requirements
+
+    1. State the divergence findings **as measured**, with their uncertainty: which
+       statistics you computed, their values, and the chance level each is judged
+       against. A statement about divergence that is not tied to a number is not
+       acceptable.
+    2. State the **scope of every conclusion**. Your numbers come from one signalling atlas
+       intersected with **one** connectome reconstruction (`witvliet_2020_7`); the same
+       pipeline will be re-run on reconstructions you have not been given, so you cannot
+       report their results. What you can do — and what is required — is to say, for each
+       conclusion, how far it should be trusted beyond this one reconstruction: which
+       quantities are likely to be reconstruction-sensitive (e.g. anything whose driving
+       statistic sits near a decision threshold, or that depends on which neurons and which
+       pairs a given reconstruction happens to cover) and why. Report the pharynx
+       **separately on the anatomy side and on the signalling side** rather than collapsing
+       the two into one statement, and say what the absence of pharyngeal neurons in a
+       somatic-only reconstruction implies for those two numbers.
+    3. Explain why module alignment must be read against a degree-preserving null rather
+       than by the absolute value of `nmi` or `ars` alone.
+    4. Explain how you handled the **missing entries** in the signalling matrix, and what
+       that implies for the hub ranking: the missingness is uneven across neurons, so a
+       hub definition that scales with the number of measured pairs would rank
+       measurement coverage rather than connectivity. Say which definition you used and
+       why it is not confounded.
+    5. State the hub finding through **all three** hub quantities and say what each can
+       and cannot support: `degree_corr` is threshold-free, its significance is a
+       binary call on a continuous quantity, and `overlap` / `null_z` depends on an
+       arbitrary cut. If they point in different directions, say so rather than
+       reporting only the one that reads better.
+    6. State the limits of the evidence: what a single-atlas, single-organism measurement
+       can and cannot support.

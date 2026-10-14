@@ -1,0 +1,23 @@
+# Public train/valid only; pinned HF downloads are verified by size and SHA-256.
+# Source case ssvep/lee2019ssvep; frozen task_spec SHA-256 dc2bd106a54d76c11a28da69878fc67403c7f3c0a820fb3c3d5c0e07e2605af4.
+datasets:
+  - name: eeg-ssvep-openbmi2019-train-npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-ssvep-openbmi2019/expanded-three-seed-20260923-openbmi-ssvep-v1/train.npz
+    sha256: a52756bdb9972a0197b95d7ab67b6b55722f2c0a32447619a60e8038593eb3b4
+    bytes: 761907690
+    scope: public
+  - name: eeg-ssvep-openbmi2019-val-npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-ssvep-openbmi2019/expanded-three-seed-20260923-openbmi-ssvep-v1/val.npz
+    sha256: c5effe4370147bee13f6304ef813cc54f5f5d3c8bd382ebe198d99b8700fc24a
+    bytes: 261906090
+    scope: public
+  - name: eeg-ssvep-openbmi2019-train-groups-json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-ssvep-openbmi2019/expanded-three-seed-20260923-openbmi-ssvep-v1/train-groups.json
+    sha256: f558e37be16b79601b3b5e0955517b8b5a8d1be9f57532bceccc221080ad4244
+    bytes: 440711
+    scope: public
+  - name: eeg-ssvep-openbmi2019-val-groups-json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-ssvep-openbmi2019/expanded-three-seed-20260923-openbmi-ssvep-v1/val-groups.json
+    sha256: 4c9985941754ff09aebcccf817c7099625ca2cb18444be198586b7092e7a45aa
+    bytes: 150911
+    scope: public

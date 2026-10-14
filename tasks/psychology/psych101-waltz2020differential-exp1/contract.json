@@ -1,0 +1,41 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-waltz2020differential-exp1",
+  "experiment_id": "waltz2020differential/exp1.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "byte-next-20261012-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 28,
+      "responses": 11900,
+      "bytes": 1273776,
+      "sha256": "679650312da00cb3a6e44fa67ec4f3d24b9e66070bf6a3ccb67521543557b742"
+    },
+    "valid": {
+      "rows": 8,
+      "responses": 3390,
+      "bytes": 363575,
+      "sha256": "ee3ab46e74560e170b4789aac59b8826cfd94600e19938639bca652d82da9002"
+    }
+  },
+  "response_space_profile": "byte_next_v1",
+  "response_space_size": 257,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "metric_version": "utf8-byte-eos-v1",
+  "score_scope": "public_marked_response_validation_only",
+  "response_target_policy": "Only literal <<...>> response spans; unmarked events remain context",
+  "byte_vocabulary_size": 257,
+  "eos_symbol": 256,
+  "scoring_timeout_min": 180,
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

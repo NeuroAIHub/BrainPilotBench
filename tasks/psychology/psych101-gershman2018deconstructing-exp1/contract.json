@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-gershman2018deconstructing-exp1",
+  "experiment_id": "gershman2018deconstructing/exp1.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "discrete-agent-20261006-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 32,
+      "responses": 6400,
+      "bytes": 255325,
+      "sha256": "d0c88491ad5015dea4494954231f615c2925017af69e14b7869778e1fc5bf78a"
+    },
+    "valid": {
+      "rows": 8,
+      "responses": 1600,
+      "bytes": 63760,
+      "sha256": "2ff6e2ebda2d3c8c66cc19ccb5d838f6ac84c2a673091a6691fb886389350865"
+    }
+  },
+  "response_space_profile": "gershman_two_machine_v1",
+  "response_space_size": 2,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "score_scope": "public_validation_only",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

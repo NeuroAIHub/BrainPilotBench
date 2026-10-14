@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-ludwig2023human-exp1",
+  "experiment_id": "ludwig2023human/exp1.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "family-profile-20261012-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 15,
+      "responses": 5400,
+      "bytes": 668925,
+      "sha256": "7caf01f8ae4ea37671e0b59353a6839f5f95ffeec933adb2d4e3d032bd686311"
+    },
+    "valid": {
+      "rows": 4,
+      "responses": 1440,
+      "bytes": 178430,
+      "sha256": "b8d4b53781d3069dd5ce7173e021ecea977d1bead648b342f3fcc767272495bc"
+    }
+  },
+  "response_space_profile": "ludwig_left_right_v1",
+  "response_space_size": 2,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "score_scope": "public_validation_only",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

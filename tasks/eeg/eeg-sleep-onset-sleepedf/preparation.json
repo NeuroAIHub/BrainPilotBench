@@ -1,0 +1,81 @@
+{
+  "schema": "bpb-eeg-native-data-preparation/1",
+  "task_id": "eeg-sleep-onset-sleepedf",
+  "status": "preparation_ready_data_pending",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "source_task_id": "sleep_onset/default",
+  "source_dataset": "Kemp2000Analysis",
+  "expected_subjects": 78,
+  "target_kind": "regression",
+  "n_outputs": 1,
+  "metric": {
+    "id": "BinnedMAE",
+    "name": "BinnedMAE",
+    "source_log_name": "bmae",
+    "direction": "minimize",
+    "unit": "seconds"
+  },
+  "exporter": "export_sleep_onset_native.py",
+  "vendor_files": {
+    "export_sleep_onset_native.py": "99e457845307af53b0588b772127648506a1eb59de706be86aa919f9f35208f5",
+    "export_classification_native.py": "adb166da6feda1e632524a6aca0e6f7d796e85950dd2bd1f7c40b531ea811999",
+    "sleep_special_contract.py": "c97b394368235bc38df6db43a00116ffb5203a73ff1e5ee86d29227f6fccc77b"
+  },
+  "native_split": {
+    "split_by": "subject",
+    "valid_random_state": 33,
+    "test_random_state": 33,
+    "full_population_query": null
+  },
+  "native_science": {
+    "window_seconds": 5,
+    "output_shape": "[B,1] seconds",
+    "target_definition": "clip(SleepOnsetMarker.n2_onset - (segment.start + segment.duration), 0, 600.0)",
+    "cap_s": 600,
+    "bin_edges": [
+      0,
+      40,
+      90,
+      300,
+      600
+    ],
+    "bin_assignment": "inner-edge bucketize right=True; final cap included",
+    "aggregation": "unweighted mean of populated-bin MAEs; out-of-range targets excluded"
+  },
+  "required_dependencies": {
+    "pinned_scientific_checkout_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+    "native_packages": [
+      "neuralbench",
+      "neuralset",
+      "neuralfetch",
+      "neuraltrain"
+    ],
+    "native_python_environment": "isolated Linux environment containing pinned native source dependencies; exact image/package lock is not yet published",
+    "network_isolation": "Linux unshare --user --map-current-user --net; no unenforced fallback"
+  },
+  "remaining_inputs": [
+    "a published or independently hash-bound calibrated full-population manifest for this source task",
+    "read-only already-fetched raw data root and its asset inventory",
+    "isolated native Python environment and image/package digest",
+    "full exporter output with train/val/test shard digests, input shape, labels and split membership",
+    "role-separated public bundle and evaluator-only Test binding plus independent acceptance",
+    "isolated native BinnedMAE scorer and future-information/causality probe before a causal-prediction claim"
+  ],
+  "published_task_files": {
+    "task_yaml": false,
+    "data_lock": false,
+    "contract_json": false
+  },
+  "data_exported": false,
+  "agent_run_started": false,
+  "private_test_consumed": false,
+  "bin_edges": [
+    0,
+    40,
+    90,
+    300,
+    600
+  ],
+  "cap_s": 600,
+  "target_definition": "clip(SleepOnsetMarker.n2_onset - (segment.start + segment.duration), 0, 600.0)"
+}

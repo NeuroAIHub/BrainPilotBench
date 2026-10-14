@@ -1,0 +1,27 @@
+{
+  "schema": "bpb-eeg-native-public-task-spec/1",
+  "status": "public_package_candidate_hash_bound_not_accepted",
+  "spec_origin": "BrainPilotBench-created frozen native task spec; not an existing AgentEEGBench research task spec",
+  "task_id": "eeg-sleep-stage-sleepedf",
+  "source_task_id": "sleep_stage/default",
+  "source_task_version": "bpb-native-full-20261012-v1",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "Kemp2000Analysis",
+  "kind": "classification",
+  "input_shape": [2, 3600],
+  "sample_frequency_hz": 120,
+  "window_seconds": 30,
+  "output_size": 5,
+  "output": "class probabilities",
+  "label_mapping": {"N1": 0, "N2": 1, "N3": 2, "R": 3, "W": 4},
+  "split": {"name": "SklearnSplit", "split_by": "subject", "rule": "subject-disjoint", "train_subjects": 46, "valid_subjects": 16},
+  "samples": {"train": 116493, "val": 38071},
+  "primary_metric": {"id": "balanced_accuracy", "direction": "maximize", "unit": "fraction", "profile": "native-balanced-accuracy-complete-classes"},
+  "data_files": {
+    "train.npz": {"sha256": "00f6c6af70a999a1bd2d2279bedda692e8e2b9b608b76f484f29e7e04711920c", "bytes": 3355930942},
+    "val.npz": {"sha256": "d1fab30ad522958020651c4fdc9882c67af64ab3b20d13fa46f3b0a62115050d", "bytes": 1096749858},
+    "train-groups.json": {"sha256": "462a5d6e9bb987b034f064e4674f7dff1d8665d1e431a4c0c06e8912e047910f", "bytes": 329004},
+    "val-groups.json": {"sha256": "a6af6a87dc1ac23f63264c341f406a4d9243a99e40f916860cd8449bbf3ced86", "bytes": 114480}
+  },
+  "test_included": false
+}

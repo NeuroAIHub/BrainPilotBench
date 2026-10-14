@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "brain-age-mri flat score payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["score", "test_mae", "test_pearson_r", "test_r2", "pearson_r_defined", "n_test"],
+  "properties": {
+    "score": {"type": "number", "minimum": 0, "maximum": 1},
+    "test_mae": {"type": "number", "minimum": 0},
+    "test_pearson_r": {"type": "number", "minimum": -1, "maximum": 1},
+    "test_r2": {"type": "number"},
+    "pearson_r_defined": {"type": "number", "minimum": 0, "maximum": 1},
+    "n_test": {"type": "number", "minimum": 3}
+  }
+}

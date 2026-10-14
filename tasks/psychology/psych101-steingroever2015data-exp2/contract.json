@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-steingroever2015data-exp2",
+  "experiment_id": "steingroever2015data/exp2.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "iowa-three-seed-20261002-unbudgeted-v2",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 10,
+      "responses": 950,
+      "bytes": 51045,
+      "sha256": "d81eb42d7c58d73ed8cef45b4e601f582ed9544c23471494005d557354c7785e"
+    },
+    "valid": {
+      "rows": 3,
+      "responses": 285,
+      "bytes": 15351,
+      "sha256": "792eb70faef3cc8d899b810f54c88753aa2eb9c0f2b382504fcd58eaf22ca574"
+    }
+  },
+  "response_space_profile": "iowa_four_deck_v0",
+  "response_space_size": 4,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "score_scope": "public_validation_only",
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

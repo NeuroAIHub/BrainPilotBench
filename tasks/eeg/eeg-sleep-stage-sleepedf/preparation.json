@@ -1,0 +1,62 @@
+{
+  "schema": "bpb-eeg-native-data-preparation/1",
+  "task_id": "eeg-sleep-stage-sleepedf",
+  "status": "frozen_public_task_rebuild_recipe",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "source_task_id": "sleep_stage/default",
+  "source_dataset": "Kemp2000Analysis",
+  "expected_subjects": 78,
+  "target_kind": "classification",
+  "n_outputs": 5,
+  "metric": {
+    "id": "balanced_accuracy",
+    "name": "Accuracy",
+    "source_log_name": "bal_acc",
+    "direction": "maximize",
+    "unit": "fraction"
+  },
+  "exporter": "export_classification_native.py",
+  "vendor_files": {
+    "export_classification_native.py": "adb166da6feda1e632524a6aca0e6f7d796e85950dd2bd1f7c40b531ea811999"
+  },
+  "native_split": {
+    "split_by": "subject",
+    "valid_random_state": 33,
+    "test_random_state": 33,
+    "full_population_query": null
+  },
+  "native_science": {
+    "window_seconds": 30,
+    "output_shape": "[B,5] class probabilities",
+    "target_profile": "native-sleep-stage-single",
+    "target_aggregation": "single",
+    "crop_max_wake_minutes": 30
+  },
+  "required_dependencies": {
+    "pinned_scientific_checkout_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+    "native_packages": [
+      "neuralbench",
+      "neuralset",
+      "neuralfetch",
+      "neuraltrain"
+    ],
+    "native_python_environment": "isolated Linux environment containing pinned native source dependencies; exact image/package lock is not yet published",
+    "network_isolation": "Linux unshare --user --map-current-user --net; no unenforced fallback"
+  },
+  "remaining_inputs": [
+    "a published or independently hash-bound calibrated full-population manifest for this source task",
+    "read-only already-fetched raw data root and its asset inventory",
+    "isolated native Python environment and image/package digest",
+    "full exporter output with train/val/test shard digests, input shape, labels and split membership",
+    "role-separated public bundle and evaluator-only Test binding plus independent acceptance"
+  ],
+  "published_task_files": {
+    "task_yaml": false,
+    "data_lock": false,
+    "contract_json": false
+  },
+  "data_exported": false,
+  "agent_run_started": false,
+  "private_test_consumed": false,
+  "target_profile": "native-sleep-stage-single"
+}

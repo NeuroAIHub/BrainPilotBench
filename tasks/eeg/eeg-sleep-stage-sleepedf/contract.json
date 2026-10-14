@@ -1,0 +1,39 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-sleep-stage-sleepedf",
+  "source_task_id": "sleep_stage/default",
+  "source_task_version": "bpb-native-full-20261012-v1",
+  "source_task_spec_sha256": "6d0d40390a3d6374e41b2539caaf45068745c066824cbb06a9e4304cee518609",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "Kemp2000Analysis",
+  "kind": "classification",
+  "input_shape": [2, 3600],
+  "output_size": 5,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 30,
+  "label_mapping": {"N1": 0, "N2": 1, "N3": 2, "R": 3, "W": 4},
+  "split_type": "native SklearnSplit; rule=subject-disjoint; split_by=subject",
+  "train_samples": 116493,
+  "valid_samples": 38071,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-balanced-accuracy-complete-classes",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {"sha256": "00f6c6af70a999a1bd2d2279bedda692e8e2b9b608b76f484f29e7e04711920c", "bytes": 3355930942},
+    "val.npz": {"sha256": "d1fab30ad522958020651c4fdc9882c67af64ab3b20d13fa46f3b0a62115050d", "bytes": 1096749858},
+    "train-groups.json": {"sha256": "462a5d6e9bb987b034f064e4674f7dff1d8665d1e431a4c0c06e8912e047910f", "bytes": 329004},
+    "val-groups.json": {"sha256": "a6af6a87dc1ac23f63264c341f406a4d9243a99e40f916860cd8449bbf3ced86", "bytes": 114480}
+  },
+  "source_public_file_sha256": {
+    "task_spec.json": "6d0d40390a3d6374e41b2539caaf45068745c066824cbb06a9e4304cee518609",
+    "data/train.npz": "00f6c6af70a999a1bd2d2279bedda692e8e2b9b608b76f484f29e7e04711920c",
+    "data/val.npz": "d1fab30ad522958020651c4fdc9882c67af64ab3b20d13fa46f3b0a62115050d",
+    "data/train-groups.json": "462a5d6e9bb987b034f064e4674f7dff1d8665d1e431a4c0c06e8912e047910f",
+    "data/val-groups.json": "a6af6a87dc1ac23f63264c341f406a4d9243a99e40f916860cd8449bbf3ced86"
+  },
+  "availability_status": "owner_staged_public_package_not_published",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

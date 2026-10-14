@@ -2,6 +2,8 @@ node_modules/
 dist/
 runs/
 .venv/
+__pycache__/
+*.py[cod]
 # score 写进提交 bundle 的产物(示例模板不收评分输出)
 examples/submission/scores.json
 *.tsbuildinfo
@@ -10,5 +12,13 @@ examples/submission/scores.json
 .cache/
 # judge/provider 凭证只走环境变量，绝不进仓
 .env
+.env.*
+!.env.example
+!.env.*.example
 # 内部开发文档(设计/计划)——本地保留,不进公开仓
-docs/
+docs/*
+# Public collection documentation linked by README.md.
+!docs/shared-task-collection.md
+!docs/integration-validation.md
+!docs/coverage-expansion.md
+!docs/data-preparation.md

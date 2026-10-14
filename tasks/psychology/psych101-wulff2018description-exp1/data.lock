@@ -1,0 +1,18 @@
+# Psych-101 public source only. Official gated Test is intentionally absent.
+# Original public source provenance (no longer fetched by this lock):
+#   uri: hf://datasets/marcelbinz/Psych-101@611565c66395e2787cd7e3305149bb75dc138024/prompts_training.jsonl
+#   sha256: 7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01
+#   bytes: 859179475
+datasets:
+  - name: train.jsonl
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-wulff2018description-exp1/published-20261002-v1/train.jsonl
+    sha256: 2e13d4c243fab7848596d86fc24099683cd7ca11d8670f1ab222a2f29bce4322
+    bytes: 5203080
+    format: jsonl
+  - name: valid.jsonl
+    scope: public
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-wulff2018description-exp1/published-20261002-v1/valid.jsonl
+    sha256: 1634f2e5fe0ae12606f0ff91ecf125ddad3274b897e84445953b0dd51815cf3a
+    bytes: 1201400
+    format: jsonl

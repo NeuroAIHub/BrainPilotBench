@@ -1,0 +1,64 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-erp-n2pc",
+  "source_task_id": "n2pc/default",
+  "source_task_version": "expanded-three-seed-20260923-n2pc-v1",
+  "source_task_spec_sha256": "94da6cdeef82ffc51b83067386c12bb86c2e5ac2b36c202e4247ae66dc0cdaea",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "ERP_CORE",
+  "kind": "classification",
+  "input_shape": [
+    30,
+    120
+  ],
+  "output_size": 2,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 1,
+  "label_mapping": {
+    "NonTarget": 0,
+    "Target": 1
+  },
+  "split_type": "native SklearnSplit; rule=subject-disjoint; split_by=subject",
+  "train_samples": 7677,
+  "valid_samples": 2570,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-balanced-accuracy-complete-classes",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {
+      "sha256": "35410eb22a209bb3770be6dd60ef078a9eed151ba90c0a767477502d1cfcd8c6",
+      "bytes": 110610706
+    },
+    "val.npz": {
+      "sha256": "12ab5e38b594ecf97c4501795e39918fc55e7fcb5248d049b976208dd2f5a86a",
+      "bytes": 37029050
+    },
+    "train-groups.json": {
+      "sha256": "fe44f0636a5e3eccfa8b6654fd78c27973fa1d739c700e2cc7efec6a00728dc9",
+      "bytes": 528824
+    },
+    "val-groups.json": {
+      "sha256": "2012545e710063ba9e5f2891f3a545820987868dd028a553609bb141dad3c3da",
+      "bytes": 176441
+    }
+  },
+  "source_public_file_sha256": {
+    "TASK.md": "9017bfab97ee8c53fbe4a804a340f4355160603f32dc65970bb961d329215fa8",
+    "data/train-groups.json": "fe44f0636a5e3eccfa8b6654fd78c27973fa1d739c700e2cc7efec6a00728dc9",
+    "data/train.npz": "35410eb22a209bb3770be6dd60ef078a9eed151ba90c0a767477502d1cfcd8c6",
+    "data/val-groups.json": "2012545e710063ba9e5f2891f3a545820987868dd028a553609bb141dad3c3da",
+    "data/val.npz": "12ab5e38b594ecf97c4501795e39918fc55e7fcb5248d049b976208dd2f5a86a",
+    "environment.json": "4e278c768fb7bf1d153b6043224e050ef681593a3d2abb88e2285b7defeeec39",
+    "prompt.txt": "671c7eea617cd40237155adfc98a8e8efc04fac5f959c0399c9d4ab56e7c1816",
+    "task_spec.json": "94da6cdeef82ffc51b83067386c12bb86c2e5ac2b36c202e4247ae66dc0cdaea",
+    "tools/full_runtime/__init__.py": "c043ca7f49037e90be488f6b785d41ebb42c528dd73fa076477e5bb25e627ff0",
+    "tools/full_runtime/artifact.py": "0478f82550f1faf752adc22a1624193ad63c1f7725aff0310acd658b27c63d0d",
+    "tools/full_runtime/evaluate.py": "3c322fca8f50e16a41cdca344ce064dc3e92cee651bed1dcbbace190cb6f7c97",
+    "tools/validate.py": "09f70711b8087515c40fc8f79ddcd85c491484472fdbd381266ad208137f533f"
+  },
+  "availability_status": "frozen_manifest_bound_not_downloaded_here",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

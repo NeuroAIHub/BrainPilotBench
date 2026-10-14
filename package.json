@@ -56,6 +56,9 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test \"dist/**/*.test.js\"",
     "test:docs": "node scripts/docs-smoke.mjs",
+    "test:collection": "node scripts/check-collection.mjs",
+    "catalog:refresh": "node scripts/refresh-collection.mjs",
+    "catalog:check": "node scripts/refresh-collection.mjs --check",
     "prepublishOnly": "npm run build"
   },
   "engines": {

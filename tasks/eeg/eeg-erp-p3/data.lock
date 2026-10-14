@@ -1,0 +1,23 @@
+# Public train/valid only; pinned HF downloads are verified by size and SHA-256.
+# Source case p3/kappenman2021p3; frozen task_spec SHA-256 6cc4808f8e77fbf9114759926c0e12706fb8d5e421fdb45fcae43ce79c7cf69a.
+datasets:
+  - name: eeg-erp-p3-train-npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-p3/expanded-three-seed-20260923-p3core-v1/train.npz
+    sha256: 09b7cb17060f9ef80ee94301e33d4f4e73bd6f89a58b9b9d85f5f0498b1dbca1
+    bytes: 69158890
+    scope: public
+  - name: eeg-erp-p3-val-npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-p3/expanded-three-seed-20260923-p3core-v1/val.npz
+    sha256: ea04d447327f4d416764176f0284da8e87d076576fca0bd28d7c329f3c784f02
+    bytes: 23053290
+    scope: public
+  - name: eeg-erp-p3-train-groups-json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-p3/expanded-three-seed-20260923-p3core-v1/train-groups.json
+    sha256: 9dec92a4c148562857dab54b07449fba94611393deb5b5906d0661a5451730b9
+    bytes: 330311
+    scope: public
+  - name: eeg-erp-p3-val-groups-json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-p3/expanded-three-seed-20260923-p3core-v1/val-groups.json
+    sha256: d7ca9310005ae651b65d9ad8e11b6b7da2dbccab98fd2dcdaf61e186e7d30f28
+    bytes: 109511
+    scope: public

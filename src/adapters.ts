@@ -157,7 +157,7 @@ export class CommandAdapter implements AgentAdapter {
         workspaceDir: this.opts.workspaceDir,
         readonlyInputs,
         taskId: task.meta.id,
-        timeoutMs: task.meta.timeoutMin * 60_000,
+        timeoutMs: task.meta.timeoutMin === null ? null : task.meta.timeoutMin * 60_000,
       });
       if (result.timedOut) throw new Error(`agent container exceeded the ${task.meta.timeoutMin} minute task limit`);
       code = result.code;

@@ -1,0 +1,6 @@
+FROM python:3.11-slim
+COPY env/inference-requirements.txt /tmp/inference-requirements.txt
+RUN python -m pip install --no-cache-dir --disable-pip-version-check -r /tmp/inference-requirements.txt \
+    && python -c "import numpy, scipy, nibabel"
+USER 65532:65532
+WORKDIR /work

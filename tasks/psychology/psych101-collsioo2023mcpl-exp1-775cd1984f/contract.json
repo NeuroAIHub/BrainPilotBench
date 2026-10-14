@@ -1,0 +1,41 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-collsioo2023mcpl-exp1-775cd1984f",
+  "experiment_id": "collsiöö2023MCPL/exp1.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "byte-next-20261012-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 56,
+      "responses": 15680,
+      "bytes": 2387600,
+      "sha256": "a7c1ca9145c45359cf2d8589f5696accd8138aafd2ef55e332b01d6406c07662"
+    },
+    "valid": {
+      "rows": 14,
+      "responses": 3920,
+      "bytes": 639552,
+      "sha256": "ae702c2b31033c26fb4541baa5e5569c6f451f3edfe0288dedef6c5d5070b1de"
+    }
+  },
+  "response_space_profile": "byte_next_v1",
+  "response_space_size": 257,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "metric_version": "utf8-byte-eos-v1",
+  "score_scope": "public_marked_response_validation_only",
+  "response_target_policy": "Only literal <<...>> response spans; unmarked events remain context",
+  "byte_vocabulary_size": 257,
+  "eos_symbol": 256,
+  "scoring_timeout_min": 180,
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

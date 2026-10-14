@@ -1,0 +1,87 @@
+{
+  "schema": "bpb-eeg-public-validation/1",
+  "task_id": "eeg-typing-spanishbcbl",
+  "source_task_id": "typing/default",
+  "source_task_version": "d-typing-full-v3-20261012-r1",
+  "source_task_spec_sha256": "5e482fdbb948102d728d1a992a2683796cda22999a4f07caaa3531aa3d9ebeae",
+  "source_sha": "a8092dc10956038e445ff0e07f9c0c7e03a10d36",
+  "dataset_group_id": "Levy2026NoninvasiveEeg",
+  "kind": "classification",
+  "input_shape": [
+    61,
+    120
+  ],
+  "output_size": 29,
+  "output": "class probabilities",
+  "sample_frequency_hz": 120,
+  "window_seconds": 1,
+  "label_mapping": {
+    "s": 0,
+    "o": 1,
+    "t": 2,
+    "e": 3,
+    "n": 4,
+    "c": 5,
+    "i": 6,
+    "a": 7,
+    "<space>": 8,
+    "d": 9,
+    "l": 10,
+    "r": 11,
+    "b": 12,
+    "-": 13,
+    "<special>": 13,
+    "\u0014": 13,
+    "`": 13,
+    "£": 13,
+    "¤": 13,
+    "¿": 13,
+    "û": 13,
+    "ü": 13,
+    "ý": 13,
+    "z": 14,
+    "v": 15,
+    "f": 16,
+    "m": 17,
+    "u": 18,
+    "h": 19,
+    "p": 20,
+    "g": 21,
+    "q": 22,
+    "w": 23,
+    "x": 24,
+    "y": 25,
+    "j": 26,
+    "k": 27,
+    "<number>": 28
+  },
+  "split_type": "native SimilaritySplit; rule=native sentence-similarity cluster-disjoint",
+  "train_samples": 87656,
+  "valid_samples": 32909,
+  "primary_metric": "balanced_accuracy",
+  "direction": "maximize",
+  "metric_profile": "native-typing-sparse-macro-torchmetrics-1.9",
+  "max_parameters": 10000000,
+  "max_numeric_state_elements": 10000000,
+  "data_files": {
+    "train.npz": {
+      "sha256": "26f19a535102cf1fc7cfeb1407d7018112804812d3cb734f96895ff49482a98b",
+      "bytes": 2567269526
+    },
+    "val.npz": {
+      "sha256": "172fb690288aecb4c4cbb0b67f6896d5f58fac751dc6e2a363757790b0833a09",
+      "bytes": 963839282
+    },
+    "train-groups.json": {
+      "sha256": "63482046030e8610633bcd3ec8481443d482d6cde472e9134a1b27f96151b972",
+      "bytes": 6125043
+    },
+    "val-groups.json": {
+      "sha256": "6b07e13c4502bfcafc227dbc8a31d92b82f6d6824abc29483c206681d45f6f19",
+      "bytes": 2292753
+    }
+  },
+  "source_public_file_sha256": null,
+  "availability_status": "prepared_public_packet_not_downloaded_here",
+  "scoring_scope": "public-validation-only; no private Test data or score imported"
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "bpb-psych101-public-contract/1",
+  "task_id": "psych101-zhu2020bayesian-exp2",
+  "experiment_id": "zhu2020bayesian/exp2.csv",
+  "source_package_version": "published-20261002-v1",
+  "source_task_version": "byte-next-20261012-v1",
+  "source_public_sha256": "7a370a94084acd6f73f20d6559214683cfadcab8a1f69e369df285ba75ccef01",
+  "source_public_bytes": 859179475,
+  "split_seed": "development-split-0",
+  "splits": {
+    "train": {
+      "rows": 58,
+      "responses": 10440,
+      "bytes": 1384449,
+      "sha256": "db1b4c9474072ff18d9af51a4a52242b97dcd8860098dae6daa54cf8c3d6e010"
+    },
+    "valid": {
+      "rows": 15,
+      "responses": 2700,
+      "bytes": 358045,
+      "sha256": "d426c938c58ac54c8fa57068669806dea2446171c0dd999ca7ee3237be975423"
+    }
+  },
+  "response_space_profile": "byte_next_v1",
+  "response_space_size": 257,
+  "metric": "mean_response_nll",
+  "metric_direction": "minimize",
+  "metric_version": "utf8-byte-eos-v1",
+  "score_scope": "public_marked_response_validation_only",
+  "response_target_policy": "Only literal <<...>> response spans; unmarked events remain context",
+  "byte_vocabulary_size": 257,
+  "eos_symbol": 256,
+  "scoring_timeout_min": 180,
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_parameters": 100000,
+  "max_saved_numeric_state": 1000000
+}

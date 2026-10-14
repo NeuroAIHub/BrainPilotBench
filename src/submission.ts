@@ -1,7 +1,7 @@
 /**
  * submission.ts — 提交 bundle 契约(系统无关评测输入)。
  * 任何 agent(任何语言/harness)产出一个 bundle 目录即可被 score:
- *   <bundle>/meta.json            提交清单(taskId + agent + 可选 taskVersion/producedAt/notes)
+ *   <bundle>/meta.json            提交清单(taskId + agent + taskVersion for evaluation tasks)
  *   <bundle>/artifacts/<files>    必须满足任务 expected_artifacts 的 glob
  *   <bundle>/events.jsonl         可选轨迹(为将来 trajectory 评分预留)
  *   <bundle>/telemetry.json       可选标准化过程统计(由 stats 严格校验)
@@ -17,7 +17,7 @@ export interface SubmissionMeta {
   taskId: string;
   /** 被评系统标识,如 "acme-agent@1.2.0";leaderboard 行身份(task@agent)。 */
   agent: string;
-  /** 可选:针对的任务 spec 版本(记录/可比)。 */
+  /** 显式 evaluation 任务必填;旧任务可省略。 */
   taskVersion?: string;
   /** 可选:产出时间(ISO)。 */
   producedAt?: string;
@@ -49,6 +49,10 @@ export function verifySubmission(task: Task, dir: string): SubmissionIssue[] {
 
   if (typeof meta.taskId !== "string" || !meta.taskId) issues.push({ level: "error", msg: "meta.json 缺 taskId" });
   else if (meta.taskId !== task.meta.id) issues.push({ level: "error", msg: `meta.taskId(${meta.taskId})≠任务 id(${task.meta.id})` });
+  if (task.meta.evaluation && (typeof meta.taskVersion !== "string" || !meta.taskVersion.trim()))
+    issues.push({ level: "error", msg: "meta.json 缺 taskVersion(该任务须声明科研协议版本)" });
+  else if (meta.taskVersion !== undefined && meta.taskVersion !== task.meta.version)
+    issues.push({ level: "error", msg: `meta.taskVersion(${meta.taskVersion}) differs from task version(${task.meta.version})` });
   if (typeof meta.agent !== "string" || !meta.agent) issues.push({ level: "error", msg: "meta.json 缺 agent(被评系统标识)" });
 
   const configuredPrivatePath = process.env.BPB_TOPS_PRIVATE_EVAL_DIR;

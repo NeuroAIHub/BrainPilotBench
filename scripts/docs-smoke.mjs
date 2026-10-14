@@ -1,6 +1,9 @@
 import { readFileSync, rmSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
+import { discoverTaskDirs } from "../dist/discover.js";
+import { loadTask } from "../dist/loader.js";
+import { existsSync } from "node:fs";
 
 const root = process.cwd();
 const readme = readFileSync(join(root, "README.md"), "utf8");
@@ -20,11 +23,14 @@ function run(args) {
 const listed = run(["list"]);
 const taskIds = [...listed.matchAll(/\x1b\[1m([^\x1b]+)\x1b\[0m/g)].map((match) => match[1]);
 if (taskIds.length < 1) throw new Error("bp-bench list returned no canonical tasks");
-for (const id of taskIds) {
-  if (!readme.includes(`tasks/${id}/README.md`) && !readme.includes(`tasks/${id}/task.yaml`)) {
-    throw new Error(`README task table is missing a link for ${id}`);
-  }
+const catalog = JSON.parse(readFileSync(join(root, "tasks/catalog.json"), "utf8"));
+for (const dir of discoverTaskDirs(["tasks"])) {
+  const task = loadTask(dir);
+  if (!catalog.tasks.some(row => row.task_id === task.meta.id && row.directory === dir && row.entry_kind === "runnable"))
+    throw new Error(`Collection catalog is missing ${task.meta.id}`);
+  if (!existsSync(join(dir, "README.md"))) throw new Error(`Task README is missing: ${dir}`);
 }
+if (!readme.includes("tasks/catalog.json")) throw new Error("README must link the collection catalog");
 
 run(["submit", "verify", "examples/submission"]);
 run(["score", "examples/submission"]);

@@ -59,6 +59,19 @@ test("exec-script: 缺 script 文件 → unscored", async () => {
   } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
 });
 
+test("exec-script rejects a success sentinel from a failed process", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "bpb-exec-failed-"));
+  mkdirSync(join(dir, "checks"), { recursive: true });
+  writeFileSync(join(dir, "checks", "check.sh"), "#!/bin/bash\n:");
+  setExecSandbox({ run: async () => ({ stdout: '>>>>> BPB_SCORES\n{"score":1}\n<<<<< BPB_SCORES', stderr: "", exitCode: 1, timedOut: false }) });
+  try {
+    const t = execTask(dir);
+    const result = await getScorerModule("exec-script").build(t.scorers[0], t)(ctx(dir, t));
+    assert.equal(result.unscored, true);
+    assert.equal(result.state, "scoring_failed");
+  } finally { resetExecSandbox(); rmSync(dir, { recursive: true, force: true }); }
+});
+
 test("exec-script: 脚本输出无哨兵 → unscored", async () => {
   const dir = mkdtempSync(join(tmpdir(), "bpb-exec-"));
   mkdirSync(join(dir, "checks"), { recursive: true });

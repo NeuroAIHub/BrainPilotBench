@@ -1,0 +1,1951 @@
+{
+  "schema": "brainpilotbench-task-collection/1",
+  "date": "2026-10-12",
+  "release_status": "integration_candidate_not_released",
+  "validation_policy": "Four recorded real reference checks; new interfaces use structure/contract checks; no paid Agent or historical private Test replay",
+  "counts": {
+    "total": 110,
+    "runnable": 105,
+    "candidate": 5,
+    "preparation_ready": 4,
+    "representative_runs": 4
+  },
+  "tasks": [
+    {
+      "task_id": "bciciv-2a",
+      "domain": "eeg",
+      "directory": "tasks/eeg/bciciv-2a",
+      "entry_kind": "runnable",
+      "task_version": "0.2",
+      "validation": "legacy_retained_structure_checked",
+      "evaluation_scope": "task_defined",
+      "primary_metric": null,
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "brain-age-mri",
+      "domain": "mri",
+      "directory": "tasks/mri/brain-age-mri",
+      "entry_kind": "runnable",
+      "task_version": "0.1-candidate",
+      "validation": "representative_run_passed",
+      "evaluation_scope": "task_defined",
+      "primary_metric": {
+        "id": "test_mae",
+        "direction": "minimize",
+        "unit": "years"
+      },
+      "validation_record": "docs/integration-validation.md",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download",
+      "private_data_access": "maintainer_package_required"
+    },
+    {
+      "task_id": "celegans-structure-function-divergence",
+      "domain": "connectomics",
+      "directory": "tasks/connectomics/celegans-structure-function-divergence",
+      "entry_kind": "runnable",
+      "task_version": "0.6",
+      "validation": "representative_run_passed",
+      "evaluation_scope": "task_defined",
+      "primary_metric": {
+        "id": "score",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "validation_record": "docs/integration-validation.md",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-cvep-thielen2015",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-cvep-thielen2015",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "cvep/thielen2015",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-cvep-thielen2021",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-cvep-thielen2021",
+      "entry_kind": "candidate",
+      "validation": "metadata_structure_checked",
+      "preparation_available": false,
+      "source_task_id": "cvep/default",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize"
+      },
+      "reason": "Withheld from activation under the existing research scope choice"
+    },
+    {
+      "task_id": "eeg-dementia-dice",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-dementia-dice",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "dementia_diagnosis/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-erp-ern",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-erp-ern",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "ern/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-erp-lrp",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-erp-lrp",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "lrp/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-erp-mmn",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-erp-mmn",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "mismatch_negativity/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-erp-n170",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-erp-n170",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "n170/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-erp-n2pc",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-erp-n2pc",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "n2pc/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-erp-n400",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-erp-n400",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "n400/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-erp-p3",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-erp-p3",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "p3/kappenman2021p3",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-me-highgamma2017",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-me-highgamma2017",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "motor_execution/schirrmeister2017",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-me-ofner2017",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-me-ofner2017",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "motor_execution/ofner2017",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-mental-arithmetic-zyma2019",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-mental-arithmetic-zyma2019",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "mental_arithmetic/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-mi-barachant2012",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-mi-barachant2012",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "motor_imagery/barachant2012",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-mi-bnci2014",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-mi-bnci2014",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "representative_run_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "source_task_id": "motor_imagery/tangermann2012",
+      "validation_record": "docs/integration-validation.md",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-mi-cho2017",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-mi-cho2017",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "motor_imagery/cho2017",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-mi-eegmmidb",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-mi-eegmmidb",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "motor_imagery/schalk2004bci2000",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-mi-openbmi2019",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-mi-openbmi2019",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "motor_imagery/lee2019mi",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-mi-zhou2016",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-mi-zhou2016",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "motor_imagery/zhou2016",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-p3-openbmi2019",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-p3-openbmi2019",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "p3/lee2019erp",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-seizure-chbmit",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-seizure-chbmit",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "preparation_available": true,
+      "source_task_id": "seizure/default",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "name": "Accuracy",
+        "source_log_name": "bal_acc",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "reason": "Preparation recipe and checks exist; frozen full task arrays are not materialized"
+    },
+    {
+      "task_id": "eeg-sleep-onset-hmc",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-sleep-onset-hmc",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "preparation_available": true,
+      "source_task_id": "sleep_onset/alvarez2022haaglanden",
+      "primary_metric": {
+        "id": "BinnedMAE",
+        "name": "BinnedMAE",
+        "source_log_name": "bmae",
+        "direction": "minimize",
+        "unit": "seconds"
+      },
+      "reason": "Preparation recipe and checks exist; frozen full task arrays are not materialized"
+    },
+    {
+      "task_id": "eeg-sleep-onset-sleepedf",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-sleep-onset-sleepedf",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "preparation_available": true,
+      "source_task_id": "sleep_onset/default",
+      "primary_metric": {
+        "id": "BinnedMAE",
+        "name": "BinnedMAE",
+        "source_log_name": "bmae",
+        "direction": "minimize",
+        "unit": "seconds"
+      },
+      "reason": "Preparation recipe and checks exist; frozen full task arrays are not materialized"
+    },
+    {
+      "task_id": "eeg-sleep-stage-hmc",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-sleep-stage-hmc",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "preparation_available": true,
+      "source_task_id": "sleep_stage/alvarez2022haaglanden",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "name": "Accuracy",
+        "source_log_name": "bal_acc",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "reason": "Preparation recipe and checks exist; frozen full task arrays are not materialized"
+    },
+    {
+      "task_id": "eeg-sleep-stage-sleepedf",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-sleep-stage-sleepedf",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "sleep_stage/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-ssvep-openbmi2019",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-ssvep-openbmi2019",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "ssvep/lee2019ssvep",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-ssvep-wang2017",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-ssvep-wang2017",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-balanced-accuracy-complete-classes",
+      "source_task_id": "ssvep/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "eeg-typing-spanishbcbl",
+      "domain": "eeg",
+      "directory": "tasks/eeg/eeg-typing-spanishbcbl",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "evaluation_profile": "native-typing-sparse-macro-torchmetrics-1.9",
+      "source_task_id": "typing/default",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "neuro-rsc-place-cell",
+      "domain": "calcium-imaging",
+      "directory": "tasks/calcium-imaging/neuro-rsc-place-cell",
+      "entry_kind": "runnable",
+      "task_version": "0.2",
+      "validation": "legacy_retained_structure_checked",
+      "evaluation_scope": "task_defined",
+      "primary_metric": null,
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-badham2017deficits-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-badham2017deficits-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "badham2017deficits/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-bahrami2020four-exp",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-bahrami2020four-exp",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "bahrami2020four/exp.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-collsioo2023mcpl-exp1-775cd1984f",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-collsioo2023mcpl-exp1-775cd1984f",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "collsiöö2023MCPL/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-collsioo2023mcpl-exp2-6bd18ff5bf",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-collsioo2023mcpl-exp2-6bd18ff5bf",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "collsiöö2023MCPL/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-collsioo2023mcpl-exp3-c372064286",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-collsioo2023mcpl-exp3-c372064286",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "collsiöö2023MCPL/exp3.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-cox2017information-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-cox2017information-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "cox2017information/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-enkavi2019adaptivenback-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-enkavi2019adaptivenback-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "enkavi2019adaptivenback/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-enkavi2019digitspan-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-enkavi2019digitspan-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "enkavi2019digitspan/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-enkavi2019gonogo-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-enkavi2019gonogo-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "enkavi2019gonogo/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-enkavi2019recentprobes-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-enkavi2019recentprobes-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "enkavi2019recentprobes/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-feng2021dynamics-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-feng2021dynamics-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "feng2021dynamics/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-flesch2018comparing-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-flesch2018comparing-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "flesch2018comparing/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-frey2017cct-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-frey2017cct-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "frey2017cct/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-frey2017risk-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-frey2017risk-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "frey2017risk/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-garcia2023experiential-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "garcia2023experiential/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-garcia2023experiential-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "garcia2023experiential/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp3",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-garcia2023experiential-exp3",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "garcia2023experiential/exp3.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-garcia2023experiential-exp4",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-garcia2023experiential-exp4",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "garcia2023experiential/exp4.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-gershman2018deconstructing-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-gershman2018deconstructing-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "gershman2018deconstructing/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-gershman2018deconstructing-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-gershman2018deconstructing-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "gershman2018deconstructing/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-gershman2020reward-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-gershman2020reward-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "gershman2020reward/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-hebart2023things-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-hebart2023things-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "hebart2023things/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-hilbig2014generalized-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-hilbig2014generalized-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "hilbig2014generalized/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-jansen2021dunningkruger-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-jansen2021dunningkruger-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "jansen2021dunningkruger/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-kool2016when-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-kool2016when-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "kool2016when/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-kool2016when-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-kool2016when-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "kool2016when/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-kool2017cost-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-kool2017cost-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "kool2017cost/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-kool2017cost-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-kool2017cost-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "kool2017cost/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-krueger2022identifying-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-krueger2022identifying-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "krueger2022identifying/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-kumar2023disentangling-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-kumar2023disentangling-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "kumar2023disentangling/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-lefebvre2017behavioural-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-lefebvre2017behavioural-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "representative_run_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "lefebvre2017behavioural/exp1.csv",
+      "validation_record": "docs/integration-validation.md",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-lefebvre2017behavioural-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-lefebvre2017behavioural-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "lefebvre2017behavioural/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-levering2020revisiting-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-levering2020revisiting-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "levering2020revisiting/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-levering2020revisiting-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-levering2020revisiting-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "levering2020revisiting/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-ludwig2023human-exp0",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-ludwig2023human-exp0",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "ludwig_left_right_v1",
+      "source_task_id": "ludwig2023human/exp0.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-ludwig2023human-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-ludwig2023human-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "ludwig_left_right_v1",
+      "source_task_id": "ludwig2023human/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-ludwig2023human-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-ludwig2023human-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "ludwig2023human/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-peterson2021using-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-peterson2021using-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "peterson2021using/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-plonsky2018when-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-plonsky2018when-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "plonsky2018when/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-popov2023intent-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-popov2023intent-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "popov2023intent/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-popov2023intent-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-popov2023intent-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "popov2023intent/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-popov2023intent-exp3",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-popov2023intent-exp3",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "popov2023intent/exp3.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-ruggeri2022globalizability-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-ruggeri2022globalizability-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "ruggeri2022globalizability/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-sadeghiyeh2020temporal-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-sadeghiyeh2020temporal-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "sadeghiyeh2020temporal/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-schulz2020finding-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "schulz_eight_option_v1",
+      "source_task_id": "schulz2020finding/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-schulz2020finding-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "schulz2020finding/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp3",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-schulz2020finding-exp3",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "schulz_eight_option_v1",
+      "source_task_id": "schulz2020finding/exp3.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp4",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-schulz2020finding-exp4",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "schulz_eight_option_v1",
+      "source_task_id": "schulz2020finding/exp4.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-schulz2020finding-exp5",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-schulz2020finding-exp5",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "schulz_eight_option_v1",
+      "source_task_id": "schulz2020finding/exp5.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-somerville2017charting-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-somerville2017charting-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "somerville2017charting/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-speekenbrink2008learning-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-speekenbrink2008learning-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "speekenbrink2008learning/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-steingroever2015data-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-steingroever2015data-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "steingroever2015data/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-steingroever2015data-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-steingroever2015data-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "steingroever2015data/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-steingroever2015data-exp3",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-steingroever2015data-exp3",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "steingroever2015data/exp3.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-tomov2020discovery-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "tomov2020discovery/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp4",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-tomov2020discovery-exp4",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "tomov2020discovery/exp4.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp5",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-tomov2020discovery-exp5",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "tomov2020discovery/exp5.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-tomov2020discovery-exp7",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-tomov2020discovery-exp7",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "tomov2020discovery/exp7.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-tomov2021multitask-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-tomov2021multitask-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "tomov2021multitask/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-tomov2021multitask-exp3",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-tomov2021multitask-exp3",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "tomov2021multitask/exp3.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-waltz2020differential-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-waltz2020differential-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "waltz2020differential/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wilson2014humans-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "wilson_two_machine_v1",
+      "source_task_id": "wilson2014humans/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wilson2014humans-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "wilson_two_machine_v1",
+      "source_task_id": "wilson2014humans/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp3",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wilson2014humans-exp3",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "wilson_two_machine_v1",
+      "source_task_id": "wilson2014humans/exp3.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp4",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wilson2014humans-exp4",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "wilson_two_machine_v1",
+      "source_task_id": "wilson2014humans/exp4.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wilson2014humans-exp5",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wilson2014humans-exp5",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "source_task_id": "wilson2014humans/exp5.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wise2019acomputational-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wise2019acomputational-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "wise2019acomputational/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wu2018generalisation-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wu2018generalisation-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "wu2018generalisation/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wu2023chunking-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wu2023chunking-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "wu2023chunking/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wu2023chunking-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wu2023chunking-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "wu2023chunking/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wulff2018description-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wulff2018description-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "wulff2018description/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-wulff2018sampling-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-wulff2018sampling-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "wulff2018sampling/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-xiong2023neural-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-xiong2023neural-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "xiong2023neural/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-zhu2020bayesian-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-zhu2020bayesian-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "zhu2020bayesian/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-zhu2020bayesian-exp2",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-zhu2020bayesian-exp2",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "zhu2020bayesian/exp2.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "psych101-zorowitz2023data-exp1",
+      "domain": "psychology",
+      "directory": "tasks/psychology/psych101-zorowitz2023data-exp1",
+      "entry_kind": "runnable",
+      "task_version": "0.2-byte-next-v1",
+      "validation": "structure_checked_not_data_run",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "mean_response_nll",
+        "direction": "minimize",
+        "unit": "nats/response"
+      },
+      "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
+      "source_task_id": "zorowitz2023data/exp1.csv",
+      "data_status": "published_public_package",
+      "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "sleep-edf",
+      "domain": "eeg",
+      "directory": "tasks/eeg/sleep-edf",
+      "entry_kind": "runnable",
+      "task_version": "0.2",
+      "validation": "legacy_retained_structure_checked",
+      "evaluation_scope": "task_defined",
+      "primary_metric": null,
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "tops-fmri",
+      "domain": "mri",
+      "directory": "tasks/mri/tops-fmri",
+      "entry_kind": "runnable",
+      "task_version": "0.1",
+      "validation": "legacy_retained_structure_checked",
+      "evaluation_scope": "task_defined",
+      "primary_metric": null,
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download"
+    }
+  ]
+}
