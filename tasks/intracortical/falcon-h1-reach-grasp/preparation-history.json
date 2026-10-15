@@ -1,0 +1,19 @@
+{
+  "schema": "bpb-invasive-candidate/1",
+  "id": "falcon-h1-reach-grasp",
+  "domain": "intracortical",
+  "status": "preparation_ready_data_pending",
+  "title": "Human attempted reach and grasp velocity decoding",
+  "source_task_id": "h1",
+  "source_sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f",
+  "dataset_group_id": "DANDI:000954",
+  "input_description": "176-channel, 20 ms intracortical spike-count stream from motor cortex Utah arrays",
+  "output_description": "Seven continuous robotic arm and grasp-shaping velocities at each valid timestep",
+  "native_split_description": "Official held-in S0-S5, held-out S6-S12; BPB takes final held-in date S5 for Valid and public held-out calibration for evaluator-only Test, excluding duplicate minival files",
+  "primary_metric": {"id": "R2_variance_weighted", "direction": "maximize"},
+  "protocol": "protocol.json",
+  "preparation_entry": "tasks/intracortical/_preparation/prepare.py",
+  "runnable": false,
+  "validated": false,
+  "reason": "Historical preparation card retained without modification to its original scientific scope. Current runnable status is defined by task.yaml and the public-validation verification record."
+}

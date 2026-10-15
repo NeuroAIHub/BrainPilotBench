@@ -1,0 +1,3383 @@
+# Clinical ds003688 v1.0.7 sources and guarded-window derived files.
+# Raw files contain intervals from every split. Only the owner fetches raw sources.
+# Rebuild derived local:// files with env/fetch_full.py and env/prepare_full.py.
+# Source Git commit: 5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2
+datasets:
+  - name: sub-01__ses-iemu__ieeg__sub-01_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_run-1_events.tsv
+    sha256: 72654b9a77e7f545b2a5667f2d08d86297c513386fcd7c4e41e788ef69dee433
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-01__ses-iemu__ieeg__sub-01_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: d6e4d191758dbbad30e1c443782c3e34f7c0583f895469bb78983f10f3c76afc
+    bytes: 6454
+    format: tsv
+    scope: private
+  - name: sub-01__ses-iemu__ieeg__sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: b441307cf6304be5393f9b135bbd74cdf23b349bef6d572a90e9e0a26568fb17
+    bytes: 632
+    format: json
+    scope: private
+  - name: sub-01__ses-iemu__ieeg__sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 57a8f51e2d61ee36294a5a248d33a40899096d11a6d89d626b4e6561e1bcec33
+    bytes: 381952776
+    format: eeg
+    scope: private
+  - name: sub-01__ses-iemu__ieeg__sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 67768424f678570ea5ad237fe09ce3ec39c7c2bfd577a4b5522728f3f8d84bba
+    bytes: 2661
+    format: vhdr
+    scope: private
+  - name: sub-01__ses-iemu__ieeg__sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 0b22d486563a2bf8a5b049cbf711a4990ed31e2b81fcec1b83f94191969a46a3
+    bytes: 1011
+    format: vmrk
+    scope: private
+  - name: sub-02__ses-iemu__ieeg__sub-02_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_run-1_events.tsv
+    sha256: 72a6045980b583747224eab796a43bc53c1418493797bf32761e12863beab1c0
+    bytes: 386
+    format: tsv
+    scope: private
+  - name: sub-02__ses-iemu__ieeg__sub-02_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 7b6452fdf260b4c026b6df26b8f072d14c1464519925c111bb9db88136b87832
+    bytes: 3823
+    format: tsv
+    scope: private
+  - name: sub-02__ses-iemu__ieeg__sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 5ab94c2bde35db3e0ea70587c0dc452ae8f091ef3aecf6bbdcbbe0896e7da6b5
+    bytes: 656
+    format: json
+    scope: private
+  - name: sub-02__ses-iemu__ieeg__sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 3659ec181101d06838e03c80a5960f2d1dc7a5e7aafc067a6c2765ed0bc23258
+    bytes: 80591448
+    format: eeg
+    scope: private
+  - name: sub-02__ses-iemu__ieeg__sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 3ef5e6a7a7b409ef47188bd51a770ee168e18b9b0ea6a8659d095927bd3a8100
+    bytes: 1864
+    format: vhdr
+    scope: private
+  - name: sub-02__ses-iemu__ieeg__sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 880c2f689099371bdfa2f7b986c31d600f05dd3ba2bb3db569f427b536e8901e
+    bytes: 1010
+    format: vmrk
+    scope: private
+  - name: sub-03__ses-iemu__ieeg__sub-03_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_run-1_events.tsv
+    sha256: 6333507e6eae66014376237f96cc244bed5d1cf7160f61fa78edfe769e80cdc6
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-03__ses-iemu__ieeg__sub-03_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: e249689d620140052d43ebe17fdcbadd5189de3bc740f4bfdb6c582a602e1153
+    bytes: 6057
+    format: tsv
+    scope: private
+  - name: sub-03__ses-iemu__ieeg__sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 4e6e63fabf4d4f5ee9d073eaa777aa1c01589417c11e2662e5b84728d835ccc3
+    bytes: 604
+    format: json
+    scope: private
+  - name: sub-03__ses-iemu__ieeg__sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 3d78e1ef05c945e10ed6920f955a77bacf4b7ac6272f3071782f562497ff38ef
+    bytes: 97832776
+    format: eeg
+    scope: private
+  - name: sub-03__ses-iemu__ieeg__sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 69dc17fe1bef947c8b5419f791daca4b52460a4c4756da3f9ab6346f5fa09839
+    bytes: 2713
+    format: vhdr
+    scope: private
+  - name: sub-03__ses-iemu__ieeg__sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: cf61765d56556868b98baabd1cbaf176e420d99b9c33f0527301b358dc5723f8
+    bytes: 1002
+    format: vmrk
+    scope: private
+  - name: sub-05__ses-iemu__ieeg__sub-05_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_run-1_events.tsv
+    sha256: ddfa09077a179959c175d52023e0bd97dc7ca0e45f0766b2cecb197e9f125935
+    bytes: 388
+    format: tsv
+    scope: private
+  - name: sub-05__ses-iemu__ieeg__sub-05_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: cc0723f4128088dc4eff0cf3d7d00d642aec0030853f3936cd1c5df0eae14550
+    bytes: 4941
+    format: tsv
+    scope: private
+  - name: sub-05__ses-iemu__ieeg__sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 62a334ffe7d36b4a346877a12c00b00707d6dc29149a4e9e09bcd4765f4af4ef
+    bytes: 631
+    format: json
+    scope: private
+  - name: sub-05__ses-iemu__ieeg__sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 631acc7116175817cd758863a464157d417ef84a31d6900374e41c5ace2cbf79
+    bytes: 420328936
+    format: eeg
+    scope: private
+  - name: sub-05__ses-iemu__ieeg__sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: d6f3ec4e197cf2167e89ffcb85f95ddac7860e6832bebb82dae4502f4c12983e
+    bytes: 2318
+    format: vhdr
+    scope: private
+  - name: sub-05__ses-iemu__ieeg__sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: b35b4a5469702788f1b8b3345caab36ead8d933ae459202ee09e3be6a206d5be
+    bytes: 1015
+    format: vmrk
+    scope: private
+  - name: sub-06__ses-iemu__ieeg__sub-06_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_run-1_events.tsv
+    sha256: 536e26ad08c7b7ff26b18943b73f688df269eba8a6224f7bce08d5aa03455f29
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-06__ses-iemu__ieeg__sub-06_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 1d0c313406b644595de16f9d7d3f1ccd3eced78f4c919bcc2467c3798171e245
+    bytes: 5470
+    format: tsv
+    scope: private
+  - name: sub-06__ses-iemu__ieeg__sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 9bfd4a50c345422b2dfa53fa03d354ff5b90941bf204b7bc2084b3803b9bec12
+    bytes: 606
+    format: json
+    scope: private
+  - name: sub-06__ses-iemu__ieeg__sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 4f5bac1d3bcdf4f59ad6e43d4c0d8e332f40a90cae1d08153b15d79e98134f44
+    bytes: 91009408
+    format: eeg
+    scope: private
+  - name: sub-06__ses-iemu__ieeg__sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: d1fc3ae5cfb1b173620a83e3a31d3a611fb10e86c5de1b016ed12d788b333d7a
+    bytes: 2577
+    format: vhdr
+    scope: private
+  - name: sub-06__ses-iemu__ieeg__sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: b8a9c4710f16935c0e13dd2264b59b01a498e923617d015242b49bcab5b9d906
+    bytes: 1004
+    format: vmrk
+    scope: private
+  - name: sub-07__ses-iemu__ieeg__sub-07_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_run-1_events.tsv
+    sha256: 38ea4407f3e9f7be5a91da9a468c34b967b9507205e5b58af20a70aff0b53b6a
+    bytes: 385
+    format: tsv
+    scope: private
+  - name: sub-07__ses-iemu__ieeg__sub-07_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 5fddef0d0cfb24f16285d5e075d7cef830e6ee0c82834bac2d69e85ebbc0dd18
+    bytes: 3512
+    format: tsv
+    scope: private
+  - name: sub-07__ses-iemu__ieeg__sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: cc437b27f7252d14131a6afa997d58d90e0ff7d195c9d9e53a1970cde39a9a5e
+    bytes: 605
+    format: json
+    scope: private
+  - name: sub-07__ses-iemu__ieeg__sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 5ff8c7e715b2d0185dfb1c5c9218eea41d835b6c138b61ce9bcd502315b211cc
+    bytes: 54464520
+    format: eeg
+    scope: private
+  - name: sub-07__ses-iemu__ieeg__sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: b9580d570682f0e8b62450ac5503ab73998a673ad7339c2836881db2a969dfe0
+    bytes: 1779
+    format: vhdr
+    scope: private
+  - name: sub-07__ses-iemu__ieeg__sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 9a251ec7024343b1e046c74e19c896f74748413b92f6a29bc1d156f8a302e6a9
+    bytes: 1008
+    format: vmrk
+    scope: private
+  - name: sub-09__ses-iemu__ieeg__sub-09_ses-iemu_task-film_run-2_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_run-2_events.tsv
+    sha256: df56cf5205ee458e43323405cc7d13984a471a68325c55ec254e0377afb7a635
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-09__ses-iemu__ieeg__sub-09_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    sha256: 499bb76e1f503fd807db104059d246883da5f10fc73c8e423953d07b1b1d2f7d
+    bytes: 4377
+    format: tsv
+    scope: private
+  - name: sub-09__ses-iemu__ieeg__sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    sha256: 7f34f863ce8c51be4cb81764ae9048cc1a54386d494fad3c3d6dfae613d77208
+    bytes: 604
+    format: json
+    scope: private
+  - name: sub-09__ses-iemu__ieeg__sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    sha256: 8e7b65999888fbc17b25d7de6e9048e0b717ab681721e1b6550ab42f08c30ce1
+    bytes: 257064900
+    format: eeg
+    scope: private
+  - name: sub-09__ses-iemu__ieeg__sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    sha256: ae6e4ef1cbaaa2b5a140f78e6cefb94198c5e634d72a37068a68606ee21bd3a5
+    bytes: 2019
+    format: vhdr
+    scope: private
+  - name: sub-09__ses-iemu__ieeg__sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    sha256: c9d9139e12656f8c1689e0fcba36180ed91d442621799ce4d66ea2544ddafc59
+    bytes: 1010
+    format: vmrk
+    scope: private
+  - name: sub-10__ses-iemu__ieeg__sub-10_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_run-1_events.tsv
+    sha256: 01d7f28b78bbcca55962edcc198fdd2ad09c3ace0cc2d56aabc22c734c5e94a6
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-10__ses-iemu__ieeg__sub-10_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: fd2392896579b28c9d2fe195b2f569ce0f930020c872b1771591640a25107f6d
+    bytes: 5436
+    format: tsv
+    scope: private
+  - name: sub-10__ses-iemu__ieeg__sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 0bf821a8109b35a6133972aa3e9a63d37d510ce4dd499551ab2602ada7f9e84d
+    bytes: 628
+    format: json
+    scope: private
+  - name: sub-10__ses-iemu__ieeg__sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 5ad79334663ac2b392455e0a4661de2065a98e0041b3e8001f2269f36319b33d
+    bytes: 87581936
+    format: eeg
+    scope: private
+  - name: sub-10__ses-iemu__ieeg__sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 690574c7e2f2def6277bd3621d53228fa80a15ab84a371735d37b5282007464a
+    bytes: 2515
+    format: vhdr
+    scope: private
+  - name: sub-10__ses-iemu__ieeg__sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: a1e0b19ee828f83b352ef329970a9fde957e55eb735c1ffefe16ba85bf69cffe
+    bytes: 1002
+    format: vmrk
+    scope: private
+  - name: sub-12__ses-iemu__ieeg__sub-12_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_run-1_events.tsv
+    sha256: fde53aa2576f72b006fc608e2ef442f6f8dd33f51a8e1f90b1a0e9cc8695ecc4
+    bytes: 385
+    format: tsv
+    scope: private
+  - name: sub-12__ses-iemu__ieeg__sub-12_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 44ce39e20445236ccbafb8aac932c064f4bd55c7dd37b839982b7dece11da9d2
+    bytes: 3544
+    format: tsv
+    scope: private
+  - name: sub-12__ses-iemu__ieeg__sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 8c0bf74e0faecbef2cd5c3ac4302cfe15aa51da3b9c6edcee1f92b3e27341e1d
+    bytes: 606
+    format: json
+    scope: private
+  - name: sub-12__ses-iemu__ieeg__sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 60c66727e90a8311d244f96776d71347a8d0bb3e46b504bcb98e70838a6302eb
+    bytes: 257043288
+    format: eeg
+    scope: private
+  - name: sub-12__ses-iemu__ieeg__sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 5d3c5a0edf24184ebcfe603ce2d2cb742ff615ab970062c20d38ff853a229a22
+    bytes: 1892
+    format: vhdr
+    scope: private
+  - name: sub-12__ses-iemu__ieeg__sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 7e524934481b8e9305064d83e1975fc57d67d33feb143e3b3582ca03a410156f
+    bytes: 1011
+    format: vmrk
+    scope: private
+  - name: sub-13__ses-iemu__ieeg__sub-13_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_run-1_events.tsv
+    sha256: 93022dd80d77257381e7eb574df05690f35db2b134a053dd37039c4eedc4dcb6
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-13__ses-iemu__ieeg__sub-13_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: bca1ef46d69518be3343c0f7997f28722a499cb7cd3223f557e69aa35b14bcfe
+    bytes: 5612
+    format: tsv
+    scope: private
+  - name: sub-13__ses-iemu__ieeg__sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 78679e8d793e339889900736b9dcd9e92336c17509fba4b3c393dd1663e22b3c
+    bytes: 581
+    format: json
+    scope: private
+  - name: sub-13__ses-iemu__ieeg__sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 429220947e115d8b81f244da152e1b2c312fa10b1e3138b917e74fcf9b71b3f1
+    bytes: 82287888
+    format: eeg
+    scope: private
+  - name: sub-13__ses-iemu__ieeg__sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: eac2e68c0928bad331f08fdc80966e83906e739a61138a4363a16606e8253699
+    bytes: 2392
+    format: vhdr
+    scope: private
+  - name: sub-13__ses-iemu__ieeg__sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 68a9ab3aa575fd7d4b9f0bf314de3f756ef9af920e8080a82a697792c5ab822c
+    bytes: 1001
+    format: vmrk
+    scope: private
+  - name: sub-14__ses-iemu__ieeg__sub-14_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_run-1_events.tsv
+    sha256: 71d25dfed5b64aaf7ce8ed116080f44e46e4d4f39b8cad56e42710a03bdd8b35
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-14__ses-iemu__ieeg__sub-14_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 2ad375bb74545fbccb1c89c3ac1e2add190bd76330389f1c625e6d513f0ff3b0
+    bytes: 6060
+    format: tsv
+    scope: private
+  - name: sub-14__ses-iemu__ieeg__sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 2ea88d3f3b01570bcb9e2ee75ce0c83685f06cd5818b62ab381d67a24033e42a
+    bytes: 580
+    format: json
+    scope: private
+  - name: sub-14__ses-iemu__ieeg__sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 8603e584c6e5f1740adc553ee2b9281d4a96382478aa51dfabef8e343d19cc86
+    bytes: 100448000
+    format: eeg
+    scope: private
+  - name: sub-14__ses-iemu__ieeg__sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: bd7265a9ce7d1e97ab54f0df3e1e1647d754914209b35280f49afaf10c0c177f
+    bytes: 2770
+    format: vhdr
+    scope: private
+  - name: sub-14__ses-iemu__ieeg__sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: e75452e40c2b1fd3e5d16bdeab84d85a02fc24d946cce8896871815c977a7ab4
+    bytes: 1002
+    format: vmrk
+    scope: private
+  - name: sub-16__ses-iemu__ieeg__sub-16_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_run-1_events.tsv
+    sha256: a7650f3bc47bf3e864519acf9ef802fa3cb046769646e543ae663d8108901742
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-16__ses-iemu__ieeg__sub-16_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: daf0dfb20e8774d72857f4b62eb5af60ad0e736cda27eb2513c5c561d905e165
+    bytes: 5797
+    format: tsv
+    scope: private
+  - name: sub-16__ses-iemu__ieeg__sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 0738710241f0e218763d29a5505360848de203f26072277c4225c77abf719e31
+    bytes: 579
+    format: json
+    scope: private
+  - name: sub-16__ses-iemu__ieeg__sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 5b78586d2a7fd942d0f2020b8c1bf19097c077ff4d33505d2d5bcce6e6234cf3
+    bytes: 92889552
+    format: eeg
+    scope: private
+  - name: sub-16__ses-iemu__ieeg__sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: acea4aeb6f720a73f047f99f5008dc7ffb2b6dbbfee8b57406df711b46be44ed
+    bytes: 2713
+    format: vhdr
+    scope: private
+  - name: sub-16__ses-iemu__ieeg__sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 77e092001603db51ff282f547e61f19877ef2bf5e95a37d63d978d9c1ec70802
+    bytes: 1001
+    format: vmrk
+    scope: private
+  - name: sub-17__ses-iemu__ieeg__sub-17_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_run-1_events.tsv
+    sha256: c42ed45cd6eed2b8793c4e1bba08a09c173c1adc61cc84d0d14c00440bb27708
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-17__ses-iemu__ieeg__sub-17_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 8917d3e6ad3e918931446ba67d07603c185891cae264d3379ae7e0f861073a37
+    bytes: 5382
+    format: tsv
+    scope: private
+  - name: sub-17__ses-iemu__ieeg__sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 97a24f37f64c11a45609633e81ef4f24ca0ef99f4804f58b48d4d472b561d9c0
+    bytes: 578
+    format: json
+    scope: private
+  - name: sub-17__ses-iemu__ieeg__sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 974b3c168638d69f5369ee2ab152a2fd510d9d5db8cef67bedc8c2015e46c07e
+    bytes: 85929132
+    format: eeg
+    scope: private
+  - name: sub-17__ses-iemu__ieeg__sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: c62f9f94e8d0252fbe5937a23fadaf33f631ee0f11ff5ebf2fe9e9008c38dc8c
+    bytes: 2493
+    format: vhdr
+    scope: private
+  - name: sub-17__ses-iemu__ieeg__sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 40cbbeb0f826d3e53c7cd449940b7390588e5bf85b2485316d802a6b571cd766
+    bytes: 1002
+    format: vmrk
+    scope: private
+  - name: sub-18__ses-iemu__ieeg__sub-18_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_run-1_events.tsv
+    sha256: 267d82b6c626b316ae1533a3e8928705d574e6bca2b0e30f43b48d8a17f83771
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-18__ses-iemu__ieeg__sub-18_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: b2d12cf8481d0f22133b0ec936bc3ba72bb59ac2802ed2d70024f3d96c0526e4
+    bytes: 3744
+    format: tsv
+    scope: private
+  - name: sub-18__ses-iemu__ieeg__sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: c4939be6f9a30c60d9ede6e0678497ac3e67a917ba49227436bfccf1b84c8f96
+    bytes: 630
+    format: json
+    scope: private
+  - name: sub-18__ses-iemu__ieeg__sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 44f57f4ddd8f99b26c22f5262022c4f5774f21027b56f4f3ac58ba16c57f9f67
+    bytes: 60814088
+    format: eeg
+    scope: private
+  - name: sub-18__ses-iemu__ieeg__sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 5a76a209ca8943be88d228ca76ad017739966672c898af996911b7b507792bdf
+    bytes: 2001
+    format: vhdr
+    scope: private
+  - name: sub-18__ses-iemu__ieeg__sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 70a5ea568bef53b0e54e8f67788465169a98ef80d045945cacd9c9fe8f729d05
+    bytes: 1004
+    format: vmrk
+    scope: private
+  - name: sub-19__ses-iemu__ieeg__sub-19_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_run-1_events.tsv
+    sha256: e86fde5e44897e25f3d7c346b8e73726ffe8f424dcdad0d108a7bb6cbf5ffe2a
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-19__ses-iemu__ieeg__sub-19_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: c2ecfa737f9ba2c75fecd1617737a32f8ecf240112aec32c5975354e749a024e
+    bytes: 3980
+    format: tsv
+    scope: private
+  - name: sub-19__ses-iemu__ieeg__sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 2682b0718c322d5d18aebeba6ebd1a29fac192a7007a70c1528a79f1766c6ba2
+    bytes: 605
+    format: json
+    scope: private
+  - name: sub-19__ses-iemu__ieeg__sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 30b9cc635558d074e92b63f9724ed39d3e0e9a073a386dced5e3dbc196af3cdc
+    bytes: 71701920
+    format: eeg
+    scope: private
+  - name: sub-19__ses-iemu__ieeg__sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: de3d7a7fc217eee29dafb2d7d83b5d97b3fb28285b35a2ea9d5c822943c1dd7f
+    bytes: 2113
+    format: vhdr
+    scope: private
+  - name: sub-19__ses-iemu__ieeg__sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 3bdb50af4df68e11c7d5bca3cff75b5763b0dfbd7290289dc7817f57d3c612f5
+    bytes: 1003
+    format: vmrk
+    scope: private
+  - name: sub-20__ses-iemu__ieeg__sub-20_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_run-1_events.tsv
+    sha256: d9a6b9b20db95a2c16dc580e8714ea2ad3d7ff17991b3778c5e460606f89fbfd
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-20__ses-iemu__ieeg__sub-20_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 2d1140c88e2ccab7f12fc7716fa2cb118f8c6fda6122f60bfecb93803d6d3d80
+    bytes: 5470
+    format: tsv
+    scope: private
+  - name: sub-20__ses-iemu__ieeg__sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 3ebcaca980880904b449dbfda027a3ce44c34686e1857637482f5326e45a7f8e
+    bytes: 602
+    format: json
+    scope: private
+  - name: sub-20__ses-iemu__ieeg__sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 6a787a4d7ff147df18c4b95d68dbe22c6d191d1c09a112e209d3212530e41370
+    bytes: 87463780
+    format: eeg
+    scope: private
+  - name: sub-20__ses-iemu__ieeg__sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 1a71afd0e98478acde6cd433898e1743479fb3cf33cf7085f10ea440c9dcac2c
+    bytes: 2515
+    format: vhdr
+    scope: private
+  - name: sub-20__ses-iemu__ieeg__sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 7e4d27c6dcabd77940132454b1ef065b3f9f98d8bf234bd6c2800cd630ee6f4b
+    bytes: 1002
+    format: vmrk
+    scope: private
+  - name: sub-21__ses-iemu__ieeg__sub-21_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_run-1_events.tsv
+    sha256: 35b99bf8d4444ffc86c0ed01c5fdb1f4c674bf42956c2222143b7ef038ac8e4b
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-21__ses-iemu__ieeg__sub-21_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 09504a2a552cf4adc11cc696354660c79fb57b5ac93361417914958334b3dfaa
+    bytes: 6660
+    format: tsv
+    scope: private
+  - name: sub-21__ses-iemu__ieeg__sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 8a7db0cc11d158a2e0da39e3cb29d0808f79186a75e0393a0e57eb7a2999e8bd
+    bytes: 581
+    format: json
+    scope: private
+  - name: sub-21__ses-iemu__ieeg__sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 8e270d0d017978b1910e23d8cf0b0ddf14e9deb78fc10f5d73150d436a571066
+    bytes: 392376320
+    format: eeg
+    scope: private
+  - name: sub-21__ses-iemu__ieeg__sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 6e9e678a044d0e9257ee291f64f337274dc23be13f0be750343cb51ad78c0e41
+    bytes: 2724
+    format: vhdr
+    scope: private
+  - name: sub-21__ses-iemu__ieeg__sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 70c80a7ad09b9afd4beb5849c08b34ae317b40a02a19b9d969f52deee0c46e78
+    bytes: 1010
+    format: vmrk
+    scope: private
+  - name: sub-22__ses-iemu__ieeg__sub-22_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_run-1_events.tsv
+    sha256: 101f5f524c32222bfd66dba36273ef4c32eeb8ecc3edb44bf8eb959259b1dd15
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-22__ses-iemu__ieeg__sub-22_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 35695c3a42d932ed49938dd63533352a620bb2d07581e2a494f401c794115aa5
+    bytes: 2967
+    format: tsv
+    scope: private
+  - name: sub-22__ses-iemu__ieeg__sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 6ecaab9df456d4ce1177f9b8c229edcd70ce318bc55e1bb15ad5b6c766b6f163
+    bytes: 606
+    format: json
+    scope: private
+  - name: sub-22__ses-iemu__ieeg__sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 393073687d0bc757117967af0507596bb3a025d8c3c978bb6820801fc3c17b3e
+    bytes: 62591520
+    format: eeg
+    scope: private
+  - name: sub-22__ses-iemu__ieeg__sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 89ad196050b3c73b0e484956bf1f3982b264f6cc29cf87c061cfcf3545598a42
+    bytes: 1710
+    format: vhdr
+    scope: private
+  - name: sub-22__ses-iemu__ieeg__sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: ee7a3df7f00991819e203f9d172a2020c0b2b67d787ee78c97576c9540b4a3d3
+    bytes: 1006
+    format: vmrk
+    scope: private
+  - name: sub-23__ses-iemu__ieeg__sub-23_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_run-1_events.tsv
+    sha256: 0dd42f5bd69f0811e96ab71ca38d4278a34e74ec805f5c0dbec11cbcfba8f212
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-23__ses-iemu__ieeg__sub-23_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: eadc0bf15d148e3317c4be36f3e5eecf768441dfe565ebe58a0abea99b012d9a
+    bytes: 10239
+    format: tsv
+    scope: private
+  - name: sub-23__ses-iemu__ieeg__sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 962ff1f70b645323c4e1375756f28e06b07d3e860a0d26f8d0312590d3a0c5a6
+    bytes: 581
+    format: json
+    scope: private
+  - name: sub-23__ses-iemu__ieeg__sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 059c0566b920c1c1301b06cf4005cc8197bd1221351187d136113900d83a8e6c
+    bytes: 591593472
+    format: eeg
+    scope: private
+  - name: sub-23__ses-iemu__ieeg__sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 0bd58f752b16e8c42d6cd694e06d1e58ca7e593a594dc91bd8a0c848d661bf53
+    bytes: 3872
+    format: vhdr
+    scope: private
+  - name: sub-23__ses-iemu__ieeg__sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 6599b6dfff7df121c27e44de902b9ac1b27bd66f6d385e0dbf1f65369da85b51
+    bytes: 1010
+    format: vmrk
+    scope: private
+  - name: sub-24__ses-iemu__ieeg__sub-24_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_run-1_events.tsv
+    sha256: 7e11614f68bed0d996752a629cc3263d4e2419eea5a868e00ae09f3138a76638
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-24__ses-iemu__ieeg__sub-24_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 40e6fa02d1b56d9047cb478950d5516c037b2c9c18a458e5f9980204411e5abc
+    bytes: 4841
+    format: tsv
+    scope: private
+  - name: sub-24__ses-iemu__ieeg__sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: c049985617896ccbea5bf862454114192fd9ddff15708536d8a103f1f0192bb9
+    bytes: 601
+    format: json
+    scope: private
+  - name: sub-24__ses-iemu__ieeg__sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 9ef246eacf3e2be05a9beb93b4e4aef32e07bfa8488dce7beb0b8585e2a84c58
+    bytes: 68737120
+    format: eeg
+    scope: private
+  - name: sub-24__ses-iemu__ieeg__sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 46f0cae0b31f700ff8917717c59f591e2bda33561156e8e1c78d51512fda92af
+    bytes: 2128
+    format: vhdr
+    scope: private
+  - name: sub-24__ses-iemu__ieeg__sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: bd6fc88c1eade5b56677f5db7c689db6f77eab270863b9b959e4c35ee22657d4
+    bytes: 1004
+    format: vmrk
+    scope: private
+  - name: sub-25__ses-iemu__ieeg__sub-25_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_run-1_events.tsv
+    sha256: 3bd5d9d4eb0eafa87ff092ea619050c3095f71d915b44182d4aa52b37cb12d28
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-25__ses-iemu__ieeg__sub-25_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 361cedb18840e7be844cd4e732481689163aefac0eecb3e6bb3297ed3391c44e
+    bytes: 3239
+    format: tsv
+    scope: private
+  - name: sub-25__ses-iemu__ieeg__sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 88bdee37cdef4653934e278b391ad87bc729fbbdaa63c3a27d53d67affc52bf9
+    bytes: 580
+    format: json
+    scope: private
+  - name: sub-25__ses-iemu__ieeg__sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 9261b94b685f49c995f13fe778b0d080b8402daacfd5c734b1d3aa107b9fc80d
+    bytes: 200747320
+    format: eeg
+    scope: private
+  - name: sub-25__ses-iemu__ieeg__sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 11cf1e413fd2a61ecb95327424cf4f8e0693fc13f0c0112f5120b48ff6c1616a
+    bytes: 1755
+    format: vhdr
+    scope: private
+  - name: sub-25__ses-iemu__ieeg__sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: f81d156fe587845559b54527763f91b238f0fa55f748fb64778b91f811e09093
+    bytes: 1013
+    format: vmrk
+    scope: private
+  - name: sub-26__ses-iemu__ieeg__sub-26_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_run-1_events.tsv
+    sha256: 33e0499de857ab499da267001cb23d53aa9089ecb792a85c0b03199309f1f1f6
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-26__ses-iemu__ieeg__sub-26_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 41a63c60cc0ca5306c57614b742878cac18cd255362100eb2cd5197645a3f0a8
+    bytes: 4845
+    format: tsv
+    scope: private
+  - name: sub-26__ses-iemu__ieeg__sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 1efe662e9b0b9c12faf6d04dd195d62a3d08fe2afbe4297526e73ab2f1ae9b1a
+    bytes: 605
+    format: json
+    scope: private
+  - name: sub-26__ses-iemu__ieeg__sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 867946740644c8e3873610f6eaf1fe829c3c79a7867e39bbcb23b3fcf9893127
+    bytes: 87551620
+    format: eeg
+    scope: private
+  - name: sub-26__ses-iemu__ieeg__sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 931a58f6e1c7ff309523863b4e6813e599fe12cef42b1277782d9dcd3484adda
+    bytes: 2317
+    format: vhdr
+    scope: private
+  - name: sub-26__ses-iemu__ieeg__sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: ce9ad94bc83b4a255af56d53178da553b482cfffc5d52a02fca240eef4ce527c
+    bytes: 1004
+    format: vmrk
+    scope: private
+  - name: sub-27__ses-iemu__ieeg__sub-27_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_run-1_events.tsv
+    sha256: 8afbba9dafcb0b2db8ca78ed6a7a115f80b5efe7a225eba36d8221433b9f0f32
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-27__ses-iemu__ieeg__sub-27_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 64039470ba8755bd242476236c46da31c43ed942536bd9390d8d1fe31b469da0
+    bytes: 4949
+    format: tsv
+    scope: private
+  - name: sub-27__ses-iemu__ieeg__sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 63b4c6cbea7b71e9f1dcf9d5ba22dbd26bc71233f8e92a9a1df14da8280982f6
+    bytes: 579
+    format: json
+    scope: private
+  - name: sub-27__ses-iemu__ieeg__sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: da2709787a0f13c4dc2f3b0dd0f64f867a8c3f1b385c61fd9c27a63eed225a9d
+    bytes: 81141600
+    format: eeg
+    scope: private
+  - name: sub-27__ses-iemu__ieeg__sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 8058768d6f3728932b0f11b2ce3227fe4711176d3683e6dd60e95576d6023a27
+    bytes: 2370
+    format: vhdr
+    scope: private
+  - name: sub-27__ses-iemu__ieeg__sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 48596fe209d1e745c66423e4968a8e52c283dc25d73c561eaa13676819ac637a
+    bytes: 1004
+    format: vmrk
+    scope: private
+  - name: sub-28__ses-iemu__ieeg__sub-28_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_run-1_events.tsv
+    sha256: ce74bca855c1e5297510162952e975e02373768e4f36a9e79c7457b6da58bb37
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-28__ses-iemu__ieeg__sub-28_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 7273e0f59ab917b2e94b6874ea476fad7ac66cc9ac2a92fa3a306c34b540cd70
+    bytes: 5011
+    format: tsv
+    scope: private
+  - name: sub-28__ses-iemu__ieeg__sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 82f4f0dbeca9a5eb9dce5ce7e84a814225589f87f5bc58e9d90bd457a57ffd8b
+    bytes: 630
+    format: json
+    scope: private
+  - name: sub-28__ses-iemu__ieeg__sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: bc39fb955dd13cc5f0097521822df1484039d526bcd694c6eb4bb5b97084efa1
+    bytes: 73812648
+    format: eeg
+    scope: private
+  - name: sub-28__ses-iemu__ieeg__sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: c549165f6dfec0a9e4fc245de9e8ced8283168415bef3d968d88a1fd826637cf
+    bytes: 2203
+    format: vhdr
+    scope: private
+  - name: sub-28__ses-iemu__ieeg__sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 764eec60a43a9f0894457ba318eb06cd4d4aec9a3261dfa3f414c47c774ca019
+    bytes: 1004
+    format: vmrk
+    scope: private
+  - name: sub-30__ses-iemu__ieeg__sub-30_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_run-1_events.tsv
+    sha256: 22ddb162d09864dd8d5fd0799636392dd34eb83e8d79f3ca5018d1ce16c01cda
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-30__ses-iemu__ieeg__sub-30_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 0b0c3aa1c1ffcb3a24222818952617032afb03c1a59c0595940a38890f4595f9
+    bytes: 2868
+    format: tsv
+    scope: private
+  - name: sub-30__ses-iemu__ieeg__sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 906b2beec7ece1cd3cc0a11638cc573585c17fd0db33d1b278c2a0cfda888d12
+    bytes: 604
+    format: json
+    scope: private
+  - name: sub-30__ses-iemu__ieeg__sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: ef233fbd945d4f04f07195d2ccd02c92ac97677fde2ccbc114904c38b9799fcc
+    bytes: 201637888
+    format: eeg
+    scope: private
+  - name: sub-30__ses-iemu__ieeg__sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: d03fa1e82e7247c474201b896784a719669b53c0679de3698d28294f6828cd70
+    bytes: 1761
+    format: vhdr
+    scope: private
+  - name: sub-30__ses-iemu__ieeg__sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 07bdc1c020c8bb162309c0fa507c80e3a4782970a47e2b7e31c131b4e4586e54
+    bytes: 1009
+    format: vmrk
+    scope: private
+  - name: sub-31__ses-iemu__ieeg__sub-31_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_run-1_events.tsv
+    sha256: 7ef88cc73f53961531255ea1cf00fdfddce7078ef93cac26fb46ec99ba3edaab
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-31__ses-iemu__ieeg__sub-31_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 195474a8da3e0f8929f07bfae5152e027545edd230e0e97b4173723b48fbfeb5
+    bytes: 4795
+    format: tsv
+    scope: private
+  - name: sub-31__ses-iemu__ieeg__sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: ade2f8660ff08bd81c459947f0183b68884c48e197ec97281a3869419a9f6d82
+    bytes: 578
+    format: json
+    scope: private
+  - name: sub-31__ses-iemu__ieeg__sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 361f98790f1aaca9cd2e4a06ea7338fd2a24fc383acaa0814a28606bdc094dda
+    bytes: 91335200
+    format: eeg
+    scope: private
+  - name: sub-31__ses-iemu__ieeg__sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: cbee24f4bf45219ed2373c61009a6f226087978470de7a827bc0e704bbdc79f1
+    bytes: 2493
+    format: vhdr
+    scope: private
+  - name: sub-31__ses-iemu__ieeg__sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: ef95ef98c096cf7b2cda5d38f363953ac3e9365c5361b5cef0665609f5cdf4de
+    bytes: 1003
+    format: vmrk
+    scope: private
+  - name: sub-32__ses-iemu__ieeg__sub-32_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_run-1_events.tsv
+    sha256: 43b48ac473c1a75ad0f40f05214509e4bd4ed5be9c8dafbde27fb54e8c4b6622
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-32__ses-iemu__ieeg__sub-32_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 96b6a30edec6075fe6f02c4a73b4f572a193bc35300cdd899f913ae73c5979bd
+    bytes: 2818
+    format: tsv
+    scope: private
+  - name: sub-32__ses-iemu__ieeg__sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: b08f934a5d7960ca06f27650e0f09ec0903073b14349674a5601a9ab51aced31
+    bytes: 607
+    format: json
+    scope: private
+  - name: sub-32__ses-iemu__ieeg__sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: edf0aae9d53e638b1648273855bc0cc8c88a350d47736faee26621101843bd48
+    bytes: 176946552
+    format: eeg
+    scope: private
+  - name: sub-32__ses-iemu__ieeg__sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: a72fff8d2b9a205ae18816d177631e8a2816dd590539566c79bda16d1b2376a8
+    bytes: 1616
+    format: vhdr
+    scope: private
+  - name: sub-32__ses-iemu__ieeg__sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 4e784dba23bbe80afc4e6e96f7542d7ef8cb106dc516c6ae5a4dd74dd210fcc8
+    bytes: 1011
+    format: vmrk
+    scope: private
+  - name: sub-33__ses-iemu__ieeg__sub-33_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_run-1_events.tsv
+    sha256: 84f46d28120aab349ea4a3f3d29c048b005587926f2106ebff3b4e5935258b71
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-33__ses-iemu__ieeg__sub-33_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: e16e331d37f741d071a23d84f6e19adec422c2527893099b60594fbe8e5a3af8
+    bytes: 4485
+    format: tsv
+    scope: private
+  - name: sub-33__ses-iemu__ieeg__sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: dd7113fb5d53164877eb9d809cd0737b1bf91bbf247be41982b19a8f71e4be45
+    bytes: 628
+    format: json
+    scope: private
+  - name: sub-33__ses-iemu__ieeg__sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 9527008ed9db8e49cfdb3b7d7a1ee0452fdcab74661acd1bc7e4e75751442649
+    bytes: 64542400
+    format: eeg
+    scope: private
+  - name: sub-33__ses-iemu__ieeg__sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: c069182e39990f7e74e6d7b1a515f6329f6e54d67dc714c4898bf91cde6442cb
+    bytes: 2045
+    format: vhdr
+    scope: private
+  - name: sub-33__ses-iemu__ieeg__sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 3c0ae97b65d804f01b320d3114b7eed03a04c11c5467cba053492f54e2550ec6
+    bytes: 1004
+    format: vmrk
+    scope: private
+  - name: sub-34__ses-iemu__ieeg__sub-34_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_run-1_events.tsv
+    sha256: b3e07e258406ec199ef7dd97dbf5d46ba9989176dcd9e00e08ba75bdce6bd36b
+    bytes: 386
+    format: tsv
+    scope: private
+  - name: sub-34__ses-iemu__ieeg__sub-34_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 28d493cdb5cc11db30f23c628fe2295e937b4c7003f14cc40cbe07a8a41bfde2
+    bytes: 6295
+    format: tsv
+    scope: private
+  - name: sub-34__ses-iemu__ieeg__sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 4bc0689d57ffe82fd5cde19775acb489b02bc5c8b46e470afb6040f2b71d9098
+    bytes: 582
+    format: json
+    scope: private
+  - name: sub-34__ses-iemu__ieeg__sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: b76461fec70e43a286d7788f6c3e3ce321fe4317a7b8265973b4ff2c19fdcd7d
+    bytes: 114388164
+    format: eeg
+    scope: private
+  - name: sub-34__ses-iemu__ieeg__sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: ac5bc355a8510380d8a624e1e87f3d6ae5bf707bb9be829b33f595eab1dc1af2
+    bytes: 2571
+    format: vhdr
+    scope: private
+  - name: sub-34__ses-iemu__ieeg__sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 96f33476c3c749cff0aac1c32ee33715fb9d7a0dde9b620a9690c3d1e86e9bfe
+    bytes: 1011
+    format: vmrk
+    scope: private
+  - name: sub-36__ses-iemu__ieeg__sub-36_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_run-1_events.tsv
+    sha256: a4366bea89f5b48323031ba9692ffb83cc732d5bf6ddb57521b9bcdd0c2f46d3
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-36__ses-iemu__ieeg__sub-36_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 07433659311cfcec3e04d424250fd5e8aa80ef9ec1159c69e5dc58bedde56d64
+    bytes: 4381
+    format: tsv
+    scope: private
+  - name: sub-36__ses-iemu__ieeg__sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: cc1da65e69085d1d265995efb6cf32828fa5dd56391e0bfde7a241cc91f4419a
+    bytes: 582
+    format: json
+    scope: private
+  - name: sub-36__ses-iemu__ieeg__sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 383e96e64e0402d25106692a65d994322119a2bd87e53c5e2ba0a1289dfac18e
+    bytes: 280667536
+    format: eeg
+    scope: private
+  - name: sub-36__ses-iemu__ieeg__sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 9af510e513a4dd0f0346d7b840c52ce2b0b2e3d50b65905f22b4c5c0be46b15e
+    bytes: 2132
+    format: vhdr
+    scope: private
+  - name: sub-36__ses-iemu__ieeg__sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 9b15f5baa088134384785a83a9023241cf58aaeac7b8c6beba582d111ee2d0ed
+    bytes: 1009
+    format: vmrk
+    scope: private
+  - name: sub-37__ses-iemu__ieeg__sub-37_ses-iemu_task-film_run-2_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_run-2_events.tsv
+    sha256: 229313026c79d0892a78b7b6e5b111fdc62f2bd2db0462d703fe18d7729ee36a
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-37__ses-iemu__ieeg__sub-37_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    sha256: 60db0ea7bf54ae9b82671eb47108d0d91156f5e2d2df231d775516a5cb8005e3
+    bytes: 4634
+    format: tsv
+    scope: private
+  - name: sub-37__ses-iemu__ieeg__sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    sha256: d69984810680fefa47154c1b63f7c04fc1974e50664c82a8077e4b63e261440c
+    bytes: 581
+    format: json
+    scope: private
+  - name: sub-37__ses-iemu__ieeg__sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    sha256: b63c991f8f9ab110a84a77108ca233e504e551f3d0537b4aa06020e9148d3677
+    bytes: 67590096
+    format: eeg
+    scope: private
+  - name: sub-37__ses-iemu__ieeg__sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    sha256: a408f71b04eb7435d9512f897b63ebcc81c5dcbf678d8ff46b8643e61d908247
+    bytes: 2096
+    format: vhdr
+    scope: private
+  - name: sub-37__ses-iemu__ieeg__sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    sha256: b88b049ad159cad9f9e9d82ad7ef3bf3461d21f06f3ba4ffcd4f9c7f4c230cd8
+    bytes: 1001
+    format: vmrk
+    scope: private
+  - name: sub-38__ses-iemu__ieeg__sub-38_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_run-1_events.tsv
+    sha256: e36e24dd9c2a9e1346416a49c0b73b187d2e9fc17d20411ad76fbcb93b239101
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-38__ses-iemu__ieeg__sub-38_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: b481656e211d65db1a5354e9d82509b3ed83a62d6eb8bbadd3b4972bedc20b54
+    bytes: 6065
+    format: tsv
+    scope: private
+  - name: sub-38__ses-iemu__ieeg__sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: f67d4e061fd004c375b66951059abf83b54229fc1ab7b97e670530a989b3d6e4
+    bytes: 603
+    format: json
+    scope: private
+  - name: sub-38__ses-iemu__ieeg__sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: d7ceb4b6b46cc1ca7f575fb9a2de7e380bad4089a70f5bd67f10487df04cbbce
+    bytes: 91649816
+    format: eeg
+    scope: private
+  - name: sub-38__ses-iemu__ieeg__sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 7cf905334aeda7f91e3c8eb4edbfbad9491cfdf9d65dcb932fa9169db8331852
+    bytes: 2585
+    format: vhdr
+    scope: private
+  - name: sub-38__ses-iemu__ieeg__sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 41bdedf920535b2e8d80a2d1c2d5d73328e18c5012218c1f4de6c7037801c896
+    bytes: 1006
+    format: vmrk
+    scope: private
+  - name: sub-39__ses-iemu__ieeg__sub-39_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_run-1_events.tsv
+    sha256: b9fdf31ea517225993df832afba0dd0023d324db9517ce335c15652963e4d4b3
+    bytes: 388
+    format: tsv
+    scope: private
+  - name: sub-39__ses-iemu__ieeg__sub-39_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: a8d105dac0431c0428f907911224dcc6b11de3b84346285302cfb854f0c5de31
+    bytes: 4406
+    format: tsv
+    scope: private
+  - name: sub-39__ses-iemu__ieeg__sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: e6108bab6f87121f63159db9a933dd678c0b4de10ddd781e7d92c32bcf17c73b
+    bytes: 607
+    format: json
+    scope: private
+  - name: sub-39__ses-iemu__ieeg__sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: eae1f0af2c9c2f4b48d3f276253f244d1206f309fb2a2c1c8c31437a809ff644
+    bytes: 91782216
+    format: eeg
+    scope: private
+  - name: sub-39__ses-iemu__ieeg__sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 3e68e510259a4debe0d98aa10e20609a6a6885d928fd2162208f35f8aec3ef78
+    bytes: 2151
+    format: vhdr
+    scope: private
+  - name: sub-39__ses-iemu__ieeg__sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: b14a9a8b628b82491efea86dfb3f27a3476a28e9a0fbc581949ba76672e32eb3
+    bytes: 1016
+    format: vmrk
+    scope: private
+  - name: sub-40__ses-iemu__ieeg__sub-40_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_run-1_events.tsv
+    sha256: b0474d9af183b7fb37d628742747e520c7371a6df4ae2f4c2beb59a4d2c55e68
+    bytes: 382
+    format: tsv
+    scope: private
+  - name: sub-40__ses-iemu__ieeg__sub-40_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 2aec564f0ddf0e4f4087bccbc166e4bbd2470b1975b0047d4d55960a261bdd03
+    bytes: 4154
+    format: tsv
+    scope: private
+  - name: sub-40__ses-iemu__ieeg__sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: ae507239e307f714218c75c6ef5c3f7a7a9a633093dc0f901c162d9f34ae546b
+    bytes: 554
+    format: json
+    scope: private
+  - name: sub-40__ses-iemu__ieeg__sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 99517d0bd8db8ef1a4492052599cec0a93984c1a0f67aac37e931cbc184c9ae3
+    bytes: 62713520
+    format: eeg
+    scope: private
+  - name: sub-40__ses-iemu__ieeg__sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: c9064248333170a0eeac7d45b239f8b78c1136d0ee3a03c56db2b30f3c461b97
+    bytes: 1955
+    format: vhdr
+    scope: private
+  - name: sub-40__ses-iemu__ieeg__sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 4dad0b61a5bf0997990b35828d0d804942c8457f5384bcc972e4682fda750017
+    bytes: 1006
+    format: vmrk
+    scope: private
+  - name: sub-41__ses-iemu__ieeg__sub-41_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_run-1_events.tsv
+    sha256: 0ea2b06bfe4ead5752d383ccce1c1e540b1fed8d45545b21eda3589d4c29d633
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-41__ses-iemu__ieeg__sub-41_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: bb74fc28c739c22555967ee39dc2dd92138ef843a513547112c0936eb44c46b4
+    bytes: 4417
+    format: tsv
+    scope: private
+  - name: sub-41__ses-iemu__ieeg__sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 280a5393e60e859804867af72040b4d1593031f2cfd365d506f6a4984539fbf4
+    bytes: 552
+    format: json
+    scope: private
+  - name: sub-41__ses-iemu__ieeg__sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: dd347e6ec6c17764c6891fce3777540e9ab8e5de9ef2a76d63d9c6ad2694478a
+    bytes: 71268352
+    format: eeg
+    scope: private
+  - name: sub-41__ses-iemu__ieeg__sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: ba96b5d23771031d5cd44cc845428a784c12b32514a74a52f295a8e8b9046914
+    bytes: 2211
+    format: vhdr
+    scope: private
+  - name: sub-41__ses-iemu__ieeg__sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: c0d60408287e683539481574b2eff2967b853185cad794ade72e49aa296dfa06
+    bytes: 1001
+    format: vmrk
+    scope: private
+  - name: sub-42__ses-iemu__ieeg__sub-42_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_run-1_events.tsv
+    sha256: 0bbceb84557a52dbf4d501a553a845fd7d73667be52d70a2ecd33725290355ad
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-42__ses-iemu__ieeg__sub-42_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: bd57b4e8a0dda3d33e8c508b8bed468653a5d9950259dc132dc28d524fc975d0
+    bytes: 6862
+    format: tsv
+    scope: private
+  - name: sub-42__ses-iemu__ieeg__sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: f4424ad684a8750061443e401bef2b0d15ce62113aa3f77e5e1dc098b65c684c
+    bytes: 605
+    format: json
+    scope: private
+  - name: sub-42__ses-iemu__ieeg__sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 94f2a0d4f0eac061d571e408ec9e3452d754d302f56ce8f195f8a16553dcad9b
+    bytes: 396328960
+    format: eeg
+    scope: private
+  - name: sub-42__ses-iemu__ieeg__sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 73a6f192c73aa887554e078f053667b453b15ccc96d49e38e0a11d93bffef7d5
+    bytes: 2790
+    format: vhdr
+    scope: private
+  - name: sub-42__ses-iemu__ieeg__sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: a134b42c2a31dc95ab135f60adcc4a3e0fb1df60b79b19a3040cfc0641ad1bfe
+    bytes: 1010
+    format: vmrk
+    scope: private
+  - name: sub-43__ses-iemu__ieeg__sub-43_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_run-1_events.tsv
+    sha256: 0f437164ed20d0fe41a3b104caca15237b4c90df8909d8de810aa730f4ff7ee1
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-43__ses-iemu__ieeg__sub-43_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 8f9a978b2f77e4eb3b33650a5ca02d72cee46b0789a19e14d912ca40fe24641b
+    bytes: 6144
+    format: tsv
+    scope: private
+  - name: sub-43__ses-iemu__ieeg__sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: b6d4726cca9c6a7a84894d4a2c5452220cd59c45ffcb625434591fde1ebf965e
+    bytes: 579
+    format: json
+    scope: private
+  - name: sub-43__ses-iemu__ieeg__sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 79f474a49a888fe34a9277199b90b97705c8f86f13f53641310ec65ee175a609
+    bytes: 100599000
+    format: eeg
+    scope: private
+  - name: sub-43__ses-iemu__ieeg__sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 3e16a16e0db210226eda5221529ecf0ae5a06d9d4a20fe8fcbc875aaf68ec817
+    bytes: 2810
+    format: vhdr
+    scope: private
+  - name: sub-43__ses-iemu__ieeg__sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 75e6635bf85b1f0312e335c5e53554aa3a101a39dfff12ab9ec3b66b50081b29
+    bytes: 1002
+    format: vmrk
+    scope: private
+  - name: sub-45__ses-iemu__ieeg__sub-45_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_run-1_events.tsv
+    sha256: 5ef6b396d46062b829667718761d51b0c256c4dd8c28ff62be39e961aa76e3cf
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-45__ses-iemu__ieeg__sub-45_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 680c0b66bd83197bfe6e0adb29e66c0f1868239186c236e219b6201ac02b78dc
+    bytes: 4398
+    format: tsv
+    scope: private
+  - name: sub-45__ses-iemu__ieeg__sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 67e500608c13614f21a1a20626bef04ab490a25c1f5de3458e7fa950d89531b9
+    bytes: 606
+    format: json
+    scope: private
+  - name: sub-45__ses-iemu__ieeg__sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 93f431e9d7f29e9e49041eda6920690f8865b265f19b6ed75d040d179b3da4ee
+    bytes: 81009984
+    format: eeg
+    scope: private
+  - name: sub-45__ses-iemu__ieeg__sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 9b090a8a1dbeb065737890d1d6aa84c85d000091ca764ffa86a6a5e77529854f
+    bytes: 2180
+    format: vhdr
+    scope: private
+  - name: sub-45__ses-iemu__ieeg__sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 48b4c8cac276d790e8031c7a6211e322e5890aa92bd82110528afd3e1f4210df
+    bytes: 1007
+    format: vmrk
+    scope: private
+  - name: sub-46__ses-iemu__ieeg__sub-46_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_run-1_events.tsv
+    sha256: c06ee1794bcf9ee69fd46214edc7333e98e5b54ff07c3537f948b921d9002a6c
+    bytes: 382
+    format: tsv
+    scope: private
+  - name: sub-46__ses-iemu__ieeg__sub-46_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 4a013cc7770ac6a6c7470866831e5ce52e3c31df37ae5562355d9d9d4a8d04ab
+    bytes: 4195
+    format: tsv
+    scope: private
+  - name: sub-46__ses-iemu__ieeg__sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 21da6bef1299dbae8f819dcd4c6c1a0361415301e3487a0c3cdadb618f25767d
+    bytes: 630
+    format: json
+    scope: private
+  - name: sub-46__ses-iemu__ieeg__sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 95192f4078a9e8c0b3757de3816c58c9134e9d30128c4c10b7f96f81b5d2bc82
+    bytes: 61311664
+    format: eeg
+    scope: private
+  - name: sub-46__ses-iemu__ieeg__sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 5615f9a66304c1ea38917960ae205bb13fd5b0659bef28b6d47944a9f1733070
+    bytes: 1945
+    format: vhdr
+    scope: private
+  - name: sub-46__ses-iemu__ieeg__sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: f90bb0444785b30e63caa486327e8087a0f3a2d2229099515156335099a47844
+    bytes: 1007
+    format: vmrk
+    scope: private
+  - name: sub-48__ses-iemu__ieeg__sub-48_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_run-1_events.tsv
+    sha256: 128ef5ce0d44298f7a141f24e4d9c4913bb2e5a911a8a968b044e6975029fc9c
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-48__ses-iemu__ieeg__sub-48_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: b0b8f41a030e357aea60bf1bf8f6aebcfb8f62ce3c252dafa942a7c2b4ffe961
+    bytes: 5372
+    format: tsv
+    scope: private
+  - name: sub-48__ses-iemu__ieeg__sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 0f1d16af137ed4e40fdf7de36a09582035e3c6e04b1851151d01d091edf23913
+    bytes: 581
+    format: json
+    scope: private
+  - name: sub-48__ses-iemu__ieeg__sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 265ad706d3e527d1dfb5bd68fae864346817f22c2e1d5d0831cdd9d283484aca
+    bytes: 77353728
+    format: eeg
+    scope: private
+  - name: sub-48__ses-iemu__ieeg__sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: da70c05f3af57dfe0b36a384ccf318dbfca87f9ddd3aa6d120f20aa63e6b1af4
+    bytes: 2323
+    format: vhdr
+    scope: private
+  - name: sub-48__ses-iemu__ieeg__sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 56b62358301ef1e532721472305a44b992d4ceb18245b35de8950913e9575de8
+    bytes: 1003
+    format: vmrk
+    scope: private
+  - name: sub-49__ses-iemu__ieeg__sub-49_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_run-1_events.tsv
+    sha256: c549db8addb90721a7a80bf5a1d655d5343eebb1e98df53da708e4eaa17cd15f
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-49__ses-iemu__ieeg__sub-49_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 350ad35dd3c6824d8c5421ce621a09d8d53e07c99f518549d88e58d24fdf0160
+    bytes: 6847
+    format: tsv
+    scope: private
+  - name: sub-49__ses-iemu__ieeg__sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 85a9cb7fed6a7f9ca8b4d049ccfae56db95de5812bbc66b41d7c15e0d1c69eb6
+    bytes: 631
+    format: json
+    scope: private
+  - name: sub-49__ses-iemu__ieeg__sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 7e2066ce15699c1d703d43dcbbabf2d980b95efcbdb8276d490b9fa39712765a
+    bytes: 103915048
+    format: eeg
+    scope: private
+  - name: sub-49__ses-iemu__ieeg__sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: ad1b9232f279e57a73df31f3cc1fe957e1ed1444d31c0a473a442819d46d813f
+    bytes: 2821
+    format: vhdr
+    scope: private
+  - name: sub-49__ses-iemu__ieeg__sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 909fa04d024830b82a7d4358098e6d7102ee7ef294914f53ea7cdbce61c4f3df
+    bytes: 1006
+    format: vmrk
+    scope: private
+  - name: sub-50__ses-iemu__ieeg__sub-50_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_run-1_events.tsv
+    sha256: 15336c751c1c8803a07d03a769881f217fa1577ecd8d81c95af9ad2e0f55dd3d
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-50__ses-iemu__ieeg__sub-50_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: c498c7cdcd60190ee95c0959e9ca632ca27652be66fc800b8622d2660a78b2b0
+    bytes: 4168
+    format: tsv
+    scope: private
+  - name: sub-50__ses-iemu__ieeg__sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 4f0976b55446ed6792ef95a8da1b0973c8be0554116d431654704eebba0649e8
+    bytes: 655
+    format: json
+    scope: private
+  - name: sub-50__ses-iemu__ieeg__sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 53c9d25ed80cd0536000dde16d3a853c0be0fe4ab7108b69e53f0323356ab759
+    bytes: 78852144
+    format: eeg
+    scope: private
+  - name: sub-50__ses-iemu__ieeg__sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 97ee118764a5da0f945efeb6bf7b587b58f2352c7bfc769503cc278951748edc
+    bytes: 2113
+    format: vhdr
+    scope: private
+  - name: sub-50__ses-iemu__ieeg__sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 5ddec6ee9d57911bbed13e4377aa0f16ca5418885457cc47089a0e3d23ad4a0a
+    bytes: 1007
+    format: vmrk
+    scope: private
+  - name: sub-51__ses-iemu__ieeg__sub-51_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_run-1_events.tsv
+    sha256: 1224dcd1323a2d502420d2b18fc70233a596f89ab3ec6ab1a0d64b73fffcc0f2
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-51__ses-iemu__ieeg__sub-51_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 3ff0dfc2348e9d36630dc2b4dce54ade5f6570f0510258ac0a99aaed3eee82e8
+    bytes: 4736
+    format: tsv
+    scope: private
+  - name: sub-51__ses-iemu__ieeg__sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 38df6ff4988d544c77a7c1293f6b23e1ea6c7a96e10467a964305ad9a4a90236
+    bytes: 532
+    format: json
+    scope: private
+  - name: sub-51__ses-iemu__ieeg__sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 8e93775795db9eb9560a528b993b42ec3183757b8d9c4535de3fb489bfcc3048
+    bytes: 268738560
+    format: eeg
+    scope: private
+  - name: sub-51__ses-iemu__ieeg__sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: db01c59b4c0b0fb98050fbf9828090bfc7cadf40fe609ba733576bb0d653c686
+    bytes: 2059
+    format: vhdr
+    scope: private
+  - name: sub-51__ses-iemu__ieeg__sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: ec4887ca8ba2552e61b9284393b4d3d0155280abd47ea48094be7eb345758655
+    bytes: 1010
+    format: vmrk
+    scope: private
+  - name: sub-54__ses-iemu__ieeg__sub-54_ses-iemu_task-film_run-2_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_run-2_events.tsv
+    sha256: 0cbb4d523b3f01ac03e0b4e341575e3c8e4291c22195b5e9bdcef427efbb3e2a
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-54__ses-iemu__ieeg__sub-54_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    sha256: 8973187491caad31c699144d4591dc634fe88de32cf7399f5df3e7ed75d2e692
+    bytes: 3897
+    format: tsv
+    scope: private
+  - name: sub-54__ses-iemu__ieeg__sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    sha256: a4eee5ab615f4bb31286eca7f4e6120b506c18393ffec2b45b1222777bf95d58
+    bytes: 553
+    format: json
+    scope: private
+  - name: sub-54__ses-iemu__ieeg__sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    sha256: 3f1f9d78e68ce5135c3709d7d31586845df6b87d1b422b06cd8248a30853e7aa
+    bytes: 62472608
+    format: eeg
+    scope: private
+  - name: sub-54__ses-iemu__ieeg__sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    sha256: 17ce0dc3bffeae2680fb114b5157e221f639ba95f3e896106eafed43d60d4673
+    bytes: 1994
+    format: vhdr
+    scope: private
+  - name: sub-54__ses-iemu__ieeg__sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    sha256: 4752550ec25e504db5477b4c0eb0baa40bd1ff033ddf141cf21067c351ba5e37
+    bytes: 1003
+    format: vmrk
+    scope: private
+  - name: sub-55__ses-iemu__ieeg__sub-55_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_run-1_events.tsv
+    sha256: be1cb6c3ff3d177c4016037f59452b007a417ea001193823850edf2cabcd80f1
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-55__ses-iemu__ieeg__sub-55_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 1087d03936ee5312815b39a79d7d9ba07ec070be28b6f4bc38c8ba79466aaefb
+    bytes: 5413
+    format: tsv
+    scope: private
+  - name: sub-55__ses-iemu__ieeg__sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 796620c0da9bef045be94eafb7173ddc74f9d4d111bef9eaee79b49b3dc93d5e
+    bytes: 579
+    format: json
+    scope: private
+  - name: sub-55__ses-iemu__ieeg__sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: d1b149a7a2f2faa19f6bbaa0f1071c9ba0e69269e991bec725aef1111e959e08
+    bytes: 89531200
+    format: eeg
+    scope: private
+  - name: sub-55__ses-iemu__ieeg__sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 270074b955685be2fea60f3cacb42852df1aa50f7402116faec8f96ee83ffd2c
+    bytes: 2544
+    format: vhdr
+    scope: private
+  - name: sub-55__ses-iemu__ieeg__sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 78efe2ffe847e1dc7fa53b2432bb34fae3b09e45cf52b33911522ff5848e8b89
+    bytes: 1002
+    format: vmrk
+    scope: private
+  - name: sub-57__ses-iemu__ieeg__sub-57_ses-iemu_task-film_run-2_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_run-2_events.tsv
+    sha256: 7eba6ddc82dbab09e57232e2d0aa17362cd664527b0473fb3f782b7ef197bdd9
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-57__ses-iemu__ieeg__sub-57_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    sha256: 4352a7c75eb634ec1848f213c8d9329c94afc4e8f8ff3cadb87ca2c2009959b4
+    bytes: 4016
+    format: tsv
+    scope: private
+  - name: sub-57__ses-iemu__ieeg__sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    sha256: 6fd0fcd724563776ca69c3cec6cf34b23a0d7932b89079c0ac351550edafb79c
+    bytes: 606
+    format: json
+    scope: private
+  - name: sub-57__ses-iemu__ieeg__sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    sha256: e8092a71e281b4be0adb82be5d36510da8441af879a96f00f85ba53fa9be4786
+    bytes: 65257920
+    format: eeg
+    scope: private
+  - name: sub-57__ses-iemu__ieeg__sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    sha256: 86932477ec2ce39f45e83333c4276aaae820ee4cbb1ee0128099e5f482ac288a
+    bytes: 1927
+    format: vhdr
+    scope: private
+  - name: sub-57__ses-iemu__ieeg__sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    sha256: 5b103a161b6f408af767c9171190cae66a2ae3e4660cc81d6e2ec9ee18e03cf6
+    bytes: 1006
+    format: vmrk
+    scope: private
+  - name: sub-58__ses-iemu__ieeg__sub-58_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_run-1_events.tsv
+    sha256: eca1449bbe6c28f513628bbc0419869ad843cfa367a3c7f4fc0aa833ee969ee0
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-58__ses-iemu__ieeg__sub-58_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: e4294c4a027677249ac4fa2aa1e601677bce3ecd17028ded9576d9decbb5b04c
+    bytes: 6138
+    format: tsv
+    scope: private
+  - name: sub-58__ses-iemu__ieeg__sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: bb9d9c53700c34d37ea480f4cbcaf6fbf7cdd58558cf37a5140d2e5ea8601df2
+    bytes: 631
+    format: json
+    scope: private
+  - name: sub-58__ses-iemu__ieeg__sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: e2cc740f76515395f0b019d932933bed80819c5917038519b158cdf9c7bb3bad
+    bytes: 102913404
+    format: eeg
+    scope: private
+  - name: sub-58__ses-iemu__ieeg__sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: b46bd75181a313a54e5b3530275a2ab737b171600424bb4007c4367481cda77b
+    bytes: 2775
+    format: vhdr
+    scope: private
+  - name: sub-58__ses-iemu__ieeg__sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: 3fb7e7d9773f7339686345dfda6c1dc29de54f882ecdc3aa8a20c37d98295853
+    bytes: 1003
+    format: vmrk
+    scope: private
+  - name: sub-59__ses-iemu__ieeg__sub-59_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_run-1_events.tsv
+    sha256: 3d965852588f5e5d18b73aa26b0e880da79964fbac0af7925c1edc8e5c121c4a
+    bytes: 385
+    format: tsv
+    scope: private
+  - name: sub-59__ses-iemu__ieeg__sub-59_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: 6fde8553f67acb394127e4034892fdf5d3b987fbb475d37cee49a355504dd3df
+    bytes: 4233
+    format: tsv
+    scope: private
+  - name: sub-59__ses-iemu__ieeg__sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 070901793ab45074e3d9393bbf25228d416b20b03fd7767e43792b984ae03cfc
+    bytes: 655
+    format: json
+    scope: private
+  - name: sub-59__ses-iemu__ieeg__sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 7ba9b6f901eb2439e58a7322abcedb25f70f336e133ec8d416454f530234167a
+    bytes: 78972504
+    format: eeg
+    scope: private
+  - name: sub-59__ses-iemu__ieeg__sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 892ef096be0ecfc583e08beb0706b4607e16fd6bdb9a344126484a599f247fe8
+    bytes: 1970
+    format: vhdr
+    scope: private
+  - name: sub-59__ses-iemu__ieeg__sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: b775b1d05760ad6ffbd61ecb51cdb34960f23520fcac06e8dde93f701019b778
+    bytes: 1007
+    format: vmrk
+    scope: private
+  - name: sub-60__ses-iemu__ieeg__sub-60_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_run-1_events.tsv
+    sha256: 375864520e877b4815b7c47507ccdd6e7f9174d2f0b3faf519b286fee7577379
+    bytes: 381
+    format: tsv
+    scope: private
+  - name: sub-60__ses-iemu__ieeg__sub-60_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: f041deab4bc3d26895f97d89544c1f3bd00812fca944eec68f92a90d856e8c83
+    bytes: 6298
+    format: tsv
+    scope: private
+  - name: sub-60__ses-iemu__ieeg__sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 689d89822f3789d44e682d3c1e44564cb802801c58f4c614dee7fd3a98ddb7ca
+    bytes: 579
+    format: json
+    scope: private
+  - name: sub-60__ses-iemu__ieeg__sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 9158464b6b77d976c6c00db8999e6fc25940c1521491fa4b21750888e5dd8e1c
+    bytes: 101085264
+    format: eeg
+    scope: private
+  - name: sub-60__ses-iemu__ieeg__sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: 380cf254756e495d621d62910751988f85b12b18803ad937464e85076b817d23
+    bytes: 2839
+    format: vhdr
+    scope: private
+  - name: sub-60__ses-iemu__ieeg__sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: c25a53f86cb47cd9d4c2541addfca351ca6fac7c9a189a959792aa0cb1542d21
+    bytes: 1001
+    format: vmrk
+    scope: private
+  - name: sub-61__ses-iemu__ieeg__sub-61_ses-iemu_task-film_run-1_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_run-1_events.tsv
+    sha256: 2850e1deb840dc0e22e92f9a64e04d3563f66a976a97873e9476446d03f1962c
+    bytes: 384
+    format: tsv
+    scope: private
+  - name: sub-61__ses-iemu__ieeg__sub-61_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_channels.tsv
+    sha256: b3734344400ed00e74d095e15124ccfe4192507c23281054c5e1305f3756a74c
+    bytes: 3731
+    format: tsv
+    scope: private
+  - name: sub-61__ses-iemu__ieeg__sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.json
+    sha256: 1bd71a7940c77acc74cefed3108595ecbb7cfb8e2cf932a7e1138b38ded7b2f2
+    bytes: 631
+    format: json
+    scope: private
+  - name: sub-61__ses-iemu__ieeg__sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg
+    sha256: 93a6af47d779c5c9953725d5003bd57e9db08e0b91b350bc9062bfc570b7a978
+    bytes: 254156832
+    format: eeg
+    scope: private
+  - name: sub-61__ses-iemu__ieeg__sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr
+    sha256: dd5c4465c8c78bdf50bd4a7e783d5dca0868f44d7a6c880d2082499f11bd9ea4
+    bytes: 1908
+    format: vhdr
+    scope: private
+  - name: sub-61__ses-iemu__ieeg__sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk
+    sha256: df1538c0d2e081d313dcfba11484e74d6f129023e55a66b6baedd95b366d459b
+    bytes: 1012
+    format: vmrk
+    scope: private
+  - name: sub-63__ses-iemu__ieeg__sub-63_ses-iemu_task-film_run-2_events.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_run-2_events.tsv
+    sha256: 891aace9d7c28e5f803789c92dc0b3a698586dda6d392e075911f3a60343f710
+    bytes: 385
+    format: tsv
+    scope: private
+  - name: sub-63__ses-iemu__ieeg__sub-63_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_channels.tsv
+    sha256: cde62eccfa54e2e6a94073de9b7ef473da9d76b13c0126acb2e9b1a7ac46559d
+    bytes: 3709
+    format: tsv
+    scope: private
+  - name: sub-63__ses-iemu__ieeg__sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.json
+    sha256: be37fd42f93b1431165660005173d91c19c25b9a420b0b0630d6991f931e1bc0
+    bytes: 655
+    format: json
+    scope: private
+  - name: sub-63__ses-iemu__ieeg__sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg
+    sha256: 8a58f04a92eae5e773811389a187fa8052aba953a7952e4590217d51a6b0ec31
+    bytes: 74106384
+    format: eeg
+    scope: private
+  - name: sub-63__ses-iemu__ieeg__sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr
+    sha256: 8265fb4bdd1ad76764bad626704c5fb987d2b3738a209b9d6526974e8cb1ce2c
+    bytes: 1963
+    format: vhdr
+    scope: private
+  - name: sub-63__ses-iemu__ieeg__sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    uri: https://s3.amazonaws.com/openneuro.org/ds003688/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk
+    sha256: 1136f6fe2013b9c2277da9f3b6fd548489fc50c576242d4d8a48601f85ff6747
+    bytes: 1006
+    format: vmrk
+    scope: private
+  - name: 061cc8ac7765acce6d74428d__train.npz
+    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/train.npz
+    sha256: a55b4c8e8a25cf1990679bb8c3b4dda93d223e77dece9f3d5da2dfce5314c0e1
+    bytes: 13353016
+    format: npz
+    scope: public
+  - name: 061cc8ac7765acce6d74428d__train_labels.json
+    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/train_labels.json
+    sha256: 806f7283a172c975234b2871438b06d13610137f26c7a2c5b9489c500a018f6b
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 061cc8ac7765acce6d74428d__metadata.json
+    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/metadata.json
+    sha256: cb925feb0ec41ded5bc8c3cfe4d26904aadf996647c3f2712201e5f58493aef5
+    bytes: 2068
+    format: json
+    scope: public
+  - name: 140825584407c4ba0f942f9a__train.npz
+    uri: local://derived-v2/public/140825584407c4ba0f942f9a/train.npz
+    sha256: 4954417b9e975711afedca744d05702168ee604962562ff01931792ee6441338
+    bytes: 11957163
+    format: npz
+    scope: public
+  - name: 140825584407c4ba0f942f9a__train_labels.json
+    uri: local://derived-v2/public/140825584407c4ba0f942f9a/train_labels.json
+    sha256: 0527c535df239b601618eb94f7633620cba1662994ec3fdc849f1db396c07d7b
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 140825584407c4ba0f942f9a__metadata.json
+    uri: local://derived-v2/public/140825584407c4ba0f942f9a/metadata.json
+    sha256: ab5837dd5f6b2c1711c41602d34af6e086ab1601007c646494d323169f7a5178
+    bytes: 1852
+    format: json
+    scope: public
+  - name: 1a2a249f3431a38176e1ec1d__train.npz
+    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/train.npz
+    sha256: f660cdda020cfa3b64b1e851af9bf4825ca6c44eafe3e46ff9083983c30f8ec8
+    bytes: 11942443
+    format: npz
+    scope: public
+  - name: 1a2a249f3431a38176e1ec1d__train_labels.json
+    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/train_labels.json
+    sha256: 97b05772ff41464c8e525a24d34c98b590f17a4be742b8059c971f3b1893c767
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 1a2a249f3431a38176e1ec1d__metadata.json
+    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/metadata.json
+    sha256: aaf5a8bb12e28a50612bfc53a6d0978e7f0338a630792bad4df319b21d0b0d4a
+    bytes: 1852
+    format: json
+    scope: public
+  - name: 1ad3e6499cc52d9c1259cc69__train.npz
+    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/train.npz
+    sha256: 2f1cfc0abd6a9ac288637563bff30a45bc7260238f548df260251bfaafedee05
+    bytes: 18136358
+    format: npz
+    scope: public
+  - name: 1ad3e6499cc52d9c1259cc69__train_labels.json
+    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/train_labels.json
+    sha256: f1fd5f252ddc040dc2208a15305e51baf5ce0e98873d2d17b0fd01dd12b11c49
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 1ad3e6499cc52d9c1259cc69__metadata.json
+    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/metadata.json
+    sha256: 7cccb239957db11180d90e288a4691672d2be953a73c5d45b9e5644b14cc8dbc
+    bytes: 2716
+    format: json
+    scope: public
+  - name: 1d9eae913e596951ec71eb24__train.npz
+    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/train.npz
+    sha256: 54ba7ee095dd08cbf35b5e1baa42425870022085f504b3bfad6e159259c28b47
+    bytes: 17475259
+    format: npz
+    scope: public
+  - name: 1d9eae913e596951ec71eb24__train_labels.json
+    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/train_labels.json
+    sha256: 81139edae96452c833742c1e48d1cffeaa977521610127bd7291e967c181bf6e
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 1d9eae913e596951ec71eb24__metadata.json
+    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/metadata.json
+    sha256: 94e8e0e84aae2ec1d3b54828f702b4debefa070e422e2cd6fcbbf1721d64d160
+    bytes: 2620
+    format: json
+    scope: public
+  - name: 27a03604b1b71b271cfebce1__train.npz
+    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/train.npz
+    sha256: 42fe577bce2ea71caa19b73ddd022e93eb1593139ecac77bd7af700c02491f56
+    bytes: 18015820
+    format: npz
+    scope: public
+  - name: 27a03604b1b71b271cfebce1__train_labels.json
+    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/train_labels.json
+    sha256: 50ce4d286a2ffdc36134746735a9b602dcd070d3da42f64bfebf422468b752b4
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 27a03604b1b71b271cfebce1__metadata.json
+    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/metadata.json
+    sha256: 784ec73c072c0e7117eb0eb73418cf6166eb25ec47d440997b96d5837b99983b
+    bytes: 2692
+    format: json
+    scope: public
+  - name: 2f210a584c98562cb304509f__train.npz
+    uri: local://derived-v2/public/2f210a584c98562cb304509f/train.npz
+    sha256: 17e994ca75c2079f29cfc20fb9b4c016ec28d2d46f3b704514f274b9296269cf
+    bytes: 12446881
+    format: npz
+    scope: public
+  - name: 2f210a584c98562cb304509f__train_labels.json
+    uri: local://derived-v2/public/2f210a584c98562cb304509f/train_labels.json
+    sha256: 1fb80a815bfc71c82236f83bbbecd0b3e5ee4b4df02f037b9656cfc95b365518
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 2f210a584c98562cb304509f__metadata.json
+    uri: local://derived-v2/public/2f210a584c98562cb304509f/metadata.json
+    sha256: 737863a75985a43df241d6daf331eb41bda4f3eeb07d86e8c2873746ebb59abd
+    bytes: 1924
+    format: json
+    scope: public
+  - name: 373f190da01895816304427e__train.npz
+    uri: local://derived-v2/public/373f190da01895816304427e/train.npz
+    sha256: 470aa28aee21c47d5a1b16a325b6425822b74405e08ff2b696c3813045491013
+    bytes: 15423368
+    format: npz
+    scope: public
+  - name: 373f190da01895816304427e__train_labels.json
+    uri: local://derived-v2/public/373f190da01895816304427e/train_labels.json
+    sha256: 920a76784cca6731ad7dc50c094d5aba36c0d7aeabff2a45d8fc73ff6a67bafd
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 373f190da01895816304427e__metadata.json
+    uri: local://derived-v2/public/373f190da01895816304427e/metadata.json
+    sha256: eba72df1c298362c1ddc8dfe7bc4e5437c036487eb9df8cd35a65e466099dbd4
+    bytes: 2380
+    format: json
+    scope: public
+  - name: 39a0cdc5d087166bbea9c2cf__train.npz
+    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/train.npz
+    sha256: 49639f149ed64920d02b6c4074f993fc1b6f21fb25cd2d21d1ccb2254530d88c
+    bytes: 16081215
+    format: npz
+    scope: public
+  - name: 39a0cdc5d087166bbea9c2cf__train_labels.json
+    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/train_labels.json
+    sha256: 404e868de3f365ea418f3edc607aff7dad1cd8e7895448dd633f1f9855adc628
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 39a0cdc5d087166bbea9c2cf__metadata.json
+    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/metadata.json
+    sha256: 5c6f0980618bc941ba476c1a32d74c1e9835c73f3f1f398bc481ce098ef1a757
+    bytes: 2452
+    format: json
+    scope: public
+  - name: 3e32fc6406d10bc0d18b37d4__train.npz
+    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/train.npz
+    sha256: 5d9ae57ca236bc74897b9aa9168c26ba797f3da7013b5371b0a5419e81b5a0d6
+    bytes: 17015751
+    format: npz
+    scope: public
+  - name: 3e32fc6406d10bc0d18b37d4__train_labels.json
+    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/train_labels.json
+    sha256: 0bcaaf35ffbc06121bccf57857140a23eeb2dfd93ae321ab8e7414adaaa8b181
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 3e32fc6406d10bc0d18b37d4__metadata.json
+    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/metadata.json
+    sha256: d98c0522134e8a2901539275045eadf6492ee9e38a9178a465d3dcb982d68ff1
+    bytes: 2620
+    format: json
+    scope: public
+  - name: 41c39e8b6a2cee4c03b31c2e__train.npz
+    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/train.npz
+    sha256: 05886a0d0902c116e7713010945bf3fdc89403a8ad191bc2ddfc1d64f498dbbe
+    bytes: 17896304
+    format: npz
+    scope: public
+  - name: 41c39e8b6a2cee4c03b31c2e__train_labels.json
+    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/train_labels.json
+    sha256: b8a7c01135ea52a52dd22519925632d60f62bfe8d26f88a98ab25b7fd634cbfb
+    bytes: 2907
+    format: json
+    scope: public
+  - name: 41c39e8b6a2cee4c03b31c2e__metadata.json
+    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/metadata.json
+    sha256: 817677396ecaccc1789ac83a7c21dd90f2a494a65e60ab95ea0f4d01d38f4f59
+    bytes: 2764
+    format: json
+    scope: public
+  - name: 44a6317a22164002c2248bee__train.npz
+    uri: local://derived-v2/public/44a6317a22164002c2248bee/train.npz
+    sha256: 21232498bcbb0bfda431a8b0468d7fcea266c34221a0cc27236ca4b01c8493e1
+    bytes: 9996461
+    format: npz
+    scope: public
+  - name: 44a6317a22164002c2248bee__train_labels.json
+    uri: local://derived-v2/public/44a6317a22164002c2248bee/train_labels.json
+    sha256: 19e1e7a94d236112b5ed1b378031831e599df071a5754289a3eeb808207787e1
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 44a6317a22164002c2248bee__metadata.json
+    uri: local://derived-v2/public/44a6317a22164002c2248bee/metadata.json
+    sha256: c80c9f843a3adee85815d38995dfd6417d5f11b3aa6f366689c1db79020bed69
+    bytes: 1612
+    format: json
+    scope: public
+  - name: 4c9d43627cb787a1b0448aba__train.npz
+    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/train.npz
+    sha256: ab45c072fd3487ee478ef44af2b7408215e95ac306e08f6ff1f8b021094227a4
+    bytes: 10368306
+    format: npz
+    scope: public
+  - name: 4c9d43627cb787a1b0448aba__train_labels.json
+    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/train_labels.json
+    sha256: fbc429185093f722be5ffc8f4e6b1cbf02be24821c813fc7c95c0f7101a2de0b
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 4c9d43627cb787a1b0448aba__metadata.json
+    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/metadata.json
+    sha256: 04eeb1e9d863f1abe73acd034263dc433be90df86e9775ad8840ba623f35f1d5
+    bytes: 1636
+    format: json
+    scope: public
+  - name: 4cd5e2017e4afe2a5cd366d5__train.npz
+    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/train.npz
+    sha256: 4f601f6d20855d7de382eb843a45586a46b03c690e66f4428f4d8519f6f440a5
+    bytes: 10400326
+    format: npz
+    scope: public
+  - name: 4cd5e2017e4afe2a5cd366d5__train_labels.json
+    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/train_labels.json
+    sha256: d5adf5c1dffe45ae11807f76c07a5f8ec6f4eb9eebbb4c4c760401f113e67197
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 4cd5e2017e4afe2a5cd366d5__metadata.json
+    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/metadata.json
+    sha256: 205478eaec0ec1a9575ae57d1f7715427341f18c8d5ae581115b7fc811368ff0
+    bytes: 1636
+    format: json
+    scope: public
+  - name: 4d6681e383e8f1491f74e328__train.npz
+    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/train.npz
+    sha256: 45d8f1acebb3005cd7cba1cfbafc2e6816254c143245fad462dd08b65d4caef6
+    bytes: 13194492
+    format: npz
+    scope: public
+  - name: 4d6681e383e8f1491f74e328__train_labels.json
+    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/train_labels.json
+    sha256: d7d1935ea1905a3960b9a890bb2f1554e260003677c4e78918bb5a54e8169246
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 4d6681e383e8f1491f74e328__metadata.json
+    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/metadata.json
+    sha256: 0cfbc4f81193d85ee3c14acea19a9df5579a8f63cf48e66ee63f7065a64db288
+    bytes: 2068
+    format: json
+    scope: public
+  - name: 57591157a49d8ac96997ab64__train.npz
+    uri: local://derived-v2/public/57591157a49d8ac96997ab64/train.npz
+    sha256: 3fca566efd84ce61f6b55590d325b2e13f1084bbe84acfcf15330aea24dcaa11
+    bytes: 9553956
+    format: npz
+    scope: public
+  - name: 57591157a49d8ac96997ab64__train_labels.json
+    uri: local://derived-v2/public/57591157a49d8ac96997ab64/train_labels.json
+    sha256: 962c3413a370c36747eba554f94253c3a9aa45774a6f95ba933b99b0420e0372
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 57591157a49d8ac96997ab64__metadata.json
+    uri: local://derived-v2/public/57591157a49d8ac96997ab64/metadata.json
+    sha256: a7eab5014a8c9d78adb25ef748277b830627716107dff0cf79accbc23ef57349
+    bytes: 1540
+    format: json
+    scope: public
+  - name: 5c3c4cb93177744215251a8e__train.npz
+    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/train.npz
+    sha256: b3b47fd2e8b00969691f23da61ed0e0ba6c763259af2b3c7ab30f334083219ce
+    bytes: 18453007
+    format: npz
+    scope: public
+  - name: 5c3c4cb93177744215251a8e__train_labels.json
+    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/train_labels.json
+    sha256: 21668819b4efa837ca730695aecf8a6843d3c751ccae5fa4ba837b3965c76141
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 5c3c4cb93177744215251a8e__metadata.json
+    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/metadata.json
+    sha256: e98faef45701f548a4a9be742daeb29a938943bbe3ec798cbbb20d171c8a9433
+    bytes: 2812
+    format: json
+    scope: public
+  - name: 615d23a681f3ed5afd31dd98__train.npz
+    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/train.npz
+    sha256: f2264f1800744327ade8d9bbe9b2f770b16eb6e8512ef3aeea2cd8ec3d25928f
+    bytes: 18513082
+    format: npz
+    scope: public
+  - name: 615d23a681f3ed5afd31dd98__train_labels.json
+    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/train_labels.json
+    sha256: 5cee69f84de149719825c908d79a4b70c8bc5584f2691b2714c2b04bec1abdad
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 615d23a681f3ed5afd31dd98__metadata.json
+    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/metadata.json
+    sha256: de46836dbef2d2d33b35edf8a0118c9315c6e53e7c2052245673a2091e9c7a0c
+    bytes: 2764
+    format: json
+    scope: public
+  - name: 6242e2bc5fc8d6da70d4baa1__train.npz
+    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/train.npz
+    sha256: 18636154590b4fa5b4f9ad7d856b92f334fbf8eb334c29b76547c1743b62ca6d
+    bytes: 9538745
+    format: npz
+    scope: public
+  - name: 6242e2bc5fc8d6da70d4baa1__train_labels.json
+    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/train_labels.json
+    sha256: 5ba86c07eb00928eba75e8fa330662239832849ce91ab5c4d9a1f4b0bbdc9bb3
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 6242e2bc5fc8d6da70d4baa1__metadata.json
+    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/metadata.json
+    sha256: 0700932833dcca094237a7cdd653fee92ad21bf9d9b0c749fccf74778e5d43b3
+    bytes: 1516
+    format: json
+    scope: public
+  - name: 6675c377963972830447837c__train.npz
+    uri: local://derived-v2/public/6675c377963972830447837c/train.npz
+    sha256: 4b3a0db68fc61c1961760a2972d6025c4df6862a8fe98db321c0bcc03b0bf7b6
+    bytes: 17444643
+    format: npz
+    scope: public
+  - name: 6675c377963972830447837c__train_labels.json
+    uri: local://derived-v2/public/6675c377963972830447837c/train_labels.json
+    sha256: 4ba70a8badcf70532bc3d0c1934902605fc0a1d6d52d902226a42cef9c766130
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 6675c377963972830447837c__metadata.json
+    uri: local://derived-v2/public/6675c377963972830447837c/metadata.json
+    sha256: e8fe45d633f00f81bd98c90db6e8ad26c731af38d14c2a2ffe6e37815663af5f
+    bytes: 2620
+    format: json
+    scope: public
+  - name: 6706c38c98c70cbbec58621d__train.npz
+    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/train.npz
+    sha256: e6a85af2429089811459a623f365d78e7bbf92246eec86277929599509897037
+    bytes: 15248201
+    format: npz
+    scope: public
+  - name: 6706c38c98c70cbbec58621d__train_labels.json
+    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/train_labels.json
+    sha256: ebb1749a71a8de7734fc3fff8fd6a235dfe55a6664a34897fb2610754092ba76
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 6706c38c98c70cbbec58621d__metadata.json
+    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/metadata.json
+    sha256: 453cb9c9e2a4609743dc0e50b3e7fc18ee4fc1d00ea62fd35a529e7397ee7f36
+    bytes: 2356
+    format: json
+    scope: public
+  - name: 75571d8ee5a8bd9ac62f5ac3__train.npz
+    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/train.npz
+    sha256: 65d873214013feb82e79e46328a2bef6c54220e3e910bca3276356a4eec720ce
+    bytes: 11829484
+    format: npz
+    scope: public
+  - name: 75571d8ee5a8bd9ac62f5ac3__train_labels.json
+    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/train_labels.json
+    sha256: 10996dee6ed42f4d463a3855aa8e12b37a0f0d5058c97ed8e494d2c751f4f8c3
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 75571d8ee5a8bd9ac62f5ac3__metadata.json
+    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/metadata.json
+    sha256: 074703c11ca5796749728a8ebc9fe123bd662c0f27e4362e32fb8ac8591ddd4b
+    bytes: 1852
+    format: json
+    scope: public
+  - name: 784f29be40aa1858cc2be24b__train.npz
+    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/train.npz
+    sha256: f137b481b19838a7b7796f45483488b09bdf79cdc5b074967158b1fa8b147665
+    bytes: 13861496
+    format: npz
+    scope: public
+  - name: 784f29be40aa1858cc2be24b__train_labels.json
+    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/train_labels.json
+    sha256: 46c565527b9f6170e178536335d3c9f18a0e6c14d9e9fe71bf04d7899788e899
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 784f29be40aa1858cc2be24b__metadata.json
+    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/metadata.json
+    sha256: 21f2d9174405993f0f773a2b4b6edf043b7e98d0296f4b356cef3288da77355e
+    bytes: 2140
+    format: json
+    scope: public
+  - name: 79ee649fd18ca2a7482d4e2f__train.npz
+    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/train.npz
+    sha256: 6091eb339289621e8602d6ff4e729b96130fc03271432d87004bcfb9c3223a26
+    bytes: 13010416
+    format: npz
+    scope: public
+  - name: 79ee649fd18ca2a7482d4e2f__train_labels.json
+    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/train_labels.json
+    sha256: e75aa34e25ba3b98a7cd0429db848d7409347ac17512f4a7d9265523fac59b1a
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 79ee649fd18ca2a7482d4e2f__metadata.json
+    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/metadata.json
+    sha256: 0c9e9286c2e589d98b669170acf29b539ce7403608615cccf82a29f6e99cc8b9
+    bytes: 2044
+    format: json
+    scope: public
+  - name: 7e5f8d305ec7d0fde737a6b0__train.npz
+    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/train.npz
+    sha256: bad15b035a61a6f08d8045fefb518a55cb8644f8eb1d69394469736606cd2fe4
+    bytes: 10212863
+    format: npz
+    scope: public
+  - name: 7e5f8d305ec7d0fde737a6b0__train_labels.json
+    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/train_labels.json
+    sha256: fcb9c1669ac8dc784125be4d409a24e10b9559879cce1a6bc8d1477431c03c28
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 7e5f8d305ec7d0fde737a6b0__metadata.json
+    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/metadata.json
+    sha256: 268108a4971d8c08a3513a2ec017d4a93c06f410e1a319fd469e5c4292644ba0
+    bytes: 1612
+    format: json
+    scope: public
+  - name: 80e0146335fdb4ad695a2755__train.npz
+    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/train.npz
+    sha256: f3d7b77a9261cbf9d0a2b4486022377744ca5bf1cde41874689e413f9b5f1070
+    bytes: 16401196
+    format: npz
+    scope: public
+  - name: 80e0146335fdb4ad695a2755__train_labels.json
+    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/train_labels.json
+    sha256: 7e7cc74b62ec64c49069e5f76c21be99258a872d76956f870f61fc7f3d09ab88
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 80e0146335fdb4ad695a2755__metadata.json
+    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/metadata.json
+    sha256: 03a285903b2bbccc85c5ce5fcef1f5906cfc11581c747537bad7252342976212
+    bytes: 2476
+    format: json
+    scope: public
+  - name: 8a880d70792f9fde171b2539__train.npz
+    uri: local://derived-v2/public/8a880d70792f9fde171b2539/train.npz
+    sha256: 59ec390f264503a3fdf9009efb881cc1bcea4131b7746ec2ccb14137e82e88bd
+    bytes: 18581568
+    format: npz
+    scope: public
+  - name: 8a880d70792f9fde171b2539__train_labels.json
+    uri: local://derived-v2/public/8a880d70792f9fde171b2539/train_labels.json
+    sha256: 3ea3427e0e348a555e1fc02f96783aed6e5ef899d4fe163f4f37c1f025d4a56b
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 8a880d70792f9fde171b2539__metadata.json
+    uri: local://derived-v2/public/8a880d70792f9fde171b2539/metadata.json
+    sha256: d2092867a13cfabd5b492938bfefc0e2c88f56a07e7916606ad9598293f1df08
+    bytes: 2812
+    format: json
+    scope: public
+  - name: 8fe9ba933c865804e2f39651__train.npz
+    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/train.npz
+    sha256: e0ba9c81770f683340dc67c24b3a7e702aef33c7a7b2a5295e11afa02ff0c69d
+    bytes: 11849699
+    format: npz
+    scope: public
+  - name: 8fe9ba933c865804e2f39651__train_labels.json
+    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/train_labels.json
+    sha256: 45c043c0b437bda57ac2bb29047a535cd6cde3cd90a9a3a4e1946c7ecc4640ec
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 8fe9ba933c865804e2f39651__metadata.json
+    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/metadata.json
+    sha256: f1d145e7a13d7ede82efe6e1148a86e758082bf20297f12708d444869cedc914
+    bytes: 1876
+    format: json
+    scope: public
+  - name: 91582957e4358e2794d1e244__train.npz
+    uri: local://derived-v2/public/91582957e4358e2794d1e244/train.npz
+    sha256: 50ec7cbfabde563578a534f2003ab87b4249f9f2e8b1d584781bdf68ec981ff2
+    bytes: 16466220
+    format: npz
+    scope: public
+  - name: 91582957e4358e2794d1e244__train_labels.json
+    uri: local://derived-v2/public/91582957e4358e2794d1e244/train_labels.json
+    sha256: ae51edd4d137bd4fdd4fbe285820e762069cb805732baf0d9553fdcaa9a5efb9
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 91582957e4358e2794d1e244__metadata.json
+    uri: local://derived-v2/public/91582957e4358e2794d1e244/metadata.json
+    sha256: be6c25718593e4e9fb92d1ccd6c719bbeab7c78531bfd1b1cd83cd6b823c5332
+    bytes: 2500
+    format: json
+    scope: public
+  - name: 99804db839599003dfb764ba__train.npz
+    uri: local://derived-v2/public/99804db839599003dfb764ba/train.npz
+    sha256: 2b7b5fd30dd92522bc007ae43d8d123885f5029bad5443f6f8e07b3321712a5f
+    bytes: 13865840
+    format: npz
+    scope: public
+  - name: 99804db839599003dfb764ba__train_labels.json
+    uri: local://derived-v2/public/99804db839599003dfb764ba/train_labels.json
+    sha256: 6502fe478d69d57847719b250a0f94a8984b254eaa096d227bdad3c9290f2f3a
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 99804db839599003dfb764ba__metadata.json
+    uri: local://derived-v2/public/99804db839599003dfb764ba/metadata.json
+    sha256: 037f401bb74fb446810038db7a129609a58ec5c9123dbca449cebf450ee688e6
+    bytes: 2116
+    format: json
+    scope: public
+  - name: 9c02ff76e1e86e672ffd4b6a__train.npz
+    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/train.npz
+    sha256: 9175c9cc39f56a87740849786599710c5214a19b27b9b0ab94a16de0ef6e1f48
+    bytes: 11058273
+    format: npz
+    scope: public
+  - name: 9c02ff76e1e86e672ffd4b6a__train_labels.json
+    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/train_labels.json
+    sha256: 7651bae30df2fa22b572dda5740bfdf186f049075386acc17b87001694744500
+    bytes: 3006
+    format: json
+    scope: public
+  - name: 9c02ff76e1e86e672ffd4b6a__metadata.json
+    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/metadata.json
+    sha256: 8a71f8b933a0511938b0e1b3df1c90d2276ca744658ab23e7463d3b2a879732d
+    bytes: 1732
+    format: json
+    scope: public
+  - name: 9e0084229ef1e8033b374449__train.npz
+    uri: local://derived-v2/public/9e0084229ef1e8033b374449/train.npz
+    sha256: 0823757de8cc946f7418bf87c4c42afd88cb1a8642eb30ff9d2587bce3f4abbd
+    bytes: 10941729
+    format: npz
+    scope: public
+  - name: 9e0084229ef1e8033b374449__train_labels.json
+    uri: local://derived-v2/public/9e0084229ef1e8033b374449/train_labels.json
+    sha256: 782e81c119385490d0cba74e47082b11fd309abb02dd0fdb6ebde09a2a579244
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 9e0084229ef1e8033b374449__metadata.json
+    uri: local://derived-v2/public/9e0084229ef1e8033b374449/metadata.json
+    sha256: 0e23c225fede2b38dce570949f952091aad1c8444246970ed16fc4afc8076ebd
+    bytes: 1732
+    format: json
+    scope: public
+  - name: 9e04985ebcc7c7ffb96bf29e__train.npz
+    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/train.npz
+    sha256: bd011cb14fa9ded8958e1ff5315c46852e2bc840bda3fa500b745e9fd261ed09
+    bytes: 11985323
+    format: npz
+    scope: public
+  - name: 9e04985ebcc7c7ffb96bf29e__train_labels.json
+    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/train_labels.json
+    sha256: 2f0d7ac31082a22a71dc4ed0bba44a7fe63f71f00da83a0738836a128b78cfe9
+    bytes: 2940
+    format: json
+    scope: public
+  - name: 9e04985ebcc7c7ffb96bf29e__metadata.json
+    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/metadata.json
+    sha256: a6e1a62d40a1bf60b493b61e5439bcd6f4111d8d75e7a50d8ea5277da9d16742
+    bytes: 1900
+    format: json
+    scope: public
+  - name: 9eec5ee2ccc254675350e505__train.npz
+    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/train.npz
+    sha256: 5dfd22cd4794a73052408d3021c1fb8cc2040e19313faf57307c4e58e8489f55
+    bytes: 7345443
+    format: npz
+    scope: public
+  - name: 9eec5ee2ccc254675350e505__train_labels.json
+    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/train_labels.json
+    sha256: 52f60bad134cc6a1d0ed6ff5d24ff502342fcb4718381cf778aa285310c4ba22
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 9eec5ee2ccc254675350e505__metadata.json
+    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/metadata.json
+    sha256: 37f7fb2e1c5821383221d488a5bfea0e2838d75ecfd655249b70039f961fa5a3
+    bytes: 1228
+    format: json
+    scope: public
+  - name: 9fbfa396edce2b51980c72b4__train.npz
+    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/train.npz
+    sha256: 31796516b7c38deed2bd8c6ef9683e78c07b94c3beb3a58fca51a0802e56c0d8
+    bytes: 27980209
+    format: npz
+    scope: public
+  - name: 9fbfa396edce2b51980c72b4__train_labels.json
+    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/train_labels.json
+    sha256: 3c9ba32e4ae532fb05f9ba125ae70908f2d506010eaec2a61833afedc06f696f
+    bytes: 2973
+    format: json
+    scope: public
+  - name: 9fbfa396edce2b51980c72b4__metadata.json
+    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/metadata.json
+    sha256: 53a7118fdc2ddd04d7230cbb64b80142b369432537e3c469aeecb5dc3997ce2f
+    bytes: 4132
+    format: json
+    scope: public
+  - name: a39bb61476037489dd1b5302__train.npz
+    uri: local://derived-v2/public/a39bb61476037489dd1b5302/train.npz
+    sha256: 2c3881791245936bd73d5676c603925c85ca3d538d66fc0adb60f6327e98f18a
+    bytes: 10286316
+    format: npz
+    scope: public
+  - name: a39bb61476037489dd1b5302__train_labels.json
+    uri: local://derived-v2/public/a39bb61476037489dd1b5302/train_labels.json
+    sha256: d3a637e766c04309f351879ea9a7d6d17eb37926f7c8c6907895b7fc7b7d30c1
+    bytes: 2940
+    format: json
+    scope: public
+  - name: a39bb61476037489dd1b5302__metadata.json
+    uri: local://derived-v2/public/a39bb61476037489dd1b5302/metadata.json
+    sha256: 80c90bce9a4071c3a13399a422d830349abb77b1cecaf9a48f600f88cd18147a
+    bytes: 1660
+    format: json
+    scope: public
+  - name: a6eeb9eef42cd40df0506226__train.npz
+    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/train.npz
+    sha256: 61d73b0b91ecd27992bb99b131aa16d636137e880e3db26eca1349ea6bfe4c12
+    bytes: 10450116
+    format: npz
+    scope: public
+  - name: a6eeb9eef42cd40df0506226__train_labels.json
+    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/train_labels.json
+    sha256: 68955e2fedd1c93bc0625003886c0289f9d1a0680995425ec27896f0ff21e5c9
+    bytes: 2973
+    format: json
+    scope: public
+  - name: a6eeb9eef42cd40df0506226__metadata.json
+    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/metadata.json
+    sha256: 8e07cc1e5937bd540579e13a9d1b65bbb08e41167e0fef5113c260ee5e0cef5a
+    bytes: 1660
+    format: json
+    scope: public
+  - name: ae071562bf0c69e0de55ca32__train.npz
+    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/train.npz
+    sha256: a33ed532215e2368118fe9570b64f30a6ff49a412f75bed5b953ff6da7ee6b7a
+    bytes: 10036418
+    format: npz
+    scope: public
+  - name: ae071562bf0c69e0de55ca32__train_labels.json
+    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/train_labels.json
+    sha256: a6329823fb00074c817600591b210c222dc853ada96be4d95aa29fbb419c68a6
+    bytes: 3006
+    format: json
+    scope: public
+  - name: ae071562bf0c69e0de55ca32__metadata.json
+    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/metadata.json
+    sha256: b6059ac376f4995471c455f1c234f39c5193026f800aad0a37e4cefd73fff676
+    bytes: 1588
+    format: json
+    scope: public
+  - name: ae718da47b5405ea86ea5526__train.npz
+    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/train.npz
+    sha256: 692780adebc312050637bced5999983c32e86c5c1a42d3500c4ea7c18bd06892
+    bytes: 15904382
+    format: npz
+    scope: public
+  - name: ae718da47b5405ea86ea5526__train_labels.json
+    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/train_labels.json
+    sha256: 276eea6b9657f8e31c120d68bb16b0bf3f54257207a1f214fe9788a366140f77
+    bytes: 2940
+    format: json
+    scope: public
+  - name: ae718da47b5405ea86ea5526__metadata.json
+    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/metadata.json
+    sha256: ece15e016feee42cf318cc92c6aca5f013f0da7ba778e8f5fbed562670a5e8ed
+    bytes: 2452
+    format: json
+    scope: public
+  - name: bdbb8c7e8a7dc40a9c837479__train.npz
+    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/train.npz
+    sha256: ab33ffb1630ad102dcf662d0ff091be866d8a859c4f3a62cc57b52b08d585137
+    bytes: 15081635
+    format: npz
+    scope: public
+  - name: bdbb8c7e8a7dc40a9c837479__train_labels.json
+    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/train_labels.json
+    sha256: 16d649eab20820a964c7b0bd138c7825de9fd4f312f302d128b367cbabd1b7f3
+    bytes: 2940
+    format: json
+    scope: public
+  - name: bdbb8c7e8a7dc40a9c837479__metadata.json
+    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/metadata.json
+    sha256: 2d4de43bdb18c8d037f77834e31b33a7c8dd081dbb3578749a1bba9078d70be3
+    bytes: 2332
+    format: json
+    scope: public
+  - name: c44177eb4a39d379327daf66__train.npz
+    uri: local://derived-v2/public/c44177eb4a39d379327daf66/train.npz
+    sha256: fba890ccdc0041815b131c919afb4b316352c05134b0337c09bb4002e456f7d1
+    bytes: 12511936
+    format: npz
+    scope: public
+  - name: c44177eb4a39d379327daf66__train_labels.json
+    uri: local://derived-v2/public/c44177eb4a39d379327daf66/train_labels.json
+    sha256: c8576cb83bd31079b69e288744d30a27e08d78992095745df05ce482e295f5dc
+    bytes: 2973
+    format: json
+    scope: public
+  - name: c44177eb4a39d379327daf66__metadata.json
+    uri: local://derived-v2/public/c44177eb4a39d379327daf66/metadata.json
+    sha256: 1627b0e2746a5353c4d2e9e50062181a67cea857616f692b92aad3edac84bac5
+    bytes: 1948
+    format: json
+    scope: public
+  - name: ca87aad955c18a562b4d620e__train.npz
+    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/train.npz
+    sha256: 7c2dcf016fce318cde269c6f9b020ca2882c2d724f869b34c582f21f8c3594d3
+    bytes: 17475682
+    format: npz
+    scope: public
+  - name: ca87aad955c18a562b4d620e__train_labels.json
+    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/train_labels.json
+    sha256: 7ffc74a6a2d079eacc55eb84ad3e2604806e549815a88602ded076f3dd90e95a
+    bytes: 2973
+    format: json
+    scope: public
+  - name: ca87aad955c18a562b4d620e__metadata.json
+    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/metadata.json
+    sha256: 90fa3eea5c9d2fcc24e603dd1986e539806d54b32f875b74e09e1c2e7b897150
+    bytes: 2644
+    format: json
+    scope: public
+  - name: d048cb6314a77347fb2830ab__train.npz
+    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/train.npz
+    sha256: 7dd8c6e1dafae31be4bb9b94d45d828385ef1863cc1cc5a41ff3f34bbf20a841
+    bytes: 13649600
+    format: npz
+    scope: public
+  - name: d048cb6314a77347fb2830ab__train_labels.json
+    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/train_labels.json
+    sha256: d05b60c044747737aa053d4483051e36655ee43d0fe949037f358f72b9b0265f
+    bytes: 3006
+    format: json
+    scope: public
+  - name: d048cb6314a77347fb2830ab__metadata.json
+    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/metadata.json
+    sha256: 4f821d2b5f5d719ffd57b2711ac97dbbe9e689df9349e3548472de0465008481
+    bytes: 2092
+    format: json
+    scope: public
+  - name: d30162277d98503e1a66e677__train.npz
+    uri: local://derived-v2/public/d30162277d98503e1a66e677/train.npz
+    sha256: 91fe187d1b34c9a5cdca9884ce3ddf113fbcd2a2b4c36897d9f18bc46df3554e
+    bytes: 14387507
+    format: npz
+    scope: public
+  - name: d30162277d98503e1a66e677__train_labels.json
+    uri: local://derived-v2/public/d30162277d98503e1a66e677/train_labels.json
+    sha256: a59eaa0e81ff1bc82059ce9fc769facc2ac587e5d8b17486744954f3d4e7eeba
+    bytes: 3006
+    format: json
+    scope: public
+  - name: d30162277d98503e1a66e677__metadata.json
+    uri: local://derived-v2/public/d30162277d98503e1a66e677/metadata.json
+    sha256: 6d309e614ac671bcb6e354bf34aebba8c5916655f0d85859d0ef47c616d4e11c
+    bytes: 2188
+    format: json
+    scope: public
+  - name: e206be9cf197bbd5d0b4c5bf__train.npz
+    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/train.npz
+    sha256: 40e32ba7f663f74fac73e90b7b71b26b4a33a79d51ff573bf2ef9a95196a6672
+    bytes: 19586386
+    format: npz
+    scope: public
+  - name: e206be9cf197bbd5d0b4c5bf__train_labels.json
+    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/train_labels.json
+    sha256: 0b6341719db8fb97bfaac5c79c1349fee64f1861945e4940aede5f804829da1e
+    bytes: 2940
+    format: json
+    scope: public
+  - name: e206be9cf197bbd5d0b4c5bf__metadata.json
+    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/metadata.json
+    sha256: 35ef5b220bd4f8ac89f26a0cca94704b1de54627e9fa0294982059e1bc0bbc9e
+    bytes: 2980
+    format: json
+    scope: public
+  - name: e2b77b67309c08fada2b590a__train.npz
+    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/train.npz
+    sha256: ac5dbd9f8b5b77edf16a565582a77280a4fc1f5d1460dce5425ee3b7925ed234
+    bytes: 17449257
+    format: npz
+    scope: public
+  - name: e2b77b67309c08fada2b590a__train_labels.json
+    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/train_labels.json
+    sha256: 80affc6b663b68ae32b5597062ccb177fd31ff6963d4dea6e759f4d405a3ec95
+    bytes: 2940
+    format: json
+    scope: public
+  - name: e2b77b67309c08fada2b590a__metadata.json
+    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/metadata.json
+    sha256: 08f9df94eb916803f3f4c8e5f1a84a0eb598ac1c33ae2ac5445e4e0a19de08c8
+    bytes: 2668
+    format: json
+    scope: public
+  - name: f2ac63e82bdf4a122eae68f4__train.npz
+    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/train.npz
+    sha256: 53f6898247a4dce05321f8062cfc26a3a60b41e772b730e08d50b94dddd2215d
+    bytes: 8744068
+    format: npz
+    scope: public
+  - name: f2ac63e82bdf4a122eae68f4__train_labels.json
+    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/train_labels.json
+    sha256: 6ce73b0b135143357f953329379304d6fc6d40a3d651e2dc54ac88d88ab9bb88
+    bytes: 2973
+    format: json
+    scope: public
+  - name: f2ac63e82bdf4a122eae68f4__metadata.json
+    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/metadata.json
+    sha256: 0a0bde4fa156111fde4b6f6894bd970f2fce5d5ba9c666dd0c714737af7ebe02
+    bytes: 1420
+    format: json
+    scope: public
+  - name: f95210c0fcd8eb394702cdfc__train.npz
+    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/train.npz
+    sha256: 7a17cbe2a4303959b4dc6e93e276bdaa35916fb94de1caa2da148abbd3f2d6c5
+    bytes: 14362870
+    format: npz
+    scope: public
+  - name: f95210c0fcd8eb394702cdfc__train_labels.json
+    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/train_labels.json
+    sha256: afd76538e47e164a8c0748e377b6c847dbd17b1f399c0fceec63229bd3e046bc
+    bytes: 3006
+    format: json
+    scope: public
+  - name: f95210c0fcd8eb394702cdfc__metadata.json
+    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/metadata.json
+    sha256: cfb66348bbc766fd6862c4425772976acf1fe3a931177923fd2c66a1afcc9c0b
+    bytes: 2188
+    format: json
+    scope: public
+  - name: fa5eb569df965aa60fe2aba8__train.npz
+    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/train.npz
+    sha256: c6e7884b496ea7153f4589b883b2ebfd46474f77ef18cebe1c419c2beabf5865
+    bytes: 14882117
+    format: npz
+    scope: public
+  - name: fa5eb569df965aa60fe2aba8__train_labels.json
+    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/train_labels.json
+    sha256: 708678ef31c6ece9e7708c8eaef8109a6e97b39fbf1f3ac789dc001f933d59d0
+    bytes: 2940
+    format: json
+    scope: public
+  - name: fa5eb569df965aa60fe2aba8__metadata.json
+    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/metadata.json
+    sha256: 71d6ac7f86ef202ac7bd59721914eb91858dc687a4b90dabb5dfd6c4203b3e07
+    bytes: 2308
+    format: json
+    scope: public
+  - name: fca8cd7e02687e10ba3f77ad__train.npz
+    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/train.npz
+    sha256: e73f334b1485be2bc96aea7992dad3268df445dfdf0fd48fec693626961bba57
+    bytes: 11813102
+    format: npz
+    scope: public
+  - name: fca8cd7e02687e10ba3f77ad__train_labels.json
+    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/train_labels.json
+    sha256: e09d08ab6ae120945c2e8d2d93cf2f6d0219beb121d3b0494d71ea2b70460bb7
+    bytes: 2973
+    format: json
+    scope: public
+  - name: fca8cd7e02687e10ba3f77ad__metadata.json
+    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/metadata.json
+    sha256: 21bca45c4f67d3e712d1aef330f36524d971fa667fa4a56f06a551b3a51e3969
+    bytes: 1852
+    format: json
+    scope: public
+  - name: fde5bee80f2a1fd225351878__train.npz
+    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/train.npz
+    sha256: ad6e74fe621c116b53d343de218faf3dddfd583865087551604df54fbcb1338f
+    bytes: 12475335
+    format: npz
+    scope: public
+  - name: fde5bee80f2a1fd225351878__train_labels.json
+    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/train_labels.json
+    sha256: fcb87b57502dae746620a3c29edbe6acca759d01fc16b091726da0c6406afd4f
+    bytes: 3006
+    format: json
+    scope: public
+  - name: fde5bee80f2a1fd225351878__metadata.json
+    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/metadata.json
+    sha256: 96b691ed17ac3b5d6d52126e6530c0f06fb70845b6f64760224ea881abe960ca
+    bytes: 1924
+    format: json
+    scope: public
+  - name: train_manifest.json
+    uri: local://derived-v2/public/train_manifest.json
+    sha256: 7c65bc5f0962461114ced3a6b264a771f0784e2d40818052820293f3af3a0a98
+    bytes: 45602
+    format: json
+    scope: public
+  - name: 061cc8ac7765acce6d74428d__validation.npz
+    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/validation.npz
+    sha256: 68900e5277ce5cf5604e038298d26e8388b5d0b230db047fa854e7b56a422b5b
+    bytes: 3707806
+    format: npz
+    scope: public
+  - name: 061cc8ac7765acce6d74428d__validation_labels.json
+    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/validation_labels.json
+    sha256: 902fe382dde592ff180a98a1ece7c3f0c02d02f8a7e9b7cf24017b157e2fca15
+    bytes: 828
+    format: json
+    scope: public
+  - name: 140825584407c4ba0f942f9a__validation.npz
+    uri: local://derived-v2/public/140825584407c4ba0f942f9a/validation.npz
+    sha256: c0b1cb74afa4cea295dfbc58ab5c3089ad6e0dd1ce10efa073400a59f7186c8b
+    bytes: 3414499
+    format: npz
+    scope: public
+  - name: 140825584407c4ba0f942f9a__validation_labels.json
+    uri: local://derived-v2/public/140825584407c4ba0f942f9a/validation_labels.json
+    sha256: d7c90ae37b86ca896ea608ba292ef1a840d0783dbbef5b3fba6893d863e682d8
+    bytes: 861
+    format: json
+    scope: public
+  - name: 1a2a249f3431a38176e1ec1d__validation.npz
+    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/validation.npz
+    sha256: eafb36395b60f70c345413daa3cc4712780ddfefe15a05e74f69a4e926fd0328
+    bytes: 3413270
+    format: npz
+    scope: public
+  - name: 1a2a249f3431a38176e1ec1d__validation_labels.json
+    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/validation_labels.json
+    sha256: 19e61bf1d680be3e37fe45f5c481abcce52dcaa83941cde2329d85959b3e2af8
+    bytes: 861
+    format: json
+    scope: public
+  - name: 1ad3e6499cc52d9c1259cc69__validation.npz
+    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/validation.npz
+    sha256: c243db269fe9aa069127c4b422c638f6999f1d44f962fa6942a101882519048e
+    bytes: 4982560
+    format: npz
+    scope: public
+  - name: 1ad3e6499cc52d9c1259cc69__validation_labels.json
+    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/validation_labels.json
+    sha256: ba05b486619011f278f4e6906a37c314f17a082b9e2c291d881f6ba07db4ea89
+    bytes: 828
+    format: json
+    scope: public
+  - name: 1d9eae913e596951ec71eb24__validation.npz
+    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/validation.npz
+    sha256: c9669dfbca1e6436efebd43dae9b6e09816682eb924562d763ee3672797aa337
+    bytes: 4993275
+    format: npz
+    scope: public
+  - name: 1d9eae913e596951ec71eb24__validation_labels.json
+    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/validation_labels.json
+    sha256: dca39df5e3adfdf467f5b3fc9d2e87e7a001d48191c822709f9fa55ef4f66a81
+    bytes: 861
+    format: json
+    scope: public
+  - name: 27a03604b1b71b271cfebce1__validation.npz
+    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/validation.npz
+    sha256: 98a5c0802eaedcaf0c03a460da3445cb00f77df3a4f672a05807d9baa8586c74
+    bytes: 5148756
+    format: npz
+    scope: public
+  - name: 27a03604b1b71b271cfebce1__validation_labels.json
+    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/validation_labels.json
+    sha256: 23b1da352c3d8830b645adbf74e2fb4442d606472ae70e91f2b53c1a8766ca6f
+    bytes: 861
+    format: json
+    scope: public
+  - name: 2f210a584c98562cb304509f__validation.npz
+    uri: local://derived-v2/public/2f210a584c98562cb304509f/validation.npz
+    sha256: a5c0ffcc84cb4c5330fdf02330144f0362cf7ef4e9c04d295cca7dd07beccc20
+    bytes: 3558012
+    format: npz
+    scope: public
+  - name: 2f210a584c98562cb304509f__validation_labels.json
+    uri: local://derived-v2/public/2f210a584c98562cb304509f/validation_labels.json
+    sha256: c185c13d6347cddfe1c899089810527eed3fd9d2e19d8214c129e48c630a4698
+    bytes: 861
+    format: json
+    scope: public
+  - name: 373f190da01895816304427e__validation.npz
+    uri: local://derived-v2/public/373f190da01895816304427e/validation.npz
+    sha256: 30423603a6cfc981b1291b98435839b294a450484ab35d175fc36f10efd665af
+    bytes: 4506680
+    format: npz
+    scope: public
+  - name: 373f190da01895816304427e__validation_labels.json
+    uri: local://derived-v2/public/373f190da01895816304427e/validation_labels.json
+    sha256: ab9d2014ef338ba1474325b4029fd568ae59feb88db7c5b7d9f1e132c5d5865e
+    bytes: 861
+    format: json
+    scope: public
+  - name: 39a0cdc5d087166bbea9c2cf__validation.npz
+    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/validation.npz
+    sha256: 24e42ca07191350aa9863bce96925ed3735bcd08f4f41b95cbaa1303cd6b70d2
+    bytes: 4465256
+    format: npz
+    scope: public
+  - name: 39a0cdc5d087166bbea9c2cf__validation_labels.json
+    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/validation_labels.json
+    sha256: 0da09af6d13fd51c724fbac9cb0789cabcbbdab4c92de6a603fe05532c4b92b7
+    bytes: 828
+    format: json
+    scope: public
+  - name: 3e32fc6406d10bc0d18b37d4__validation.npz
+    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/validation.npz
+    sha256: b56eb94ef183f7b305aa140eabbc6a2d9a8350e7b5b75f57334e632452853106
+    bytes: 4971514
+    format: npz
+    scope: public
+  - name: 3e32fc6406d10bc0d18b37d4__validation_labels.json
+    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/validation_labels.json
+    sha256: c0453b023df3b540c88139369f3fb9c9e5ae48d13f556658ad7452798d231388
+    bytes: 861
+    format: json
+    scope: public
+  - name: 41c39e8b6a2cee4c03b31c2e__validation.npz
+    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/validation.npz
+    sha256: 25b339bfa8eecc2af505aecee170bcf795a7c0c7e9a0ca45eff8c17b3255800b
+    bytes: 5083352
+    format: npz
+    scope: public
+  - name: 41c39e8b6a2cee4c03b31c2e__validation_labels.json
+    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/validation_labels.json
+    sha256: b669650c3163bbf6c721b1ed8880df76f902580620574a2cc7bfda751541fc1a
+    bytes: 828
+    format: json
+    scope: public
+  - name: 44a6317a22164002c2248bee__validation.npz
+    uri: local://derived-v2/public/44a6317a22164002c2248bee/validation.npz
+    sha256: 70e49ae9b3a4d808f9539c44623e0c6ca1d5a1102e96405c52a545f58ddaab41
+    bytes: 2921596
+    format: npz
+    scope: public
+  - name: 44a6317a22164002c2248bee__validation_labels.json
+    uri: local://derived-v2/public/44a6317a22164002c2248bee/validation_labels.json
+    sha256: 2e957974337a1da0ca88e0350317fda6082935022198e6dfb163591d0061186d
+    bytes: 861
+    format: json
+    scope: public
+  - name: 4c9d43627cb787a1b0448aba__validation.npz
+    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/validation.npz
+    sha256: 1a0b69c7c6524e07f72298eb8befb4a0980cca7c8f26115ec94d71ecb4ee5df8
+    bytes: 2963848
+    format: npz
+    scope: public
+  - name: 4c9d43627cb787a1b0448aba__validation_labels.json
+    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/validation_labels.json
+    sha256: 32757120ecf19c16d30e13befd3ff6d8978bd169460edbc27e568b28c74278ad
+    bytes: 861
+    format: json
+    scope: public
+  - name: 4cd5e2017e4afe2a5cd366d5__validation.npz
+    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/validation.npz
+    sha256: 4668bab3c0881bd0ad5477c1e859b7bad7d8562e3ee21f97c5ea489f12fecb1e
+    bytes: 2972056
+    format: npz
+    scope: public
+  - name: 4cd5e2017e4afe2a5cd366d5__validation_labels.json
+    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/validation_labels.json
+    sha256: d022bf01c0a3e2f3c93e6e8033537bad8622933eece4a3fe172336cebd4df8bd
+    bytes: 861
+    format: json
+    scope: public
+  - name: 4d6681e383e8f1491f74e328__validation.npz
+    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/validation.npz
+    sha256: 90a2d10711aaaf663a9dc29ba68d07cd93d54c97f98f01207d748d20bda4323a
+    bytes: 3855204
+    format: npz
+    scope: public
+  - name: 4d6681e383e8f1491f74e328__validation_labels.json
+    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/validation_labels.json
+    sha256: f3662632dbb6f6320a99b01fddd92b38ff799ef819b817eda5554e59a0c829dd
+    bytes: 861
+    format: json
+    scope: public
+  - name: 57591157a49d8ac96997ab64__validation.npz
+    uri: local://derived-v2/public/57591157a49d8ac96997ab64/validation.npz
+    sha256: 93d961caafffc04d74e89caa4465eff8e13e5c0dfb42c46d67b61c4213e5c5f0
+    bytes: 2762114
+    format: npz
+    scope: public
+  - name: 57591157a49d8ac96997ab64__validation_labels.json
+    uri: local://derived-v2/public/57591157a49d8ac96997ab64/validation_labels.json
+    sha256: 93efcd3fa047e1f8439dc47c71beb40611d1b631cddd555388e77d08e1dda2bc
+    bytes: 861
+    format: json
+    scope: public
+  - name: 5c3c4cb93177744215251a8e__validation.npz
+    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/validation.npz
+    sha256: 573c74f44de8e104da63dfadcfdcaf32078830733dc6f1dd174db58af3b3432b
+    bytes: 5392395
+    format: npz
+    scope: public
+  - name: 5c3c4cb93177744215251a8e__validation_labels.json
+    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/validation_labels.json
+    sha256: dcd6ed93c93d9d804b9a9c6bcf38c8dbf07f3c5508da75250ee78f1111fb725c
+    bytes: 861
+    format: json
+    scope: public
+  - name: 615d23a681f3ed5afd31dd98__validation.npz
+    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/validation.npz
+    sha256: 5207fd4a67ed800128855febbb367e4cd303dd38f850e4efa1f0594f722e0500
+    bytes: 5290104
+    format: npz
+    scope: public
+  - name: 615d23a681f3ed5afd31dd98__validation_labels.json
+    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/validation_labels.json
+    sha256: 5147ae34b2c2d95284a80d2a3cc9cf1b4bbfb577c645180fe88af688e3244896
+    bytes: 861
+    format: json
+    scope: public
+  - name: 6242e2bc5fc8d6da70d4baa1__validation.npz
+    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/validation.npz
+    sha256: 1a75b058863456628ade841ba03865fcd843b26f4556047cba462727cc460c2e
+    bytes: 2724961
+    format: npz
+    scope: public
+  - name: 6242e2bc5fc8d6da70d4baa1__validation_labels.json
+    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/validation_labels.json
+    sha256: e7c7559d1aa8bc2d62558bb3b9651c3a7b84db0da3051359a1c3c0767e6cf890
+    bytes: 861
+    format: json
+    scope: public
+  - name: 6675c377963972830447837c__validation.npz
+    uri: local://derived-v2/public/6675c377963972830447837c/validation.npz
+    sha256: 964572f0a53db0fd8999376c97ce3c760a558b237cb487d48637170e3b000f34
+    bytes: 4995864
+    format: npz
+    scope: public
+  - name: 6675c377963972830447837c__validation_labels.json
+    uri: local://derived-v2/public/6675c377963972830447837c/validation_labels.json
+    sha256: e55b05425189864cbe7059ba1694705a8abc29daf750837ac86310b276c46022
+    bytes: 861
+    format: json
+    scope: public
+  - name: 6706c38c98c70cbbec58621d__validation.npz
+    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/validation.npz
+    sha256: 77eb68eec683c3b4cbfec90695bd9efa5e4be204b872ab2da8e0c442ebef39d4
+    bytes: 4454330
+    format: npz
+    scope: public
+  - name: 6706c38c98c70cbbec58621d__validation_labels.json
+    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/validation_labels.json
+    sha256: 06ad5411e4712897488d14f7eee19a6e0a30e44b18d9a986523813b5eda8a341
+    bytes: 861
+    format: json
+    scope: public
+  - name: 75571d8ee5a8bd9ac62f5ac3__validation.npz
+    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/validation.npz
+    sha256: 930d219d17bf37a73df8b7ae67daedc8f6aacc0637cfaad64158fd1d1ec848dc
+    bytes: 3418259
+    format: npz
+    scope: public
+  - name: 75571d8ee5a8bd9ac62f5ac3__validation_labels.json
+    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/validation_labels.json
+    sha256: 8f09ed51f84a4058259b46920cb8ea68bc3bda8514adeb43c5484c140d886d2d
+    bytes: 861
+    format: json
+    scope: public
+  - name: 784f29be40aa1858cc2be24b__validation.npz
+    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/validation.npz
+    sha256: 3fc07c1c3ba3ec8e64e23fb5628372ce6ccf0ef0f4ca0f96b97b578e24299b75
+    bytes: 4002136
+    format: npz
+    scope: public
+  - name: 784f29be40aa1858cc2be24b__validation_labels.json
+    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/validation_labels.json
+    sha256: 78d4d7b5ec2f43e4218ca2852803e2144ad9911eb27eacbd770847a54bef6b90
+    bytes: 861
+    format: json
+    scope: public
+  - name: 79ee649fd18ca2a7482d4e2f__validation.npz
+    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/validation.npz
+    sha256: 7589d2d72dc1271c31a8eae452625b4ecb8d867b543037c9957b0e525ac39047
+    bytes: 3801258
+    format: npz
+    scope: public
+  - name: 79ee649fd18ca2a7482d4e2f__validation_labels.json
+    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/validation_labels.json
+    sha256: 6cbb2955ff3ab358260432327e47b0036f3b8d7b6b9a02071410d26534710740
+    bytes: 861
+    format: json
+    scope: public
+  - name: 7e5f8d305ec7d0fde737a6b0__validation.npz
+    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/validation.npz
+    sha256: 3c11a9a2abba9e70b42c1cc1ae37664cada71ad70c4bc53f404c393e04e94d04
+    bytes: 2919361
+    format: npz
+    scope: public
+  - name: 7e5f8d305ec7d0fde737a6b0__validation_labels.json
+    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/validation_labels.json
+    sha256: f35a7e5b7dc22fb01a489f53d2a2aeb2f77ee0ba346dcbff6ae5f62d115b1f56
+    bytes: 861
+    format: json
+    scope: public
+  - name: 80e0146335fdb4ad695a2755__validation.npz
+    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/validation.npz
+    sha256: f3b0a50440a6d700c0cadac921c73100a7489213423a7b0b0fe161a00d0c84ec
+    bytes: 4683826
+    format: npz
+    scope: public
+  - name: 80e0146335fdb4ad695a2755__validation_labels.json
+    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/validation_labels.json
+    sha256: ffc4720dbbd71946dd4f48022e1d5c9407a9254e89881af6b65a99d534a46aca
+    bytes: 861
+    format: json
+    scope: public
+  - name: 8a880d70792f9fde171b2539__validation.npz
+    uri: local://derived-v2/public/8a880d70792f9fde171b2539/validation.npz
+    sha256: cd0b1e6a3cf7d35c9ff229f30bbe95aa53ccbacd87abbc9c77b098b64ef168bd
+    bytes: 5160294
+    format: npz
+    scope: public
+  - name: 8a880d70792f9fde171b2539__validation_labels.json
+    uri: local://derived-v2/public/8a880d70792f9fde171b2539/validation_labels.json
+    sha256: d35107c60bfab67db96a05e6ebb5a596c975c83f2c4e67c6e5754834f82f00dc
+    bytes: 828
+    format: json
+    scope: public
+  - name: 8fe9ba933c865804e2f39651__validation.npz
+    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/validation.npz
+    sha256: a9ca3dc795fe2fa846fa724cbe2ab633b24faed2410d7ad6ad28a7e05d7615fc
+    bytes: 3460323
+    format: npz
+    scope: public
+  - name: 8fe9ba933c865804e2f39651__validation_labels.json
+    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/validation_labels.json
+    sha256: cfd12283c728fe127039a67e162c8108124beaf3847c02207dbc32f84b384b23
+    bytes: 861
+    format: json
+    scope: public
+  - name: 91582957e4358e2794d1e244__validation.npz
+    uri: local://derived-v2/public/91582957e4358e2794d1e244/validation.npz
+    sha256: d8f62100b88986e21d201cb9cb709b3c8e14e0e67668c505d4738baa506e2e55
+    bytes: 4573500
+    format: npz
+    scope: public
+  - name: 91582957e4358e2794d1e244__validation_labels.json
+    uri: local://derived-v2/public/91582957e4358e2794d1e244/validation_labels.json
+    sha256: c53844fdcc1b02edda7b9a7a11a2e3eea8d6e53d964c9e5582f455235b2427e7
+    bytes: 828
+    format: json
+    scope: public
+  - name: 99804db839599003dfb764ba__validation.npz
+    uri: local://derived-v2/public/99804db839599003dfb764ba/validation.npz
+    sha256: 636bc48ff3327970ab2a90a0a07dcd89e9b03d050d31b233be70a59120131020
+    bytes: 3962291
+    format: npz
+    scope: public
+  - name: 99804db839599003dfb764ba__validation_labels.json
+    uri: local://derived-v2/public/99804db839599003dfb764ba/validation_labels.json
+    sha256: 02212f3b2b6e38f7319dbac0a114d3376d85b5e756547b3fc08e82457361b768
+    bytes: 861
+    format: json
+    scope: public
+  - name: 9c02ff76e1e86e672ffd4b6a__validation.npz
+    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/validation.npz
+    sha256: f0af7f93a7959c645f65e7ea18fb3cbca72ee508c4034517faa59e17ba259e58
+    bytes: 3167104
+    format: npz
+    scope: public
+  - name: 9c02ff76e1e86e672ffd4b6a__validation_labels.json
+    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/validation_labels.json
+    sha256: 07c708a68f3adf4ebaf70642f332cc127620e8db04192278361bbbe4d617b0f4
+    bytes: 861
+    format: json
+    scope: public
+  - name: 9e0084229ef1e8033b374449__validation.npz
+    uri: local://derived-v2/public/9e0084229ef1e8033b374449/validation.npz
+    sha256: c5672fc06ae693e7acbf75ccd276ddeb3a0752b7e26fcd9764875e3754d8f5b9
+    bytes: 3161299
+    format: npz
+    scope: public
+  - name: 9e0084229ef1e8033b374449__validation_labels.json
+    uri: local://derived-v2/public/9e0084229ef1e8033b374449/validation_labels.json
+    sha256: cce83c97f889ab4dd6419379fcfdef8d4da764adfce88e4e47e4d1aa797d0f3a
+    bytes: 861
+    format: json
+    scope: public
+  - name: 9e04985ebcc7c7ffb96bf29e__validation.npz
+    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/validation.npz
+    sha256: d47f3615895b50b2897916f2021d12d7baf170767f6581088408b9db9e7bc743
+    bytes: 3500162
+    format: npz
+    scope: public
+  - name: 9e04985ebcc7c7ffb96bf29e__validation_labels.json
+    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/validation_labels.json
+    sha256: 0d0a5bc784644d89bc2e5ab21f05cb38481f6923b603464de87b5d7aa7b66314
+    bytes: 861
+    format: json
+    scope: public
+  - name: 9eec5ee2ccc254675350e505__validation.npz
+    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/validation.npz
+    sha256: 0b65ff8d10d9f9c8f2626f67bd19bfacd6dfefee6df0c8509fe91eac2b0ffea6
+    bytes: 2121853
+    format: npz
+    scope: public
+  - name: 9eec5ee2ccc254675350e505__validation_labels.json
+    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/validation_labels.json
+    sha256: d24163ea83ce0e1dac76303f721d348da23b661cc892def1949071a0fe42f899
+    bytes: 861
+    format: json
+    scope: public
+  - name: 9fbfa396edce2b51980c72b4__validation.npz
+    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/validation.npz
+    sha256: f00f8185a912d2631c4b77e9fb8170c75dab048bf1eecd925975bfb73da9082d
+    bytes: 7769209
+    format: npz
+    scope: public
+  - name: 9fbfa396edce2b51980c72b4__validation_labels.json
+    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/validation_labels.json
+    sha256: b42c72b4bb5c2966d3cc459aa65dfffa32d008d8109968ce1ade1ceb3798a342
+    bytes: 828
+    format: json
+    scope: public
+  - name: a39bb61476037489dd1b5302__validation.npz
+    uri: local://derived-v2/public/a39bb61476037489dd1b5302/validation.npz
+    sha256: 634a41b11c260b597f2449dbbb22e8df1e96331d7e5216fa7626c377ac4650f6
+    bytes: 3005220
+    format: npz
+    scope: public
+  - name: a39bb61476037489dd1b5302__validation_labels.json
+    uri: local://derived-v2/public/a39bb61476037489dd1b5302/validation_labels.json
+    sha256: 25a9f42ee138c37850ab863027e68e45a61fae6d28023fb135c4e18661511fa9
+    bytes: 861
+    format: json
+    scope: public
+  - name: a6eeb9eef42cd40df0506226__validation.npz
+    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/validation.npz
+    sha256: ac864034ccd9319ea3bad2aff4a834f161f540436c29243bc3c6b3e389d14a9f
+    bytes: 2904580
+    format: npz
+    scope: public
+  - name: a6eeb9eef42cd40df0506226__validation_labels.json
+    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/validation_labels.json
+    sha256: 89eff18381abc0a4f008ee4c0ef2e19c1c75db53e2ca6a7c8f3fcee360dd1901
+    bytes: 828
+    format: json
+    scope: public
+  - name: ae071562bf0c69e0de55ca32__validation.npz
+    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/validation.npz
+    sha256: 4cc88fa48b35eecec73112a2d914f4da60466e838133d3b93a5f05633f7d54c5
+    bytes: 2868964
+    format: npz
+    scope: public
+  - name: ae071562bf0c69e0de55ca32__validation_labels.json
+    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/validation_labels.json
+    sha256: 4e44589aaf3232a4422fc485967f2d6fdd94445ace3e3e2410c7c34eb14e74b4
+    bytes: 861
+    format: json
+    scope: public
+  - name: ae718da47b5405ea86ea5526__validation.npz
+    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/validation.npz
+    sha256: aa9142d5b10bc17f066c039a86e182ad152638ad47bb528077d87d5df2eed52b
+    bytes: 4465577
+    format: npz
+    scope: public
+  - name: ae718da47b5405ea86ea5526__validation_labels.json
+    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/validation_labels.json
+    sha256: cb58147731065c120e7f2c0e02931b5cb707fcdc97b9b0332a1d1a2ea1339c44
+    bytes: 828
+    format: json
+    scope: public
+  - name: bdbb8c7e8a7dc40a9c837479__validation.npz
+    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/validation.npz
+    sha256: eca97ae45ee221c772ac06750c349c6e1c5639f4f301e8130bcb0bfb1e8187b8
+    bytes: 4405297
+    format: npz
+    scope: public
+  - name: bdbb8c7e8a7dc40a9c837479__validation_labels.json
+    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/validation_labels.json
+    sha256: 17d415b0b1fa025bf03a7db09091c59fe10ae211b071d148f259c858734f4ab1
+    bytes: 861
+    format: json
+    scope: public
+  - name: c44177eb4a39d379327daf66__validation.npz
+    uri: local://derived-v2/public/c44177eb4a39d379327daf66/validation.npz
+    sha256: 0fd057d6718e3d678942430260ae04825f0fa4e673523ceee7a084421bb36c5a
+    bytes: 3614729
+    format: npz
+    scope: public
+  - name: c44177eb4a39d379327daf66__validation_labels.json
+    uri: local://derived-v2/public/c44177eb4a39d379327daf66/validation_labels.json
+    sha256: 870600a2848e6a2073477be19267682d2076300cbb6ba16ef5deecb4162bb014
+    bytes: 861
+    format: json
+    scope: public
+  - name: ca87aad955c18a562b4d620e__validation.npz
+    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/validation.npz
+    sha256: 0c5c0d6b9bc8760084ebe42c52f5506fa2a652d99ce7b7568a6dcf5955f23402
+    bytes: 5048020
+    format: npz
+    scope: public
+  - name: ca87aad955c18a562b4d620e__validation_labels.json
+    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/validation_labels.json
+    sha256: cf552a65803712ec2f4ecf7910a576494bbbffa61e619c182c03642ed0ac74b6
+    bytes: 861
+    format: json
+    scope: public
+  - name: d048cb6314a77347fb2830ab__validation.npz
+    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/validation.npz
+    sha256: 88305e5f03feaf0a5a17be27d5f32933fbea70ffc037ed1608c948657f3eeebd
+    bytes: 3900425
+    format: npz
+    scope: public
+  - name: d048cb6314a77347fb2830ab__validation_labels.json
+    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/validation_labels.json
+    sha256: 30a0edb094af3462288e126ea580ea6eb104b69e2ab1a6a573744414f25643fc
+    bytes: 861
+    format: json
+    scope: public
+  - name: d30162277d98503e1a66e677__validation.npz
+    uri: local://derived-v2/public/d30162277d98503e1a66e677/validation.npz
+    sha256: ceeb13ca4db1d1baedd83e5bee678392bc98b39f7c84a048b79e8717e32c61cf
+    bytes: 4113480
+    format: npz
+    scope: public
+  - name: d30162277d98503e1a66e677__validation_labels.json
+    uri: local://derived-v2/public/d30162277d98503e1a66e677/validation_labels.json
+    sha256: 54cb8c06a6abc023784a100175fc8a294f55fca3ace07a51b0bdf4211a6f2f03
+    bytes: 861
+    format: json
+    scope: public
+  - name: e206be9cf197bbd5d0b4c5bf__validation.npz
+    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/validation.npz
+    sha256: 7a3a9fcfe9000a8fc4de9c9751463df896cac941806b6deaf9030d02cf9b31b6
+    bytes: 5501585
+    format: npz
+    scope: public
+  - name: e206be9cf197bbd5d0b4c5bf__validation_labels.json
+    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/validation_labels.json
+    sha256: 36fdf9191ad555d36132ef458672fbc0ab15cb6182a4c1ca8c24887a2e8ea7b5
+    bytes: 828
+    format: json
+    scope: public
+  - name: e2b77b67309c08fada2b590a__validation.npz
+    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/validation.npz
+    sha256: 78393e48f3074d6770843842a70ac43f4f5a748535461958304b2c9c2aa92631
+    bytes: 5097639
+    format: npz
+    scope: public
+  - name: e2b77b67309c08fada2b590a__validation_labels.json
+    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/validation_labels.json
+    sha256: ce775e0c9d0987fead987821899b67c20d8c7be7fc1ce3a0fb673416eb703b67
+    bytes: 861
+    format: json
+    scope: public
+  - name: f2ac63e82bdf4a122eae68f4__validation.npz
+    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/validation.npz
+    sha256: f69d71d5010af4a6df07e9370e03ef687024420c1dd41f1dfa8b5a991b6822e5
+    bytes: 2526016
+    format: npz
+    scope: public
+  - name: f2ac63e82bdf4a122eae68f4__validation_labels.json
+    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/validation_labels.json
+    sha256: e194e08452b7835541030854243fe0d35ccc1eae5f33aaa9ead2bbf160d8795d
+    bytes: 861
+    format: json
+    scope: public
+  - name: f95210c0fcd8eb394702cdfc__validation.npz
+    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/validation.npz
+    sha256: 74c47c0e63ba01ed0d27a85a482e7fe78afea31050e25d4cfaaad3887857ffe2
+    bytes: 4103616
+    format: npz
+    scope: public
+  - name: f95210c0fcd8eb394702cdfc__validation_labels.json
+    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/validation_labels.json
+    sha256: 1c2af08336c9b94c59d0ef8af2629991e01a2ddd9b81c54208b459ee695f757c
+    bytes: 861
+    format: json
+    scope: public
+  - name: fa5eb569df965aa60fe2aba8__validation.npz
+    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/validation.npz
+    sha256: 23ecc4c18f83aacb65e89da677eb9eac5f788040255ed5f87d5adba6514f63a8
+    bytes: 4185313
+    format: npz
+    scope: public
+  - name: fa5eb569df965aa60fe2aba8__validation_labels.json
+    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/validation_labels.json
+    sha256: 297038389ee01bf38bbe9f861be335e15c6428ea1644f2e1dcfd18cd0d24c217
+    bytes: 828
+    format: json
+    scope: public
+  - name: fca8cd7e02687e10ba3f77ad__validation.npz
+    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/validation.npz
+    sha256: a36c365448490f071f44fc3f123dc0b699805e15bc385b7b8fc46782a49bafc0
+    bytes: 3418584
+    format: npz
+    scope: public
+  - name: fca8cd7e02687e10ba3f77ad__validation_labels.json
+    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/validation_labels.json
+    sha256: 60344c0df430d9f7fd52edfe8dd622684a156916779d7a9167352bda050834c9
+    bytes: 861
+    format: json
+    scope: public
+  - name: fde5bee80f2a1fd225351878__validation.npz
+    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/validation.npz
+    sha256: d404dd0a579905a1d04bfd98bda20d11b90046374c006d559d335381191f9b07
+    bytes: 3565097
+    format: npz
+    scope: public
+  - name: fde5bee80f2a1fd225351878__validation_labels.json
+    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/validation_labels.json
+    sha256: aaf22596c149ce01238559e0637487a2fe52ced6770b85509426bf72a4e33fea
+    bytes: 861
+    format: json
+    scope: public
+  - name: validation_manifest.json
+    uri: local://derived-v2/public/validation_manifest.json
+    sha256: 61d33ee7354696550537bebbc112d4566a08d60b398c1f9129b6f63fa177481a
+    bytes: 46020
+    format: json
+    scope: public

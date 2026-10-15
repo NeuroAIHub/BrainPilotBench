@@ -1,0 +1,83 @@
+{
+  "schema": "bpb-local-task-acceptance/1",
+  "task_id": "ieeg-finger-flexion-bciciv4",
+  "task_version": "0.1-public-validation-offline",
+  "status": "passed",
+  "date": "2026-10-14",
+  "source_task_id": "BCI Competition IV Dataset 4",
+  "agent_benchmark_run": false,
+  "source_verification": "full_source_files_and_derived_arrays_verified",
+  "public_validation": {
+    "status": "passed",
+    "scope": "fixed-reference-only",
+    "metric_id": "pearson_r",
+    "value": 0.1202214103654063,
+    "profile": "bpb-bciciv4-public-validation-offline-v1",
+    "cli_report_sha256": "2e07a20c12bf4c561bcdb411da89b4977e0bc723d859df90f9eca4373421058f"
+  },
+  "owner_test": {
+    "status": "fixed_reference_interface_passed",
+    "model_tuned": false,
+    "report_sha256": "aee81b4fed8f4e41c463b00f30756c0f5fcc338ae1b8fe29166058bbbadde021",
+    "frozen_artifact_receipt_sha256": "396ec31f617129ac6a481f7cec00a2b083f8235604e9b51b3f6631f5d8dc0705",
+    "scores_published_as_agent_results": false
+  },
+  "checks": [
+    "source_role_bindings",
+    "public_staging",
+    "fixed_reference_public_validation",
+    "independent_metric_check",
+    "cli_submission_and_isolated_scoring",
+    "oracle_and_empty_submission",
+    "owner_test_frozen_submission"
+  ],
+  "platform": {
+    "host": "macOS-arm64",
+    "inference": "Linux-arm64-CPU",
+    "image": "sha256:f8075b097562ae717626a9257bdbe4dd6d270d283d82e7ee0a15427c88a0142c",
+    "amd64_tested": false,
+    "gpu_tested": false
+  },
+  "reference_artifact_sha256": {
+    "config.json": "04c2523af7d691c37eeab7e6593915be154ec81d7529e3cfd9c2777b3b3b0d2c",
+    "model.py": "2a9cc2da64791277539ec749cb8730bfb21faaba01b25633d12a1fcc375444be",
+    "weights.safetensors": "9c36686d1552062cde71b011729205f4241e19765e024a972ef7f3e3b4aef1f7"
+  },
+  "file_sha256": {
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/Dockerfile": "4b3dda3ae319f1b37340cb0547229d8c544a1cd457ea5c5408586c5c77ab97a9",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/check.sh": "8efabf90b3db6ff392689100d5923024f90ce1dbe2e014dc41bf4b7fddc53642",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/evaluate.py": "909c9f10d90d34e7e00552cff9ee710e028daa5d72dd4cd8ef6a3d7e1d1f1338",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/fixtures/ordinary_invalid_model.py": "9264db051ebed528411e245ee3ef0e0f6e214ca82d7456e3fa0f11e31ebc42e9",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/requirements.txt": "fb003fb8576dc24ff8c844aaa528d3c30af6c9081fb960f600870ae2a93eaad4",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/score.py": "7588f4b99005a9ddfee865652b841dfaa139e1b75de16462070bd73f2dcd7fe5",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/test_contract.py": "536a68da96448e30c4952d195f6125a5220b27a63759ed33d01ac37cfc80d054",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/test_recovery.py": "acec8ab659ead1d7aeda6f5e03c4ca22fc3a54b59f684419702163876f0793c5",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/worker.py": "ec501061d0f8b145af57c90bc5c753554c5c1129a2892091e471eb15c93f0938",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/contract.json": "d4d48a339ac6a91f9efbbbcc7805ad82a5a24165997b903aead9b074e3db7b9a",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/data.lock": "fa8b6a813d0b0beab08c5ec03bbd1f9b728a67fbbfe066686823706e1df3a6a3",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/bind_export.py": "ee2459c83c2df742d29256dc2e32598b8bf5bb609e03d5e1198aaa39a8369de9",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/common.py": "38e0ecad16ff528ca23a86e3c44d958c5703396b00464e224abad583248d2b72",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/export_bci.py": "c4e7f1c75f512166a7cd7e60df4852dabbde16c6b0d15804ba691848b0a81a6e",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/prepare.py": "5f087d31e68586b55f0aae717d7be36840381df03754788545f7bf52c001a48b",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/requirements.txt": "f27baadb81625e39413aa90add5119cbbc45a00016220635026c9f67f9f488a0",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/setup.sh": "df2930d34b6743e4b405f5d0ec7159e783e2099acadc3ae1d7c140747be07178",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/stage_public.py": "f16ffb2d91650c2246004d389e1cf2ca822d4ccb614389d85c85cf7f053816f2",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/examples/model.py": "2a9cc2da64791277539ec749cb8730bfb21faaba01b25633d12a1fcc375444be",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/examples/reference.py": "03c6ad966cbd84644358fde104c6cab8191ecbf00d532079e3f04fdfed42f923",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/examples/train_reference.py": "891f6c59ed831aa26daefc1f414e007c4a013b7746ecf2d01852df127bc29032",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/prompt/turns.yaml": "0af916bb9e9bc4afc64f79dd7986035749353b94b0fcac9f98774e9e7ec487ff",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/protocol.json": "eaa8fa18e37ff98c7dacd397e5d84880fc71c9b1db36dfa45b92b8797b1ec777",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/solution/solution.sh": "49873213ab8ddc466e5ac47c115767f77ee9ca0ac6b1c2a3f573534dcd5a195e",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/source_manifest.json": "15348a503996194324791a55c3b9ae1bb016f01f5173aa7c5ca7cdbe3d5b7792",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/task.yaml": "99f27218af0254ca9954b656e5db0f55fe9c05c500a066dcd087e0dfdc404a7a",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/score.py": "0efd36c030a8f720c371e7d871491079586b6c763d62945423779df8172c3ce4"
+  },
+  "targeted_rechecks": [
+    "atomic_export_interruption",
+    "exact_range_resume",
+    "changed_etag_rejected",
+    "bad_source_sha_preserved",
+    "download_only_cache_reuse_without_array_parsing",
+    "fresh_public_export_matches_frozen_manifests"
+  ]
+}

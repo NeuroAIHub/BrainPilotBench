@@ -1,0 +1,24 @@
+- send: >-
+    Decode attempted handwriting from the 192-channel intracortical recordings.
+    Use only public_data/train/ and public_data/valid/. Read each role manifest.json.
+    Keep the recording-date split and the original order of complete sentence trials.
+    x.npy contains float32 spike counts at 20 ms intervals. trial_end.npy marks
+    the final bin of each complete trial. labels.json gives one sentence per trial.
+    mask.npy stores the native evaluation mask. The trusted scorer calls the
+    model only for selected bins and keeps mask values separate from the model.
+    You may fit with Train and inspect Valid during development.
+    Do not fetch source recordings or access evaluator data. Public Valid is a
+    development result, not an independent Test result or official FALCON score.
+    Submit submission/model.py, submission/config.json, and
+    submission/weights.safetensors. Model(config) must be a torch.nn.Module.
+    reset() returns None at each source file boundary. observe(x,
+    trial_start=False) receives the current float32[192] bin and a boolean
+    start marker and returns None. finish_trial() returns one string at each
+    native complete trial end. Keep registered parameters and buffers unchanged
+    during inference. Put transient history in ordinary attributes. The trusted
+    host limits saved numeric state to 10 million elements. The worker limits
+    parameters and all registered tensors to 10 million elements each.
+    The model does not receive labels, masks, full future bins, or raw files.
+    The scorer accumulates edit distances and target lengths within each date.
+    It reports equal-weight date WER and CER. This public check scores Valid only.
+  then: wait_idle

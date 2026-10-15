@@ -1,0 +1,81 @@
+{
+  "schema": "bpb-local-task-acceptance/1",
+  "task_id": "falcon-m2-finger-velocity",
+  "task_version": "0.1-public-validation-stream",
+  "status": "passed",
+  "date": "2026-10-14",
+  "source_task_id": "m2",
+  "agent_benchmark_run": false,
+  "source_verification": "selected_source_ranges_and_full_derived_arrays_verified",
+  "public_validation": {
+    "status": "passed",
+    "scope": "fixed-reference-only",
+    "metric_id": "R2_variance_weighted",
+    "value": 0.07600794957020907,
+    "profile": "bpb-m2-public-validation-stream-v1",
+    "cli_report_sha256": "ecf0e47dc7372d4b030c90fca83aa3ceb46a71efe9c3095b4198600206d3f1f6"
+  },
+  "owner_test": {
+    "status": "fixed_reference_interface_passed",
+    "model_tuned": false,
+    "report_sha256": "31492358682f993d50f042b811073244e524937425bf6728f1770542e820736d",
+    "frozen_artifact_receipt_sha256": "0245b5976988c9bdfc116994ab1a7123c0ea5dda0654f3921acb88e8014cca51",
+    "scores_published_as_agent_results": false
+  },
+  "checks": [
+    "source_role_bindings",
+    "public_staging",
+    "fixed_reference_public_validation",
+    "independent_metric_check",
+    "cli_submission_and_isolated_scoring",
+    "oracle_and_empty_submission",
+    "owner_test_frozen_submission"
+  ],
+  "platform": {
+    "host": "macOS-arm64",
+    "inference": "Linux-arm64-CPU",
+    "image": "sha256:f8075b097562ae717626a9257bdbe4dd6d270d283d82e7ee0a15427c88a0142c",
+    "amd64_tested": false,
+    "gpu_tested": false
+  },
+  "reference_artifact_sha256": {
+    "config.json": "f7c8b81b24579809115e8e2931d79238dc9d5539fd5014b48b04f0e786b3f119",
+    "model.py": "262833b4aa78dbb51a9edbee2ef73cfb8bc2839e39b74c46f5e0cb33062a2c94",
+    "weights.safetensors": "20e851842a7909aa76239230b893c39c99dbd70568647a27cb1ec6d48a6832c0"
+  },
+  "file_sha256": {
+    "tasks/intracortical/_preparation/prepare.py": "fa59d6114a01d36f3253c302c3727cc940200b3d01134672b49a4122c90cf472",
+    "tasks/intracortical/_preparation/check_manifest.py": "3c49a8778f9619c07edf5419528936f227b6d42c2036426a6d89e714be4a61fd",
+    "tasks/intracortical/_preparation/make_manifest.py": "9a22634caf5ae91f738e680c067fd81f586c1ac9c26ec0d2e167fac53d4e08c0",
+    "tasks/intracortical/_preparation/requirements.txt": "f297c0479c2128572dfb1150bf7fb20625a84fc1be74435ddd1e694b737bdafa",
+    "tasks/intracortical/_shared/native.py": "8bcd0ed3a03271392c23506d1471bf555d3f6f41c7bbc469732a5a38a9619dfa",
+    "tasks/intracortical/_preparation/assets.manifest.json": "b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4",
+    "tasks/intracortical/_regression_shared/build_contract.py": "171a32c428778fd5f21cd15c705491880cfaf384f0e317b021b94dc2e1b6e4d5",
+    "tasks/intracortical/_regression_shared/export.py": "1286c7b2b92e933de0f719807bedb75395b4c16044f4aac346621114fbc89cd5",
+    "tasks/intracortical/_regression_shared/fetch_bounded.py": "3b1ec52820622ebbd207d7042cbfce1150a1e4e72cfe415f354329bdee06f57e",
+    "tasks/intracortical/_regression_shared/fetch_resumable.py": "0bcbfd6e4cded6442b50076dfa18b41924b2bd8d75bc2af0013c7be20c269c4f",
+    "tasks/intracortical/_regression_shared/inspect_remote_hdf5.py": "ce7cf0fa4a780d91d4db099df39db1ed0439c1c5aabe93bf2efdd2a6a4f44ee8",
+    "tasks/intracortical/_regression_shared/selective_m2.py": "c655f1f3770477fca806ae6819639d908b0f6d800ba7a88055307d723aaff1fe",
+    "tasks/intracortical/_regression_shared/test_numeric_state.py": "4df9f4d4a71b1be7146a554a15a1e0f7f9c73fa15c894bddab35d17014507049",
+    "tasks/intracortical/_regression_shared/validate_native.py": "f994d5ea9a8c016b545118fa7fc9dff94070e722ec1a2dea9c350a1c05261865",
+    "tasks/intracortical/_regression_shared/validate_sparse_native.py": "bb2217a8b283e8f010e67bf8e871239be6807756dc4d1d92fa344ef9a9045d89",
+    "tasks/intracortical/falcon-m2-finger-velocity/checks/Dockerfile": "4b3dda3ae319f1b37340cb0547229d8c544a1cd457ea5c5408586c5c77ab97a9",
+    "tasks/intracortical/falcon-m2-finger-velocity/checks/check.sh": "81285a6922a40c1f54805f53f1a898d9863797ccce57290d696426f531754dd2",
+    "tasks/intracortical/falcon-m2-finger-velocity/checks/freeze_submission.py": "455f753c8afe81e597a4353c35f8d4a09d71b5fe132605d2701eb6101fbbb54c",
+    "tasks/intracortical/falcon-m2-finger-velocity/checks/requirements.txt": "fb003fb8576dc24ff8c844aaa528d3c30af6c9081fb960f600870ae2a93eaad4",
+    "tasks/intracortical/falcon-m2-finger-velocity/checks/score.py": "fc1f423668af78b90e5e6e82c7503f4f482df661e30f7557832841b3f328c046",
+    "tasks/intracortical/falcon-m2-finger-velocity/checks/worker.py": "a94c177cfcff1d400757e892084e5e94bb028e228f937fb8566fa20d75355960",
+    "tasks/intracortical/falcon-m2-finger-velocity/contract.json": "d9194451b26c13d5e08cdebc49dbec5e03bbf7bc80c8b7f603b1462dc3c5a9a4",
+    "tasks/intracortical/falcon-m2-finger-velocity/data.lock": "13e94bb96cc4313b8f7b741c548b81ae3c95cef58833ad7cf8864f4f9943c181",
+    "tasks/intracortical/falcon-m2-finger-velocity/env/requirements.txt": "729ed4d5f38227759074e0a7017365967045332da17bb3fb3caafe7221b8b488",
+    "tasks/intracortical/falcon-m2-finger-velocity/env/setup.sh": "51aa85e9a182edc51552d5086bf3468e690e3eb76c108a559038d5ff267c9509",
+    "tasks/intracortical/falcon-m2-finger-velocity/env/stage_public.py": "bdcfe8019ad9731c55a5c74242d2d84c508011d3d124df12bf83f054e704c046",
+    "tasks/intracortical/falcon-m2-finger-velocity/env/verify_public.py": "707cd8bd02b820abf6800bce087aab2764e94b33e3298c54eda8a9de2b810acc",
+    "tasks/intracortical/falcon-m2-finger-velocity/prompt/turns.yaml": "a42ae5959dc16c21809806b95ceca0365f6239b67f58c3a956d1d6c13d28e6be",
+    "tasks/intracortical/falcon-m2-finger-velocity/protocol.json": "e549a35a591c7ee168c99d320ded509366008f66cdb733ec72bbb408d7deaae4",
+    "tasks/intracortical/falcon-m2-finger-velocity/solution/make_reference.py": "9342ee22992db3a1352cc0ac5ac670ce21d73cba483cdf3408c978bef0d72d5a",
+    "tasks/intracortical/falcon-m2-finger-velocity/solution/model.py": "262833b4aa78dbb51a9edbee2ef73cfb8bc2839e39b74c46f5e0cb33062a2c94",
+    "tasks/intracortical/falcon-m2-finger-velocity/solution/solution.sh": "1a75c946ca77355ea4cbf4108cb79620a8dd2d7588c7cc7ff2acad400120bb4c",
+    "tasks/intracortical/falcon-m2-finger-velocity/task.yaml": "2c8330193f2991e2c5fccad6a07063ca6e8ea645fb6166867302df57c2a35773"
+  }
+}

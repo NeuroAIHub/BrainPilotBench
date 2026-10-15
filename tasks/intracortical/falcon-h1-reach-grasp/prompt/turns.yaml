@@ -1,0 +1,27 @@
+- send: >-
+    Develop a causal decoder for attempted human arm and grasp movements from
+    intracortical recordings. Use only public_data/train/ and public_data/valid/.
+    Read each manifest.json for the ordered runs and frozen array files.
+    x.npy contains 176 spike counts per 20 ms bin. y.npy contains seven native
+    velocity targets. mask.npy identifies scored bins. trial_start.npy marks a
+    trial transition before the current bin; its first value is false.
+    Preserve the recording-date split and chronological order within each run.
+    You may explore and fit with the supplied Train and Valid data. Do not fetch
+    source recordings or access evaluator data. Treat public validation scores
+    as development results, not independent Test scores.
+    Submit submission/model.py, submission/config.json, and
+    submission/weights.safetensors. Model(config) must be a torch.nn.Module.
+    reset() returns None and resets transient history at each run boundary.
+    forward(x, trial_start=False) receives one float32 tensor with shape [176]
+    and must return a finite float32 tensor with shape [7]. Each call sees only
+    the current bin. The evaluator supplies trial_start as a boolean keyword.
+    Saved weights and registered parameters or buffers must remain unchanged
+    during inference. Keep transient recurrent history in ordinary attributes,
+    not registered model state. Limit parameters and persisted tensor elements
+    to 10 million each. Do not use network access or files other than the three
+    required submission files. The scorer ignores extra submission files.
+    Scoring combines runs from one recording date, computes variance-weighted
+    R-squared over mask-selected bins, and then averages dates equally.
+    Negative R-squared values remain valid scores. This public task scores
+    Valid only. The separate evaluator-only Test uses a distinct owner workflow.
+  then: wait_idle

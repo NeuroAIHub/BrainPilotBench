@@ -12,6 +12,7 @@ import { discoverTaskDirs } from "../dist/discover.js";
 import { loadTask } from "../dist/loader.js";
 import { loadCategories } from "../dist/categories.js";
 import { validateTaskSchema } from "../dist/validate.js";
+import { readInvasiveCandidates, invasiveDomains, invasiveCatalogRow } from "./invasive-candidates.mjs";
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const tasksRoot = join(repo, "tasks");
@@ -40,7 +41,7 @@ const baselinePsychRunnable = new Set([
   "psych101-steingroever2015data-exp3",
   "psych101-wilson2014humans-exp5",
 ]);
-const domains = new Set(["eeg", "psychology", "mri", "connectomics", "calcium-imaging"]);
+const domains = new Set(["eeg", "psychology", "mri", "connectomics", "calcium-imaging", ...invasiveDomains]);
 
 function fail(message) { errors.push(message); }
 function readJson(path, label) {
@@ -159,6 +160,14 @@ for (const entry of readdirSync(eegRoot, { withFileTypes: true })) {
   primaryMetric(card.primary_metric, relDir);
 }
 
+const invasiveCandidates = new Map();
+try {
+  for (const entry of readInvasiveCandidates(repo)) {
+    addIdentity(identities, entry.card.id, entry.relDir);
+    invasiveCandidates.set(entry.card.id, entry);
+  }
+} catch (error) { fail(`invasive candidates: ${error.message}`); }
+
 const psychMetadataPath = join(tasksRoot, "psychology", "metadata-only.json");
 const psychMetadata = plainFile(psychMetadataPath, "tasks/psychology/metadata-only.json")
   ? readJson(psychMetadataPath, "psychology metadata") : null;
@@ -183,8 +192,9 @@ const counts = {
   runnable: runnables.size,
   eegCandidate: eegCandidates.size,
   psychologyMetadata: psychCandidates.size,
-  candidate: eegCandidates.size + psychCandidates.size,
-  preparation_ready: [...eegCandidates.values()].filter(e => e.card.status === "preparation_ready_data_pending").length,
+  invasiveCandidate: invasiveCandidates.size,
+  candidate: eegCandidates.size + psychCandidates.size + invasiveCandidates.size,
+  preparation_ready: [...eegCandidates.values(), ...invasiveCandidates.values()].filter(e => e.card.status === "preparation_ready_data_pending").length,
   total: identities.size,
 };
 if (counts.runnable < baseline.runnable || counts.total < baseline.total) {
@@ -211,15 +221,21 @@ if (catalog) {
       if (seen.has(id)) fail(`catalog duplicate task_id ${id}`);
       seen.add(id);
       const kind = runnables.has(id) ? "runnable" :
-        eegCandidates.has(id) || psychCandidates.has(id) ? "candidate" : null;
+        eegCandidates.has(id) || psychCandidates.has(id) || invasiveCandidates.has(id) ? "candidate" : null;
       if (!kind) { fail(`catalog unknown task_id ${id}`); continue; }
       if (entry.entry_kind !== kind) fail(`catalog ${id}: entry_kind mismatch`);
-      const domain = runnables.get(id)?.domain ?? (eegCandidates.has(id) ? "eeg" : "psychology");
+      const domain = runnables.get(id)?.domain ?? invasiveCandidates.get(id)?.domain ?? (eegCandidates.has(id) ? "eeg" : "psychology");
       if (entry.domain !== domain) fail(`catalog ${id}: domain mismatch`);
-      const expectedPath = runnables.get(id)?.relDir ?? eegCandidates.get(id)?.relDir;
-      if (kind === "runnable" || eegCandidates.has(id)) {
+      if (invasiveCandidates.has(id)) {
+        for (const [field, expected] of Object.entries(invasiveCatalogRow(invasiveCandidates.get(id)))) {
+          if (JSON.stringify(entry[field]) !== JSON.stringify(expected))
+            fail(`catalog ${id}: candidate ${field} mismatch`);
+        }
+      }
+      const expectedPath = runnables.get(id)?.relDir ?? eegCandidates.get(id)?.relDir ?? invasiveCandidates.get(id)?.relDir;
+      if (kind === "runnable" || eegCandidates.has(id) || invasiveCandidates.has(id)) {
         if (entry.directory !== expectedPath) fail(`catalog ${id}: directory mismatch`);
-        const metric = runnables.get(id)?.task.meta.evaluation?.primaryMetric ?? eegCandidates.get(id)?.card.primary_metric;
+        const metric = runnables.get(id)?.task.meta.evaluation?.primaryMetric ?? eegCandidates.get(id)?.card.primary_metric ?? invasiveCandidates.get(id)?.card.primary_metric;
         if (metric && (entry.primary_metric?.id !== metric.id || entry.primary_metric?.direction !== metric.direction))
           fail(`catalog ${id}: primary metric mismatch`);
         if (kind === "runnable" && entry.task_version !== runnables.get(id).task.meta.version)

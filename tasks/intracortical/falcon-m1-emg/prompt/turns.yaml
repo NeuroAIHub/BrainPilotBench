@@ -1,0 +1,18 @@
+- send: >-
+    Develop a causal decoder for 16 upper-limb EMG signals from M1-A cortical
+    spike counts. Use public_data/train and public_data/valid only. Read each
+    manifest for the ordered runs. x.npy contains 64 counts per 20 ms bin.
+    y.npy contains 16 EMG values. mask.npy selects scored bins. trial_start.npy
+    marks the first bin of each native trial. Preserve date roles and run order.
+    You can fit and explore on Train and Valid. Do not fetch raw recordings or
+    access evaluator data. A Valid score is a development result.
+    Submit submission/model.py, submission/config.json, and
+    submission/weights.safetensors. Model(config) must be a torch.nn.Module.
+    reset() must clear transient history and return None at each run boundary.
+    forward(x, trial_start=False) gets float32[64] from the current bin.
+    It must return finite float32[16]. Registered parameters and buffers must
+    remain fixed during inference. Store transient history in ordinary
+    attributes. The model can use at most 10 million parameters and 10 million
+    persisted tensor elements. The scorer gives equal weight to each date's
+    variance-weighted R-squared. Negative scores remain valid.
+  then: wait_idle

@@ -1,0 +1,815 @@
+{
+  "data_uploaded": false,
+  "derived_manifests": {
+    "test": {
+      "bytes": 8642,
+      "runs": 6,
+      "sessions": 4,
+      "sha256": "caf1f950f12f1c8b6d8d2e3d851da74d2c69c80d5a7425e9bb3b02367e3c9d7a"
+    },
+    "train": {
+      "bytes": 8739,
+      "runs": 6,
+      "sessions": 3,
+      "sha256": "c86b973f2cfe7411904beaa237cd5f3e9cc08bb0ab355b0940de36ad4941ce13"
+    },
+    "valid": {
+      "bytes": 2059,
+      "runs": 1,
+      "sessions": 1,
+      "sha256": "8042b991d15e653180f0d0f342b544a9477f20e32a24cae741c99ec056f7a4d4"
+    }
+  },
+  "evaluation_manifests": {
+    "test": {
+      "bytes": 8642,
+      "sha256": "caf1f950f12f1c8b6d8d2e3d851da74d2c69c80d5a7425e9bb3b02367e3c9d7a"
+    },
+    "valid": {
+      "bytes": 2059,
+      "sha256": "8042b991d15e653180f0d0f342b544a9477f20e32a24cae741c99ec056f7a4d4"
+    }
+  },
+  "exported_runs": [
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 20087,
+          "dtype": "bool",
+          "path": "runs/m2-train-0001/mask.npy",
+          "sha256": "ea7bf9c733f703b1eac31f8d04f0550daf142aa51bbd5cb3bbfc07dd4055351f",
+          "shape": [
+            19959
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 20087,
+          "dtype": "bool",
+          "path": "runs/m2-train-0001/trial_start.npy",
+          "sha256": "a65dd784cf0fa96105b8a5fcfc90a058193bb14b86926a92d2f564abac9410b6",
+          "shape": [
+            19959
+          ]
+        },
+        "x.npy": {
+          "bytes": 1916192,
+          "dtype": "uint8",
+          "path": "runs/m2-train-0001/x.npy",
+          "sha256": "fc904592a771ff7b108bd0c29946cde45b9271ec94b491a8646736a7373652bf",
+          "shape": [
+            19959,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 319472,
+          "dtype": "float64",
+          "path": "runs/m2-train-0001/y.npy",
+          "sha256": "7c211f9dac5459489cdb5927c197284ad26fca382faef9b7ba497caa20b231eb",
+          "shape": [
+            19959,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-train-0001",
+      "native_hdf5_metadata_sha256": "1ee93cd577a94fd464015aacb2741a71f28e267af613784479ad0c08a28d5c8e",
+      "role": "train",
+      "selected_downloaded_bytes": 2793343,
+      "selected_range_receipt_sha256": "bec9f1f3354ad7e62c1d6e8ba127bb030b72ddc92f5be6ad352d656a5c5bd3b7",
+      "session_id": "2020-10-19",
+      "source_asset_id": "08243690-f05a-4b1a-8980-6bb6115d67c2",
+      "source_bytes": 2397151103,
+      "source_sha256": "dc40ef63a379ae71bd051cc3c5ec0e6756bc24e5eda604ee5d100a8af3abe91a",
+      "versioned_metadata_sha256": "3ababfd19ebb8bed451d43e62bf9df20ceca6b1ba23985ae38bd73ad68d95090"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 20209,
+          "dtype": "bool",
+          "path": "runs/m2-train-0002/mask.npy",
+          "sha256": "e733a42271bb08a9ae0c11f63cad07f5f60f7f04f3c0980687c244bfb730ea95",
+          "shape": [
+            20081
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 20209,
+          "dtype": "bool",
+          "path": "runs/m2-train-0002/trial_start.npy",
+          "sha256": "65cf85d9e214700bb2d4977d83bf611697ecfe36afd8147be1378097804ba54a",
+          "shape": [
+            20081
+          ]
+        },
+        "x.npy": {
+          "bytes": 1927904,
+          "dtype": "uint8",
+          "path": "runs/m2-train-0002/x.npy",
+          "sha256": "bb0d74bae75b36facdd2510f7a630aa92bbec53bb2c0a1f92ec03f609123449f",
+          "shape": [
+            20081,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 321424,
+          "dtype": "float64",
+          "path": "runs/m2-train-0002/y.npy",
+          "sha256": "17b1ccdc0e37c75511185ce3819cebe1fb0740e2a17562151085b07c69a36db9",
+          "shape": [
+            20081,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-train-0002",
+      "native_hdf5_metadata_sha256": "6e4ba4f38a676cc6075290092679810093d4501a89028488245884a234cd4d9d",
+      "role": "train",
+      "selected_downloaded_bytes": 2760953,
+      "selected_range_receipt_sha256": "aa5eb38b2242f16d2aceb0c9da62843f700a83a204fddd0474c8969d55efb108",
+      "session_id": "2020-10-19",
+      "source_asset_id": "ebf0646b-3a66-41e3-b395-1d973bc694ff",
+      "source_bytes": 2407211257,
+      "source_sha256": "fdacf9f9cc55c5b778e5f7ae6c8014520cde038ef6f0dedb5e95ce2c51b0c677",
+      "versioned_metadata_sha256": "27d09609751571ea7d8174cc119fcabe2701999e5fcb6f580d87d0f272103c9a"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 15771,
+          "dtype": "bool",
+          "path": "runs/m2-train-0003/mask.npy",
+          "sha256": "456d45fb67928c662d8fe73757991445f9209bbe6a688e597a25b96fddbab263",
+          "shape": [
+            15643
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 15771,
+          "dtype": "bool",
+          "path": "runs/m2-train-0003/trial_start.npy",
+          "sha256": "7b3f7e2e30ade0842483480788305502ac80ca34539e31e6171e80ad4756d376",
+          "shape": [
+            15643
+          ]
+        },
+        "x.npy": {
+          "bytes": 1501856,
+          "dtype": "uint8",
+          "path": "runs/m2-train-0003/x.npy",
+          "sha256": "5864f934772060ca31489ec0919cdce294fb9814c72e8b49ffe53063bf35cd5f",
+          "shape": [
+            15643,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 250416,
+          "dtype": "float64",
+          "path": "runs/m2-train-0003/y.npy",
+          "sha256": "5684a152685a92e1faa21923883d23547de346a950b162b81a1c9b81f3c2d9a7",
+          "shape": [
+            15643,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-train-0003",
+      "native_hdf5_metadata_sha256": "10d140116f6aa9d0d4c751a594f99dfbade428059c52ce59dee759bb874cfae4",
+      "role": "train",
+      "selected_downloaded_bytes": 2140051,
+      "selected_range_receipt_sha256": "0141c39d78502a3db8d9a9a862113f3265e494e5ff401417be3b40d5634661fb",
+      "session_id": "2020-10-20",
+      "source_asset_id": "8ce86e3b-0166-4a98-b08a-dfb60afe6201",
+      "source_bytes": 1879943059,
+      "source_sha256": "757cf61bdbbdad4faaf363a7c6fc570ee3b7815bfa0359cad35cab4447f2fb49",
+      "versioned_metadata_sha256": "71a6abaf27aeabeaf00912b8fc2b8244502934b13ccd364381c80807eaa8c16d"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 15671,
+          "dtype": "bool",
+          "path": "runs/m2-train-0004/mask.npy",
+          "sha256": "4e1d4768370c73ac82e862f8d0232e2a6793895eed9ae72b84a1058b59e2a508",
+          "shape": [
+            15543
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 15671,
+          "dtype": "bool",
+          "path": "runs/m2-train-0004/trial_start.npy",
+          "sha256": "492061c5b805f0b478a2871905e0c8de3b2a5dc6862678527695eed84338eea6",
+          "shape": [
+            15543
+          ]
+        },
+        "x.npy": {
+          "bytes": 1492256,
+          "dtype": "uint8",
+          "path": "runs/m2-train-0004/x.npy",
+          "sha256": "aa9bb4f634e79c0a5b4b1ca177d5acbbe88186e526d2a317db81d2eb3d27acbd",
+          "shape": [
+            15543,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 248816,
+          "dtype": "float64",
+          "path": "runs/m2-train-0004/y.npy",
+          "sha256": "54491cf6b153271b32301c760436804d7109f582db8e476b904a4442f1d3247c",
+          "shape": [
+            15543,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-train-0004",
+      "native_hdf5_metadata_sha256": "e6f0ffc70f9421622322ab778444e7a41fd1aedbc4fc6f74140311565603e452",
+      "role": "train",
+      "selected_downloaded_bytes": 2126375,
+      "selected_range_receipt_sha256": "d9e088f4b018b56ac431f92bb38816af35c18ae59384fca4833df5a4cdc402f4",
+      "session_id": "2020-10-20",
+      "source_asset_id": "25ff78b8-62d3-435c-8ae1-a82acc265802",
+      "source_bytes": 1866625575,
+      "source_sha256": "5a11cded250929786d2991d3059b448e30a7e5aa57afc75ff4c514797f28ee1e",
+      "versioned_metadata_sha256": "903ad63f5e45311e5d1895d3e759b16fed333b0495edb7df461707e93bc758c2"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 12376,
+          "dtype": "bool",
+          "path": "runs/m2-train-0005/mask.npy",
+          "sha256": "e3415be62a5952d3daad1a0a479e50b45bfeed61ab268a48538127a951fc4bd3",
+          "shape": [
+            12248
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 12376,
+          "dtype": "bool",
+          "path": "runs/m2-train-0005/trial_start.npy",
+          "sha256": "5d16e9a3db50cc46c20651c4d8bfe9bb5195273769e613aff16865cefa2bd5ed",
+          "shape": [
+            12248
+          ]
+        },
+        "x.npy": {
+          "bytes": 1175936,
+          "dtype": "uint8",
+          "path": "runs/m2-train-0005/x.npy",
+          "sha256": "9aca4ea55ca54010cec4fb562d8cf6523eea2eb8ac05a044398f8b33fcece718",
+          "shape": [
+            12248,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 196096,
+          "dtype": "float64",
+          "path": "runs/m2-train-0005/y.npy",
+          "sha256": "0b9e37f4c881153ada379a204d1b89ddec65668b5d8acb2b8fb7e8f46080371d",
+          "shape": [
+            12248,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-train-0005",
+      "native_hdf5_metadata_sha256": "8f4e727d6d1bdf22d299ea55a253c03820ca826277c87ed22464d191b5b99b44",
+      "role": "train",
+      "selected_downloaded_bytes": 1806616,
+      "selected_range_receipt_sha256": "993d2befa70deca73ae86e19cb80c7579ec88fac2a9f222c881cae325863efd3",
+      "session_id": "2020-10-27",
+      "source_asset_id": "d80bc39d-0052-4468-bb4f-c1137c8ca985",
+      "source_bytes": 1470730520,
+      "source_sha256": "f7a8e1288bf1fa225ba8cde85f969d6e5547d937fbb69f531580bec9c8c4f1e0",
+      "versioned_metadata_sha256": "d9c3433f7517fa5282aaa3eea361c241e6eb0d046e1929b92185a3a9ad5bc842"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 14837,
+          "dtype": "bool",
+          "path": "runs/m2-train-0006/mask.npy",
+          "sha256": "ea5c96ee570a993090b904df72ae9ab178e6f55fa25d04b5d925ec1b809b58a1",
+          "shape": [
+            14709
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 14837,
+          "dtype": "bool",
+          "path": "runs/m2-train-0006/trial_start.npy",
+          "sha256": "37a08622836a0b93908374f498c4d172edf5d032e1d4a67444e14a6277b6cce2",
+          "shape": [
+            14709
+          ]
+        },
+        "x.npy": {
+          "bytes": 1412192,
+          "dtype": "uint8",
+          "path": "runs/m2-train-0006/x.npy",
+          "sha256": "64a444c22ca53b8a9e7e88c418b28b439022d3950953e6b575c68c90d3e827e4",
+          "shape": [
+            14709,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 235472,
+          "dtype": "float64",
+          "path": "runs/m2-train-0006/y.npy",
+          "sha256": "08a6b63924275d667e253b0b069780f0aae8db4eaebd356b2e66dbc1f42e6a83",
+          "shape": [
+            14709,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-train-0006",
+      "native_hdf5_metadata_sha256": "491914ed8ecb52d8fe11ecf763b323e11966afe4859269344c61b5172873d859",
+      "role": "train",
+      "selected_downloaded_bytes": 1943901,
+      "selected_range_receipt_sha256": "2a4f581e35add51897234f28bb4e64598ee4d79be9732f47b0bf224a6b94de22",
+      "session_id": "2020-10-27",
+      "source_asset_id": "43f6c095-b7d3-4599-a9a8-a8b111813a56",
+      "source_bytes": 1773775197,
+      "source_sha256": "e9d1bc0968f06bfe820fc3a036324032b35890a295dd8f9ad8b1b33a05e0bcd4",
+      "versioned_metadata_sha256": "2076ed59e25c64051040306e0c0e0683e675323f5b4a00f14726afa0b1318922"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 17910,
+          "dtype": "bool",
+          "path": "runs/m2-valid-0001/mask.npy",
+          "sha256": "88fd8e00c59f1866fef3c74aabb088bda9849b834d24b600cea785e00d3aca92",
+          "shape": [
+            17782
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 17910,
+          "dtype": "bool",
+          "path": "runs/m2-valid-0001/trial_start.npy",
+          "sha256": "f97bd20197acbc31bb01d018853947c8c68b8f94896e95422467afe17c9e572e",
+          "shape": [
+            17782
+          ]
+        },
+        "x.npy": {
+          "bytes": 1707200,
+          "dtype": "uint8",
+          "path": "runs/m2-valid-0001/x.npy",
+          "sha256": "5183eec6cf93a2f5946da4da080c3bbbbd8789fbf4bd38809ce1661e017955af",
+          "shape": [
+            17782,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 284640,
+          "dtype": "float64",
+          "path": "runs/m2-valid-0001/y.npy",
+          "sha256": "985f002d7e00a3b8824c30ee0fffd8240bddb15845d72c3adae2bb6b4e13d16a",
+          "shape": [
+            17782,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-valid-0001",
+      "native_hdf5_metadata_sha256": "35cd666bfdc7b9969ed6148659808ee82edc598e841a9e2eecc757365a95afaa",
+      "role": "valid",
+      "selected_downloaded_bytes": 2562566,
+      "selected_range_receipt_sha256": "02577b418815e8efbbc3333ab473d3c96840552e1a1150e7ba6c6251214a806d",
+      "session_id": "2020-10-28",
+      "source_asset_id": "66179cbd-a1a7-4c63-97fe-d92339f20f2d",
+      "source_bytes": 2137463302,
+      "source_sha256": "45a41f15110a8c950f2439cddfa0c207179cfa97d1035c7b1776d2b3dba1c601",
+      "versioned_metadata_sha256": "0c20ce7da4dfa1df3f1619c6e28c52bf5a4b7a311d239a1ac316b379cb698702"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 2855,
+          "dtype": "bool",
+          "path": "runs/m2-test-0001/mask.npy",
+          "sha256": "b3ad721023db29b0b5006f58cd43a8271d7ed1727e89cbde3eb7d190c7620918",
+          "shape": [
+            2727
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 2855,
+          "dtype": "bool",
+          "path": "runs/m2-test-0001/trial_start.npy",
+          "sha256": "a45660c0b72f4d7f4bca6cc5a4bdd233e9707bf1e3ae904e1957774bd5f58dee",
+          "shape": [
+            2727
+          ]
+        },
+        "x.npy": {
+          "bytes": 261920,
+          "dtype": "uint8",
+          "path": "runs/m2-test-0001/x.npy",
+          "sha256": "c921a762051c383342f034697e94fa383b6274c5183776d37e3c6e913f75788d",
+          "shape": [
+            2727,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 43760,
+          "dtype": "float64",
+          "path": "runs/m2-test-0001/y.npy",
+          "sha256": "8216505cebe051e0255f0a329aafb66bc970168dd25b42863c938962e6a6106b",
+          "shape": [
+            2727,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-test-0001",
+      "native_hdf5_metadata_sha256": "e1574730740c67d957f21656e33eb2ec2738c5c2827a1880fcfeb235c703b0d0",
+      "role": "test",
+      "selected_downloaded_bytes": 768383,
+      "selected_range_receipt_sha256": "18e177caaff861017c9dc07b2eb972f73319253fb1b6bf2edcc08b052ad223f9",
+      "session_id": "2020-10-30",
+      "source_asset_id": "62d4ac13-b645-4997-ab79-08d6432ff731",
+      "source_bytes": 329103743,
+      "source_sha256": "7f3a2c34684e0bcf6ea69096d7218ca24486a27402e5f07b0dc5010921595e2d",
+      "versioned_metadata_sha256": "e6d71044990aab6a365e6932829e812a0070942c343164624cdb11edde409547"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 2678,
+          "dtype": "bool",
+          "path": "runs/m2-test-0002/mask.npy",
+          "sha256": "24c6f6fd2b3807058e3e19c4887845c7fe5e8ac27a944ee974841b074145ea8e",
+          "shape": [
+            2550
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 2678,
+          "dtype": "bool",
+          "path": "runs/m2-test-0002/trial_start.npy",
+          "sha256": "cc3ab5e0eb4ad3afa775a47bf8c82674d266b9a2d6c0af1e3c55e5462b88d86b",
+          "shape": [
+            2550
+          ]
+        },
+        "x.npy": {
+          "bytes": 244928,
+          "dtype": "uint8",
+          "path": "runs/m2-test-0002/x.npy",
+          "sha256": "070c39b4ec4b97d74d43bd033f1e0626659efbffb846a9e5311575ed2e87fc80",
+          "shape": [
+            2550,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 40928,
+          "dtype": "float64",
+          "path": "runs/m2-test-0002/y.npy",
+          "sha256": "d7a2d754ca365da199308fbbcc53526cd11a9c5ad71c6249024b0727d0d66933",
+          "shape": [
+            2550,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-test-0002",
+      "native_hdf5_metadata_sha256": "da5d1ac2eb3c0e85c085275df4766016a425f0d8b44199b9bee72d256e2ec8c9",
+      "role": "test",
+      "selected_downloaded_bytes": 764062,
+      "selected_range_receipt_sha256": "0a1a40a1fbdc0ac2a31122955b9d4b15c64d2eddf02118ccad207ab73c98f214",
+      "session_id": "2020-10-30",
+      "source_asset_id": "737b51aa-a009-4ceb-b6a8-2d68a34b9909",
+      "source_bytes": 307734686,
+      "source_sha256": "57e910fdab4f2834cdacf17b0f5888c972d1e2c75ab16c1059ae5723cd901490",
+      "versioned_metadata_sha256": "3c095a8f814546aa73b871c50cd629379643571735c21d954be1ed0a573dac55"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 2645,
+          "dtype": "bool",
+          "path": "runs/m2-test-0003/mask.npy",
+          "sha256": "a1621486e90e57e563bb3cc2c0b00ef201c0c69974127d76f21eb14f0c28b49b",
+          "shape": [
+            2517
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 2645,
+          "dtype": "bool",
+          "path": "runs/m2-test-0003/trial_start.npy",
+          "sha256": "d2238f22c7616d3f487894a369d1408e279ed947923a1df906fd63f53e474c1a",
+          "shape": [
+            2517
+          ]
+        },
+        "x.npy": {
+          "bytes": 241760,
+          "dtype": "uint8",
+          "path": "runs/m2-test-0003/x.npy",
+          "sha256": "04a87f5e828676a8b4e5228e9327907f519bef877d6bfb141a45e0240756278b",
+          "shape": [
+            2517,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 40400,
+          "dtype": "float64",
+          "path": "runs/m2-test-0003/y.npy",
+          "sha256": "0a505b85528e8b530346cf7e5eaddaeef0f82a4e7b02764aa6f7fb8d77e8a487",
+          "shape": [
+            2517,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-test-0003",
+      "native_hdf5_metadata_sha256": "d4e531e5245dca697591455f7cd13852fe62519531a05ed6df491114bbbd8c75",
+      "role": "test",
+      "selected_downloaded_bytes": 811197,
+      "selected_range_receipt_sha256": "fd06f9623caa1288384e6f13da714b31547543968c880dd9f4324317212a21b6",
+      "session_id": "2020-11-18",
+      "source_asset_id": "f5d42e29-efe9-48ff-b0ae-ff1d0c2dc696",
+      "source_bytes": 303915197,
+      "source_sha256": "1f7e27989f0a2ec58d3d8c4b3cadb482c136c647934514d91476e14d1658e25e",
+      "versioned_metadata_sha256": "b1a74758388e64844b82d1a0c1540f61198de7d4500ec254e2794edd028748be"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 3173,
+          "dtype": "bool",
+          "path": "runs/m2-test-0004/mask.npy",
+          "sha256": "41592eb53d5e102f02cb366a8044218835c8d3d890f4f138e5de988a0a80fa40",
+          "shape": [
+            3045
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 3173,
+          "dtype": "bool",
+          "path": "runs/m2-test-0004/trial_start.npy",
+          "sha256": "63917e3e50b72a51ecef5d37869d668eb92a71be3b63d119d9236605bdfb1a35",
+          "shape": [
+            3045
+          ]
+        },
+        "x.npy": {
+          "bytes": 292448,
+          "dtype": "uint8",
+          "path": "runs/m2-test-0004/x.npy",
+          "sha256": "2a6c7a4d74bb45a6ab574084b77f25ad2be3749d3e124d362155582e90e84eb2",
+          "shape": [
+            3045,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 48848,
+          "dtype": "float64",
+          "path": "runs/m2-test-0004/y.npy",
+          "sha256": "f9240180f0ae3a5454e6022f754178ef088540bab1b95697546d20f73256f81a",
+          "shape": [
+            3045,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-test-0004",
+      "native_hdf5_metadata_sha256": "476d7c22553f9a74b091face575c7fae9e5bb3cdedf04eaabda3f446dfe49390",
+      "role": "test",
+      "selected_downloaded_bytes": 806397,
+      "selected_range_receipt_sha256": "c2e0aedc6d6a88c87c59856e106e212dadd881fd145e8b253f4ce63e54592784",
+      "session_id": "2020-11-19",
+      "source_asset_id": "0395a19a-467f-4c7c-8fdb-c21893da3923",
+      "source_bytes": 367545853,
+      "source_sha256": "d621a056947723d4ac50b70d0b8688f456f0a046ed2a97c15cd77962e142c83d",
+      "versioned_metadata_sha256": "0b22971e4c67fdded350cb274f6902a4e56a4911c0e691d91b543781b346dab9"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 2342,
+          "dtype": "bool",
+          "path": "runs/m2-test-0005/mask.npy",
+          "sha256": "a335fcb7b812746a0c8c7879a9e845a6f96eae7986817cd2dd2fc41d1285211c",
+          "shape": [
+            2214
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 2342,
+          "dtype": "bool",
+          "path": "runs/m2-test-0005/trial_start.npy",
+          "sha256": "4d2622110c245dc03d00d9b9b817424b2e936c61277437cd439dc73f24e70f15",
+          "shape": [
+            2214
+          ]
+        },
+        "x.npy": {
+          "bytes": 212672,
+          "dtype": "uint8",
+          "path": "runs/m2-test-0005/x.npy",
+          "sha256": "2b6107d2e0ad74ea14974ffedbc24309967fc3c49d6e331b080295b42e6bfeff",
+          "shape": [
+            2214,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 35552,
+          "dtype": "float64",
+          "path": "runs/m2-test-0005/y.npy",
+          "sha256": "7a38ba0667b8043213785f601e2fc76965180139eba462b01aa57112d53f631e",
+          "shape": [
+            2214,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-test-0005",
+      "native_hdf5_metadata_sha256": "dab3d5b050b3c674efa3d817005cdd01764d3b6db29fae415a35b12ba9e1178f",
+      "role": "test",
+      "selected_downloaded_bytes": 685918,
+      "selected_range_receipt_sha256": "a02a74a6624c03e125e25aad202a03bf55e49860a21a149565d83c921ebee1c4",
+      "session_id": "2020-11-24",
+      "source_asset_id": "ca032164-b5ba-4dda-ab18-8bbc93a595b3",
+      "source_bytes": 267286366,
+      "source_sha256": "0f8e3c6fc3afbecfc623626f19ee30c4a0f0008b475a4c0d06065d326d69ff7d",
+      "versioned_metadata_sha256": "ae7cc0ddfcb01c19eb44d496a099e321488611f71f4c65e9b477960ae83fa376"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 2478,
+          "dtype": "bool",
+          "path": "runs/m2-test-0006/mask.npy",
+          "sha256": "d3c8574966e7a93869d8656b62ae1a1225ac3ed834526387ef371cda8e15e520",
+          "shape": [
+            2350
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 2478,
+          "dtype": "bool",
+          "path": "runs/m2-test-0006/trial_start.npy",
+          "sha256": "10d3c4545f85eb5a5ca8112148c9185350422778724a61751c90f54ee7b3c167",
+          "shape": [
+            2350
+          ]
+        },
+        "x.npy": {
+          "bytes": 225728,
+          "dtype": "uint8",
+          "path": "runs/m2-test-0006/x.npy",
+          "sha256": "ccee4553563725c2daa399ddd604e37d05581f65c116a26dcf37e0eeecc64860",
+          "shape": [
+            2350,
+            96
+          ]
+        },
+        "y.npy": {
+          "bytes": 37728,
+          "dtype": "float64",
+          "path": "runs/m2-test-0006/y.npy",
+          "sha256": "6e2b58ea5c95c98639bab9428ea1bb33bac8c145d4acc65836de09e5e8f0b646",
+          "shape": [
+            2350,
+            2
+          ]
+        }
+      },
+      "full_raw_sha256_verified": false,
+      "id": "m2-test-0006",
+      "native_hdf5_metadata_sha256": "87a57a4ed9a2d9ca3046ef65977bc783083504dd4c3e120104b01bef9bf9dbe0",
+      "role": "test",
+      "selected_downloaded_bytes": 726358,
+      "selected_range_receipt_sha256": "e4755df08aa810eba35e3116dd64aa272ba1769e3ddceeb7a3dc56788e7043a0",
+      "session_id": "2020-11-24",
+      "source_asset_id": "b173e285-c992-490d-a539-08c2843326a3",
+      "source_bytes": 283710806,
+      "source_sha256": "b1d7fec18eaf36ac4ef327d82a7ab6d89e1db5eb9c5653b727b6390135cc15ba",
+      "versioned_metadata_sha256": "fc68027d3e0c18aa8abea5801aa53254b2b296c1823f6d62718a4ea2862dbd88"
+    }
+  ],
+  "full_raw_sha256_verified": false,
+  "input": {
+    "dtype": "uint8",
+    "file": "x.npy",
+    "model_dtype": "float32",
+    "shape": [
+      "T",
+      96
+    ],
+    "unit": "native spike counts per 20 ms"
+  },
+  "kind": "streaming_regression",
+  "mask": {
+    "dtype": "bool",
+    "file": "mask.npy",
+    "meaning": "native eval_mask; non-scoring bins remain in causal history",
+    "shape": [
+      "T"
+    ]
+  },
+  "max_numeric_state_elements": 10000000,
+  "max_parameters": 10000000,
+  "model_interface": {
+    "class": "Model",
+    "forward": "forward(x: float32[96], trial_start: bool = False) -> float32[2]",
+    "module": "model.py",
+    "reset": "reset() at each source run/file boundary",
+    "test_time_parameter_updates": false
+  },
+  "official_falcon_score": false,
+  "output": {
+    "dtype": "float64",
+    "file": "y.npy",
+    "model_dtype": "float32",
+    "shape": [
+      "T",
+      2
+    ],
+    "target": "finger_vel"
+  },
+  "primary_metric": {
+    "aggregation": "mask then concatenate same-date runs; variance-weighted R2 per date; equal-weight date mean and population std",
+    "direction": "maximize",
+    "id": "R2_variance_weighted"
+  },
+  "schema": "bpb-falcon-regression-contract/1",
+  "science_profile": "bpb-falcon-public-derived-cross-session-zs-v1",
+  "source": {
+    "dandiset_id": "000953",
+    "dandiset_version": "draft",
+    "evaluator_export_receipt_sha256": "c61491f8b002ba11f293f2f335a7396e22c44be2f5baecf76fc03e401d8ad622",
+    "exporter_sha256": "c655f1f3770477fca806ae6819639d908b0f6d800ba7a88055307d723aaff1fe",
+    "full_raw_sha256_verified": false,
+    "protocol_sha256": "e549a35a591c7ee168c99d320ded509366008f66cdb733ec72bbb408d7deaae4",
+    "public_export_receipt_sha256": "c0a57951f4c810d86bf150eca9baa1c7db382b226887c02ac2384e8346096229",
+    "repository": "https://github.com/snel-repo/falcon-challenge",
+    "sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f",
+    "source_manifest_sha256": "b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4",
+    "source_verification": "selected_http_ranges"
+  },
+  "source_origin_public": true,
+  "split": {
+    "test_access": "evaluator_only_public_origin",
+    "test_dates": [
+      "2020-10-30",
+      "2020-11-18",
+      "2020-11-19",
+      "2020-11-24"
+    ],
+    "train_dates": [
+      "2020-10-19",
+      "2020-10-20",
+      "2020-10-27"
+    ],
+    "unit": "recording_date",
+    "valid_dates": [
+      "2020-10-28"
+    ]
+  },
+  "task_id": "falcon-m2-finger-velocity",
+  "task_version": "0.1-public-validation-stream",
+  "trial_start": {
+    "boundary_before_current_sample": true,
+    "dtype": "bool",
+    "file": "trial_start.npy",
+    "formula": "searchsorted(target_timestamps, trials.start_time)",
+    "shape": [
+      "T"
+    ],
+    "terminal_marker_added": false
+  }
+}

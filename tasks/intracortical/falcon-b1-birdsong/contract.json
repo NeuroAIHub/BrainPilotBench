@@ -1,0 +1,379 @@
+{
+  "data_uploaded": false,
+  "derived_manifests": {
+    "test": {
+      "bytes": 3877,
+      "runs": 3,
+      "sessions": 3,
+      "sha256": "3cd5877cfa4421fe6fbae44d20f7789e856d7b598eb554ab5084a906ee242739",
+      "trials": 9
+    },
+    "train": {
+      "bytes": 2783,
+      "runs": 2,
+      "sessions": 2,
+      "sha256": "de1b061c3cfa921534d2dd1df7ad7f16a221d0b0e3d674ba5599f32e59922352",
+      "trials": 40
+    },
+    "valid": {
+      "bytes": 1640,
+      "runs": 1,
+      "sessions": 1,
+      "sha256": "965737515bd6c9ad8bb14cb8d655b4a4edca581b744da6cf3c6136bdbbaf422c",
+      "trials": 8
+    }
+  },
+  "evaluation_manifests": {
+    "test": {
+      "bytes": 3877,
+      "sha256": "3cd5877cfa4421fe6fbae44d20f7789e856d7b598eb554ab5084a906ee242739"
+    },
+    "valid": {
+      "bytes": 1640,
+      "sha256": "965737515bd6c9ad8bb14cb8d655b4a4edca581b744da6cf3c6136bdbbaf422c"
+    }
+  },
+  "exported_runs": [
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 1529568,
+          "dtype": "bool",
+          "path": "runs/b1-train-0001/mask.npy",
+          "sha256": "6ce5aac59ca6a2861f64b8b8412f61c800208b1ce9a142444319aae6b10f82af",
+          "shape": [
+            11,
+            880,
+            158
+          ]
+        },
+        "x.npy": {
+          "bytes": 25245128,
+          "dtype": "uint8",
+          "path": "runs/b1-train-0001/x.npy",
+          "sha256": "24640169129ab5f08efd76e6370c42dda446d4bb75cd0adcba5af9d1e31abd86",
+          "shape": [
+            11,
+            27000,
+            85
+          ]
+        },
+        "y.npy": {
+          "bytes": 12235648,
+          "dtype": "float64",
+          "path": "runs/b1-train-0001/y.npy",
+          "sha256": "dc78c4e1abb3bf68f3b79a06a9bfbd2eba669bf06eb71b8a31601200fe18ad30",
+          "shape": [
+            11,
+            880,
+            158
+          ]
+        }
+      },
+      "id": "b1-train-0001",
+      "role": "train",
+      "session_id": "20210626",
+      "source_asset_id": "914a4d5a-a30c-4bd3-b3e0-aa51994a109a",
+      "source_bytes": 224583316,
+      "source_sha256": "35535c2ea2827826f561ff7cfeb38f3b216eb8e8292dd4c9d7391f068e31c7ed",
+      "trials": 11
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 4032288,
+          "dtype": "bool",
+          "path": "runs/b1-train-0002/mask.npy",
+          "sha256": "207c9d8db38c59aee83ad7c99529998f5d04c1360c509b0ceddc307b2c514bce",
+          "shape": [
+            29,
+            880,
+            158
+          ]
+        },
+        "x.npy": {
+          "bytes": 66555128,
+          "dtype": "uint8",
+          "path": "runs/b1-train-0002/x.npy",
+          "sha256": "4c6218918d53039368ddf3ed5151c55686be99cc5994a7e994f4882ed0ebc7de",
+          "shape": [
+            29,
+            27000,
+            85
+          ]
+        },
+        "y.npy": {
+          "bytes": 32257408,
+          "dtype": "float64",
+          "path": "runs/b1-train-0002/y.npy",
+          "sha256": "219d89d38f9c9651d2989f38d0ecc668b46db64d8acde7f9d6505ed3ce11d9a4",
+          "shape": [
+            29,
+            880,
+            158
+          ]
+        }
+      },
+      "id": "b1-train-0002",
+      "role": "train",
+      "session_id": "20210627",
+      "source_asset_id": "68afa39f-b577-4183-a206-dde24d718b78",
+      "source_bytes": 591750268,
+      "source_sha256": "7474ec1158f34fb364fa5ab03c2e863ee41b6f8fa1637551bb75241ebe2f3204",
+      "trials": 29
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 1112448,
+          "dtype": "bool",
+          "path": "runs/b1-valid-0001/mask.npy",
+          "sha256": "186263bc2feabf647638995224eb9404f4df0070bd379c75d3ba3d6cd4a20e42",
+          "shape": [
+            8,
+            880,
+            158
+          ]
+        },
+        "x.npy": {
+          "bytes": 18360128,
+          "dtype": "uint8",
+          "path": "runs/b1-valid-0001/x.npy",
+          "sha256": "1a289619ff7b29b5a6a675100bb3d47c42bbd08e5e05cfcbf26ebc5c7208e64f",
+          "shape": [
+            8,
+            27000,
+            85
+          ]
+        },
+        "y.npy": {
+          "bytes": 8898688,
+          "dtype": "float64",
+          "path": "runs/b1-valid-0001/y.npy",
+          "sha256": "b8044c2b120c3558d5987b7fda94438773b9016c6da3fa59cd111e23bdce35e1",
+          "shape": [
+            8,
+            880,
+            158
+          ]
+        }
+      },
+      "id": "b1-valid-0001",
+      "role": "valid",
+      "session_id": "20210628",
+      "source_asset_id": "8a239242-2b86-4c15-8afd-6c737a8a3cca",
+      "source_bytes": 163388824,
+      "source_sha256": "2c356aa27ce8551670ffd68ff0482b6dcd61b46fad27434bb4b7224f16947124",
+      "trials": 8
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 417248,
+          "dtype": "bool",
+          "path": "runs/b1-test-0001/mask.npy",
+          "sha256": "a93bb05b45d3740a5e39e9cd49de04ba0a5156532777bf299b4774afa8e83ee1",
+          "shape": [
+            3,
+            880,
+            158
+          ]
+        },
+        "x.npy": {
+          "bytes": 6885128,
+          "dtype": "uint8",
+          "path": "runs/b1-test-0001/x.npy",
+          "sha256": "835b0a417d6d45bd6a91e0211b5da194cd101453d9496c4e8ba0adbe3d61a5ac",
+          "shape": [
+            3,
+            27000,
+            85
+          ]
+        },
+        "y.npy": {
+          "bytes": 3337088,
+          "dtype": "float64",
+          "path": "runs/b1-test-0001/y.npy",
+          "sha256": "a64419829f32e1df3d43e046f8cc34250f33b40b9e00ab1f54cc915128217ae4",
+          "shape": [
+            3,
+            880,
+            158
+          ]
+        }
+      },
+      "id": "b1-test-0001",
+      "role": "test",
+      "session_id": "20210630",
+      "source_asset_id": "0aed33b3-1b0f-43c1-afff-62db907ffcc8",
+      "source_bytes": 61398004,
+      "source_sha256": "ce05975b77ad202893582af0b1f11ab9c8a069f6d673d8e03e69f9dc6a200bcc",
+      "trials": 3
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 417248,
+          "dtype": "bool",
+          "path": "runs/b1-test-0002/mask.npy",
+          "sha256": "a93bb05b45d3740a5e39e9cd49de04ba0a5156532777bf299b4774afa8e83ee1",
+          "shape": [
+            3,
+            880,
+            158
+          ]
+        },
+        "x.npy": {
+          "bytes": 6885128,
+          "dtype": "uint8",
+          "path": "runs/b1-test-0002/x.npy",
+          "sha256": "2ac76668f33c7971c1ebeaf37b878dc00d1ff45b5150261daca9e68e44e0c6e9",
+          "shape": [
+            3,
+            27000,
+            85
+          ]
+        },
+        "y.npy": {
+          "bytes": 3337088,
+          "dtype": "float64",
+          "path": "runs/b1-test-0002/y.npy",
+          "sha256": "a18ba04647f2e7f4f0462f06bb4fdfe49721cc4e3cb3d622dfff0078964b94b1",
+          "shape": [
+            3,
+            880,
+            158
+          ]
+        }
+      },
+      "id": "b1-test-0002",
+      "role": "test",
+      "session_id": "20210701",
+      "source_asset_id": "17130548-235b-4631-95b2-000af0c3eb25",
+      "source_bytes": 61398004,
+      "source_sha256": "7a762a8d3334822ac764a9400925c6445b36c5ddff37c080adaf0c321591aa3d",
+      "trials": 3
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 417248,
+          "dtype": "bool",
+          "path": "runs/b1-test-0003/mask.npy",
+          "sha256": "a93bb05b45d3740a5e39e9cd49de04ba0a5156532777bf299b4774afa8e83ee1",
+          "shape": [
+            3,
+            880,
+            158
+          ]
+        },
+        "x.npy": {
+          "bytes": 6885128,
+          "dtype": "uint8",
+          "path": "runs/b1-test-0003/x.npy",
+          "sha256": "597c38fe87d20f1081b0854c6aee29fbb1a6b9a2f2c7cadc06f8d2b47d1d98a6",
+          "shape": [
+            3,
+            27000,
+            85
+          ]
+        },
+        "y.npy": {
+          "bytes": 3337088,
+          "dtype": "float64",
+          "path": "runs/b1-test-0003/y.npy",
+          "sha256": "185abedaac1e50cc173099a8069e2bc20b8fc8c7a3ae1729e62573ff1a3fe80e",
+          "shape": [
+            3,
+            880,
+            158
+          ]
+        }
+      },
+      "id": "b1-test-0003",
+      "role": "test",
+      "session_id": "20210705",
+      "source_asset_id": "04de4f52-21fa-4789-9e19-92a480f62518",
+      "source_bytes": 61398004,
+      "source_sha256": "e587fd2bb081673ea4d51899da52471855c459a5546a7d4af32aa0be933583b9",
+      "trials": 3
+    }
+  ],
+  "input": {
+    "dtype": "uint8",
+    "file": "x.npy",
+    "model_delivery": "one_complete_motif",
+    "shape": [
+      "motifs",
+      27000,
+      85
+    ],
+    "unit": "threshold_crossing_at_30kHz"
+  },
+  "kind": "motif_spectrogram",
+  "max_numeric_state_elements": 10000000,
+  "max_parameters": 10000000,
+  "max_registered_tensor_elements": 10000000,
+  "model_interface": {
+    "class": "Model",
+    "forward": "forward(neural: float32[27000,85]) -> float32[880,158], one complete motif",
+    "module": "model.py"
+  },
+  "official_falcon_score": false,
+  "output": {
+    "dtype": "float64",
+    "file": "y.npy",
+    "mask_file": "mask.npy",
+    "model_dtype": "float32",
+    "shape": [
+      "motifs",
+      880,
+      158
+    ]
+  },
+  "primary_metric": {
+    "aggregation": "independent 0-1 min-max of prediction and target per motif, motif MSE, date mean, equal-weight date mean and population std",
+    "direction": "minimize",
+    "id": "normalized_spectrogram_MSE",
+    "mask": "native spectrogram_eval_mask"
+  },
+  "schema": "bpb-falcon-sequence-contract/1",
+  "science_profile": "bpb-falcon-public-derived-cross-session-zs-v1",
+  "source": {
+    "dandiset_id": "001046",
+    "dandiset_version": "draft",
+    "evaluator_export_receipt_sha256": "ee58eedd5b8834e4334ba6393b57cd1c1e34528090664645555bf0fe04852f2b",
+    "exporter_sha256": "8e21a54e54b71101ef60ac93115a690f1511b38f9f3ea0b891f4a90361c1fa49",
+    "protocol_sha256": "47c0989bcfe3f783d811c3287abe4cbec8ffe1e61f90d184a5a165fbdc992482",
+    "public_export_receipt_sha256": "5b6a7005c2a9e4cdf2cbc1751609ba699e660dacf277bdd77eed8dd9b7ed8015",
+    "repository": "https://github.com/snel-repo/falcon-challenge",
+    "sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f",
+    "source_manifest_sha256": "b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4"
+  },
+  "source_origin_public": true,
+  "split": {
+    "excluded_source_role": "held-in-minival",
+    "selected_source_roles": {
+      "test": "held-out-calib",
+      "train": "held-in-calib",
+      "valid": "held-in-calib"
+    },
+    "test_access": "evaluator_only_public_origin",
+    "test_dates": [
+      "20210630",
+      "20210701",
+      "20210705"
+    ],
+    "train_dates": [
+      "20210626",
+      "20210627"
+    ],
+    "trial_boundary": "keep complete song motifs within one role",
+    "unit": "recording_date",
+    "valid_dates": [
+      "20210628"
+    ]
+  },
+  "task_id": "falcon-b1-birdsong",
+  "task_version": "0.1-public-validation-motif"
+}

@@ -1,0 +1,19 @@
+- send: >-
+    Develop a within-participant classifier for speech versus music in one film.
+    Use only public_data Train and Valid arrays. Each participant has a stable
+    opaque ID and a separate clinical ECoG or sEEG montage. The x arrays contain
+    shuffled, independent float32 windows with shape [windows, channels, 512] at
+    256 Hz. The labels are 0 for music and 1 for speech. The Valid blocks are
+    different film segments from Train. Submit exactly submission/model.py,
+    submission/config.json, and submission/weights.safetensors. Model(config)
+    must be a torch.nn.Module. Its forward(window, subject_id) receives one
+    float32 tensor with shape [channels, 512] and a stable opaque participant
+    ID. Return one finite float32 scalar speech probability in [0,1]. Keep
+    registered parameters and buffers unchanged during inference. The evaluator
+    sends one shuffled window per call and does not send block order or labels.
+    The hidden scorer averages window probabilities within each block, then
+    calculates balanced accuracy per participant and averages participants.
+    Public Valid results are development results. Owner Test uses four separate
+    film blocks after a submission is frozen. The task does not measure transfer
+    to a new film or participant.
+  then: wait_idle

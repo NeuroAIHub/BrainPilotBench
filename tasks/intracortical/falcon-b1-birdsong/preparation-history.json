@@ -1,0 +1,19 @@
+{
+  "schema": "bpb-invasive-candidate/1",
+  "id": "falcon-b1-birdsong",
+  "domain": "intracortical",
+  "status": "preparation_ready_data_pending",
+  "title": "Zebra finch birdsong spectrogram decoding",
+  "source_task_id": "b1",
+  "source_sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f",
+  "dataset_group_id": "DANDI:001046",
+  "input_description": "85-channel, 30 kHz threshold-crossing activity from a Neuropixels probe, delivered by song motif",
+  "output_description": "158-frequency-bin vocalization spectrogram for each complete motif",
+  "native_split_description": "Official 3 held-in and 3 held-out dates; BPB takes final held-in date for Valid and public held-out calibration for evaluator-only Test, excluding duplicate minival files",
+  "primary_metric": {"id": "normalized_spectrogram_MSE", "direction": "minimize"},
+  "protocol": "protocol.json",
+  "preparation_entry": "tasks/intracortical/_preparation/prepare.py",
+  "runnable": false,
+  "validated": false,
+  "reason": "Asset manifest is frozen, but complete data, isolated role packages, song-mask validation, and independent acceptance remain pending; public held-out calibration has only three motifs per date."
+}

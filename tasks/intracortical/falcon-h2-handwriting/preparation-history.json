@@ -1,0 +1,19 @@
+{
+  "schema": "bpb-invasive-candidate/1",
+  "id": "falcon-h2-handwriting",
+  "domain": "intracortical",
+  "status": "preparation_ready_data_pending",
+  "title": "Human attempted handwriting sentence decoding",
+  "source_task_id": "h2",
+  "source_sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f",
+  "dataset_group_id": "DANDI:000950",
+  "input_description": "192-channel, 20 ms intracortical spike-count stream from hand-knob Utah arrays",
+  "output_description": "One English sentence string per completed attempted-handwriting trial",
+  "native_split_description": "Official 21 held-in and 5 held-out dates; BPB takes final held-in date for Valid and public held-out calibration for evaluator-only Test, excluding duplicate minival files",
+  "primary_metric": {"id": "WER", "direction": "minimize"},
+  "protocol": "protocol.json",
+  "preparation_entry": "tasks/intracortical/_preparation/prepare.py",
+  "runnable": false,
+  "validated": false,
+  "reason": "Asset manifest is frozen, but complete data, isolated role packages, text interface validation, and independent acceptance remain pending."
+}

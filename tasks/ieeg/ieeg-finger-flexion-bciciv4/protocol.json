@@ -1,0 +1,41 @@
+{
+  "schema": "bpb-invasive-protocol/1",
+  "task_id": "ieeg-finger-flexion-bciciv4",
+  "source_description_url": "https://www.bbci.de/competition/iv/desc_4.pdf",
+  "sample_rate_hz": 1000,
+  "subjects": [
+    {"id": "sub1", "ecog_channels": 62},
+    {"id": "sub2", "ecog_channels": 48},
+    {"id": "sub3", "ecog_channels": 64}
+  ],
+  "source_variables": {
+    "train_data": "[400000, channels] ECoG input",
+    "train_dg": "[400000, 5] finger flexion labels",
+    "test_data": "[200000, channels] original evaluation input"
+  },
+  "finger_order": ["thumb", "index", "middle", "ring", "little"],
+  "split": {
+    "unit": "sample",
+    "interval_convention": "zero-based half-open",
+    "source_train_interval": [0, 400000],
+    "nominal_train_interval": [0, 320000],
+    "nominal_validation_interval": [320000, 400000],
+    "guard_samples_each_side": 1000,
+    "export_train_interval": [0, 319000],
+    "discarded_boundary_interval": [319000, 321000],
+    "export_validation_interval": [321000, 400000],
+    "original_evaluation_interval": [400000, 600000],
+    "boundary_rule": "Split before filtering, feature extraction, lagging, or normalization. Fit learned transforms on export_train_interval only. Process each exported interval independently. Offline inference may use the full current interval, but no transform may read across roles. The fixed 1000-sample guard on each side removes immediate boundary neighbors; it does not establish independence between recordings or subjects."
+  },
+  "evaluation": {
+    "prediction_shape_per_subject": [200000, 5],
+    "scored_finger_indices_zero_based": [0, 1, 2, 4],
+    "excluded_finger_index_zero_based": 3,
+    "per_finger_metric": "Pearson correlation between predicted and observed flexion across time",
+    "aggregate": "Arithmetic mean of 12 correlations: four fingers for each of three subjects.",
+    "undefined_correlation_policy": "Reject nonfinite predictions or constant predicted/true scored trajectories."
+  },
+  "evaluation_boundary": "Public preparation reads only train_data and train_dg. Owner-only export may read test_data and the organizers' later-published labels into a separate evaluator directory. Agent staging contains only Train/Valid. Test requires a frozen artifact and never participates in model selection. This is runtime/source isolation, not a private-source Test claim.",
+  "profile": "bpb-bciciv4-offline-guarded-v1",
+  "inference": {"mode": "offline_current_subject_interval", "input": "float32[T,C] and subject_id", "output": "finite float32[T,5]", "fitted_state": "frozen before evaluation", "public_cli_role": "valid"}
+}

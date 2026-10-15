@@ -6,6 +6,16 @@ eeg-native-classification:
   metrics: [balanced_accuracy]
 eeg-native-regression:
   metrics: [BinnedMAE]
+intracortical-regression:
+  metrics: [R2_variance_weighted]
+ieeg-finger-regression:
+  metrics: [pearson_r]
+ieeg-classification:
+  metrics: [balanced_accuracy]
+intracortical-handwriting:
+  metrics: [WER]
+intracortical-birdsong:
+  metrics: [normalized_spectrogram_MSE]
 psychology-behavior:
   metrics: [mean_response_nll]
 mri-brain-age:

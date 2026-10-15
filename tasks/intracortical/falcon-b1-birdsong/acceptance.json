@@ -1,0 +1,79 @@
+{
+  "schema": "bpb-local-task-acceptance/1",
+  "task_id": "falcon-b1-birdsong",
+  "task_version": "0.1-public-validation-motif",
+  "status": "passed",
+  "date": "2026-10-14",
+  "source_task_id": "b1",
+  "agent_benchmark_run": false,
+  "source_verification": "full_source_files_and_derived_arrays_verified",
+  "public_validation": {
+    "status": "passed",
+    "scope": "fixed-reference-only",
+    "metric_id": "normalized_spectrogram_MSE",
+    "value": 0.0010954087590801266,
+    "profile": "bpb-b1-public-validation-v1",
+    "cli_report_sha256": "2fd5810d62de01cd79fc2f6aa0362aa21c5c396373d140bd319fb14fe1e5fef9"
+  },
+  "owner_test": {
+    "status": "fixed_reference_interface_passed",
+    "model_tuned": false,
+    "report_sha256": "d3c1f2015e2c1fd52dc2e3f0e773726d4b409b765c8d79e884cf31241c89a71c",
+    "frozen_artifact_receipt_sha256": "9715a252e4a11416d4839f44cea594a562601ee9fa03dc3cf235a802ad3d6f94",
+    "scores_published_as_agent_results": false
+  },
+  "checks": [
+    "source_role_bindings",
+    "native_trial_and_mask_comparison",
+    "public_staging",
+    "fixed_reference_public_validation",
+    "independent_metric_check",
+    "cli_submission_and_isolated_scoring",
+    "oracle_and_empty_submission",
+    "owner_test_frozen_submission"
+  ],
+  "platform": {
+    "host": "macOS-arm64",
+    "inference": "Linux-arm64-CPU",
+    "image": "sha256:f8075b097562ae717626a9257bdbe4dd6d270d283d82e7ee0a15427c88a0142c",
+    "amd64_tested": false,
+    "gpu_tested": false
+  },
+  "reference_artifact_sha256": {
+    "config.json": "39005c2bf28d9192887b618890e54e2c877e63bd08260df0d546f1a9cebd9f78",
+    "model.py": "bd07ab16b3ab35a157f888ba1f0a35882a240bd4e65243e2fd5e04e6f92ec075",
+    "weights.safetensors": "67e5866f06c4e745e69739c7eac0fd6ff31fd606de2825567e0867ebfa475be6"
+  },
+  "file_sha256": {
+    "tasks/intracortical/_preparation/prepare.py": "fa59d6114a01d36f3253c302c3727cc940200b3d01134672b49a4122c90cf472",
+    "tasks/intracortical/_preparation/check_manifest.py": "3c49a8778f9619c07edf5419528936f227b6d42c2036426a6d89e714be4a61fd",
+    "tasks/intracortical/_preparation/make_manifest.py": "9a22634caf5ae91f738e680c067fd81f586c1ac9c26ec0d2e167fac53d4e08c0",
+    "tasks/intracortical/_preparation/requirements.txt": "f297c0479c2128572dfb1150bf7fb20625a84fc1be74435ddd1e694b737bdafa",
+    "tasks/intracortical/_shared/native.py": "8bcd0ed3a03271392c23506d1471bf555d3f6f41c7bbc469732a5a38a9619dfa",
+    "tasks/intracortical/_preparation/assets.manifest.json": "b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4",
+    "tasks/intracortical/_sequence_shared/export.py": "8e21a54e54b71101ef60ac93115a690f1511b38f9f3ea0b891f4a90361c1fa49",
+    "tasks/intracortical/_sequence_shared/fetch_sources.py": "d01b0f58db7c81d3b2fa71ff57ddb546e5a02931cc9e7e7ebb6686137a0de088",
+    "tasks/intracortical/_sequence_shared/freeze.py": "02a59083256f1f0a1e06de6e0ec6686b473c0053be902d49dc319c42e4d4a7aa",
+    "tasks/intracortical/_sequence_shared/freeze_submission.py": "a32418e10dbfb4e2ad915b71c48495491dbc7e15eaf4b08ad28518f95c638a62",
+    "tasks/intracortical/_sequence_shared/score.py": "942d14ed4442265fd40878600eaec96d2ae669ab48c786e0a51fdfc4dce5110d",
+    "tasks/intracortical/_sequence_shared/stage.py": "a55c95e432413e2541da1c66ffd28f5c8527f0f445025a5171bdbc77b885985f",
+    "tasks/intracortical/_sequence_shared/worker.py": "94eceea4d857cf77c5a38d3c9d307a17e15803b9f8922b1d3226eccabeb6793a",
+    "tasks/intracortical/_shared/metrics.py": "dfe65218df0711bda15f3fa92d642936208b28502b5c63ec203b82d396cefc5f",
+    "tasks/intracortical/falcon-b1-birdsong/checks/Dockerfile": "4b3dda3ae319f1b37340cb0547229d8c544a1cd457ea5c5408586c5c77ab97a9",
+    "tasks/intracortical/falcon-b1-birdsong/checks/check.sh": "32fd3678adcd2da38a31e490d4f913c15a70b2f1f372d397d8d1037c0ebef730",
+    "tasks/intracortical/falcon-b1-birdsong/checks/freeze_submission.py": "ce9b734b20436d3b289e6bba2d2eb5f3265cc88cf31250477820d37ec3cdd21f",
+    "tasks/intracortical/falcon-b1-birdsong/checks/requirements.txt": "fb003fb8576dc24ff8c844aaa528d3c30af6c9081fb960f600870ae2a93eaad4",
+    "tasks/intracortical/falcon-b1-birdsong/checks/score.py": "5318b2cd6e6ff00e2b7fa09b5bcd683eb565eea9f5ca1d261b909ad95f32990c",
+    "tasks/intracortical/falcon-b1-birdsong/contract.json": "28569731d18f6cd3687de5e203b5c765b3c44361ff4a59a36deed6caae7b7866",
+    "tasks/intracortical/falcon-b1-birdsong/data.lock": "56d5461fa31225216aeac059d4dbd1f32388e450960bba2487193040fa463a18",
+    "tasks/intracortical/falcon-b1-birdsong/env/requirements.txt": "63689539f64ce18fdf9f1fa02fea3f557f56d4195b18ff6b356f9b112986a6d2",
+    "tasks/intracortical/falcon-b1-birdsong/env/setup.sh": "a83a967d3de2889a7d205f997957e640a1392cfc72c10889092ae5c35eb3ef2a",
+    "tasks/intracortical/falcon-b1-birdsong/prompt/turns.yaml": "941d195baf230bdb4ceeb232357bacf7f2303218401ac032cd4be39f7c7f2d76",
+    "tasks/intracortical/falcon-b1-birdsong/protocol.json": "47c0989bcfe3f783d811c3287abe4cbec8ffe1e61f90d184a5a165fbdc992482",
+    "tasks/intracortical/falcon-b1-birdsong/solution/make_reference.py": "0b866fc0f36903e2c0de777a994a85e2ac2de7cec7e841563e8e23a91efb34bc",
+    "tasks/intracortical/falcon-b1-birdsong/solution/model.py": "bd07ab16b3ab35a157f888ba1f0a35882a240bd4e65243e2fd5e04e6f92ec075",
+    "tasks/intracortical/falcon-b1-birdsong/solution/solution.sh": "c0b77a092682649358825ebab5d615502989fb3d395a77d746a878942ec1a53a",
+    "tasks/intracortical/falcon-b1-birdsong/task.yaml": "96cbebd40b803a6bf328114740dc9d6baca78f7ee722441750613f31c5b73769",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/score.py": "0efd36c030a8f720c371e7d871491079586b6c763d62945423779df8172c3ce4"
+  }
+}

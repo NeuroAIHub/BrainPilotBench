@@ -1,0 +1,28 @@
+{
+  "availability_status": "source_bound_reproducible_export",
+  "data_uploaded": false,
+  "manifests": {
+    "test": {
+      "bytes": 2239,
+      "sha256": "1463ffa30f6ca08be5b2f46acc1a1c7367affd097001d8badddbb64228866caa"
+    },
+    "train": {
+      "bytes": 2156,
+      "sha256": "edc93cac7991a39e2884a88beef7b785ec6e33cf6d14ae3ce04707001cfaa61e"
+    },
+    "valid": {
+      "bytes": 2147,
+      "sha256": "70b9b7cb27b35006c350ac31fda929779884b8700a471118af610ea286a34650"
+    }
+  },
+  "official_competition": false,
+  "profile": "bpb-bciciv4-offline-guarded-v1",
+  "protocol_sha256": "eaa8fa18e37ff98c7dacd397e5d84880fc71c9b1db36dfa45b92b8797b1ec777",
+  "public_cli_role": "valid",
+  "schema": "bpb-bci-contract/1",
+  "source_isolation_note": "Original evaluation labels are public-origin; kept outside Agent workspace and model selection",
+  "source_manifest_sha256": "15348a503996194324791a55c3b9ae1bb016f01f5173aa7c5ca7cdbe3d5b7792",
+  "source_task_id": "BCI Competition IV Dataset 4",
+  "task_id": "ieeg-finger-flexion-bciciv4",
+  "task_version": "0.1-public-validation-offline"
+}

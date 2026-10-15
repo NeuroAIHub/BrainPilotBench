@@ -1,6 +1,6 @@
 # Anatomical Connectivity and Signal Propagation in C. elegans
 
-[Task collection](../../../README.md#task-suite) · [Data lock](data.lock) · [Task specification](task.yaml)
+[BrainPilotBench v1](../../../README.md#task-suite) · [Data lock](data.lock) · [Task specification](task.yaml)
 
 How closely does anatomical wiring match measured signal propagation in C. elegans?
 The agent quantifies differences between a connectome and a signaling atlas using

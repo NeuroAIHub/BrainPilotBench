@@ -1,0 +1,468 @@
+{
+  "data_uploaded": false,
+  "derived_manifests": {
+    "test": {
+      "bytes": 4553,
+      "runs": 3,
+      "sessions": 3,
+      "sha256": "2b759dad527c0296c6c8d58d9f6ba760df69a7d6047a89e5d382bb982e4b0846"
+    },
+    "train": {
+      "bytes": 4626,
+      "runs": 3,
+      "sessions": 3,
+      "sha256": "da828ba452007640b16467dd15d6f5dafa124d580d602a13c13b562cc7a6328e"
+    },
+    "valid": {
+      "bytes": 1938,
+      "runs": 1,
+      "sessions": 1,
+      "sha256": "46f0c0d23d46baea3cd7c4b3c63d6c2f4a4a2cbc312676e92a160399c0e91f8a"
+    }
+  },
+  "evaluation_manifests": {
+    "test": {
+      "bytes": 4553,
+      "sha256": "2b759dad527c0296c6c8d58d9f6ba760df69a7d6047a89e5d382bb982e4b0846"
+    },
+    "valid": {
+      "bytes": 1938,
+      "sha256": "46f0c0d23d46baea3cd7c4b3c63d6c2f4a4a2cbc312676e92a160399c0e91f8a"
+    }
+  },
+  "exported_runs": [
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 182626,
+          "dtype": "bool",
+          "path": "runs/m1-train-0001/mask.npy",
+          "sha256": "1cad57e88a13e10f4ede3478e283c3eabec8790a43f311b3bbd12d06c18e2aec",
+          "shape": [
+            182498
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 182626,
+          "dtype": "bool",
+          "path": "runs/m1-train-0001/trial_start.npy",
+          "sha256": "fe3afa39805279fa40e132f1a3dab08a47f48df64bb4436e24789b51f98ecb82",
+          "shape": [
+            182498
+          ]
+        },
+        "x.npy": {
+          "bytes": 11680000,
+          "dtype": "uint8",
+          "path": "runs/m1-train-0001/x.npy",
+          "sha256": "be8116d616b30cb4b29e20261de977bdf7b423a2291626b7bdc3d6d33a5498be",
+          "shape": [
+            182498,
+            64
+          ]
+        },
+        "y.npy": {
+          "bytes": 23359872,
+          "dtype": "float64",
+          "path": "runs/m1-train-0001/y.npy",
+          "sha256": "4c826c2991faf939cdf20fc7d31b288ce04e7824d2899a7f30a77a6735037fb4",
+          "shape": [
+            182498,
+            16
+          ]
+        }
+      },
+      "full_raw_sha256_verified": true,
+      "id": "m1-train-0001",
+      "role": "train",
+      "session_id": "20120924",
+      "source_asset_id": "13163b3c-95b7-4b0e-8181-72d7bd658e0b",
+      "source_bytes": 73077382,
+      "source_sha256": "63ee25782c62ff2275dcfbdcaa56552ec4c26fcde00f5a74e5be54785b5c25eb"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 172453,
+          "dtype": "bool",
+          "path": "runs/m1-train-0002/mask.npy",
+          "sha256": "d9b62da4a08a92d0e6d7ddd9789137cc0806e0abe8332f520129e2807b9013cd",
+          "shape": [
+            172325
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 172453,
+          "dtype": "bool",
+          "path": "runs/m1-train-0002/trial_start.npy",
+          "sha256": "c9701d775b0e2c4a8837c66293b3c3f56d1922a41b1c452fd52d9bed0ee70ce0",
+          "shape": [
+            172325
+          ]
+        },
+        "x.npy": {
+          "bytes": 11028928,
+          "dtype": "uint8",
+          "path": "runs/m1-train-0002/x.npy",
+          "sha256": "7572fc402c89be120cd5e97b3336b0f26fffeaf41b7fa11b9b526263e8325ba7",
+          "shape": [
+            172325,
+            64
+          ]
+        },
+        "y.npy": {
+          "bytes": 22057728,
+          "dtype": "float64",
+          "path": "runs/m1-train-0002/y.npy",
+          "sha256": "caefdc4209b1210fc80ea73f2ea95dc64f5e527db27eccb5566ec0c5ceaccf22",
+          "shape": [
+            172325,
+            16
+          ]
+        }
+      },
+      "full_raw_sha256_verified": true,
+      "id": "m1-train-0002",
+      "role": "train",
+      "session_id": "20120926",
+      "source_asset_id": "66b503dd-c311-42ce-983f-0810ed8c01ff",
+      "source_bytes": 80268327,
+      "source_sha256": "9c72512308194b93cc19b51733514eb9721152ffe4dd357ee93aabd4be5caa91"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 177734,
+          "dtype": "bool",
+          "path": "runs/m1-train-0003/mask.npy",
+          "sha256": "2e5edff72a8c640e54e0cc660c05917b33e5a6f27fe517b93b40cc269b0b727d",
+          "shape": [
+            177606
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 177734,
+          "dtype": "bool",
+          "path": "runs/m1-train-0003/trial_start.npy",
+          "sha256": "af33f19db249eecacde2efbdedc78ee49577511164037d03ebfc2b277fd75213",
+          "shape": [
+            177606
+          ]
+        },
+        "x.npy": {
+          "bytes": 11366912,
+          "dtype": "uint8",
+          "path": "runs/m1-train-0003/x.npy",
+          "sha256": "1011f9c834503c8bcd18725361e4e3b9b91513d27f80697854b6150053d06697",
+          "shape": [
+            177606,
+            64
+          ]
+        },
+        "y.npy": {
+          "bytes": 22733696,
+          "dtype": "float64",
+          "path": "runs/m1-train-0003/y.npy",
+          "sha256": "e18f396ee986bf06480ff3685e4e89060b30e38091e485fa1c9255582b98521b",
+          "shape": [
+            177606,
+            16
+          ]
+        }
+      },
+      "full_raw_sha256_verified": true,
+      "id": "m1-train-0003",
+      "role": "train",
+      "session_id": "20120927",
+      "source_asset_id": "478c68a5-2434-428c-91f9-d678c8760dd6",
+      "source_bytes": 78481526,
+      "source_sha256": "2d2fdc9be5ccb7a47969894ff1da43a994da11bfff298353f94d489c4af37b3a"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 160564,
+          "dtype": "bool",
+          "path": "runs/m1-valid-0001/mask.npy",
+          "sha256": "b2f21fc5a8d3453bc2ec96da1fd0e8a2654898421a7b4d82dadaa4af986f4fd3",
+          "shape": [
+            160436
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 160564,
+          "dtype": "bool",
+          "path": "runs/m1-valid-0001/trial_start.npy",
+          "sha256": "8106589d16aeade544f8f767d9e96262779b2dc1807e23d271210bea013b1de6",
+          "shape": [
+            160436
+          ]
+        },
+        "x.npy": {
+          "bytes": 10268032,
+          "dtype": "uint8",
+          "path": "runs/m1-valid-0001/x.npy",
+          "sha256": "c1f7dec9c2f6057ea01f49b33fa18e62093992d76a86bf964aa1c7cde8e8bfbc",
+          "shape": [
+            160436,
+            64
+          ]
+        },
+        "y.npy": {
+          "bytes": 20535936,
+          "dtype": "float64",
+          "path": "runs/m1-valid-0001/y.npy",
+          "sha256": "4ab47446b1a77673a608856600708b5c0177752ace2ccd55821422d0f0234410",
+          "shape": [
+            160436,
+            16
+          ]
+        }
+      },
+      "full_raw_sha256_verified": true,
+      "id": "m1-valid-0001",
+      "role": "valid",
+      "session_id": "20120928",
+      "source_asset_id": "61dbe78b-58da-4089-b308-96378c5a95b9",
+      "source_bytes": 68337100,
+      "source_sha256": "96e7f078c6acb89b802b6241a36b9c9e2d04df82c180a63354fd3f7e74357254"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 3570,
+          "dtype": "bool",
+          "path": "runs/m1-test-0001/mask.npy",
+          "sha256": "16be3a839cdb9367230b4e0e5afe925221ef3b12d3e66897561d4e5475d31593",
+          "shape": [
+            3442
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 3570,
+          "dtype": "bool",
+          "path": "runs/m1-test-0001/trial_start.npy",
+          "sha256": "19329ec73a2e149165a5c6aebe97431473318b8c82c3d30ee9fcc4c683101b5b",
+          "shape": [
+            3442
+          ]
+        },
+        "x.npy": {
+          "bytes": 220416,
+          "dtype": "uint8",
+          "path": "runs/m1-test-0001/x.npy",
+          "sha256": "e66dcd009fe50acbaa7a0aa85a491e144275b595bed1450dac503446f4a6fc11",
+          "shape": [
+            3442,
+            64
+          ]
+        },
+        "y.npy": {
+          "bytes": 440704,
+          "dtype": "float64",
+          "path": "runs/m1-test-0001/y.npy",
+          "sha256": "145e72dfc4a6f954fca63bfb90cdd7fb45b9d946c739e9a914feea3876274cf8",
+          "shape": [
+            3442,
+            16
+          ]
+        }
+      },
+      "full_raw_sha256_verified": true,
+      "id": "m1-test-0001",
+      "role": "test",
+      "session_id": "20121004",
+      "source_asset_id": "1b2e1931-9b22-42bd-b947-a14bd2f81d1b",
+      "source_bytes": 2605922,
+      "source_sha256": "782c1fd090facfb3c50b6a85da8209ca3aea71f66bd4edc13d61fe4a55a3429d"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 3470,
+          "dtype": "bool",
+          "path": "runs/m1-test-0002/mask.npy",
+          "sha256": "d7d62fb2a869a69ed9c2879e86c5a3aefafd30fb2c3bf988c8693183255eaf94",
+          "shape": [
+            3342
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 3470,
+          "dtype": "bool",
+          "path": "runs/m1-test-0002/trial_start.npy",
+          "sha256": "d73979f06c55be5253f4549d424fedda082f613c4daad6adb095fe2d19c16735",
+          "shape": [
+            3342
+          ]
+        },
+        "x.npy": {
+          "bytes": 214016,
+          "dtype": "uint8",
+          "path": "runs/m1-test-0002/x.npy",
+          "sha256": "aee5ce92459df40482a3b8645c3c980353175b5372e5821b27f74559afcff4ec",
+          "shape": [
+            3342,
+            64
+          ]
+        },
+        "y.npy": {
+          "bytes": 427904,
+          "dtype": "float64",
+          "path": "runs/m1-test-0002/y.npy",
+          "sha256": "ad40227ae25c588e2febccbea80e5bc8b6ee91fc86bb234f873cd6458dd8b6bb",
+          "shape": [
+            3342,
+            16
+          ]
+        }
+      },
+      "full_raw_sha256_verified": true,
+      "id": "m1-test-0002",
+      "role": "test",
+      "session_id": "20121017",
+      "source_asset_id": "0b466412-4fb5-4210-96a1-5d913f8e55b4",
+      "source_bytes": 2710214,
+      "source_sha256": "8dd22c67500445ec1e0c11980475badbba9e960a05db16b78aaaad5502b3c652"
+    },
+    {
+      "files": {
+        "mask.npy": {
+          "bytes": 6799,
+          "dtype": "bool",
+          "path": "runs/m1-test-0003/mask.npy",
+          "sha256": "beba8ea82a990cc33b02dd560c817729a124aae2d8909fd7e9314d6de939956a",
+          "shape": [
+            6671
+          ]
+        },
+        "trial_start.npy": {
+          "bytes": 6799,
+          "dtype": "bool",
+          "path": "runs/m1-test-0003/trial_start.npy",
+          "sha256": "fe92f13bc4a87bb6ce5b9945c9b66524f1d924b218687c4b37538947e87b7930",
+          "shape": [
+            6671
+          ]
+        },
+        "x.npy": {
+          "bytes": 427072,
+          "dtype": "uint8",
+          "path": "runs/m1-test-0003/x.npy",
+          "sha256": "47a07c4edd98b31ce57b2332769602ed9ebf115d50c9cf3e04bbba264c177ca9",
+          "shape": [
+            6671,
+            64
+          ]
+        },
+        "y.npy": {
+          "bytes": 854016,
+          "dtype": "float64",
+          "path": "runs/m1-test-0003/y.npy",
+          "sha256": "9df319b0088ee742409a0c77de7a4f608fec3b517afd1d356be0e944a50b95a6",
+          "shape": [
+            6671,
+            16
+          ]
+        }
+      },
+      "full_raw_sha256_verified": true,
+      "id": "m1-test-0003",
+      "role": "test",
+      "session_id": "20121024",
+      "source_asset_id": "3760e2e5-cb9f-40ae-8749-1b249d2e537d",
+      "source_bytes": 3778095,
+      "source_sha256": "bbeb6c7d66e2c2e9b76506021a6cf8800bc19021b6d1fd03c4eb6de71490bafb"
+    }
+  ],
+  "full_raw_sha256_verified": true,
+  "input": {
+    "dtype": "uint8",
+    "file": "x.npy",
+    "model_dtype": "float32",
+    "shape": [
+      "T",
+      64
+    ],
+    "unit": "native spike counts per 20 ms"
+  },
+  "kind": "streaming_regression",
+  "mask": {
+    "dtype": "bool",
+    "file": "mask.npy",
+    "meaning": "native eval_mask; non-scoring bins remain in causal history",
+    "shape": [
+      "T"
+    ]
+  },
+  "max_numeric_state_elements": 10000000,
+  "max_parameters": 10000000,
+  "model_interface": {
+    "class": "Model",
+    "forward": "forward(x: float32[64], trial_start: bool = False) -> float32[16]",
+    "module": "model.py",
+    "reset": "reset() at each source run/file boundary",
+    "test_time_parameter_updates": false
+  },
+  "official_falcon_score": false,
+  "output": {
+    "dtype": "float64",
+    "file": "y.npy",
+    "model_dtype": "float32",
+    "shape": [
+      "T",
+      16
+    ],
+    "target": "preprocessed_emg"
+  },
+  "primary_metric": {
+    "aggregation": "mask then concatenate same-date runs; variance-weighted R2 per date; equal-weight date mean and population std",
+    "direction": "maximize",
+    "id": "R2_variance_weighted"
+  },
+  "schema": "bpb-falcon-regression-contract/1",
+  "science_profile": "bpb-falcon-public-derived-cross-session-zs-v1",
+  "source": {
+    "dandiset_id": "000941",
+    "dandiset_version": "0.241029.1405",
+    "evaluator_export_receipt_sha256": "07de63f1312e327a0d271d9d1eb6070f0e16c793c489636a9755a2f203cec1d5",
+    "exporter_sha256": "1286c7b2b92e933de0f719807bedb75395b4c16044f4aac346621114fbc89cd5",
+    "full_raw_sha256_verified": true,
+    "protocol_sha256": "6bd11349ac95174257aebf3610308293d16975fa689b7b51cdc2d147b6115390",
+    "public_export_receipt_sha256": "03bf4f92d6d144904141cd45cfe20cb7e132a7f1417236b01e36005bfc6af2a4",
+    "repository": "https://github.com/snel-repo/falcon-challenge",
+    "sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f",
+    "source_manifest_sha256": "b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4",
+    "source_verification": "full_raw_sha256"
+  },
+  "source_origin_public": true,
+  "split": {
+    "test_access": "evaluator_only_public_origin",
+    "test_dates": [
+      "20121004",
+      "20121017",
+      "20121024"
+    ],
+    "train_dates": [
+      "20120924",
+      "20120926",
+      "20120927"
+    ],
+    "unit": "recording_date",
+    "valid_dates": [
+      "20120928"
+    ]
+  },
+  "task_id": "falcon-m1-emg",
+  "task_version": "0.1-public-validation-stream",
+  "trial_start": {
+    "boundary_before_current_sample": true,
+    "dtype": "bool",
+    "file": "trial_start.npy",
+    "formula": "searchsorted(target_timestamps, trials.start_time)",
+    "shape": [
+      "T"
+    ],
+    "terminal_marker_added": false
+  }
+}

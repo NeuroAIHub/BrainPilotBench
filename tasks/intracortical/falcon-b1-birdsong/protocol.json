@@ -1,0 +1,13 @@
+{
+  "schema": "bpb-invasive-protocol/1",
+  "profile": "bpb-falcon-public-derived-cross-session-zs-v1",
+  "task_id": "falcon-b1-birdsong",
+  "source": {"repository": "https://github.com/snel-repo/falcon-challenge", "sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f", "task": "b1", "dandiset": "001046", "version": "draft", "asset_manifest": "tasks/intracortical/_preparation/assets.manifest.json"},
+  "split": {"unit": "recording_date", "train_dates": ["20210626", "20210627"], "valid_dates": ["20210628"], "test_dates": ["20210630", "20210701", "20210705"], "selected_source_roles": {"train": "held-in-calib", "valid": "held-in-calib", "test": "held-out-calib"}, "excluded_source_role": "held-in-minival", "trial_boundary": "keep complete song motifs within one role", "test_access": "evaluator_only_public_origin"},
+  "input": {"type": "intracortical_threshold_crossings", "channels": 85, "sampling_hz": 30000, "unit": "threshold_crossing", "delivery": "complete motif"},
+  "output": {"type": "spectrogram_regression", "frequency_bins": 158, "target": "zebra finch vocalization spectrogram", "shape_per_motif": "[880,158] before native mask; 700 valid time bins expected"},
+  "metric": {"id": "normalized_spectrogram_MSE", "direction": "minimize", "mask": "native spectrogram_eval_mask", "aggregation": "independent 0-1 min-max of prediction and target per motif, motif MSE, date mean, equal-weight date mean and population std"},
+  "model_policy": {"train_valid_visible": true, "test_visible_to_agent": false, "held_out_calibration_allowed": false, "test_time_parameter_updates": false, "predict_in_recording_order": true},
+  "result_scope": "BrainPilotBench derived public-data profile; not an official FALCON score",
+  "status": "cross_session_protocol_frozen"
+}

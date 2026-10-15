@@ -1,0 +1,39 @@
+# Frozen FALCON B1 public-origin NWB assets; Test is evaluator-only.
+# Source 770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f; manifest SHA-256 b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4.
+datasets:
+  - name: b1-train-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/914a4d5a-a30c-4bd3-b3e0-aa51994a109a/download/
+    sha256: 35535c2ea2827826f561ff7cfeb38f3b216eb8e8292dd4c9d7391f068e31c7ed
+    bytes: 224583316
+    format: nwb
+    scope: public
+  - name: b1-train-0002.nwb
+    uri: https://api.dandiarchive.org/api/assets/68afa39f-b577-4183-a206-dde24d718b78/download/
+    sha256: 7474ec1158f34fb364fa5ab03c2e863ee41b6f8fa1637551bb75241ebe2f3204
+    bytes: 591750268
+    format: nwb
+    scope: public
+  - name: b1-valid-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/8a239242-2b86-4c15-8afd-6c737a8a3cca/download/
+    sha256: 2c356aa27ce8551670ffd68ff0482b6dcd61b46fad27434bb4b7224f16947124
+    bytes: 163388824
+    format: nwb
+    scope: public
+  - name: b1-test-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/0aed33b3-1b0f-43c1-afff-62db907ffcc8/download/
+    sha256: ce05975b77ad202893582af0b1f11ab9c8a069f6d673d8e03e69f9dc6a200bcc
+    bytes: 61398004
+    format: nwb
+    scope: private
+  - name: b1-test-0002.nwb
+    uri: https://api.dandiarchive.org/api/assets/17130548-235b-4631-95b2-000af0c3eb25/download/
+    sha256: 7a762a8d3334822ac764a9400925c6445b36c5ddff37c080adaf0c321591aa3d
+    bytes: 61398004
+    format: nwb
+    scope: private
+  - name: b1-test-0003.nwb
+    uri: https://api.dandiarchive.org/api/assets/04de4f52-21fa-4789-9e19-92a480f62518/download/
+    sha256: e587fd2bb081673ea4d51899da52471855c459a5546a7d4af32aa0be933583b9
+    bytes: 61398004
+    format: nwb
+    scope: private
