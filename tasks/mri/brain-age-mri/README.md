@@ -1,6 +1,6 @@
 # Age Prediction from Structural MRI
 
-[Task collection](../../../README.md#task-suite) · [Data lock](data.lock) · [Task specification](task.yaml)
+[BrainPilotBench v1](../../../README.md#task-suite) · [Data lock](data.lock) · [Task specification](task.yaml)
 
 The agent develops a model that predicts chronological age from T1-weighted brain MRI.
 Model development uses public images and age labels. Evaluation uses a separate

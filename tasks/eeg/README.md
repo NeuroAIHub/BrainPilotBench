@@ -4,24 +4,24 @@ Agents develop classifiers for motor imagery, evoked responses, sleep stages,
 and other EEG conditions. Each task defines its own input representation, data
 split, and scoring profile.
 
-The collection includes 23 new public-validation tasks and the two original
-BrainPilotBench-v0 EEG tasks. The new tasks cover 21 imported AgentEEGBench
+The EEG category in BrainPilotBench v1 includes 23 new public-validation tasks and the two retained
+BrainPilotBench-v0 EEG tasks. The v1 additions cover 21 imported AgentEEGBench
 protocols, a native BCI-IV-2a protocol, and full Sleep-EDF sleep staging.
 
 > [!NOTE]
-> **Agent benchmark results for the 23 new tasks: not yet available.**
+> **Agent benchmark results for the 23 v1 additions: not yet available.**
 >
 > Public data and evaluation code are available. Reference implementation checks are separate from agent results.
 > The two original EEG tasks retain their published v0 results and distinct protocols.
 
 | EEG collection status | Count | Boundary |
 | --- | ---: | --- |
-| New runnable public-validation tasks | 23 | Public train and validation only. No imported private Test score. |
-| Legacy runnable tasks | 2 | Retain their own data and scoring protocols. |
+| v1 additions | 23 | Public train and validation only. No imported private Test score. |
+| Retained v0 tasks | 2 | Included in v1, with their own data and scoring protocols. |
 | Preparation candidates | 4 | Not registered as runnable tasks. |
 | Withheld candidate | 1 | Not activated in this collection. |
 
-## Browse the new runnable tasks
+## Browse the v1 additions
 
 **Motor imagery**
 

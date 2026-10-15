@@ -1,16 +1,17 @@
-# Invasive-recording tasks: protocols and acceptance
+# BrainPilotBench v1: invasive recordings
 
 [Task collection](../README.md#task-suite) · [Catalog](../tasks/catalog.json) · [iEEG](../tasks/ieeg/README.md)
 
-This expansion adds seven tasks from real invasive recordings.
-It adds no synthetic research datasets and no Agent runtime.
+Invasive recordings is one data category in BrainPilotBench v1, with seven tasks from real ECoG, sEEG, and intracortical recordings.
+These tasks are part of v1's 108 additions and 112 runnable tasks, not a separate benchmark edition.
+The category adds no synthetic research datasets and no Agent runtime.
 All seven have locally accepted public-validation interfaces, complete role-bound data,
 and separate owner Test workflows checked with frozen references.
 
 > [!IMPORTANT]
 > Agent benchmark results are not available for these seven entries.
 > Source preparation and fixed-reference checks do not establish comparative Agent performance.
-> The original 105 packages and existing public data batch remain unchanged. This checkout has 112 runnable packages.
+> The v1 collection name does not change task protocols, data snapshots, or the four retained v0 tasks and their historical results.
 
 ## Research tasks
 

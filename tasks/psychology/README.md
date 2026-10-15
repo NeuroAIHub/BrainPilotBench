@@ -1,5 +1,7 @@
 # Model Human Behavior Across 76 Psych-101 Experiments
 
+These 76 tasks form the psychology category of [BrainPilotBench v1](../../README.md#task-suite).
+
 These tasks ask an agent to predict participants' recorded responses from the trial history that was visible to each participant. They do not ask the agent to choose the ideal answer. The collection spans reward choices, classification, memory, navigation, estimates, and response control.
 
 | Collection | Public protocol | Evidence |

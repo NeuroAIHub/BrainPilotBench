@@ -5,6 +5,7 @@
 These tasks use real human ECoG or sEEG recordings.
 ECoG records from electrodes on the cortical surface. sEEG uses depth electrodes.
 The task definitions preserve that distinction from scalp EEG and intracortical spike recordings.
+Together with the five [intracortical tasks](../intracortical/README.md), they form v1's seven-task [invasive-recording category](../../README.md#invasive-recordings).
 
 | Task | Research objective | Primary metric | Local status |
 |---|---|---|---|
