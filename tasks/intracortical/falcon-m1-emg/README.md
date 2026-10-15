@@ -9,13 +9,23 @@ It marks trials at `searchsorted(emg_timestamps, trial.start_time)`.
 
 Status: **locally accepted public-validation task**, version `0.1-public-validation-stream`.
 The [task entry](task.yaml) is active. [Acceptance evidence](acceptance.json) binds its critical files and fixed-reference checks.
-The [contract](contract.json) and [data lock](data.lock) bind all seven full-SHA-verified NWB sources and their derived arrays.
+The [contract](contract.json) binds seven full-SHA-verified NWB sources and their derived arrays. The [data lock](data.lock) binds hosted public Train/Valid files.
 No Agent result is recorded. The owner Test reference report stays outside Git.
 
 ## Data preparation
 
-For a prepared Train/Valid folder, use the [fixed public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package).
-Set `BPB_M1_DATA_DIR` to the downloaded task folder. The original-source route below remains available.
+The hosted Train/Valid files use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task).
+Prepare a workspace with the pinned host Python:
+
+    BPB_M1_PYTHON=/path/to/venv/bin/python \
+      node dist/cli.js prepare falcon-m1-emg --fetch \
+      --workspace /path/outside-git/m1-workspace
+
+Setup stages verified files in `/path/outside-git/m1-workspace/public_data`.
+Preparation passed from a verified existing public cache.
+The [delivery acceptance](delivery-acceptance.json) binds the revised lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+This delivery check did not rerun the fixed reference or owner Test.
+The original-source route below remains available for a local rebuild.
 
 Use Python 3.12 with [trusted preparation requirements](env/requirements.txt).
 Keep raw and derived roots outside Git checkouts.
@@ -70,9 +80,9 @@ Public Valid is for development.
 The separate owner Test path requires a frozen submission and prints a separate JSON report.
 This score is a BrainPilotBench public-derived profile, not an official FALCON score.
 
-Run the [manual collection workflow](../../../README.md#evaluate-your-agent) with the public root:
+After preparation, run the [manual collection workflow](../../../README.md#evaluate-your-agent) in the same workspace:
 
-    env BPB_M1_DATA_DIR=/path/to/m1-derived/public BPB_M1_PYTHON=/path/to/venv/bin/python \
+    env BPB_M1_PYTHON=/path/to/venv/bin/python \
       node dist/cli.js run falcon-m1-emg --adapter manual --agent my-agent@1 \
       --workspace /path/outside-git/m1-workspace
 
@@ -83,7 +93,7 @@ Then verify and score the resulting bundle:
     docker build -t bpb-m1-inference:local tasks/intracortical/falcon-m1-emg/checks
     IMAGE_ID=$(docker image inspect --format '{{.Id}}' bpb-m1-inference:local)
     node dist/cli.js submit verify /path/to/submission-bundle
-    env BPB_M1_DATA_DIR=/path/to/m1-derived/public BPB_M1_PYTHON=/path/to/venv/bin/python \
+    env BPB_M1_DATA_DIR=/path/outside-git/m1-workspace/public_data BPB_M1_PYTHON=/path/to/venv/bin/python \
       node dist/cli.js score /path/to/submission-bundle --isolation docker --inference-image "$IMAGE_ID"
 
 The Agent's separate training environment must omit raw sources, evaluator roots, credentials, and network access.

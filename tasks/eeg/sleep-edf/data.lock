@@ -12,13 +12,13 @@
 datasets:
   - name: public-main.tar.zst
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@acce5609c72e76425566a287b1b46130ddc49d79/sleep-edf/public-main.tar.zst
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/sleep-edf/public/public-main.tar.zst
     sha256: 4878fe56696cf3614328b07b990116c8459dc232a09612a59c13ab1903824d76
     bytes: 979263250
     format: tar.zst
   - name: loso-supplement.tar.zst
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@acce5609c72e76425566a287b1b46130ddc49d79/sleep-edf/loso-supplement.tar.zst
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/sleep-edf/public/loso-supplement.tar.zst
     sha256: 15305144631a17eb1cf4e74abee1e0361228874d4c2f1c8cad2a2f0560ae3d31
     bytes: 246263414
     format: tar.zst

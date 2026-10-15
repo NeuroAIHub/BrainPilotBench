@@ -17,7 +17,7 @@ The [protocol](protocol.json) fixes 20 earlier recording dates for Train and one
 Five public held-out calibration dates form evaluator-only Test.
 The native minival copies are excluded.
 The source is published DANDI `000950` version `0.241029.1403`.
-The [asset manifest](../_preparation/assets.manifest.json) and [data.lock](data.lock) bind exact NWB assets by size and SHA-256.
+The [asset manifest](../_preparation/assets.manifest.json) binds exact NWB sources. [data.lock](data.lock) binds hosted public Train/Valid files by size and SHA-256.
 The [contract](contract.json) binds every derived file and complete-trial count.
 The source code is fixed at [FALCON commit 770c9b9](https://github.com/snel-repo/falcon-challenge/tree/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f).
 
@@ -64,8 +64,12 @@ The registered-state check cannot prove that arbitrary Python follows every mode
 
 ## Prepare and run
 
-For a prepared Train/Valid folder, use the [fixed public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package).
-Set `BPB_H2_DATA_DIR` to the downloaded task folder. The original-source route below remains available.
+The hosted Train/Valid files use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task).
+The CLI copies verified files to the workspace and gives `BPB_PUBLIC_DATA_ROOT` to setup.
+Preparation passed from a verified existing public cache.
+The [delivery acceptance](delivery-acceptance.json) binds the revised lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+This delivery check did not rerun the fixed reference or owner Test.
+The original-source route below remains available for a local rebuild.
 
 Install the pinned trusted host packages with Python 3.12:
 
@@ -74,16 +78,20 @@ python3.12 -m venv /path/to/h2-host
 /path/to/h2-host/bin/python -m pip install -r tasks/intracortical/falcon-h2-handwriting/env/requirements.txt
 ```
 
-Fetch the frozen public assets with the BrainPilotBench CLI:
+Prepare one workspace from the hosted public files:
 
 ```bash
-BPB_CACHE_ROOT=/path/outside-git/h2-source-cache node dist/cli.js fetch falcon-h2-handwriting --public
+BPB_H2_PYTHON=/path/to/h2-host/bin/python \
+  node dist/cli.js prepare falcon-h2-handwriting --fetch \
+  --workspace /path/outside-git/h2-agent
 ```
 
-Export and stage public data outside a Git checkout:
+The setup stages Train and Valid in `/path/outside-git/h2-agent/public_data`.
+For a local source rebuild, use the [source preparation tool](../_preparation/prepare.py) to fill a separate source root.
+Then export and stage outside a Git checkout:
 
 ```bash
-BPB_H2_CONTENT_CACHE_ROOT=/path/outside-git/h2-source-cache \
+BPB_H2_SOURCE_ROOT=/path/outside-git/h2-source \
 BPB_H2_DERIVED_ROOT=/path/outside-git/h2-derived \
 BPB_H2_STAGE_DIR=/path/outside-git/h2-agent/public_data \
 BPB_H2_PYTHON=/path/to/h2-host/bin/python \
@@ -96,7 +104,8 @@ Provide only the staged public directory to the Agent.
 Remove source, cache, and evaluator paths from its environment and disable network access.
 
 Use the [manual collection workflow](../../../README.md#evaluate-your-agent) for a runnable task entry.
-Set `BPB_H2_DATA_DIR` to the staged public directory and `BPB_H2_PYTHON` to the trusted host interpreter.
+Set `BPB_H2_PYTHON` to the trusted host interpreter for Agent preparation.
+Set `BPB_H2_DATA_DIR` to `/path/outside-git/h2-agent/public_data` for scoring.
 Build an inference image from `checks/Dockerfile` and pass its immutable image ID to the scorer.
 The local CPU image uses Python 3.12, NumPy 2.2.6, PyTorch 2.7.1, and safetensors 0.5.3.
 The worker runs without network access and mounts only the three staged submission files.

@@ -244,8 +244,28 @@ if (catalog) {
           const datasets = runnables.get(id).task.datasets;
           const access = rows => rows.some(d => d.uri.startsWith("local://"))
             ? "maintainer_package_required" : "pinned_source_download";
-          if (entry.data_access !== access(datasets.filter(d => d.scope === "public")))
+          const publicDatasets = datasets.filter(d => d.scope === "public");
+          const invasive = ["ieeg", "intracortical"].includes(domain);
+          const dataCategory = invasive ? "invasive" : domain;
+          const canonicalPrefix = `tasks/${dataCategory}/${id}/public/`;
+          const hostedPublic = publicDatasets.length > 0 && publicDatasets.every(d => {
+            const match = /^hf:\/\/datasets\/BrainPilot-Bench\/Tasks-Data-Public@([0-9a-f]{40})\/(.+)$/.exec(d.uri);
+            return match && match[2].startsWith(canonicalPrefix);
+          });
+          const hostedAvailability = hostedPublic ? "published_public_snapshot"
+            : id === "falcon-h1-reach-grasp" ? "source_only" : undefined;
+          if (entry.hosted_data_availability !== hostedAvailability)
+            fail(`catalog ${id}: hosted public availability mismatch`);
+          const publicAccess = hostedPublic ? "pinned_public_snapshot" : access(publicDatasets);
+          if (entry.data_access !== publicAccess)
             fail(`catalog ${id}: public data access mismatch`);
+          if (invasive) {
+            const accepted = readJson(join(runnables.get(id).dir, "acceptance.json"), `catalog ${id} acceptance`);
+            if (entry.data_status !== (accepted?.data_status ?? "source_bound_reproducible_export"))
+              fail(`catalog ${id}: scientific data status mismatch`);
+          } else if (hostedPublic && entry.data_status !== "published_public_package") {
+            fail(`catalog ${id}: public package status mismatch`);
+          }
           const privateDatasets = datasets.filter(d => d.scope === "private");
           const privateAccess = privateDatasets.length ? access(privateDatasets) : undefined;
           if (entry.private_data_access !== privateAccess)

@@ -2,22 +2,22 @@
 # Source case motor_imagery/schalk2004bci2000; frozen task_spec SHA-256 f1b8c4bb24c5740894fe637a32dfe1b3f66324b61b1afe8a5760ba87b271a131.
 datasets:
   - name: eeg-mi-eegmmidb-train-npz
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-eegmmidb/expanded-three-seed-20260923-eegmmidb-v1/train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-mi-eegmmidb/public/train.npz
     sha256: ca5dcc43544020e4c0b78c60b0e1b520ce403b994c18e11f887f518ce1b4b99c
     bytes: 696775450
     scope: public
   - name: eeg-mi-eegmmidb-val-npz
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-eegmmidb/expanded-three-seed-20260923-eegmmidb-v1/val.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-mi-eegmmidb/public/val.npz
     sha256: c6dac3a4a5b51b42911e0ee6082bf52a887943ade15fd11d9cb8f8cab64026dd
     bytes: 232013034
     scope: public
   - name: eeg-mi-eegmmidb-train-groups-json
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-eegmmidb/expanded-three-seed-20260923-eegmmidb-v1/train-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-mi-eegmmidb/public/train-groups.json
     sha256: 9850e1642cc088be13ccc1953d36c772762085b9410a93fdb4f19d0b866756f1
     bytes: 390341
     scope: public
   - name: eeg-mi-eegmmidb-val-groups-json
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-eegmmidb/expanded-three-seed-20260923-eegmmidb-v1/val-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-mi-eegmmidb/public/val-groups.json
     sha256: be1897c38c715e4cbe93ea30d3a429207f5d6235781be04eca10500f0355fc1a
     bytes: 129383
     scope: public

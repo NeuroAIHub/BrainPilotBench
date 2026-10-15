@@ -10,13 +10,23 @@ It marks trials at `searchsorted(velocity_timestamps, trial.start_time)`.
 Status: **locally accepted public-validation task**, version `0.1-public-validation-stream`.
 The [task entry](task.yaml) is active. [Acceptance evidence](acceptance.json) binds its critical files and fixed-reference checks.
 The [contract](contract.json) binds all 13 source assets, selected ranges, and derived arrays.
-The [data lock](data.lock) lists 30 public derived files and 25 evaluator files through `local://` paths.
+The [data lock](data.lock) lists 30 hosted public derived files and 25 evaluator-only files.
 No Agent result is recorded. The owner Test reference report stays outside Git.
 
 ## Data preparation
 
-For a prepared Train/Valid folder, use the [fixed public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package).
-Set `BPB_M2_DATA_DIR` to the downloaded task folder. The original-source route below remains available.
+The hosted Train/Valid files use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task).
+Prepare a workspace with the pinned host Python:
+
+    BPB_M2_PYTHON=/path/to/venv/bin/python \
+      node dist/cli.js prepare falcon-m2-finger-velocity --fetch \
+      --workspace /path/outside-git/m2-workspace
+
+Setup stages verified files in `/path/outside-git/m2-workspace/public_data`.
+All 30 public files passed fresh anonymous size and SHA-256 download checks.
+The [delivery acceptance](delivery-acceptance.json) binds the revised lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+This delivery check did not rerun the fixed reference or owner Test.
+The original-source route below remains available for a local rebuild.
 
 Use Python 3.12 with [trusted preparation requirements](env/requirements.txt).
 Keep raw and derived roots outside Git checkouts.
@@ -49,11 +59,9 @@ Each selected source can reproduce its four arrays from its saved ranges without
 The selected-range exporter is the standard rebuild path for this task.
 A full raw NWB download is an optional source audit.
 
-The local fetcher reads [data.lock](data.lock) from the derived root.
-Set `BPB_LOCAL_DATA_ROOT` to that root for the maintainer fetch only.
-Unset it before the Agent starts.
-The public fetcher copied and verified all 30 public files from the derived root.
-It copied 13,234,392 bytes and no evaluator file.
+The earlier local fetch check read [data.lock](data.lock) from the derived root.
+That historical check copied and verified all 30 public files (13,234,392 bytes) and no evaluator file.
+For the current hosted route, use `prepare --fetch` above. Unset `BPB_LOCAL_DATA_ROOT` before Agent setup.
 
 ## Submission and scoring
 
@@ -77,9 +85,9 @@ Public Valid is for development.
 The separate owner Test path requires a frozen submission and prints a separate JSON report.
 This score is a BrainPilotBench public-derived profile, not an official FALCON score.
 
-Run the [manual collection workflow](../../../README.md#evaluate-your-agent) with the public root:
+After preparation, run the [manual collection workflow](../../../README.md#evaluate-your-agent) in the same workspace:
 
-    env BPB_M2_DATA_DIR=/path/to/m2-derived/public BPB_M2_PYTHON=/path/to/venv/bin/python \
+    env BPB_M2_PYTHON=/path/to/venv/bin/python \
       node dist/cli.js run falcon-m2-finger-velocity --adapter manual --agent my-agent@1 \
       --workspace /path/outside-git/m2-workspace
 
@@ -90,7 +98,7 @@ Then verify and score the resulting bundle:
     docker build -t bpb-m2-inference:local tasks/intracortical/falcon-m2-finger-velocity/checks
     IMAGE_ID=$(docker image inspect --format '{{.Id}}' bpb-m2-inference:local)
     node dist/cli.js submit verify /path/to/submission-bundle
-    env BPB_M2_DATA_DIR=/path/to/m2-derived/public BPB_M2_PYTHON=/path/to/venv/bin/python \
+    env BPB_M2_DATA_DIR=/path/outside-git/m2-workspace/public_data BPB_M2_PYTHON=/path/to/venv/bin/python \
       node dist/cli.js score /path/to/submission-bundle --isolation docker --inference-image "$IMAGE_ID"
 
 The Agent's separate training environment must omit raw sources, evaluator roots, credentials, and network access.

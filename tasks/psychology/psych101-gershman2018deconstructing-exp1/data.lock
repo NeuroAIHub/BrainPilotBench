@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-gershman2018deconstructing-exp1/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-gershman2018deconstructing-exp1/public/train.jsonl
     sha256: d0c88491ad5015dea4494954231f615c2925017af69e14b7869778e1fc5bf78a
     bytes: 255325
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-gershman2018deconstructing-exp1/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-gershman2018deconstructing-exp1/public/valid.jsonl
     sha256: 2ff6e2ebda2d3c8c66cc19ccb5d838f6ac84c2a673091a6691fb886389350865
     bytes: 63760
     format: jsonl

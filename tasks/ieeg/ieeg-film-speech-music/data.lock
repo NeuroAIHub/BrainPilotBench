@@ -3,6 +3,1805 @@
 # Rebuild derived local:// files with env/fetch_full.py and env/prepare_full.py.
 # Source Git commit: 5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2
 datasets:
+  - name: 061cc8ac7765acce6d74428d__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/061cc8ac7765acce6d74428d/metadata.json
+    sha256: cb925feb0ec41ded5bc8c3cfe4d26904aadf996647c3f2712201e5f58493aef5
+    bytes: 2068
+    format: json
+    scope: public
+    path: 061cc8ac7765acce6d74428d/metadata.json
+  - name: 061cc8ac7765acce6d74428d__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/061cc8ac7765acce6d74428d/train.npz
+    sha256: a55b4c8e8a25cf1990679bb8c3b4dda93d223e77dece9f3d5da2dfce5314c0e1
+    bytes: 13353016
+    format: npz
+    scope: public
+    path: 061cc8ac7765acce6d74428d/train.npz
+  - name: 061cc8ac7765acce6d74428d__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/061cc8ac7765acce6d74428d/train_labels.json
+    sha256: 806f7283a172c975234b2871438b06d13610137f26c7a2c5b9489c500a018f6b
+    bytes: 2973
+    format: json
+    scope: public
+    path: 061cc8ac7765acce6d74428d/train_labels.json
+  - name: 061cc8ac7765acce6d74428d__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/061cc8ac7765acce6d74428d/validation.npz
+    sha256: 68900e5277ce5cf5604e038298d26e8388b5d0b230db047fa854e7b56a422b5b
+    bytes: 3707806
+    format: npz
+    scope: public
+    path: 061cc8ac7765acce6d74428d/validation.npz
+  - name: 061cc8ac7765acce6d74428d__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/061cc8ac7765acce6d74428d/validation_labels.json
+    sha256: 902fe382dde592ff180a98a1ece7c3f0c02d02f8a7e9b7cf24017b157e2fca15
+    bytes: 828
+    format: json
+    scope: public
+    path: 061cc8ac7765acce6d74428d/validation_labels.json
+  - name: 140825584407c4ba0f942f9a__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/140825584407c4ba0f942f9a/metadata.json
+    sha256: ab5837dd5f6b2c1711c41602d34af6e086ab1601007c646494d323169f7a5178
+    bytes: 1852
+    format: json
+    scope: public
+    path: 140825584407c4ba0f942f9a/metadata.json
+  - name: 140825584407c4ba0f942f9a__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/140825584407c4ba0f942f9a/train.npz
+    sha256: 4954417b9e975711afedca744d05702168ee604962562ff01931792ee6441338
+    bytes: 11957163
+    format: npz
+    scope: public
+    path: 140825584407c4ba0f942f9a/train.npz
+  - name: 140825584407c4ba0f942f9a__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/140825584407c4ba0f942f9a/train_labels.json
+    sha256: 0527c535df239b601618eb94f7633620cba1662994ec3fdc849f1db396c07d7b
+    bytes: 3006
+    format: json
+    scope: public
+    path: 140825584407c4ba0f942f9a/train_labels.json
+  - name: 140825584407c4ba0f942f9a__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/140825584407c4ba0f942f9a/validation.npz
+    sha256: c0b1cb74afa4cea295dfbc58ab5c3089ad6e0dd1ce10efa073400a59f7186c8b
+    bytes: 3414499
+    format: npz
+    scope: public
+    path: 140825584407c4ba0f942f9a/validation.npz
+  - name: 140825584407c4ba0f942f9a__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/140825584407c4ba0f942f9a/validation_labels.json
+    sha256: d7c90ae37b86ca896ea608ba292ef1a840d0783dbbef5b3fba6893d863e682d8
+    bytes: 861
+    format: json
+    scope: public
+    path: 140825584407c4ba0f942f9a/validation_labels.json
+  - name: 1a2a249f3431a38176e1ec1d__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1a2a249f3431a38176e1ec1d/metadata.json
+    sha256: aaf5a8bb12e28a50612bfc53a6d0978e7f0338a630792bad4df319b21d0b0d4a
+    bytes: 1852
+    format: json
+    scope: public
+    path: 1a2a249f3431a38176e1ec1d/metadata.json
+  - name: 1a2a249f3431a38176e1ec1d__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1a2a249f3431a38176e1ec1d/train.npz
+    sha256: f660cdda020cfa3b64b1e851af9bf4825ca6c44eafe3e46ff9083983c30f8ec8
+    bytes: 11942443
+    format: npz
+    scope: public
+    path: 1a2a249f3431a38176e1ec1d/train.npz
+  - name: 1a2a249f3431a38176e1ec1d__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1a2a249f3431a38176e1ec1d/train_labels.json
+    sha256: 97b05772ff41464c8e525a24d34c98b590f17a4be742b8059c971f3b1893c767
+    bytes: 3006
+    format: json
+    scope: public
+    path: 1a2a249f3431a38176e1ec1d/train_labels.json
+  - name: 1a2a249f3431a38176e1ec1d__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1a2a249f3431a38176e1ec1d/validation.npz
+    sha256: eafb36395b60f70c345413daa3cc4712780ddfefe15a05e74f69a4e926fd0328
+    bytes: 3413270
+    format: npz
+    scope: public
+    path: 1a2a249f3431a38176e1ec1d/validation.npz
+  - name: 1a2a249f3431a38176e1ec1d__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1a2a249f3431a38176e1ec1d/validation_labels.json
+    sha256: 19e61bf1d680be3e37fe45f5c481abcce52dcaa83941cde2329d85959b3e2af8
+    bytes: 861
+    format: json
+    scope: public
+    path: 1a2a249f3431a38176e1ec1d/validation_labels.json
+  - name: 1ad3e6499cc52d9c1259cc69__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1ad3e6499cc52d9c1259cc69/metadata.json
+    sha256: 7cccb239957db11180d90e288a4691672d2be953a73c5d45b9e5644b14cc8dbc
+    bytes: 2716
+    format: json
+    scope: public
+    path: 1ad3e6499cc52d9c1259cc69/metadata.json
+  - name: 1ad3e6499cc52d9c1259cc69__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1ad3e6499cc52d9c1259cc69/train.npz
+    sha256: 2f1cfc0abd6a9ac288637563bff30a45bc7260238f548df260251bfaafedee05
+    bytes: 18136358
+    format: npz
+    scope: public
+    path: 1ad3e6499cc52d9c1259cc69/train.npz
+  - name: 1ad3e6499cc52d9c1259cc69__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1ad3e6499cc52d9c1259cc69/train_labels.json
+    sha256: f1fd5f252ddc040dc2208a15305e51baf5ce0e98873d2d17b0fd01dd12b11c49
+    bytes: 3006
+    format: json
+    scope: public
+    path: 1ad3e6499cc52d9c1259cc69/train_labels.json
+  - name: 1ad3e6499cc52d9c1259cc69__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1ad3e6499cc52d9c1259cc69/validation.npz
+    sha256: c243db269fe9aa069127c4b422c638f6999f1d44f962fa6942a101882519048e
+    bytes: 4982560
+    format: npz
+    scope: public
+    path: 1ad3e6499cc52d9c1259cc69/validation.npz
+  - name: 1ad3e6499cc52d9c1259cc69__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1ad3e6499cc52d9c1259cc69/validation_labels.json
+    sha256: ba05b486619011f278f4e6906a37c314f17a082b9e2c291d881f6ba07db4ea89
+    bytes: 828
+    format: json
+    scope: public
+    path: 1ad3e6499cc52d9c1259cc69/validation_labels.json
+  - name: 1d9eae913e596951ec71eb24__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1d9eae913e596951ec71eb24/metadata.json
+    sha256: 94e8e0e84aae2ec1d3b54828f702b4debefa070e422e2cd6fcbbf1721d64d160
+    bytes: 2620
+    format: json
+    scope: public
+    path: 1d9eae913e596951ec71eb24/metadata.json
+  - name: 1d9eae913e596951ec71eb24__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1d9eae913e596951ec71eb24/train.npz
+    sha256: 54ba7ee095dd08cbf35b5e1baa42425870022085f504b3bfad6e159259c28b47
+    bytes: 17475259
+    format: npz
+    scope: public
+    path: 1d9eae913e596951ec71eb24/train.npz
+  - name: 1d9eae913e596951ec71eb24__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1d9eae913e596951ec71eb24/train_labels.json
+    sha256: 81139edae96452c833742c1e48d1cffeaa977521610127bd7291e967c181bf6e
+    bytes: 3006
+    format: json
+    scope: public
+    path: 1d9eae913e596951ec71eb24/train_labels.json
+  - name: 1d9eae913e596951ec71eb24__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1d9eae913e596951ec71eb24/validation.npz
+    sha256: c9669dfbca1e6436efebd43dae9b6e09816682eb924562d763ee3672797aa337
+    bytes: 4993275
+    format: npz
+    scope: public
+    path: 1d9eae913e596951ec71eb24/validation.npz
+  - name: 1d9eae913e596951ec71eb24__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/1d9eae913e596951ec71eb24/validation_labels.json
+    sha256: dca39df5e3adfdf467f5b3fc9d2e87e7a001d48191c822709f9fa55ef4f66a81
+    bytes: 861
+    format: json
+    scope: public
+    path: 1d9eae913e596951ec71eb24/validation_labels.json
+  - name: 27a03604b1b71b271cfebce1__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/27a03604b1b71b271cfebce1/metadata.json
+    sha256: 784ec73c072c0e7117eb0eb73418cf6166eb25ec47d440997b96d5837b99983b
+    bytes: 2692
+    format: json
+    scope: public
+    path: 27a03604b1b71b271cfebce1/metadata.json
+  - name: 27a03604b1b71b271cfebce1__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/27a03604b1b71b271cfebce1/train.npz
+    sha256: 42fe577bce2ea71caa19b73ddd022e93eb1593139ecac77bd7af700c02491f56
+    bytes: 18015820
+    format: npz
+    scope: public
+    path: 27a03604b1b71b271cfebce1/train.npz
+  - name: 27a03604b1b71b271cfebce1__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/27a03604b1b71b271cfebce1/train_labels.json
+    sha256: 50ce4d286a2ffdc36134746735a9b602dcd070d3da42f64bfebf422468b752b4
+    bytes: 3006
+    format: json
+    scope: public
+    path: 27a03604b1b71b271cfebce1/train_labels.json
+  - name: 27a03604b1b71b271cfebce1__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/27a03604b1b71b271cfebce1/validation.npz
+    sha256: 98a5c0802eaedcaf0c03a460da3445cb00f77df3a4f672a05807d9baa8586c74
+    bytes: 5148756
+    format: npz
+    scope: public
+    path: 27a03604b1b71b271cfebce1/validation.npz
+  - name: 27a03604b1b71b271cfebce1__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/27a03604b1b71b271cfebce1/validation_labels.json
+    sha256: 23b1da352c3d8830b645adbf74e2fb4442d606472ae70e91f2b53c1a8766ca6f
+    bytes: 861
+    format: json
+    scope: public
+    path: 27a03604b1b71b271cfebce1/validation_labels.json
+  - name: 2f210a584c98562cb304509f__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/2f210a584c98562cb304509f/metadata.json
+    sha256: 737863a75985a43df241d6daf331eb41bda4f3eeb07d86e8c2873746ebb59abd
+    bytes: 1924
+    format: json
+    scope: public
+    path: 2f210a584c98562cb304509f/metadata.json
+  - name: 2f210a584c98562cb304509f__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/2f210a584c98562cb304509f/train.npz
+    sha256: 17e994ca75c2079f29cfc20fb9b4c016ec28d2d46f3b704514f274b9296269cf
+    bytes: 12446881
+    format: npz
+    scope: public
+    path: 2f210a584c98562cb304509f/train.npz
+  - name: 2f210a584c98562cb304509f__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/2f210a584c98562cb304509f/train_labels.json
+    sha256: 1fb80a815bfc71c82236f83bbbecd0b3e5ee4b4df02f037b9656cfc95b365518
+    bytes: 3006
+    format: json
+    scope: public
+    path: 2f210a584c98562cb304509f/train_labels.json
+  - name: 2f210a584c98562cb304509f__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/2f210a584c98562cb304509f/validation.npz
+    sha256: a5c0ffcc84cb4c5330fdf02330144f0362cf7ef4e9c04d295cca7dd07beccc20
+    bytes: 3558012
+    format: npz
+    scope: public
+    path: 2f210a584c98562cb304509f/validation.npz
+  - name: 2f210a584c98562cb304509f__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/2f210a584c98562cb304509f/validation_labels.json
+    sha256: c185c13d6347cddfe1c899089810527eed3fd9d2e19d8214c129e48c630a4698
+    bytes: 861
+    format: json
+    scope: public
+    path: 2f210a584c98562cb304509f/validation_labels.json
+  - name: 373f190da01895816304427e__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/373f190da01895816304427e/metadata.json
+    sha256: eba72df1c298362c1ddc8dfe7bc4e5437c036487eb9df8cd35a65e466099dbd4
+    bytes: 2380
+    format: json
+    scope: public
+    path: 373f190da01895816304427e/metadata.json
+  - name: 373f190da01895816304427e__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/373f190da01895816304427e/train.npz
+    sha256: 470aa28aee21c47d5a1b16a325b6425822b74405e08ff2b696c3813045491013
+    bytes: 15423368
+    format: npz
+    scope: public
+    path: 373f190da01895816304427e/train.npz
+  - name: 373f190da01895816304427e__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/373f190da01895816304427e/train_labels.json
+    sha256: 920a76784cca6731ad7dc50c094d5aba36c0d7aeabff2a45d8fc73ff6a67bafd
+    bytes: 2940
+    format: json
+    scope: public
+    path: 373f190da01895816304427e/train_labels.json
+  - name: 373f190da01895816304427e__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/373f190da01895816304427e/validation.npz
+    sha256: 30423603a6cfc981b1291b98435839b294a450484ab35d175fc36f10efd665af
+    bytes: 4506680
+    format: npz
+    scope: public
+    path: 373f190da01895816304427e/validation.npz
+  - name: 373f190da01895816304427e__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/373f190da01895816304427e/validation_labels.json
+    sha256: ab9d2014ef338ba1474325b4029fd568ae59feb88db7c5b7d9f1e132c5d5865e
+    bytes: 861
+    format: json
+    scope: public
+    path: 373f190da01895816304427e/validation_labels.json
+  - name: 39a0cdc5d087166bbea9c2cf__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/39a0cdc5d087166bbea9c2cf/metadata.json
+    sha256: 5c6f0980618bc941ba476c1a32d74c1e9835c73f3f1f398bc481ce098ef1a757
+    bytes: 2452
+    format: json
+    scope: public
+    path: 39a0cdc5d087166bbea9c2cf/metadata.json
+  - name: 39a0cdc5d087166bbea9c2cf__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/39a0cdc5d087166bbea9c2cf/train.npz
+    sha256: 49639f149ed64920d02b6c4074f993fc1b6f21fb25cd2d21d1ccb2254530d88c
+    bytes: 16081215
+    format: npz
+    scope: public
+    path: 39a0cdc5d087166bbea9c2cf/train.npz
+  - name: 39a0cdc5d087166bbea9c2cf__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/39a0cdc5d087166bbea9c2cf/train_labels.json
+    sha256: 404e868de3f365ea418f3edc607aff7dad1cd8e7895448dd633f1f9855adc628
+    bytes: 2973
+    format: json
+    scope: public
+    path: 39a0cdc5d087166bbea9c2cf/train_labels.json
+  - name: 39a0cdc5d087166bbea9c2cf__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/39a0cdc5d087166bbea9c2cf/validation.npz
+    sha256: 24e42ca07191350aa9863bce96925ed3735bcd08f4f41b95cbaa1303cd6b70d2
+    bytes: 4465256
+    format: npz
+    scope: public
+    path: 39a0cdc5d087166bbea9c2cf/validation.npz
+  - name: 39a0cdc5d087166bbea9c2cf__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/39a0cdc5d087166bbea9c2cf/validation_labels.json
+    sha256: 0da09af6d13fd51c724fbac9cb0789cabcbbdab4c92de6a603fe05532c4b92b7
+    bytes: 828
+    format: json
+    scope: public
+    path: 39a0cdc5d087166bbea9c2cf/validation_labels.json
+  - name: 3e32fc6406d10bc0d18b37d4__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/3e32fc6406d10bc0d18b37d4/metadata.json
+    sha256: d98c0522134e8a2901539275045eadf6492ee9e38a9178a465d3dcb982d68ff1
+    bytes: 2620
+    format: json
+    scope: public
+    path: 3e32fc6406d10bc0d18b37d4/metadata.json
+  - name: 3e32fc6406d10bc0d18b37d4__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/3e32fc6406d10bc0d18b37d4/train.npz
+    sha256: 5d9ae57ca236bc74897b9aa9168c26ba797f3da7013b5371b0a5419e81b5a0d6
+    bytes: 17015751
+    format: npz
+    scope: public
+    path: 3e32fc6406d10bc0d18b37d4/train.npz
+  - name: 3e32fc6406d10bc0d18b37d4__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/3e32fc6406d10bc0d18b37d4/train_labels.json
+    sha256: 0bcaaf35ffbc06121bccf57857140a23eeb2dfd93ae321ab8e7414adaaa8b181
+    bytes: 2940
+    format: json
+    scope: public
+    path: 3e32fc6406d10bc0d18b37d4/train_labels.json
+  - name: 3e32fc6406d10bc0d18b37d4__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/3e32fc6406d10bc0d18b37d4/validation.npz
+    sha256: b56eb94ef183f7b305aa140eabbc6a2d9a8350e7b5b75f57334e632452853106
+    bytes: 4971514
+    format: npz
+    scope: public
+    path: 3e32fc6406d10bc0d18b37d4/validation.npz
+  - name: 3e32fc6406d10bc0d18b37d4__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/3e32fc6406d10bc0d18b37d4/validation_labels.json
+    sha256: c0453b023df3b540c88139369f3fb9c9e5ae48d13f556658ad7452798d231388
+    bytes: 861
+    format: json
+    scope: public
+    path: 3e32fc6406d10bc0d18b37d4/validation_labels.json
+  - name: 41c39e8b6a2cee4c03b31c2e__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/41c39e8b6a2cee4c03b31c2e/metadata.json
+    sha256: 817677396ecaccc1789ac83a7c21dd90f2a494a65e60ab95ea0f4d01d38f4f59
+    bytes: 2764
+    format: json
+    scope: public
+    path: 41c39e8b6a2cee4c03b31c2e/metadata.json
+  - name: 41c39e8b6a2cee4c03b31c2e__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/41c39e8b6a2cee4c03b31c2e/train.npz
+    sha256: 05886a0d0902c116e7713010945bf3fdc89403a8ad191bc2ddfc1d64f498dbbe
+    bytes: 17896304
+    format: npz
+    scope: public
+    path: 41c39e8b6a2cee4c03b31c2e/train.npz
+  - name: 41c39e8b6a2cee4c03b31c2e__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/41c39e8b6a2cee4c03b31c2e/train_labels.json
+    sha256: b8a7c01135ea52a52dd22519925632d60f62bfe8d26f88a98ab25b7fd634cbfb
+    bytes: 2907
+    format: json
+    scope: public
+    path: 41c39e8b6a2cee4c03b31c2e/train_labels.json
+  - name: 41c39e8b6a2cee4c03b31c2e__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/41c39e8b6a2cee4c03b31c2e/validation.npz
+    sha256: 25b339bfa8eecc2af505aecee170bcf795a7c0c7e9a0ca45eff8c17b3255800b
+    bytes: 5083352
+    format: npz
+    scope: public
+    path: 41c39e8b6a2cee4c03b31c2e/validation.npz
+  - name: 41c39e8b6a2cee4c03b31c2e__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/41c39e8b6a2cee4c03b31c2e/validation_labels.json
+    sha256: b669650c3163bbf6c721b1ed8880df76f902580620574a2cc7bfda751541fc1a
+    bytes: 828
+    format: json
+    scope: public
+    path: 41c39e8b6a2cee4c03b31c2e/validation_labels.json
+  - name: 44a6317a22164002c2248bee__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/44a6317a22164002c2248bee/metadata.json
+    sha256: c80c9f843a3adee85815d38995dfd6417d5f11b3aa6f366689c1db79020bed69
+    bytes: 1612
+    format: json
+    scope: public
+    path: 44a6317a22164002c2248bee/metadata.json
+  - name: 44a6317a22164002c2248bee__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/44a6317a22164002c2248bee/train.npz
+    sha256: 21232498bcbb0bfda431a8b0468d7fcea266c34221a0cc27236ca4b01c8493e1
+    bytes: 9996461
+    format: npz
+    scope: public
+    path: 44a6317a22164002c2248bee/train.npz
+  - name: 44a6317a22164002c2248bee__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/44a6317a22164002c2248bee/train_labels.json
+    sha256: 19e1e7a94d236112b5ed1b378031831e599df071a5754289a3eeb808207787e1
+    bytes: 2940
+    format: json
+    scope: public
+    path: 44a6317a22164002c2248bee/train_labels.json
+  - name: 44a6317a22164002c2248bee__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/44a6317a22164002c2248bee/validation.npz
+    sha256: 70e49ae9b3a4d808f9539c44623e0c6ca1d5a1102e96405c52a545f58ddaab41
+    bytes: 2921596
+    format: npz
+    scope: public
+    path: 44a6317a22164002c2248bee/validation.npz
+  - name: 44a6317a22164002c2248bee__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/44a6317a22164002c2248bee/validation_labels.json
+    sha256: 2e957974337a1da0ca88e0350317fda6082935022198e6dfb163591d0061186d
+    bytes: 861
+    format: json
+    scope: public
+    path: 44a6317a22164002c2248bee/validation_labels.json
+  - name: 4c9d43627cb787a1b0448aba__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4c9d43627cb787a1b0448aba/metadata.json
+    sha256: 04eeb1e9d863f1abe73acd034263dc433be90df86e9775ad8840ba623f35f1d5
+    bytes: 1636
+    format: json
+    scope: public
+    path: 4c9d43627cb787a1b0448aba/metadata.json
+  - name: 4c9d43627cb787a1b0448aba__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4c9d43627cb787a1b0448aba/train.npz
+    sha256: ab45c072fd3487ee478ef44af2b7408215e95ac306e08f6ff1f8b021094227a4
+    bytes: 10368306
+    format: npz
+    scope: public
+    path: 4c9d43627cb787a1b0448aba/train.npz
+  - name: 4c9d43627cb787a1b0448aba__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4c9d43627cb787a1b0448aba/train_labels.json
+    sha256: fbc429185093f722be5ffc8f4e6b1cbf02be24821c813fc7c95c0f7101a2de0b
+    bytes: 3006
+    format: json
+    scope: public
+    path: 4c9d43627cb787a1b0448aba/train_labels.json
+  - name: 4c9d43627cb787a1b0448aba__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4c9d43627cb787a1b0448aba/validation.npz
+    sha256: 1a0b69c7c6524e07f72298eb8befb4a0980cca7c8f26115ec94d71ecb4ee5df8
+    bytes: 2963848
+    format: npz
+    scope: public
+    path: 4c9d43627cb787a1b0448aba/validation.npz
+  - name: 4c9d43627cb787a1b0448aba__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4c9d43627cb787a1b0448aba/validation_labels.json
+    sha256: 32757120ecf19c16d30e13befd3ff6d8978bd169460edbc27e568b28c74278ad
+    bytes: 861
+    format: json
+    scope: public
+    path: 4c9d43627cb787a1b0448aba/validation_labels.json
+  - name: 4cd5e2017e4afe2a5cd366d5__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4cd5e2017e4afe2a5cd366d5/metadata.json
+    sha256: 205478eaec0ec1a9575ae57d1f7715427341f18c8d5ae581115b7fc811368ff0
+    bytes: 1636
+    format: json
+    scope: public
+    path: 4cd5e2017e4afe2a5cd366d5/metadata.json
+  - name: 4cd5e2017e4afe2a5cd366d5__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4cd5e2017e4afe2a5cd366d5/train.npz
+    sha256: 4f601f6d20855d7de382eb843a45586a46b03c690e66f4428f4d8519f6f440a5
+    bytes: 10400326
+    format: npz
+    scope: public
+    path: 4cd5e2017e4afe2a5cd366d5/train.npz
+  - name: 4cd5e2017e4afe2a5cd366d5__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4cd5e2017e4afe2a5cd366d5/train_labels.json
+    sha256: d5adf5c1dffe45ae11807f76c07a5f8ec6f4eb9eebbb4c4c760401f113e67197
+    bytes: 3006
+    format: json
+    scope: public
+    path: 4cd5e2017e4afe2a5cd366d5/train_labels.json
+  - name: 4cd5e2017e4afe2a5cd366d5__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4cd5e2017e4afe2a5cd366d5/validation.npz
+    sha256: 4668bab3c0881bd0ad5477c1e859b7bad7d8562e3ee21f97c5ea489f12fecb1e
+    bytes: 2972056
+    format: npz
+    scope: public
+    path: 4cd5e2017e4afe2a5cd366d5/validation.npz
+  - name: 4cd5e2017e4afe2a5cd366d5__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4cd5e2017e4afe2a5cd366d5/validation_labels.json
+    sha256: d022bf01c0a3e2f3c93e6e8033537bad8622933eece4a3fe172336cebd4df8bd
+    bytes: 861
+    format: json
+    scope: public
+    path: 4cd5e2017e4afe2a5cd366d5/validation_labels.json
+  - name: 4d6681e383e8f1491f74e328__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4d6681e383e8f1491f74e328/metadata.json
+    sha256: 0cfbc4f81193d85ee3c14acea19a9df5579a8f63cf48e66ee63f7065a64db288
+    bytes: 2068
+    format: json
+    scope: public
+    path: 4d6681e383e8f1491f74e328/metadata.json
+  - name: 4d6681e383e8f1491f74e328__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4d6681e383e8f1491f74e328/train.npz
+    sha256: 45d8f1acebb3005cd7cba1cfbafc2e6816254c143245fad462dd08b65d4caef6
+    bytes: 13194492
+    format: npz
+    scope: public
+    path: 4d6681e383e8f1491f74e328/train.npz
+  - name: 4d6681e383e8f1491f74e328__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4d6681e383e8f1491f74e328/train_labels.json
+    sha256: d7d1935ea1905a3960b9a890bb2f1554e260003677c4e78918bb5a54e8169246
+    bytes: 2940
+    format: json
+    scope: public
+    path: 4d6681e383e8f1491f74e328/train_labels.json
+  - name: 4d6681e383e8f1491f74e328__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4d6681e383e8f1491f74e328/validation.npz
+    sha256: 90a2d10711aaaf663a9dc29ba68d07cd93d54c97f98f01207d748d20bda4323a
+    bytes: 3855204
+    format: npz
+    scope: public
+    path: 4d6681e383e8f1491f74e328/validation.npz
+  - name: 4d6681e383e8f1491f74e328__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/4d6681e383e8f1491f74e328/validation_labels.json
+    sha256: f3662632dbb6f6320a99b01fddd92b38ff799ef819b817eda5554e59a0c829dd
+    bytes: 861
+    format: json
+    scope: public
+    path: 4d6681e383e8f1491f74e328/validation_labels.json
+  - name: 57591157a49d8ac96997ab64__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/57591157a49d8ac96997ab64/metadata.json
+    sha256: a7eab5014a8c9d78adb25ef748277b830627716107dff0cf79accbc23ef57349
+    bytes: 1540
+    format: json
+    scope: public
+    path: 57591157a49d8ac96997ab64/metadata.json
+  - name: 57591157a49d8ac96997ab64__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/57591157a49d8ac96997ab64/train.npz
+    sha256: 3fca566efd84ce61f6b55590d325b2e13f1084bbe84acfcf15330aea24dcaa11
+    bytes: 9553956
+    format: npz
+    scope: public
+    path: 57591157a49d8ac96997ab64/train.npz
+  - name: 57591157a49d8ac96997ab64__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/57591157a49d8ac96997ab64/train_labels.json
+    sha256: 962c3413a370c36747eba554f94253c3a9aa45774a6f95ba933b99b0420e0372
+    bytes: 2973
+    format: json
+    scope: public
+    path: 57591157a49d8ac96997ab64/train_labels.json
+  - name: 57591157a49d8ac96997ab64__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/57591157a49d8ac96997ab64/validation.npz
+    sha256: 93d961caafffc04d74e89caa4465eff8e13e5c0dfb42c46d67b61c4213e5c5f0
+    bytes: 2762114
+    format: npz
+    scope: public
+    path: 57591157a49d8ac96997ab64/validation.npz
+  - name: 57591157a49d8ac96997ab64__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/57591157a49d8ac96997ab64/validation_labels.json
+    sha256: 93efcd3fa047e1f8439dc47c71beb40611d1b631cddd555388e77d08e1dda2bc
+    bytes: 861
+    format: json
+    scope: public
+    path: 57591157a49d8ac96997ab64/validation_labels.json
+  - name: 5c3c4cb93177744215251a8e__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/5c3c4cb93177744215251a8e/metadata.json
+    sha256: e98faef45701f548a4a9be742daeb29a938943bbe3ec798cbbb20d171c8a9433
+    bytes: 2812
+    format: json
+    scope: public
+    path: 5c3c4cb93177744215251a8e/metadata.json
+  - name: 5c3c4cb93177744215251a8e__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/5c3c4cb93177744215251a8e/train.npz
+    sha256: b3b47fd2e8b00969691f23da61ed0e0ba6c763259af2b3c7ab30f334083219ce
+    bytes: 18453007
+    format: npz
+    scope: public
+    path: 5c3c4cb93177744215251a8e/train.npz
+  - name: 5c3c4cb93177744215251a8e__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/5c3c4cb93177744215251a8e/train_labels.json
+    sha256: 21668819b4efa837ca730695aecf8a6843d3c751ccae5fa4ba837b3965c76141
+    bytes: 2940
+    format: json
+    scope: public
+    path: 5c3c4cb93177744215251a8e/train_labels.json
+  - name: 5c3c4cb93177744215251a8e__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/5c3c4cb93177744215251a8e/validation.npz
+    sha256: 573c74f44de8e104da63dfadcfdcaf32078830733dc6f1dd174db58af3b3432b
+    bytes: 5392395
+    format: npz
+    scope: public
+    path: 5c3c4cb93177744215251a8e/validation.npz
+  - name: 5c3c4cb93177744215251a8e__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/5c3c4cb93177744215251a8e/validation_labels.json
+    sha256: dcd6ed93c93d9d804b9a9c6bcf38c8dbf07f3c5508da75250ee78f1111fb725c
+    bytes: 861
+    format: json
+    scope: public
+    path: 5c3c4cb93177744215251a8e/validation_labels.json
+  - name: 615d23a681f3ed5afd31dd98__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/615d23a681f3ed5afd31dd98/metadata.json
+    sha256: de46836dbef2d2d33b35edf8a0118c9315c6e53e7c2052245673a2091e9c7a0c
+    bytes: 2764
+    format: json
+    scope: public
+    path: 615d23a681f3ed5afd31dd98/metadata.json
+  - name: 615d23a681f3ed5afd31dd98__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/615d23a681f3ed5afd31dd98/train.npz
+    sha256: f2264f1800744327ade8d9bbe9b2f770b16eb6e8512ef3aeea2cd8ec3d25928f
+    bytes: 18513082
+    format: npz
+    scope: public
+    path: 615d23a681f3ed5afd31dd98/train.npz
+  - name: 615d23a681f3ed5afd31dd98__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/615d23a681f3ed5afd31dd98/train_labels.json
+    sha256: 5cee69f84de149719825c908d79a4b70c8bc5584f2691b2714c2b04bec1abdad
+    bytes: 3006
+    format: json
+    scope: public
+    path: 615d23a681f3ed5afd31dd98/train_labels.json
+  - name: 615d23a681f3ed5afd31dd98__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/615d23a681f3ed5afd31dd98/validation.npz
+    sha256: 5207fd4a67ed800128855febbb367e4cd303dd38f850e4efa1f0594f722e0500
+    bytes: 5290104
+    format: npz
+    scope: public
+    path: 615d23a681f3ed5afd31dd98/validation.npz
+  - name: 615d23a681f3ed5afd31dd98__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/615d23a681f3ed5afd31dd98/validation_labels.json
+    sha256: 5147ae34b2c2d95284a80d2a3cc9cf1b4bbfb577c645180fe88af688e3244896
+    bytes: 861
+    format: json
+    scope: public
+    path: 615d23a681f3ed5afd31dd98/validation_labels.json
+  - name: 6242e2bc5fc8d6da70d4baa1__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6242e2bc5fc8d6da70d4baa1/metadata.json
+    sha256: 0700932833dcca094237a7cdd653fee92ad21bf9d9b0c749fccf74778e5d43b3
+    bytes: 1516
+    format: json
+    scope: public
+    path: 6242e2bc5fc8d6da70d4baa1/metadata.json
+  - name: 6242e2bc5fc8d6da70d4baa1__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6242e2bc5fc8d6da70d4baa1/train.npz
+    sha256: 18636154590b4fa5b4f9ad7d856b92f334fbf8eb334c29b76547c1743b62ca6d
+    bytes: 9538745
+    format: npz
+    scope: public
+    path: 6242e2bc5fc8d6da70d4baa1/train.npz
+  - name: 6242e2bc5fc8d6da70d4baa1__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6242e2bc5fc8d6da70d4baa1/train_labels.json
+    sha256: 5ba86c07eb00928eba75e8fa330662239832849ce91ab5c4d9a1f4b0bbdc9bb3
+    bytes: 3006
+    format: json
+    scope: public
+    path: 6242e2bc5fc8d6da70d4baa1/train_labels.json
+  - name: 6242e2bc5fc8d6da70d4baa1__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6242e2bc5fc8d6da70d4baa1/validation.npz
+    sha256: 1a75b058863456628ade841ba03865fcd843b26f4556047cba462727cc460c2e
+    bytes: 2724961
+    format: npz
+    scope: public
+    path: 6242e2bc5fc8d6da70d4baa1/validation.npz
+  - name: 6242e2bc5fc8d6da70d4baa1__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6242e2bc5fc8d6da70d4baa1/validation_labels.json
+    sha256: e7c7559d1aa8bc2d62558bb3b9651c3a7b84db0da3051359a1c3c0767e6cf890
+    bytes: 861
+    format: json
+    scope: public
+    path: 6242e2bc5fc8d6da70d4baa1/validation_labels.json
+  - name: 6675c377963972830447837c__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6675c377963972830447837c/metadata.json
+    sha256: e8fe45d633f00f81bd98c90db6e8ad26c731af38d14c2a2ffe6e37815663af5f
+    bytes: 2620
+    format: json
+    scope: public
+    path: 6675c377963972830447837c/metadata.json
+  - name: 6675c377963972830447837c__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6675c377963972830447837c/train.npz
+    sha256: 4b3a0db68fc61c1961760a2972d6025c4df6862a8fe98db321c0bcc03b0bf7b6
+    bytes: 17444643
+    format: npz
+    scope: public
+    path: 6675c377963972830447837c/train.npz
+  - name: 6675c377963972830447837c__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6675c377963972830447837c/train_labels.json
+    sha256: 4ba70a8badcf70532bc3d0c1934902605fc0a1d6d52d902226a42cef9c766130
+    bytes: 3006
+    format: json
+    scope: public
+    path: 6675c377963972830447837c/train_labels.json
+  - name: 6675c377963972830447837c__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6675c377963972830447837c/validation.npz
+    sha256: 964572f0a53db0fd8999376c97ce3c760a558b237cb487d48637170e3b000f34
+    bytes: 4995864
+    format: npz
+    scope: public
+    path: 6675c377963972830447837c/validation.npz
+  - name: 6675c377963972830447837c__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6675c377963972830447837c/validation_labels.json
+    sha256: e55b05425189864cbe7059ba1694705a8abc29daf750837ac86310b276c46022
+    bytes: 861
+    format: json
+    scope: public
+    path: 6675c377963972830447837c/validation_labels.json
+  - name: 6706c38c98c70cbbec58621d__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6706c38c98c70cbbec58621d/metadata.json
+    sha256: 453cb9c9e2a4609743dc0e50b3e7fc18ee4fc1d00ea62fd35a529e7397ee7f36
+    bytes: 2356
+    format: json
+    scope: public
+    path: 6706c38c98c70cbbec58621d/metadata.json
+  - name: 6706c38c98c70cbbec58621d__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6706c38c98c70cbbec58621d/train.npz
+    sha256: e6a85af2429089811459a623f365d78e7bbf92246eec86277929599509897037
+    bytes: 15248201
+    format: npz
+    scope: public
+    path: 6706c38c98c70cbbec58621d/train.npz
+  - name: 6706c38c98c70cbbec58621d__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6706c38c98c70cbbec58621d/train_labels.json
+    sha256: ebb1749a71a8de7734fc3fff8fd6a235dfe55a6664a34897fb2610754092ba76
+    bytes: 2940
+    format: json
+    scope: public
+    path: 6706c38c98c70cbbec58621d/train_labels.json
+  - name: 6706c38c98c70cbbec58621d__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6706c38c98c70cbbec58621d/validation.npz
+    sha256: 77eb68eec683c3b4cbfec90695bd9efa5e4be204b872ab2da8e0c442ebef39d4
+    bytes: 4454330
+    format: npz
+    scope: public
+    path: 6706c38c98c70cbbec58621d/validation.npz
+  - name: 6706c38c98c70cbbec58621d__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/6706c38c98c70cbbec58621d/validation_labels.json
+    sha256: 06ad5411e4712897488d14f7eee19a6e0a30e44b18d9a986523813b5eda8a341
+    bytes: 861
+    format: json
+    scope: public
+    path: 6706c38c98c70cbbec58621d/validation_labels.json
+  - name: 75571d8ee5a8bd9ac62f5ac3__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/75571d8ee5a8bd9ac62f5ac3/metadata.json
+    sha256: 074703c11ca5796749728a8ebc9fe123bd662c0f27e4362e32fb8ac8591ddd4b
+    bytes: 1852
+    format: json
+    scope: public
+    path: 75571d8ee5a8bd9ac62f5ac3/metadata.json
+  - name: 75571d8ee5a8bd9ac62f5ac3__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/75571d8ee5a8bd9ac62f5ac3/train.npz
+    sha256: 65d873214013feb82e79e46328a2bef6c54220e3e910bca3276356a4eec720ce
+    bytes: 11829484
+    format: npz
+    scope: public
+    path: 75571d8ee5a8bd9ac62f5ac3/train.npz
+  - name: 75571d8ee5a8bd9ac62f5ac3__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/75571d8ee5a8bd9ac62f5ac3/train_labels.json
+    sha256: 10996dee6ed42f4d463a3855aa8e12b37a0f0d5058c97ed8e494d2c751f4f8c3
+    bytes: 2973
+    format: json
+    scope: public
+    path: 75571d8ee5a8bd9ac62f5ac3/train_labels.json
+  - name: 75571d8ee5a8bd9ac62f5ac3__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/75571d8ee5a8bd9ac62f5ac3/validation.npz
+    sha256: 930d219d17bf37a73df8b7ae67daedc8f6aacc0637cfaad64158fd1d1ec848dc
+    bytes: 3418259
+    format: npz
+    scope: public
+    path: 75571d8ee5a8bd9ac62f5ac3/validation.npz
+  - name: 75571d8ee5a8bd9ac62f5ac3__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/75571d8ee5a8bd9ac62f5ac3/validation_labels.json
+    sha256: 8f09ed51f84a4058259b46920cb8ea68bc3bda8514adeb43c5484c140d886d2d
+    bytes: 861
+    format: json
+    scope: public
+    path: 75571d8ee5a8bd9ac62f5ac3/validation_labels.json
+  - name: 784f29be40aa1858cc2be24b__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/784f29be40aa1858cc2be24b/metadata.json
+    sha256: 21f2d9174405993f0f773a2b4b6edf043b7e98d0296f4b356cef3288da77355e
+    bytes: 2140
+    format: json
+    scope: public
+    path: 784f29be40aa1858cc2be24b/metadata.json
+  - name: 784f29be40aa1858cc2be24b__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/784f29be40aa1858cc2be24b/train.npz
+    sha256: f137b481b19838a7b7796f45483488b09bdf79cdc5b074967158b1fa8b147665
+    bytes: 13861496
+    format: npz
+    scope: public
+    path: 784f29be40aa1858cc2be24b/train.npz
+  - name: 784f29be40aa1858cc2be24b__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/784f29be40aa1858cc2be24b/train_labels.json
+    sha256: 46c565527b9f6170e178536335d3c9f18a0e6c14d9e9fe71bf04d7899788e899
+    bytes: 2973
+    format: json
+    scope: public
+    path: 784f29be40aa1858cc2be24b/train_labels.json
+  - name: 784f29be40aa1858cc2be24b__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/784f29be40aa1858cc2be24b/validation.npz
+    sha256: 3fc07c1c3ba3ec8e64e23fb5628372ce6ccf0ef0f4ca0f96b97b578e24299b75
+    bytes: 4002136
+    format: npz
+    scope: public
+    path: 784f29be40aa1858cc2be24b/validation.npz
+  - name: 784f29be40aa1858cc2be24b__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/784f29be40aa1858cc2be24b/validation_labels.json
+    sha256: 78d4d7b5ec2f43e4218ca2852803e2144ad9911eb27eacbd770847a54bef6b90
+    bytes: 861
+    format: json
+    scope: public
+    path: 784f29be40aa1858cc2be24b/validation_labels.json
+  - name: 79ee649fd18ca2a7482d4e2f__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/79ee649fd18ca2a7482d4e2f/metadata.json
+    sha256: 0c9e9286c2e589d98b669170acf29b539ce7403608615cccf82a29f6e99cc8b9
+    bytes: 2044
+    format: json
+    scope: public
+    path: 79ee649fd18ca2a7482d4e2f/metadata.json
+  - name: 79ee649fd18ca2a7482d4e2f__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/79ee649fd18ca2a7482d4e2f/train.npz
+    sha256: 6091eb339289621e8602d6ff4e729b96130fc03271432d87004bcfb9c3223a26
+    bytes: 13010416
+    format: npz
+    scope: public
+    path: 79ee649fd18ca2a7482d4e2f/train.npz
+  - name: 79ee649fd18ca2a7482d4e2f__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/79ee649fd18ca2a7482d4e2f/train_labels.json
+    sha256: e75aa34e25ba3b98a7cd0429db848d7409347ac17512f4a7d9265523fac59b1a
+    bytes: 2940
+    format: json
+    scope: public
+    path: 79ee649fd18ca2a7482d4e2f/train_labels.json
+  - name: 79ee649fd18ca2a7482d4e2f__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/79ee649fd18ca2a7482d4e2f/validation.npz
+    sha256: 7589d2d72dc1271c31a8eae452625b4ecb8d867b543037c9957b0e525ac39047
+    bytes: 3801258
+    format: npz
+    scope: public
+    path: 79ee649fd18ca2a7482d4e2f/validation.npz
+  - name: 79ee649fd18ca2a7482d4e2f__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/79ee649fd18ca2a7482d4e2f/validation_labels.json
+    sha256: 6cbb2955ff3ab358260432327e47b0036f3b8d7b6b9a02071410d26534710740
+    bytes: 861
+    format: json
+    scope: public
+    path: 79ee649fd18ca2a7482d4e2f/validation_labels.json
+  - name: 7e5f8d305ec7d0fde737a6b0__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/7e5f8d305ec7d0fde737a6b0/metadata.json
+    sha256: 268108a4971d8c08a3513a2ec017d4a93c06f410e1a319fd469e5c4292644ba0
+    bytes: 1612
+    format: json
+    scope: public
+    path: 7e5f8d305ec7d0fde737a6b0/metadata.json
+  - name: 7e5f8d305ec7d0fde737a6b0__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/7e5f8d305ec7d0fde737a6b0/train.npz
+    sha256: bad15b035a61a6f08d8045fefb518a55cb8644f8eb1d69394469736606cd2fe4
+    bytes: 10212863
+    format: npz
+    scope: public
+    path: 7e5f8d305ec7d0fde737a6b0/train.npz
+  - name: 7e5f8d305ec7d0fde737a6b0__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/7e5f8d305ec7d0fde737a6b0/train_labels.json
+    sha256: fcb9c1669ac8dc784125be4d409a24e10b9559879cce1a6bc8d1477431c03c28
+    bytes: 3006
+    format: json
+    scope: public
+    path: 7e5f8d305ec7d0fde737a6b0/train_labels.json
+  - name: 7e5f8d305ec7d0fde737a6b0__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/7e5f8d305ec7d0fde737a6b0/validation.npz
+    sha256: 3c11a9a2abba9e70b42c1cc1ae37664cada71ad70c4bc53f404c393e04e94d04
+    bytes: 2919361
+    format: npz
+    scope: public
+    path: 7e5f8d305ec7d0fde737a6b0/validation.npz
+  - name: 7e5f8d305ec7d0fde737a6b0__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/7e5f8d305ec7d0fde737a6b0/validation_labels.json
+    sha256: f35a7e5b7dc22fb01a489f53d2a2aeb2f77ee0ba346dcbff6ae5f62d115b1f56
+    bytes: 861
+    format: json
+    scope: public
+    path: 7e5f8d305ec7d0fde737a6b0/validation_labels.json
+  - name: 80e0146335fdb4ad695a2755__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/80e0146335fdb4ad695a2755/metadata.json
+    sha256: 03a285903b2bbccc85c5ce5fcef1f5906cfc11581c747537bad7252342976212
+    bytes: 2476
+    format: json
+    scope: public
+    path: 80e0146335fdb4ad695a2755/metadata.json
+  - name: 80e0146335fdb4ad695a2755__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/80e0146335fdb4ad695a2755/train.npz
+    sha256: f3d7b77a9261cbf9d0a2b4486022377744ca5bf1cde41874689e413f9b5f1070
+    bytes: 16401196
+    format: npz
+    scope: public
+    path: 80e0146335fdb4ad695a2755/train.npz
+  - name: 80e0146335fdb4ad695a2755__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/80e0146335fdb4ad695a2755/train_labels.json
+    sha256: 7e7cc74b62ec64c49069e5f76c21be99258a872d76956f870f61fc7f3d09ab88
+    bytes: 3006
+    format: json
+    scope: public
+    path: 80e0146335fdb4ad695a2755/train_labels.json
+  - name: 80e0146335fdb4ad695a2755__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/80e0146335fdb4ad695a2755/validation.npz
+    sha256: f3b0a50440a6d700c0cadac921c73100a7489213423a7b0b0fe161a00d0c84ec
+    bytes: 4683826
+    format: npz
+    scope: public
+    path: 80e0146335fdb4ad695a2755/validation.npz
+  - name: 80e0146335fdb4ad695a2755__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/80e0146335fdb4ad695a2755/validation_labels.json
+    sha256: ffc4720dbbd71946dd4f48022e1d5c9407a9254e89881af6b65a99d534a46aca
+    bytes: 861
+    format: json
+    scope: public
+    path: 80e0146335fdb4ad695a2755/validation_labels.json
+  - name: 8a880d70792f9fde171b2539__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8a880d70792f9fde171b2539/metadata.json
+    sha256: d2092867a13cfabd5b492938bfefc0e2c88f56a07e7916606ad9598293f1df08
+    bytes: 2812
+    format: json
+    scope: public
+    path: 8a880d70792f9fde171b2539/metadata.json
+  - name: 8a880d70792f9fde171b2539__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8a880d70792f9fde171b2539/train.npz
+    sha256: 59ec390f264503a3fdf9009efb881cc1bcea4131b7746ec2ccb14137e82e88bd
+    bytes: 18581568
+    format: npz
+    scope: public
+    path: 8a880d70792f9fde171b2539/train.npz
+  - name: 8a880d70792f9fde171b2539__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8a880d70792f9fde171b2539/train_labels.json
+    sha256: 3ea3427e0e348a555e1fc02f96783aed6e5ef899d4fe163f4f37c1f025d4a56b
+    bytes: 2973
+    format: json
+    scope: public
+    path: 8a880d70792f9fde171b2539/train_labels.json
+  - name: 8a880d70792f9fde171b2539__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8a880d70792f9fde171b2539/validation.npz
+    sha256: cd0b1e6a3cf7d35c9ff229f30bbe95aa53ccbacd87abbc9c77b098b64ef168bd
+    bytes: 5160294
+    format: npz
+    scope: public
+    path: 8a880d70792f9fde171b2539/validation.npz
+  - name: 8a880d70792f9fde171b2539__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8a880d70792f9fde171b2539/validation_labels.json
+    sha256: d35107c60bfab67db96a05e6ebb5a596c975c83f2c4e67c6e5754834f82f00dc
+    bytes: 828
+    format: json
+    scope: public
+    path: 8a880d70792f9fde171b2539/validation_labels.json
+  - name: 8fe9ba933c865804e2f39651__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8fe9ba933c865804e2f39651/metadata.json
+    sha256: f1d145e7a13d7ede82efe6e1148a86e758082bf20297f12708d444869cedc914
+    bytes: 1876
+    format: json
+    scope: public
+    path: 8fe9ba933c865804e2f39651/metadata.json
+  - name: 8fe9ba933c865804e2f39651__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8fe9ba933c865804e2f39651/train.npz
+    sha256: e0ba9c81770f683340dc67c24b3a7e702aef33c7a7b2a5295e11afa02ff0c69d
+    bytes: 11849699
+    format: npz
+    scope: public
+    path: 8fe9ba933c865804e2f39651/train.npz
+  - name: 8fe9ba933c865804e2f39651__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8fe9ba933c865804e2f39651/train_labels.json
+    sha256: 45c043c0b437bda57ac2bb29047a535cd6cde3cd90a9a3a4e1946c7ecc4640ec
+    bytes: 2940
+    format: json
+    scope: public
+    path: 8fe9ba933c865804e2f39651/train_labels.json
+  - name: 8fe9ba933c865804e2f39651__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8fe9ba933c865804e2f39651/validation.npz
+    sha256: a9ca3dc795fe2fa846fa724cbe2ab633b24faed2410d7ad6ad28a7e05d7615fc
+    bytes: 3460323
+    format: npz
+    scope: public
+    path: 8fe9ba933c865804e2f39651/validation.npz
+  - name: 8fe9ba933c865804e2f39651__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/8fe9ba933c865804e2f39651/validation_labels.json
+    sha256: cfd12283c728fe127039a67e162c8108124beaf3847c02207dbc32f84b384b23
+    bytes: 861
+    format: json
+    scope: public
+    path: 8fe9ba933c865804e2f39651/validation_labels.json
+  - name: 91582957e4358e2794d1e244__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/91582957e4358e2794d1e244/metadata.json
+    sha256: be6c25718593e4e9fb92d1ccd6c719bbeab7c78531bfd1b1cd83cd6b823c5332
+    bytes: 2500
+    format: json
+    scope: public
+    path: 91582957e4358e2794d1e244/metadata.json
+  - name: 91582957e4358e2794d1e244__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/91582957e4358e2794d1e244/train.npz
+    sha256: 50ec7cbfabde563578a534f2003ab87b4249f9f2e8b1d584781bdf68ec981ff2
+    bytes: 16466220
+    format: npz
+    scope: public
+    path: 91582957e4358e2794d1e244/train.npz
+  - name: 91582957e4358e2794d1e244__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/91582957e4358e2794d1e244/train_labels.json
+    sha256: ae51edd4d137bd4fdd4fbe285820e762069cb805732baf0d9553fdcaa9a5efb9
+    bytes: 2973
+    format: json
+    scope: public
+    path: 91582957e4358e2794d1e244/train_labels.json
+  - name: 91582957e4358e2794d1e244__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/91582957e4358e2794d1e244/validation.npz
+    sha256: d8f62100b88986e21d201cb9cb709b3c8e14e0e67668c505d4738baa506e2e55
+    bytes: 4573500
+    format: npz
+    scope: public
+    path: 91582957e4358e2794d1e244/validation.npz
+  - name: 91582957e4358e2794d1e244__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/91582957e4358e2794d1e244/validation_labels.json
+    sha256: c53844fdcc1b02edda7b9a7a11a2e3eea8d6e53d964c9e5582f455235b2427e7
+    bytes: 828
+    format: json
+    scope: public
+    path: 91582957e4358e2794d1e244/validation_labels.json
+  - name: 99804db839599003dfb764ba__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/99804db839599003dfb764ba/metadata.json
+    sha256: 037f401bb74fb446810038db7a129609a58ec5c9123dbca449cebf450ee688e6
+    bytes: 2116
+    format: json
+    scope: public
+    path: 99804db839599003dfb764ba/metadata.json
+  - name: 99804db839599003dfb764ba__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/99804db839599003dfb764ba/train.npz
+    sha256: 2b7b5fd30dd92522bc007ae43d8d123885f5029bad5443f6f8e07b3321712a5f
+    bytes: 13865840
+    format: npz
+    scope: public
+    path: 99804db839599003dfb764ba/train.npz
+  - name: 99804db839599003dfb764ba__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/99804db839599003dfb764ba/train_labels.json
+    sha256: 6502fe478d69d57847719b250a0f94a8984b254eaa096d227bdad3c9290f2f3a
+    bytes: 3006
+    format: json
+    scope: public
+    path: 99804db839599003dfb764ba/train_labels.json
+  - name: 99804db839599003dfb764ba__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/99804db839599003dfb764ba/validation.npz
+    sha256: 636bc48ff3327970ab2a90a0a07dcd89e9b03d050d31b233be70a59120131020
+    bytes: 3962291
+    format: npz
+    scope: public
+    path: 99804db839599003dfb764ba/validation.npz
+  - name: 99804db839599003dfb764ba__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/99804db839599003dfb764ba/validation_labels.json
+    sha256: 02212f3b2b6e38f7319dbac0a114d3376d85b5e756547b3fc08e82457361b768
+    bytes: 861
+    format: json
+    scope: public
+    path: 99804db839599003dfb764ba/validation_labels.json
+  - name: 9c02ff76e1e86e672ffd4b6a__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9c02ff76e1e86e672ffd4b6a/metadata.json
+    sha256: 8a71f8b933a0511938b0e1b3df1c90d2276ca744658ab23e7463d3b2a879732d
+    bytes: 1732
+    format: json
+    scope: public
+    path: 9c02ff76e1e86e672ffd4b6a/metadata.json
+  - name: 9c02ff76e1e86e672ffd4b6a__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9c02ff76e1e86e672ffd4b6a/train.npz
+    sha256: 9175c9cc39f56a87740849786599710c5214a19b27b9b0ab94a16de0ef6e1f48
+    bytes: 11058273
+    format: npz
+    scope: public
+    path: 9c02ff76e1e86e672ffd4b6a/train.npz
+  - name: 9c02ff76e1e86e672ffd4b6a__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9c02ff76e1e86e672ffd4b6a/train_labels.json
+    sha256: 7651bae30df2fa22b572dda5740bfdf186f049075386acc17b87001694744500
+    bytes: 3006
+    format: json
+    scope: public
+    path: 9c02ff76e1e86e672ffd4b6a/train_labels.json
+  - name: 9c02ff76e1e86e672ffd4b6a__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9c02ff76e1e86e672ffd4b6a/validation.npz
+    sha256: f0af7f93a7959c645f65e7ea18fb3cbca72ee508c4034517faa59e17ba259e58
+    bytes: 3167104
+    format: npz
+    scope: public
+    path: 9c02ff76e1e86e672ffd4b6a/validation.npz
+  - name: 9c02ff76e1e86e672ffd4b6a__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9c02ff76e1e86e672ffd4b6a/validation_labels.json
+    sha256: 07c708a68f3adf4ebaf70642f332cc127620e8db04192278361bbbe4d617b0f4
+    bytes: 861
+    format: json
+    scope: public
+    path: 9c02ff76e1e86e672ffd4b6a/validation_labels.json
+  - name: 9e0084229ef1e8033b374449__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e0084229ef1e8033b374449/metadata.json
+    sha256: 0e23c225fede2b38dce570949f952091aad1c8444246970ed16fc4afc8076ebd
+    bytes: 1732
+    format: json
+    scope: public
+    path: 9e0084229ef1e8033b374449/metadata.json
+  - name: 9e0084229ef1e8033b374449__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e0084229ef1e8033b374449/train.npz
+    sha256: 0823757de8cc946f7418bf87c4c42afd88cb1a8642eb30ff9d2587bce3f4abbd
+    bytes: 10941729
+    format: npz
+    scope: public
+    path: 9e0084229ef1e8033b374449/train.npz
+  - name: 9e0084229ef1e8033b374449__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e0084229ef1e8033b374449/train_labels.json
+    sha256: 782e81c119385490d0cba74e47082b11fd309abb02dd0fdb6ebde09a2a579244
+    bytes: 2973
+    format: json
+    scope: public
+    path: 9e0084229ef1e8033b374449/train_labels.json
+  - name: 9e0084229ef1e8033b374449__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e0084229ef1e8033b374449/validation.npz
+    sha256: c5672fc06ae693e7acbf75ccd276ddeb3a0752b7e26fcd9764875e3754d8f5b9
+    bytes: 3161299
+    format: npz
+    scope: public
+    path: 9e0084229ef1e8033b374449/validation.npz
+  - name: 9e0084229ef1e8033b374449__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e0084229ef1e8033b374449/validation_labels.json
+    sha256: cce83c97f889ab4dd6419379fcfdef8d4da764adfce88e4e47e4d1aa797d0f3a
+    bytes: 861
+    format: json
+    scope: public
+    path: 9e0084229ef1e8033b374449/validation_labels.json
+  - name: 9e04985ebcc7c7ffb96bf29e__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e04985ebcc7c7ffb96bf29e/metadata.json
+    sha256: a6e1a62d40a1bf60b493b61e5439bcd6f4111d8d75e7a50d8ea5277da9d16742
+    bytes: 1900
+    format: json
+    scope: public
+    path: 9e04985ebcc7c7ffb96bf29e/metadata.json
+  - name: 9e04985ebcc7c7ffb96bf29e__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e04985ebcc7c7ffb96bf29e/train.npz
+    sha256: bd011cb14fa9ded8958e1ff5315c46852e2bc840bda3fa500b745e9fd261ed09
+    bytes: 11985323
+    format: npz
+    scope: public
+    path: 9e04985ebcc7c7ffb96bf29e/train.npz
+  - name: 9e04985ebcc7c7ffb96bf29e__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e04985ebcc7c7ffb96bf29e/train_labels.json
+    sha256: 2f0d7ac31082a22a71dc4ed0bba44a7fe63f71f00da83a0738836a128b78cfe9
+    bytes: 2940
+    format: json
+    scope: public
+    path: 9e04985ebcc7c7ffb96bf29e/train_labels.json
+  - name: 9e04985ebcc7c7ffb96bf29e__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e04985ebcc7c7ffb96bf29e/validation.npz
+    sha256: d47f3615895b50b2897916f2021d12d7baf170767f6581088408b9db9e7bc743
+    bytes: 3500162
+    format: npz
+    scope: public
+    path: 9e04985ebcc7c7ffb96bf29e/validation.npz
+  - name: 9e04985ebcc7c7ffb96bf29e__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9e04985ebcc7c7ffb96bf29e/validation_labels.json
+    sha256: 0d0a5bc784644d89bc2e5ab21f05cb38481f6923b603464de87b5d7aa7b66314
+    bytes: 861
+    format: json
+    scope: public
+    path: 9e04985ebcc7c7ffb96bf29e/validation_labels.json
+  - name: 9eec5ee2ccc254675350e505__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9eec5ee2ccc254675350e505/metadata.json
+    sha256: 37f7fb2e1c5821383221d488a5bfea0e2838d75ecfd655249b70039f961fa5a3
+    bytes: 1228
+    format: json
+    scope: public
+    path: 9eec5ee2ccc254675350e505/metadata.json
+  - name: 9eec5ee2ccc254675350e505__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9eec5ee2ccc254675350e505/train.npz
+    sha256: 5dfd22cd4794a73052408d3021c1fb8cc2040e19313faf57307c4e58e8489f55
+    bytes: 7345443
+    format: npz
+    scope: public
+    path: 9eec5ee2ccc254675350e505/train.npz
+  - name: 9eec5ee2ccc254675350e505__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9eec5ee2ccc254675350e505/train_labels.json
+    sha256: 52f60bad134cc6a1d0ed6ff5d24ff502342fcb4718381cf778aa285310c4ba22
+    bytes: 2973
+    format: json
+    scope: public
+    path: 9eec5ee2ccc254675350e505/train_labels.json
+  - name: 9eec5ee2ccc254675350e505__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9eec5ee2ccc254675350e505/validation.npz
+    sha256: 0b65ff8d10d9f9c8f2626f67bd19bfacd6dfefee6df0c8509fe91eac2b0ffea6
+    bytes: 2121853
+    format: npz
+    scope: public
+    path: 9eec5ee2ccc254675350e505/validation.npz
+  - name: 9eec5ee2ccc254675350e505__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9eec5ee2ccc254675350e505/validation_labels.json
+    sha256: d24163ea83ce0e1dac76303f721d348da23b661cc892def1949071a0fe42f899
+    bytes: 861
+    format: json
+    scope: public
+    path: 9eec5ee2ccc254675350e505/validation_labels.json
+  - name: 9fbfa396edce2b51980c72b4__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9fbfa396edce2b51980c72b4/metadata.json
+    sha256: 53a7118fdc2ddd04d7230cbb64b80142b369432537e3c469aeecb5dc3997ce2f
+    bytes: 4132
+    format: json
+    scope: public
+    path: 9fbfa396edce2b51980c72b4/metadata.json
+  - name: 9fbfa396edce2b51980c72b4__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9fbfa396edce2b51980c72b4/train.npz
+    sha256: 31796516b7c38deed2bd8c6ef9683e78c07b94c3beb3a58fca51a0802e56c0d8
+    bytes: 27980209
+    format: npz
+    scope: public
+    path: 9fbfa396edce2b51980c72b4/train.npz
+  - name: 9fbfa396edce2b51980c72b4__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9fbfa396edce2b51980c72b4/train_labels.json
+    sha256: 3c9ba32e4ae532fb05f9ba125ae70908f2d506010eaec2a61833afedc06f696f
+    bytes: 2973
+    format: json
+    scope: public
+    path: 9fbfa396edce2b51980c72b4/train_labels.json
+  - name: 9fbfa396edce2b51980c72b4__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9fbfa396edce2b51980c72b4/validation.npz
+    sha256: f00f8185a912d2631c4b77e9fb8170c75dab048bf1eecd925975bfb73da9082d
+    bytes: 7769209
+    format: npz
+    scope: public
+    path: 9fbfa396edce2b51980c72b4/validation.npz
+  - name: 9fbfa396edce2b51980c72b4__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/9fbfa396edce2b51980c72b4/validation_labels.json
+    sha256: b42c72b4bb5c2966d3cc459aa65dfffa32d008d8109968ce1ade1ceb3798a342
+    bytes: 828
+    format: json
+    scope: public
+    path: 9fbfa396edce2b51980c72b4/validation_labels.json
+  - name: a39bb61476037489dd1b5302__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a39bb61476037489dd1b5302/metadata.json
+    sha256: 80c90bce9a4071c3a13399a422d830349abb77b1cecaf9a48f600f88cd18147a
+    bytes: 1660
+    format: json
+    scope: public
+    path: a39bb61476037489dd1b5302/metadata.json
+  - name: a39bb61476037489dd1b5302__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a39bb61476037489dd1b5302/train.npz
+    sha256: 2c3881791245936bd73d5676c603925c85ca3d538d66fc0adb60f6327e98f18a
+    bytes: 10286316
+    format: npz
+    scope: public
+    path: a39bb61476037489dd1b5302/train.npz
+  - name: a39bb61476037489dd1b5302__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a39bb61476037489dd1b5302/train_labels.json
+    sha256: d3a637e766c04309f351879ea9a7d6d17eb37926f7c8c6907895b7fc7b7d30c1
+    bytes: 2940
+    format: json
+    scope: public
+    path: a39bb61476037489dd1b5302/train_labels.json
+  - name: a39bb61476037489dd1b5302__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a39bb61476037489dd1b5302/validation.npz
+    sha256: 634a41b11c260b597f2449dbbb22e8df1e96331d7e5216fa7626c377ac4650f6
+    bytes: 3005220
+    format: npz
+    scope: public
+    path: a39bb61476037489dd1b5302/validation.npz
+  - name: a39bb61476037489dd1b5302__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a39bb61476037489dd1b5302/validation_labels.json
+    sha256: 25a9f42ee138c37850ab863027e68e45a61fae6d28023fb135c4e18661511fa9
+    bytes: 861
+    format: json
+    scope: public
+    path: a39bb61476037489dd1b5302/validation_labels.json
+  - name: a6eeb9eef42cd40df0506226__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a6eeb9eef42cd40df0506226/metadata.json
+    sha256: 8e07cc1e5937bd540579e13a9d1b65bbb08e41167e0fef5113c260ee5e0cef5a
+    bytes: 1660
+    format: json
+    scope: public
+    path: a6eeb9eef42cd40df0506226/metadata.json
+  - name: a6eeb9eef42cd40df0506226__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a6eeb9eef42cd40df0506226/train.npz
+    sha256: 61d73b0b91ecd27992bb99b131aa16d636137e880e3db26eca1349ea6bfe4c12
+    bytes: 10450116
+    format: npz
+    scope: public
+    path: a6eeb9eef42cd40df0506226/train.npz
+  - name: a6eeb9eef42cd40df0506226__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a6eeb9eef42cd40df0506226/train_labels.json
+    sha256: 68955e2fedd1c93bc0625003886c0289f9d1a0680995425ec27896f0ff21e5c9
+    bytes: 2973
+    format: json
+    scope: public
+    path: a6eeb9eef42cd40df0506226/train_labels.json
+  - name: a6eeb9eef42cd40df0506226__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a6eeb9eef42cd40df0506226/validation.npz
+    sha256: ac864034ccd9319ea3bad2aff4a834f161f540436c29243bc3c6b3e389d14a9f
+    bytes: 2904580
+    format: npz
+    scope: public
+    path: a6eeb9eef42cd40df0506226/validation.npz
+  - name: a6eeb9eef42cd40df0506226__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/a6eeb9eef42cd40df0506226/validation_labels.json
+    sha256: 89eff18381abc0a4f008ee4c0ef2e19c1c75db53e2ca6a7c8f3fcee360dd1901
+    bytes: 828
+    format: json
+    scope: public
+    path: a6eeb9eef42cd40df0506226/validation_labels.json
+  - name: ae071562bf0c69e0de55ca32__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae071562bf0c69e0de55ca32/metadata.json
+    sha256: b6059ac376f4995471c455f1c234f39c5193026f800aad0a37e4cefd73fff676
+    bytes: 1588
+    format: json
+    scope: public
+    path: ae071562bf0c69e0de55ca32/metadata.json
+  - name: ae071562bf0c69e0de55ca32__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae071562bf0c69e0de55ca32/train.npz
+    sha256: a33ed532215e2368118fe9570b64f30a6ff49a412f75bed5b953ff6da7ee6b7a
+    bytes: 10036418
+    format: npz
+    scope: public
+    path: ae071562bf0c69e0de55ca32/train.npz
+  - name: ae071562bf0c69e0de55ca32__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae071562bf0c69e0de55ca32/train_labels.json
+    sha256: a6329823fb00074c817600591b210c222dc853ada96be4d95aa29fbb419c68a6
+    bytes: 3006
+    format: json
+    scope: public
+    path: ae071562bf0c69e0de55ca32/train_labels.json
+  - name: ae071562bf0c69e0de55ca32__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae071562bf0c69e0de55ca32/validation.npz
+    sha256: 4cc88fa48b35eecec73112a2d914f4da60466e838133d3b93a5f05633f7d54c5
+    bytes: 2868964
+    format: npz
+    scope: public
+    path: ae071562bf0c69e0de55ca32/validation.npz
+  - name: ae071562bf0c69e0de55ca32__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae071562bf0c69e0de55ca32/validation_labels.json
+    sha256: 4e44589aaf3232a4422fc485967f2d6fdd94445ace3e3e2410c7c34eb14e74b4
+    bytes: 861
+    format: json
+    scope: public
+    path: ae071562bf0c69e0de55ca32/validation_labels.json
+  - name: ae718da47b5405ea86ea5526__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae718da47b5405ea86ea5526/metadata.json
+    sha256: ece15e016feee42cf318cc92c6aca5f013f0da7ba778e8f5fbed562670a5e8ed
+    bytes: 2452
+    format: json
+    scope: public
+    path: ae718da47b5405ea86ea5526/metadata.json
+  - name: ae718da47b5405ea86ea5526__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae718da47b5405ea86ea5526/train.npz
+    sha256: 692780adebc312050637bced5999983c32e86c5c1a42d3500c4ea7c18bd06892
+    bytes: 15904382
+    format: npz
+    scope: public
+    path: ae718da47b5405ea86ea5526/train.npz
+  - name: ae718da47b5405ea86ea5526__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae718da47b5405ea86ea5526/train_labels.json
+    sha256: 276eea6b9657f8e31c120d68bb16b0bf3f54257207a1f214fe9788a366140f77
+    bytes: 2940
+    format: json
+    scope: public
+    path: ae718da47b5405ea86ea5526/train_labels.json
+  - name: ae718da47b5405ea86ea5526__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae718da47b5405ea86ea5526/validation.npz
+    sha256: aa9142d5b10bc17f066c039a86e182ad152638ad47bb528077d87d5df2eed52b
+    bytes: 4465577
+    format: npz
+    scope: public
+    path: ae718da47b5405ea86ea5526/validation.npz
+  - name: ae718da47b5405ea86ea5526__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ae718da47b5405ea86ea5526/validation_labels.json
+    sha256: cb58147731065c120e7f2c0e02931b5cb707fcdc97b9b0332a1d1a2ea1339c44
+    bytes: 828
+    format: json
+    scope: public
+    path: ae718da47b5405ea86ea5526/validation_labels.json
+  - name: bdbb8c7e8a7dc40a9c837479__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/bdbb8c7e8a7dc40a9c837479/metadata.json
+    sha256: 2d4de43bdb18c8d037f77834e31b33a7c8dd081dbb3578749a1bba9078d70be3
+    bytes: 2332
+    format: json
+    scope: public
+    path: bdbb8c7e8a7dc40a9c837479/metadata.json
+  - name: bdbb8c7e8a7dc40a9c837479__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/bdbb8c7e8a7dc40a9c837479/train.npz
+    sha256: ab33ffb1630ad102dcf662d0ff091be866d8a859c4f3a62cc57b52b08d585137
+    bytes: 15081635
+    format: npz
+    scope: public
+    path: bdbb8c7e8a7dc40a9c837479/train.npz
+  - name: bdbb8c7e8a7dc40a9c837479__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/bdbb8c7e8a7dc40a9c837479/train_labels.json
+    sha256: 16d649eab20820a964c7b0bd138c7825de9fd4f312f302d128b367cbabd1b7f3
+    bytes: 2940
+    format: json
+    scope: public
+    path: bdbb8c7e8a7dc40a9c837479/train_labels.json
+  - name: bdbb8c7e8a7dc40a9c837479__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/bdbb8c7e8a7dc40a9c837479/validation.npz
+    sha256: eca97ae45ee221c772ac06750c349c6e1c5639f4f301e8130bcb0bfb1e8187b8
+    bytes: 4405297
+    format: npz
+    scope: public
+    path: bdbb8c7e8a7dc40a9c837479/validation.npz
+  - name: bdbb8c7e8a7dc40a9c837479__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/bdbb8c7e8a7dc40a9c837479/validation_labels.json
+    sha256: 17d415b0b1fa025bf03a7db09091c59fe10ae211b071d148f259c858734f4ab1
+    bytes: 861
+    format: json
+    scope: public
+    path: bdbb8c7e8a7dc40a9c837479/validation_labels.json
+  - name: c44177eb4a39d379327daf66__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/c44177eb4a39d379327daf66/metadata.json
+    sha256: 1627b0e2746a5353c4d2e9e50062181a67cea857616f692b92aad3edac84bac5
+    bytes: 1948
+    format: json
+    scope: public
+    path: c44177eb4a39d379327daf66/metadata.json
+  - name: c44177eb4a39d379327daf66__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/c44177eb4a39d379327daf66/train.npz
+    sha256: fba890ccdc0041815b131c919afb4b316352c05134b0337c09bb4002e456f7d1
+    bytes: 12511936
+    format: npz
+    scope: public
+    path: c44177eb4a39d379327daf66/train.npz
+  - name: c44177eb4a39d379327daf66__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/c44177eb4a39d379327daf66/train_labels.json
+    sha256: c8576cb83bd31079b69e288744d30a27e08d78992095745df05ce482e295f5dc
+    bytes: 2973
+    format: json
+    scope: public
+    path: c44177eb4a39d379327daf66/train_labels.json
+  - name: c44177eb4a39d379327daf66__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/c44177eb4a39d379327daf66/validation.npz
+    sha256: 0fd057d6718e3d678942430260ae04825f0fa4e673523ceee7a084421bb36c5a
+    bytes: 3614729
+    format: npz
+    scope: public
+    path: c44177eb4a39d379327daf66/validation.npz
+  - name: c44177eb4a39d379327daf66__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/c44177eb4a39d379327daf66/validation_labels.json
+    sha256: 870600a2848e6a2073477be19267682d2076300cbb6ba16ef5deecb4162bb014
+    bytes: 861
+    format: json
+    scope: public
+    path: c44177eb4a39d379327daf66/validation_labels.json
+  - name: ca87aad955c18a562b4d620e__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ca87aad955c18a562b4d620e/metadata.json
+    sha256: 90fa3eea5c9d2fcc24e603dd1986e539806d54b32f875b74e09e1c2e7b897150
+    bytes: 2644
+    format: json
+    scope: public
+    path: ca87aad955c18a562b4d620e/metadata.json
+  - name: ca87aad955c18a562b4d620e__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ca87aad955c18a562b4d620e/train.npz
+    sha256: 7c2dcf016fce318cde269c6f9b020ca2882c2d724f869b34c582f21f8c3594d3
+    bytes: 17475682
+    format: npz
+    scope: public
+    path: ca87aad955c18a562b4d620e/train.npz
+  - name: ca87aad955c18a562b4d620e__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ca87aad955c18a562b4d620e/train_labels.json
+    sha256: 7ffc74a6a2d079eacc55eb84ad3e2604806e549815a88602ded076f3dd90e95a
+    bytes: 2973
+    format: json
+    scope: public
+    path: ca87aad955c18a562b4d620e/train_labels.json
+  - name: ca87aad955c18a562b4d620e__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ca87aad955c18a562b4d620e/validation.npz
+    sha256: 0c5c0d6b9bc8760084ebe42c52f5506fa2a652d99ce7b7568a6dcf5955f23402
+    bytes: 5048020
+    format: npz
+    scope: public
+    path: ca87aad955c18a562b4d620e/validation.npz
+  - name: ca87aad955c18a562b4d620e__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/ca87aad955c18a562b4d620e/validation_labels.json
+    sha256: cf552a65803712ec2f4ecf7910a576494bbbffa61e619c182c03642ed0ac74b6
+    bytes: 861
+    format: json
+    scope: public
+    path: ca87aad955c18a562b4d620e/validation_labels.json
+  - name: d048cb6314a77347fb2830ab__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d048cb6314a77347fb2830ab/metadata.json
+    sha256: 4f821d2b5f5d719ffd57b2711ac97dbbe9e689df9349e3548472de0465008481
+    bytes: 2092
+    format: json
+    scope: public
+    path: d048cb6314a77347fb2830ab/metadata.json
+  - name: d048cb6314a77347fb2830ab__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d048cb6314a77347fb2830ab/train.npz
+    sha256: 7dd8c6e1dafae31be4bb9b94d45d828385ef1863cc1cc5a41ff3f34bbf20a841
+    bytes: 13649600
+    format: npz
+    scope: public
+    path: d048cb6314a77347fb2830ab/train.npz
+  - name: d048cb6314a77347fb2830ab__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d048cb6314a77347fb2830ab/train_labels.json
+    sha256: d05b60c044747737aa053d4483051e36655ee43d0fe949037f358f72b9b0265f
+    bytes: 3006
+    format: json
+    scope: public
+    path: d048cb6314a77347fb2830ab/train_labels.json
+  - name: d048cb6314a77347fb2830ab__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d048cb6314a77347fb2830ab/validation.npz
+    sha256: 88305e5f03feaf0a5a17be27d5f32933fbea70ffc037ed1608c948657f3eeebd
+    bytes: 3900425
+    format: npz
+    scope: public
+    path: d048cb6314a77347fb2830ab/validation.npz
+  - name: d048cb6314a77347fb2830ab__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d048cb6314a77347fb2830ab/validation_labels.json
+    sha256: 30a0edb094af3462288e126ea580ea6eb104b69e2ab1a6a573744414f25643fc
+    bytes: 861
+    format: json
+    scope: public
+    path: d048cb6314a77347fb2830ab/validation_labels.json
+  - name: d30162277d98503e1a66e677__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d30162277d98503e1a66e677/metadata.json
+    sha256: 6d309e614ac671bcb6e354bf34aebba8c5916655f0d85859d0ef47c616d4e11c
+    bytes: 2188
+    format: json
+    scope: public
+    path: d30162277d98503e1a66e677/metadata.json
+  - name: d30162277d98503e1a66e677__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d30162277d98503e1a66e677/train.npz
+    sha256: 91fe187d1b34c9a5cdca9884ce3ddf113fbcd2a2b4c36897d9f18bc46df3554e
+    bytes: 14387507
+    format: npz
+    scope: public
+    path: d30162277d98503e1a66e677/train.npz
+  - name: d30162277d98503e1a66e677__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d30162277d98503e1a66e677/train_labels.json
+    sha256: a59eaa0e81ff1bc82059ce9fc769facc2ac587e5d8b17486744954f3d4e7eeba
+    bytes: 3006
+    format: json
+    scope: public
+    path: d30162277d98503e1a66e677/train_labels.json
+  - name: d30162277d98503e1a66e677__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d30162277d98503e1a66e677/validation.npz
+    sha256: ceeb13ca4db1d1baedd83e5bee678392bc98b39f7c84a048b79e8717e32c61cf
+    bytes: 4113480
+    format: npz
+    scope: public
+    path: d30162277d98503e1a66e677/validation.npz
+  - name: d30162277d98503e1a66e677__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/d30162277d98503e1a66e677/validation_labels.json
+    sha256: 54cb8c06a6abc023784a100175fc8a294f55fca3ace07a51b0bdf4211a6f2f03
+    bytes: 861
+    format: json
+    scope: public
+    path: d30162277d98503e1a66e677/validation_labels.json
+  - name: e206be9cf197bbd5d0b4c5bf__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e206be9cf197bbd5d0b4c5bf/metadata.json
+    sha256: 35ef5b220bd4f8ac89f26a0cca94704b1de54627e9fa0294982059e1bc0bbc9e
+    bytes: 2980
+    format: json
+    scope: public
+    path: e206be9cf197bbd5d0b4c5bf/metadata.json
+  - name: e206be9cf197bbd5d0b4c5bf__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e206be9cf197bbd5d0b4c5bf/train.npz
+    sha256: 40e32ba7f663f74fac73e90b7b71b26b4a33a79d51ff573bf2ef9a95196a6672
+    bytes: 19586386
+    format: npz
+    scope: public
+    path: e206be9cf197bbd5d0b4c5bf/train.npz
+  - name: e206be9cf197bbd5d0b4c5bf__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e206be9cf197bbd5d0b4c5bf/train_labels.json
+    sha256: 0b6341719db8fb97bfaac5c79c1349fee64f1861945e4940aede5f804829da1e
+    bytes: 2940
+    format: json
+    scope: public
+    path: e206be9cf197bbd5d0b4c5bf/train_labels.json
+  - name: e206be9cf197bbd5d0b4c5bf__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e206be9cf197bbd5d0b4c5bf/validation.npz
+    sha256: 7a3a9fcfe9000a8fc4de9c9751463df896cac941806b6deaf9030d02cf9b31b6
+    bytes: 5501585
+    format: npz
+    scope: public
+    path: e206be9cf197bbd5d0b4c5bf/validation.npz
+  - name: e206be9cf197bbd5d0b4c5bf__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e206be9cf197bbd5d0b4c5bf/validation_labels.json
+    sha256: 36fdf9191ad555d36132ef458672fbc0ab15cb6182a4c1ca8c24887a2e8ea7b5
+    bytes: 828
+    format: json
+    scope: public
+    path: e206be9cf197bbd5d0b4c5bf/validation_labels.json
+  - name: e2b77b67309c08fada2b590a__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e2b77b67309c08fada2b590a/metadata.json
+    sha256: 08f9df94eb916803f3f4c8e5f1a84a0eb598ac1c33ae2ac5445e4e0a19de08c8
+    bytes: 2668
+    format: json
+    scope: public
+    path: e2b77b67309c08fada2b590a/metadata.json
+  - name: e2b77b67309c08fada2b590a__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e2b77b67309c08fada2b590a/train.npz
+    sha256: ac5dbd9f8b5b77edf16a565582a77280a4fc1f5d1460dce5425ee3b7925ed234
+    bytes: 17449257
+    format: npz
+    scope: public
+    path: e2b77b67309c08fada2b590a/train.npz
+  - name: e2b77b67309c08fada2b590a__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e2b77b67309c08fada2b590a/train_labels.json
+    sha256: 80affc6b663b68ae32b5597062ccb177fd31ff6963d4dea6e759f4d405a3ec95
+    bytes: 2940
+    format: json
+    scope: public
+    path: e2b77b67309c08fada2b590a/train_labels.json
+  - name: e2b77b67309c08fada2b590a__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e2b77b67309c08fada2b590a/validation.npz
+    sha256: 78393e48f3074d6770843842a70ac43f4f5a748535461958304b2c9c2aa92631
+    bytes: 5097639
+    format: npz
+    scope: public
+    path: e2b77b67309c08fada2b590a/validation.npz
+  - name: e2b77b67309c08fada2b590a__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/e2b77b67309c08fada2b590a/validation_labels.json
+    sha256: ce775e0c9d0987fead987821899b67c20d8c7be7fc1ce3a0fb673416eb703b67
+    bytes: 861
+    format: json
+    scope: public
+    path: e2b77b67309c08fada2b590a/validation_labels.json
+  - name: f2ac63e82bdf4a122eae68f4__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f2ac63e82bdf4a122eae68f4/metadata.json
+    sha256: 0a0bde4fa156111fde4b6f6894bd970f2fce5d5ba9c666dd0c714737af7ebe02
+    bytes: 1420
+    format: json
+    scope: public
+    path: f2ac63e82bdf4a122eae68f4/metadata.json
+  - name: f2ac63e82bdf4a122eae68f4__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f2ac63e82bdf4a122eae68f4/train.npz
+    sha256: 53f6898247a4dce05321f8062cfc26a3a60b41e772b730e08d50b94dddd2215d
+    bytes: 8744068
+    format: npz
+    scope: public
+    path: f2ac63e82bdf4a122eae68f4/train.npz
+  - name: f2ac63e82bdf4a122eae68f4__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f2ac63e82bdf4a122eae68f4/train_labels.json
+    sha256: 6ce73b0b135143357f953329379304d6fc6d40a3d651e2dc54ac88d88ab9bb88
+    bytes: 2973
+    format: json
+    scope: public
+    path: f2ac63e82bdf4a122eae68f4/train_labels.json
+  - name: f2ac63e82bdf4a122eae68f4__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f2ac63e82bdf4a122eae68f4/validation.npz
+    sha256: f69d71d5010af4a6df07e9370e03ef687024420c1dd41f1dfa8b5a991b6822e5
+    bytes: 2526016
+    format: npz
+    scope: public
+    path: f2ac63e82bdf4a122eae68f4/validation.npz
+  - name: f2ac63e82bdf4a122eae68f4__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f2ac63e82bdf4a122eae68f4/validation_labels.json
+    sha256: e194e08452b7835541030854243fe0d35ccc1eae5f33aaa9ead2bbf160d8795d
+    bytes: 861
+    format: json
+    scope: public
+    path: f2ac63e82bdf4a122eae68f4/validation_labels.json
+  - name: f95210c0fcd8eb394702cdfc__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f95210c0fcd8eb394702cdfc/metadata.json
+    sha256: cfb66348bbc766fd6862c4425772976acf1fe3a931177923fd2c66a1afcc9c0b
+    bytes: 2188
+    format: json
+    scope: public
+    path: f95210c0fcd8eb394702cdfc/metadata.json
+  - name: f95210c0fcd8eb394702cdfc__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f95210c0fcd8eb394702cdfc/train.npz
+    sha256: 7a17cbe2a4303959b4dc6e93e276bdaa35916fb94de1caa2da148abbd3f2d6c5
+    bytes: 14362870
+    format: npz
+    scope: public
+    path: f95210c0fcd8eb394702cdfc/train.npz
+  - name: f95210c0fcd8eb394702cdfc__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f95210c0fcd8eb394702cdfc/train_labels.json
+    sha256: afd76538e47e164a8c0748e377b6c847dbd17b1f399c0fceec63229bd3e046bc
+    bytes: 3006
+    format: json
+    scope: public
+    path: f95210c0fcd8eb394702cdfc/train_labels.json
+  - name: f95210c0fcd8eb394702cdfc__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f95210c0fcd8eb394702cdfc/validation.npz
+    sha256: 74c47c0e63ba01ed0d27a85a482e7fe78afea31050e25d4cfaaad3887857ffe2
+    bytes: 4103616
+    format: npz
+    scope: public
+    path: f95210c0fcd8eb394702cdfc/validation.npz
+  - name: f95210c0fcd8eb394702cdfc__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/f95210c0fcd8eb394702cdfc/validation_labels.json
+    sha256: 1c2af08336c9b94c59d0ef8af2629991e01a2ddd9b81c54208b459ee695f757c
+    bytes: 861
+    format: json
+    scope: public
+    path: f95210c0fcd8eb394702cdfc/validation_labels.json
+  - name: fa5eb569df965aa60fe2aba8__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fa5eb569df965aa60fe2aba8/metadata.json
+    sha256: 71d6ac7f86ef202ac7bd59721914eb91858dc687a4b90dabb5dfd6c4203b3e07
+    bytes: 2308
+    format: json
+    scope: public
+    path: fa5eb569df965aa60fe2aba8/metadata.json
+  - name: fa5eb569df965aa60fe2aba8__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fa5eb569df965aa60fe2aba8/train.npz
+    sha256: c6e7884b496ea7153f4589b883b2ebfd46474f77ef18cebe1c419c2beabf5865
+    bytes: 14882117
+    format: npz
+    scope: public
+    path: fa5eb569df965aa60fe2aba8/train.npz
+  - name: fa5eb569df965aa60fe2aba8__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fa5eb569df965aa60fe2aba8/train_labels.json
+    sha256: 708678ef31c6ece9e7708c8eaef8109a6e97b39fbf1f3ac789dc001f933d59d0
+    bytes: 2940
+    format: json
+    scope: public
+    path: fa5eb569df965aa60fe2aba8/train_labels.json
+  - name: fa5eb569df965aa60fe2aba8__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fa5eb569df965aa60fe2aba8/validation.npz
+    sha256: 23ecc4c18f83aacb65e89da677eb9eac5f788040255ed5f87d5adba6514f63a8
+    bytes: 4185313
+    format: npz
+    scope: public
+    path: fa5eb569df965aa60fe2aba8/validation.npz
+  - name: fa5eb569df965aa60fe2aba8__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fa5eb569df965aa60fe2aba8/validation_labels.json
+    sha256: 297038389ee01bf38bbe9f861be335e15c6428ea1644f2e1dcfd18cd0d24c217
+    bytes: 828
+    format: json
+    scope: public
+    path: fa5eb569df965aa60fe2aba8/validation_labels.json
+  - name: fca8cd7e02687e10ba3f77ad__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fca8cd7e02687e10ba3f77ad/metadata.json
+    sha256: 21bca45c4f67d3e712d1aef330f36524d971fa667fa4a56f06a551b3a51e3969
+    bytes: 1852
+    format: json
+    scope: public
+    path: fca8cd7e02687e10ba3f77ad/metadata.json
+  - name: fca8cd7e02687e10ba3f77ad__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fca8cd7e02687e10ba3f77ad/train.npz
+    sha256: e73f334b1485be2bc96aea7992dad3268df445dfdf0fd48fec693626961bba57
+    bytes: 11813102
+    format: npz
+    scope: public
+    path: fca8cd7e02687e10ba3f77ad/train.npz
+  - name: fca8cd7e02687e10ba3f77ad__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fca8cd7e02687e10ba3f77ad/train_labels.json
+    sha256: e09d08ab6ae120945c2e8d2d93cf2f6d0219beb121d3b0494d71ea2b70460bb7
+    bytes: 2973
+    format: json
+    scope: public
+    path: fca8cd7e02687e10ba3f77ad/train_labels.json
+  - name: fca8cd7e02687e10ba3f77ad__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fca8cd7e02687e10ba3f77ad/validation.npz
+    sha256: a36c365448490f071f44fc3f123dc0b699805e15bc385b7b8fc46782a49bafc0
+    bytes: 3418584
+    format: npz
+    scope: public
+    path: fca8cd7e02687e10ba3f77ad/validation.npz
+  - name: fca8cd7e02687e10ba3f77ad__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fca8cd7e02687e10ba3f77ad/validation_labels.json
+    sha256: 60344c0df430d9f7fd52edfe8dd622684a156916779d7a9167352bda050834c9
+    bytes: 861
+    format: json
+    scope: public
+    path: fca8cd7e02687e10ba3f77ad/validation_labels.json
+  - name: fde5bee80f2a1fd225351878__metadata.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fde5bee80f2a1fd225351878/metadata.json
+    sha256: 96b691ed17ac3b5d6d52126e6530c0f06fb70845b6f64760224ea881abe960ca
+    bytes: 1924
+    format: json
+    scope: public
+    path: fde5bee80f2a1fd225351878/metadata.json
+  - name: fde5bee80f2a1fd225351878__train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fde5bee80f2a1fd225351878/train.npz
+    sha256: ad6e74fe621c116b53d343de218faf3dddfd583865087551604df54fbcb1338f
+    bytes: 12475335
+    format: npz
+    scope: public
+    path: fde5bee80f2a1fd225351878/train.npz
+  - name: fde5bee80f2a1fd225351878__train_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fde5bee80f2a1fd225351878/train_labels.json
+    sha256: fcb87b57502dae746620a3c29edbe6acca759d01fc16b091726da0c6406afd4f
+    bytes: 3006
+    format: json
+    scope: public
+    path: fde5bee80f2a1fd225351878/train_labels.json
+  - name: fde5bee80f2a1fd225351878__validation.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fde5bee80f2a1fd225351878/validation.npz
+    sha256: d404dd0a579905a1d04bfd98bda20d11b90046374c006d559d335381191f9b07
+    bytes: 3565097
+    format: npz
+    scope: public
+    path: fde5bee80f2a1fd225351878/validation.npz
+  - name: fde5bee80f2a1fd225351878__validation_labels.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/fde5bee80f2a1fd225351878/validation_labels.json
+    sha256: aaf22596c149ce01238559e0637487a2fe52ced6770b85509426bf72a4e33fea
+    bytes: 861
+    format: json
+    scope: public
+    path: fde5bee80f2a1fd225351878/validation_labels.json
+  - name: train_manifest.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/train_manifest.json
+    sha256: 7c65bc5f0962461114ced3a6b264a771f0784e2d40818052820293f3af3a0a98
+    bytes: 45602
+    format: json
+    scope: public
+    path: train_manifest.json
+  - name: validation_manifest.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-film-speech-music/public/validation_manifest.json
+    sha256: 61d33ee7354696550537bebbc112d4566a08d60b398c1f9129b6f63fa177481a
+    bytes: 46020
+    format: json
+    scope: public
+    path: validation_manifest.json
   - name: sub-01__ses-iemu__ieeg__sub-01_ses-iemu_task-film_run-1_events.tsv
     uri: https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_run-1_events.tsv
     sha256: 72654b9a77e7f545b2a5667f2d08d86297c513386fcd7c4e41e788ef69dee433
@@ -1839,1545 +3638,3 @@ datasets:
     bytes: 1006
     format: vmrk
     scope: private
-  - name: 061cc8ac7765acce6d74428d__train.npz
-    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/train.npz
-    sha256: a55b4c8e8a25cf1990679bb8c3b4dda93d223e77dece9f3d5da2dfce5314c0e1
-    bytes: 13353016
-    format: npz
-    scope: public
-  - name: 061cc8ac7765acce6d74428d__train_labels.json
-    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/train_labels.json
-    sha256: 806f7283a172c975234b2871438b06d13610137f26c7a2c5b9489c500a018f6b
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 061cc8ac7765acce6d74428d__metadata.json
-    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/metadata.json
-    sha256: cb925feb0ec41ded5bc8c3cfe4d26904aadf996647c3f2712201e5f58493aef5
-    bytes: 2068
-    format: json
-    scope: public
-  - name: 140825584407c4ba0f942f9a__train.npz
-    uri: local://derived-v2/public/140825584407c4ba0f942f9a/train.npz
-    sha256: 4954417b9e975711afedca744d05702168ee604962562ff01931792ee6441338
-    bytes: 11957163
-    format: npz
-    scope: public
-  - name: 140825584407c4ba0f942f9a__train_labels.json
-    uri: local://derived-v2/public/140825584407c4ba0f942f9a/train_labels.json
-    sha256: 0527c535df239b601618eb94f7633620cba1662994ec3fdc849f1db396c07d7b
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 140825584407c4ba0f942f9a__metadata.json
-    uri: local://derived-v2/public/140825584407c4ba0f942f9a/metadata.json
-    sha256: ab5837dd5f6b2c1711c41602d34af6e086ab1601007c646494d323169f7a5178
-    bytes: 1852
-    format: json
-    scope: public
-  - name: 1a2a249f3431a38176e1ec1d__train.npz
-    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/train.npz
-    sha256: f660cdda020cfa3b64b1e851af9bf4825ca6c44eafe3e46ff9083983c30f8ec8
-    bytes: 11942443
-    format: npz
-    scope: public
-  - name: 1a2a249f3431a38176e1ec1d__train_labels.json
-    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/train_labels.json
-    sha256: 97b05772ff41464c8e525a24d34c98b590f17a4be742b8059c971f3b1893c767
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 1a2a249f3431a38176e1ec1d__metadata.json
-    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/metadata.json
-    sha256: aaf5a8bb12e28a50612bfc53a6d0978e7f0338a630792bad4df319b21d0b0d4a
-    bytes: 1852
-    format: json
-    scope: public
-  - name: 1ad3e6499cc52d9c1259cc69__train.npz
-    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/train.npz
-    sha256: 2f1cfc0abd6a9ac288637563bff30a45bc7260238f548df260251bfaafedee05
-    bytes: 18136358
-    format: npz
-    scope: public
-  - name: 1ad3e6499cc52d9c1259cc69__train_labels.json
-    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/train_labels.json
-    sha256: f1fd5f252ddc040dc2208a15305e51baf5ce0e98873d2d17b0fd01dd12b11c49
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 1ad3e6499cc52d9c1259cc69__metadata.json
-    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/metadata.json
-    sha256: 7cccb239957db11180d90e288a4691672d2be953a73c5d45b9e5644b14cc8dbc
-    bytes: 2716
-    format: json
-    scope: public
-  - name: 1d9eae913e596951ec71eb24__train.npz
-    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/train.npz
-    sha256: 54ba7ee095dd08cbf35b5e1baa42425870022085f504b3bfad6e159259c28b47
-    bytes: 17475259
-    format: npz
-    scope: public
-  - name: 1d9eae913e596951ec71eb24__train_labels.json
-    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/train_labels.json
-    sha256: 81139edae96452c833742c1e48d1cffeaa977521610127bd7291e967c181bf6e
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 1d9eae913e596951ec71eb24__metadata.json
-    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/metadata.json
-    sha256: 94e8e0e84aae2ec1d3b54828f702b4debefa070e422e2cd6fcbbf1721d64d160
-    bytes: 2620
-    format: json
-    scope: public
-  - name: 27a03604b1b71b271cfebce1__train.npz
-    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/train.npz
-    sha256: 42fe577bce2ea71caa19b73ddd022e93eb1593139ecac77bd7af700c02491f56
-    bytes: 18015820
-    format: npz
-    scope: public
-  - name: 27a03604b1b71b271cfebce1__train_labels.json
-    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/train_labels.json
-    sha256: 50ce4d286a2ffdc36134746735a9b602dcd070d3da42f64bfebf422468b752b4
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 27a03604b1b71b271cfebce1__metadata.json
-    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/metadata.json
-    sha256: 784ec73c072c0e7117eb0eb73418cf6166eb25ec47d440997b96d5837b99983b
-    bytes: 2692
-    format: json
-    scope: public
-  - name: 2f210a584c98562cb304509f__train.npz
-    uri: local://derived-v2/public/2f210a584c98562cb304509f/train.npz
-    sha256: 17e994ca75c2079f29cfc20fb9b4c016ec28d2d46f3b704514f274b9296269cf
-    bytes: 12446881
-    format: npz
-    scope: public
-  - name: 2f210a584c98562cb304509f__train_labels.json
-    uri: local://derived-v2/public/2f210a584c98562cb304509f/train_labels.json
-    sha256: 1fb80a815bfc71c82236f83bbbecd0b3e5ee4b4df02f037b9656cfc95b365518
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 2f210a584c98562cb304509f__metadata.json
-    uri: local://derived-v2/public/2f210a584c98562cb304509f/metadata.json
-    sha256: 737863a75985a43df241d6daf331eb41bda4f3eeb07d86e8c2873746ebb59abd
-    bytes: 1924
-    format: json
-    scope: public
-  - name: 373f190da01895816304427e__train.npz
-    uri: local://derived-v2/public/373f190da01895816304427e/train.npz
-    sha256: 470aa28aee21c47d5a1b16a325b6425822b74405e08ff2b696c3813045491013
-    bytes: 15423368
-    format: npz
-    scope: public
-  - name: 373f190da01895816304427e__train_labels.json
-    uri: local://derived-v2/public/373f190da01895816304427e/train_labels.json
-    sha256: 920a76784cca6731ad7dc50c094d5aba36c0d7aeabff2a45d8fc73ff6a67bafd
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 373f190da01895816304427e__metadata.json
-    uri: local://derived-v2/public/373f190da01895816304427e/metadata.json
-    sha256: eba72df1c298362c1ddc8dfe7bc4e5437c036487eb9df8cd35a65e466099dbd4
-    bytes: 2380
-    format: json
-    scope: public
-  - name: 39a0cdc5d087166bbea9c2cf__train.npz
-    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/train.npz
-    sha256: 49639f149ed64920d02b6c4074f993fc1b6f21fb25cd2d21d1ccb2254530d88c
-    bytes: 16081215
-    format: npz
-    scope: public
-  - name: 39a0cdc5d087166bbea9c2cf__train_labels.json
-    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/train_labels.json
-    sha256: 404e868de3f365ea418f3edc607aff7dad1cd8e7895448dd633f1f9855adc628
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 39a0cdc5d087166bbea9c2cf__metadata.json
-    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/metadata.json
-    sha256: 5c6f0980618bc941ba476c1a32d74c1e9835c73f3f1f398bc481ce098ef1a757
-    bytes: 2452
-    format: json
-    scope: public
-  - name: 3e32fc6406d10bc0d18b37d4__train.npz
-    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/train.npz
-    sha256: 5d9ae57ca236bc74897b9aa9168c26ba797f3da7013b5371b0a5419e81b5a0d6
-    bytes: 17015751
-    format: npz
-    scope: public
-  - name: 3e32fc6406d10bc0d18b37d4__train_labels.json
-    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/train_labels.json
-    sha256: 0bcaaf35ffbc06121bccf57857140a23eeb2dfd93ae321ab8e7414adaaa8b181
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 3e32fc6406d10bc0d18b37d4__metadata.json
-    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/metadata.json
-    sha256: d98c0522134e8a2901539275045eadf6492ee9e38a9178a465d3dcb982d68ff1
-    bytes: 2620
-    format: json
-    scope: public
-  - name: 41c39e8b6a2cee4c03b31c2e__train.npz
-    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/train.npz
-    sha256: 05886a0d0902c116e7713010945bf3fdc89403a8ad191bc2ddfc1d64f498dbbe
-    bytes: 17896304
-    format: npz
-    scope: public
-  - name: 41c39e8b6a2cee4c03b31c2e__train_labels.json
-    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/train_labels.json
-    sha256: b8a7c01135ea52a52dd22519925632d60f62bfe8d26f88a98ab25b7fd634cbfb
-    bytes: 2907
-    format: json
-    scope: public
-  - name: 41c39e8b6a2cee4c03b31c2e__metadata.json
-    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/metadata.json
-    sha256: 817677396ecaccc1789ac83a7c21dd90f2a494a65e60ab95ea0f4d01d38f4f59
-    bytes: 2764
-    format: json
-    scope: public
-  - name: 44a6317a22164002c2248bee__train.npz
-    uri: local://derived-v2/public/44a6317a22164002c2248bee/train.npz
-    sha256: 21232498bcbb0bfda431a8b0468d7fcea266c34221a0cc27236ca4b01c8493e1
-    bytes: 9996461
-    format: npz
-    scope: public
-  - name: 44a6317a22164002c2248bee__train_labels.json
-    uri: local://derived-v2/public/44a6317a22164002c2248bee/train_labels.json
-    sha256: 19e1e7a94d236112b5ed1b378031831e599df071a5754289a3eeb808207787e1
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 44a6317a22164002c2248bee__metadata.json
-    uri: local://derived-v2/public/44a6317a22164002c2248bee/metadata.json
-    sha256: c80c9f843a3adee85815d38995dfd6417d5f11b3aa6f366689c1db79020bed69
-    bytes: 1612
-    format: json
-    scope: public
-  - name: 4c9d43627cb787a1b0448aba__train.npz
-    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/train.npz
-    sha256: ab45c072fd3487ee478ef44af2b7408215e95ac306e08f6ff1f8b021094227a4
-    bytes: 10368306
-    format: npz
-    scope: public
-  - name: 4c9d43627cb787a1b0448aba__train_labels.json
-    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/train_labels.json
-    sha256: fbc429185093f722be5ffc8f4e6b1cbf02be24821c813fc7c95c0f7101a2de0b
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 4c9d43627cb787a1b0448aba__metadata.json
-    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/metadata.json
-    sha256: 04eeb1e9d863f1abe73acd034263dc433be90df86e9775ad8840ba623f35f1d5
-    bytes: 1636
-    format: json
-    scope: public
-  - name: 4cd5e2017e4afe2a5cd366d5__train.npz
-    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/train.npz
-    sha256: 4f601f6d20855d7de382eb843a45586a46b03c690e66f4428f4d8519f6f440a5
-    bytes: 10400326
-    format: npz
-    scope: public
-  - name: 4cd5e2017e4afe2a5cd366d5__train_labels.json
-    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/train_labels.json
-    sha256: d5adf5c1dffe45ae11807f76c07a5f8ec6f4eb9eebbb4c4c760401f113e67197
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 4cd5e2017e4afe2a5cd366d5__metadata.json
-    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/metadata.json
-    sha256: 205478eaec0ec1a9575ae57d1f7715427341f18c8d5ae581115b7fc811368ff0
-    bytes: 1636
-    format: json
-    scope: public
-  - name: 4d6681e383e8f1491f74e328__train.npz
-    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/train.npz
-    sha256: 45d8f1acebb3005cd7cba1cfbafc2e6816254c143245fad462dd08b65d4caef6
-    bytes: 13194492
-    format: npz
-    scope: public
-  - name: 4d6681e383e8f1491f74e328__train_labels.json
-    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/train_labels.json
-    sha256: d7d1935ea1905a3960b9a890bb2f1554e260003677c4e78918bb5a54e8169246
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 4d6681e383e8f1491f74e328__metadata.json
-    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/metadata.json
-    sha256: 0cfbc4f81193d85ee3c14acea19a9df5579a8f63cf48e66ee63f7065a64db288
-    bytes: 2068
-    format: json
-    scope: public
-  - name: 57591157a49d8ac96997ab64__train.npz
-    uri: local://derived-v2/public/57591157a49d8ac96997ab64/train.npz
-    sha256: 3fca566efd84ce61f6b55590d325b2e13f1084bbe84acfcf15330aea24dcaa11
-    bytes: 9553956
-    format: npz
-    scope: public
-  - name: 57591157a49d8ac96997ab64__train_labels.json
-    uri: local://derived-v2/public/57591157a49d8ac96997ab64/train_labels.json
-    sha256: 962c3413a370c36747eba554f94253c3a9aa45774a6f95ba933b99b0420e0372
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 57591157a49d8ac96997ab64__metadata.json
-    uri: local://derived-v2/public/57591157a49d8ac96997ab64/metadata.json
-    sha256: a7eab5014a8c9d78adb25ef748277b830627716107dff0cf79accbc23ef57349
-    bytes: 1540
-    format: json
-    scope: public
-  - name: 5c3c4cb93177744215251a8e__train.npz
-    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/train.npz
-    sha256: b3b47fd2e8b00969691f23da61ed0e0ba6c763259af2b3c7ab30f334083219ce
-    bytes: 18453007
-    format: npz
-    scope: public
-  - name: 5c3c4cb93177744215251a8e__train_labels.json
-    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/train_labels.json
-    sha256: 21668819b4efa837ca730695aecf8a6843d3c751ccae5fa4ba837b3965c76141
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 5c3c4cb93177744215251a8e__metadata.json
-    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/metadata.json
-    sha256: e98faef45701f548a4a9be742daeb29a938943bbe3ec798cbbb20d171c8a9433
-    bytes: 2812
-    format: json
-    scope: public
-  - name: 615d23a681f3ed5afd31dd98__train.npz
-    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/train.npz
-    sha256: f2264f1800744327ade8d9bbe9b2f770b16eb6e8512ef3aeea2cd8ec3d25928f
-    bytes: 18513082
-    format: npz
-    scope: public
-  - name: 615d23a681f3ed5afd31dd98__train_labels.json
-    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/train_labels.json
-    sha256: 5cee69f84de149719825c908d79a4b70c8bc5584f2691b2714c2b04bec1abdad
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 615d23a681f3ed5afd31dd98__metadata.json
-    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/metadata.json
-    sha256: de46836dbef2d2d33b35edf8a0118c9315c6e53e7c2052245673a2091e9c7a0c
-    bytes: 2764
-    format: json
-    scope: public
-  - name: 6242e2bc5fc8d6da70d4baa1__train.npz
-    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/train.npz
-    sha256: 18636154590b4fa5b4f9ad7d856b92f334fbf8eb334c29b76547c1743b62ca6d
-    bytes: 9538745
-    format: npz
-    scope: public
-  - name: 6242e2bc5fc8d6da70d4baa1__train_labels.json
-    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/train_labels.json
-    sha256: 5ba86c07eb00928eba75e8fa330662239832849ce91ab5c4d9a1f4b0bbdc9bb3
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 6242e2bc5fc8d6da70d4baa1__metadata.json
-    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/metadata.json
-    sha256: 0700932833dcca094237a7cdd653fee92ad21bf9d9b0c749fccf74778e5d43b3
-    bytes: 1516
-    format: json
-    scope: public
-  - name: 6675c377963972830447837c__train.npz
-    uri: local://derived-v2/public/6675c377963972830447837c/train.npz
-    sha256: 4b3a0db68fc61c1961760a2972d6025c4df6862a8fe98db321c0bcc03b0bf7b6
-    bytes: 17444643
-    format: npz
-    scope: public
-  - name: 6675c377963972830447837c__train_labels.json
-    uri: local://derived-v2/public/6675c377963972830447837c/train_labels.json
-    sha256: 4ba70a8badcf70532bc3d0c1934902605fc0a1d6d52d902226a42cef9c766130
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 6675c377963972830447837c__metadata.json
-    uri: local://derived-v2/public/6675c377963972830447837c/metadata.json
-    sha256: e8fe45d633f00f81bd98c90db6e8ad26c731af38d14c2a2ffe6e37815663af5f
-    bytes: 2620
-    format: json
-    scope: public
-  - name: 6706c38c98c70cbbec58621d__train.npz
-    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/train.npz
-    sha256: e6a85af2429089811459a623f365d78e7bbf92246eec86277929599509897037
-    bytes: 15248201
-    format: npz
-    scope: public
-  - name: 6706c38c98c70cbbec58621d__train_labels.json
-    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/train_labels.json
-    sha256: ebb1749a71a8de7734fc3fff8fd6a235dfe55a6664a34897fb2610754092ba76
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 6706c38c98c70cbbec58621d__metadata.json
-    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/metadata.json
-    sha256: 453cb9c9e2a4609743dc0e50b3e7fc18ee4fc1d00ea62fd35a529e7397ee7f36
-    bytes: 2356
-    format: json
-    scope: public
-  - name: 75571d8ee5a8bd9ac62f5ac3__train.npz
-    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/train.npz
-    sha256: 65d873214013feb82e79e46328a2bef6c54220e3e910bca3276356a4eec720ce
-    bytes: 11829484
-    format: npz
-    scope: public
-  - name: 75571d8ee5a8bd9ac62f5ac3__train_labels.json
-    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/train_labels.json
-    sha256: 10996dee6ed42f4d463a3855aa8e12b37a0f0d5058c97ed8e494d2c751f4f8c3
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 75571d8ee5a8bd9ac62f5ac3__metadata.json
-    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/metadata.json
-    sha256: 074703c11ca5796749728a8ebc9fe123bd662c0f27e4362e32fb8ac8591ddd4b
-    bytes: 1852
-    format: json
-    scope: public
-  - name: 784f29be40aa1858cc2be24b__train.npz
-    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/train.npz
-    sha256: f137b481b19838a7b7796f45483488b09bdf79cdc5b074967158b1fa8b147665
-    bytes: 13861496
-    format: npz
-    scope: public
-  - name: 784f29be40aa1858cc2be24b__train_labels.json
-    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/train_labels.json
-    sha256: 46c565527b9f6170e178536335d3c9f18a0e6c14d9e9fe71bf04d7899788e899
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 784f29be40aa1858cc2be24b__metadata.json
-    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/metadata.json
-    sha256: 21f2d9174405993f0f773a2b4b6edf043b7e98d0296f4b356cef3288da77355e
-    bytes: 2140
-    format: json
-    scope: public
-  - name: 79ee649fd18ca2a7482d4e2f__train.npz
-    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/train.npz
-    sha256: 6091eb339289621e8602d6ff4e729b96130fc03271432d87004bcfb9c3223a26
-    bytes: 13010416
-    format: npz
-    scope: public
-  - name: 79ee649fd18ca2a7482d4e2f__train_labels.json
-    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/train_labels.json
-    sha256: e75aa34e25ba3b98a7cd0429db848d7409347ac17512f4a7d9265523fac59b1a
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 79ee649fd18ca2a7482d4e2f__metadata.json
-    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/metadata.json
-    sha256: 0c9e9286c2e589d98b669170acf29b539ce7403608615cccf82a29f6e99cc8b9
-    bytes: 2044
-    format: json
-    scope: public
-  - name: 7e5f8d305ec7d0fde737a6b0__train.npz
-    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/train.npz
-    sha256: bad15b035a61a6f08d8045fefb518a55cb8644f8eb1d69394469736606cd2fe4
-    bytes: 10212863
-    format: npz
-    scope: public
-  - name: 7e5f8d305ec7d0fde737a6b0__train_labels.json
-    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/train_labels.json
-    sha256: fcb9c1669ac8dc784125be4d409a24e10b9559879cce1a6bc8d1477431c03c28
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 7e5f8d305ec7d0fde737a6b0__metadata.json
-    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/metadata.json
-    sha256: 268108a4971d8c08a3513a2ec017d4a93c06f410e1a319fd469e5c4292644ba0
-    bytes: 1612
-    format: json
-    scope: public
-  - name: 80e0146335fdb4ad695a2755__train.npz
-    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/train.npz
-    sha256: f3d7b77a9261cbf9d0a2b4486022377744ca5bf1cde41874689e413f9b5f1070
-    bytes: 16401196
-    format: npz
-    scope: public
-  - name: 80e0146335fdb4ad695a2755__train_labels.json
-    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/train_labels.json
-    sha256: 7e7cc74b62ec64c49069e5f76c21be99258a872d76956f870f61fc7f3d09ab88
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 80e0146335fdb4ad695a2755__metadata.json
-    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/metadata.json
-    sha256: 03a285903b2bbccc85c5ce5fcef1f5906cfc11581c747537bad7252342976212
-    bytes: 2476
-    format: json
-    scope: public
-  - name: 8a880d70792f9fde171b2539__train.npz
-    uri: local://derived-v2/public/8a880d70792f9fde171b2539/train.npz
-    sha256: 59ec390f264503a3fdf9009efb881cc1bcea4131b7746ec2ccb14137e82e88bd
-    bytes: 18581568
-    format: npz
-    scope: public
-  - name: 8a880d70792f9fde171b2539__train_labels.json
-    uri: local://derived-v2/public/8a880d70792f9fde171b2539/train_labels.json
-    sha256: 3ea3427e0e348a555e1fc02f96783aed6e5ef899d4fe163f4f37c1f025d4a56b
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 8a880d70792f9fde171b2539__metadata.json
-    uri: local://derived-v2/public/8a880d70792f9fde171b2539/metadata.json
-    sha256: d2092867a13cfabd5b492938bfefc0e2c88f56a07e7916606ad9598293f1df08
-    bytes: 2812
-    format: json
-    scope: public
-  - name: 8fe9ba933c865804e2f39651__train.npz
-    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/train.npz
-    sha256: e0ba9c81770f683340dc67c24b3a7e702aef33c7a7b2a5295e11afa02ff0c69d
-    bytes: 11849699
-    format: npz
-    scope: public
-  - name: 8fe9ba933c865804e2f39651__train_labels.json
-    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/train_labels.json
-    sha256: 45c043c0b437bda57ac2bb29047a535cd6cde3cd90a9a3a4e1946c7ecc4640ec
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 8fe9ba933c865804e2f39651__metadata.json
-    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/metadata.json
-    sha256: f1d145e7a13d7ede82efe6e1148a86e758082bf20297f12708d444869cedc914
-    bytes: 1876
-    format: json
-    scope: public
-  - name: 91582957e4358e2794d1e244__train.npz
-    uri: local://derived-v2/public/91582957e4358e2794d1e244/train.npz
-    sha256: 50ec7cbfabde563578a534f2003ab87b4249f9f2e8b1d584781bdf68ec981ff2
-    bytes: 16466220
-    format: npz
-    scope: public
-  - name: 91582957e4358e2794d1e244__train_labels.json
-    uri: local://derived-v2/public/91582957e4358e2794d1e244/train_labels.json
-    sha256: ae51edd4d137bd4fdd4fbe285820e762069cb805732baf0d9553fdcaa9a5efb9
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 91582957e4358e2794d1e244__metadata.json
-    uri: local://derived-v2/public/91582957e4358e2794d1e244/metadata.json
-    sha256: be6c25718593e4e9fb92d1ccd6c719bbeab7c78531bfd1b1cd83cd6b823c5332
-    bytes: 2500
-    format: json
-    scope: public
-  - name: 99804db839599003dfb764ba__train.npz
-    uri: local://derived-v2/public/99804db839599003dfb764ba/train.npz
-    sha256: 2b7b5fd30dd92522bc007ae43d8d123885f5029bad5443f6f8e07b3321712a5f
-    bytes: 13865840
-    format: npz
-    scope: public
-  - name: 99804db839599003dfb764ba__train_labels.json
-    uri: local://derived-v2/public/99804db839599003dfb764ba/train_labels.json
-    sha256: 6502fe478d69d57847719b250a0f94a8984b254eaa096d227bdad3c9290f2f3a
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 99804db839599003dfb764ba__metadata.json
-    uri: local://derived-v2/public/99804db839599003dfb764ba/metadata.json
-    sha256: 037f401bb74fb446810038db7a129609a58ec5c9123dbca449cebf450ee688e6
-    bytes: 2116
-    format: json
-    scope: public
-  - name: 9c02ff76e1e86e672ffd4b6a__train.npz
-    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/train.npz
-    sha256: 9175c9cc39f56a87740849786599710c5214a19b27b9b0ab94a16de0ef6e1f48
-    bytes: 11058273
-    format: npz
-    scope: public
-  - name: 9c02ff76e1e86e672ffd4b6a__train_labels.json
-    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/train_labels.json
-    sha256: 7651bae30df2fa22b572dda5740bfdf186f049075386acc17b87001694744500
-    bytes: 3006
-    format: json
-    scope: public
-  - name: 9c02ff76e1e86e672ffd4b6a__metadata.json
-    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/metadata.json
-    sha256: 8a71f8b933a0511938b0e1b3df1c90d2276ca744658ab23e7463d3b2a879732d
-    bytes: 1732
-    format: json
-    scope: public
-  - name: 9e0084229ef1e8033b374449__train.npz
-    uri: local://derived-v2/public/9e0084229ef1e8033b374449/train.npz
-    sha256: 0823757de8cc946f7418bf87c4c42afd88cb1a8642eb30ff9d2587bce3f4abbd
-    bytes: 10941729
-    format: npz
-    scope: public
-  - name: 9e0084229ef1e8033b374449__train_labels.json
-    uri: local://derived-v2/public/9e0084229ef1e8033b374449/train_labels.json
-    sha256: 782e81c119385490d0cba74e47082b11fd309abb02dd0fdb6ebde09a2a579244
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 9e0084229ef1e8033b374449__metadata.json
-    uri: local://derived-v2/public/9e0084229ef1e8033b374449/metadata.json
-    sha256: 0e23c225fede2b38dce570949f952091aad1c8444246970ed16fc4afc8076ebd
-    bytes: 1732
-    format: json
-    scope: public
-  - name: 9e04985ebcc7c7ffb96bf29e__train.npz
-    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/train.npz
-    sha256: bd011cb14fa9ded8958e1ff5315c46852e2bc840bda3fa500b745e9fd261ed09
-    bytes: 11985323
-    format: npz
-    scope: public
-  - name: 9e04985ebcc7c7ffb96bf29e__train_labels.json
-    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/train_labels.json
-    sha256: 2f0d7ac31082a22a71dc4ed0bba44a7fe63f71f00da83a0738836a128b78cfe9
-    bytes: 2940
-    format: json
-    scope: public
-  - name: 9e04985ebcc7c7ffb96bf29e__metadata.json
-    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/metadata.json
-    sha256: a6e1a62d40a1bf60b493b61e5439bcd6f4111d8d75e7a50d8ea5277da9d16742
-    bytes: 1900
-    format: json
-    scope: public
-  - name: 9eec5ee2ccc254675350e505__train.npz
-    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/train.npz
-    sha256: 5dfd22cd4794a73052408d3021c1fb8cc2040e19313faf57307c4e58e8489f55
-    bytes: 7345443
-    format: npz
-    scope: public
-  - name: 9eec5ee2ccc254675350e505__train_labels.json
-    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/train_labels.json
-    sha256: 52f60bad134cc6a1d0ed6ff5d24ff502342fcb4718381cf778aa285310c4ba22
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 9eec5ee2ccc254675350e505__metadata.json
-    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/metadata.json
-    sha256: 37f7fb2e1c5821383221d488a5bfea0e2838d75ecfd655249b70039f961fa5a3
-    bytes: 1228
-    format: json
-    scope: public
-  - name: 9fbfa396edce2b51980c72b4__train.npz
-    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/train.npz
-    sha256: 31796516b7c38deed2bd8c6ef9683e78c07b94c3beb3a58fca51a0802e56c0d8
-    bytes: 27980209
-    format: npz
-    scope: public
-  - name: 9fbfa396edce2b51980c72b4__train_labels.json
-    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/train_labels.json
-    sha256: 3c9ba32e4ae532fb05f9ba125ae70908f2d506010eaec2a61833afedc06f696f
-    bytes: 2973
-    format: json
-    scope: public
-  - name: 9fbfa396edce2b51980c72b4__metadata.json
-    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/metadata.json
-    sha256: 53a7118fdc2ddd04d7230cbb64b80142b369432537e3c469aeecb5dc3997ce2f
-    bytes: 4132
-    format: json
-    scope: public
-  - name: a39bb61476037489dd1b5302__train.npz
-    uri: local://derived-v2/public/a39bb61476037489dd1b5302/train.npz
-    sha256: 2c3881791245936bd73d5676c603925c85ca3d538d66fc0adb60f6327e98f18a
-    bytes: 10286316
-    format: npz
-    scope: public
-  - name: a39bb61476037489dd1b5302__train_labels.json
-    uri: local://derived-v2/public/a39bb61476037489dd1b5302/train_labels.json
-    sha256: d3a637e766c04309f351879ea9a7d6d17eb37926f7c8c6907895b7fc7b7d30c1
-    bytes: 2940
-    format: json
-    scope: public
-  - name: a39bb61476037489dd1b5302__metadata.json
-    uri: local://derived-v2/public/a39bb61476037489dd1b5302/metadata.json
-    sha256: 80c90bce9a4071c3a13399a422d830349abb77b1cecaf9a48f600f88cd18147a
-    bytes: 1660
-    format: json
-    scope: public
-  - name: a6eeb9eef42cd40df0506226__train.npz
-    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/train.npz
-    sha256: 61d73b0b91ecd27992bb99b131aa16d636137e880e3db26eca1349ea6bfe4c12
-    bytes: 10450116
-    format: npz
-    scope: public
-  - name: a6eeb9eef42cd40df0506226__train_labels.json
-    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/train_labels.json
-    sha256: 68955e2fedd1c93bc0625003886c0289f9d1a0680995425ec27896f0ff21e5c9
-    bytes: 2973
-    format: json
-    scope: public
-  - name: a6eeb9eef42cd40df0506226__metadata.json
-    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/metadata.json
-    sha256: 8e07cc1e5937bd540579e13a9d1b65bbb08e41167e0fef5113c260ee5e0cef5a
-    bytes: 1660
-    format: json
-    scope: public
-  - name: ae071562bf0c69e0de55ca32__train.npz
-    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/train.npz
-    sha256: a33ed532215e2368118fe9570b64f30a6ff49a412f75bed5b953ff6da7ee6b7a
-    bytes: 10036418
-    format: npz
-    scope: public
-  - name: ae071562bf0c69e0de55ca32__train_labels.json
-    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/train_labels.json
-    sha256: a6329823fb00074c817600591b210c222dc853ada96be4d95aa29fbb419c68a6
-    bytes: 3006
-    format: json
-    scope: public
-  - name: ae071562bf0c69e0de55ca32__metadata.json
-    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/metadata.json
-    sha256: b6059ac376f4995471c455f1c234f39c5193026f800aad0a37e4cefd73fff676
-    bytes: 1588
-    format: json
-    scope: public
-  - name: ae718da47b5405ea86ea5526__train.npz
-    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/train.npz
-    sha256: 692780adebc312050637bced5999983c32e86c5c1a42d3500c4ea7c18bd06892
-    bytes: 15904382
-    format: npz
-    scope: public
-  - name: ae718da47b5405ea86ea5526__train_labels.json
-    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/train_labels.json
-    sha256: 276eea6b9657f8e31c120d68bb16b0bf3f54257207a1f214fe9788a366140f77
-    bytes: 2940
-    format: json
-    scope: public
-  - name: ae718da47b5405ea86ea5526__metadata.json
-    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/metadata.json
-    sha256: ece15e016feee42cf318cc92c6aca5f013f0da7ba778e8f5fbed562670a5e8ed
-    bytes: 2452
-    format: json
-    scope: public
-  - name: bdbb8c7e8a7dc40a9c837479__train.npz
-    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/train.npz
-    sha256: ab33ffb1630ad102dcf662d0ff091be866d8a859c4f3a62cc57b52b08d585137
-    bytes: 15081635
-    format: npz
-    scope: public
-  - name: bdbb8c7e8a7dc40a9c837479__train_labels.json
-    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/train_labels.json
-    sha256: 16d649eab20820a964c7b0bd138c7825de9fd4f312f302d128b367cbabd1b7f3
-    bytes: 2940
-    format: json
-    scope: public
-  - name: bdbb8c7e8a7dc40a9c837479__metadata.json
-    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/metadata.json
-    sha256: 2d4de43bdb18c8d037f77834e31b33a7c8dd081dbb3578749a1bba9078d70be3
-    bytes: 2332
-    format: json
-    scope: public
-  - name: c44177eb4a39d379327daf66__train.npz
-    uri: local://derived-v2/public/c44177eb4a39d379327daf66/train.npz
-    sha256: fba890ccdc0041815b131c919afb4b316352c05134b0337c09bb4002e456f7d1
-    bytes: 12511936
-    format: npz
-    scope: public
-  - name: c44177eb4a39d379327daf66__train_labels.json
-    uri: local://derived-v2/public/c44177eb4a39d379327daf66/train_labels.json
-    sha256: c8576cb83bd31079b69e288744d30a27e08d78992095745df05ce482e295f5dc
-    bytes: 2973
-    format: json
-    scope: public
-  - name: c44177eb4a39d379327daf66__metadata.json
-    uri: local://derived-v2/public/c44177eb4a39d379327daf66/metadata.json
-    sha256: 1627b0e2746a5353c4d2e9e50062181a67cea857616f692b92aad3edac84bac5
-    bytes: 1948
-    format: json
-    scope: public
-  - name: ca87aad955c18a562b4d620e__train.npz
-    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/train.npz
-    sha256: 7c2dcf016fce318cde269c6f9b020ca2882c2d724f869b34c582f21f8c3594d3
-    bytes: 17475682
-    format: npz
-    scope: public
-  - name: ca87aad955c18a562b4d620e__train_labels.json
-    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/train_labels.json
-    sha256: 7ffc74a6a2d079eacc55eb84ad3e2604806e549815a88602ded076f3dd90e95a
-    bytes: 2973
-    format: json
-    scope: public
-  - name: ca87aad955c18a562b4d620e__metadata.json
-    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/metadata.json
-    sha256: 90fa3eea5c9d2fcc24e603dd1986e539806d54b32f875b74e09e1c2e7b897150
-    bytes: 2644
-    format: json
-    scope: public
-  - name: d048cb6314a77347fb2830ab__train.npz
-    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/train.npz
-    sha256: 7dd8c6e1dafae31be4bb9b94d45d828385ef1863cc1cc5a41ff3f34bbf20a841
-    bytes: 13649600
-    format: npz
-    scope: public
-  - name: d048cb6314a77347fb2830ab__train_labels.json
-    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/train_labels.json
-    sha256: d05b60c044747737aa053d4483051e36655ee43d0fe949037f358f72b9b0265f
-    bytes: 3006
-    format: json
-    scope: public
-  - name: d048cb6314a77347fb2830ab__metadata.json
-    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/metadata.json
-    sha256: 4f821d2b5f5d719ffd57b2711ac97dbbe9e689df9349e3548472de0465008481
-    bytes: 2092
-    format: json
-    scope: public
-  - name: d30162277d98503e1a66e677__train.npz
-    uri: local://derived-v2/public/d30162277d98503e1a66e677/train.npz
-    sha256: 91fe187d1b34c9a5cdca9884ce3ddf113fbcd2a2b4c36897d9f18bc46df3554e
-    bytes: 14387507
-    format: npz
-    scope: public
-  - name: d30162277d98503e1a66e677__train_labels.json
-    uri: local://derived-v2/public/d30162277d98503e1a66e677/train_labels.json
-    sha256: a59eaa0e81ff1bc82059ce9fc769facc2ac587e5d8b17486744954f3d4e7eeba
-    bytes: 3006
-    format: json
-    scope: public
-  - name: d30162277d98503e1a66e677__metadata.json
-    uri: local://derived-v2/public/d30162277d98503e1a66e677/metadata.json
-    sha256: 6d309e614ac671bcb6e354bf34aebba8c5916655f0d85859d0ef47c616d4e11c
-    bytes: 2188
-    format: json
-    scope: public
-  - name: e206be9cf197bbd5d0b4c5bf__train.npz
-    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/train.npz
-    sha256: 40e32ba7f663f74fac73e90b7b71b26b4a33a79d51ff573bf2ef9a95196a6672
-    bytes: 19586386
-    format: npz
-    scope: public
-  - name: e206be9cf197bbd5d0b4c5bf__train_labels.json
-    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/train_labels.json
-    sha256: 0b6341719db8fb97bfaac5c79c1349fee64f1861945e4940aede5f804829da1e
-    bytes: 2940
-    format: json
-    scope: public
-  - name: e206be9cf197bbd5d0b4c5bf__metadata.json
-    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/metadata.json
-    sha256: 35ef5b220bd4f8ac89f26a0cca94704b1de54627e9fa0294982059e1bc0bbc9e
-    bytes: 2980
-    format: json
-    scope: public
-  - name: e2b77b67309c08fada2b590a__train.npz
-    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/train.npz
-    sha256: ac5dbd9f8b5b77edf16a565582a77280a4fc1f5d1460dce5425ee3b7925ed234
-    bytes: 17449257
-    format: npz
-    scope: public
-  - name: e2b77b67309c08fada2b590a__train_labels.json
-    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/train_labels.json
-    sha256: 80affc6b663b68ae32b5597062ccb177fd31ff6963d4dea6e759f4d405a3ec95
-    bytes: 2940
-    format: json
-    scope: public
-  - name: e2b77b67309c08fada2b590a__metadata.json
-    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/metadata.json
-    sha256: 08f9df94eb916803f3f4c8e5f1a84a0eb598ac1c33ae2ac5445e4e0a19de08c8
-    bytes: 2668
-    format: json
-    scope: public
-  - name: f2ac63e82bdf4a122eae68f4__train.npz
-    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/train.npz
-    sha256: 53f6898247a4dce05321f8062cfc26a3a60b41e772b730e08d50b94dddd2215d
-    bytes: 8744068
-    format: npz
-    scope: public
-  - name: f2ac63e82bdf4a122eae68f4__train_labels.json
-    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/train_labels.json
-    sha256: 6ce73b0b135143357f953329379304d6fc6d40a3d651e2dc54ac88d88ab9bb88
-    bytes: 2973
-    format: json
-    scope: public
-  - name: f2ac63e82bdf4a122eae68f4__metadata.json
-    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/metadata.json
-    sha256: 0a0bde4fa156111fde4b6f6894bd970f2fce5d5ba9c666dd0c714737af7ebe02
-    bytes: 1420
-    format: json
-    scope: public
-  - name: f95210c0fcd8eb394702cdfc__train.npz
-    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/train.npz
-    sha256: 7a17cbe2a4303959b4dc6e93e276bdaa35916fb94de1caa2da148abbd3f2d6c5
-    bytes: 14362870
-    format: npz
-    scope: public
-  - name: f95210c0fcd8eb394702cdfc__train_labels.json
-    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/train_labels.json
-    sha256: afd76538e47e164a8c0748e377b6c847dbd17b1f399c0fceec63229bd3e046bc
-    bytes: 3006
-    format: json
-    scope: public
-  - name: f95210c0fcd8eb394702cdfc__metadata.json
-    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/metadata.json
-    sha256: cfb66348bbc766fd6862c4425772976acf1fe3a931177923fd2c66a1afcc9c0b
-    bytes: 2188
-    format: json
-    scope: public
-  - name: fa5eb569df965aa60fe2aba8__train.npz
-    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/train.npz
-    sha256: c6e7884b496ea7153f4589b883b2ebfd46474f77ef18cebe1c419c2beabf5865
-    bytes: 14882117
-    format: npz
-    scope: public
-  - name: fa5eb569df965aa60fe2aba8__train_labels.json
-    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/train_labels.json
-    sha256: 708678ef31c6ece9e7708c8eaef8109a6e97b39fbf1f3ac789dc001f933d59d0
-    bytes: 2940
-    format: json
-    scope: public
-  - name: fa5eb569df965aa60fe2aba8__metadata.json
-    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/metadata.json
-    sha256: 71d6ac7f86ef202ac7bd59721914eb91858dc687a4b90dabb5dfd6c4203b3e07
-    bytes: 2308
-    format: json
-    scope: public
-  - name: fca8cd7e02687e10ba3f77ad__train.npz
-    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/train.npz
-    sha256: e73f334b1485be2bc96aea7992dad3268df445dfdf0fd48fec693626961bba57
-    bytes: 11813102
-    format: npz
-    scope: public
-  - name: fca8cd7e02687e10ba3f77ad__train_labels.json
-    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/train_labels.json
-    sha256: e09d08ab6ae120945c2e8d2d93cf2f6d0219beb121d3b0494d71ea2b70460bb7
-    bytes: 2973
-    format: json
-    scope: public
-  - name: fca8cd7e02687e10ba3f77ad__metadata.json
-    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/metadata.json
-    sha256: 21bca45c4f67d3e712d1aef330f36524d971fa667fa4a56f06a551b3a51e3969
-    bytes: 1852
-    format: json
-    scope: public
-  - name: fde5bee80f2a1fd225351878__train.npz
-    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/train.npz
-    sha256: ad6e74fe621c116b53d343de218faf3dddfd583865087551604df54fbcb1338f
-    bytes: 12475335
-    format: npz
-    scope: public
-  - name: fde5bee80f2a1fd225351878__train_labels.json
-    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/train_labels.json
-    sha256: fcb87b57502dae746620a3c29edbe6acca759d01fc16b091726da0c6406afd4f
-    bytes: 3006
-    format: json
-    scope: public
-  - name: fde5bee80f2a1fd225351878__metadata.json
-    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/metadata.json
-    sha256: 96b691ed17ac3b5d6d52126e6530c0f06fb70845b6f64760224ea881abe960ca
-    bytes: 1924
-    format: json
-    scope: public
-  - name: train_manifest.json
-    uri: local://derived-v2/public/train_manifest.json
-    sha256: 7c65bc5f0962461114ced3a6b264a771f0784e2d40818052820293f3af3a0a98
-    bytes: 45602
-    format: json
-    scope: public
-  - name: 061cc8ac7765acce6d74428d__validation.npz
-    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/validation.npz
-    sha256: 68900e5277ce5cf5604e038298d26e8388b5d0b230db047fa854e7b56a422b5b
-    bytes: 3707806
-    format: npz
-    scope: public
-  - name: 061cc8ac7765acce6d74428d__validation_labels.json
-    uri: local://derived-v2/public/061cc8ac7765acce6d74428d/validation_labels.json
-    sha256: 902fe382dde592ff180a98a1ece7c3f0c02d02f8a7e9b7cf24017b157e2fca15
-    bytes: 828
-    format: json
-    scope: public
-  - name: 140825584407c4ba0f942f9a__validation.npz
-    uri: local://derived-v2/public/140825584407c4ba0f942f9a/validation.npz
-    sha256: c0b1cb74afa4cea295dfbc58ab5c3089ad6e0dd1ce10efa073400a59f7186c8b
-    bytes: 3414499
-    format: npz
-    scope: public
-  - name: 140825584407c4ba0f942f9a__validation_labels.json
-    uri: local://derived-v2/public/140825584407c4ba0f942f9a/validation_labels.json
-    sha256: d7c90ae37b86ca896ea608ba292ef1a840d0783dbbef5b3fba6893d863e682d8
-    bytes: 861
-    format: json
-    scope: public
-  - name: 1a2a249f3431a38176e1ec1d__validation.npz
-    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/validation.npz
-    sha256: eafb36395b60f70c345413daa3cc4712780ddfefe15a05e74f69a4e926fd0328
-    bytes: 3413270
-    format: npz
-    scope: public
-  - name: 1a2a249f3431a38176e1ec1d__validation_labels.json
-    uri: local://derived-v2/public/1a2a249f3431a38176e1ec1d/validation_labels.json
-    sha256: 19e61bf1d680be3e37fe45f5c481abcce52dcaa83941cde2329d85959b3e2af8
-    bytes: 861
-    format: json
-    scope: public
-  - name: 1ad3e6499cc52d9c1259cc69__validation.npz
-    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/validation.npz
-    sha256: c243db269fe9aa069127c4b422c638f6999f1d44f962fa6942a101882519048e
-    bytes: 4982560
-    format: npz
-    scope: public
-  - name: 1ad3e6499cc52d9c1259cc69__validation_labels.json
-    uri: local://derived-v2/public/1ad3e6499cc52d9c1259cc69/validation_labels.json
-    sha256: ba05b486619011f278f4e6906a37c314f17a082b9e2c291d881f6ba07db4ea89
-    bytes: 828
-    format: json
-    scope: public
-  - name: 1d9eae913e596951ec71eb24__validation.npz
-    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/validation.npz
-    sha256: c9669dfbca1e6436efebd43dae9b6e09816682eb924562d763ee3672797aa337
-    bytes: 4993275
-    format: npz
-    scope: public
-  - name: 1d9eae913e596951ec71eb24__validation_labels.json
-    uri: local://derived-v2/public/1d9eae913e596951ec71eb24/validation_labels.json
-    sha256: dca39df5e3adfdf467f5b3fc9d2e87e7a001d48191c822709f9fa55ef4f66a81
-    bytes: 861
-    format: json
-    scope: public
-  - name: 27a03604b1b71b271cfebce1__validation.npz
-    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/validation.npz
-    sha256: 98a5c0802eaedcaf0c03a460da3445cb00f77df3a4f672a05807d9baa8586c74
-    bytes: 5148756
-    format: npz
-    scope: public
-  - name: 27a03604b1b71b271cfebce1__validation_labels.json
-    uri: local://derived-v2/public/27a03604b1b71b271cfebce1/validation_labels.json
-    sha256: 23b1da352c3d8830b645adbf74e2fb4442d606472ae70e91f2b53c1a8766ca6f
-    bytes: 861
-    format: json
-    scope: public
-  - name: 2f210a584c98562cb304509f__validation.npz
-    uri: local://derived-v2/public/2f210a584c98562cb304509f/validation.npz
-    sha256: a5c0ffcc84cb4c5330fdf02330144f0362cf7ef4e9c04d295cca7dd07beccc20
-    bytes: 3558012
-    format: npz
-    scope: public
-  - name: 2f210a584c98562cb304509f__validation_labels.json
-    uri: local://derived-v2/public/2f210a584c98562cb304509f/validation_labels.json
-    sha256: c185c13d6347cddfe1c899089810527eed3fd9d2e19d8214c129e48c630a4698
-    bytes: 861
-    format: json
-    scope: public
-  - name: 373f190da01895816304427e__validation.npz
-    uri: local://derived-v2/public/373f190da01895816304427e/validation.npz
-    sha256: 30423603a6cfc981b1291b98435839b294a450484ab35d175fc36f10efd665af
-    bytes: 4506680
-    format: npz
-    scope: public
-  - name: 373f190da01895816304427e__validation_labels.json
-    uri: local://derived-v2/public/373f190da01895816304427e/validation_labels.json
-    sha256: ab9d2014ef338ba1474325b4029fd568ae59feb88db7c5b7d9f1e132c5d5865e
-    bytes: 861
-    format: json
-    scope: public
-  - name: 39a0cdc5d087166bbea9c2cf__validation.npz
-    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/validation.npz
-    sha256: 24e42ca07191350aa9863bce96925ed3735bcd08f4f41b95cbaa1303cd6b70d2
-    bytes: 4465256
-    format: npz
-    scope: public
-  - name: 39a0cdc5d087166bbea9c2cf__validation_labels.json
-    uri: local://derived-v2/public/39a0cdc5d087166bbea9c2cf/validation_labels.json
-    sha256: 0da09af6d13fd51c724fbac9cb0789cabcbbdab4c92de6a603fe05532c4b92b7
-    bytes: 828
-    format: json
-    scope: public
-  - name: 3e32fc6406d10bc0d18b37d4__validation.npz
-    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/validation.npz
-    sha256: b56eb94ef183f7b305aa140eabbc6a2d9a8350e7b5b75f57334e632452853106
-    bytes: 4971514
-    format: npz
-    scope: public
-  - name: 3e32fc6406d10bc0d18b37d4__validation_labels.json
-    uri: local://derived-v2/public/3e32fc6406d10bc0d18b37d4/validation_labels.json
-    sha256: c0453b023df3b540c88139369f3fb9c9e5ae48d13f556658ad7452798d231388
-    bytes: 861
-    format: json
-    scope: public
-  - name: 41c39e8b6a2cee4c03b31c2e__validation.npz
-    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/validation.npz
-    sha256: 25b339bfa8eecc2af505aecee170bcf795a7c0c7e9a0ca45eff8c17b3255800b
-    bytes: 5083352
-    format: npz
-    scope: public
-  - name: 41c39e8b6a2cee4c03b31c2e__validation_labels.json
-    uri: local://derived-v2/public/41c39e8b6a2cee4c03b31c2e/validation_labels.json
-    sha256: b669650c3163bbf6c721b1ed8880df76f902580620574a2cc7bfda751541fc1a
-    bytes: 828
-    format: json
-    scope: public
-  - name: 44a6317a22164002c2248bee__validation.npz
-    uri: local://derived-v2/public/44a6317a22164002c2248bee/validation.npz
-    sha256: 70e49ae9b3a4d808f9539c44623e0c6ca1d5a1102e96405c52a545f58ddaab41
-    bytes: 2921596
-    format: npz
-    scope: public
-  - name: 44a6317a22164002c2248bee__validation_labels.json
-    uri: local://derived-v2/public/44a6317a22164002c2248bee/validation_labels.json
-    sha256: 2e957974337a1da0ca88e0350317fda6082935022198e6dfb163591d0061186d
-    bytes: 861
-    format: json
-    scope: public
-  - name: 4c9d43627cb787a1b0448aba__validation.npz
-    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/validation.npz
-    sha256: 1a0b69c7c6524e07f72298eb8befb4a0980cca7c8f26115ec94d71ecb4ee5df8
-    bytes: 2963848
-    format: npz
-    scope: public
-  - name: 4c9d43627cb787a1b0448aba__validation_labels.json
-    uri: local://derived-v2/public/4c9d43627cb787a1b0448aba/validation_labels.json
-    sha256: 32757120ecf19c16d30e13befd3ff6d8978bd169460edbc27e568b28c74278ad
-    bytes: 861
-    format: json
-    scope: public
-  - name: 4cd5e2017e4afe2a5cd366d5__validation.npz
-    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/validation.npz
-    sha256: 4668bab3c0881bd0ad5477c1e859b7bad7d8562e3ee21f97c5ea489f12fecb1e
-    bytes: 2972056
-    format: npz
-    scope: public
-  - name: 4cd5e2017e4afe2a5cd366d5__validation_labels.json
-    uri: local://derived-v2/public/4cd5e2017e4afe2a5cd366d5/validation_labels.json
-    sha256: d022bf01c0a3e2f3c93e6e8033537bad8622933eece4a3fe172336cebd4df8bd
-    bytes: 861
-    format: json
-    scope: public
-  - name: 4d6681e383e8f1491f74e328__validation.npz
-    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/validation.npz
-    sha256: 90a2d10711aaaf663a9dc29ba68d07cd93d54c97f98f01207d748d20bda4323a
-    bytes: 3855204
-    format: npz
-    scope: public
-  - name: 4d6681e383e8f1491f74e328__validation_labels.json
-    uri: local://derived-v2/public/4d6681e383e8f1491f74e328/validation_labels.json
-    sha256: f3662632dbb6f6320a99b01fddd92b38ff799ef819b817eda5554e59a0c829dd
-    bytes: 861
-    format: json
-    scope: public
-  - name: 57591157a49d8ac96997ab64__validation.npz
-    uri: local://derived-v2/public/57591157a49d8ac96997ab64/validation.npz
-    sha256: 93d961caafffc04d74e89caa4465eff8e13e5c0dfb42c46d67b61c4213e5c5f0
-    bytes: 2762114
-    format: npz
-    scope: public
-  - name: 57591157a49d8ac96997ab64__validation_labels.json
-    uri: local://derived-v2/public/57591157a49d8ac96997ab64/validation_labels.json
-    sha256: 93efcd3fa047e1f8439dc47c71beb40611d1b631cddd555388e77d08e1dda2bc
-    bytes: 861
-    format: json
-    scope: public
-  - name: 5c3c4cb93177744215251a8e__validation.npz
-    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/validation.npz
-    sha256: 573c74f44de8e104da63dfadcfdcaf32078830733dc6f1dd174db58af3b3432b
-    bytes: 5392395
-    format: npz
-    scope: public
-  - name: 5c3c4cb93177744215251a8e__validation_labels.json
-    uri: local://derived-v2/public/5c3c4cb93177744215251a8e/validation_labels.json
-    sha256: dcd6ed93c93d9d804b9a9c6bcf38c8dbf07f3c5508da75250ee78f1111fb725c
-    bytes: 861
-    format: json
-    scope: public
-  - name: 615d23a681f3ed5afd31dd98__validation.npz
-    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/validation.npz
-    sha256: 5207fd4a67ed800128855febbb367e4cd303dd38f850e4efa1f0594f722e0500
-    bytes: 5290104
-    format: npz
-    scope: public
-  - name: 615d23a681f3ed5afd31dd98__validation_labels.json
-    uri: local://derived-v2/public/615d23a681f3ed5afd31dd98/validation_labels.json
-    sha256: 5147ae34b2c2d95284a80d2a3cc9cf1b4bbfb577c645180fe88af688e3244896
-    bytes: 861
-    format: json
-    scope: public
-  - name: 6242e2bc5fc8d6da70d4baa1__validation.npz
-    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/validation.npz
-    sha256: 1a75b058863456628ade841ba03865fcd843b26f4556047cba462727cc460c2e
-    bytes: 2724961
-    format: npz
-    scope: public
-  - name: 6242e2bc5fc8d6da70d4baa1__validation_labels.json
-    uri: local://derived-v2/public/6242e2bc5fc8d6da70d4baa1/validation_labels.json
-    sha256: e7c7559d1aa8bc2d62558bb3b9651c3a7b84db0da3051359a1c3c0767e6cf890
-    bytes: 861
-    format: json
-    scope: public
-  - name: 6675c377963972830447837c__validation.npz
-    uri: local://derived-v2/public/6675c377963972830447837c/validation.npz
-    sha256: 964572f0a53db0fd8999376c97ce3c760a558b237cb487d48637170e3b000f34
-    bytes: 4995864
-    format: npz
-    scope: public
-  - name: 6675c377963972830447837c__validation_labels.json
-    uri: local://derived-v2/public/6675c377963972830447837c/validation_labels.json
-    sha256: e55b05425189864cbe7059ba1694705a8abc29daf750837ac86310b276c46022
-    bytes: 861
-    format: json
-    scope: public
-  - name: 6706c38c98c70cbbec58621d__validation.npz
-    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/validation.npz
-    sha256: 77eb68eec683c3b4cbfec90695bd9efa5e4be204b872ab2da8e0c442ebef39d4
-    bytes: 4454330
-    format: npz
-    scope: public
-  - name: 6706c38c98c70cbbec58621d__validation_labels.json
-    uri: local://derived-v2/public/6706c38c98c70cbbec58621d/validation_labels.json
-    sha256: 06ad5411e4712897488d14f7eee19a6e0a30e44b18d9a986523813b5eda8a341
-    bytes: 861
-    format: json
-    scope: public
-  - name: 75571d8ee5a8bd9ac62f5ac3__validation.npz
-    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/validation.npz
-    sha256: 930d219d17bf37a73df8b7ae67daedc8f6aacc0637cfaad64158fd1d1ec848dc
-    bytes: 3418259
-    format: npz
-    scope: public
-  - name: 75571d8ee5a8bd9ac62f5ac3__validation_labels.json
-    uri: local://derived-v2/public/75571d8ee5a8bd9ac62f5ac3/validation_labels.json
-    sha256: 8f09ed51f84a4058259b46920cb8ea68bc3bda8514adeb43c5484c140d886d2d
-    bytes: 861
-    format: json
-    scope: public
-  - name: 784f29be40aa1858cc2be24b__validation.npz
-    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/validation.npz
-    sha256: 3fc07c1c3ba3ec8e64e23fb5628372ce6ccf0ef0f4ca0f96b97b578e24299b75
-    bytes: 4002136
-    format: npz
-    scope: public
-  - name: 784f29be40aa1858cc2be24b__validation_labels.json
-    uri: local://derived-v2/public/784f29be40aa1858cc2be24b/validation_labels.json
-    sha256: 78d4d7b5ec2f43e4218ca2852803e2144ad9911eb27eacbd770847a54bef6b90
-    bytes: 861
-    format: json
-    scope: public
-  - name: 79ee649fd18ca2a7482d4e2f__validation.npz
-    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/validation.npz
-    sha256: 7589d2d72dc1271c31a8eae452625b4ecb8d867b543037c9957b0e525ac39047
-    bytes: 3801258
-    format: npz
-    scope: public
-  - name: 79ee649fd18ca2a7482d4e2f__validation_labels.json
-    uri: local://derived-v2/public/79ee649fd18ca2a7482d4e2f/validation_labels.json
-    sha256: 6cbb2955ff3ab358260432327e47b0036f3b8d7b6b9a02071410d26534710740
-    bytes: 861
-    format: json
-    scope: public
-  - name: 7e5f8d305ec7d0fde737a6b0__validation.npz
-    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/validation.npz
-    sha256: 3c11a9a2abba9e70b42c1cc1ae37664cada71ad70c4bc53f404c393e04e94d04
-    bytes: 2919361
-    format: npz
-    scope: public
-  - name: 7e5f8d305ec7d0fde737a6b0__validation_labels.json
-    uri: local://derived-v2/public/7e5f8d305ec7d0fde737a6b0/validation_labels.json
-    sha256: f35a7e5b7dc22fb01a489f53d2a2aeb2f77ee0ba346dcbff6ae5f62d115b1f56
-    bytes: 861
-    format: json
-    scope: public
-  - name: 80e0146335fdb4ad695a2755__validation.npz
-    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/validation.npz
-    sha256: f3b0a50440a6d700c0cadac921c73100a7489213423a7b0b0fe161a00d0c84ec
-    bytes: 4683826
-    format: npz
-    scope: public
-  - name: 80e0146335fdb4ad695a2755__validation_labels.json
-    uri: local://derived-v2/public/80e0146335fdb4ad695a2755/validation_labels.json
-    sha256: ffc4720dbbd71946dd4f48022e1d5c9407a9254e89881af6b65a99d534a46aca
-    bytes: 861
-    format: json
-    scope: public
-  - name: 8a880d70792f9fde171b2539__validation.npz
-    uri: local://derived-v2/public/8a880d70792f9fde171b2539/validation.npz
-    sha256: cd0b1e6a3cf7d35c9ff229f30bbe95aa53ccbacd87abbc9c77b098b64ef168bd
-    bytes: 5160294
-    format: npz
-    scope: public
-  - name: 8a880d70792f9fde171b2539__validation_labels.json
-    uri: local://derived-v2/public/8a880d70792f9fde171b2539/validation_labels.json
-    sha256: d35107c60bfab67db96a05e6ebb5a596c975c83f2c4e67c6e5754834f82f00dc
-    bytes: 828
-    format: json
-    scope: public
-  - name: 8fe9ba933c865804e2f39651__validation.npz
-    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/validation.npz
-    sha256: a9ca3dc795fe2fa846fa724cbe2ab633b24faed2410d7ad6ad28a7e05d7615fc
-    bytes: 3460323
-    format: npz
-    scope: public
-  - name: 8fe9ba933c865804e2f39651__validation_labels.json
-    uri: local://derived-v2/public/8fe9ba933c865804e2f39651/validation_labels.json
-    sha256: cfd12283c728fe127039a67e162c8108124beaf3847c02207dbc32f84b384b23
-    bytes: 861
-    format: json
-    scope: public
-  - name: 91582957e4358e2794d1e244__validation.npz
-    uri: local://derived-v2/public/91582957e4358e2794d1e244/validation.npz
-    sha256: d8f62100b88986e21d201cb9cb709b3c8e14e0e67668c505d4738baa506e2e55
-    bytes: 4573500
-    format: npz
-    scope: public
-  - name: 91582957e4358e2794d1e244__validation_labels.json
-    uri: local://derived-v2/public/91582957e4358e2794d1e244/validation_labels.json
-    sha256: c53844fdcc1b02edda7b9a7a11a2e3eea8d6e53d964c9e5582f455235b2427e7
-    bytes: 828
-    format: json
-    scope: public
-  - name: 99804db839599003dfb764ba__validation.npz
-    uri: local://derived-v2/public/99804db839599003dfb764ba/validation.npz
-    sha256: 636bc48ff3327970ab2a90a0a07dcd89e9b03d050d31b233be70a59120131020
-    bytes: 3962291
-    format: npz
-    scope: public
-  - name: 99804db839599003dfb764ba__validation_labels.json
-    uri: local://derived-v2/public/99804db839599003dfb764ba/validation_labels.json
-    sha256: 02212f3b2b6e38f7319dbac0a114d3376d85b5e756547b3fc08e82457361b768
-    bytes: 861
-    format: json
-    scope: public
-  - name: 9c02ff76e1e86e672ffd4b6a__validation.npz
-    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/validation.npz
-    sha256: f0af7f93a7959c645f65e7ea18fb3cbca72ee508c4034517faa59e17ba259e58
-    bytes: 3167104
-    format: npz
-    scope: public
-  - name: 9c02ff76e1e86e672ffd4b6a__validation_labels.json
-    uri: local://derived-v2/public/9c02ff76e1e86e672ffd4b6a/validation_labels.json
-    sha256: 07c708a68f3adf4ebaf70642f332cc127620e8db04192278361bbbe4d617b0f4
-    bytes: 861
-    format: json
-    scope: public
-  - name: 9e0084229ef1e8033b374449__validation.npz
-    uri: local://derived-v2/public/9e0084229ef1e8033b374449/validation.npz
-    sha256: c5672fc06ae693e7acbf75ccd276ddeb3a0752b7e26fcd9764875e3754d8f5b9
-    bytes: 3161299
-    format: npz
-    scope: public
-  - name: 9e0084229ef1e8033b374449__validation_labels.json
-    uri: local://derived-v2/public/9e0084229ef1e8033b374449/validation_labels.json
-    sha256: cce83c97f889ab4dd6419379fcfdef8d4da764adfce88e4e47e4d1aa797d0f3a
-    bytes: 861
-    format: json
-    scope: public
-  - name: 9e04985ebcc7c7ffb96bf29e__validation.npz
-    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/validation.npz
-    sha256: d47f3615895b50b2897916f2021d12d7baf170767f6581088408b9db9e7bc743
-    bytes: 3500162
-    format: npz
-    scope: public
-  - name: 9e04985ebcc7c7ffb96bf29e__validation_labels.json
-    uri: local://derived-v2/public/9e04985ebcc7c7ffb96bf29e/validation_labels.json
-    sha256: 0d0a5bc784644d89bc2e5ab21f05cb38481f6923b603464de87b5d7aa7b66314
-    bytes: 861
-    format: json
-    scope: public
-  - name: 9eec5ee2ccc254675350e505__validation.npz
-    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/validation.npz
-    sha256: 0b65ff8d10d9f9c8f2626f67bd19bfacd6dfefee6df0c8509fe91eac2b0ffea6
-    bytes: 2121853
-    format: npz
-    scope: public
-  - name: 9eec5ee2ccc254675350e505__validation_labels.json
-    uri: local://derived-v2/public/9eec5ee2ccc254675350e505/validation_labels.json
-    sha256: d24163ea83ce0e1dac76303f721d348da23b661cc892def1949071a0fe42f899
-    bytes: 861
-    format: json
-    scope: public
-  - name: 9fbfa396edce2b51980c72b4__validation.npz
-    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/validation.npz
-    sha256: f00f8185a912d2631c4b77e9fb8170c75dab048bf1eecd925975bfb73da9082d
-    bytes: 7769209
-    format: npz
-    scope: public
-  - name: 9fbfa396edce2b51980c72b4__validation_labels.json
-    uri: local://derived-v2/public/9fbfa396edce2b51980c72b4/validation_labels.json
-    sha256: b42c72b4bb5c2966d3cc459aa65dfffa32d008d8109968ce1ade1ceb3798a342
-    bytes: 828
-    format: json
-    scope: public
-  - name: a39bb61476037489dd1b5302__validation.npz
-    uri: local://derived-v2/public/a39bb61476037489dd1b5302/validation.npz
-    sha256: 634a41b11c260b597f2449dbbb22e8df1e96331d7e5216fa7626c377ac4650f6
-    bytes: 3005220
-    format: npz
-    scope: public
-  - name: a39bb61476037489dd1b5302__validation_labels.json
-    uri: local://derived-v2/public/a39bb61476037489dd1b5302/validation_labels.json
-    sha256: 25a9f42ee138c37850ab863027e68e45a61fae6d28023fb135c4e18661511fa9
-    bytes: 861
-    format: json
-    scope: public
-  - name: a6eeb9eef42cd40df0506226__validation.npz
-    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/validation.npz
-    sha256: ac864034ccd9319ea3bad2aff4a834f161f540436c29243bc3c6b3e389d14a9f
-    bytes: 2904580
-    format: npz
-    scope: public
-  - name: a6eeb9eef42cd40df0506226__validation_labels.json
-    uri: local://derived-v2/public/a6eeb9eef42cd40df0506226/validation_labels.json
-    sha256: 89eff18381abc0a4f008ee4c0ef2e19c1c75db53e2ca6a7c8f3fcee360dd1901
-    bytes: 828
-    format: json
-    scope: public
-  - name: ae071562bf0c69e0de55ca32__validation.npz
-    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/validation.npz
-    sha256: 4cc88fa48b35eecec73112a2d914f4da60466e838133d3b93a5f05633f7d54c5
-    bytes: 2868964
-    format: npz
-    scope: public
-  - name: ae071562bf0c69e0de55ca32__validation_labels.json
-    uri: local://derived-v2/public/ae071562bf0c69e0de55ca32/validation_labels.json
-    sha256: 4e44589aaf3232a4422fc485967f2d6fdd94445ace3e3e2410c7c34eb14e74b4
-    bytes: 861
-    format: json
-    scope: public
-  - name: ae718da47b5405ea86ea5526__validation.npz
-    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/validation.npz
-    sha256: aa9142d5b10bc17f066c039a86e182ad152638ad47bb528077d87d5df2eed52b
-    bytes: 4465577
-    format: npz
-    scope: public
-  - name: ae718da47b5405ea86ea5526__validation_labels.json
-    uri: local://derived-v2/public/ae718da47b5405ea86ea5526/validation_labels.json
-    sha256: cb58147731065c120e7f2c0e02931b5cb707fcdc97b9b0332a1d1a2ea1339c44
-    bytes: 828
-    format: json
-    scope: public
-  - name: bdbb8c7e8a7dc40a9c837479__validation.npz
-    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/validation.npz
-    sha256: eca97ae45ee221c772ac06750c349c6e1c5639f4f301e8130bcb0bfb1e8187b8
-    bytes: 4405297
-    format: npz
-    scope: public
-  - name: bdbb8c7e8a7dc40a9c837479__validation_labels.json
-    uri: local://derived-v2/public/bdbb8c7e8a7dc40a9c837479/validation_labels.json
-    sha256: 17d415b0b1fa025bf03a7db09091c59fe10ae211b071d148f259c858734f4ab1
-    bytes: 861
-    format: json
-    scope: public
-  - name: c44177eb4a39d379327daf66__validation.npz
-    uri: local://derived-v2/public/c44177eb4a39d379327daf66/validation.npz
-    sha256: 0fd057d6718e3d678942430260ae04825f0fa4e673523ceee7a084421bb36c5a
-    bytes: 3614729
-    format: npz
-    scope: public
-  - name: c44177eb4a39d379327daf66__validation_labels.json
-    uri: local://derived-v2/public/c44177eb4a39d379327daf66/validation_labels.json
-    sha256: 870600a2848e6a2073477be19267682d2076300cbb6ba16ef5deecb4162bb014
-    bytes: 861
-    format: json
-    scope: public
-  - name: ca87aad955c18a562b4d620e__validation.npz
-    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/validation.npz
-    sha256: 0c5c0d6b9bc8760084ebe42c52f5506fa2a652d99ce7b7568a6dcf5955f23402
-    bytes: 5048020
-    format: npz
-    scope: public
-  - name: ca87aad955c18a562b4d620e__validation_labels.json
-    uri: local://derived-v2/public/ca87aad955c18a562b4d620e/validation_labels.json
-    sha256: cf552a65803712ec2f4ecf7910a576494bbbffa61e619c182c03642ed0ac74b6
-    bytes: 861
-    format: json
-    scope: public
-  - name: d048cb6314a77347fb2830ab__validation.npz
-    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/validation.npz
-    sha256: 88305e5f03feaf0a5a17be27d5f32933fbea70ffc037ed1608c948657f3eeebd
-    bytes: 3900425
-    format: npz
-    scope: public
-  - name: d048cb6314a77347fb2830ab__validation_labels.json
-    uri: local://derived-v2/public/d048cb6314a77347fb2830ab/validation_labels.json
-    sha256: 30a0edb094af3462288e126ea580ea6eb104b69e2ab1a6a573744414f25643fc
-    bytes: 861
-    format: json
-    scope: public
-  - name: d30162277d98503e1a66e677__validation.npz
-    uri: local://derived-v2/public/d30162277d98503e1a66e677/validation.npz
-    sha256: ceeb13ca4db1d1baedd83e5bee678392bc98b39f7c84a048b79e8717e32c61cf
-    bytes: 4113480
-    format: npz
-    scope: public
-  - name: d30162277d98503e1a66e677__validation_labels.json
-    uri: local://derived-v2/public/d30162277d98503e1a66e677/validation_labels.json
-    sha256: 54cb8c06a6abc023784a100175fc8a294f55fca3ace07a51b0bdf4211a6f2f03
-    bytes: 861
-    format: json
-    scope: public
-  - name: e206be9cf197bbd5d0b4c5bf__validation.npz
-    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/validation.npz
-    sha256: 7a3a9fcfe9000a8fc4de9c9751463df896cac941806b6deaf9030d02cf9b31b6
-    bytes: 5501585
-    format: npz
-    scope: public
-  - name: e206be9cf197bbd5d0b4c5bf__validation_labels.json
-    uri: local://derived-v2/public/e206be9cf197bbd5d0b4c5bf/validation_labels.json
-    sha256: 36fdf9191ad555d36132ef458672fbc0ab15cb6182a4c1ca8c24887a2e8ea7b5
-    bytes: 828
-    format: json
-    scope: public
-  - name: e2b77b67309c08fada2b590a__validation.npz
-    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/validation.npz
-    sha256: 78393e48f3074d6770843842a70ac43f4f5a748535461958304b2c9c2aa92631
-    bytes: 5097639
-    format: npz
-    scope: public
-  - name: e2b77b67309c08fada2b590a__validation_labels.json
-    uri: local://derived-v2/public/e2b77b67309c08fada2b590a/validation_labels.json
-    sha256: ce775e0c9d0987fead987821899b67c20d8c7be7fc1ce3a0fb673416eb703b67
-    bytes: 861
-    format: json
-    scope: public
-  - name: f2ac63e82bdf4a122eae68f4__validation.npz
-    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/validation.npz
-    sha256: f69d71d5010af4a6df07e9370e03ef687024420c1dd41f1dfa8b5a991b6822e5
-    bytes: 2526016
-    format: npz
-    scope: public
-  - name: f2ac63e82bdf4a122eae68f4__validation_labels.json
-    uri: local://derived-v2/public/f2ac63e82bdf4a122eae68f4/validation_labels.json
-    sha256: e194e08452b7835541030854243fe0d35ccc1eae5f33aaa9ead2bbf160d8795d
-    bytes: 861
-    format: json
-    scope: public
-  - name: f95210c0fcd8eb394702cdfc__validation.npz
-    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/validation.npz
-    sha256: 74c47c0e63ba01ed0d27a85a482e7fe78afea31050e25d4cfaaad3887857ffe2
-    bytes: 4103616
-    format: npz
-    scope: public
-  - name: f95210c0fcd8eb394702cdfc__validation_labels.json
-    uri: local://derived-v2/public/f95210c0fcd8eb394702cdfc/validation_labels.json
-    sha256: 1c2af08336c9b94c59d0ef8af2629991e01a2ddd9b81c54208b459ee695f757c
-    bytes: 861
-    format: json
-    scope: public
-  - name: fa5eb569df965aa60fe2aba8__validation.npz
-    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/validation.npz
-    sha256: 23ecc4c18f83aacb65e89da677eb9eac5f788040255ed5f87d5adba6514f63a8
-    bytes: 4185313
-    format: npz
-    scope: public
-  - name: fa5eb569df965aa60fe2aba8__validation_labels.json
-    uri: local://derived-v2/public/fa5eb569df965aa60fe2aba8/validation_labels.json
-    sha256: 297038389ee01bf38bbe9f861be335e15c6428ea1644f2e1dcfd18cd0d24c217
-    bytes: 828
-    format: json
-    scope: public
-  - name: fca8cd7e02687e10ba3f77ad__validation.npz
-    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/validation.npz
-    sha256: a36c365448490f071f44fc3f123dc0b699805e15bc385b7b8fc46782a49bafc0
-    bytes: 3418584
-    format: npz
-    scope: public
-  - name: fca8cd7e02687e10ba3f77ad__validation_labels.json
-    uri: local://derived-v2/public/fca8cd7e02687e10ba3f77ad/validation_labels.json
-    sha256: 60344c0df430d9f7fd52edfe8dd622684a156916779d7a9167352bda050834c9
-    bytes: 861
-    format: json
-    scope: public
-  - name: fde5bee80f2a1fd225351878__validation.npz
-    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/validation.npz
-    sha256: d404dd0a579905a1d04bfd98bda20d11b90046374c006d559d335381191f9b07
-    bytes: 3565097
-    format: npz
-    scope: public
-  - name: fde5bee80f2a1fd225351878__validation_labels.json
-    uri: local://derived-v2/public/fde5bee80f2a1fd225351878/validation_labels.json
-    sha256: aaf22596c149ce01238559e0637487a2fe52ced6770b85509426bf72a4e33fea
-    bytes: 861
-    format: json
-    scope: public
-  - name: validation_manifest.json
-    uri: local://derived-v2/public/validation_manifest.json
-    sha256: 61d33ee7354696550537bebbc112d4566a08d60b398c1f9129b6f63fa177481a
-    bytes: 46020
-    format: json
-    scope: public

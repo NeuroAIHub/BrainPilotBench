@@ -36,6 +36,9 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 
 ## Project news
 
+- **2026-10-15 — Unified public data layout published.** The v1 collection maps 111 hosted task folders to `tasks/<category>/<task-id>/public/`.
+  H1 remains source-only. [Scoped public delivery checks](reports/unified-public-delivery-20261015.json) passed for the hosted revision.
+  The storage cutover removed 662 legacy paths from the current Hugging Face main tree. Their immutable revision URLs remain available.
 - **2026-10-15 — BrainPilotBench v1 task collection.** v1 brings **108 new tasks and four retained v0 tasks** into one 112-task collection.
   **Invasive recordings** is a new data category with seven ECoG, sEEG, and intracortical decoding tasks.
   See the [v1 task suite](#task-suite) and [data access options](#v1-data-access). **Agent benchmark results for the 108 additions remain pending.**
@@ -65,8 +68,9 @@ The v1 label identifies the collection. Each task keeps its own scientific proto
 >
 > Published **BrainPilotBench-v0 results cover only the four original tasks**. They remain historical v0 results, not a v1 evaluation.
 
-The complete v1 source collection is under review in [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75).
-It is not yet merged into main or distributed through npm. Use the v1 source branch in the quick start below.
+The v1 source collection entered main through [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75).
+The unified download and preparation update uses the `feat/unified-public-data-layout` review branch.
+Use that branch for the workflow below. No v1 npm release is available.
 
 ## Task suite
 
@@ -110,8 +114,8 @@ These recording types share one category while retaining their distinct input fo
 
 Their local checks cover real data, fixed reference submissions, container-isolated public Valid scoring,
 and separate owner Test interfaces. They do not provide Agent benchmark results.
-Five tasks have a [prepared public package](docs/invasive-task-preparation.md#download-a-prepared-public-package).
-H1 and BCI IV-4 retain original-source download, split definitions, and local preparation methods. Their data are not mirrored here.
+Six tasks, including BCI IV-4, use the [unified hosted public layout](docs/invasive-task-preparation.md#prepare-one-public-task).
+H1 retains its original-source download and local preparation route. Its data are not mirrored here.
 The film package does not require the owner-held shuffle key to use. Rebuilding the same opaque IDs and hashes does require it.
 See the [invasive-recording guide](docs/invasive-task-preparation.md) for access and evaluation boundaries.
 
@@ -134,27 +138,34 @@ data roles, and reuse across independent research projects.
 
 ### v1 data access
 
-Hosted packages for the v1 additions use two immutable storage snapshots:
+The unified hosted layout is `tasks/<category>/<task-id>/public/` at [Hugging Face revision `f50618208e3e748a8a16dfb6138e335f033d603c`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/f50618208e3e748a8a16dfb6138e335f033d603c/tasks).
+The data and 228 metadata files are published. Remote identity checks covered every hosted path.
+The current Hugging Face main tree removed 662 legacy paths at commit `46859131ae68fa2e1afdf91b5de135270563aaa0`.
+The dated immutable revision URLs below remain available. This cutover did not rewrite repository history or run garbage collection.
+The [delivery report](reports/unified-public-delivery-20261015.json) records 116 anonymous root and task-manifest readbacks and 56 verified anonymous data downloads (426,564,046 bytes).
+It also records eight preparation checks. Four used fresh anonymous fetches. Four used verified existing public caches.
+It contains 111 hosted task folders and 668 public data files totaling 37,945,533,281 bytes.
+BCI IV-4 contributes 14 files and 324,773,839 bytes. H1 remains source-only under its source Data Use Agreement.
+The 111 folders include the four retained v0 tasks. Download only the task that you need.
 
-- **EEG, psychology, structural MRI, and connectomics:** [101-task public package](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1), with 246 data files totaling 32.67 GB.
-- **Invasive recordings:** [five-task public package](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1), with 402 data files totaling 2.35 GB.
-- **H1 and BCI IV-4:** original-source download, fixed split definitions, and local preparation. Their data are not mirrored here.
-
-Download only the tasks you need. The four retained v0 tasks keep their task-specific data access instructions.
+For a hosted task, run `node dist/cli.js prepare <task-id> --fetch --workspace /path/to/workspace`.
+The CLI fetches the public entries in `data.lock`, verifies each size and SHA-256, and copies mapped files into the prepared workspace.
+The setup script receives `BPB_PUBLIC_DATA_ROOT` for that verified copy.
+Use the task README for required Python variables and scoring data roots.
 EEG and psychology additions use public validation, not imported private Test scores. Evaluator-only inputs remain separate.
 
 <details>
 <summary>Data checks and candidates outside v1's runnable count</summary>
 
-The 101-task package passed anonymous download and SHA-256 checks on all 247 paths, including its selection manifest.
-The invasive package passed metadata checks on all 405 paths and anonymous download checks on nine representative files.
-An additional complete M2 public-package download and workspace preparation passed.
-These checks establish data delivery and selected workflows, not Agent benchmark performance.
+Earlier dated snapshots passed their recorded delivery checks: 247 anonymous readbacks for the first batch and nine representative invasive file downloads.
+One complete M2 package download and workspace preparation also passed.
+These checks apply to those historical snapshots. The [unified delivery report](reports/unified-public-delivery-20261015.json) records the new revision separately.
+The full 37,945,533,281-byte collection was not redownloaded. No Agent, model, or owner Test run was part of this delivery check.
 See the [data preparation record](docs/data-preparation.md) and [invasive task guide](docs/invasive-task-preparation.md) for the exact scopes.
 
 Four EEG entries remain preparation-only: HMC sleep stage, HMC sleep onset, Sleep-EDF onset, and CHB-MIT seizure detection.
 Thielen2021 remains withheld. These five candidates are outside the 112 runnable tasks.
-Candidate packages and evaluator-only inputs are not included in the public packages above.
+Candidate packages and evaluator-only inputs are not included in the unified public layout.
 
 </details>
 
@@ -189,10 +200,10 @@ the technical report.
 - Git
 - Any task-specific Python, CPU, GPU, or storage requirements listed in its task README
 
-Until [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75) is merged, use the v1 source branch:
+Use the unified-data review branch for the updated download and preparation workflow:
 
 ~~~bash
-git clone --branch feat/invasive-task-collection https://github.com/NeuroAIHub/BrainPilotBench.git
+git clone --branch feat/unified-public-data-layout https://github.com/NeuroAIHub/BrainPilotBench.git
 cd BrainPilotBench
 npm ci
 npm run build
@@ -340,6 +351,8 @@ or start a discussion.
 ## License
 
 The framework package is licensed under MIT.
+The hosted datasets retain their original source terms. The MIT license does not grant rights to those data.
+Read each task's source and citation instructions before use. In particular, this repository makes no CC or Apache redistribution claim for BCI IV-4.
 
 ---
 

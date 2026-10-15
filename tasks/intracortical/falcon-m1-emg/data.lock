@@ -2,30 +2,132 @@
 # Source 770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f; source manifest SHA-256 b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4.
 # Full raw NWB SHA-256 was locally verified.
 datasets:
-  - name: m1-train-0001.nwb
-    uri: https://api.dandiarchive.org/api/assets/13163b3c-95b7-4b0e-8181-72d7bd658e0b/download/
-    sha256: 63ee25782c62ff2275dcfbdcaa56552ec4c26fcde00f5a74e5be54785b5c25eb
-    bytes: 73077382
-    format: nwb
+  - name: train__manifest.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/manifest.json
+    sha256: da828ba452007640b16467dd15d6f5dafa124d580d602a13c13b562cc7a6328e
+    bytes: 4626
+    format: json
     scope: public
-  - name: m1-train-0002.nwb
-    uri: https://api.dandiarchive.org/api/assets/66b503dd-c311-42ce-983f-0810ed8c01ff/download/
-    sha256: 9c72512308194b93cc19b51733514eb9721152ffe4dd357ee93aabd4be5caa91
-    bytes: 80268327
-    format: nwb
+    path: train/manifest.json
+  - name: train__runs__m1-train-0001__mask.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0001/mask.npy
+    sha256: 1cad57e88a13e10f4ede3478e283c3eabec8790a43f311b3bbd12d06c18e2aec
+    bytes: 182626
+    format: npy
     scope: public
-  - name: m1-train-0003.nwb
-    uri: https://api.dandiarchive.org/api/assets/478c68a5-2434-428c-91f9-d678c8760dd6/download/
-    sha256: 2d2fdc9be5ccb7a47969894ff1da43a994da11bfff298353f94d489c4af37b3a
-    bytes: 78481526
-    format: nwb
+    path: train/runs/m1-train-0001/mask.npy
+  - name: train__runs__m1-train-0001__trial_start.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0001/trial_start.npy
+    sha256: fe3afa39805279fa40e132f1a3dab08a47f48df64bb4436e24789b51f98ecb82
+    bytes: 182626
+    format: npy
     scope: public
-  - name: m1-valid-0001.nwb
-    uri: https://api.dandiarchive.org/api/assets/61dbe78b-58da-4089-b308-96378c5a95b9/download/
-    sha256: 96e7f078c6acb89b802b6241a36b9c9e2d04df82c180a63354fd3f7e74357254
-    bytes: 68337100
-    format: nwb
+    path: train/runs/m1-train-0001/trial_start.npy
+  - name: train__runs__m1-train-0001__x.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0001/x.npy
+    sha256: be8116d616b30cb4b29e20261de977bdf7b423a2291626b7bdc3d6d33a5498be
+    bytes: 11680000
+    format: npy
     scope: public
+    path: train/runs/m1-train-0001/x.npy
+  - name: train__runs__m1-train-0001__y.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0001/y.npy
+    sha256: 4c826c2991faf939cdf20fc7d31b288ce04e7824d2899a7f30a77a6735037fb4
+    bytes: 23359872
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0001/y.npy
+  - name: train__runs__m1-train-0002__mask.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0002/mask.npy
+    sha256: d9b62da4a08a92d0e6d7ddd9789137cc0806e0abe8332f520129e2807b9013cd
+    bytes: 172453
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0002/mask.npy
+  - name: train__runs__m1-train-0002__trial_start.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0002/trial_start.npy
+    sha256: c9701d775b0e2c4a8837c66293b3c3f56d1922a41b1c452fd52d9bed0ee70ce0
+    bytes: 172453
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0002/trial_start.npy
+  - name: train__runs__m1-train-0002__x.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0002/x.npy
+    sha256: 7572fc402c89be120cd5e97b3336b0f26fffeaf41b7fa11b9b526263e8325ba7
+    bytes: 11028928
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0002/x.npy
+  - name: train__runs__m1-train-0002__y.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0002/y.npy
+    sha256: caefdc4209b1210fc80ea73f2ea95dc64f5e527db27eccb5566ec0c5ceaccf22
+    bytes: 22057728
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0002/y.npy
+  - name: train__runs__m1-train-0003__mask.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0003/mask.npy
+    sha256: 2e5edff72a8c640e54e0cc660c05917b33e5a6f27fe517b93b40cc269b0b727d
+    bytes: 177734
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0003/mask.npy
+  - name: train__runs__m1-train-0003__trial_start.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0003/trial_start.npy
+    sha256: af33f19db249eecacde2efbdedc78ee49577511164037d03ebfc2b277fd75213
+    bytes: 177734
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0003/trial_start.npy
+  - name: train__runs__m1-train-0003__x.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0003/x.npy
+    sha256: 1011f9c834503c8bcd18725361e4e3b9b91513d27f80697854b6150053d06697
+    bytes: 11366912
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0003/x.npy
+  - name: train__runs__m1-train-0003__y.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/train/runs/m1-train-0003/y.npy
+    sha256: e18f396ee986bf06480ff3685e4e89060b30e38091e485fa1c9255582b98521b
+    bytes: 22733696
+    format: npy
+    scope: public
+    path: train/runs/m1-train-0003/y.npy
+  - name: valid__manifest.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/valid/manifest.json
+    sha256: 46f0c0d23d46baea3cd7c4b3c63d6c2f4a4a2cbc312676e92a160399c0e91f8a
+    bytes: 1938
+    format: json
+    scope: public
+    path: valid/manifest.json
+  - name: valid__runs__m1-valid-0001__mask.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/valid/runs/m1-valid-0001/mask.npy
+    sha256: b2f21fc5a8d3453bc2ec96da1fd0e8a2654898421a7b4d82dadaa4af986f4fd3
+    bytes: 160564
+    format: npy
+    scope: public
+    path: valid/runs/m1-valid-0001/mask.npy
+  - name: valid__runs__m1-valid-0001__trial_start.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/valid/runs/m1-valid-0001/trial_start.npy
+    sha256: 8106589d16aeade544f8f767d9e96262779b2dc1807e23d271210bea013b1de6
+    bytes: 160564
+    format: npy
+    scope: public
+    path: valid/runs/m1-valid-0001/trial_start.npy
+  - name: valid__runs__m1-valid-0001__x.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/valid/runs/m1-valid-0001/x.npy
+    sha256: c1f7dec9c2f6057ea01f49b33fa18e62093992d76a86bf964aa1c7cde8e8bfbc
+    bytes: 10268032
+    format: npy
+    scope: public
+    path: valid/runs/m1-valid-0001/x.npy
+  - name: valid__runs__m1-valid-0001__y.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-m1-emg/public/valid/runs/m1-valid-0001/y.npy
+    sha256: 4ab47446b1a77673a608856600708b5c0177752ace2ccd55821422d0f0234410
+    bytes: 20535936
+    format: npy
+    scope: public
+    path: valid/runs/m1-valid-0001/y.npy
   - name: m1-test-0001.nwb
     uri: https://api.dandiarchive.org/api/assets/1b2e1931-9b22-42bd-b947-a14bd2f81d1b/download/
     sha256: 782c1fd090facfb3c50b6a85da8209ca3aea71f66bd4edc13d61fe4a55a3429d

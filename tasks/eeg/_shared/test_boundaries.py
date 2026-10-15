@@ -64,15 +64,15 @@ class SharedEegBoundaryTests(unittest.TestCase):
                 by_uri = {record["uri"]: record for record in records}
                 self.assertEqual(len(by_uri), 4)
                 prefix = ("hf://datasets/BrainPilot-Bench/Tasks-Data-Public@"
-                          "09240a63ce2ec96050313c59221291114ff8df6f/"
-                          "bpb-public-data-20261013-v1")
-                expected_uris = {f"{prefix}/{task.name}/{contract['source_task_version']}/{name}"
+                          "f50618208e3e748a8a16dfb6138e335f033d603c/"
+                          "tasks/eeg")
+                expected_uris = {f"{prefix}/{task.name}/public/{name}"
                                  for name in prepare.FILES}
                 self.assertEqual(set(by_uri), expected_uris)
                 for name, entry in contract["data_files"].items():
                     self.assertEqual(len(entry["sha256"]), 64)
                     self.assertGreater(entry["bytes"], 0)
-                    uri = f"{prefix}/{task.name}/{contract['source_task_version']}/{name}"
+                    uri = f"{prefix}/{task.name}/public/{name}"
                     record = by_uri[uri]
                     self.assertEqual(record["scope"], "public")
                     self.assertEqual(record["sha256"], entry["sha256"])

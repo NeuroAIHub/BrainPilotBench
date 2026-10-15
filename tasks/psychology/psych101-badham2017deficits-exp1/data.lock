@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-badham2017deficits-exp1/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-badham2017deficits-exp1/public/train.jsonl
     sha256: 857bbe097d50e0c2ac54706414ad0af241e303c0359a8a83385b6a7f27d0de9f
     bytes: 1851180
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-badham2017deficits-exp1/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-badham2017deficits-exp1/public/valid.jsonl
     sha256: 99cdd063b349063af8f09752b7710123894d476ac453a3ae25a3817ba3060436
     bytes: 453497
     format: jsonl

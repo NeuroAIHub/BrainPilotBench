@@ -1,24 +1,83 @@
 # Frozen FALCON B1 public-origin NWB assets; Test is evaluator-only.
 # Source 770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f; manifest SHA-256 b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4.
 datasets:
-  - name: b1-train-0001.nwb
-    uri: https://api.dandiarchive.org/api/assets/914a4d5a-a30c-4bd3-b3e0-aa51994a109a/download/
-    sha256: 35535c2ea2827826f561ff7cfeb38f3b216eb8e8292dd4c9d7391f068e31c7ed
-    bytes: 224583316
-    format: nwb
+  - name: train__manifest.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/train/manifest.json
+    sha256: de1b061c3cfa921534d2dd1df7ad7f16a221d0b0e3d674ba5599f32e59922352
+    bytes: 2783
+    format: json
     scope: public
-  - name: b1-train-0002.nwb
-    uri: https://api.dandiarchive.org/api/assets/68afa39f-b577-4183-a206-dde24d718b78/download/
-    sha256: 7474ec1158f34fb364fa5ab03c2e863ee41b6f8fa1637551bb75241ebe2f3204
-    bytes: 591750268
-    format: nwb
+    path: train/manifest.json
+  - name: train__runs__b1-train-0001__mask.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/train/runs/b1-train-0001/mask.npy
+    sha256: 6ce5aac59ca6a2861f64b8b8412f61c800208b1ce9a142444319aae6b10f82af
+    bytes: 1529568
+    format: npy
     scope: public
-  - name: b1-valid-0001.nwb
-    uri: https://api.dandiarchive.org/api/assets/8a239242-2b86-4c15-8afd-6c737a8a3cca/download/
-    sha256: 2c356aa27ce8551670ffd68ff0482b6dcd61b46fad27434bb4b7224f16947124
-    bytes: 163388824
-    format: nwb
+    path: train/runs/b1-train-0001/mask.npy
+  - name: train__runs__b1-train-0001__x.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/train/runs/b1-train-0001/x.npy
+    sha256: 24640169129ab5f08efd76e6370c42dda446d4bb75cd0adcba5af9d1e31abd86
+    bytes: 25245128
+    format: npy
     scope: public
+    path: train/runs/b1-train-0001/x.npy
+  - name: train__runs__b1-train-0001__y.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/train/runs/b1-train-0001/y.npy
+    sha256: dc78c4e1abb3bf68f3b79a06a9bfbd2eba669bf06eb71b8a31601200fe18ad30
+    bytes: 12235648
+    format: npy
+    scope: public
+    path: train/runs/b1-train-0001/y.npy
+  - name: train__runs__b1-train-0002__mask.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/train/runs/b1-train-0002/mask.npy
+    sha256: 207c9d8db38c59aee83ad7c99529998f5d04c1360c509b0ceddc307b2c514bce
+    bytes: 4032288
+    format: npy
+    scope: public
+    path: train/runs/b1-train-0002/mask.npy
+  - name: train__runs__b1-train-0002__x.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/train/runs/b1-train-0002/x.npy
+    sha256: 4c6218918d53039368ddf3ed5151c55686be99cc5994a7e994f4882ed0ebc7de
+    bytes: 66555128
+    format: npy
+    scope: public
+    path: train/runs/b1-train-0002/x.npy
+  - name: train__runs__b1-train-0002__y.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/train/runs/b1-train-0002/y.npy
+    sha256: 219d89d38f9c9651d2989f38d0ecc668b46db64d8acde7f9d6505ed3ce11d9a4
+    bytes: 32257408
+    format: npy
+    scope: public
+    path: train/runs/b1-train-0002/y.npy
+  - name: valid__manifest.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/valid/manifest.json
+    sha256: 965737515bd6c9ad8bb14cb8d655b4a4edca581b744da6cf3c6136bdbbaf422c
+    bytes: 1640
+    format: json
+    scope: public
+    path: valid/manifest.json
+  - name: valid__runs__b1-valid-0001__mask.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/valid/runs/b1-valid-0001/mask.npy
+    sha256: 186263bc2feabf647638995224eb9404f4df0070bd379c75d3ba3d6cd4a20e42
+    bytes: 1112448
+    format: npy
+    scope: public
+    path: valid/runs/b1-valid-0001/mask.npy
+  - name: valid__runs__b1-valid-0001__x.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/valid/runs/b1-valid-0001/x.npy
+    sha256: 1a289619ff7b29b5a6a675100bb3d47c42bbd08e5e05cfcbf26ebc5c7208e64f
+    bytes: 18360128
+    format: npy
+    scope: public
+    path: valid/runs/b1-valid-0001/x.npy
+  - name: valid__runs__b1-valid-0001__y.npy
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/falcon-b1-birdsong/public/valid/runs/b1-valid-0001/y.npy
+    sha256: b8044c2b120c3558d5987b7fda94438773b9016c6da3fa59cd111e23bdce35e1
+    bytes: 8898688
+    format: npy
+    scope: public
+    path: valid/runs/b1-valid-0001/y.npy
   - name: b1-test-0001.nwb
     uri: https://api.dandiarchive.org/api/assets/0aed33b3-1b0f-43c1-afff-62db907ffcc8/download/
     sha256: ce05975b77ad202893582af0b1f11ab9c8a069f6d673d8e03e69f9dc6a200bcc

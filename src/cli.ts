@@ -182,7 +182,8 @@ async function main() {
     const prepared = prepareWorkspace(task, workspaceDir);
     console.log(`${G}✓${X} prepared ${task.meta.id} → ${workspaceDir}`);
     console.log(`  prompt: ${prepared.promptPath}`);
-    console.log(`  setup: ${prepared.setupRan ? "public data staged" : "not required"}`);
+    console.log(`  setup: ${prepared.setupRan ? "ran" : "not required"}`);
+    if (prepared.publicDataRoot) console.log(`  public data: ${prepared.publicDataRoot}`);
     return;
   }
 

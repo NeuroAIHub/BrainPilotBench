@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { discoverTaskDirs } from "../dist/discover.js";
 import { readInvasiveCandidates, validateInvasiveCandidate, invasiveCatalogRow } from "./invasive-candidates.mjs";
 import { loadTask } from "../dist/loader.js";
-import { readInvasiveAcceptance, requiredInvasiveBindings } from "./invasive-acceptance.mjs";
+import { readInvasiveAcceptance, requiredInvasiveBindings, validatePublicPreviewMapping } from "./invasive-acceptance.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const expected = [
@@ -127,6 +127,108 @@ test("engineering evidence rejects changed files and inflated lifecycle claims",
     writeFileSync(join(dir, "contract.json"), "changed metadata\n");
     assert.throws(() => readInvasiveAcceptance(temporary, dir, task), /stale/);
   } finally { rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("delivery receipt permits only pinned public lock and setup changes", () => {
+  const temporary = mkdtempSync(join(tmpdir(), "bpb-delivery-evidence-"));
+  const taskRelative = "tasks/ieeg/metadata-fixture";
+  const dir = join(temporary, taskRelative);
+  const digest = value => createHash("sha256").update(value).digest("hex");
+  const put = (path, value) => {
+    const full = join(temporary, path);
+    mkdirSync(dirname(full), { recursive: true });
+    writeFileSync(full, value);
+    return digest(value);
+  };
+  const bound = {};
+  for (const name of ["task.yaml", "contract.json", "data.lock", "protocol.json", "prompt/turns.yaml",
+    "checks/check.sh", "env/setup.sh"]) {
+    const file = `${taskRelative}/${name}`;
+    bound[file] = put(file, `original ${name}\n`);
+  }
+  const acceptance = {
+    schema: "bpb-local-task-acceptance/1", task_id: "metadata-fixture", task_version: "0.1",
+    status: "passed", agent_benchmark_run: false, source_task_id: "unit-check", source_verification: "fixture",
+    public_validation: { status: "passed", metric_id: "example", value: 0, profile: "unit-profile",
+      cli_report_sha256: "1".repeat(64) },
+    owner_test: { status: "fixed_reference_interface_passed", model_tuned: false,
+      report_sha256: "2".repeat(64), frozen_artifact_receipt_sha256: "3".repeat(64),
+      scores_published_as_agent_results: false },
+    reference_artifact_sha256: { "config.json": "4".repeat(64), "model.py": "5".repeat(64),
+      "weights.safetensors": "6".repeat(64) },
+    checks: ["cli_submission_and_isolated_scoring"], file_sha256: bound,
+  };
+  const revision = "a".repeat(40);
+  const target = "tasks/invasive/metadata-fixture/public/train/manifest.json";
+  const task = { meta: { id: "metadata-fixture", version: "0.1",
+    evaluation: { primaryMetric: { id: "example" }, profile: "unit-profile" } },
+    datasets: [{ name: "manifest.json", scope: "public", path: "train/manifest.json",
+      uri: `hf://datasets/BrainPilot-Bench/Tasks-Data-Public@${revision}/${target}` },
+      { name: "private.dat", scope: "private", uri: "local://private.dat" }] };
+  const acceptanceText = JSON.stringify(acceptance);
+  const acceptancePath = `${taskRelative}/acceptance.json`;
+  const lockFile = `${taskRelative}/data.lock`;
+  const setupFile = `${taskRelative}/env/setup.sh`;
+  const reportPath = "reports/unified-public-verification.json";
+  const report = {
+    schema: "bpb-unified-public-verification/1", published_revision: revision,
+    metadata: { scope: "all", tasks: 112, hosted_tasks: 111, source_only_tasks: 1, public_files: 668 },
+    downloads: { scope: "representative", verified_targets: [target] },
+    setup: { public_output_checks: Object.fromEntries([
+      "ieeg-finger-flexion-bciciv4", "falcon-h2-handwriting", "falcon-m1-emg",
+      "falcon-m2-finger-velocity", "falcon-b1-birdsong", "ieeg-film-speech-music",
+    ].map(id => [id, { passed: true, manifest_hash_verified: true }])) },
+    owner_test_run: false,
+  };
+  try {
+    put(acceptancePath, acceptanceText);
+    const newHashes = { [lockFile]: put(lockFile, "new public lock\n"),
+      [setupFile]: put(setupFile, "new public setup\n") };
+    assert.throws(() => readInvasiveAcceptance(temporary, dir, task), /missing fresh delivery/);
+    const bridge = {};
+    for (const file of ["src/data/types.ts", "src/data/manifest.ts", "src/workflow.ts", "src/cli.ts"])
+      bridge[file] = put(file, `bridge ${file}\n`);
+    const reportHash = put(reportPath, JSON.stringify(report));
+    const delivery = {
+      schema: "bpb-unified-public-delivery/1", status: "passed", task_id: "metadata-fixture",
+      task_version: "0.1", published_revision: revision, prior_acceptance_sha256: digest(acceptanceText),
+      old_file_sha256: { [lockFile]: bound[lockFile], [setupFile]: bound[setupFile] },
+      new_file_sha256: newHashes, bridge_file_sha256: bridge,
+      verification_report: { path: reportPath, sha256: reportHash },
+    };
+    const writeDelivery = value => put(`${taskRelative}/delivery-acceptance.json`, JSON.stringify(value));
+    writeDelivery(delivery);
+    assert.ok(readInvasiveAcceptance(temporary, dir, task));
+    put(`${taskRelative}/contract.json`, "changed scientific contract\n");
+    assert.throws(() => readInvasiveAcceptance(temporary, dir, task), /stale/);
+    put(`${taskRelative}/contract.json`, "original contract.json\n");
+    put(acceptancePath, JSON.stringify({ ...acceptance, note: "changed" }));
+    assert.throws(() => readInvasiveAcceptance(temporary, dir, task), /invalid delivery/);
+    put(acceptancePath, acceptanceText);
+    rmSync(join(temporary, reportPath));
+    assert.throws(() => readInvasiveAcceptance(temporary, dir, task));
+    put(reportPath, JSON.stringify(report));
+    put(reportPath, JSON.stringify({ ...report, owner_test_run: true }));
+    assert.throws(() => readInvasiveAcceptance(temporary, dir, task), /stale verification report/);
+    put(reportPath, JSON.stringify(report));
+    put(setupFile, "changed again\n");
+    assert.throws(() => readInvasiveAcceptance(temporary, dir, task), /stale or incorrect delivery hash/);
+  } finally { rmSync(temporary, { recursive: true, force: true }); }
+});
+
+test("delivery mapping rejects a duplicate public file that omits another", () => {
+  const revision = "a".repeat(40);
+  const id = "falcon-m1-emg";
+  const prefix = `tasks/invasive/${id}/public/`;
+  const planned = [
+    { target: `${prefix}train/x.npy`, sha256: "1".repeat(64), bytes: 1 },
+    { target: `${prefix}valid/x.npy`, sha256: "2".repeat(64), bytes: 2 },
+  ];
+  const entries = planned.map(op => ({ path: op.target.slice(prefix.length),
+    uri: `hf://datasets/BrainPilot-Bench/Tasks-Data-Public@${revision}/${op.target}`,
+    sha256: op.sha256, bytes: op.bytes }));
+  assert.doesNotThrow(() => validatePublicPreviewMapping(id, entries, planned, revision));
+  assert.throws(() => validatePublicPreviewMapping(id, [entries[0], entries[0]], planned, revision), /differs/);
 });
 
 // Preserve candidate validation coverage after every invasive candidate is promoted.

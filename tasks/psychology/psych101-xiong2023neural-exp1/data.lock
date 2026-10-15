@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-xiong2023neural-exp1/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-xiong2023neural-exp1/public/train.jsonl
     sha256: aab1e80701ac4bce8f552e45450e65b0971b3a7a2ae8c29c2f55dd8c7aa073fb
     bytes: 4063077
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-xiong2023neural-exp1/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-xiong2023neural-exp1/public/valid.jsonl
     sha256: 1991bd5e2c00da9827924b25d21f2f547b220d167c51a378846d5fdeaec6b691
     bytes: 1042921
     format: jsonl

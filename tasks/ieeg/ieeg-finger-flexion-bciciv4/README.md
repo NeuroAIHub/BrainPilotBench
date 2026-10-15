@@ -9,9 +9,17 @@ The source has 400 seconds of labeled ECoG and 200 seconds of evaluation ECoG pe
 
 ## Source and citation
 
-Read the [competition page](https://www.bbci.de/competition/iv/) and [Dataset 4 description](https://www.bbci.de/competition/iv/desc_4.pdf) before download. The download page requests attribution to the recording groups and a paper citation for publications that analyze the data. It also requests notification of those publications. The description asks users to cite Schalk et al., *Decoding Two-Dimensional Movement Trajectories Using Electrocorticographic Signals in Humans*, Journal of Neural Engineering 4:264–275 (2007). This repository does not assert redistribution permission.
+Read the [competition page](https://www.bbci.de/competition/iv/) and [Dataset 4 description](https://www.bbci.de/competition/iv/desc_4.pdf) before download.
+The download page requests attribution to the recording groups, a paper citation, and notification of publications that analyze the data.
+The description asks users to cite Schalk et al., *Decoding Two-Dimensional Movement Trajectories Using Electrocorticographic Signals in Humans*, Journal of Neural Engineering 4:264–275 (2007).
+The hosted copy retains those source terms. This repository does not assert a CC or Apache redistribution grant.
 
-## Download and inspect the source
+The [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task) contains 14 verified Train/Valid files (324,773,839 bytes) for this task. H1 remains source-only.
+All 14 files passed fresh anonymous size and SHA-256 download checks.
+The [delivery acceptance](delivery-acceptance.json) binds the updated lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+The original reference and owner Test acceptance remains a separate record.
+
+## Download and inspect the source (local rebuild)
 
 Create an isolated Python environment and install the pinned dependencies:
 
@@ -86,7 +94,16 @@ The public CLI scores Valid only.
 
 ## Export, run, and score
 
-After the source download above, create the current manifest-bound export outside Git:
+The standard hosted route prepares a workspace from [data.lock](data.lock):
+
+```sh
+BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
+  node dist/cli.js prepare ieeg-finger-flexion-bciciv4 --fetch \
+  --workspace /path/outside-git/bciciv4-workspace
+```
+
+Setup stages 12 Train/Valid arrays and two manifests in `/path/outside-git/bciciv4-workspace/public_data`.
+For a local source rebuild, create the manifest-bound export outside Git:
 
 ```sh
 .cache/bciciv4-venv/bin/python tasks/ieeg/ieeg-finger-flexion-bciciv4/env/export_bci.py \
@@ -104,8 +121,7 @@ Do not regenerate the contract to accept changed sources.
 Start the normal manual workflow:
 
 ```sh
-env BPB_BCI_DATA_DIR=/path/outside-git/bciciv4-derived/public \
-  BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
+env BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
   node dist/cli.js run ieeg-finger-flexion-bciciv4 --adapter manual --agent my-agent@1 \
   --workspace /path/outside-git/bciciv4-workspace
 ```
@@ -121,14 +137,13 @@ Build the pinned inference environment and score a completed bundle:
 docker build -t bpb-bciciv4-inference:local tasks/ieeg/ieeg-finger-flexion-bciciv4/checks
 IMAGE_ID=$(docker image inspect --format '{{.Id}}' bpb-bciciv4-inference:local)
 node dist/cli.js submit verify /path/to/submission-bundle
-env BPB_BCI_DATA_DIR=/path/outside-git/bciciv4-derived/public \
+env BPB_BCI_DATA_DIR=/path/outside-git/bciciv4-workspace/public_data \
   BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
   node dist/cli.js score /path/to/submission-bundle --isolation docker --inference-image "$IMAGE_ID"
 ```
 
-For optional content-cache verification, set `BPB_LOCAL_DATA_ROOT` to the derived root and use a public-only `BPB_CACHE_ROOT`.
-Run `bp-bench fetch ieeg-finger-flexion-bciciv4 --public`, then unset `BPB_LOCAL_DATA_ROOT` before Agent setup.
-No new data package has been uploaded.
+The hosted preparation route uses the public content cache and requires no `BPB_LOCAL_DATA_ROOT`.
+For an owner-controlled local rebuild, keep the derived root outside Git and unset `BPB_LOCAL_DATA_ROOT` before Agent setup.
 
 ## Current reference and owner Test
 

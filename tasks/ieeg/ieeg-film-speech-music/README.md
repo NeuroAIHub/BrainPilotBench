@@ -8,7 +8,8 @@ The source is Berezutskaya et al. (2022), OpenNeuro `ds003688` version `1.0.7`.
 The [source manifest](source_manifest.json) pins the dataset commit and a small real example.
 The [full source manifest](full_source_manifest.json) pins 51 clinical records and 306 source files.
 These files total 7,179,553,288 bytes. The 51 signal files total 7,179,082,912 bytes.
-All 306 selected source files now have native digest checks and measured SHA-256 values in [data.lock](data.lock).
+All 306 selected source files have native digest checks and measured SHA-256 values in the frozen source evidence.
+The current [data lock](data.lock) also binds the hosted public Train/Valid files.
 The [cohort inventory](cohort_inventory.json) lists all 51 iEEG clinical film file sets in that commit.
 It lists 52 film event files because one participant has two recorded playbacks.
 This inventory checks filenames and Git blob IDs.
@@ -34,15 +35,30 @@ The old [representative receipt](representative_receipt.json) remains a historic
 ## Full-cohort preparation
 
 Use Python 3.12 and install [requirements.txt](env/requirements.txt) in a separate environment.
+For an Agent workspace, use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task):
+
+```sh
+BPB_FILM_PYTHON=/path/to/film-venv/bin/python \
+  node dist/cli.js prepare ieeg-film-speech-music --fetch \
+  --workspace /path/outside-git/film-workspace
+```
+
+The CLI verifies the hosted public files and passes `BPB_PUBLIC_DATA_ROOT` to setup.
+Setup stages Train and Valid in `/path/outside-git/film-workspace/public_data`.
+The hosted public files do not contain the owner-held Test arrays or block mapping.
+Preparation passed from a verified existing public cache.
+The [delivery acceptance](delivery-acceptance.json) binds the revised lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+This delivery check did not rerun the fixed reference or owner Test.
+
+The commands below rebuild the frozen data from source and require the owner-held shuffle key.
 The owner stores source files, the shuffle key, derived files, and hidden lineage outside the Git checkout.
 The owner needs the same private shuffle key to reproduce the exact derived hashes.
 A new key produces scientifically equivalent windows with different opaque IDs and file hashes.
 The following rebuild commands are for the owner who holds the original key.
-Other users can [download the exact prepared public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package) and set `BPB_FILM_PUBLIC_ROOT` to its task folder.
-The download and Agent setup do not require the private key.
+Other users can prepare the hosted public files without the private key.
 The trusted scorer still requires the matching evaluator data and block mapping, which are not published in that package.
 The source files alone cannot reproduce this task version's frozen package hashes.
-For `local://` public entries, set `BPB_LOCAL_DATA_ROOT` to the external data root.
+For a local source rebuild, keep the external data root outside Git.
 The source downloader uses at most six independent file streams and verifies native Git blobs or annex MD5 values.
 Each source file has one writer. A failed request receives at most three attempts.
 It resumes an interrupted signal download from its saved byte offset.
@@ -114,6 +130,7 @@ The fixed reference completed one owner-only Test call after Valid acceptance.
 Its report stays outside Git with mode 0600. It is not an Agent result or a public leaderboard score.
 Public Valid results remain development results.
 For a benchmark bundle, set `BPB_FILM_EVALUATOR_DATA_ROOT` only during the later `bp-bench score` command.
+The Agent preparation uses the verified public copy in `/path/outside-git/film-workspace/public_data`.
 The Agent preparation command must not receive this owner path.
 Use separate Agent and score commands for this task.
 
