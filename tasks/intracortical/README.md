@@ -17,7 +17,8 @@ They come from [FALCON](https://snel-repo.github.io/falcon/).
 They are not official FALCON submissions or scores.
 The upstream FALCON code is pinned to [commit 770c9b9](https://github.com/snel-repo/falcon-challenge/tree/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f).
 Adapted source retains the [MIT license](UPSTREAM_LICENSE).
-DANDI data carry CC-BY-4.0 metadata.
+DANDI metadata for H2, M1-A, M2, and B1 list CC BY 4.0. H1 also lists CC BY 4.0, but its description prohibits redistribution under a Data Use Agreement.
+BrainPilotBench does not mirror H1 source or derived data. H1 remains a runnable task for users who read and comply with the agreement before local download and preparation.
 
 The source split groups data by recording date.
 Earlier held-in dates supply Train.
@@ -30,11 +31,13 @@ The evaluator boundary controls the run and package.
 It does not restrict access to source data.
 Results cannot be compared with FALCON's private EvalAI results.
 
+H1, H2, M1-A, M2, and B1 are not in the first public-data batch.
+The later five-task public package contains H2, M1-A, M2, B1, and the Berezutskaya film task. It excludes H1 because its source description prohibits redistribution.
+
 Each runnable entry has a task version, model interface, data setup, and public scorer.
 Its `acceptance.json` binds local engineering evidence to the exact version and critical files.
 Read each task guide for the source preparation and scoring commands.
 An incomplete candidate remains outside `bp-bench list` and `run all`.
-H1, H2, M1-A, M2, and B1 are not in the first public-data batch.
 
 ## Maintainer source preparation
 

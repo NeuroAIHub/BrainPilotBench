@@ -10,7 +10,7 @@ and separate owner Test workflows checked with frozen references.
 > [!IMPORTANT]
 > Agent benchmark results are not available for these seven entries.
 > Source preparation and fixed-reference checks do not establish comparative Agent performance.
-> The original 105 packages and published data batch remain unchanged. This checkout has 112 runnable packages.
+> The original 105 packages and existing public data batch remain unchanged. This checkout has 112 runnable packages.
 
 ## Research tasks
 
@@ -87,6 +87,7 @@ A later few-shot profile needs separate adaptation and Test trials.
 Small excerpts can make that split unsuitable, especially for text and bird vocalizations.
 
 The source baseline is [FALCON commit 770c9b9](https://github.com/snel-repo/falcon-challenge/tree/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f).
+H1 uses the [DANDI 000954 draft record](https://dandiarchive.org/dandiset/000954/draft). Its description prohibits redistribution under a Data Use Agreement. BrainPilotBench does not mirror H1 source or derived data. Before local download, each user must read and comply with that agreement.
 Published DANDI versions or exact asset IDs and content digests bind the data separately.
 Mutable `draft` names alone do not identify reproducible bytes.
 The preparation tools must reject source changes, role mismatches, and duplicate assets.
@@ -126,7 +127,17 @@ Film preparation verified 306 source files totaling 7,179,553,288 bytes against 
 Its 257-file public-only package contains Train/Valid arrays, labels, and channel metadata, without Test or source archives.
 Exact opaque IDs and shuffled file hashes also require the owner-held shuffle key to rebuild.
 The key stays outside Git and Agent workspaces. A new key does not reproduce the frozen package hashes.
-This package is prepared locally; it has not been uploaded as a new public data release.
+
+### Five-task public package
+
+The candidate contains H2, M1-A, M2, B1, and the Berezutskaya film task.
+It has 402 files (2,350,248,391 bytes) and targets `bpb-public-data-20261015-invasive-v1`.
+Upload and remote verification are pending.
+
+H1 and BCI IV-4 are outside this package.
+H1 source and derived files stay out of mirrors because its DANDI description prohibits redistribution.
+Users can download and rebuild H1 locally after they read and comply with the agreement.
+BCI IV-4 redistribution terms have not been established here.
 
 ### H1 runtime check
 

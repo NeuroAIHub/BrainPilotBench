@@ -30,18 +30,22 @@ DANDI <code>000954</code> is a draft snapshot.
 The [asset manifest](../_preparation/assets.manifest.json) and [data.lock](data.lock) bind source assets.
 The source code uses FALCON commit [770c9b9](https://github.com/snel-repo/falcon-challenge/tree/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f).
 
-| Role | Recording dates | Files |
+| Role | Source date IDs | Files |
 |---|---|---:|
-| Train | Five earlier held-in dates | 11 |
-| Valid | Final held-in date | 2 |
-| Evaluator-only Test | Seven later held-out dates | 14 |
+| Train | <code>19250101</code>, <code>19250108</code>, <code>19250113</code>, <code>19250115</code>, <code>19250119</code> | 11 |
+| Valid | <code>19250120</code> | 2 |
+| Evaluator-only Test | <code>19250126</code>, <code>19250127</code>, <code>19250129</code>, <code>19250202</code>, <code>19250203</code>, <code>19250206</code>, <code>19250209</code> | 14 |
+
+These identifiers follow the released source files.
+All files with one date ID stay in the same role: five Train dates, one Valid date, and seven Test dates.
 
 The source supplies 13 public Train and Valid NWB files (69,754,804 bytes).
 An owner-only evaluator set contains 14 more NWB files.
-The source data are public.
-Evaluator-only access marks the scoring role.
-It does not make the source secret.
-The H1 task is not in the first public-data batch.
+The DANDI record lists CC BY 4.0 and Open Access, but its description also prohibits redistribution under a Data Use Agreement.
+BrainPilotBench does not mirror H1 source or derived data.
+The task remains runnable after a maintainer downloads the source and builds the local arrays.
+Before downloading, each user must read and comply with the agreement at the [DANDI source record](https://dandiarchive.org/dandiset/000954/draft).
+Automated downloads do not waive the source terms.
 
 ## Input and submission
 
@@ -68,6 +72,10 @@ Keep registered parameters and buffers fixed during inference.
 The scorer ignores extra submission files.
 
 ## Prepare public data
+
+H1 source and derived arrays are not part of a public data package.
+Use the original DANDI source only after you read and comply with its Data Use Agreement.
+The setup below downloads the original source for local preparation. It does not copy H1 data to a BrainPilotBench mirror.
 
 The preparation tools require Python 3.12 and the pinned packages below.
 Use a source checkout after <code>npm ci</code> and <code>npm run build</code>.
