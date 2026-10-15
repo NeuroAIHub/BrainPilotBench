@@ -130,14 +130,72 @@ The key stays outside Git and Agent workspaces. A new key does not reproduce the
 
 ### Five-task public package
 
-The candidate contains H2, M1-A, M2, B1, and the Berezutskaya film task.
-It has 402 files (2,350,248,391 bytes) and targets `bpb-public-data-20261015-invasive-v1`.
-Upload and remote verification are pending.
+The [public package](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1) contains H2, M1-A, M2, B1, and the Berezutskaya film task.
+It has 402 data files (2,350,248,391 bytes), plus a selection manifest, README, and source attribution.
+All links use Hugging Face commit `a8a8adc87bab8d63253816dad0ae5c435e96a5f6`.
+The [selection manifest](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/resolve/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1/selection-manifest.json) binds every public file to its SHA-256, byte count, task version, and preparation source.
+All 405 published paths passed remote size and content-metadata checks. All pre-existing repository blobs remained unchanged.
+Nine representative files (66,383,187 bytes) passed anonymous download and SHA-256 checks, including one real neural input from each task.
+This was a representative download check, not a full download of the release.
 
 H1 and BCI IV-4 are outside this package.
 H1 source and derived files stay out of mirrors because its DANDI description prohibits redistribution.
 Users can download and rebuild H1 locally after they read and comply with the agreement.
 BCI IV-4 redistribution terms have not been established here.
+
+### Download a prepared public package
+
+This route downloads one prepared task folder. It does not download raw sources or Test data.
+The existing `data.lock` files retain their original-source or local-supply routes.
+`bp-bench fetch` still follows those locks. The prepared-folder route below is a separate option.
+
+Create a separate download environment outside Git:
+
+```sh
+python3.12 -m venv /path/outside-git/download-env
+/path/outside-git/download-env/bin/python -m pip install huggingface_hub==1.21.0
+/path/outside-git/download-env/bin/python - <<'PY'
+from huggingface_hub import snapshot_download
+
+task_id = "falcon-m2-finger-velocity"
+snapshot_download(
+    repo_id="BrainPilot-Bench/Tasks-Data-Public",
+    repo_type="dataset",
+    revision="a8a8adc87bab8d63253816dad0ae5c435e96a5f6",
+    allow_patterns=[f"bpb-public-data-20261015-invasive-v1/{task_id}/**"],
+    local_dir="/path/outside-git/invasive-download",
+    token=False,
+    endpoint="https://huggingface.co",
+    max_workers=2,
+)
+PY
+```
+
+Choose one task ID from this table. Keep its complete folder structure.
+Set the corresponding variable to `/path/outside-git/invasive-download/bpb-public-data-20261015-invasive-v1/<task-id>`.
+
+| Task ID | Public setup variable |
+|---|---|
+| `falcon-h2-handwriting` | `BPB_H2_DATA_DIR` |
+| `falcon-m1-emg` | `BPB_M1_DATA_DIR` |
+| `falcon-m2-finger-velocity` | `BPB_M2_DATA_DIR` |
+| `falcon-b1-birdsong` | `BPB_B1_DATA_DIR` |
+| `ieeg-film-speech-music` | `BPB_FILM_PUBLIC_ROOT` |
+
+Install the task's own environment before you prepare an Agent workspace.
+Use its README for the manual run, submission, and scoring commands.
+The setup checks the downloaded files against the frozen task contract.
+It stages only Train and Valid data.
+Do not pass source archives, evaluator paths, or credentials to the Agent.
+
+The M2 example also passed a fresh anonymous download and the task's setup script.
+Its prepared workspace contained all 30 public files (13,234,392 bytes), with the frozen Train and Valid manifest hashes.
+That check did not train a model or access Test data.
+
+The film package does not need the private shuffle key to prepare an Agent workspace.
+Its block-first scorer still requires the matching trusted evaluator data and block mapping.
+Those evaluator materials are not included in this public package.
+Downloading this package does not establish an Agent benchmark result.
 
 ### H1 runtime check
 

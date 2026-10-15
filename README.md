@@ -36,6 +36,7 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 
 ## Project news
 
+- **2026-10-15 — Public data for five invasive tasks.** Prepared Train/Valid packages for FALCON H2, M1-A, M2, B1, and film iEEG are [available at a fixed Hugging Face revision](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1). H1 and BCI IV-4 retain original-source download and local preparation instructions. **Agent benchmark results remain pending.**
 - **2026-10-14 — Seven real invasive-recording tasks.** The source collection now includes ECoG finger flexion, film-condition iEEG, and five FALCON-derived decoding tasks. All seven passed local fixed-reference and isolated-scoring checks. See the [protocols and acceptance record](docs/invasive-task-preparation.md). **Agent benchmark results remain pending.**
 - **2026-10-14 — Expanded task collection.** The repository now includes 101 new tasks across EEG, psychology, structural MRI, and connectomics, bringing the total to 105.
   **Agent benchmark results for the new tasks are pending.**
@@ -59,7 +60,7 @@ code. Independent research projects can reuse the same versioned tasks.
 > No BrainPilotBench agent benchmark scores are available for the first 101 additions or the seven invasive-recording tasks.
 > Current checks cover data integrity and selected preparation and reference-scoring workflows.
 > They do not measure comparative agent performance across the new collection.
-> The later invasive-recording additions have separate local acceptance records; their data are not part of that published batch.
+> The invasive additions have separate local acceptance records. Five have a later public data package; H1 and BCI IV-4 use original-source preparation.
 >
 > Published **BrainPilotBench-v0 results cover only the four original tasks**.
 
@@ -108,7 +109,7 @@ The two prepared EEG candidate packages and evaluator-only inputs were not publi
 Seven additional [invasive-recording entries](docs/invasive-task-preparation.md)
 cover ECoG finger movements, iEEG film conditions, and five FALCON decoding tasks.
 All seven now have runnable public-validation interfaces and local acceptance records.
-They have no Agent benchmark results and are not included in the published data batch.
+They have no Agent benchmark results. They are outside the first data batch; a separate package covers five of them.
 
 </details>
 
@@ -127,8 +128,9 @@ They have no Agent benchmark results and are not included in the published data 
 Their local checks cover real data, fixed reference submissions, container-isolated public Valid scoring,
 and separate owner Test interfaces. They do not provide Agent benchmark results.
 These additions bring the source collection to **112 runnable task packages**.
-Their data are prepared locally or rebuilt from pinned sources; they are not in the first Hugging Face batch.
-The film task's exact prepared package also depends on an owner-held shuffle key.
+Five tasks have a separate [prepared public package](docs/invasive-task-preparation.md#download-a-prepared-public-package).
+H1 and BCI IV-4 retain original-source download, split definitions, and local preparation methods; their data are not mirrored here.
+The film package does not require the owner-held shuffle key to use. Rebuilding the same opaque IDs and hashes does require it.
 See the [invasive-recording guide](docs/invasive-task-preparation.md) for access and evaluation boundaries.
 
 ### Original BrainPilotBench-v0 · 4 tasks

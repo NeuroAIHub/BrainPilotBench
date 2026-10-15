@@ -60,15 +60,20 @@ data references. All four EEG preparation entries are outside this batch,
 including two with owner-held public packages.
 
 Run `bp-bench fetch <task-id> --public` to load a task's pinned public files.
-The fetcher checks each size and SHA-256. `local://` remains a maintainer supply
-route for unpublished data. It is not a public download URL. Unset
+The fetcher checks each size and SHA-256. `local://` requires files supplied
+locally. It is not a public download URL. Unset
 `BPB_LOCAL_DATA_ROOT` before starting an Agent. Keep public and evaluator caches
 separate. The launcher rejects a private cache visible to an Agent.
 
 The invasive additions are outside the first public upload.
-The film task has a prepared public-only package, but its exact opaque IDs and hashes require the owner's private shuffle key to regenerate.
-Its catalog status is `owner_key_bound_prepared_export`; this is not an open download claim.
-The other six invasive tasks provide source-bound rebuild recipes.
+A later [prepared public package](invasive-task-preparation.md#download-a-prepared-public-package) covers H2, M1-A, M2, B1, and film iEEG.
+It contains 402 data files (2,350,248,391 bytes) at revision `a8a8adc87bab8d63253816dad0ae5c435e96a5f6`.
+H1 and BCI IV-4 retain source-only download and local preparation routes.
+The catalog's `data_access` field describes the `data.lock` route, not this separate prepared-folder download.
+
+The film package is available without a key. Regenerating its exact opaque IDs and hashes requires the owner's private shuffle key.
+Its `owner_key_bound_prepared_export` status describes that rebuild constraint, not restricted access to the prepared public files.
+The trusted film scorer still needs evaluator mappings, which are not part of the public package.
 
 Each task owns its environment instructions. CPU Docker images are built locally
 and evaluated by immutable ID/digest; no images were published. A successful

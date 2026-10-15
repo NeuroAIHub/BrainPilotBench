@@ -14,6 +14,9 @@ No Agent result is recorded. The owner Test reference report stays outside Git.
 
 ## Data preparation
 
+For a prepared Train/Valid folder, use the [fixed public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package).
+Set `BPB_M1_DATA_DIR` to the downloaded task folder. The original-source route below remains available.
+
 Use Python 3.12 with [trusted preparation requirements](env/requirements.txt).
 Keep raw and derived roots outside Git checkouts.
 Download the four public source files through the pinned source tool:

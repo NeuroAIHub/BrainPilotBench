@@ -38,7 +38,9 @@ The owner stores source files, the shuffle key, derived files, and hidden lineag
 The owner needs the same private shuffle key to reproduce the exact derived hashes.
 A new key produces scientifically equivalent windows with different opaque IDs and file hashes.
 The following rebuild commands are for the owner who holds the original key.
-Other users need the exact prepared public package, which has not yet been published.
+Other users can [download the exact prepared public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package) and set `BPB_FILM_PUBLIC_ROOT` to its task folder.
+The download and Agent setup do not require the private key.
+The trusted scorer still requires the matching evaluator data and block mapping, which are not published in that package.
 The source files alone cannot reproduce this task version's frozen package hashes.
 For `local://` public entries, set `BPB_LOCAL_DATA_ROOT` to the external data root.
 The source downloader uses at most six independent file streams and verifies native Git blobs or annex MD5 values.

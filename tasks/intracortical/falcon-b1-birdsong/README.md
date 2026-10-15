@@ -60,6 +60,9 @@ The registered-state check cannot prove that arbitrary Python follows every mode
 
 ## Prepare and run
 
+For a prepared Train/Valid folder, use the [fixed public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package).
+Set `BPB_B1_DATA_DIR` to the downloaded task folder. The original-source route below remains available.
+
 Install the pinned trusted host packages with Python 3.12:
 
 ```bash
