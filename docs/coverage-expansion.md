@@ -1,5 +1,9 @@
 # Task coverage expansion — 2026-10-12
 
+This record describes the first integration batch. For current counts, see the
+[catalog](../tasks/catalog.json). The later [invasive-recording expansion](invasive-task-preparation.md)
+has its own current acceptance table; the historical first-batch counts below stay unchanged.
+
 Status: first-batch integration candidate on `feat/shared-task-collection`.
 The base commit is `1bb49ede1ab99a4d370f066d431d59926ea1c1ad`.
 This batch is for code review. It does not publish data or images, create a

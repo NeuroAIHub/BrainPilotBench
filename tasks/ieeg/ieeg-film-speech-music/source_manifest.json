@@ -1,0 +1,30 @@
+{
+  "schema": "bpb-invasive-source-manifest/1",
+  "dataset_id": "ds003688",
+  "dataset_doi": "10.18112/openneuro.ds003688.v1.0.7",
+  "dataset_git": "https://github.com/OpenNeuroDatasets/ds003688",
+  "dataset_git_commit": "5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2",
+  "cohort_filename_inventory": "cohort_inventory.json",
+  "article_doi": "10.1038/s41597-022-01173-0",
+  "source_license": "CC0 for deposited data; the film itself has separate copyright restrictions and is not part of this task",
+  "source_population": "The article reports 51 iEEG participants and 30 fMRI participants. Eligibility for this protocol is not yet established.",
+  "metadata_inventory": "The pinned Git tree lists 52 iEEG film events files for 51 subjects. The pinned repository lists clinical run-1 and HDgrid run-2 for sub-45. The article names sub-44 for its separate clinical and HD recordings. The source identifier difference remains a provenance note; the unique clinical recording rule selects each source subject once.",
+  "representative": {
+    "subject": "sub-02",
+    "recording": "ses-iemu, task-film, acquisition-clinical, run-1",
+    "source_sampling_hz": 512,
+    "source_channel_counts_from_sidecar": {"ECOG": 48, "SEEG": 12},
+    "source_root_relative_directory": "sub-02/ses-iemu/ieeg",
+    "files": {
+      "signal": {"name": "sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg", "bytes": 80591448, "md5": "dd6d54d746bc1dc2e14b95bcbb4a64e1", "source": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"},
+      "header": {"name": "sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr", "bytes": 1864, "md5": "20ebe15eedf621a1bf599d5a6a23f46f"},
+      "markers": {"name": "sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk", "bytes": 1010, "md5": "3cdf3adf3e15573cd682b2cf3122aad5"},
+      "channels": {"name": "sub-02_ses-iemu_task-film_acq-clinical_run-1_channels.tsv", "git_blob_sha1": "4ec456cee3f5afd532afee0b1af032a9ebc179c6"},
+      "sidecar": {"name": "sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.json", "git_blob_sha1": "3569dc2b921475b4cc4b35267e77c5f742cf7b8d"},
+      "events": {"name": "sub-02_ses-iemu_task-film_run-1_events.tsv", "git_blob_sha1": "edacecce5ad25d072eeef54d57b86e51974aa04a"}
+    }
+  },
+  "download_limit_bytes_for_representative": 100000000,
+  "no_movie_download": true,
+  "no_fmri_data": true
+}

@@ -1,0 +1,81 @@
+{
+  "schema": "bpb-local-task-acceptance/1",
+  "task_id": "falcon-m1-emg",
+  "task_version": "0.1-public-validation-stream",
+  "status": "passed",
+  "date": "2026-10-14",
+  "source_task_id": "m1",
+  "agent_benchmark_run": false,
+  "source_verification": "full_source_files_and_derived_arrays_verified",
+  "public_validation": {
+    "status": "passed",
+    "scope": "fixed-reference-only",
+    "metric_id": "R2_variance_weighted",
+    "value": 0.24162054935594146,
+    "profile": "bpb-m1-public-validation-stream-v1",
+    "cli_report_sha256": "5667a1799febf135b3818fceee54c5d44b0c0a1352320ba13a148ede8a77d2c2"
+  },
+  "owner_test": {
+    "status": "fixed_reference_interface_passed",
+    "model_tuned": false,
+    "report_sha256": "c7157e28fa1d146e15016e648c1f825bcb89cddbd25bbaa651a0e9abe36b0024",
+    "frozen_artifact_receipt_sha256": "8ec8fcb9ebfeec694306188cb64532bf102b2c0ebf035782adbcfed58b6bdbc2",
+    "scores_published_as_agent_results": false
+  },
+  "checks": [
+    "source_role_bindings",
+    "public_staging",
+    "fixed_reference_public_validation",
+    "independent_metric_check",
+    "cli_submission_and_isolated_scoring",
+    "oracle_and_empty_submission",
+    "owner_test_frozen_submission"
+  ],
+  "platform": {
+    "host": "macOS-arm64",
+    "inference": "Linux-arm64-CPU",
+    "image": "sha256:f8075b097562ae717626a9257bdbe4dd6d270d283d82e7ee0a15427c88a0142c",
+    "amd64_tested": false,
+    "gpu_tested": false
+  },
+  "reference_artifact_sha256": {
+    "config.json": "4b17c934f372ee0bf16d53da3abbd9782dcb9d08a4317c1014ec4068bf00c40c",
+    "model.py": "cf248e19db6ea57cbdc5102bb22858d5f8244e8772649c9a56ee65e81d9f61d6",
+    "weights.safetensors": "ee3cc3b258f9c0b0323917b013eaa307848625559c798ca2dd05e36332c9a211"
+  },
+  "file_sha256": {
+    "tasks/intracortical/_preparation/prepare.py": "fa59d6114a01d36f3253c302c3727cc940200b3d01134672b49a4122c90cf472",
+    "tasks/intracortical/_preparation/check_manifest.py": "3c49a8778f9619c07edf5419528936f227b6d42c2036426a6d89e714be4a61fd",
+    "tasks/intracortical/_preparation/make_manifest.py": "9a22634caf5ae91f738e680c067fd81f586c1ac9c26ec0d2e167fac53d4e08c0",
+    "tasks/intracortical/_preparation/requirements.txt": "f297c0479c2128572dfb1150bf7fb20625a84fc1be74435ddd1e694b737bdafa",
+    "tasks/intracortical/_shared/native.py": "8bcd0ed3a03271392c23506d1471bf555d3f6f41c7bbc469732a5a38a9619dfa",
+    "tasks/intracortical/_preparation/assets.manifest.json": "b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4",
+    "tasks/intracortical/_regression_shared/build_contract.py": "171a32c428778fd5f21cd15c705491880cfaf384f0e317b021b94dc2e1b6e4d5",
+    "tasks/intracortical/_regression_shared/export.py": "1286c7b2b92e933de0f719807bedb75395b4c16044f4aac346621114fbc89cd5",
+    "tasks/intracortical/_regression_shared/fetch_bounded.py": "3b1ec52820622ebbd207d7042cbfce1150a1e4e72cfe415f354329bdee06f57e",
+    "tasks/intracortical/_regression_shared/fetch_resumable.py": "0bcbfd6e4cded6442b50076dfa18b41924b2bd8d75bc2af0013c7be20c269c4f",
+    "tasks/intracortical/_regression_shared/inspect_remote_hdf5.py": "ce7cf0fa4a780d91d4db099df39db1ed0439c1c5aabe93bf2efdd2a6a4f44ee8",
+    "tasks/intracortical/_regression_shared/selective_m2.py": "c655f1f3770477fca806ae6819639d908b0f6d800ba7a88055307d723aaff1fe",
+    "tasks/intracortical/_regression_shared/test_numeric_state.py": "4df9f4d4a71b1be7146a554a15a1e0f7f9c73fa15c894bddab35d17014507049",
+    "tasks/intracortical/_regression_shared/validate_native.py": "f994d5ea9a8c016b545118fa7fc9dff94070e722ec1a2dea9c350a1c05261865",
+    "tasks/intracortical/_regression_shared/validate_sparse_native.py": "bb2217a8b283e8f010e67bf8e871239be6807756dc4d1d92fa344ef9a9045d89",
+    "tasks/intracortical/falcon-m1-emg/checks/Dockerfile": "4b3dda3ae319f1b37340cb0547229d8c544a1cd457ea5c5408586c5c77ab97a9",
+    "tasks/intracortical/falcon-m1-emg/checks/check.sh": "82d2f1fa041e3b49bb306a44ebdbc889d2d6cb7a4c34d04b687d21ece0375705",
+    "tasks/intracortical/falcon-m1-emg/checks/freeze_submission.py": "3d61c433e6fb7f2ebc395532b0cf519f7d150204d6692d06a3c15165a555fb2e",
+    "tasks/intracortical/falcon-m1-emg/checks/requirements.txt": "fb003fb8576dc24ff8c844aaa528d3c30af6c9081fb960f600870ae2a93eaad4",
+    "tasks/intracortical/falcon-m1-emg/checks/score.py": "918e9c04443837873f2d177bf5436aeaff032d0e904eb4aca6e2eda1b358a009",
+    "tasks/intracortical/falcon-m1-emg/checks/worker.py": "972f51e51912ac557dc0b3b409d69770f6bc31ec4f911f9d68e5943172bee677",
+    "tasks/intracortical/falcon-m1-emg/contract.json": "405e0ad31d583091ccbfae787df1d5be049f9c3b20859fcdf4a3ccc36eb90289",
+    "tasks/intracortical/falcon-m1-emg/data.lock": "dde51e19a294052013576f30bf73732128b854f1b1e35213850a45a917870314",
+    "tasks/intracortical/falcon-m1-emg/env/requirements.txt": "729ed4d5f38227759074e0a7017365967045332da17bb3fb3caafe7221b8b488",
+    "tasks/intracortical/falcon-m1-emg/env/setup.sh": "a5547ce43c1d647634f53da8f07a704ff565a2f6e85d61fbbfc95ab4749590c1",
+    "tasks/intracortical/falcon-m1-emg/env/stage_public.py": "acdb5cb845f683e4003b6db1abd799b625fb2f21c7a249c118330ad314948fb8",
+    "tasks/intracortical/falcon-m1-emg/env/verify_public.py": "448e3d8eada199cf9e25c1452f25246e81e3f526013ca9af90781141ac9bb079",
+    "tasks/intracortical/falcon-m1-emg/prompt/turns.yaml": "e013cc4dbdc6e9a2199cc5edabc49674c3daf3cd49e08ed14ca16a99740cb7f5",
+    "tasks/intracortical/falcon-m1-emg/protocol.json": "6bd11349ac95174257aebf3610308293d16975fa689b7b51cdc2d147b6115390",
+    "tasks/intracortical/falcon-m1-emg/solution/make_reference.py": "bee4458da58d610a1f09030c66862d3d87c4f662d63fd33723c079489ebbc0e5",
+    "tasks/intracortical/falcon-m1-emg/solution/model.py": "cf248e19db6ea57cbdc5102bb22858d5f8244e8772649c9a56ee65e81d9f61d6",
+    "tasks/intracortical/falcon-m1-emg/solution/solution.sh": "baae2df8f21e64739e942350348f56b7bc643cf1788b59551c282b3c2ade2f13",
+    "tasks/intracortical/falcon-m1-emg/task.yaml": "71d879341324c360815fb1daa98831393a2b865e31b7e18ceeb0697ca54523af"
+  }
+}

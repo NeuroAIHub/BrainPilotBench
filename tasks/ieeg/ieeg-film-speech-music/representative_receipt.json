@@ -1,0 +1,40 @@
+{
+  "schema": "bpb-invasive-representative-receipt/1",
+  "status": "real_source_public_train_validation_only",
+  "source": "OpenNeuro ds003688 v1.0.7, sub-02 clinical film run-1",
+  "source_commit": "5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2",
+  "source_signal_bytes": 80591448,
+  "source_signal_md5": "dd6d54d746bc1dc2e14b95bcbb4a64e1",
+  "source_signal_sha256": "3659ec181101d06838e03c80a5960f2d1dc7a5e7aafc067a6c2765ed0bc23258",
+  "code_sha256": {
+    "source_manifest": "a586fb38fcc1f75c1a8102dec54cf9944593e7fbc2c00da90aaffa2f709302fa",
+    "protocol": "2b33417cc34167818d26da420d82544bff9f3a90134b0b1c1d01f1e4e87e0469",
+    "prepare": "b80f4c8e6f8fd8e9538255e6433e349ae5d09cb18379e9bd1d0d6fc1d1332b74",
+    "verify": "81a64ac4c3f47a1a869c138677d6cc5f90b2f130670a1e369210cebe96e1f630"
+  },
+  "source_sampling_hz": 512,
+  "good_intracranial_channels": 59,
+  "processed_sampling_hz": 256,
+  "window_seconds": 2,
+  "train": {
+    "windows": 91,
+    "arrays_sha256": "fe40b9fb82da3d31c4f514eff2d14a05754ee8e1b99716d06eea880fce8c0138",
+    "labels_sha256": "64f8b02c43838b55cb2394fabd84941eb05c75a5fc45e5b33d110552a542e0b2"
+  },
+  "validation": {
+    "windows": 26,
+    "arrays_sha256": "687d6a4532b515e622b93f7d9c6d2098958b55241f56c90b0ca8c5d315e067fa",
+    "labels_sha256": "55439487621c11f5796efcee8db6f466be2190d8a91ded6e7a1b35329512f1d9"
+  },
+  "reference": {
+    "method": "six PSD bands, channel median and upper quartile, standardization, fixed C=1 liblinear logistic regression",
+    "validation_block_balanced_accuracy": 0.5,
+    "blocks_scored": 2,
+    "test_used": false
+  },
+  "source_hash_and_export_structure_check": "passed; no independent sample-by-sample reconstruction",
+  "test_signal_windows_requested": 0,
+  "test_exported": false,
+  "full_cohort_accepted": false,
+  "task_runnable": false
+}

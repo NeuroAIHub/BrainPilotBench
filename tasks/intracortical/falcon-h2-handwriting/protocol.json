@@ -1,0 +1,13 @@
+{
+  "schema": "bpb-invasive-protocol/1",
+  "profile": "bpb-falcon-public-derived-cross-session-zs-v1",
+  "task_id": "falcon-h2-handwriting",
+  "source": {"repository": "https://github.com/snel-repo/falcon-challenge", "sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f", "task": "h2", "dandiset": "000950", "version": "0.241029.1403", "asset_manifest": "tasks/intracortical/_preparation/assets.manifest.json"},
+  "split": {"unit": "recording_date", "train_dates": ["20220518", "20220523", "20220525", "20220601", "20220603", "20220606", "20220608", "20220613", "20220615", "20220622", "20220901", "20220929", "20221006", "20221018", "20221025", "20221027", "20221101", "20221103", "20221208", "20221215"], "valid_dates": ["20230228"], "test_dates": ["20230417", "20230531", "20230628", "20230816", "20231009"], "selected_source_roles": {"train": "held-in-calib", "valid": "held-in-calib", "test": "held-out-calib"}, "excluded_source_role": "held-in-minival", "trial_boundary": "keep complete attempted-sentence trials within one role", "test_access": "evaluator_only_public_origin"},
+  "input": {"type": "intracortical_threshold_crossings", "channels": 192, "bin_ms": 20, "unit": "spike_count", "streaming": true, "inference_delivery": "one current bin only when native eval_mask is true; mask remains on trusted host"},
+  "output": {"type": "sentence_text", "target": "attempted handwriting of cued English sentences", "delivery": "one predicted string at each complete trial boundary"},
+  "metric": {"id": "WER", "direction": "minimize", "secondary": "CER", "aggregation": "sum edit distances / sum target lengths within each date, then equal-weight date mean and population std"},
+  "model_policy": {"train_valid_visible": true, "test_visible_to_agent": false, "held_out_calibration_allowed": false, "test_time_parameter_updates": false, "predict_in_recording_order": true},
+  "result_scope": "BrainPilotBench derived public-data profile; not an official FALCON score",
+  "status": "cross_session_protocol_frozen"
+}

@@ -1,0 +1,165 @@
+# Frozen FALCON H1 public-origin NWB assets; Test is evaluator-only.
+# Source 770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f; source manifest SHA-256 b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4.
+datasets:
+  - name: h1-train-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/dd1bdcf3-5430-4037-ad4a-1727004d38d2/download/
+    sha256: f8af652a31228f08b26ff8a7ecfd2a6bd05a345e368da8c98be649229f80adb2
+    bytes: 5158319
+    format: nwb
+    scope: public
+  - name: h1-train-0002.nwb
+    uri: https://api.dandiarchive.org/api/assets/782b6fad-2679-4174-a88f-ad58589fe283/download/
+    sha256: b946c4cf49f00c2ea8f0051481765ed090294e3e1e5a035cc5716ad93aa052b2
+    bytes: 3090448
+    format: nwb
+    scope: public
+  - name: h1-train-0003.nwb
+    uri: https://api.dandiarchive.org/api/assets/e40a2eca-883d-4c80-81e3-4203a49506b5/download/
+    sha256: 8a09f6ead8a44776d2cee62850ff489bd16b1323799c986cad070dad784a2b83
+    bytes: 5801669
+    format: nwb
+    scope: public
+  - name: h1-train-0004.nwb
+    uri: https://api.dandiarchive.org/api/assets/98f1e471-ad68-4006-b090-9a3e347852e6/download/
+    sha256: 9398f27c6164e84a379c4a0b8d40d8acf642659c175b9411d4573147881c0e68
+    bytes: 3308274
+    format: nwb
+    scope: public
+  - name: h1-train-0005.nwb
+    uri: https://api.dandiarchive.org/api/assets/31a4259f-a8fa-47fc-bc31-4c88dfdd10e1/download/
+    sha256: 3a093dd558a7c5b3dbb38eaa1bb1699742a4b865066a336e65c5fe3abdfdd861
+    bytes: 3151141
+    format: nwb
+    scope: public
+  - name: h1-train-0006.nwb
+    uri: https://api.dandiarchive.org/api/assets/bd4c010b-bf13-4e4b-8149-964b99b51ba4/download/
+    sha256: 477410e16b8c1ccfcb3caba9403169ec21ab8bee35c4846376bae781003c5f92
+    bytes: 5853252
+    format: nwb
+    scope: public
+  - name: h1-train-0007.nwb
+    uri: https://api.dandiarchive.org/api/assets/6ffa00d8-b1b0-44b7-98d2-e3ddf3751c13/download/
+    sha256: 29d01954747e028dc8b91f82ece28ef11b95a1a33ab3a57e55eb5f967706419f
+    bytes: 5567825
+    format: nwb
+    scope: public
+  - name: h1-train-0008.nwb
+    uri: https://api.dandiarchive.org/api/assets/9a95d428-053c-42ba-afae-da03791b7127/download/
+    sha256: ed0760aaa946e42f8ad812d3aef7f5faf66b21b5f2804aa77574c7f7ee853451
+    bytes: 5944811
+    format: nwb
+    scope: public
+  - name: h1-train-0009.nwb
+    uri: https://api.dandiarchive.org/api/assets/46938dff-771b-4b57-b0f7-cedb6cf2fdc6/download/
+    sha256: 022956ab01c8cb645e19327ba3457f2a065b30dd402bb4541e51c684d6a46e20
+    bytes: 6858862
+    format: nwb
+    scope: public
+  - name: h1-train-0010.nwb
+    uri: https://api.dandiarchive.org/api/assets/c389e73f-f5cf-4cc8-93bf-6972d4333a97/download/
+    sha256: f176ad4e1221843a94b67f87e0676bbcb83b7b1f5e49a58b2ae1d85b30e445d6
+    bytes: 6153697
+    format: nwb
+    scope: public
+  - name: h1-train-0011.nwb
+    uri: https://api.dandiarchive.org/api/assets/02f569e8-7a26-4101-9eda-2b54b47bfab8/download/
+    sha256: a9548924522750f6217409a9797b37389d22c9a0fe3ef145b87343192ff7d6ac
+    bytes: 5997093
+    format: nwb
+    scope: public
+  - name: h1-valid-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/18389588-85a6-4df8-a99b-48e3cfc9c9d8/download/
+    sha256: 34e0f0d229942516aec6148d2deaf0bbeabda3d10b86cd889fedf0563366c084
+    bytes: 6725140
+    format: nwb
+    scope: public
+  - name: h1-valid-0002.nwb
+    uri: https://api.dandiarchive.org/api/assets/04e815ce-b86e-43f2-891f-9bba135857ca/download/
+    sha256: df0ba7830d01e82b716d7a1eaac0b0400ebc84e8cbf0c9e2e047437a31c43e70
+    bytes: 6144273
+    format: nwb
+    scope: public
+  - name: h1-test-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/dbec5a3f-46a3-4c8d-bb88-6e8546b0c729/download/
+    sha256: 6fcdb0441ee732bf0b7ac633312b8feac426e5d461218b30b99ac8de6477d553
+    bytes: 1472872
+    format: nwb
+    scope: private
+  - name: h1-test-0002.nwb
+    uri: https://api.dandiarchive.org/api/assets/bf00d112-80aa-475c-80bd-4ba1e510708a/download/
+    sha256: 82a75e51605598fbb81997c2f0c2847ee22c0b578c8a4029401bbc02422e5946
+    bytes: 1431320
+    format: nwb
+    scope: private
+  - name: h1-test-0003.nwb
+    uri: https://api.dandiarchive.org/api/assets/95beef44-4bab-496e-bbbf-e1375127d6b1/download/
+    sha256: c0f2c2bf9589ef138e3cb5aa96b123d7146db6ab994d9a228f17824a9a900068
+    bytes: 1505958
+    format: nwb
+    scope: private
+  - name: h1-test-0004.nwb
+    uri: https://api.dandiarchive.org/api/assets/a28ab2e2-f7ac-4da5-ad8a-2ce287565fec/download/
+    sha256: e6f5c4763776eca2a8a807cbfa45219e1492915151d54f531cc13d1884ceff92
+    bytes: 1415291
+    format: nwb
+    scope: private
+  - name: h1-test-0005.nwb
+    uri: https://api.dandiarchive.org/api/assets/7b3de668-4f40-4af0-bf1f-4e9a2282e4ea/download/
+    sha256: e8b7c769b6b5296273cece03b1a2ad57d1ff166f5b9875acce46345912838109
+    bytes: 1351985
+    format: nwb
+    scope: private
+  - name: h1-test-0006.nwb
+    uri: https://api.dandiarchive.org/api/assets/54420259-4d3e-4e57-828e-a3e7f51ab76f/download/
+    sha256: f8eb0cdcd5105448411028b348de89c899e9598898667161356a5fd3103600a5
+    bytes: 1254631
+    format: nwb
+    scope: private
+  - name: h1-test-0007.nwb
+    uri: https://api.dandiarchive.org/api/assets/1105af5f-f06d-4b03-b03d-e843dc7277cd/download/
+    sha256: eb76704aa5828f91e500879e912b4a22f65ec80a1a1fa6eea2ab0af0260f9560
+    bytes: 1381886
+    format: nwb
+    scope: private
+  - name: h1-test-0008.nwb
+    uri: https://api.dandiarchive.org/api/assets/875e087c-3d29-4802-a5a7-02638a10af4e/download/
+    sha256: 07aec96a8acdb6e9c89e724f9a9ed7ffb9fafec4bc8d331be59dc7770e6c27b0
+    bytes: 1271944
+    format: nwb
+    scope: private
+  - name: h1-test-0009.nwb
+    uri: https://api.dandiarchive.org/api/assets/2a503f2f-834c-43eb-b7ae-237f83f88aa2/download/
+    sha256: 354813371b8d6d8ea933a15895570646c62406ee31e705a881b57758da0d2d51
+    bytes: 1206269
+    format: nwb
+    scope: private
+  - name: h1-test-0010.nwb
+    uri: https://api.dandiarchive.org/api/assets/1fb172b5-f508-44a3-9b3d-875f1502797d/download/
+    sha256: 745d0b9ec3487f6f68d85e826215574cf7f133314c54e3a7485e0022492fd4ef
+    bytes: 1172811
+    format: nwb
+    scope: private
+  - name: h1-test-0011.nwb
+    uri: https://api.dandiarchive.org/api/assets/7fe0bd9e-f20f-4f03-8e53-e503a1bcbd39/download/
+    sha256: ab254456922d99b54237f9634c1985e8f59900f94befc6c8f31f426cbba9e3ea
+    bytes: 1363294
+    format: nwb
+    scope: private
+  - name: h1-test-0012.nwb
+    uri: https://api.dandiarchive.org/api/assets/9bdc2778-3598-47a9-99d9-39900245c5f4/download/
+    sha256: 94b2341973c2bdfacdd8e791883ceb0914600ccb4d7e280758a358072b4018ef
+    bytes: 1360362
+    format: nwb
+    scope: private
+  - name: h1-test-0013.nwb
+    uri: https://api.dandiarchive.org/api/assets/f2407a64-cde7-4bf5-92df-31837ecf3a5e/download/
+    sha256: 301d6bd105c3e86f25d95557693dd38bbb39a8341e358087cdcfb4d3342eb761
+    bytes: 1509485
+    format: nwb
+    scope: private
+  - name: h1-test-0014.nwb
+    uri: https://api.dandiarchive.org/api/assets/de27f0a5-3f49-4faa-970f-c8a5b59d6dc7/download/
+    sha256: 48acb759e00a07615b4a7929d58637e625af6b5cefd423a7f6be5e179d4ac937
+    bytes: 1384702
+    format: nwb
+    scope: private

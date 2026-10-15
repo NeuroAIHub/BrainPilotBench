@@ -1,0 +1,2306 @@
+{
+  "schema": "bpb-ieeg-film-full-source/1",
+  "task_id": "ieeg-film-speech-music",
+  "dataset_version": "ds003688-v1.0.7",
+  "source_git_commit": "5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2",
+  "selection": "One unique clinical film run for each of 51 source subjects. Excludes HDgrid playback, movie media, and fMRI.",
+  "signal_total_bytes": 7179082912,
+  "all_source_total_bytes": 7179553288,
+  "records": [
+    {
+      "subject": "sub-01",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "94b5dbd654f09fccdf9cddef5ad99d2e09f04dcf",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6454,
+          "git_blob_sha1": "3688cc0aaa4a06c1a51015754cbc03874d6607a9",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 632,
+          "git_blob_sha1": "0977a8400b55e92ee3cd628e8097a966c045429e",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 381952776,
+          "md5": "3981c19e91215a56d5444cffff34a4e3",
+          "git_pointer_sha1": "da6b614730e4dac67e8847c0f3049b1710e0926c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2661,
+          "md5": "d0c0a0a776ede9a83ae1771b97a2307f",
+          "git_pointer_sha1": "e3e3ea45cfef6fe4e0212a5785f25b22555ee847",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1011,
+          "md5": "c0216da6c574020e70c269a81b66bbf3",
+          "git_pointer_sha1": "e70163eadfabce9aed9872d8e4e7f55027314e88",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-02",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 386,
+          "git_blob_sha1": "edacecce5ad25d072eeef54d57b86e51974aa04a",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 3823,
+          "git_blob_sha1": "4ec456cee3f5afd532afee0b1af032a9ebc179c6",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 656,
+          "git_blob_sha1": "3569dc2b921475b4cc4b35267e77c5f742cf7b8d",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 80591448,
+          "md5": "dd6d54d746bc1dc2e14b95bcbb4a64e1",
+          "git_pointer_sha1": "3b6da083578c54366acc64ecc812c290d0a7eb20",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1864,
+          "md5": "20ebe15eedf621a1bf599d5a6a23f46f",
+          "git_pointer_sha1": "7eaf8acea036a17ceff528b61f9be4d4f0c862f9",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1010,
+          "md5": "3cdf3adf3e15573cd682b2cf3122aad5",
+          "git_pointer_sha1": "85bbcd34258e074eb5ba797e447ca3bf37216d8d",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-03",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "53081720d091200dbe173945c92b5331917c3236",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6057,
+          "git_blob_sha1": "c5884f36f36057f7a37ccf57616b5c1c8a5cde16",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 604,
+          "git_blob_sha1": "13c752c0f7fdf682bdb1dfd1b14b05ada19ce098",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 97832776,
+          "md5": "d1b54543aa19ea2f491ef65a75bdb42f",
+          "git_pointer_sha1": "6afbba015646b44cb94890ceb30e9078fc66faba",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2713,
+          "md5": "1eafd49eb31347c7fa1713075cdd0471",
+          "git_pointer_sha1": "88ec81459af580ecb3404c5887801dedcd10f6c6",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1002,
+          "md5": "982575e05acdf7fd245a0ed5c5ee1b9d",
+          "git_pointer_sha1": "8e8f6e0794b18e30bb059266ba9466dfd853eb54",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-05",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 388,
+          "git_blob_sha1": "3e6e7f326441ce19bb39cff4bbac478f6eac2b46",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4941,
+          "git_blob_sha1": "8638cfe24b00d010b77fa00d8cda753f2c3ca6d0",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 631,
+          "git_blob_sha1": "411c54b5f987bf3c50fc9dbe3c24d13664fd788f",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 420328936,
+          "md5": "9f1f74c136aabd18b473d5e8559de0fa",
+          "git_pointer_sha1": "cbad9703b1b35bf3476d01c9f0adbb3d00e18a67",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2318,
+          "md5": "dfb9d8e68f34cab80e60773be857243d",
+          "git_pointer_sha1": "14ce4205472cf767924d0d02434e2a0016703bc3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1015,
+          "md5": "d9619f38b1d90365c40b2c28107382c3",
+          "git_pointer_sha1": "edaa4e17ffb0007e53be12097d591beea11c49fb",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-06",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "e2424f8757b93ba7d0161357613dbc85cdea6014",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5470,
+          "git_blob_sha1": "458487b3303837636ee3cba0c8cc3f77057676cd",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 606,
+          "git_blob_sha1": "a3b623af66097dde4356e270058c0ad79d506819",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 91009408,
+          "md5": "95482e10ce7497fedd87123d416bd092",
+          "git_pointer_sha1": "87710fe759866b7ebc3109da336242d4a968d7a5",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2577,
+          "md5": "fbb8523ce800c7b0c4d8c78f9c1630c5",
+          "git_pointer_sha1": "3303b5b5ed1e052f759deb8c8f9121fafcd1dcef",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1004,
+          "md5": "ac6931593b9311f281769fbeb5dab6da",
+          "git_pointer_sha1": "9c2c60a36f3e4425153a53509ac40e921dfaed86",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-07",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 385,
+          "git_blob_sha1": "5a1f9b5b0bfda76a675b28ae3906ed8d42a17dee",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 3512,
+          "git_blob_sha1": "a83ee268869328ac0a6952281ef93432bf8caf34",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 605,
+          "git_blob_sha1": "4354fb078ea373ab88eadc14a64e4f26cee0f35f",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 54464520,
+          "md5": "c676a0310f3ffedd71acbe2189509262",
+          "git_pointer_sha1": "1336eb533bfd7168f03a0cc823410104b57537ed",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1779,
+          "md5": "d7281f8161147fb1dd2e5f244be5676a",
+          "git_pointer_sha1": "d6d6126b0cb51860f3f975c6b3f6bf35c9076c70",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1008,
+          "md5": "cfb0fe4be5dad9927449f0b5d2ec6494",
+          "git_pointer_sha1": "34ffa6f6e6db809c53934cfa576ca62c9eff3f3c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-09",
+      "clinical_run": 2,
+      "files": {
+        "events": {
+          "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_run-2_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "acc3e9a9de3e965d9d112919b9050a90ef1df7a1",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_run-2_events.tsv"
+        },
+        "channels": {
+          "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+          "bytes": 4377,
+          "git_blob_sha1": "a4a5b8b019530d0b80b553fc79bb6e86ee866c23",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+          "bytes": 604,
+          "git_blob_sha1": "5442af0e0733d4a1c10027228f2d21dca69a065f",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+          "bytes": 257064900,
+          "md5": "e5061e9f14404b1787126317a18bd18b",
+          "git_pointer_sha1": "cb94de5ee322125a5eeb3842d7ae8ba63821d4a3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr",
+          "bytes": 2019,
+          "md5": "4439e894ae1831d753426bacc3aec9a9",
+          "git_pointer_sha1": "6996d36a7d1062e5d277e80af9f38075a6d11191",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk",
+          "bytes": 1010,
+          "md5": "626f85a004c2b69782b71d075fa12d41",
+          "git_pointer_sha1": "331116c70f1bc5956ac089ebd4f7dee601955e00",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-10",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "f589a68c9efcd63d8b92c80e870cfa66a03293ba",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5436,
+          "git_blob_sha1": "93cb22d87cc246b4f95fac2a0a0d07f272c6957c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 628,
+          "git_blob_sha1": "45d2343687bd78b8ffdcd722c7b768a03704d12c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 87581936,
+          "md5": "dba9cf547e0367fe6f50cc26d4c2e48b",
+          "git_pointer_sha1": "2a1ad671dfefb8bf3f8aef15c0a0ddd72a581850",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2515,
+          "md5": "800001a0a04d496780977cae39e0553f",
+          "git_pointer_sha1": "43a5ad5943b6c872689d9138c4e3745bcaf3b905",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1002,
+          "md5": "b1ee35c0647dbbb521ccda9cb5ad91de",
+          "git_pointer_sha1": "a55519ddd30308e01674b3fbdeec8f6cbd3927eb",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-12",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 385,
+          "git_blob_sha1": "c99d67573a0d2ff7b0901754a24872a48bb0e1d5",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 3544,
+          "git_blob_sha1": "788511a527d8c2227d8d7d84ab3654ce8d66121d",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 606,
+          "git_blob_sha1": "c6bf56329f99df9d91d03be0ff8bbc3523c802ab",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 257043288,
+          "md5": "7805ca8a7d63664bfd6ce91cc38f8a32",
+          "git_pointer_sha1": "1c5a093af10cd2d591cb7c097ccecc97a158bfff",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1892,
+          "md5": "676e82d397b1d746aa390fd651112829",
+          "git_pointer_sha1": "d1aa18f06d77bb224314f9c09609ae0c64a641bb",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1011,
+          "md5": "ea9bf9b94350cd097c4ec58b374a473a",
+          "git_pointer_sha1": "75173a776c7265e9193fa5d4758c7a2b1677dbb6",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-13",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "2cb0fd07453366ca7b2852811afa07bae317256d",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5612,
+          "git_blob_sha1": "2fec86992265ddf8d313067e818ddb7827e33a89",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 581,
+          "git_blob_sha1": "d146661e8cdde9dcfa2c8c0cb6d10e7961c9d690",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 82287888,
+          "md5": "a840bc713a36fcd195357af182764edf",
+          "git_pointer_sha1": "d085fe7c3cf3bb80bd6cca421177bf95d202bf6b",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2392,
+          "md5": "2f87fdcd21bf169d6680aac4db778a22",
+          "git_pointer_sha1": "2a90387e872cbe7445dd1ea155d8b19e371fd6e1",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1001,
+          "md5": "9ecc5139b3dd13e6a106e81a433d798d",
+          "git_pointer_sha1": "dc695125be5280266c305bac82bd996064dd7b2b",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-14",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "0363a2878703ef4025897b6b87f7fa308bbd2ca6",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6060,
+          "git_blob_sha1": "b168fd5c06bab6d5deef5c6cfaa44667c1934a43",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 580,
+          "git_blob_sha1": "d127ef771e243ccd65f0adae909a88f9ba9991e1",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 100448000,
+          "md5": "e8bede11cfb3e1e8f18d568ce8d7c64a",
+          "git_pointer_sha1": "463188c467a3155a251f13906ed6f277ed2b855a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2770,
+          "md5": "c77ebb59c3568b1cac9daf093fb5deb7",
+          "git_pointer_sha1": "4ddc917837b039b97e077d2048c4284fd5f2ba4f",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1002,
+          "md5": "f68b0730acb0abba210eede4751380a0",
+          "git_pointer_sha1": "d12c786a7f2bcc8d96b95ee47f1a82e58ef7db42",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-16",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "edff1e0034fee1e7f0cce4809c6c36caa92f50c3",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5797,
+          "git_blob_sha1": "c3f5b5f36cf2bfa7b9958c5126761b3000a507f7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 579,
+          "git_blob_sha1": "cb917a01b88ae03420c86f37590450f14a4f8e66",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 92889552,
+          "md5": "3afdf7f1500000d5115de2708411570a",
+          "git_pointer_sha1": "027251737657f55dee48c7e6107967316fcbeda9",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2713,
+          "md5": "7ca9274510d197cbba1fb57860fe30f1",
+          "git_pointer_sha1": "e24b36044bd8f638314b843815520a26908d66a1",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1001,
+          "md5": "1928a5dc6cbc7f601ffed14de09d47ca",
+          "git_pointer_sha1": "c59eec2f3c06a1bd403aaa71becc604bf05903a9",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-17",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "dba42f822cecf9a313752695bdd2c2354c3f0f95",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5382,
+          "git_blob_sha1": "3addadae3ba130681c9b0f90791cf5d03d219e19",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 578,
+          "git_blob_sha1": "db20241577e7f71a4ab21abdae1948f271f0ff60",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 85929132,
+          "md5": "19a2282b42988b2d39c2aac7178c8758",
+          "git_pointer_sha1": "28e5d60b5842093a89d1db90de1714a8f8c0ff78",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2493,
+          "md5": "7e3c943af3bde143b1fe54fc0b48686e",
+          "git_pointer_sha1": "bd190fda78f1e551eae8d197f7957a1b72c69fc3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1002,
+          "md5": "6bd7c656e7a6b0000770f29386e7e8f6",
+          "git_pointer_sha1": "6850d538481b3767c06003b32e30079a764fe69a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-18",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "f4263ed6f649ba7c514b0b31eb7cd0d9c7951dea",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 3744,
+          "git_blob_sha1": "cf5bcbd780e798b6835b61e48bfe03ce1f682a0d",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 630,
+          "git_blob_sha1": "3dc18fea877c39e73375fe9c7afd4b7732783b82",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 60814088,
+          "md5": "5a5eac3c44c6f67223f80541d63a1d2c",
+          "git_pointer_sha1": "670751b4189d8dfa533133c120f038c49abeb5d5",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2001,
+          "md5": "5fc3cc8475c3403b94bb5001f2fcf0d5",
+          "git_pointer_sha1": "d4af52bb833c5d9a65a8ab2fba560f84b49040ee",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1004,
+          "md5": "bfb6ef344080947852acdfd9f4343d29",
+          "git_pointer_sha1": "e266694299ba0f93365a4a73859dce9086646d6e",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-19",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "58ad153f5f37fdd8ea016ec980b49ccfea3b98a5",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 3980,
+          "git_blob_sha1": "4e7f04db10efc9f74f2b08cd2493ebb237de9ca7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 605,
+          "git_blob_sha1": "78fe8b41466aab74d852bacc90c2c54c6c762a2f",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 71701920,
+          "md5": "ae51c1909b60bcc856205481ec2f4218",
+          "git_pointer_sha1": "aab36443e28403e380c9bca5b4e857caf1637ab3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2113,
+          "md5": "f224452ff49e7c72a6639a02afe4fdd0",
+          "git_pointer_sha1": "37ecbc3a6346ae8c932ac78e2a22aac360ccc925",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1003,
+          "md5": "aba660436d4af90601b0437355073bb8",
+          "git_pointer_sha1": "1463b8647f40f15f2e2d614beca63c11dee9244a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-20",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "3129976635e76dd1d3ba7c1c39c1c699807912f8",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5470,
+          "git_blob_sha1": "145f5bdc6c9a4f1b09db669debb6a62e0d086da7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 602,
+          "git_blob_sha1": "2ddc32d27b0ea5d50287c821ab2bcd2aac7a2e55",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 87463780,
+          "md5": "16ac6fd4a323fbbdb0eedb30502e4d58",
+          "git_pointer_sha1": "0fd30fcb423054397d6366fa0fc0e0ebd016de27",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2515,
+          "md5": "85d243c7fccf76d95aeb578664c44328",
+          "git_pointer_sha1": "01f8bf9e66c91c78bc0fbc7c09c3cb403dacfdce",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1002,
+          "md5": "be85257d2ad6dfd09aaf5adef812f770",
+          "git_pointer_sha1": "888cbfb897f1d7024f7e5171fbd0e143e139120b",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-21",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "0844ff68cc360b17654d0a0eb14f5587cf4076e7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6660,
+          "git_blob_sha1": "1feebad2d795d9c203d028faa954136a7331235c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 581,
+          "git_blob_sha1": "47da2071ac891b6c822ce9f10ded07b9bf512d53",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 392376320,
+          "md5": "f15fca0591930507eae2fa1c806bdbf1",
+          "git_pointer_sha1": "6301d4b59752d620846c06200d57d8df8eaf766e",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2724,
+          "md5": "845b528007cad7ffd6d052b2b600081c",
+          "git_pointer_sha1": "b64ca6a0764d9a874af916d9ba01fa6c05b953a2",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1010,
+          "md5": "fdd47b4a62c17a581db2dc300a6ef67e",
+          "git_pointer_sha1": "3554018786e2eaa38c08c15bd7c69bc2eef6453d",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-22",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "043acb85bfec0efff63c8cec260ab2befae31fa5",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 2967,
+          "git_blob_sha1": "cfea6ac2fbc6305bcb3d376decd282f9bbd3e917",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 606,
+          "git_blob_sha1": "cbfe71b6f99793dff429f3d6ea9b4dd29cedeb68",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 62591520,
+          "md5": "62f607629e6e599f7ddd86374527c258",
+          "git_pointer_sha1": "8edb55d09260f99873787f662848475400fdf25e",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1710,
+          "md5": "7e9779663b8cdefe7c72ae01c05662bd",
+          "git_pointer_sha1": "f8bfe9b405e9367ef108ce9689a3bf16337905b6",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1006,
+          "md5": "dbb404c18ae6bd5692fcaffd0a088c93",
+          "git_pointer_sha1": "9a18255445a480bb41abab3923f0f76a4e7a0a7a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-23",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "97038c0a5af6055e22db0c4e7026910a07d42d6f",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 10239,
+          "git_blob_sha1": "5632ec7b62707092b52f14cdbfe1249ced81e8b7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 581,
+          "git_blob_sha1": "d42dbf8f5fbf1ca58801771bc5a711c714eafd24",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 591593472,
+          "md5": "baa202db9d9e9aadbf16ed3df967dedd",
+          "git_pointer_sha1": "eb5acb5eff7933947130c5b3ae17048e02b87e67",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 3872,
+          "md5": "23f77b32f75e349eee54eae9c241447f",
+          "git_pointer_sha1": "38ac604b7028070d2aa44d1d52070a8584a87cce",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1010,
+          "md5": "5223ae31dfec56fba4c402ca37bea2d1",
+          "git_pointer_sha1": "391173218fed140a1dc4e7fdeda0ad3c9b0580e9",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-24",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "ca485c596356bf312218194d70f1fae26a44fc5a",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4841,
+          "git_blob_sha1": "3902af5a81cd3077a3de40f6dc3979ca3e04a5a4",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 601,
+          "git_blob_sha1": "d569582776bd28b4599184aa41c99e39367919da",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 68737120,
+          "md5": "2173c5bd78036cabb47bb06b384365c9",
+          "git_pointer_sha1": "c72a23d0c707dcc8f8c680ceedc47e608028c81c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2128,
+          "md5": "89defc53acd36b3ebc4b6ffadab00df9",
+          "git_pointer_sha1": "10d4b1d4af21e6fdadaab2402202fabd64841dcf",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1004,
+          "md5": "3ea77343dfe6894f0f8e7ae38aec0db5",
+          "git_pointer_sha1": "91afac09f6a030da4103078f328b4353a6530d41",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-25",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "5681ae44d857aab1cac3107a5c2dbb645c9c2616",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 3239,
+          "git_blob_sha1": "a6b9c23e92b3c0560d040c953a72f0ce9a9e6954",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 580,
+          "git_blob_sha1": "87bc8604939004ab803544209a4bc8eb641a9654",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 200747320,
+          "md5": "1a98c4d65689a1fffa083668868e365f",
+          "git_pointer_sha1": "09a45a0683700330588a22daab5f5af9fe8fc3ae",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1755,
+          "md5": "74a4e862f13bd49183827e6294db7bb7",
+          "git_pointer_sha1": "7039edad310f931fba0be2948870f2d120566897",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1013,
+          "md5": "dd1b5b5311fbdcd2eb082f4244efb028",
+          "git_pointer_sha1": "1554c394442b336ac9a9ec72160be2989fc40c8b",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-26",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "59ec240381ea0e5ae86d931f6bf4a70906d91a02",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4845,
+          "git_blob_sha1": "73ab795f243532e42978ff950e5a1f788231842c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 605,
+          "git_blob_sha1": "04d2a5b8a61178198e0832c73c4ecbb572337488",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 87551620,
+          "md5": "d03baf4da17061dec1e825fec21121b1",
+          "git_pointer_sha1": "260110d12806a13a1bb052f9fd8331b01ff8689c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2317,
+          "md5": "9744a3131a71b1ca91a5b0955c2b009b",
+          "git_pointer_sha1": "95c15fd50e8b223656500292922a0d44cda4fcab",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1004,
+          "md5": "411e487a339210e8b93e540d7d0d38d4",
+          "git_pointer_sha1": "9d26dcd71ad68846f6c2df907381874775732ead",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-27",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "ec65ccf44f8f02f01448b02879d620a01a1e0e5b",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4949,
+          "git_blob_sha1": "20d47cd94ec8e0373ddef867cf2b310679021078",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 579,
+          "git_blob_sha1": "af0e44a086c234bdf747311332c1319fc3972c8e",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 81141600,
+          "md5": "1fe39cfd9bd863cbeb5afff3ddb90dea",
+          "git_pointer_sha1": "604839a4cdf1fe801d1b15480d887bb49d31f003",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2370,
+          "md5": "635bc5e03161b57360b5344d356b4717",
+          "git_pointer_sha1": "9658b5d200a9e804b375dfebc5544b6e74a249f4",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1004,
+          "md5": "4dcc085752f64793f22ab2038d8802b7",
+          "git_pointer_sha1": "d13f23f405400a62353230bd81be3c4be02b3820",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-28",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "de419aeb0ba4b1799ae0801e227b06fc734fadf6",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5011,
+          "git_blob_sha1": "de6d26f282a017e0bbfada490143e7f26a6e2279",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 630,
+          "git_blob_sha1": "c33f05cab296218400f51eecb5d1c9972b834bdc",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 73812648,
+          "md5": "85fdf334f8c8f583642fbc7647f36007",
+          "git_pointer_sha1": "74054c399c508d1e0d0685642618be5ddda26676",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2203,
+          "md5": "f45cea309475bda4b69500d8d0da8ebf",
+          "git_pointer_sha1": "174311fe8e9be3cd05cc49d094e1676f55ea6240",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1004,
+          "md5": "01cb026eba04ce3120c6890b4ede71b7",
+          "git_pointer_sha1": "ec5b6aa6fc4472ddffc16799626e9a04c9092d08",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-30",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "6fab9eaaa6ffcbb86729e5e580accb39a7042c46",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 2868,
+          "git_blob_sha1": "1d8dc97ff95148025f7cfcec0d3410f76129045e",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 604,
+          "git_blob_sha1": "a18f36a679159d129c266a0e17875ad023ae3efc",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 201637888,
+          "md5": "bbf9d7a7742ccd8693816d0948f48e73",
+          "git_pointer_sha1": "bb3b3525ea414f149fdf5de9af6e1d08a0aded74",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1761,
+          "md5": "acb951573c4246a5a90850730d9ca69b",
+          "git_pointer_sha1": "0450a551eeaafab09dd0b9888a30e4597cbfd977",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1009,
+          "md5": "f2f259eefe7e81e31d96cd34cb9a0270",
+          "git_pointer_sha1": "e6794691026f4e5b1e5a54444dbbdd8c677f1465",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-31",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "f6ee46cd43f88de6d91bb641932183afede42fa5",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4795,
+          "git_blob_sha1": "96249787d89897955e3e706369bc4e7461938cb6",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 578,
+          "git_blob_sha1": "28c09efc2a8a9cf109f614b5052187c334160997",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 91335200,
+          "md5": "47e2bbef90ae701afbce79254e64bc25",
+          "git_pointer_sha1": "58c0a025d8982b76310c1e8f633219fc73255b0a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2493,
+          "md5": "a04bf2aa36aede637bf428a403ce1e8a",
+          "git_pointer_sha1": "3a18fcd604082fe8492f78f301c68db830d9e9b4",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1003,
+          "md5": "5aaab7e151b182166299bda81c688ac9",
+          "git_pointer_sha1": "43da13895cee5cc2b2641933a3d2cc5b44d69050",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-32",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "7978d044f4e8e9ec9866960ddc28cca5e80f51d3",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 2818,
+          "git_blob_sha1": "b97a41b831895710f338459c9859a149a32c121e",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 607,
+          "git_blob_sha1": "88a020b12371fe8f4e0b09c0843dc8a1f239a5c8",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 176946552,
+          "md5": "aa0fd6d9609416877823db792db49c55",
+          "git_pointer_sha1": "de2d7b81c9da86e343e5a461e22ce0bab8b31930",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1616,
+          "md5": "750ed246fe727cf209f86a9f375178e9",
+          "git_pointer_sha1": "3c51920a79322072bb4c69343ce1c842fd26230d",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1011,
+          "md5": "5d7f35d77f87765c206cf0a1403487e3",
+          "git_pointer_sha1": "534889ca77131ecaef2000bb0e20d56f98b6019a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-33",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "37d729da95e10530411015c7accc0677613a13b4",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4485,
+          "git_blob_sha1": "e9237757a0ded362e0be6d0d047acd1ed987caf5",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 628,
+          "git_blob_sha1": "d7323c84f7af5eef52a5703002cdb962a995d8db",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 64542400,
+          "md5": "db8f33f85d866e8df2987586ab3b6036",
+          "git_pointer_sha1": "fb9fe8afff0f4ddb733833754392cd7e0be8c5c7",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2045,
+          "md5": "dc9d0557b3f47ce3766796a64b560697",
+          "git_pointer_sha1": "453638563bcb7f1edaa4e1912c2e59fb880fca1f",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1004,
+          "md5": "d7c16b68b21b7bc67c5226f5e4401e7f",
+          "git_pointer_sha1": "02e4187ce010afbd1342d48e464badd15ab32359",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-34",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 386,
+          "git_blob_sha1": "df1dc91089521903830339cc2a356da7abc7a993",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6295,
+          "git_blob_sha1": "442208adfc705f22086bb99867bc2a783cf1a9c7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 582,
+          "git_blob_sha1": "bbd684dcd179606a54b0fb01db3905c990962836",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 114388164,
+          "md5": "5d0a64c4c7165449476bdad324b3479f",
+          "git_pointer_sha1": "ef40b57fef5b2d167d32061afd531faa1010c6ea",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2571,
+          "md5": "42f30f318895339eac654ae44abcdc1a",
+          "git_pointer_sha1": "f18faba701d7fc28e14cff83a86ad8590ffa6403",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1011,
+          "md5": "c56fd4876d2f39556b9a906c80115071",
+          "git_pointer_sha1": "322ac118772f9864ff7664c64f4da656c39a07cd",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-36",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "88f64f165b046e26574fbbf9caf5429cb27cab68",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4381,
+          "git_blob_sha1": "df97a5722f2885e68396b84a75c0b13d703c367b",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 582,
+          "git_blob_sha1": "33833c46ca00bb7b6ebaa86292c71fcb9eb480d4",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 280667536,
+          "md5": "e0b4492b704b225285125d8a89c2dcb3",
+          "git_pointer_sha1": "74402f7e90240de57d550a2c2f16751426ae9e77",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2132,
+          "md5": "34e758ab1570b48194c896d26849c7a6",
+          "git_pointer_sha1": "6333e2f4b8bb521d5504fbd08ac18b248a323456",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1009,
+          "md5": "6732f2fa2216922c83898faa4eaea4d9",
+          "git_pointer_sha1": "7f0d05af80f5990523bb58cad77f60d6c0caa436",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-37",
+      "clinical_run": 2,
+      "files": {
+        "events": {
+          "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_run-2_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "7394f048fb38cb9c8901c8b649bb27e710aead2f",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_run-2_events.tsv"
+        },
+        "channels": {
+          "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+          "bytes": 4634,
+          "git_blob_sha1": "a5bb9fb68156a97149fd850c2f8c54c6816ca7a3",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+          "bytes": 581,
+          "git_blob_sha1": "030a64b26a79d1560cf5d4890fe7f38d02e1d236",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+          "bytes": 67590096,
+          "md5": "5955abac2db2402ea1e10ef78d524c03",
+          "git_pointer_sha1": "aebb904f4bef40e55a4bbf93fdb20ae65312ae1f",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr",
+          "bytes": 2096,
+          "md5": "8a4f73076181e99311ada6805b7c8105",
+          "git_pointer_sha1": "6927899e84e88543e8114d051be5fb0a87354c4e",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk",
+          "bytes": 1001,
+          "md5": "a072ccbbde301b9af93d99140b69e09a",
+          "git_pointer_sha1": "fdbb3781340ba439cec0e59f2785abe1ca6a5425",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-38",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "7a59bdbd269d23d28f22db3403a2ccaa80e5c8d4",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6065,
+          "git_blob_sha1": "4d9d7fb8bdc4af3848a4527d7a49ba0b0306f88b",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 603,
+          "git_blob_sha1": "c0560a987421de0369ae75b2813598fe6bd1e143",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 91649816,
+          "md5": "4a8ffd19076c98fb95e99c6b2f5fbe8f",
+          "git_pointer_sha1": "2a9184abb7fc8eb2bda3fa386dc5a70669a913e3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2585,
+          "md5": "9db9d922e4a9970939d622e69c2ab2ad",
+          "git_pointer_sha1": "b85ed16fbc8fe7f3fff348bd279d31faa60a8d21",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1006,
+          "md5": "f935b7bab148dad029a2d9deeb08a554",
+          "git_pointer_sha1": "964b01279b83917591874e82196a5916f2b87833",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-39",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 388,
+          "git_blob_sha1": "67d35007064919c16c163a3179be207a95d6b22c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4406,
+          "git_blob_sha1": "3759b5b85b72cd2d54a907aede005ba326a99dae",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 607,
+          "git_blob_sha1": "b8dd3a6d460948fed822730a11769137c1d4a5c9",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 91782216,
+          "md5": "c1829836554fab91ebd15171d1fe65fa",
+          "git_pointer_sha1": "ff77a48f1264263f5b3685cca9b79233d4934b3c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2151,
+          "md5": "920b2efd4ad6e020cde8e2a21c58e59e",
+          "git_pointer_sha1": "5c18b2acddb0897c913145fea36764ad5c4745bc",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1016,
+          "md5": "a7e18242c37704595ff2747ccc37d0ac",
+          "git_pointer_sha1": "d61f3aff3d7976e56541914886b987e4fdbb89cf",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-40",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 382,
+          "git_blob_sha1": "7c63cab9e3ccbf299d1bda29fe87ec4184f1c904",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4154,
+          "git_blob_sha1": "df03408f43226d1414117c8ab55f820f6d1bdfe5",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 554,
+          "git_blob_sha1": "149916ed9fbc9ece908a2aa2e4bc129dd085cf6c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 62713520,
+          "md5": "6f354ddc7a8726b64c6404562f0b367f",
+          "git_pointer_sha1": "5678c330815a8ce66a00b8275ac5f5a76d4601cc",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1955,
+          "md5": "cb13b09388b3d605a98c147a0e476f5b",
+          "git_pointer_sha1": "92f0b6ada07c45ca08d9abb0714065e337f71591",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1006,
+          "md5": "a342933792af9d72afb052e7c88e1475",
+          "git_pointer_sha1": "eb551a4df22612c3aa91f42aed6d0beb0951af33",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-41",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "7b8113aa0bfa1237ca521c3a1a21c5b83b58e0d7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4417,
+          "git_blob_sha1": "5f2b313709cb97a5db35a5d7fe2eac5d89914250",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 552,
+          "git_blob_sha1": "fbb08ff9c9d4f243854a1db6a773277fa706a628",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 71268352,
+          "md5": "e2cff28ae597fb39d79cfa003a5f9160",
+          "git_pointer_sha1": "5dcd195acefce554ae5e585ec6005c86476a4cc8",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2211,
+          "md5": "b86feeb6023df23f67e8057832087b3a",
+          "git_pointer_sha1": "b81eeb97de86875c4bca6c3ebccea0c1a95dc66b",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1001,
+          "md5": "23db171090aadb44bee591501182bc4f",
+          "git_pointer_sha1": "3b7ee77c05f8af4221edb1f803f670a028d064a3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-42",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "6b1376e12bab98e10cbd59f67161ea9575ed0023",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6862,
+          "git_blob_sha1": "81000e39a128c76d68fd8be38db62a469d69902b",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 605,
+          "git_blob_sha1": "ed73e093139c316941bf82f6e46c0329ebb49510",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 396328960,
+          "md5": "6c010a489ebc5b51ea463b5331dd8633",
+          "git_pointer_sha1": "1993435dca47d925fbd9a0026882a769b3296d77",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2790,
+          "md5": "bc39bbc310bdc1c13a938c558a0a5ab8",
+          "git_pointer_sha1": "dbdba23694c9ebad70f1936d059d150dcffd7398",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1010,
+          "md5": "9f126d3cbd97adf4e929c80c832e8993",
+          "git_pointer_sha1": "5948f079c16b1fe842b9b17cb6ebce2d9869b7be",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-43",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "d57f9c6c47dec2dc5ca09045bf01396d56c973d9",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6144,
+          "git_blob_sha1": "d0b785fbbbf9b2e22b0f96a15995261107304d0b",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 579,
+          "git_blob_sha1": "e78692c5436afa7cf84a624c7b18262538b81dee",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 100599000,
+          "md5": "08860470c38695e884753a6a3ec54464",
+          "git_pointer_sha1": "2a37235c3168762c4fbb950c01ed2e202b556f0c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2810,
+          "md5": "3b4843e1e2ef2ccaf542ff31f4f75b02",
+          "git_pointer_sha1": "4988496f2936d9fd8713835455e17dc439575ce3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1002,
+          "md5": "e71950bdd5f87e3bd5dc89c03da05e4d",
+          "git_pointer_sha1": "7e233fd8beec7c76ee2bf889ac58f1c559f20225",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-45",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "a630275343adf5510d28028f2d6fcb0683ffac52",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4398,
+          "git_blob_sha1": "0224ffd415f7808bc33a13676d93417cca641f3b",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 606,
+          "git_blob_sha1": "8d28a2d9fb65a827dc84b553020b7d79e2479ea1",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 81009984,
+          "md5": "7d80f6baf32b8f7b4a44f552c0a8416b",
+          "git_pointer_sha1": "755b191df8c4f1a518cac39a5cdd6cc0d4a204f3",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2180,
+          "md5": "dd92107550ad344024875cf4a2438610",
+          "git_pointer_sha1": "14b73e6ff45692ec9115f10fdd4139faf4859e8c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1007,
+          "md5": "c756b7a62d442a299f499c6db2f712a1",
+          "git_pointer_sha1": "f3efee669c197ec7f5cc5c45348524b05206a8db",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-46",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 382,
+          "git_blob_sha1": "80be311d567ee5a391745f217ed19d85ca59cb8e",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4195,
+          "git_blob_sha1": "f79accbc2712b0ca4c87c5a7577b93619b8e74b8",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 630,
+          "git_blob_sha1": "ee648b20da9a5c7aa147848d62899dd4478ff0aa",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 61311664,
+          "md5": "05a9acf78ea1a685f5ad7f3787e31735",
+          "git_pointer_sha1": "58332fc8a627cd13c30292ee7594903783520498",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1945,
+          "md5": "a29d9ef084915b9b224d46b8cf35f831",
+          "git_pointer_sha1": "4678cb2693fc9c9bc27ba1be3a7304604b402747",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1007,
+          "md5": "7e513ccae4e0336b00e55c48ead2cf72",
+          "git_pointer_sha1": "9af6d641506c29f2f972d968df21bbb9eb37ccd0",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-48",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "25586a7e83d33763051670f9d286bbfe64123688",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5372,
+          "git_blob_sha1": "ddc039ec1a6ef64d2c51dc965e30faf99c47b3b7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 581,
+          "git_blob_sha1": "004672c2d565f393ec99f67e26529ba8c06ead69",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 77353728,
+          "md5": "edee2b2e1d4e220eec83c097a3621522",
+          "git_pointer_sha1": "4740b167cb52666adbf6171f8d6f4ac45c238f9f",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2323,
+          "md5": "3ca74b6facee48ef339e451160b5368c",
+          "git_pointer_sha1": "2cf68d409405f17d28072fde8b0b94a06520af67",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1003,
+          "md5": "5ec247908ed4575a1f0c311acd667664",
+          "git_pointer_sha1": "e36752c84231c73b440c33da18936b751a57ae0e",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-49",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "60df83956a7fb885938bfb923072b042b41052fd",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6847,
+          "git_blob_sha1": "3e9034453e44584275f9171eaf0816d5c09cee09",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 631,
+          "git_blob_sha1": "b08842b847bed3e1c0b4414b36735c4af45b42b1",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 103915048,
+          "md5": "6a225c395169840e5061fed81bd12f07",
+          "git_pointer_sha1": "6bf28f3fe9d979acbbbb8fadde9809a87e274ecb",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2821,
+          "md5": "5678e2774200ac37482750377a22182b",
+          "git_pointer_sha1": "ab814a0b115c6bca4d63e1d1eb1b99df466409bd",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1006,
+          "md5": "3d29601fe420b01028b2deb584eadb59",
+          "git_pointer_sha1": "6521c7262ff61fc02cd6e42618d9052f4fcde92c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-50",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "c4a85f74d3c61fa8a1a2dba310cec7c30da3a48a",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4168,
+          "git_blob_sha1": "b800ed8e1b859c7b0bee7dc47432153aba8a3d69",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 655,
+          "git_blob_sha1": "b121f086ceed5583f004e035ab06aa702ac7d7bd",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 78852144,
+          "md5": "928e94ef0c049d92a6d994675bde1bd6",
+          "git_pointer_sha1": "7e71b89dacb08bbbac99b319a1fdc89fd5ebfede",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2113,
+          "md5": "f2f87207f8249403f73ca9a572d21b81",
+          "git_pointer_sha1": "f49df880abbe3951d4b5f2957db9a4b460da9f6c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1007,
+          "md5": "fc703ae354c3a0c4f9640beb2a0cde1b",
+          "git_pointer_sha1": "16b498e5f6120f18b6f67952659a263556f89dd9",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-51",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "0285aabcf0bffac0211af5d8d5101b3546edfede",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4736,
+          "git_blob_sha1": "7a3eea90c38fe835214221f55a9380b3ccc3b07c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 532,
+          "git_blob_sha1": "eaba4200b090c2e97ec4544fe9f98747ccd90f4d",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 268738560,
+          "md5": "3571fdcaf5823ebae38dcd81f4740a3a",
+          "git_pointer_sha1": "76bc1731bd603c3fd40ce34b0a311b3e1df1c6e0",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2059,
+          "md5": "92730a0f27302c4bccf58cb604509cc8",
+          "git_pointer_sha1": "5df0b1a963def337685b8793b7fab9b811feff34",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1010,
+          "md5": "a1c09a0682084c180f511ac972b6dd5e",
+          "git_pointer_sha1": "b7721e868444aa31de3d04b80e269aa7f0b9b5a4",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-54",
+      "clinical_run": 2,
+      "files": {
+        "events": {
+          "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_run-2_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "9fc790560417c2ece0d78c62d1da644e61d741a9",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_run-2_events.tsv"
+        },
+        "channels": {
+          "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+          "bytes": 3897,
+          "git_blob_sha1": "d81af4052ad26a0c53f82f6bfc763f1a5314b022",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+          "bytes": 553,
+          "git_blob_sha1": "6e7a8cebdb5cdbdac745fb16e9b2ad107bece7cb",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+          "bytes": 62472608,
+          "md5": "f217c07f576e180d5ba9f330b6906f5b",
+          "git_pointer_sha1": "77a9723d1e3c7166cb78a658e97473d1b11cc02a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr",
+          "bytes": 1994,
+          "md5": "f0f42940a708bcb3ab5be268eab57f11",
+          "git_pointer_sha1": "e12df1c6416e21fff06e9acecc092ef6e11c1a70",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk",
+          "bytes": 1003,
+          "md5": "2f745f2ea90e997859ab98c558421ca7",
+          "git_pointer_sha1": "7c1c82ccedd7f9a200e65e56a86d3a9db8bfbe73",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-55",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "803139dbaee35c68a6764db283ff79dfa3c73943",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 5413,
+          "git_blob_sha1": "147d5a55825c1efaab65139889360098f90baecd",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 579,
+          "git_blob_sha1": "76ae9189502128ac1527e7ae0ff8d9aa02518306",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 89531200,
+          "md5": "55302f3ad9d54014f397fc8583bacea1",
+          "git_pointer_sha1": "5b340cd0f4d35390cb516158ae6d9c5dc4e06c8c",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2544,
+          "md5": "8446460d88ce18e504133eb724ee7c52",
+          "git_pointer_sha1": "fe8543a79db2a493958e7d05b8d109589cefa349",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1002,
+          "md5": "dd21dfff189f94a78cc4df47eb1275d0",
+          "git_pointer_sha1": "3cb9aa4fb97a3cbfca8fc7e7f44a25f7e1adf7c0",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-57",
+      "clinical_run": 2,
+      "files": {
+        "events": {
+          "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_run-2_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "35e6f684000a14965148cc0398af3fdfacd5b089",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_run-2_events.tsv"
+        },
+        "channels": {
+          "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+          "bytes": 4016,
+          "git_blob_sha1": "69790fd2a7a2372b7eab6eeb29a31ec1a68b46e7",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+          "bytes": 606,
+          "git_blob_sha1": "136bba5df7ba1d693cba39a8fac400cdb7d81e30",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+          "bytes": 65257920,
+          "md5": "f37ff3005bf06227ec8e3b52af590261",
+          "git_pointer_sha1": "048c2d51a651ae4f8cfa92aa87a571e9155e5d9f",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr",
+          "bytes": 1927,
+          "md5": "b9a799e201a68612c0ad351522e8a2e5",
+          "git_pointer_sha1": "2986bb928cf3bbdc80649efc744615825720e668",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk",
+          "bytes": 1006,
+          "md5": "e8bf429badb891f1b1dd186ae8688c7b",
+          "git_pointer_sha1": "0e60f44e9f2458d60cbbe2386b7a30854abb31fb",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-58",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "1a9b15ab1a00cf27135cf45208b647df99217757",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6138,
+          "git_blob_sha1": "5a36a68c1b20b13a933c03bd0bbde84e78b2294a",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 631,
+          "git_blob_sha1": "3fb3c17020751940816d3758eba7e190e71c83e5",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 102913404,
+          "md5": "4d40b3c416a7234ddbc8badcaa004912",
+          "git_pointer_sha1": "9f7e79dfdf8a156abe443b170f2a546248cbb5b8",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2775,
+          "md5": "d45f9bf6cc69ec9e5cf92f333f3538d6",
+          "git_pointer_sha1": "c95d0356d4399fe62143c23b5d0b1d9e99b38f86",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1003,
+          "md5": "a928a470dea7209810623809496122d0",
+          "git_pointer_sha1": "87c611350dc0ff3c6ed18d1c2632099eb60dab61",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-59",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 385,
+          "git_blob_sha1": "6d5f543c1aef6671b846826f76d432e53848ba95",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 4233,
+          "git_blob_sha1": "92a98b90e3476e2a0701ad3fc5ed2f45c801c074",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 655,
+          "git_blob_sha1": "e6d3899e621c84d8bda378886fbec5511f1e7914",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 78972504,
+          "md5": "c66f65676326467b9daa30fb9d70c157",
+          "git_pointer_sha1": "6ec146301362ee970efcba847c79e4604f1988c5",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1970,
+          "md5": "69753a7f549b15da5cd3f128609803ca",
+          "git_pointer_sha1": "3f631619d35aee3f3bd0e066dd51daea0e03b2b8",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1007,
+          "md5": "996537a38029b2a9a3fa8585bbfe2984",
+          "git_pointer_sha1": "eb1e05fc3fa3b9b6f866860c5cc00fe5b17783af",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-60",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 381,
+          "git_blob_sha1": "d76a22dca2e2f56247086e32afb0c96cfbc6dbbe",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 6298,
+          "git_blob_sha1": "2085970eb48813356654d399e35556440f5dd29c",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 579,
+          "git_blob_sha1": "c3549a21eb96b1bf6ff1acdddb4becedbea70542",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 101085264,
+          "md5": "9e5901c05dd4201cdcd0f67294317b26",
+          "git_pointer_sha1": "56a431a65e43e9770ea04ebf94519f4b9500d976",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 2839,
+          "md5": "8f7024189cba7230127b4e1879086ff0",
+          "git_pointer_sha1": "aa8c82c2e19a6097403bacf62fc14c089fd62767",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1001,
+          "md5": "2321be5056fd458845ee78c7b663c9dc",
+          "git_pointer_sha1": "4d39ff611332bddcb7fa1eaef5781d4daa8ef3fe",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-61",
+      "clinical_run": 1,
+      "files": {
+        "events": {
+          "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_run-1_events.tsv",
+          "bytes": 384,
+          "git_blob_sha1": "e439dc02a03db7697770335b1be2a4d30802a5af",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_run-1_events.tsv"
+        },
+        "channels": {
+          "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+          "bytes": 3731,
+          "git_blob_sha1": "c714f50b28dd4adab452915e0d9294828bd721ac",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+          "bytes": 631,
+          "git_blob_sha1": "0ce736df9c50e106bdca7794a0f1735c8eba547d",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+          "bytes": 254156832,
+          "md5": "468e1046cc0bd20a47fe5934bd9fc2de",
+          "git_pointer_sha1": "a9c37a8540e95315c1c95bcd06eefd53780f2e93",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr",
+          "bytes": 1908,
+          "md5": "2d1cc8b22e10df1946b6daee7d2d5369",
+          "git_pointer_sha1": "5da5b7e3d796727f28a2c7aed05182340b9205cd",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk",
+          "bytes": 1012,
+          "md5": "cf6f5ecf411513825ca7d97cb757c75b",
+          "git_pointer_sha1": "593206ab3902347ccc3610cceae374e0acc42447",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.vmrk"
+        }
+      }
+    },
+    {
+      "subject": "sub-63",
+      "clinical_run": 2,
+      "files": {
+        "events": {
+          "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_run-2_events.tsv",
+          "bytes": 385,
+          "git_blob_sha1": "9c2f7223a8768c23fdd3b05a6b3e30a4690695ba",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_run-2_events.tsv"
+        },
+        "channels": {
+          "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+          "bytes": 3709,
+          "git_blob_sha1": "905f59dfaba65a5e9a32ea12e6b9297debb3a0a4",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_channels.tsv"
+        },
+        "sidecar": {
+          "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+          "bytes": 655,
+          "git_blob_sha1": "ee3a93e5f47c841423f3953d1cb2d11a3f34786b",
+          "url": "https://raw.githubusercontent.com/OpenNeuroDatasets/ds003688/5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.json"
+        },
+        "signal": {
+          "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+          "bytes": 74106384,
+          "md5": "52b792c398ec4c72cb63780882797710",
+          "git_pointer_sha1": "275a79ef34e4595f1f1c8e130ac531e57494bbd7",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg"
+        },
+        "header": {
+          "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr",
+          "bytes": 1963,
+          "md5": "d8f561b9e08b923773300108ee86f8a1",
+          "git_pointer_sha1": "119ce7b61c716e2f483495151e30ab2fd6c60b60",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vhdr"
+        },
+        "markers": {
+          "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk",
+          "bytes": 1006,
+          "md5": "38261af406334cef8f22b95fda78a554",
+          "git_pointer_sha1": "23449bf61965c353e27f8039cf2e2c6dc4d0670a",
+          "url": "https://s3.amazonaws.com/openneuro.org/ds003688/sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.vmrk"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+- send: >-
+    Predict zebra finch vocalization spectrograms from 85-channel neural
+    threshold crossings. Use only public_data/train/ and public_data/valid/.
+    Read each role manifest.json. Each x.npy has complete 900 ms motifs with
+    shape [motifs,27000,85] at 30 kHz. Each y.npy has spectrogram targets
+    with shape [motifs,880,158]. mask.npy gives the native scoring cells.
+    Keep the recording-date split and original motif order. You may fit with
+    Train and inspect Valid during development. Do not fetch source recordings
+    or access evaluator data. Public Valid is a development result, not an
+    independent Test result or official FALCON score.
+    Submit submission/model.py, submission/config.json, and
+    submission/weights.safetensors. Model(config) must be a torch.nn.Module.
+    forward(neural) receives one complete float32[27000,85] motif and returns
+    a finite float32[880,158] spectrogram. The worker receives only the current
+    motif neural input. It receives no labels, masks, or future motifs.
+    Keep registered parameters and buffers unchanged during inference.
+    The trusted host limits saved numeric state to 10 million elements.
+    The worker limits parameters and all registered tensors to 10 million
+    elements each.
+    The scorer masks each motif, normalizes its prediction and target
+    independently to [0,1], then computes MSE. It averages motifs by date
+    and dates equally. This public check scores Valid only.
+  then: wait_idle

@@ -1,0 +1,76 @@
+{
+  "schema": "bpb-local-task-acceptance/1",
+  "task_id": "falcon-h1-reach-grasp",
+  "task_version": "0.1-public-validation-stream",
+  "status": "passed",
+  "date": "2026-10-14",
+  "source_task_id": "h1",
+  "agent_benchmark_run": false,
+  "source_verification": "full_source_files_and_derived_arrays_verified",
+  "public_validation": {
+    "status": "passed",
+    "scope": "fixed-reference-only",
+    "metric_id": "R2_variance_weighted",
+    "value": -0.08090428869132338,
+    "profile": "bpb-h1-public-validation-stream-v1",
+    "cli_report_sha256": "2359f212a0df95d0b36dbbe44f5187a5249744cb4b09bb72b6c8451d22471504"
+  },
+  "owner_test": {
+    "status": "fixed_reference_interface_passed",
+    "model_tuned": false,
+    "report_sha256": "66c5ec9e11d4b58c2cb3defdc016e1b59ff3cad0da5b08dacce9a2879697775a",
+    "frozen_artifact_receipt_sha256": "1555c98c277423ceedea5647491ddc2a02b6b7be8b702a065e257cff040e8c81",
+    "scores_published_as_agent_results": false
+  },
+  "checks": [
+    "source_role_bindings",
+    "public_staging",
+    "fixed_reference_public_validation",
+    "independent_metric_check",
+    "cli_submission_and_isolated_scoring",
+    "oracle_and_empty_submission",
+    "owner_test_frozen_submission"
+  ],
+  "platform": {
+    "host": "macOS-arm64",
+    "inference": "Linux-arm64-CPU",
+    "image": "sha256:f8075b097562ae717626a9257bdbe4dd6d270d283d82e7ee0a15427c88a0142c",
+    "amd64_tested": false,
+    "gpu_tested": false
+  },
+  "reference_artifact_sha256": {
+    "config.json": "e8309360402023ee18b04bb75e4caef21ddad27b2848fd685cd86e6a2b3f4b31",
+    "model.py": "ec2e9c254684cdf6881114193147b057f843e20b7aae78600c82425483042585",
+    "weights.safetensors": "1ec6556f5c9a2ad43752a31c537c70e7c97029e817e55fc92fc46277061a98f1"
+  },
+  "file_sha256": {
+    "tasks/intracortical/_preparation/prepare.py": "fa59d6114a01d36f3253c302c3727cc940200b3d01134672b49a4122c90cf472",
+    "tasks/intracortical/_preparation/check_manifest.py": "3c49a8778f9619c07edf5419528936f227b6d42c2036426a6d89e714be4a61fd",
+    "tasks/intracortical/_preparation/make_manifest.py": "9a22634caf5ae91f738e680c067fd81f586c1ac9c26ec0d2e167fac53d4e08c0",
+    "tasks/intracortical/_preparation/requirements.txt": "f297c0479c2128572dfb1150bf7fb20625a84fc1be74435ddd1e694b737bdafa",
+    "tasks/intracortical/_shared/native.py": "8bcd0ed3a03271392c23506d1471bf555d3f6f41c7bbc469732a5a38a9619dfa",
+    "tasks/intracortical/_preparation/assets.manifest.json": "b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/Dockerfile": "4b3dda3ae319f1b37340cb0547229d8c544a1cd457ea5c5408586c5c77ab97a9",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/check.sh": "b60b2b2f379de242680f92b477bfdee00fb45341779a8837c6217e05f2af7aff",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/freeze_submission.py": "526ebdb58e87a9c23656a6c2ac08e63ff3bd0caf307e4c2ccb0dcbcd854f6e53",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/requirements.txt": "fb003fb8576dc24ff8c844aaa528d3c30af6c9081fb960f600870ae2a93eaad4",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/score.py": "0efd36c030a8f720c371e7d871491079586b6c763d62945423779df8172c3ce4",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/test_boundaries.py": "2bab07e1b585eb29eb90cd40da3ce5632b2fb618de152ea495c020a877e4d82c",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/test_docker_boundaries.py": "129c3368fe9a2e066fbbc8344e26c9177c0fa001e02676f9c6a24c512c84c435",
+    "tasks/intracortical/falcon-h1-reach-grasp/checks/worker.py": "582e92ca8ef8740bca29fd36fdc0e1df87f335981ae57dd0a530ab75431a0983",
+    "tasks/intracortical/falcon-h1-reach-grasp/contract.json": "af27ef4e218d4c38cad5708728959bd522c292d483f2d7a0dd7baf9d8f023224",
+    "tasks/intracortical/falcon-h1-reach-grasp/data.lock": "0f3374b47971ffd1e19f8c5236fd6e496c887917d035e200e6f367b73edb3f8c",
+    "tasks/intracortical/falcon-h1-reach-grasp/env/build_contract.py": "9d66579c144fa4af455d667241ad84aca15c96599bb70a244054fd048c8b74c3",
+    "tasks/intracortical/falcon-h1-reach-grasp/env/export_h1.py": "7b20b77aa6bd76810e81a26611ababa85cb40d154127a88ecc7de1633210907b",
+    "tasks/intracortical/falcon-h1-reach-grasp/env/requirements.txt": "729ed4d5f38227759074e0a7017365967045332da17bb3fb3caafe7221b8b488",
+    "tasks/intracortical/falcon-h1-reach-grasp/env/setup.sh": "dd98417274f567ee4e6e2ba8390c1acadef72959a49a4d0f53812296547fac04",
+    "tasks/intracortical/falcon-h1-reach-grasp/env/stage_public.py": "5f2fc7f3dfa5a13f9470648002af1ef9da62f1a2722d72d3a474791de4ef2cf8",
+    "tasks/intracortical/falcon-h1-reach-grasp/env/verify_public.py": "2ee19ac394dd8bd42f463e67fbd01cc91c151337236a184dd6faa19786443007",
+    "tasks/intracortical/falcon-h1-reach-grasp/prompt/turns.yaml": "6c178df7a2a787e50b62f9841f3c01c328e504883b0b19fdc100f7a60d2d477f",
+    "tasks/intracortical/falcon-h1-reach-grasp/protocol.json": "bb2c05bd00872bb49ba40f39a19df3f30e9a6b07414ba5f1c432bbc8c138af5e",
+    "tasks/intracortical/falcon-h1-reach-grasp/solution/make_reference.py": "9a6fe4024e4c8375537a09c88fb188cba33fb5fe93f669264e3b8aa54b399865",
+    "tasks/intracortical/falcon-h1-reach-grasp/solution/model.py": "ec2e9c254684cdf6881114193147b057f843e20b7aae78600c82425483042585",
+    "tasks/intracortical/falcon-h1-reach-grasp/solution/solution.sh": "d58293c7ec41a11c90d561944af83b2ef14c0c8df88ae13af5f772a31fa5aa41",
+    "tasks/intracortical/falcon-h1-reach-grasp/task.yaml": "2407a37acfcb2bfbdef6bc3c115a997a454adb988b6e5d7e74a926fdaa04cc43"
+  }
+}

@@ -1,14 +1,14 @@
 {
   "schema": "brainpilotbench-task-collection/1",
-  "date": "2026-10-12",
+  "date": "2026-10-14",
   "release_status": "integration_candidate_not_released",
-  "validation_policy": "Four recorded real reference checks; new interfaces use structure/contract checks; no paid Agent or historical private Test replay",
+  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; no formal Agent results or historical private Test replay",
   "counts": {
-    "total": 110,
-    "runnable": 105,
+    "total": 117,
+    "runnable": 112,
     "candidate": 5,
     "preparation_ready": 4,
-    "representative_runs": 4
+    "representative_runs": 11
   },
   "tasks": [
     {
@@ -554,6 +554,168 @@
       "source_task_id": "typing/default",
       "data_status": "published_public_package",
       "data_access": "pinned_source_download"
+    },
+    {
+      "task_id": "falcon-b1-birdsong",
+      "domain": "intracortical",
+      "directory": "tasks/intracortical/falcon-b1-birdsong",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation-motif",
+      "validation": "local_fixed_reference_and_isolation_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "normalized_spectrogram_MSE",
+        "direction": "minimize",
+        "unit": "dimensionless"
+      },
+      "evaluation_profile": "bpb-b1-public-validation-v1",
+      "data_status": "source_bound_reproducible_export",
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download",
+      "validation_record": "tasks/intracortical/falcon-b1-birdsong/acceptance.json",
+      "source_task_id": "b1",
+      "source_verification": "full_source_files_and_derived_arrays_verified",
+      "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
+      "agent_benchmark_results": "not_available"
+    },
+    {
+      "task_id": "falcon-h1-reach-grasp",
+      "domain": "intracortical",
+      "directory": "tasks/intracortical/falcon-h1-reach-grasp",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation-stream",
+      "validation": "local_fixed_reference_and_isolation_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "R2_variance_weighted",
+        "direction": "maximize",
+        "unit": "dimensionless"
+      },
+      "evaluation_profile": "bpb-h1-public-validation-stream-v1",
+      "data_status": "source_bound_reproducible_export",
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download",
+      "validation_record": "tasks/intracortical/falcon-h1-reach-grasp/acceptance.json",
+      "source_task_id": "h1",
+      "source_verification": "full_source_files_and_derived_arrays_verified",
+      "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
+      "agent_benchmark_results": "not_available"
+    },
+    {
+      "task_id": "falcon-h2-handwriting",
+      "domain": "intracortical",
+      "directory": "tasks/intracortical/falcon-h2-handwriting",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation-stream",
+      "validation": "local_fixed_reference_and_isolation_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "WER",
+        "direction": "minimize",
+        "unit": "dimensionless"
+      },
+      "evaluation_profile": "bpb-h2-public-validation-v1",
+      "data_status": "source_bound_reproducible_export",
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download",
+      "validation_record": "tasks/intracortical/falcon-h2-handwriting/acceptance.json",
+      "source_task_id": "h2",
+      "source_verification": "full_source_files_and_derived_arrays_verified",
+      "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
+      "agent_benchmark_results": "not_available"
+    },
+    {
+      "task_id": "falcon-m1-emg",
+      "domain": "intracortical",
+      "directory": "tasks/intracortical/falcon-m1-emg",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation-stream",
+      "validation": "local_fixed_reference_and_isolation_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "R2_variance_weighted",
+        "direction": "maximize",
+        "unit": "dimensionless"
+      },
+      "evaluation_profile": "bpb-m1-public-validation-stream-v1",
+      "data_status": "source_bound_reproducible_export",
+      "data_access": "pinned_source_download",
+      "private_data_access": "pinned_source_download",
+      "validation_record": "tasks/intracortical/falcon-m1-emg/acceptance.json",
+      "source_task_id": "m1",
+      "source_verification": "full_source_files_and_derived_arrays_verified",
+      "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
+      "agent_benchmark_results": "not_available"
+    },
+    {
+      "task_id": "falcon-m2-finger-velocity",
+      "domain": "intracortical",
+      "directory": "tasks/intracortical/falcon-m2-finger-velocity",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation-stream",
+      "validation": "local_fixed_reference_and_isolation_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "R2_variance_weighted",
+        "direction": "maximize",
+        "unit": "dimensionless"
+      },
+      "evaluation_profile": "bpb-m2-public-validation-stream-v1",
+      "data_status": "source_bound_reproducible_export",
+      "data_access": "maintainer_package_required",
+      "private_data_access": "maintainer_package_required",
+      "validation_record": "tasks/intracortical/falcon-m2-finger-velocity/acceptance.json",
+      "source_task_id": "m2",
+      "source_verification": "selected_source_ranges_and_full_derived_arrays_verified",
+      "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
+      "agent_benchmark_results": "not_available"
+    },
+    {
+      "task_id": "ieeg-film-speech-music",
+      "domain": "ieeg",
+      "directory": "tasks/ieeg/ieeg-film-speech-music",
+      "entry_kind": "runnable",
+      "task_version": "0.2-complete-guarded-windows",
+      "validation": "local_fixed_reference_and_isolation_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "balanced_accuracy",
+        "direction": "maximize",
+        "unit": "dimensionless"
+      },
+      "evaluation_profile": "bpb-ieeg-film-public-validation-stream-v2",
+      "data_status": "owner_key_bound_prepared_export",
+      "data_access": "maintainer_package_required",
+      "private_data_access": "pinned_source_download",
+      "validation_record": "tasks/ieeg/ieeg-film-speech-music/acceptance.json",
+      "source_task_id": "ds003688/task-film",
+      "source_verification": "native_source_digests_and_full_export_sha256_verified",
+      "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
+      "agent_benchmark_results": "not_available",
+      "exact_export_requires_owner_key": true
+    },
+    {
+      "task_id": "ieeg-finger-flexion-bciciv4",
+      "domain": "ieeg",
+      "directory": "tasks/ieeg/ieeg-finger-flexion-bciciv4",
+      "entry_kind": "runnable",
+      "task_version": "0.1-public-validation-offline",
+      "validation": "local_fixed_reference_and_isolation_passed",
+      "evaluation_scope": "public_validation_only",
+      "primary_metric": {
+        "id": "pearson_r",
+        "direction": "maximize",
+        "unit": "dimensionless"
+      },
+      "evaluation_profile": "bpb-bciciv4-public-validation-offline-v1",
+      "source_task_id": "BCI Competition IV Dataset 4",
+      "data_status": "source_bound_reproducible_export",
+      "data_access": "maintainer_package_required",
+      "private_data_access": "maintainer_package_required",
+      "validation_record": "tasks/ieeg/ieeg-finger-flexion-bciciv4/acceptance.json",
+      "source_verification": "full_source_files_and_derived_arrays_verified",
+      "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
+      "agent_benchmark_results": "not_available"
     },
     {
       "task_id": "neuro-rsc-place-cell",

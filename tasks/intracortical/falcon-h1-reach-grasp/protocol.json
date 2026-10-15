@@ -1,0 +1,13 @@
+{
+  "schema": "bpb-invasive-protocol/1",
+  "profile": "bpb-falcon-public-derived-cross-session-zs-v1",
+  "task_id": "falcon-h1-reach-grasp",
+  "source": {"repository": "https://github.com/snel-repo/falcon-challenge", "sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f", "task": "h1", "dandiset": "000954", "version": "draft", "asset_manifest": "tasks/intracortical/_preparation/assets.manifest.json"},
+  "split": {"unit": "recording_date", "train_dates": ["19250101", "19250108", "19250113", "19250115", "19250119"], "valid_dates": ["19250120"], "test_dates": ["19250126", "19250127", "19250129", "19250202", "19250203", "19250206", "19250209"], "selected_source_roles": {"train": "held-in-calib", "valid": "held-in-calib", "test": "held-out-calib"}, "excluded_source_role": "held-in-minival", "same_date_sets": "concatenate in recording order before scoring", "test_access": "evaluator_only_public_origin"},
+  "input": {"type": "intracortical_threshold_crossings", "channels": 176, "bin_ms": 20, "unit": "spike_count", "streaming": true},
+  "output": {"type": "continuous_regression", "dimensions": 7, "target": "OpenLoopKinematicsVelocity: 3 translation, 1 roll, 3 grasp-shaping velocities", "shape_per_timestep": "[7]"},
+  "metric": {"id": "R2_variance_weighted", "direction": "maximize", "mask": "native eval_mask; score only valid within-trial timesteps", "aggregation": "variance-weighted dimensions per date, then equal-weight date mean and population std"},
+  "model_policy": {"train_valid_visible": true, "test_visible_to_agent": false, "held_out_calibration_allowed": false, "test_time_parameter_updates": false, "predict_in_recording_order": true},
+  "result_scope": "BrainPilotBench derived public-data profile; not an official FALCON score",
+  "status": "preparation_ready_data_pending"
+}

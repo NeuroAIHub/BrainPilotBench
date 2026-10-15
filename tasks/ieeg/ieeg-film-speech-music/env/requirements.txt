@@ -1,0 +1,5 @@
+numpy==2.2.6
+scipy==1.15.3
+mne==1.10.2
+scikit-learn==1.7.2
+safetensors==0.5.3

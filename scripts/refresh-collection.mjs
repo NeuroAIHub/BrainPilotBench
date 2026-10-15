@@ -7,6 +7,8 @@ import { discoverTaskDirs } from "../dist/discover.js";
 import { loadTask } from "../dist/loader.js";
 import { validateTaskSchema } from "../dist/validate.js";
 import { loadCategories } from "../dist/categories.js";
+import { readInvasiveCandidates, invasiveCatalogRow } from "./invasive-candidates.mjs";
+import { readInvasiveAcceptance } from "./invasive-acceptance.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const read = path => JSON.parse(readFileSync(path, "utf8"));
@@ -25,7 +27,10 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
   if (errors.length) throw new Error(`${rel(dir)}: ${JSON.stringify(errors)}`);
   const contract = existsSync(join(dir, "contract.json")) ? read(join(dir, "contract.json")) : {};
   const id = task.meta.id;
-  const publicOnly = id.startsWith("psych101-") || id.startsWith("eeg-");
+  const invasive = ["ieeg", "intracortical"].includes(rel(dir).split("/")[1]);
+  const accepted = invasive ? readInvasiveAcceptance(root, dir, task) : null;
+  if (invasive && !accepted) throw new Error(`${rel(dir)}: runnable invasive entry lacks current acceptance evidence`);
+  const publicOnly = id.startsWith("psych101-") || id.startsWith("eeg-") || invasive;
   const row = {
     task_id: id, domain: rel(dir).split("/")[1], directory: rel(dir),
     entry_kind: "runnable", task_version: task.meta.version,
@@ -50,6 +55,17 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
   const privateDatasets = task.datasets.filter(d => d.scope === "private");
   if (privateDatasets.length) row.private_data_access = privateDatasets.some(d => d.uri.startsWith("local://"))
     ? "maintainer_package_required" : "pinned_source_download";
+  if (accepted) {
+    row.validation = "local_fixed_reference_and_isolation_passed";
+    row.validation_record = `${rel(dir)}/acceptance.json`;
+    row.source_task_id = accepted.source_task_id;
+    row.data_status = accepted.data_status ?? "source_bound_reproducible_export";
+    row.source_verification = accepted.source_verification;
+    row.owner_test = "fixed_reference_interface_passed_not_agent_benchmark";
+    row.agent_benchmark_results = "not_available";
+    if (accepted.data_status === "owner_key_bound_prepared_export")
+      row.exact_export_requires_owner_key = true;
+  }
   tasks.push(row);
 }
 for (const entry of readdirSync(join(root, "tasks/eeg"), { withFileTypes: true })) {
@@ -69,6 +85,7 @@ for (const entry of readdirSync(join(root, "tasks/eeg"), { withFileTypes: true }
       : "Frozen task/data binding not imported",
   });
 }
+for (const entry of readInvasiveCandidates(root)) tasks.push(invasiveCatalogRow(entry));
 const metadata = read(join(root, "tasks/psychology/metadata-only.json"));
 for (const card of metadata.tasks) tasks.push({
   task_id: card.proposed_task_id, domain: "psychology", metadata_file: "tasks/psychology/metadata-only.json",
@@ -79,14 +96,14 @@ const ids = new Set(tasks.map(t => t.task_id));
 if (ids.size !== tasks.length) throw new Error("Duplicate catalog task IDs");
 tasks.sort((a,b) => a.task_id.localeCompare(b.task_id));
 const catalog = {
-  schema: "brainpilotbench-task-collection/1", date: "2026-10-12",
+  schema: "brainpilotbench-task-collection/1", date: "2026-10-14",
   release_status: "integration_candidate_not_released",
-  validation_policy: "Four recorded real reference checks; new interfaces use structure/contract checks; no paid Agent or historical private Test replay",
+  validation_policy: "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; no formal Agent results or historical private Test replay",
   counts: {
     total: tasks.length, runnable: tasks.filter(t => t.entry_kind === "runnable").length,
     candidate: tasks.filter(t => t.entry_kind === "candidate").length,
     preparation_ready: tasks.filter(t => t.preparation_available).length,
-    representative_runs: referenceChecks.size,
+    representative_runs: referenceChecks.size + tasks.filter(t => t.validation === "local_fixed_reference_and_isolation_passed").length,
   }, tasks,
 };
 const text = JSON.stringify(catalog, null, 2) + "\n";

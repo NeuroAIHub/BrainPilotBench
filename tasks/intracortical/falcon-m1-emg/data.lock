@@ -1,0 +1,46 @@
+# Frozen falcon-m1-emg public-origin NWB assets; Test is evaluator-only.
+# Source 770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f; source manifest SHA-256 b83c065c76b71c76c00076e35ab242a426c85dad9cfd7f54b4e05af6c0dc5ce4.
+# Full raw NWB SHA-256 was locally verified.
+datasets:
+  - name: m1-train-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/13163b3c-95b7-4b0e-8181-72d7bd658e0b/download/
+    sha256: 63ee25782c62ff2275dcfbdcaa56552ec4c26fcde00f5a74e5be54785b5c25eb
+    bytes: 73077382
+    format: nwb
+    scope: public
+  - name: m1-train-0002.nwb
+    uri: https://api.dandiarchive.org/api/assets/66b503dd-c311-42ce-983f-0810ed8c01ff/download/
+    sha256: 9c72512308194b93cc19b51733514eb9721152ffe4dd357ee93aabd4be5caa91
+    bytes: 80268327
+    format: nwb
+    scope: public
+  - name: m1-train-0003.nwb
+    uri: https://api.dandiarchive.org/api/assets/478c68a5-2434-428c-91f9-d678c8760dd6/download/
+    sha256: 2d2fdc9be5ccb7a47969894ff1da43a994da11bfff298353f94d489c4af37b3a
+    bytes: 78481526
+    format: nwb
+    scope: public
+  - name: m1-valid-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/61dbe78b-58da-4089-b308-96378c5a95b9/download/
+    sha256: 96e7f078c6acb89b802b6241a36b9c9e2d04df82c180a63354fd3f7e74357254
+    bytes: 68337100
+    format: nwb
+    scope: public
+  - name: m1-test-0001.nwb
+    uri: https://api.dandiarchive.org/api/assets/1b2e1931-9b22-42bd-b947-a14bd2f81d1b/download/
+    sha256: 782c1fd090facfb3c50b6a85da8209ca3aea71f66bd4edc13d61fe4a55a3429d
+    bytes: 2605922
+    format: nwb
+    scope: private
+  - name: m1-test-0002.nwb
+    uri: https://api.dandiarchive.org/api/assets/0b466412-4fb5-4210-96a1-5d913f8e55b4/download/
+    sha256: 8dd22c67500445ec1e0c11980475badbba9e960a05db16b78aaaad5502b3c652
+    bytes: 2710214
+    format: nwb
+    scope: private
+  - name: m1-test-0003.nwb
+    uri: https://api.dandiarchive.org/api/assets/3760e2e5-cb9f-40ae-8749-1b249d2e537d/download/
+    sha256: bbeb6c7d66e2c2e9b76506021a6cf8800bc19021b6d1fd03c4eb6de71490bafb
+    bytes: 3778095
+    format: nwb
+    scope: private

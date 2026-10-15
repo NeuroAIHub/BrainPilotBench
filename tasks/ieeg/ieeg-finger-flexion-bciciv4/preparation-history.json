@@ -1,0 +1,20 @@
+{
+  "schema": "bpb-invasive-candidate/1",
+  "id": "ieeg-finger-flexion-bciciv4",
+  "domain": "ieeg",
+  "status": "preparation_ready_data_pending",
+  "title": "ECoG finger flexion prediction (BCI Competition IV, Dataset 4)",
+  "source_task_id": "BCI Competition IV/Dataset 4",
+  "dataset_group_id": "BCICIV-4-three-subjects",
+  "input_description": "Continuous 1000 Hz ECoG from three subjects (62, 48, and 64 channels).",
+  "output_description": "Five continuous finger-flexion trajectories at 1000 Hz per subject.",
+  "native_split_description": "The source provides 400000 labeled samples and 200000 evaluation-input samples per subject. BrainPilotBench reserves a chronological validation span inside the labeled 400000 samples and applies a boundary guard.",
+  "primary_metric": {
+    "id": "pearson_r",
+    "direction": "maximize"
+  },
+  "protocol": "protocol.json",
+  "preparation_entry": "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/prepare.py",
+  "runnable": false,
+  "reason": "The official source was prepared locally, but the archive and arrays remain in ignored maintainer cache. No frozen public task package, runnable task contract, or real-data Agent result exists."
+}

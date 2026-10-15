@@ -11,6 +11,10 @@ Researchers can use the same task definitions with different agents and research
 > Public data and evaluation code are available. Representative reference checks are not agent benchmark results.
 > Published BrainPilotBench-v0 results cover the four original tasks only.
 
+The later invasive-recording additions have separate version-bound acceptance records.
+All seven have checked public-validation workflows and frozen-reference owner Test interface checks.
+They have no Agent benchmark results.
+
 AgentEEGBench, Psych101-Agent-Bench, and future specialized research benchmarks
 remain independent projects. They can reuse a task at a fixed Git commit and version.
 Their agents, experiment scheduling, credentials, and research records stay separate.
@@ -25,9 +29,11 @@ This repository does not add a top-level `runtimes/` layer.
 | [Psychology](../tasks/psychology/README.md) | 76 behavioral modeling tasks, with categorical or byte-sequence response interfaces |
 | [Connectomics](../tasks/connectomics/celegans-structure-function-divergence/README.md) | Anatomical connectivity and signal propagation in C. elegans |
 | [Calcium imaging](../tasks/calcium-imaging/neuro-rsc-place-cell/README.md) | The original RSC place-cell task |
+| [Intracranial EEG](../tasks/ieeg/README.md) | ECoG finger-flexion decoding and film-condition classification |
+| [Intracortical recording](../tasks/intracortical/README.md) | Five FALCON-derived movement, muscle, handwriting, and birdsong tasks |
 
-The collection has 105 runnable task packages. Four EEG preparation entries and
-one withheld EEG candidate remain outside that count.
+The collection has 112 runnable task packages. The five previously retained EEG
+candidates remain outside that count. All seven invasive additions are now runnable.
 
 Use task IDs in CLI commands; directory moves do not change them. Old directory
 paths in external scripts must be updated. The four original task YAML files
@@ -59,6 +65,11 @@ route for unpublished data. It is not a public download URL. Unset
 `BPB_LOCAL_DATA_ROOT` before starting an Agent. Keep public and evaluator caches
 separate. The launcher rejects a private cache visible to an Agent.
 
+The invasive additions are outside the first public upload.
+The film task has a prepared public-only package, but its exact opaque IDs and hashes require the owner's private shuffle key to regenerate.
+Its catalog status is `owner_key_bound_prepared_export`; this is not an open download claim.
+The other six invasive tasks provide source-bound rebuild recipes.
+
 Each task owns its environment instructions. CPU Docker images are built locally
 and evaluated by immutable ID/digest; no images were published. A successful
 macOS/arm64 integration run does not verify Linux/amd64 or GPU compatibility.
@@ -73,6 +84,13 @@ train/valid only; historical private Test results are not replayed. The two new
 contributions use their own reference-evaluation paths. These runs check data,
 environment, saved artifacts, inference and scoring; they are not Agent research
 experiments. No paid model calls are needed.
+
+The later [invasive task checks](invasive-task-preparation.md)
+cover real source preparation, public staging, fixed submissions, and isolated container scoring.
+Owner Test checks use a frozen reference and return separate engineering reports.
+They do not tune a model or contribute Agent leaderboard scores.
+Each promoted entry has an `acceptance.json` that binds its version and critical files.
+The catalog refuses to reuse acceptance after those files change.
 
 This data publication has full byte-level readback. The follow-up limits fetch
 and preparation to a small representative check. It does not rerun all 101 tasks.
@@ -92,6 +110,7 @@ npm run build
 npm test
 npm run test:collection
 npm run catalog:check
+npm run test:invasive-metadata
 npm run test:docs
 ```
 
@@ -99,6 +118,8 @@ npm run test:docs
 directions. It does not fetch data, install Python environments, train models, or
 launch all reference solutions. Real-run commands and evidence are documented in
 each representative task and [the reference-check record](integration-validation.md).
+The invasive metadata gate also checks acceptance-file coverage and rejects stale code or environment bindings.
+CI uses ordinary metric, byte-transfer, and metadata fixtures; it does not download research data or replay owner Test runs.
 
 Use `evaluation.primary_metric` to declare the ranking metric, direction and
 unit. Diagnostic counts are not ranking scores. Results record task version

@@ -9,7 +9,7 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 </p>
 
 <p>
-  <strong>105 task packages</strong> &nbsp;·&nbsp; <strong>5 research domains</strong>
+  <strong>112 task packages</strong> &nbsp;·&nbsp; <strong>7 research domains</strong>
 </p>
 
 <p>
@@ -36,6 +36,7 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 
 ## Project news
 
+- **2026-10-14 — Seven real invasive-recording tasks.** The source collection now includes ECoG finger flexion, film-condition iEEG, and five FALCON-derived decoding tasks. All seven passed local fixed-reference and isolated-scoring checks. See the [protocols and acceptance record](docs/invasive-task-preparation.md). **Agent benchmark results remain pending.**
 - **2026-10-14 — Expanded task collection.** The repository now includes 101 new tasks across EEG, psychology, structural MRI, and connectomics, bringing the total to 105.
   **Agent benchmark results for the new tasks are pending.**
 - **2026-07-18** — BrainPilot was showcased at the “Intelligence in the Physical World” Science Forum at WAIC 2026. Follow us for the latest updates.
@@ -53,15 +54,16 @@ code. Independent research projects can reuse the same versioned tasks.
 ## Evaluation status
 
 > [!IMPORTANT]
-> **New tasks: public data available. Agent benchmark results pending.**
+> **First 101 additions: public data available. Agent benchmark results for all new tasks are pending.**
 >
-> No BrainPilotBench agent benchmark scores are available for the 101 newly added tasks.
+> No BrainPilotBench agent benchmark scores are available for the first 101 additions or the seven invasive-recording tasks.
 > Current checks cover data integrity and selected preparation and reference-scoring workflows.
 > They do not measure comparative agent performance across the new collection.
+> The later invasive-recording additions have separate local acceptance records; their data are not part of that published batch.
 >
 > Published **BrainPilotBench-v0 results cover only the four original tasks**.
 
-These task packages are now part of main. Use the source checkout below.
+The first 101 added task packages are part of main. Use the source checkout below.
 The expanded collection is not yet distributed through npm.
 
 ## Task suite
@@ -100,10 +102,34 @@ the exact scope and representative download checks.
 
 Four EEG entries remain preparation-only: HMC sleep stage, HMC sleep onset,
 Sleep-EDF onset, and CHB-MIT seizure detection. Thielen2021 remains withheld.
-These five entries are not part of the 105 runnable task packages.
+These five entries are outside the runnable collection.
 The two prepared EEG candidate packages and evaluator-only inputs were not published in this batch.
 
+Seven additional [invasive-recording entries](docs/invasive-task-preparation.md)
+cover ECoG finger movements, iEEG film conditions, and five FALCON decoding tasks.
+All seven now have runnable public-validation interfaces and local acceptance records.
+They have no Agent benchmark results and are not included in the published data batch.
+
 </details>
+
+### Real invasive recordings · 7 tasks
+
+| Task | Prediction target | Primary metric |
+|---|---|---|
+| [BCI IV-4](tasks/ieeg/ieeg-finger-flexion-bciciv4/README.md) | Five finger-flexion trajectories from human ECoG | Mean Pearson r across three participants and four scored fingers |
+| [Film conditions](tasks/ieeg/ieeg-film-speech-music/README.md) | Speech or music in unseen film blocks from clinical ECoG/sEEG | Participant-macro, block-first balanced accuracy |
+| [FALCON H1](tasks/intracortical/falcon-h1-reach-grasp/README.md) | Seven attempted arm/grasp velocity components | Date-mean variance-weighted R² |
+| [FALCON H2](tasks/intracortical/falcon-h2-handwriting/README.md) | Attempted handwriting sentences | Date-mean word error rate |
+| [FALCON M1-A](tasks/intracortical/falcon-m1-emg/README.md) | Sixteen upper-limb muscle activity channels | Date-mean variance-weighted R² |
+| [FALCON M2](tasks/intracortical/falcon-m2-finger-velocity/README.md) | Two finger-group velocities | Date-mean variance-weighted R² |
+| [FALCON B1](tasks/intracortical/falcon-b1-birdsong/README.md) | Zebra finch vocalization spectrograms | Normalized spectrogram MSE |
+
+Their local checks cover real data, fixed reference submissions, container-isolated public Valid scoring,
+and separate owner Test interfaces. They do not provide Agent benchmark results.
+These additions bring the source collection to **112 runnable task packages**.
+Their data are prepared locally or rebuilt from pinned sources; they are not in the first Hugging Face batch.
+The film task's exact prepared package also depends on an owner-held shuffle key.
+See the [invasive-recording guide](docs/invasive-task-preparation.md) for access and evaluation boundaries.
 
 ### Original BrainPilotBench-v0 · 4 tasks
 

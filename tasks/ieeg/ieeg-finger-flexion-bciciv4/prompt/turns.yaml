@@ -1,0 +1,28 @@
+- send: >-
+    Develop an ECoG decoder that predicts five finger-flexion trajectories for
+    each of three participants. Use public_data/train and public_data/valid only.
+    Each role has a manifest and separate sub1, sub2, and sub3 arrays.
+    Inputs x.npy are int32 ECoG at 1000 Hz, with 62, 48, and 64 channels.
+    Targets y.npy are five flexion trajectories: thumb, index, middle, ring,
+    and little finger. Train contains 319000 samples per participant; Valid
+    contains 79000. A 2000-sample gap separates these chronological intervals.
+    Keep this split. Fit learned transformations on Train only. Use Valid to
+    inspect development performance. Never fetch original source files or access
+    evaluator data. The original evaluation labels are publicly available but
+    remain outside this task's development workspace.
+    Submit submission/model.py, submission/config.json, and
+    submission/weights.safetensors. Model(config) must be a torch.nn.Module.
+    forward(x, subject_id) receives the full current participant interval as
+    float32[T,C] and an ID from sub1, sub2, sub3. Return finite float32[T,5].
+    This is offline inference. You may use later samples in the current
+    interval, but never another role or recording. Saved and registered tensor
+    state must stay fixed during inference. Limit saved and registered tensor
+    elements to 10 million. Only the three submission files and current input
+    are available in the network-disabled inference container.
+    The metric is mean Pearson correlation across thumb, index, middle, and
+    little finger for all three participants: twelve equally weighted values.
+    The ring finger is not scored. Constant scored predictions are invalid.
+    Public scoring evaluates Valid only. Owner Test uses a separate workflow
+    and an artifact frozen before evaluation. No Agent benchmark result has
+    been reported for this task.
+  then: wait_idle

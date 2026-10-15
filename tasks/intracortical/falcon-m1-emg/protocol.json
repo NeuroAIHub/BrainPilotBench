@@ -1,0 +1,13 @@
+{
+  "schema": "bpb-invasive-protocol/1",
+  "profile": "bpb-falcon-public-derived-cross-session-zs-v1",
+  "task_id": "falcon-m1-emg",
+  "source": {"repository": "https://github.com/snel-repo/falcon-challenge", "sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f", "task": "m1", "variant": "M1-A only", "dandiset": "000941", "version": "0.241029.1405", "asset_manifest": "tasks/intracortical/_preparation/assets.manifest.json"},
+  "split": {"unit": "recording_date", "train_dates": ["20120924", "20120926", "20120927"], "valid_dates": ["20120928"], "test_dates": ["20121004", "20121017", "20121024"], "selected_source_roles": {"train": "held-in-calib", "valid": "held-in-calib", "test": "held-out-calib"}, "excluded_source_role": "held-in-minival", "test_access": "evaluator_only_public_origin"},
+  "input": {"type": "intracortical_threshold_crossings", "channels": 64, "bin_ms": 20, "unit": "spike_count", "streaming": true},
+  "output": {"type": "continuous_regression", "dimensions": 16, "target": "preprocessed upper-limb intramuscular EMG activity", "shape_per_timestep": "[16]"},
+  "metric": {"id": "R2_variance_weighted", "direction": "maximize", "mask": "native eval_mask; score only valid within-trial timesteps", "aggregation": "variance-weighted dimensions per date, then equal-weight date mean and population std"},
+  "model_policy": {"train_valid_visible": true, "test_visible_to_agent": false, "held_out_calibration_allowed": false, "test_time_parameter_updates": false, "predict_in_recording_order": true},
+  "result_scope": "BrainPilotBench derived public-data profile; not an official FALCON score",
+  "status": "preparation_ready_data_pending"
+}

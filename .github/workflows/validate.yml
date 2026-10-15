@@ -104,7 +104,15 @@ jobs:
         run: |
           npm run test:collection
           npm run catalog:check
+          npm run test:invasive-metadata
           node dist/cli.js validate all --schema-only
+      - name: Invasive contract and recovery unit checks (no research data)
+        run: |
+          python3 -B tasks/intracortical/_preparation/check_manifest.py
+          python3 -B tasks/intracortical/falcon-h1-reach-grasp/checks/test_boundaries.py
+          python3 -B tasks/intracortical/_regression_shared/test_numeric_state.py
+          python3 -B tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/test_contract.py
+          python3 -B tasks/ieeg/ieeg-finger-flexion-bciciv4/checks/test_recovery.py
       - name: Legacy task Oracle/NOP gates
         run: |
           for task in example-exec-task bciciv-2a sleep-edf tops-fmri neuro-rsc-place-cell; do

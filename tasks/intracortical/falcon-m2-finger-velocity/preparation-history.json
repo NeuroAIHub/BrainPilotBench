@@ -1,0 +1,19 @@
+{
+  "schema": "bpb-invasive-candidate/1",
+  "id": "falcon-m2-finger-velocity",
+  "domain": "intracortical",
+  "status": "preparation_ready_data_pending",
+  "title": "Macaque finger-group velocity decoding",
+  "source_task_id": "m2",
+  "source_sha": "770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f",
+  "dataset_group_id": "DANDI:000953",
+  "input_description": "96-channel, 20 ms intracortical spike-count stream from motor cortex Utah arrays",
+  "output_description": "Two continuous finger-group velocities for index and middle-ring-small groups",
+  "native_split_description": "Official 4 held-in and 4 held-out dates across 7 and 6 run files; BPB keeps all same-date runs together, uses final held-in date for Valid and public held-out calibration for evaluator-only Test, excluding duplicate minival files",
+  "primary_metric": {"id": "R2_variance_weighted", "direction": "maximize"},
+  "protocol": "protocol.json",
+  "preparation_entry": "tasks/intracortical/_preparation/prepare.py",
+  "runnable": false,
+  "validated": false,
+  "reason": "Asset manifest is frozen, but complete data, isolated role packages, native shape and mask checks, and independent acceptance remain pending; this raw-data group is large."
+}

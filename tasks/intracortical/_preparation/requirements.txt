@@ -1,0 +1,8 @@
+# Isolated Python 3.12 environment for FALCON NWB structure and metric checks.
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+pynwb==3.1.3
+h5py==3.14.0
+pandas==2.3.3
+edit_distance==1.0.9

@@ -22,3 +22,4 @@ docs/*
 !docs/integration-validation.md
 !docs/coverage-expansion.md
 !docs/data-preparation.md
+!docs/invasive-task-preparation.md

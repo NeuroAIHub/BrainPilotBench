@@ -1,0 +1,23 @@
+{
+  "schema": "bpb-invasive-candidate/1",
+  "schema_version": "bpb-invasive-candidate/1",
+  "id": "ieeg-film-speech-music",
+  "domain": "ieeg",
+  "status": "preparation_ready_data_pending",
+  "title": "Berezutskaya2022 film speech versus music",
+  "source_task_id": "ds003688/task-film",
+  "dataset_group_id": "OpenNeuro-ds003688-v1.0.7",
+  "input_description": "Independent, shuffled 2-second iEEG windows from good ECoG and sEEG channels, resampled within each window to 256 Hz. A participant has a stable local montage; the sample input has no movie time or block order.",
+  "output_description": "One probability of the speech condition for each opaque window ID. The evaluator averages probabilities by hidden movie block before scoring.",
+  "native_split_description": "A new BrainPilotBench protocol, not a source-native machine-learning split: global movie blocks 1,3,6,7,8,10,13 train; 4,11 validation; 2,5,9,12 evaluator-only Test. The same split applies to every eligible iEEG participant. Training and prediction are within participant.",
+  "primary_metric": {
+    "id": "balanced_accuracy",
+    "direction": "maximize"
+  },
+  "protocol": "protocol.json",
+  "source_metadata": "full_source_manifest.json",
+  "preparation_entry": "tasks/ieeg/ieeg-film-speech-music/env/prepare_full.py",
+  "runnable": false,
+  "validated": false,
+  "reason": "The 306 pinned clinical sources, 51-subject guarded-window export, derived-role hashes, public-only package, all-subject Valid check, and one owner-only frozen-reference Test check are complete. Promotion and main CLI acceptance remain with the collection owner. The earlier sub-02 receipt is historical. No task.yaml is published."
+}

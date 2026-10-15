@@ -1,0 +1,1034 @@
+{
+  "schema": "bpb-invasive-cohort-filename-inventory/1",
+  "source_git_commit": "5b2cb4fbde4106ddc1332338df6a4b85ac57aeb2",
+  "scope": "Pinned Git filename and blob metadata only. Signal files and event contents were not read. These participants have not passed channel, timing, signal, or artifact QC.",
+  "iEEG_subjects_with_clinical_film_sidecars": 51,
+  "iEEG_film_event_files": 52,
+  "selection_rule": "Select the unique acquisition-clinical film recording for each subject and its matching run events. Do not count HDgrid or a second playback as another subject.",
+  "duplicate_playback_resolution": "The pinned tree names sub-45 clinical run-1 and HDgrid run-2. Select clinical run-1. Other subjects with clinical run-2 have one film events file each. The article names sub-44 for the second playback; preserve this provenance difference without counting either person twice.",
+  "subjects_with_multiple_film_event_files": [
+    "sub-45"
+  ],
+  "records": [
+    {
+      "subject": "sub-01",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "94b5dbd654f09fccdf9cddef5ad99d2e09f04dcf"
+      },
+      "channels": {
+        "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "3688cc0aaa4a06c1a51015754cbc03874d6607a9"
+      },
+      "sidecar": {
+        "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "0977a8400b55e92ee3cd628e8097a966c045429e"
+      },
+      "signal_pointer": {
+        "path": "sub-01/ses-iemu/ieeg/sub-01_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "da6b614730e4dac67e8847c0f3049b1710e0926c"
+      }
+    },
+    {
+      "subject": "sub-02",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "edacecce5ad25d072eeef54d57b86e51974aa04a"
+      },
+      "channels": {
+        "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "4ec456cee3f5afd532afee0b1af032a9ebc179c6"
+      },
+      "sidecar": {
+        "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "3569dc2b921475b4cc4b35267e77c5f742cf7b8d"
+      },
+      "signal_pointer": {
+        "path": "sub-02/ses-iemu/ieeg/sub-02_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "3b6da083578c54366acc64ecc812c290d0a7eb20"
+      }
+    },
+    {
+      "subject": "sub-03",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "53081720d091200dbe173945c92b5331917c3236"
+      },
+      "channels": {
+        "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "c5884f36f36057f7a37ccf57616b5c1c8a5cde16"
+      },
+      "sidecar": {
+        "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "13c752c0f7fdf682bdb1dfd1b14b05ada19ce098"
+      },
+      "signal_pointer": {
+        "path": "sub-03/ses-iemu/ieeg/sub-03_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "6afbba015646b44cb94890ceb30e9078fc66faba"
+      }
+    },
+    {
+      "subject": "sub-05",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "3e6e7f326441ce19bb39cff4bbac478f6eac2b46"
+      },
+      "channels": {
+        "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "8638cfe24b00d010b77fa00d8cda753f2c3ca6d0"
+      },
+      "sidecar": {
+        "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "411c54b5f987bf3c50fc9dbe3c24d13664fd788f"
+      },
+      "signal_pointer": {
+        "path": "sub-05/ses-iemu/ieeg/sub-05_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "cbad9703b1b35bf3476d01c9f0adbb3d00e18a67"
+      }
+    },
+    {
+      "subject": "sub-06",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "e2424f8757b93ba7d0161357613dbc85cdea6014"
+      },
+      "channels": {
+        "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "458487b3303837636ee3cba0c8cc3f77057676cd"
+      },
+      "sidecar": {
+        "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "a3b623af66097dde4356e270058c0ad79d506819"
+      },
+      "signal_pointer": {
+        "path": "sub-06/ses-iemu/ieeg/sub-06_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "87710fe759866b7ebc3109da336242d4a968d7a5"
+      }
+    },
+    {
+      "subject": "sub-07",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "5a1f9b5b0bfda76a675b28ae3906ed8d42a17dee"
+      },
+      "channels": {
+        "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "a83ee268869328ac0a6952281ef93432bf8caf34"
+      },
+      "sidecar": {
+        "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "4354fb078ea373ab88eadc14a64e4f26cee0f35f"
+      },
+      "signal_pointer": {
+        "path": "sub-07/ses-iemu/ieeg/sub-07_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "1336eb533bfd7168f03a0cc823410104b57537ed"
+      }
+    },
+    {
+      "subject": "sub-09",
+      "selected_clinical_run": 2,
+      "events": {
+        "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_run-2_events.tsv",
+        "git_blob_sha1": "acc3e9a9de3e965d9d112919b9050a90ef1df7a1"
+      },
+      "channels": {
+        "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+        "git_blob_sha1": "a4a5b8b019530d0b80b553fc79bb6e86ee866c23"
+      },
+      "sidecar": {
+        "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+        "git_blob_sha1": "5442af0e0733d4a1c10027228f2d21dca69a065f"
+      },
+      "signal_pointer": {
+        "path": "sub-09/ses-iemu/ieeg/sub-09_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+        "git_blob_sha1": "cb94de5ee322125a5eeb3842d7ae8ba63821d4a3"
+      }
+    },
+    {
+      "subject": "sub-10",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "f589a68c9efcd63d8b92c80e870cfa66a03293ba"
+      },
+      "channels": {
+        "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "93cb22d87cc246b4f95fac2a0a0d07f272c6957c"
+      },
+      "sidecar": {
+        "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "45d2343687bd78b8ffdcd722c7b768a03704d12c"
+      },
+      "signal_pointer": {
+        "path": "sub-10/ses-iemu/ieeg/sub-10_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "2a1ad671dfefb8bf3f8aef15c0a0ddd72a581850"
+      }
+    },
+    {
+      "subject": "sub-12",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "c99d67573a0d2ff7b0901754a24872a48bb0e1d5"
+      },
+      "channels": {
+        "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "788511a527d8c2227d8d7d84ab3654ce8d66121d"
+      },
+      "sidecar": {
+        "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "c6bf56329f99df9d91d03be0ff8bbc3523c802ab"
+      },
+      "signal_pointer": {
+        "path": "sub-12/ses-iemu/ieeg/sub-12_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "1c5a093af10cd2d591cb7c097ccecc97a158bfff"
+      }
+    },
+    {
+      "subject": "sub-13",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "2cb0fd07453366ca7b2852811afa07bae317256d"
+      },
+      "channels": {
+        "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "2fec86992265ddf8d313067e818ddb7827e33a89"
+      },
+      "sidecar": {
+        "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "d146661e8cdde9dcfa2c8c0cb6d10e7961c9d690"
+      },
+      "signal_pointer": {
+        "path": "sub-13/ses-iemu/ieeg/sub-13_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "d085fe7c3cf3bb80bd6cca421177bf95d202bf6b"
+      }
+    },
+    {
+      "subject": "sub-14",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "0363a2878703ef4025897b6b87f7fa308bbd2ca6"
+      },
+      "channels": {
+        "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "b168fd5c06bab6d5deef5c6cfaa44667c1934a43"
+      },
+      "sidecar": {
+        "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "d127ef771e243ccd65f0adae909a88f9ba9991e1"
+      },
+      "signal_pointer": {
+        "path": "sub-14/ses-iemu/ieeg/sub-14_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "463188c467a3155a251f13906ed6f277ed2b855a"
+      }
+    },
+    {
+      "subject": "sub-16",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "edff1e0034fee1e7f0cce4809c6c36caa92f50c3"
+      },
+      "channels": {
+        "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "c3f5b5f36cf2bfa7b9958c5126761b3000a507f7"
+      },
+      "sidecar": {
+        "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "cb917a01b88ae03420c86f37590450f14a4f8e66"
+      },
+      "signal_pointer": {
+        "path": "sub-16/ses-iemu/ieeg/sub-16_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "027251737657f55dee48c7e6107967316fcbeda9"
+      }
+    },
+    {
+      "subject": "sub-17",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "dba42f822cecf9a313752695bdd2c2354c3f0f95"
+      },
+      "channels": {
+        "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "3addadae3ba130681c9b0f90791cf5d03d219e19"
+      },
+      "sidecar": {
+        "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "db20241577e7f71a4ab21abdae1948f271f0ff60"
+      },
+      "signal_pointer": {
+        "path": "sub-17/ses-iemu/ieeg/sub-17_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "28e5d60b5842093a89d1db90de1714a8f8c0ff78"
+      }
+    },
+    {
+      "subject": "sub-18",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "f4263ed6f649ba7c514b0b31eb7cd0d9c7951dea"
+      },
+      "channels": {
+        "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "cf5bcbd780e798b6835b61e48bfe03ce1f682a0d"
+      },
+      "sidecar": {
+        "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "3dc18fea877c39e73375fe9c7afd4b7732783b82"
+      },
+      "signal_pointer": {
+        "path": "sub-18/ses-iemu/ieeg/sub-18_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "670751b4189d8dfa533133c120f038c49abeb5d5"
+      }
+    },
+    {
+      "subject": "sub-19",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "58ad153f5f37fdd8ea016ec980b49ccfea3b98a5"
+      },
+      "channels": {
+        "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "4e7f04db10efc9f74f2b08cd2493ebb237de9ca7"
+      },
+      "sidecar": {
+        "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "78fe8b41466aab74d852bacc90c2c54c6c762a2f"
+      },
+      "signal_pointer": {
+        "path": "sub-19/ses-iemu/ieeg/sub-19_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "aab36443e28403e380c9bca5b4e857caf1637ab3"
+      }
+    },
+    {
+      "subject": "sub-20",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "3129976635e76dd1d3ba7c1c39c1c699807912f8"
+      },
+      "channels": {
+        "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "145f5bdc6c9a4f1b09db669debb6a62e0d086da7"
+      },
+      "sidecar": {
+        "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "2ddc32d27b0ea5d50287c821ab2bcd2aac7a2e55"
+      },
+      "signal_pointer": {
+        "path": "sub-20/ses-iemu/ieeg/sub-20_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "0fd30fcb423054397d6366fa0fc0e0ebd016de27"
+      }
+    },
+    {
+      "subject": "sub-21",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "0844ff68cc360b17654d0a0eb14f5587cf4076e7"
+      },
+      "channels": {
+        "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "1feebad2d795d9c203d028faa954136a7331235c"
+      },
+      "sidecar": {
+        "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "47da2071ac891b6c822ce9f10ded07b9bf512d53"
+      },
+      "signal_pointer": {
+        "path": "sub-21/ses-iemu/ieeg/sub-21_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "6301d4b59752d620846c06200d57d8df8eaf766e"
+      }
+    },
+    {
+      "subject": "sub-22",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "043acb85bfec0efff63c8cec260ab2befae31fa5"
+      },
+      "channels": {
+        "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "cfea6ac2fbc6305bcb3d376decd282f9bbd3e917"
+      },
+      "sidecar": {
+        "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "cbfe71b6f99793dff429f3d6ea9b4dd29cedeb68"
+      },
+      "signal_pointer": {
+        "path": "sub-22/ses-iemu/ieeg/sub-22_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "8edb55d09260f99873787f662848475400fdf25e"
+      }
+    },
+    {
+      "subject": "sub-23",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "97038c0a5af6055e22db0c4e7026910a07d42d6f"
+      },
+      "channels": {
+        "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "5632ec7b62707092b52f14cdbfe1249ced81e8b7"
+      },
+      "sidecar": {
+        "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "d42dbf8f5fbf1ca58801771bc5a711c714eafd24"
+      },
+      "signal_pointer": {
+        "path": "sub-23/ses-iemu/ieeg/sub-23_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "eb5acb5eff7933947130c5b3ae17048e02b87e67"
+      }
+    },
+    {
+      "subject": "sub-24",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "ca485c596356bf312218194d70f1fae26a44fc5a"
+      },
+      "channels": {
+        "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "3902af5a81cd3077a3de40f6dc3979ca3e04a5a4"
+      },
+      "sidecar": {
+        "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "d569582776bd28b4599184aa41c99e39367919da"
+      },
+      "signal_pointer": {
+        "path": "sub-24/ses-iemu/ieeg/sub-24_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "c72a23d0c707dcc8f8c680ceedc47e608028c81c"
+      }
+    },
+    {
+      "subject": "sub-25",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "5681ae44d857aab1cac3107a5c2dbb645c9c2616"
+      },
+      "channels": {
+        "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "a6b9c23e92b3c0560d040c953a72f0ce9a9e6954"
+      },
+      "sidecar": {
+        "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "87bc8604939004ab803544209a4bc8eb641a9654"
+      },
+      "signal_pointer": {
+        "path": "sub-25/ses-iemu/ieeg/sub-25_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "09a45a0683700330588a22daab5f5af9fe8fc3ae"
+      }
+    },
+    {
+      "subject": "sub-26",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "59ec240381ea0e5ae86d931f6bf4a70906d91a02"
+      },
+      "channels": {
+        "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "73ab795f243532e42978ff950e5a1f788231842c"
+      },
+      "sidecar": {
+        "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "04d2a5b8a61178198e0832c73c4ecbb572337488"
+      },
+      "signal_pointer": {
+        "path": "sub-26/ses-iemu/ieeg/sub-26_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "260110d12806a13a1bb052f9fd8331b01ff8689c"
+      }
+    },
+    {
+      "subject": "sub-27",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "ec65ccf44f8f02f01448b02879d620a01a1e0e5b"
+      },
+      "channels": {
+        "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "20d47cd94ec8e0373ddef867cf2b310679021078"
+      },
+      "sidecar": {
+        "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "af0e44a086c234bdf747311332c1319fc3972c8e"
+      },
+      "signal_pointer": {
+        "path": "sub-27/ses-iemu/ieeg/sub-27_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "604839a4cdf1fe801d1b15480d887bb49d31f003"
+      }
+    },
+    {
+      "subject": "sub-28",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "de419aeb0ba4b1799ae0801e227b06fc734fadf6"
+      },
+      "channels": {
+        "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "de6d26f282a017e0bbfada490143e7f26a6e2279"
+      },
+      "sidecar": {
+        "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "c33f05cab296218400f51eecb5d1c9972b834bdc"
+      },
+      "signal_pointer": {
+        "path": "sub-28/ses-iemu/ieeg/sub-28_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "74054c399c508d1e0d0685642618be5ddda26676"
+      }
+    },
+    {
+      "subject": "sub-30",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "6fab9eaaa6ffcbb86729e5e580accb39a7042c46"
+      },
+      "channels": {
+        "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "1d8dc97ff95148025f7cfcec0d3410f76129045e"
+      },
+      "sidecar": {
+        "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "a18f36a679159d129c266a0e17875ad023ae3efc"
+      },
+      "signal_pointer": {
+        "path": "sub-30/ses-iemu/ieeg/sub-30_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "bb3b3525ea414f149fdf5de9af6e1d08a0aded74"
+      }
+    },
+    {
+      "subject": "sub-31",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "f6ee46cd43f88de6d91bb641932183afede42fa5"
+      },
+      "channels": {
+        "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "96249787d89897955e3e706369bc4e7461938cb6"
+      },
+      "sidecar": {
+        "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "28c09efc2a8a9cf109f614b5052187c334160997"
+      },
+      "signal_pointer": {
+        "path": "sub-31/ses-iemu/ieeg/sub-31_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "58c0a025d8982b76310c1e8f633219fc73255b0a"
+      }
+    },
+    {
+      "subject": "sub-32",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "7978d044f4e8e9ec9866960ddc28cca5e80f51d3"
+      },
+      "channels": {
+        "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "b97a41b831895710f338459c9859a149a32c121e"
+      },
+      "sidecar": {
+        "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "88a020b12371fe8f4e0b09c0843dc8a1f239a5c8"
+      },
+      "signal_pointer": {
+        "path": "sub-32/ses-iemu/ieeg/sub-32_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "de2d7b81c9da86e343e5a461e22ce0bab8b31930"
+      }
+    },
+    {
+      "subject": "sub-33",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "37d729da95e10530411015c7accc0677613a13b4"
+      },
+      "channels": {
+        "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "e9237757a0ded362e0be6d0d047acd1ed987caf5"
+      },
+      "sidecar": {
+        "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "d7323c84f7af5eef52a5703002cdb962a995d8db"
+      },
+      "signal_pointer": {
+        "path": "sub-33/ses-iemu/ieeg/sub-33_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "fb9fe8afff0f4ddb733833754392cd7e0be8c5c7"
+      }
+    },
+    {
+      "subject": "sub-34",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "df1dc91089521903830339cc2a356da7abc7a993"
+      },
+      "channels": {
+        "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "442208adfc705f22086bb99867bc2a783cf1a9c7"
+      },
+      "sidecar": {
+        "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "bbd684dcd179606a54b0fb01db3905c990962836"
+      },
+      "signal_pointer": {
+        "path": "sub-34/ses-iemu/ieeg/sub-34_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "ef40b57fef5b2d167d32061afd531faa1010c6ea"
+      }
+    },
+    {
+      "subject": "sub-36",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "88f64f165b046e26574fbbf9caf5429cb27cab68"
+      },
+      "channels": {
+        "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "df97a5722f2885e68396b84a75c0b13d703c367b"
+      },
+      "sidecar": {
+        "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "33833c46ca00bb7b6ebaa86292c71fcb9eb480d4"
+      },
+      "signal_pointer": {
+        "path": "sub-36/ses-iemu/ieeg/sub-36_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "74402f7e90240de57d550a2c2f16751426ae9e77"
+      }
+    },
+    {
+      "subject": "sub-37",
+      "selected_clinical_run": 2,
+      "events": {
+        "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_run-2_events.tsv",
+        "git_blob_sha1": "7394f048fb38cb9c8901c8b649bb27e710aead2f"
+      },
+      "channels": {
+        "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+        "git_blob_sha1": "a5bb9fb68156a97149fd850c2f8c54c6816ca7a3"
+      },
+      "sidecar": {
+        "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+        "git_blob_sha1": "030a64b26a79d1560cf5d4890fe7f38d02e1d236"
+      },
+      "signal_pointer": {
+        "path": "sub-37/ses-iemu/ieeg/sub-37_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+        "git_blob_sha1": "aebb904f4bef40e55a4bbf93fdb20ae65312ae1f"
+      }
+    },
+    {
+      "subject": "sub-38",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "7a59bdbd269d23d28f22db3403a2ccaa80e5c8d4"
+      },
+      "channels": {
+        "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "4d9d7fb8bdc4af3848a4527d7a49ba0b0306f88b"
+      },
+      "sidecar": {
+        "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "c0560a987421de0369ae75b2813598fe6bd1e143"
+      },
+      "signal_pointer": {
+        "path": "sub-38/ses-iemu/ieeg/sub-38_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "2a9184abb7fc8eb2bda3fa386dc5a70669a913e3"
+      }
+    },
+    {
+      "subject": "sub-39",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "67d35007064919c16c163a3179be207a95d6b22c"
+      },
+      "channels": {
+        "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "3759b5b85b72cd2d54a907aede005ba326a99dae"
+      },
+      "sidecar": {
+        "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "b8dd3a6d460948fed822730a11769137c1d4a5c9"
+      },
+      "signal_pointer": {
+        "path": "sub-39/ses-iemu/ieeg/sub-39_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "ff77a48f1264263f5b3685cca9b79233d4934b3c"
+      }
+    },
+    {
+      "subject": "sub-40",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "7c63cab9e3ccbf299d1bda29fe87ec4184f1c904"
+      },
+      "channels": {
+        "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "df03408f43226d1414117c8ab55f820f6d1bdfe5"
+      },
+      "sidecar": {
+        "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "149916ed9fbc9ece908a2aa2e4bc129dd085cf6c"
+      },
+      "signal_pointer": {
+        "path": "sub-40/ses-iemu/ieeg/sub-40_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "5678c330815a8ce66a00b8275ac5f5a76d4601cc"
+      }
+    },
+    {
+      "subject": "sub-41",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "7b8113aa0bfa1237ca521c3a1a21c5b83b58e0d7"
+      },
+      "channels": {
+        "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "5f2b313709cb97a5db35a5d7fe2eac5d89914250"
+      },
+      "sidecar": {
+        "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "fbb08ff9c9d4f243854a1db6a773277fa706a628"
+      },
+      "signal_pointer": {
+        "path": "sub-41/ses-iemu/ieeg/sub-41_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "5dcd195acefce554ae5e585ec6005c86476a4cc8"
+      }
+    },
+    {
+      "subject": "sub-42",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "6b1376e12bab98e10cbd59f67161ea9575ed0023"
+      },
+      "channels": {
+        "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "81000e39a128c76d68fd8be38db62a469d69902b"
+      },
+      "sidecar": {
+        "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "ed73e093139c316941bf82f6e46c0329ebb49510"
+      },
+      "signal_pointer": {
+        "path": "sub-42/ses-iemu/ieeg/sub-42_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "1993435dca47d925fbd9a0026882a769b3296d77"
+      }
+    },
+    {
+      "subject": "sub-43",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "d57f9c6c47dec2dc5ca09045bf01396d56c973d9"
+      },
+      "channels": {
+        "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "d0b785fbbbf9b2e22b0f96a15995261107304d0b"
+      },
+      "sidecar": {
+        "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "e78692c5436afa7cf84a624c7b18262538b81dee"
+      },
+      "signal_pointer": {
+        "path": "sub-43/ses-iemu/ieeg/sub-43_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "2a37235c3168762c4fbb950c01ed2e202b556f0c"
+      }
+    },
+    {
+      "subject": "sub-45",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "a630275343adf5510d28028f2d6fcb0683ffac52"
+      },
+      "channels": {
+        "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "0224ffd415f7808bc33a13676d93417cca641f3b"
+      },
+      "sidecar": {
+        "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "8d28a2d9fb65a827dc84b553020b7d79e2479ea1"
+      },
+      "signal_pointer": {
+        "path": "sub-45/ses-iemu/ieeg/sub-45_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "755b191df8c4f1a518cac39a5cdd6cc0d4a204f3"
+      }
+    },
+    {
+      "subject": "sub-46",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "80be311d567ee5a391745f217ed19d85ca59cb8e"
+      },
+      "channels": {
+        "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "f79accbc2712b0ca4c87c5a7577b93619b8e74b8"
+      },
+      "sidecar": {
+        "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "ee648b20da9a5c7aa147848d62899dd4478ff0aa"
+      },
+      "signal_pointer": {
+        "path": "sub-46/ses-iemu/ieeg/sub-46_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "58332fc8a627cd13c30292ee7594903783520498"
+      }
+    },
+    {
+      "subject": "sub-48",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "25586a7e83d33763051670f9d286bbfe64123688"
+      },
+      "channels": {
+        "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "ddc039ec1a6ef64d2c51dc965e30faf99c47b3b7"
+      },
+      "sidecar": {
+        "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "004672c2d565f393ec99f67e26529ba8c06ead69"
+      },
+      "signal_pointer": {
+        "path": "sub-48/ses-iemu/ieeg/sub-48_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "4740b167cb52666adbf6171f8d6f4ac45c238f9f"
+      }
+    },
+    {
+      "subject": "sub-49",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "60df83956a7fb885938bfb923072b042b41052fd"
+      },
+      "channels": {
+        "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "3e9034453e44584275f9171eaf0816d5c09cee09"
+      },
+      "sidecar": {
+        "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "b08842b847bed3e1c0b4414b36735c4af45b42b1"
+      },
+      "signal_pointer": {
+        "path": "sub-49/ses-iemu/ieeg/sub-49_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "6bf28f3fe9d979acbbbb8fadde9809a87e274ecb"
+      }
+    },
+    {
+      "subject": "sub-50",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "c4a85f74d3c61fa8a1a2dba310cec7c30da3a48a"
+      },
+      "channels": {
+        "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "b800ed8e1b859c7b0bee7dc47432153aba8a3d69"
+      },
+      "sidecar": {
+        "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "b121f086ceed5583f004e035ab06aa702ac7d7bd"
+      },
+      "signal_pointer": {
+        "path": "sub-50/ses-iemu/ieeg/sub-50_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "7e71b89dacb08bbbac99b319a1fdc89fd5ebfede"
+      }
+    },
+    {
+      "subject": "sub-51",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "0285aabcf0bffac0211af5d8d5101b3546edfede"
+      },
+      "channels": {
+        "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "7a3eea90c38fe835214221f55a9380b3ccc3b07c"
+      },
+      "sidecar": {
+        "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "eaba4200b090c2e97ec4544fe9f98747ccd90f4d"
+      },
+      "signal_pointer": {
+        "path": "sub-51/ses-iemu/ieeg/sub-51_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "76bc1731bd603c3fd40ce34b0a311b3e1df1c6e0"
+      }
+    },
+    {
+      "subject": "sub-54",
+      "selected_clinical_run": 2,
+      "events": {
+        "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_run-2_events.tsv",
+        "git_blob_sha1": "9fc790560417c2ece0d78c62d1da644e61d741a9"
+      },
+      "channels": {
+        "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+        "git_blob_sha1": "d81af4052ad26a0c53f82f6bfc763f1a5314b022"
+      },
+      "sidecar": {
+        "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+        "git_blob_sha1": "6e7a8cebdb5cdbdac745fb16e9b2ad107bece7cb"
+      },
+      "signal_pointer": {
+        "path": "sub-54/ses-iemu/ieeg/sub-54_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+        "git_blob_sha1": "77a9723d1e3c7166cb78a658e97473d1b11cc02a"
+      }
+    },
+    {
+      "subject": "sub-55",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "803139dbaee35c68a6764db283ff79dfa3c73943"
+      },
+      "channels": {
+        "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "147d5a55825c1efaab65139889360098f90baecd"
+      },
+      "sidecar": {
+        "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "76ae9189502128ac1527e7ae0ff8d9aa02518306"
+      },
+      "signal_pointer": {
+        "path": "sub-55/ses-iemu/ieeg/sub-55_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "5b340cd0f4d35390cb516158ae6d9c5dc4e06c8c"
+      }
+    },
+    {
+      "subject": "sub-57",
+      "selected_clinical_run": 2,
+      "events": {
+        "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_run-2_events.tsv",
+        "git_blob_sha1": "35e6f684000a14965148cc0398af3fdfacd5b089"
+      },
+      "channels": {
+        "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+        "git_blob_sha1": "69790fd2a7a2372b7eab6eeb29a31ec1a68b46e7"
+      },
+      "sidecar": {
+        "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+        "git_blob_sha1": "136bba5df7ba1d693cba39a8fac400cdb7d81e30"
+      },
+      "signal_pointer": {
+        "path": "sub-57/ses-iemu/ieeg/sub-57_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+        "git_blob_sha1": "048c2d51a651ae4f8cfa92aa87a571e9155e5d9f"
+      }
+    },
+    {
+      "subject": "sub-58",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "1a9b15ab1a00cf27135cf45208b647df99217757"
+      },
+      "channels": {
+        "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "5a36a68c1b20b13a933c03bd0bbde84e78b2294a"
+      },
+      "sidecar": {
+        "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "3fb3c17020751940816d3758eba7e190e71c83e5"
+      },
+      "signal_pointer": {
+        "path": "sub-58/ses-iemu/ieeg/sub-58_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "9f7e79dfdf8a156abe443b170f2a546248cbb5b8"
+      }
+    },
+    {
+      "subject": "sub-59",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "6d5f543c1aef6671b846826f76d432e53848ba95"
+      },
+      "channels": {
+        "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "92a98b90e3476e2a0701ad3fc5ed2f45c801c074"
+      },
+      "sidecar": {
+        "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "e6d3899e621c84d8bda378886fbec5511f1e7914"
+      },
+      "signal_pointer": {
+        "path": "sub-59/ses-iemu/ieeg/sub-59_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "6ec146301362ee970efcba847c79e4604f1988c5"
+      }
+    },
+    {
+      "subject": "sub-60",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "d76a22dca2e2f56247086e32afb0c96cfbc6dbbe"
+      },
+      "channels": {
+        "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "2085970eb48813356654d399e35556440f5dd29c"
+      },
+      "sidecar": {
+        "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "c3549a21eb96b1bf6ff1acdddb4becedbea70542"
+      },
+      "signal_pointer": {
+        "path": "sub-60/ses-iemu/ieeg/sub-60_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "56a431a65e43e9770ea04ebf94519f4b9500d976"
+      }
+    },
+    {
+      "subject": "sub-61",
+      "selected_clinical_run": 1,
+      "events": {
+        "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_run-1_events.tsv",
+        "git_blob_sha1": "e439dc02a03db7697770335b1be2a4d30802a5af"
+      },
+      "channels": {
+        "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_channels.tsv",
+        "git_blob_sha1": "c714f50b28dd4adab452915e0d9294828bd721ac"
+      },
+      "sidecar": {
+        "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.json",
+        "git_blob_sha1": "0ce736df9c50e106bdca7794a0f1735c8eba547d"
+      },
+      "signal_pointer": {
+        "path": "sub-61/ses-iemu/ieeg/sub-61_ses-iemu_task-film_acq-clinical_run-1_ieeg.eeg",
+        "git_blob_sha1": "a9c37a8540e95315c1c95bcd06eefd53780f2e93"
+      }
+    },
+    {
+      "subject": "sub-63",
+      "selected_clinical_run": 2,
+      "events": {
+        "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_run-2_events.tsv",
+        "git_blob_sha1": "9c2f7223a8768c23fdd3b05a6b3e30a4690695ba"
+      },
+      "channels": {
+        "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_channels.tsv",
+        "git_blob_sha1": "905f59dfaba65a5e9a32ea12e6b9297debb3a0a4"
+      },
+      "sidecar": {
+        "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.json",
+        "git_blob_sha1": "ee3a93e5f47c841423f3953d1cb2d11a3f34786b"
+      },
+      "signal_pointer": {
+        "path": "sub-63/ses-iemu/ieeg/sub-63_ses-iemu_task-film_acq-clinical_run-2_ieeg.eeg",
+        "git_blob_sha1": "275a79ef34e4595f1f1c8e130ac531e57494bbd7"
+      }
+    }
+  ]
+}

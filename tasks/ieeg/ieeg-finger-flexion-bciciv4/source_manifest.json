@@ -1,0 +1,27 @@
+{
+  "schema": "bpb-invasive-source-manifest/1",
+  "task_id": "ieeg-finger-flexion-bciciv4",
+  "competition_page": "https://www.bbci.de/competition/iv/",
+  "description_url": "https://www.bbci.de/competition/iv/desc_4.pdf",
+  "archive_url": "https://www.bbci.de/competition/download/competition_iv/BCICIV_4_mat.zip",
+  "archive_content_length_bytes_observed_2026_10_14": 206367150,
+  "archive_sha256": "cf734300ad415f81350b75d1606fea42d9e552543fb42b0a8c09754ea522cbc6",
+  "archive_entries_verified": true,
+  "archive_entries": ["sub1_comp.mat", "sub2_comp.mat", "sub3_comp.mat"],
+  "source_terms": "The competition download page asks participants to reference the recording groups, cite a paper from the dataset description in publications that analyze the data, and report such publications to the organizers.",
+  "citation_requested_in_description": "Schalk, G., Kubanek, J., Miller, K.J., Anderson, N.R., Leuthardt, E.C., Ojemann, J.G., Limbrick, D., Moran, D.W., Gerhardt, L.A., and Wolpaw, J.R. Decoding Two-Dimensional Movement Trajectories Using Electrocorticographic Signals in Humans. Journal of Neural Engineering 4:264-275 (2007).",
+  "redistribution_permission": "not established",
+  "local_preparation": "2026-10-14: public Train/Valid use train_data and train_dg only; original evaluation input and labels are exported only by the explicit owner workflow",
+  "evaluation_labels": {
+    "source_page": "https://www.bbci.de/competition/iv/results/index.html",
+    "url": "https://www.bbci.de/competition/iv/results/ds4/true_labels.zip",
+    "bytes": 20927261,
+    "sha256": "aedb34fc69105814ea00ced12e2a0f7db636c934b5aff7d8e2730468cbd2b4a4",
+    "scope": "evaluator_only_public_origin",
+    "subjects": {
+      "sub1": {"member": "sub1_testlabels.mat", "variable": "test_dg", "shape": [200000, 5]},
+      "sub2": {"member": "sub2_testlabels.mat", "variable": "test_dg", "shape": [200000, 5]},
+      "sub3": {"member": "sub3_testlabels.mat", "variable": "test_dg", "shape": [200000, 5]}
+    }
+  }
+}

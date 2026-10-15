@@ -1,0 +1,36 @@
+{
+  "cohort_inventory_sha256": "564d3d86b789e4e2e6540249465997f92bbdb878e9042ab4c2be33ef4317c210",
+  "eligible_subjects": 51,
+  "excluded_subjects": 0,
+  "lineage_sha256": "160b567e97e446938a4f09bee00c42be83d157bcbe3bce0e7c7d531b73827f59",
+  "maximum_good_channels": 164,
+  "preparation_code_sha256": "2d38dc856c05e47f207a6d1db938e0a9ca8573b4466f8cb12c1c04c1b2c0e13b",
+  "protocol_sha256": "070400325ce2d4657de4e1a1583e8cfdde4bbebc997af17546ddafde65a4d96a",
+  "qc_sha256": "70a5b95fd96cc8bd46237fa241a279cfaaefccfdd94a7c9bffa450b48aa5a4aa",
+  "roles": {
+    "test": {
+      "bytes": 36283,
+      "path": "owner/test_manifest.json",
+      "sha256": "79b4d6267009dff44fe198855a5ec8deadea70be5ea82fc64f6cf6bc0adcee7f",
+      "subjects": 51
+    },
+    "train": {
+      "bytes": 45602,
+      "path": "public/train_manifest.json",
+      "sha256": "7c65bc5f0962461114ced3a6b264a771f0784e2d40818052820293f3af3a0a98",
+      "subjects": 51
+    },
+    "validation": {
+      "bytes": 46020,
+      "path": "public/validation_manifest.json",
+      "sha256": "61d33ee7354696550537bebbc112d4566a08d60b398c1f9129b6f63fa177481a",
+      "subjects": 51
+    }
+  },
+  "schema": "bpb-ieeg-film-common-contract/2",
+  "source_manifest_sha256": "1de67b7f8253bc5c8c4f3d6eb24b1d5c9cfacad73687fda92b0b3098980cbfdd",
+  "source_metadata_sha256": "06375bed6b32e56c5ae0da189f44f1e329f50256f6d3dc5965e5fab2d390e520",
+  "source_receipt_sha256": "a77090e7d1e9a862f3d563b2626a5941d1e5e34dfbf14cb35b052b2dd4ce23d3",
+  "task_id": "ieeg-film-speech-music",
+  "test_exported": true
+}

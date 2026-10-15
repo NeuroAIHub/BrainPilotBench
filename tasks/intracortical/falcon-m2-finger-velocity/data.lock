@@ -1,0 +1,444 @@
+{
+  "datasets": [
+    {
+      "name": "m2-train-manifest.json",
+      "uri": "local://public/train/manifest.json",
+      "sha256": "c86b973f2cfe7411904beaa237cd5f3e9cc08bb0ab355b0940de36ad4941ce13",
+      "bytes": 8739,
+      "format": "json",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0001-x.npy",
+      "uri": "local://public/train/runs/m2-train-0001/x.npy",
+      "sha256": "fc904592a771ff7b108bd0c29946cde45b9271ec94b491a8646736a7373652bf",
+      "bytes": 1916192,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0001-y.npy",
+      "uri": "local://public/train/runs/m2-train-0001/y.npy",
+      "sha256": "7c211f9dac5459489cdb5927c197284ad26fca382faef9b7ba497caa20b231eb",
+      "bytes": 319472,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0001-mask.npy",
+      "uri": "local://public/train/runs/m2-train-0001/mask.npy",
+      "sha256": "ea7bf9c733f703b1eac31f8d04f0550daf142aa51bbd5cb3bbfc07dd4055351f",
+      "bytes": 20087,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0001-trial_start.npy",
+      "uri": "local://public/train/runs/m2-train-0001/trial_start.npy",
+      "sha256": "a65dd784cf0fa96105b8a5fcfc90a058193bb14b86926a92d2f564abac9410b6",
+      "bytes": 20087,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0002-x.npy",
+      "uri": "local://public/train/runs/m2-train-0002/x.npy",
+      "sha256": "bb0d74bae75b36facdd2510f7a630aa92bbec53bb2c0a1f92ec03f609123449f",
+      "bytes": 1927904,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0002-y.npy",
+      "uri": "local://public/train/runs/m2-train-0002/y.npy",
+      "sha256": "17b1ccdc0e37c75511185ce3819cebe1fb0740e2a17562151085b07c69a36db9",
+      "bytes": 321424,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0002-mask.npy",
+      "uri": "local://public/train/runs/m2-train-0002/mask.npy",
+      "sha256": "e733a42271bb08a9ae0c11f63cad07f5f60f7f04f3c0980687c244bfb730ea95",
+      "bytes": 20209,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0002-trial_start.npy",
+      "uri": "local://public/train/runs/m2-train-0002/trial_start.npy",
+      "sha256": "65cf85d9e214700bb2d4977d83bf611697ecfe36afd8147be1378097804ba54a",
+      "bytes": 20209,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0003-x.npy",
+      "uri": "local://public/train/runs/m2-train-0003/x.npy",
+      "sha256": "5864f934772060ca31489ec0919cdce294fb9814c72e8b49ffe53063bf35cd5f",
+      "bytes": 1501856,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0003-y.npy",
+      "uri": "local://public/train/runs/m2-train-0003/y.npy",
+      "sha256": "5684a152685a92e1faa21923883d23547de346a950b162b81a1c9b81f3c2d9a7",
+      "bytes": 250416,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0003-mask.npy",
+      "uri": "local://public/train/runs/m2-train-0003/mask.npy",
+      "sha256": "456d45fb67928c662d8fe73757991445f9209bbe6a688e597a25b96fddbab263",
+      "bytes": 15771,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0003-trial_start.npy",
+      "uri": "local://public/train/runs/m2-train-0003/trial_start.npy",
+      "sha256": "7b3f7e2e30ade0842483480788305502ac80ca34539e31e6171e80ad4756d376",
+      "bytes": 15771,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0004-x.npy",
+      "uri": "local://public/train/runs/m2-train-0004/x.npy",
+      "sha256": "aa9bb4f634e79c0a5b4b1ca177d5acbbe88186e526d2a317db81d2eb3d27acbd",
+      "bytes": 1492256,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0004-y.npy",
+      "uri": "local://public/train/runs/m2-train-0004/y.npy",
+      "sha256": "54491cf6b153271b32301c760436804d7109f582db8e476b904a4442f1d3247c",
+      "bytes": 248816,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0004-mask.npy",
+      "uri": "local://public/train/runs/m2-train-0004/mask.npy",
+      "sha256": "4e1d4768370c73ac82e862f8d0232e2a6793895eed9ae72b84a1058b59e2a508",
+      "bytes": 15671,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0004-trial_start.npy",
+      "uri": "local://public/train/runs/m2-train-0004/trial_start.npy",
+      "sha256": "492061c5b805f0b478a2871905e0c8de3b2a5dc6862678527695eed84338eea6",
+      "bytes": 15671,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0005-x.npy",
+      "uri": "local://public/train/runs/m2-train-0005/x.npy",
+      "sha256": "9aca4ea55ca54010cec4fb562d8cf6523eea2eb8ac05a044398f8b33fcece718",
+      "bytes": 1175936,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0005-y.npy",
+      "uri": "local://public/train/runs/m2-train-0005/y.npy",
+      "sha256": "0b9e37f4c881153ada379a204d1b89ddec65668b5d8acb2b8fb7e8f46080371d",
+      "bytes": 196096,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0005-mask.npy",
+      "uri": "local://public/train/runs/m2-train-0005/mask.npy",
+      "sha256": "e3415be62a5952d3daad1a0a479e50b45bfeed61ab268a48538127a951fc4bd3",
+      "bytes": 12376,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0005-trial_start.npy",
+      "uri": "local://public/train/runs/m2-train-0005/trial_start.npy",
+      "sha256": "5d16e9a3db50cc46c20651c4d8bfe9bb5195273769e613aff16865cefa2bd5ed",
+      "bytes": 12376,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0006-x.npy",
+      "uri": "local://public/train/runs/m2-train-0006/x.npy",
+      "sha256": "64a444c22ca53b8a9e7e88c418b28b439022d3950953e6b575c68c90d3e827e4",
+      "bytes": 1412192,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0006-y.npy",
+      "uri": "local://public/train/runs/m2-train-0006/y.npy",
+      "sha256": "08a6b63924275d667e253b0b069780f0aae8db4eaebd356b2e66dbc1f42e6a83",
+      "bytes": 235472,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0006-mask.npy",
+      "uri": "local://public/train/runs/m2-train-0006/mask.npy",
+      "sha256": "ea5c96ee570a993090b904df72ae9ab178e6f55fa25d04b5d925ec1b809b58a1",
+      "bytes": 14837,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-train-0006-trial_start.npy",
+      "uri": "local://public/train/runs/m2-train-0006/trial_start.npy",
+      "sha256": "37a08622836a0b93908374f498c4d172edf5d032e1d4a67444e14a6277b6cce2",
+      "bytes": 14837,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-valid-manifest.json",
+      "uri": "local://public/valid/manifest.json",
+      "sha256": "8042b991d15e653180f0d0f342b544a9477f20e32a24cae741c99ec056f7a4d4",
+      "bytes": 2059,
+      "format": "json",
+      "scope": "public"
+    },
+    {
+      "name": "m2-valid-0001-x.npy",
+      "uri": "local://public/valid/runs/m2-valid-0001/x.npy",
+      "sha256": "5183eec6cf93a2f5946da4da080c3bbbbd8789fbf4bd38809ce1661e017955af",
+      "bytes": 1707200,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-valid-0001-y.npy",
+      "uri": "local://public/valid/runs/m2-valid-0001/y.npy",
+      "sha256": "985f002d7e00a3b8824c30ee0fffd8240bddb15845d72c3adae2bb6b4e13d16a",
+      "bytes": 284640,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-valid-0001-mask.npy",
+      "uri": "local://public/valid/runs/m2-valid-0001/mask.npy",
+      "sha256": "88fd8e00c59f1866fef3c74aabb088bda9849b834d24b600cea785e00d3aca92",
+      "bytes": 17910,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-valid-0001-trial_start.npy",
+      "uri": "local://public/valid/runs/m2-valid-0001/trial_start.npy",
+      "sha256": "f97bd20197acbc31bb01d018853947c8c68b8f94896e95422467afe17c9e572e",
+      "bytes": 17910,
+      "format": "npy",
+      "scope": "public"
+    },
+    {
+      "name": "m2-test-manifest.json",
+      "uri": "local://evaluator/test/manifest.json",
+      "sha256": "caf1f950f12f1c8b6d8d2e3d851da74d2c69c80d5a7425e9bb3b02367e3c9d7a",
+      "bytes": 8642,
+      "format": "json",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0001-x.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0001/x.npy",
+      "sha256": "c921a762051c383342f034697e94fa383b6274c5183776d37e3c6e913f75788d",
+      "bytes": 261920,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0001-y.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0001/y.npy",
+      "sha256": "8216505cebe051e0255f0a329aafb66bc970168dd25b42863c938962e6a6106b",
+      "bytes": 43760,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0001-mask.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0001/mask.npy",
+      "sha256": "b3ad721023db29b0b5006f58cd43a8271d7ed1727e89cbde3eb7d190c7620918",
+      "bytes": 2855,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0001-trial_start.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0001/trial_start.npy",
+      "sha256": "a45660c0b72f4d7f4bca6cc5a4bdd233e9707bf1e3ae904e1957774bd5f58dee",
+      "bytes": 2855,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0002-x.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0002/x.npy",
+      "sha256": "070c39b4ec4b97d74d43bd033f1e0626659efbffb846a9e5311575ed2e87fc80",
+      "bytes": 244928,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0002-y.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0002/y.npy",
+      "sha256": "d7a2d754ca365da199308fbbcc53526cd11a9c5ad71c6249024b0727d0d66933",
+      "bytes": 40928,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0002-mask.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0002/mask.npy",
+      "sha256": "24c6f6fd2b3807058e3e19c4887845c7fe5e8ac27a944ee974841b074145ea8e",
+      "bytes": 2678,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0002-trial_start.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0002/trial_start.npy",
+      "sha256": "cc3ab5e0eb4ad3afa775a47bf8c82674d266b9a2d6c0af1e3c55e5462b88d86b",
+      "bytes": 2678,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0003-x.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0003/x.npy",
+      "sha256": "04a87f5e828676a8b4e5228e9327907f519bef877d6bfb141a45e0240756278b",
+      "bytes": 241760,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0003-y.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0003/y.npy",
+      "sha256": "0a505b85528e8b530346cf7e5eaddaeef0f82a4e7b02764aa6f7fb8d77e8a487",
+      "bytes": 40400,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0003-mask.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0003/mask.npy",
+      "sha256": "a1621486e90e57e563bb3cc2c0b00ef201c0c69974127d76f21eb14f0c28b49b",
+      "bytes": 2645,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0003-trial_start.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0003/trial_start.npy",
+      "sha256": "d2238f22c7616d3f487894a369d1408e279ed947923a1df906fd63f53e474c1a",
+      "bytes": 2645,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0004-x.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0004/x.npy",
+      "sha256": "2a6c7a4d74bb45a6ab574084b77f25ad2be3749d3e124d362155582e90e84eb2",
+      "bytes": 292448,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0004-y.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0004/y.npy",
+      "sha256": "f9240180f0ae3a5454e6022f754178ef088540bab1b95697546d20f73256f81a",
+      "bytes": 48848,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0004-mask.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0004/mask.npy",
+      "sha256": "41592eb53d5e102f02cb366a8044218835c8d3d890f4f138e5de988a0a80fa40",
+      "bytes": 3173,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0004-trial_start.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0004/trial_start.npy",
+      "sha256": "63917e3e50b72a51ecef5d37869d668eb92a71be3b63d119d9236605bdfb1a35",
+      "bytes": 3173,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0005-x.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0005/x.npy",
+      "sha256": "2b6107d2e0ad74ea14974ffedbc24309967fc3c49d6e331b080295b42e6bfeff",
+      "bytes": 212672,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0005-y.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0005/y.npy",
+      "sha256": "7a38ba0667b8043213785f601e2fc76965180139eba462b01aa57112d53f631e",
+      "bytes": 35552,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0005-mask.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0005/mask.npy",
+      "sha256": "a335fcb7b812746a0c8c7879a9e845a6f96eae7986817cd2dd2fc41d1285211c",
+      "bytes": 2342,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0005-trial_start.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0005/trial_start.npy",
+      "sha256": "4d2622110c245dc03d00d9b9b817424b2e936c61277437cd439dc73f24e70f15",
+      "bytes": 2342,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0006-x.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0006/x.npy",
+      "sha256": "ccee4553563725c2daa399ddd604e37d05581f65c116a26dcf37e0eeecc64860",
+      "bytes": 225728,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0006-y.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0006/y.npy",
+      "sha256": "6e2b58ea5c95c98639bab9428ea1bb33bac8c145d4acc65836de09e5e8f0b646",
+      "bytes": 37728,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0006-mask.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0006/mask.npy",
+      "sha256": "d3c8574966e7a93869d8656b62ae1a1225ac3ed834526387ef371cda8e15e520",
+      "bytes": 2478,
+      "format": "npy",
+      "scope": "private"
+    },
+    {
+      "name": "m2-test-0006-trial_start.npy",
+      "uri": "local://evaluator/test/runs/m2-test-0006/trial_start.npy",
+      "sha256": "10d3c4545f85eb5a5ca8112148c9185350422778724a61751c90f54ee7b3c167",
+      "bytes": 2478,
+      "format": "npy",
+      "scope": "private"
+    }
+  ]
+}
