@@ -46,7 +46,7 @@ node scripts/build-hf-reader-docs.mjs \
   --output /path/to/new-reader-docs
 ```
 
-The builder creates task READMEs and updates only the catalog's `summary` fields.
+The builder creates task READMEs and updates only the catalog's `summary` and `protocol_url` fields. The latter links to the selected GitHub commit.
 It rejects source guides that differ from the selected commit and introductions that lack reader-facing content.
 The four retained v0 tasks use descriptions and contract tables from their existing guides.
 Run `npm run test:reader-docs` to verify coverage, result labels, and catalog preservation.

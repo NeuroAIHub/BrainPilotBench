@@ -206,15 +206,23 @@ export function pinMarkdownLinks(markdown, sourceDir, sourceRevision) {
   });
 }
 
-function replaceSummaryOnly(rawLine, newSummary, taskId) {
-  const matches = [...rawLine.matchAll(/"summary"\s*:\s*"(?:\\.|[^"\\])*"/g)];
-  if (matches.length !== 1) fail(`${taskId}: expected exactly one JSON summary field`);
+function replaceReaderFields(rawLine, changes, taskId) {
   const original = JSON.parse(rawLine);
-  const token = matches[0][0];
-  const replacement = token.slice(0, token.indexOf(':') + 1) + token.slice(token.indexOf(':') + 1).match(/^\s*/)[0] + JSON.stringify(newSummary);
-  const changed = rawLine.slice(0, matches[0].index) + replacement + rawLine.slice(matches[0].index + token.length);
+  let changed = rawLine;
+  const fields = [
+    ['summary', /"summary"\s*:\s*"(?:\\.|[^"\\])*"/g],
+    ['protocol_url', /"protocol_url"\s*:\s*"(?:\\.|[^"\\])*"/g],
+  ];
+  for (const [field, pattern] of fields) {
+    const matches = [...changed.matchAll(pattern)];
+    if (matches.length !== 1) fail(`${taskId}: expected exactly one JSON ${field} field`);
+    const token = matches[0][0];
+    const colon = token.indexOf(':');
+    const replacement = token.slice(0, colon + 1) + token.slice(colon + 1).match(/^\s*/)[0] + JSON.stringify(changes[field]);
+    changed = changed.slice(0, matches[0].index) + replacement + changed.slice(matches[0].index + token.length);
+  }
   const updated = JSON.parse(changed);
-  const expected = { ...original, summary: newSummary };
+  const expected = { ...original, ...changes };
   if (JSON.stringify(updated) !== JSON.stringify(expected)) fail(`${taskId}: catalog update changed another field`);
   return changed;
 }
@@ -319,7 +327,8 @@ export function buildReaderDocs(options) {
     }
     const reader = extractReaderContent(readmeBytes.toString('utf8'), row.task_id);
     introductionSources[reader.sourceSection] += 1;
-    updatedRows.push(replaceSummaryOnly(rawRow, reader.plain, row.task_id));
+    const protocolUrl = `${SOURCE_BASE}/${sourceRevision}/${task.directory}/README.md`;
+    updatedRows.push(replaceReaderFields(rawRow, { summary: reader.plain, protocol_url: protocolUrl }, row.task_id));
     outputs.push({ relative: `${directory}/README.md`, content: buildCard({ task, row, manifest, reader, sourceRevision }) });
   }
   if (seen.size !== taskMap.size) fail('HF catalog does not cover every runnable task');

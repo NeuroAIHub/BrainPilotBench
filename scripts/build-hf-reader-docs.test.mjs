@@ -30,7 +30,8 @@ function makeMetadataFixture(scratch) {
         ? 'historical_v0_only' : 'not_yet_available',
       collection: 'v1', data_category: category, public_bytes: bytes,
       public_file_count: fileCount, summary: `CSV technical summary for ${task.task_id}`,
-      task_id: task.task_id, task_version: task.task_version, title: task.task_id,
+      protocol_url: `https://example.org/old-guide/${task.task_id}`,
+      source_url: sourceReference, task_id: task.task_id, task_version: task.task_version, title: task.task_id,
     };
     rows.push(JSON.stringify(row));
     const manifest = {
@@ -102,7 +103,7 @@ test('retained v0 contract tables trace to literal source-guide facts', () => {
   assert.throws(() => extractReaderContent(rsc.replace('The human dimensions are reported separately', 'Human dimensions have changed'), 'neuro-rsc-place-cell'), /source contract changed/);
 });
 
-test('build changes only catalog summaries and creates one card per task', () => {
+test('build changes only reader fields and creates one card per task', () => {
   const scratch = mkdtempSync(path.join(os.tmpdir(), 'bpb-reader-docs-'));
   try {
     const { catalogInput, manifestRoot } = makeMetadataFixture(scratch);
@@ -120,9 +121,13 @@ test('build changes only catalog summaries and creates one card per task', () =>
       const after = JSON.parse(newLines[i]);
       ids.add(after.task_id);
       assert.notEqual(after.summary, before.summary, before.task_id);
-      assert.deepEqual({ ...after, summary: before.summary }, before);
+      const task = JSON.parse(readFileSync(CATALOG, 'utf8')).tasks.find((item) => item.task_id === after.task_id);
+      assert.equal(after.protocol_url, `https://github.com/NeuroAIHub/BrainPilotBench/blob/${result.sourceRevision}/${task.directory}/README.md`);
+      assert.deepEqual({ ...after, summary: before.summary, protocol_url: before.protocol_url }, before);
       assert.equal(after.task_version, before.task_version);
-      const mask = (line) => line.replace(/"summary"\s*:\s*"(?:\\.|[^"\\])*"/, '"summary":"MASK"');
+      const mask = (line) => line
+        .replace(/"summary"\s*:\s*"(?:\\.|[^"\\])*"/, '"summary":"MASK"')
+        .replace(/"protocol_url"\s*:\s*"(?:\\.|[^"\\])*"/, '"protocol_url":"MASK"');
       assert.equal(mask(newLines[i]), mask(oldLines[i]), before.task_id);
       const directory = path.join(output, 'tasks', after.data_category, after.task_id);
       assert.deepEqual(readdirSync(directory), ['README.md']);
@@ -164,7 +169,7 @@ test('publish mode rejects a revision that is not a local commit', () => {
   }
 });
 
-test('local frozen HF catalog keeps its non-summary fields', { skip: !existsSync(BASELINE) }, () => {
+test('local frozen HF catalog keeps fields outside summary and protocol_url', { skip: !existsSync(BASELINE) }, () => {
   const scratch = mkdtempSync(path.join(os.tmpdir(), 'bpb-reader-frozen-'));
   try {
     const output = path.join(scratch, 'preview');
@@ -174,8 +179,14 @@ test('local frozen HF catalog keeps its non-summary fields', { skip: !existsSync
     const updated = readFileSync(path.join(output, 'catalog.jsonl'), 'utf8').trimEnd().split('\n');
     assert.equal(updated.length, input.length);
     for (let i = 0; i < input.length; i += 1) {
-      const mask = (line) => line.replace(/"summary"\s*:\s*"(?:\\.|[^"\\])*"/, '"summary":"MASK"');
+      const mask = (line) => line
+        .replace(/"summary"\s*:\s*"(?:\\.|[^"\\])*"/, '"summary":"MASK"')
+        .replace(/"protocol_url"\s*:\s*"(?:\\.|[^"\\])*"/, '"protocol_url":"MASK"');
       assert.equal(mask(updated[i]), mask(input[i]));
+      const before = JSON.parse(input[i]);
+      const after = JSON.parse(updated[i]);
+      assert.equal(after.source_url, before.source_url);
+      assert.equal(after.task_version, before.task_version);
     }
   } finally {
     rmSync(scratch, { recursive: true, force: true });
