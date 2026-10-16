@@ -6,6 +6,27 @@ import type { DataManifest, DatasetEntry } from "./types.js";
 const SHA256_RE = /^[0-9a-f]{64}$/;
 /** name 用作缓存临时文件名的一部分；限制安全字符集，杜绝路径穿越(../、/、\)。 */
 const NAME_RE = /^[A-Za-z0-9._-]+$/;
+const PATH_SEGMENT_RE = /^[A-Za-z0-9._-]+$/;
+
+/** Paths are portable, relative file names; every directory component is explicit. */
+export function validatePublicDatasetPaths(entries: DatasetEntry[]): DatasetEntry[] {
+  const mapped = entries.filter((entry) => entry.path !== undefined);
+  const seen: string[] = [];
+  for (const entry of mapped) {
+    const path = entry.path;
+    if (entry.scope === "private") throw new Error(`data.lock: private dataset ${entry.name} cannot declare a prepared path`);
+    if (typeof path !== "string" || !path || path.split("/").some((segment) =>
+      segment === "." || segment === ".." || !PATH_SEGMENT_RE.test(segment))) {
+      throw new Error(`data.lock: dataset ${entry.name}: path must be a safe POSIX-relative file path`);
+    }
+    const folded = path.toLowerCase();
+    if (seen.some((previous) => previous === folded || previous.startsWith(`${folded}/`) || folded.startsWith(`${previous}/`))) {
+      throw new Error(`data.lock: dataset ${entry.name}: duplicate or colliding prepared path ${path}`);
+    }
+    seen.push(folded);
+  }
+  return mapped;
+}
 
 /** 把解析过的 data.lock 原始对象校验成 DataManifest。 */
 export function parseDataManifest(raw: any): DataManifest {
@@ -31,10 +52,12 @@ export function parseDataManifest(raw: any): DataManifest {
       sha256: d.sha256,
       bytes: d.bytes,
       format: typeof d.format === "string" ? d.format : undefined,
+      path: d.path === undefined ? undefined : d.path,
       // Old manifests remain public by default. Normalizing here lets every
       // downstream caller enforce the same safe default.
       scope: d.scope === "private" ? "private" : "public",
     };
   });
+  validatePublicDatasetPaths(datasets);
   return { datasets };
 }

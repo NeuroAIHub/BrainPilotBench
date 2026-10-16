@@ -3,7 +3,7 @@
 datasets:
   - name: brain-age-agent-data.zip
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/brain-age-mri/0.1-candidate/agent_data.zip
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/mri/brain-age-mri/public/agent_data.zip
     sha256: 45f8b641dac566e6ed1ba52b531a87d65400addc44ce4163f4f63df34d5933cc
     bytes: 3729262581
     format: zip

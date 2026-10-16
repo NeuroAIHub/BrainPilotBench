@@ -2,22 +2,22 @@
 # Source case motor_execution/schirrmeister2017; frozen task_spec SHA-256 f6885cfd00c5bfb697022f0134df2bf488a36cd3a6f0bec933cd6d7251473b77.
 datasets:
   - name: eeg-me-highgamma2017-train-npz
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-me-highgamma2017/public/train.npz
     sha256: ed3c5caa5fb016f4c70ba05d678cf6d2395a6856c326868186b8983c702c836e
     bytes: 1495084898
     scope: public
   - name: eeg-me-highgamma2017-val-npz
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/val.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-me-highgamma2017/public/val.npz
     sha256: ceb7df542a1400bda45668b250876995867dbbac49d0215fde47dce04fc92ea5
     bytes: 545611370
     scope: public
   - name: eeg-me-highgamma2017-train-groups-json
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/train-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-me-highgamma2017/public/train-groups.json
     sha256: 464220265a836f939932dda2b03c80d361c3ae2a3d83e080078a2fbb5a866e10
     bytes: 558770
     scope: public
   - name: eeg-me-highgamma2017-val-groups-json
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-me-highgamma2017/expanded-three-seed-20260923-highgamma-v1/val-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-me-highgamma2017/public/val-groups.json
     sha256: 807239bc0a149f2f78a815687a5d9396eb7ffe8a9ed063ec8a4fd603e8925799
     bytes: 203351
     scope: public

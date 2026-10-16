@@ -47,11 +47,23 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
   if (publicOnly) row.data_status = referenceChecks.has(id)
     ? "representative_public_package_prepared" : (contract.availability_status ?? "manifest_bound_package_required");
   const publicDatasets = task.datasets.filter(d => d.scope === "public");
-  if (publicDatasets.length && publicDatasets.every(d =>
-    /^hf:\/\/datasets\/BrainPilot-Bench\/Tasks-Data-Public@[0-9a-f]{40}\/bpb-public-data-[^/]+\//.test(d.uri)))
-    row.data_status = "published_public_package";
-  row.data_access = publicDatasets.some(d => d.uri.startsWith("local://"))
-    ? "maintainer_package_required" : "pinned_source_download";
+  const dataCategory = invasive ? "invasive" : row.domain;
+  const canonicalPrefix = `tasks/${dataCategory}/${id}/public/`;
+  const hostedPublic = publicDatasets.length > 0 && publicDatasets.every(d => {
+    const match = /^hf:\/\/datasets\/BrainPilot-Bench\/Tasks-Data-Public@([0-9a-f]{40})\/(.+)$/.exec(d.uri);
+    return match && match[2].startsWith(canonicalPrefix);
+  });
+  // Scientific readiness is recorded separately from where public bytes live.
+  // Invasive acceptance below retains its existing scientific data_status.
+  if (hostedPublic) {
+    row.hosted_data_availability = "published_public_snapshot";
+    if (!invasive) row.data_status = "published_public_package";
+  } else if (id === "falcon-h1-reach-grasp") {
+    row.hosted_data_availability = "source_only";
+  }
+  row.data_access = hostedPublic ? "pinned_public_snapshot"
+    : publicDatasets.some(d => d.uri.startsWith("local://"))
+      ? "maintainer_package_required" : "pinned_source_download";
   const privateDatasets = task.datasets.filter(d => d.scope === "private");
   if (privateDatasets.length) row.private_data_access = privateDatasets.some(d => d.uri.startsWith("local://"))
     ? "maintainer_package_required" : "pinned_source_download";
@@ -96,7 +108,7 @@ const ids = new Set(tasks.map(t => t.task_id));
 if (ids.size !== tasks.length) throw new Error("Duplicate catalog task IDs");
 tasks.sort((a,b) => a.task_id.localeCompare(b.task_id));
 const catalog = {
-  schema: "brainpilotbench-task-collection/1", date: "2026-10-14",
+  schema: "brainpilotbench-task-collection/1", date: "2026-10-15",
   release_status: "integration_candidate_not_released",
   validation_policy: "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; no formal Agent results or historical private Test replay",
   counts: {

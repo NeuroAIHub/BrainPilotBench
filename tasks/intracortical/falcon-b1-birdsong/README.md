@@ -1,14 +1,22 @@
 # B1: birdsong spectrogram
 
-A zebra finch sang while a Neuropixels probe recorded 85 threshold-crossing channels.
-The task predicts one vocalization spectrogram from each complete song motif.
+A Neuropixels probe recorded 85 threshold-crossing channels from a singing zebra finch. The task predicts one vocalization spectrogram for each complete song motif.
 It is not a human speech task.
-The active [task entry](task.yaml) and [acceptance record](acceptance.json) describe the locally checked version.
-Read the [FALCON paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/8c2e6bb15be1894b8fb4e0f9bcad1739-Abstract-Datasets_and_Benchmarks_Track.html), [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L159-L182), and [spectrogram scorer](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/evaluator.py#L603-L668).
 
 > [!NOTE]
-> This is a BrainPilotBench public-data task profile, not an official FALCON score.
-> Agent benchmark results are pending. The fixed reference is an interface check.
+> Agent benchmark results: not yet available. The fixed reference is an interface check, not an official FALCON score.
+
+## Task at a glance
+
+| Field | Task contract |
+|---|---|
+| Input | One `float32[27000,85]` neural motif: 900 ms sampled at 30 kHz. |
+| Output | One finite `float32[880,158]` vocalization spectrogram per motif. |
+| Split | Two earlier recording dates for Train, the last held-in date for Valid, and three calibration dates for evaluator-only Test. |
+| Metric | Native-mask normalized spectrogram MSE per motif, then the equal-weight date mean. Lower is better. |
+
+The active [task entry](task.yaml) and [acceptance record](acceptance.json) describe the locally checked version.
+Read the [FALCON paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/8c2e6bb15be1894b8fb4e0f9bcad1739-Abstract-Datasets_and_Benchmarks_Track.html), [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L159-L182), and [spectrogram scorer](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/evaluator.py#L603-L668).
 
 ## Data and split
 
@@ -16,7 +24,7 @@ The [protocol](protocol.json) fixes two earlier recording dates for Train and th
 Three public held-out calibration dates form evaluator-only Test.
 The native minival copies are excluded.
 DANDI `001046` is a draft asset snapshot.
-The [asset manifest](../_preparation/assets.manifest.json) and [data.lock](data.lock) bind exact NWB assets by size and SHA-256.
+The [asset manifest](../_preparation/assets.manifest.json) binds exact NWB sources. [data.lock](data.lock) binds hosted public Train/Valid files by size and SHA-256.
 The [contract](contract.json) binds every derived file and complete-motif count.
 The source code is fixed at [FALCON commit 770c9b9](https://github.com/snel-repo/falcon-challenge/tree/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f).
 
@@ -60,8 +68,12 @@ The registered-state check cannot prove that arbitrary Python follows every mode
 
 ## Prepare and run
 
-For a prepared Train/Valid folder, use the [fixed public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package).
-Set `BPB_B1_DATA_DIR` to the downloaded task folder. The original-source route below remains available.
+The hosted Train/Valid files use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task).
+The CLI copies verified files to the workspace and gives `BPB_PUBLIC_DATA_ROOT` to setup.
+Preparation passed from a verified existing public cache.
+The [delivery acceptance](delivery-acceptance.json) binds the revised lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+This delivery check did not rerun the fixed reference or owner Test.
+The original-source route below remains available for a local rebuild.
 
 Install the pinned trusted host packages with Python 3.12:
 
@@ -70,16 +82,20 @@ python3.12 -m venv /path/to/b1-host
 /path/to/b1-host/bin/python -m pip install -r tasks/intracortical/falcon-b1-birdsong/env/requirements.txt
 ```
 
-Fetch the frozen public assets with the BrainPilotBench CLI:
+Prepare one workspace from the hosted public files:
 
 ```bash
-BPB_CACHE_ROOT=/path/outside-git/b1-source-cache node dist/cli.js fetch falcon-b1-birdsong --public
+BPB_B1_PYTHON=/path/to/b1-host/bin/python \
+  node dist/cli.js prepare falcon-b1-birdsong --fetch \
+  --workspace /path/outside-git/b1-agent
 ```
 
-Export and stage public data outside a Git checkout:
+The setup stages Train and Valid in `/path/outside-git/b1-agent/public_data`.
+For a local source rebuild, use the [source preparation tool](../_preparation/prepare.py) to fill a separate source root.
+Then export and stage outside a Git checkout:
 
 ```bash
-BPB_B1_CONTENT_CACHE_ROOT=/path/outside-git/b1-source-cache \
+BPB_B1_SOURCE_ROOT=/path/outside-git/b1-source \
 BPB_B1_DERIVED_ROOT=/path/outside-git/b1-derived \
 BPB_B1_STAGE_DIR=/path/outside-git/b1-agent/public_data \
 BPB_B1_PYTHON=/path/to/b1-host/bin/python \
@@ -92,7 +108,8 @@ Provide only the staged public directory to the Agent.
 Remove source, cache, and evaluator paths from its environment and disable network access.
 
 Use the [manual collection workflow](../../../README.md#evaluate-your-agent) for a runnable task entry.
-Set `BPB_B1_DATA_DIR` to the staged public directory and `BPB_B1_PYTHON` to the trusted host interpreter.
+Set `BPB_B1_PYTHON` to the trusted host interpreter for Agent preparation.
+Set `BPB_B1_DATA_DIR` to `/path/outside-git/b1-agent/public_data` for scoring.
 Build an inference image from `checks/Dockerfile` and pass its immutable image ID to the scorer.
 The local CPU image uses Python 3.12, NumPy 2.2.6, PyTorch 2.7.1, and safetensors 0.5.3.
 The worker runs without network access and returns a bounded spectrogram response.

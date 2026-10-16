@@ -1,26 +1,61 @@
 # BCI Competition IV Dataset 4: finger flexion
 
-Predict continuous finger movements from real ECoG recordings in three participants. Task version `0.1-public-validation-offline` provides a chronological public-validation split and a container-isolated submission interface.
+This task predicts continuous finger flexion from ECoG recordings in three participants. Each model returns five trajectories, while the score uses four fingers.
 
-> [!IMPORTANT]
-> No Agent benchmark result is available for this task. A fixed ridge reference passed local data preparation, container scoring, and CLI checks. These checks verify the workflow, not scientific performance or an official competition result.
+> [!NOTE]
+> Agent benchmark results: not yet available. A fixed ridge reference passed local preparation, container scoring, and CLI checks. It is not an official competition result.
+
+## Task at a glance
+
+| Field | Task contract |
+|---|---|
+| Input | Offline `float32[T,C]` ECoG interval. `C` is 62, 48, or 64 channels for `sub1`, `sub2`, or `sub3`. |
+| Output | Finite `float32[T,5]` flexion in thumb, index, middle, ring, little-finger order at 1000 Hz. |
+| Split | For each participant, Train `[0,319000)` and Valid `[321000,400000)`. A 2,000-sample guard separates them. Original evaluation input stays outside this task's public export. |
+| Metric | Mean Pearson `r` across thumb, index, middle, and little finger for all three participants: 12 correlations, higher is better. |
+
+Task version `0.1-public-validation-offline` uses an isolated container for submitted models. [Prepare the hosted public files](#export-run-and-score) to start.
 
 The source has 400 seconds of labeled ECoG and 200 seconds of evaluation ECoG per subject. Subjects 1, 2, and 3 have 62, 48, and 64 ECoG channels, respectively. The output has five finger-flexion values at 1000 Hz. The fourth value is the ring finger.
 
 ## Source and citation
 
-Read the [competition page](https://www.bbci.de/competition/iv/) and [Dataset 4 description](https://www.bbci.de/competition/iv/desc_4.pdf) before download. The download page requests attribution to the recording groups and a paper citation for publications that analyze the data. It also requests notification of those publications. The description asks users to cite Schalk et al., *Decoding Two-Dimensional Movement Trajectories Using Electrocorticographic Signals in Humans*, Journal of Neural Engineering 4:264–275 (2007). This repository does not assert redistribution permission.
+Read the [competition page](https://www.bbci.de/competition/iv/) and [Dataset 4 description](https://www.bbci.de/competition/iv/desc_4.pdf) before download.
+The download page requests attribution to the recording groups, a paper citation, and notification of publications that analyze the data.
+The description asks users to cite Schalk et al., *Decoding Two-Dimensional Movement Trajectories Using Electrocorticographic Signals in Humans*, Journal of Neural Engineering 4:264–275 (2007).
+The hosted copy retains those source terms. This repository does not assert a CC or Apache redistribution grant.
 
-## Download and inspect the source
+The [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task) contains 14 verified Train/Valid files (324,773,839 bytes) for this task.
+All 14 files passed fresh anonymous size and SHA-256 download checks.
+The [delivery acceptance](delivery-acceptance.json) binds the updated lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+The original reference and owner Test acceptance remains a separate record.
 
-Create an isolated Python environment and install the pinned dependencies:
+<a id="export-run-and-score"></a>
+
+## Prepare hosted public data
+
+Use Python 3.12 and install the [pinned dependencies](env/requirements.txt) in an isolated environment:
 
 ```sh
 python3 -m venv .cache/bciciv4-venv
 .cache/bciciv4-venv/bin/python -m pip install -r tasks/ieeg/ieeg-finger-flexion-bciciv4/env/requirements.txt
 ```
 
-Print the download and split plan without network access or file writes:
+The standard hosted route prepares a workspace from [data.lock](data.lock):
+
+```sh
+BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
+  node dist/cli.js prepare ieeg-finger-flexion-bciciv4 --fetch \
+  --workspace /path/outside-git/bciciv4-workspace
+```
+
+Setup stages 12 Train/Valid arrays and two manifests in `/path/outside-git/bciciv4-workspace/public_data`.
+The hosted route uses the public content cache and requires no `BPB_LOCAL_DATA_ROOT`.
+Continue with [Run and score a submission](#run-and-score-a-submission) after preparation.
+
+## Download and inspect the source (local rebuild)
+
+Use the environment above. Print the download and split plan without network access or file writes:
 
 ```sh
 .cache/bciciv4-venv/bin/python tasks/ieeg/ieeg-finger-flexion-bciciv4/env/prepare.py \
@@ -41,6 +76,21 @@ The current public exporter below reads only `train_data` and `train_dg`. It doe
 
 The cache directory must be a named directory below this repository's `.cache` directory. The script rejects symlink paths and existing output directories. It does not overwrite local arrays.
 
+For a local source rebuild, create the manifest-bound export outside Git:
+
+```sh
+.cache/bciciv4-venv/bin/python tasks/ieeg/ieeg-finger-flexion-bciciv4/env/export_bci.py \
+  --archive .cache/invasive-preparation-20261014/bci/BCICIV_4_mat.zip \
+  --output /path/outside-git/bciciv4-derived
+```
+
+This command does not read original Test inputs or labels.
+It widens native int16 inputs to int32 without loss and records the original dtypes.
+The export builds in a sibling temporary directory and publishes only after completion.
+A failed export leaves the final destination absent, so the same command can be retried.
+`contract.json` binds the role manifests. `data.lock` binds their exact files.
+Do not regenerate the contract to accept changed sources.
+
 ## Split and score
 
 The source's first 400,000 samples are labeled. Train uses `[0,319000)` and Valid uses `[321000,400000)`, leaving a 2,000-sample boundary guard. Split before filtering or feature extraction. Fit learned transformations on Train only, and process each role independently. This is offline inference: a decoder may read the full current participant interval. It cannot read another role or update fitted state. The guard removes immediate neighbors; it does not prove independence between recordings or participants.
@@ -49,7 +99,10 @@ The original final 200,000 samples remain the evaluation input in the source pro
 
 The original competition used all 400 labeled seconds for training. Our smaller Train split makes the protocols different. All three participants occur in every role; this task does not measure transfer to new people.
 
-## Historical one-participant preparation check
+<a id="historical-one-participant-preparation-check"></a>
+
+<details>
+<summary>Historical one-participant preparation check</summary>
 
 The fixed reference reads only the prepared `sub1` train and validation arrays. It uses independent, nonoverlapping 100 ms ECoG windows. It calculates log power, standardizes features on training data, and fits ridge regression with `alpha=1`. The target for each training window is mean finger flexion. It repeats each window prediction across its 100 samples. This is an offline interface check, not a real-time decoder.
 
@@ -63,6 +116,8 @@ To reproduce this historical check, first run `env/prepare.py` without `--downlo
 The script writes a model, 79,000-by-5 validation predictions, and a receipt below the ignored cache. The receipt records the source, protocol, scripts, packages, and four scored correlations. This result uses one subject and a local validation split. It is not the official three-subject score or an Agent result.
 
 The pinned local reference run gave a four-finger mean Pearson `r` of 0.0833669 for `sub1` validation. The individual values were 0.0381250, 0.1124480, 0.0885496, and 0.0943450 for thumb, index, middle, and little finger. These weak values are an interface check only.
+
+</details>
 
 ## Current model interface
 
@@ -84,28 +139,12 @@ It excludes the ring finger, but all five output columns must be finite.
 Constant scored trajectories are invalid; negative correlations remain valid scores.
 The public CLI scores Valid only.
 
-## Export, run, and score
-
-After the source download above, create the current manifest-bound export outside Git:
-
-```sh
-.cache/bciciv4-venv/bin/python tasks/ieeg/ieeg-finger-flexion-bciciv4/env/export_bci.py \
-  --archive .cache/invasive-preparation-20261014/bci/BCICIV_4_mat.zip \
-  --output /path/outside-git/bciciv4-derived
-```
-
-This command does not read original Test inputs or labels.
-It widens native int16 inputs to int32 without loss and records the original dtypes.
-The export builds in a sibling temporary directory and publishes only after completion.
-A failed export leaves the final destination absent, so the same command can be retried.
-`contract.json` binds the role manifests; `data.lock` binds their exact files.
-Do not regenerate the contract to accept changed sources.
+## Run and score a submission
 
 Start the normal manual workflow:
 
 ```sh
-env BPB_BCI_DATA_DIR=/path/outside-git/bciciv4-derived/public \
-  BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
+env BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
   node dist/cli.js run ieeg-finger-flexion-bciciv4 --adapter manual --agent my-agent@1 \
   --workspace /path/outside-git/bciciv4-workspace
 ```
@@ -121,14 +160,13 @@ Build the pinned inference environment and score a completed bundle:
 docker build -t bpb-bciciv4-inference:local tasks/ieeg/ieeg-finger-flexion-bciciv4/checks
 IMAGE_ID=$(docker image inspect --format '{{.Id}}' bpb-bciciv4-inference:local)
 node dist/cli.js submit verify /path/to/submission-bundle
-env BPB_BCI_DATA_DIR=/path/outside-git/bciciv4-derived/public \
+env BPB_BCI_DATA_DIR=/path/outside-git/bciciv4-workspace/public_data \
   BPB_BCI_PYTHON=/absolute/path/to/.cache/bciciv4-venv/bin/python \
   node dist/cli.js score /path/to/submission-bundle --isolation docker --inference-image "$IMAGE_ID"
 ```
 
-For optional content-cache verification, set `BPB_LOCAL_DATA_ROOT` to the derived root and use a public-only `BPB_CACHE_ROOT`.
-Run `bp-bench fetch ieeg-finger-flexion-bciciv4 --public`, then unset `BPB_LOCAL_DATA_ROOT` before Agent setup.
-No new data package has been uploaded.
+The hosted preparation route uses the public content cache and requires no `BPB_LOCAL_DATA_ROOT`.
+For an owner-controlled local rebuild, keep the derived root outside Git and unset `BPB_LOCAL_DATA_ROOT` before Agent setup.
 
 ## Current reference and owner Test
 

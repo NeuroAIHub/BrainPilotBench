@@ -1,28 +1,25 @@
 # H1: attempted reach and grasp
 
-A human participant watched a virtual arm and attempted arm and grasp movements.
-Utah arrays recorded threshold crossings in motor cortex.
-The targets are seven commanded velocity components, not measured arm movement.
+A human participant watched a virtual arm and attempted arm and grasp movements. Utah arrays recorded threshold crossings in motor cortex.
+The task predicts seven commanded velocities, not measured arm movement.
 Read the [FALCON dataset description](https://snel-repo.github.io/falcon/datasets.html)
 and the [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L93-L106).
 
 > [!NOTE]
-> H1 is runnable as task version <code>0.1-public-validation-stream</code>.
-> A real CLI check scored public Valid successfully.
-> Agent benchmark results are still pending.
-> The reference score below is not an Agent result or an official FALCON score.
+> Agent benchmark results: not yet available. A fixed reference scored public Valid, not an official FALCON evaluation.
 
 ## Task at a glance
 
-| Field | Value |
+| Field | Task contract |
 |---|---|
-| Task ID | <code>falcon-h1-reach-grasp</code> |
-| Task version | <code>0.1-public-validation-stream</code> |
-| Task scoring profile | <code>bpb-h1-public-validation-stream-v1</code> |
-| Scientific source profile | <code>bpb-falcon-public-derived-cross-session-zs-v1</code> |
-| Primary metric | <code>R2_variance_weighted</code>, higher is better |
-| Hardware | CPU. GPU is not required. |
-| Agent network access | Disabled |
+| Input | One current <code>float32[176]</code> threshold-crossing bin every 20 ms, with a trial-start marker. |
+| Output | Finite <code>float32[7]</code> commanded velocity components for the current bin. |
+| Split | Five earlier source dates for Train, one held-in date for Valid, and seven later calibration dates for evaluator-only Test. |
+| Metric | Native-mask <code>R2_variance_weighted</code> per date, then the equal-weight mean across dates. Higher is better. |
+
+Task ID: <code>falcon-h1-reach-grasp</code>. Version: <code>0.1-public-validation-stream</code>.
+Scoring profile: <code>bpb-h1-public-validation-stream-v1</code>. Scientific source profile: <code>bpb-falcon-public-derived-cross-session-zs-v1</code>.
+The task runs on CPU without Agent network access.
 
 The scientific source profile and date split remain in [protocol.json](protocol.json).
 The task version defines the streaming model interface and public Valid scorer.

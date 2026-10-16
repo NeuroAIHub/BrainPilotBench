@@ -1,7 +1,20 @@
 # M1-A: upper-limb EMG
 
-M1-A predicts 16 preprocessed EMG signals from 64 intracortical channels.
-The [protocol](protocol.json) fixes three Train dates, one Valid date, and three later evaluator-only Test dates.
+This task predicts 16 upper-limb muscle signals from 64 intracortical channels during macaque reach and grasp.
+
+> [!NOTE]
+> Agent benchmark results: not yet available. The fixed reference is an interface check, not an official FALCON score.
+
+## Task at a glance
+
+| Field | Task contract |
+|---|---|
+| Input | One current `float32[64]` neural bin per call, with a trial-start marker. Bins are 20 ms apart. |
+| Output | Finite `float32[16]` preprocessed EMG values for the current bin. |
+| Split | Three earlier recording dates for Train, one date for Valid, and three later dates for evaluator-only Test. |
+| Metric | Native-mask variance-weighted R² for each date, then the equal-weight mean across dates. Higher is better. |
+
+The [protocol](protocol.json) fixes the date split.
 The source is DANDI `000941` version `0.241029.1405`.
 The [asset manifest](../_preparation/assets.manifest.json) binds its seven NWB files and source commit.
 The [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L114-L139) uses EMG timestamps as 20 ms bin ends.
@@ -9,15 +22,24 @@ It marks trials at `searchsorted(emg_timestamps, trial.start_time)`.
 
 Status: **locally accepted public-validation task**, version `0.1-public-validation-stream`.
 The [task entry](task.yaml) is active. [Acceptance evidence](acceptance.json) binds its critical files and fixed-reference checks.
-The [contract](contract.json) and [data lock](data.lock) bind all seven full-SHA-verified NWB sources and their derived arrays.
-No Agent result is recorded. The owner Test reference report stays outside Git.
+The [contract](contract.json) binds seven full-SHA-verified NWB sources and their derived arrays. The [data lock](data.lock) binds hosted public Train/Valid files.
+The owner Test reference report stays outside Git.
 
 ## Data preparation
 
-For a prepared Train/Valid folder, use the [fixed public package](../../../docs/invasive-task-preparation.md#download-a-prepared-public-package).
-Set `BPB_M1_DATA_DIR` to the downloaded task folder. The original-source route below remains available.
+The hosted Train/Valid files use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task).
+Use Python 3.12 with the [trusted preparation requirements](env/requirements.txt). Prepare a workspace with the pinned host Python:
 
-Use Python 3.12 with [trusted preparation requirements](env/requirements.txt).
+    BPB_M1_PYTHON=/path/to/venv/bin/python \
+      node dist/cli.js prepare falcon-m1-emg --fetch \
+      --workspace /path/outside-git/m1-workspace
+
+Setup stages verified files in `/path/outside-git/m1-workspace/public_data`.
+Preparation passed from a verified existing public cache.
+The [delivery acceptance](delivery-acceptance.json) binds the revised lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
+This delivery check did not rerun the fixed reference or owner Test.
+The original-source route below remains available for a local rebuild.
+
 Keep raw and derived roots outside Git checkouts.
 Download the four public source files through the pinned source tool:
 
@@ -70,9 +92,9 @@ Public Valid is for development.
 The separate owner Test path requires a frozen submission and prints a separate JSON report.
 This score is a BrainPilotBench public-derived profile, not an official FALCON score.
 
-Run the [manual collection workflow](../../../README.md#evaluate-your-agent) with the public root:
+After preparation, run the [manual collection workflow](../../../README.md#evaluate-your-agent) in the same workspace:
 
-    env BPB_M1_DATA_DIR=/path/to/m1-derived/public BPB_M1_PYTHON=/path/to/venv/bin/python \
+    env BPB_M1_PYTHON=/path/to/venv/bin/python \
       node dist/cli.js run falcon-m1-emg --adapter manual --agent my-agent@1 \
       --workspace /path/outside-git/m1-workspace
 
@@ -83,7 +105,7 @@ Then verify and score the resulting bundle:
     docker build -t bpb-m1-inference:local tasks/intracortical/falcon-m1-emg/checks
     IMAGE_ID=$(docker image inspect --format '{{.Id}}' bpb-m1-inference:local)
     node dist/cli.js submit verify /path/to/submission-bundle
-    env BPB_M1_DATA_DIR=/path/to/m1-derived/public BPB_M1_PYTHON=/path/to/venv/bin/python \
+    env BPB_M1_DATA_DIR=/path/outside-git/m1-workspace/public_data BPB_M1_PYTHON=/path/to/venv/bin/python \
       node dist/cli.js score /path/to/submission-bundle --isolation docker --inference-image "$IMAGE_ID"
 
 The Agent's separate training environment must omit raw sources, evaluator roots, credentials, and network access.

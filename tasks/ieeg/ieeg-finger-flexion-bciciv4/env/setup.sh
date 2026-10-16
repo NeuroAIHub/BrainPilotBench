@@ -9,6 +9,8 @@ if [[ -n "${BPB_BCI_TEST_MANIFEST:-}" || -n "${BPB_BCI_LABELS_ZIP:-}" ]]; then
   echo "Remove evaluator-only Test variables before Agent setup." >&2
   exit 2
 fi
-: "${BPB_BCI_DATA_DIR:?Set BPB_BCI_DATA_DIR to the verified public Train/Valid root}"
+: "${BPB_BCI_DATA_DIR:=${BPB_PUBLIC_DATA_ROOT:-}}"
+BPB_BCI_DATA_DIR="${BPB_PUBLIC_DATA_ROOT:-$BPB_BCI_DATA_DIR}"
+: "${BPB_BCI_DATA_DIR:?Set BPB_BCI_DATA_DIR or BPB_PUBLIC_DATA_ROOT to the verified public Train/Valid root}"
 exec "${BPB_BCI_PYTHON:-python3}" "$TASK_DIR/env/stage_public.py" \
   --source "$BPB_BCI_DATA_DIR" --stage-to "${BPB_BCI_STAGE_DIR:-$PWD/public_data}"

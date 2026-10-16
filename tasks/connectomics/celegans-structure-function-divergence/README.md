@@ -23,10 +23,13 @@ between the networks, not predictions of one network from the other.
 | Task version | `0.6` |
 | Public data | A signal propagation atlas, one anatomical connectome reconstruction, and neuron metadata |
 | Submission | A reusable Python analyzer, a protocol declaration, and a scientific report |
-| Primary metric | Task-defined `score` (fraction in [0, 1]), higher is better |
+| Primary metric | `score` in [0, 1]: numerical-statistic agreement weighted by judgment skill, higher is better |
 | Evaluation | Statistics and judgments checked on evaluator-controlled reconstructions |
 
-`stat_match_rate`, `judgment_accuracy`, and `judgment_skill` are diagnostics.
+The automatic score is `stat_match_rate × (0.5 + 0.5 × judgment_skill)`.
+It rewards agreement with reference statistics and correct judgments across evaluated reconstructions.
+Judgment skill adjusts accuracy relative to the best constant answer for each question.
+`stat_match_rate`, `judgment_accuracy`, and `judgment_skill` are also reported as diagnostics.
 The author rubric in `rubric.yaml` and `rubric.md` supports separate qualitative
 review. It does not alter the automatic score.
 The full protocol and required statistics are in [the task prompt](prompt/turns.yaml).

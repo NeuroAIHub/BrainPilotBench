@@ -63,3 +63,17 @@ test("parseDataManifest: name 拒绝路径穿越(../ 、/ 、..)", () => {
     parseDataManifest({ datasets: [{ name: "ds_a-1.parquet", uri: "u", sha256: "a".repeat(64), bytes: 1 }] }).datasets[0].name,
     "ds_a-1.parquet");
 });
+
+test("parseDataManifest preserves safe public paths and rejects unsafe or colliding paths", () => {
+  const entry = (name: string, path: unknown, scope = "public") => ({
+    name, uri: "hf://owner/repo/file", sha256: "a".repeat(64), bytes: 1, path, scope,
+  });
+  const parsed = parseDataManifest({ datasets: [entry("atlas", "atlas/region.csv")] });
+  assert.equal(parsed.datasets[0].path, "atlas/region.csv");
+  for (const path of ["/absolute", "../escape", "a/../b", "a/./b", "a//b", "a\\b", "C:/drive", "a b", ""])
+    assert.throws(() => parseDataManifest({ datasets: [entry("bad", path)] }), /safe POSIX-relative/);
+  assert.throws(() => parseDataManifest({ datasets: [entry("bad", 42)] }), /safe POSIX-relative/);
+  assert.throws(() => parseDataManifest({ datasets: [entry("secret", "labels.csv", "private")] }), /private dataset/);
+  for (const second of ["Atlas/Region.csv", "atlas", "atlas/region.csv/child"])
+    assert.throws(() => parseDataManifest({ datasets: [entry("first", "atlas/region.csv"), entry("second", second)] }), /colliding prepared path/);
+});

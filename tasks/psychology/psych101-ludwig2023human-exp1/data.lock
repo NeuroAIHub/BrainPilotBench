@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-ludwig2023human-exp1/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-ludwig2023human-exp1/public/train.jsonl
     sha256: 7caf01f8ae4ea37671e0b59353a6839f5f95ffeec933adb2d4e3d032bd686311
     bytes: 668925
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-ludwig2023human-exp1/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-ludwig2023human-exp1/public/valid.jsonl
     sha256: b8d4b53781d3069dd5ce7173e021ecea977d1bead648b342f3fcc767272495bc
     bytes: 178430
     format: jsonl

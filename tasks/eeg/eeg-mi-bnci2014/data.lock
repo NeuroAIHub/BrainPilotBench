@@ -1,11 +1,11 @@
 datasets:
   - name: bnci-native-public-train
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-bnci2014/full-autonomous-20260918-v1/train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-mi-bnci2014/public/train.npz
     sha256: 73dbd5047396c6d3c64144ca1cf0de7fa0ae40b9b2a6e03af3a137d0d67a47c0
     bytes: 121674730
     scope: public
   - name: bnci-native-public-valid
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-mi-bnci2014/full-autonomous-20260918-v1/val.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-mi-bnci2014/public/val.npz
     sha256: c5076f0a536396660dd818eaf8439abf66e27dc0f51c0f7815de93baa2610e83
     bytes: 48670186
     scope: public

@@ -1,7 +1,8 @@
 # Intracortical decoding tasks
 
 This family covers human movement and handwriting, macaque motor output, and birdsong.
-Together with two [clinical iEEG tasks](../ieeg/README.md), it forms the seven-task [invasive-recording category in BrainPilotBench v1](../../README.md#invasive-recordings).
+Together with two [iEEG tasks](../ieeg/README.md), it forms the seven-task [invasive-recording category in BrainPilotBench v1](../../README.md#invasive-recordings).
+V1 has six categories and 112 tasks: 108 new tasks plus four carried from v0.
 All five tasks have locally accepted public-validation workflows and version-bound reference checks.
 No Agent benchmark results are available for this family.
 
@@ -32,8 +33,8 @@ The evaluator boundary controls the run and package.
 It does not restrict access to source data.
 Results cannot be compared with FALCON's private EvalAI results.
 
-The v1 invasive public-data package contains H2, M1-A, M2, B1, and the Berezutskaya film task.
-It excludes H1 because its source description prohibits redistribution. Data access does not define a separate benchmark edition.
+The v1 invasive public-data package hosts six tasks: [BCI IV-4](../ieeg/ieeg-finger-flexion-bciciv4/README.md), the Berezutskaya film task, H2, M1-A, M2, and B1.
+H1 uses its original source because its description prohibits redistribution. Data access does not define a separate benchmark edition.
 
 Each runnable entry has a task version, model interface, data setup, and public scorer.
 Its `acceptance.json` binds local engineering evidence to the exact version and critical files.

@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-schulz2020finding-exp3/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-schulz2020finding-exp3/public/train.jsonl
     sha256: 760e0d21e71bd44785a943e8bb518a525be172a661be79a59a93a8bf91c0f2bc
     bytes: 1369770
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-schulz2020finding-exp3/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-schulz2020finding-exp3/public/valid.jsonl
     sha256: 502592849a26f221e80514da54374ece337c280a0f8f4626a92c2b026f126f70
     bytes: 353998
     format: jsonl

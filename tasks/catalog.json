@@ -1,6 +1,6 @@
 {
   "schema": "brainpilotbench-task-collection/1",
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "release_status": "integration_candidate_not_released",
   "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; no formal Agent results or historical private Test replay",
   "counts": {
@@ -20,7 +20,9 @@
       "validation": "legacy_retained_structure_checked",
       "evaluation_scope": "task_defined",
       "primary_metric": null,
-      "data_access": "pinned_source_download",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download"
     },
     {
@@ -37,8 +39,9 @@
         "unit": "years"
       },
       "validation_record": "docs/integration-validation.md",
+      "hosted_data_availability": "published_public_snapshot",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "maintainer_package_required"
     },
     {
@@ -55,8 +58,9 @@
         "unit": "fraction"
       },
       "validation_record": "docs/integration-validation.md",
+      "hosted_data_availability": "published_public_snapshot",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download"
     },
     {
@@ -75,7 +79,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "cvep/thielen2015",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-cvep-thielen2021",
@@ -107,7 +112,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "dementia_diagnosis/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-erp-ern",
@@ -125,7 +131,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "ern/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-erp-lrp",
@@ -143,7 +150,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "lrp/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-erp-mmn",
@@ -161,7 +169,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "mismatch_negativity/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-erp-n170",
@@ -179,7 +188,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "n170/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-erp-n2pc",
@@ -197,7 +207,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "n2pc/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-erp-n400",
@@ -215,7 +226,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "n400/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-erp-p3",
@@ -233,7 +245,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "p3/kappenman2021p3",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-me-highgamma2017",
@@ -251,7 +264,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_execution/schirrmeister2017",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-me-ofner2017",
@@ -269,7 +283,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_execution/ofner2017",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-mental-arithmetic-zyma2019",
@@ -287,7 +302,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "mental_arithmetic/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-mi-barachant2012",
@@ -305,7 +321,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/barachant2012",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-mi-bnci2014",
@@ -323,7 +340,8 @@
       "source_task_id": "motor_imagery/tangermann2012",
       "validation_record": "docs/integration-validation.md",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-mi-cho2017",
@@ -341,7 +359,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/cho2017",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-mi-eegmmidb",
@@ -359,7 +378,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/schalk2004bci2000",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-mi-openbmi2019",
@@ -377,7 +397,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/lee2019mi",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-mi-zhou2016",
@@ -395,7 +416,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "motor_imagery/zhou2016",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-p3-openbmi2019",
@@ -413,7 +435,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "p3/lee2019erp",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-seizure-chbmit",
@@ -499,7 +522,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "sleep_stage/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-ssvep-openbmi2019",
@@ -517,7 +541,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "ssvep/lee2019ssvep",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-ssvep-wang2017",
@@ -535,7 +560,8 @@
       "evaluation_profile": "native-balanced-accuracy-complete-classes",
       "source_task_id": "ssvep/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "eeg-typing-spanishbcbl",
@@ -553,7 +579,8 @@
       "evaluation_profile": "native-typing-sparse-macro-torchmetrics-1.9",
       "source_task_id": "typing/default",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "falcon-b1-birdsong",
@@ -570,7 +597,8 @@
       },
       "evaluation_profile": "bpb-b1-public-validation-v1",
       "data_status": "source_bound_reproducible_export",
-      "data_access": "pinned_source_download",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download",
       "validation_record": "tasks/intracortical/falcon-b1-birdsong/acceptance.json",
       "source_task_id": "b1",
@@ -593,6 +621,7 @@
       },
       "evaluation_profile": "bpb-h1-public-validation-stream-v1",
       "data_status": "source_bound_reproducible_export",
+      "hosted_data_availability": "source_only",
       "data_access": "pinned_source_download",
       "private_data_access": "pinned_source_download",
       "validation_record": "tasks/intracortical/falcon-h1-reach-grasp/acceptance.json",
@@ -616,7 +645,8 @@
       },
       "evaluation_profile": "bpb-h2-public-validation-v1",
       "data_status": "source_bound_reproducible_export",
-      "data_access": "pinned_source_download",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download",
       "validation_record": "tasks/intracortical/falcon-h2-handwriting/acceptance.json",
       "source_task_id": "h2",
@@ -639,7 +669,8 @@
       },
       "evaluation_profile": "bpb-m1-public-validation-stream-v1",
       "data_status": "source_bound_reproducible_export",
-      "data_access": "pinned_source_download",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download",
       "validation_record": "tasks/intracortical/falcon-m1-emg/acceptance.json",
       "source_task_id": "m1",
@@ -662,7 +693,8 @@
       },
       "evaluation_profile": "bpb-m2-public-validation-stream-v1",
       "data_status": "source_bound_reproducible_export",
-      "data_access": "maintainer_package_required",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "maintainer_package_required",
       "validation_record": "tasks/intracortical/falcon-m2-finger-velocity/acceptance.json",
       "source_task_id": "m2",
@@ -685,7 +717,8 @@
       },
       "evaluation_profile": "bpb-ieeg-film-public-validation-stream-v2",
       "data_status": "owner_key_bound_prepared_export",
-      "data_access": "maintainer_package_required",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download",
       "validation_record": "tasks/ieeg/ieeg-film-speech-music/acceptance.json",
       "source_task_id": "ds003688/task-film",
@@ -710,7 +743,8 @@
       "evaluation_profile": "bpb-bciciv4-public-validation-offline-v1",
       "source_task_id": "BCI Competition IV Dataset 4",
       "data_status": "source_bound_reproducible_export",
-      "data_access": "maintainer_package_required",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "maintainer_package_required",
       "validation_record": "tasks/ieeg/ieeg-finger-flexion-bciciv4/acceptance.json",
       "source_verification": "full_source_files_and_derived_arrays_verified",
@@ -726,7 +760,9 @@
       "validation": "legacy_retained_structure_checked",
       "evaluation_scope": "task_defined",
       "primary_metric": null,
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-badham2017deficits-exp1",
@@ -744,7 +780,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "badham2017deficits/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-bahrami2020four-exp",
@@ -762,7 +799,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "bahrami2020four/exp.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-collsioo2023mcpl-exp1-775cd1984f",
@@ -780,7 +818,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "collsiöö2023MCPL/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-collsioo2023mcpl-exp2-6bd18ff5bf",
@@ -798,7 +837,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "collsiöö2023MCPL/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-collsioo2023mcpl-exp3-c372064286",
@@ -816,7 +856,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "collsiöö2023MCPL/exp3.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-cox2017information-exp1",
@@ -834,7 +875,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "cox2017information/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-enkavi2019adaptivenback-exp1",
@@ -852,7 +894,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019adaptivenback/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-enkavi2019digitspan-exp1",
@@ -870,7 +913,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019digitspan/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-enkavi2019gonogo-exp1",
@@ -888,7 +932,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019gonogo/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-enkavi2019recentprobes-exp1",
@@ -906,7 +951,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "enkavi2019recentprobes/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-feng2021dynamics-exp1",
@@ -924,7 +970,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "feng2021dynamics/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-flesch2018comparing-exp1",
@@ -942,7 +989,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "flesch2018comparing/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-frey2017cct-exp1",
@@ -960,7 +1008,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "frey2017cct/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-frey2017risk-exp1",
@@ -978,7 +1027,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "frey2017risk/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-garcia2023experiential-exp1",
@@ -996,7 +1046,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-garcia2023experiential-exp2",
@@ -1014,7 +1065,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-garcia2023experiential-exp3",
@@ -1032,7 +1084,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp3.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-garcia2023experiential-exp4",
@@ -1050,7 +1103,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "garcia2023experiential/exp4.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-gershman2018deconstructing-exp1",
@@ -1067,7 +1121,8 @@
       },
       "source_task_id": "gershman2018deconstructing/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-gershman2018deconstructing-exp2",
@@ -1084,7 +1139,8 @@
       },
       "source_task_id": "gershman2018deconstructing/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-gershman2020reward-exp1",
@@ -1102,7 +1158,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "gershman2020reward/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-hebart2023things-exp1",
@@ -1120,7 +1177,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "hebart2023things/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-hilbig2014generalized-exp1",
@@ -1137,7 +1195,8 @@
       },
       "source_task_id": "hilbig2014generalized/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-jansen2021dunningkruger-exp1",
@@ -1155,7 +1214,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "jansen2021dunningkruger/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-kool2016when-exp1",
@@ -1173,7 +1233,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2016when/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-kool2016when-exp2",
@@ -1191,7 +1252,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2016when/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-kool2017cost-exp1",
@@ -1209,7 +1271,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2017cost/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-kool2017cost-exp2",
@@ -1227,7 +1290,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kool2017cost/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-krueger2022identifying-exp1",
@@ -1245,7 +1309,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "krueger2022identifying/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-kumar2023disentangling-exp1",
@@ -1263,7 +1328,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "kumar2023disentangling/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-lefebvre2017behavioural-exp1",
@@ -1281,7 +1347,8 @@
       "source_task_id": "lefebvre2017behavioural/exp1.csv",
       "validation_record": "docs/integration-validation.md",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-lefebvre2017behavioural-exp2",
@@ -1298,7 +1365,8 @@
       },
       "source_task_id": "lefebvre2017behavioural/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-levering2020revisiting-exp1",
@@ -1316,7 +1384,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "levering2020revisiting/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-levering2020revisiting-exp2",
@@ -1334,7 +1403,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "levering2020revisiting/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-ludwig2023human-exp0",
@@ -1352,7 +1422,8 @@
       "evaluation_profile": "ludwig_left_right_v1",
       "source_task_id": "ludwig2023human/exp0.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-ludwig2023human-exp1",
@@ -1370,7 +1441,8 @@
       "evaluation_profile": "ludwig_left_right_v1",
       "source_task_id": "ludwig2023human/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-ludwig2023human-exp2",
@@ -1387,7 +1459,8 @@
       },
       "source_task_id": "ludwig2023human/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-peterson2021using-exp1",
@@ -1405,7 +1478,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "peterson2021using/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-plonsky2018when-exp1",
@@ -1423,7 +1497,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "plonsky2018when/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-popov2023intent-exp1",
@@ -1441,7 +1516,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "popov2023intent/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-popov2023intent-exp2",
@@ -1459,7 +1535,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "popov2023intent/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-popov2023intent-exp3",
@@ -1477,7 +1554,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "popov2023intent/exp3.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-ruggeri2022globalizability-exp1",
@@ -1495,7 +1573,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "ruggeri2022globalizability/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-sadeghiyeh2020temporal-exp1",
@@ -1513,7 +1592,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "sadeghiyeh2020temporal/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-schulz2020finding-exp1",
@@ -1531,7 +1611,8 @@
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-schulz2020finding-exp2",
@@ -1548,7 +1629,8 @@
       },
       "source_task_id": "schulz2020finding/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-schulz2020finding-exp3",
@@ -1566,7 +1648,8 @@
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp3.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-schulz2020finding-exp4",
@@ -1584,7 +1667,8 @@
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp4.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-schulz2020finding-exp5",
@@ -1602,7 +1686,8 @@
       "evaluation_profile": "schulz_eight_option_v1",
       "source_task_id": "schulz2020finding/exp5.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-somerville2017charting-exp1",
@@ -1620,7 +1705,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "somerville2017charting/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-speekenbrink2008learning-exp1",
@@ -1637,7 +1723,8 @@
       },
       "source_task_id": "speekenbrink2008learning/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-steingroever2015data-exp1",
@@ -1654,7 +1741,8 @@
       },
       "source_task_id": "steingroever2015data/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-steingroever2015data-exp2",
@@ -1671,7 +1759,8 @@
       },
       "source_task_id": "steingroever2015data/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-steingroever2015data-exp3",
@@ -1688,7 +1777,8 @@
       },
       "source_task_id": "steingroever2015data/exp3.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-tomov2020discovery-exp2",
@@ -1706,7 +1796,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-tomov2020discovery-exp4",
@@ -1724,7 +1815,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp4.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-tomov2020discovery-exp5",
@@ -1742,7 +1834,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp5.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-tomov2020discovery-exp7",
@@ -1760,7 +1853,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2020discovery/exp7.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-tomov2021multitask-exp1",
@@ -1778,7 +1872,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2021multitask/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-tomov2021multitask-exp3",
@@ -1796,7 +1891,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "tomov2021multitask/exp3.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-waltz2020differential-exp1",
@@ -1814,7 +1910,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "waltz2020differential/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wilson2014humans-exp1",
@@ -1832,7 +1929,8 @@
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wilson2014humans-exp2",
@@ -1850,7 +1948,8 @@
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wilson2014humans-exp3",
@@ -1868,7 +1967,8 @@
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp3.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wilson2014humans-exp4",
@@ -1886,7 +1986,8 @@
       "evaluation_profile": "wilson_two_machine_v1",
       "source_task_id": "wilson2014humans/exp4.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wilson2014humans-exp5",
@@ -1903,7 +2004,8 @@
       },
       "source_task_id": "wilson2014humans/exp5.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wise2019acomputational-exp1",
@@ -1921,7 +2023,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wise2019acomputational/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wu2018generalisation-exp1",
@@ -1939,7 +2042,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wu2018generalisation/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wu2023chunking-exp1",
@@ -1957,7 +2061,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wu2023chunking/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wu2023chunking-exp2",
@@ -1975,7 +2080,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wu2023chunking/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wulff2018description-exp1",
@@ -1993,7 +2099,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wulff2018description/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-wulff2018sampling-exp1",
@@ -2011,7 +2118,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "wulff2018sampling/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-xiong2023neural-exp1",
@@ -2029,7 +2137,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "xiong2023neural/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-zhu2020bayesian-exp1",
@@ -2047,7 +2156,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "zhu2020bayesian/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-zhu2020bayesian-exp2",
@@ -2065,7 +2175,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "zhu2020bayesian/exp2.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "psych101-zorowitz2023data-exp1",
@@ -2083,7 +2194,8 @@
       "evaluation_profile": "byte_next_v1:utf8-byte-eos-v1",
       "source_task_id": "zorowitz2023data/exp1.csv",
       "data_status": "published_public_package",
-      "data_access": "pinned_source_download"
+      "hosted_data_availability": "published_public_snapshot",
+      "data_access": "pinned_public_snapshot"
     },
     {
       "task_id": "sleep-edf",
@@ -2094,7 +2206,9 @@
       "validation": "legacy_retained_structure_checked",
       "evaluation_scope": "task_defined",
       "primary_metric": null,
-      "data_access": "pinned_source_download",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download"
     },
     {
@@ -2106,7 +2220,9 @@
       "validation": "legacy_retained_structure_checked",
       "evaluation_scope": "task_defined",
       "primary_metric": null,
-      "data_access": "pinned_source_download",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_source_download"
     }
   ]

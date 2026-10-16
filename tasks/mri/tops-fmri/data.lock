@@ -8,13 +8,13 @@
 datasets:
   - name: study3_train.mat
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@5be1911c56a1912abefc81abad5cfa6f240dc0c6/tops-fmri/study3_train.mat
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/mri/tops-fmri/public/study3_train.mat
     sha256: 17ca43dbc6ec53f9d9a1ae7b5ad234160d1dfee96dc5d83c714dd4cf87ae7366
     bytes: 953887148
     format: mat
   - name: public_support.tar.zst
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@5be1911c56a1912abefc81abad5cfa6f240dc0c6/tops-fmri/public_support.tar.zst
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/mri/tops-fmri/public/public_support.tar.zst
     sha256: 051316b32ffe0b39d32ef1a577d82f6c18e5a90425d9082367566cd7b83204d2
     bytes: 11780098
     format: tar.zst

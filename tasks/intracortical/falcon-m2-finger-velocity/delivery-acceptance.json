@@ -1,0 +1,29 @@
+{
+  "schema": "bpb-unified-public-delivery/1",
+  "status": "passed",
+  "task_id": "falcon-m2-finger-velocity",
+  "task_version": "0.1-public-validation-stream",
+  "published_revision": "f50618208e3e748a8a16dfb6138e335f033d603c",
+  "prior_acceptance_sha256": "282581e0f6bfec0de25d8e1a3c975e730237f7c3799bf06e9545f9d00c0a6fba",
+  "old_file_sha256": {
+    "tasks/intracortical/falcon-m2-finger-velocity/data.lock": "13e94bb96cc4313b8f7b741c548b81ae3c95cef58833ad7cf8864f4f9943c181",
+    "tasks/intracortical/falcon-m2-finger-velocity/env/setup.sh": "51aa85e9a182edc51552d5086bf3468e690e3eb76c108a559038d5ff267c9509"
+  },
+  "new_file_sha256": {
+    "tasks/intracortical/falcon-m2-finger-velocity/data.lock": "3536184bb2f4378f469f8a8ed65632b5931a2f56bbe5a921125869e6a2acba4e",
+    "tasks/intracortical/falcon-m2-finger-velocity/env/setup.sh": "c444476200de5781b363716c5ceb6baa4c89894dc0036b63f5e6dabde4c5b2af"
+  },
+  "bridge_file_sha256": {
+    "src/data/types.ts": "054d0252c71196d6d3b5b0d86dcc0c15898374d75dcb6ced52d046a5624fa25a",
+    "src/data/manifest.ts": "97ba2db02f16976e0b9d7555deb682e15dc030812134103060c1316dfcd960ff",
+    "src/workflow.ts": "42e6c96a425806c1b3a53613a8629876592661b4c0a4d68aa67ecb84668f69f8",
+    "src/cli.ts": "933587c8a71814c4a2b2dbfd6e641fcc5811ea7f4dc5d81e5fa1a94d1f561d04",
+    "src/data/cache.ts": "35e28eb86cb04e6c18fdeecc056493afdf72d50a74d5c3538dda3dbda1aaa003",
+    "src/data/fetch.ts": "874021b7e7054348457cd516d1b0cb1ecb1823fae6eff3107f611ebdfcdc3937",
+    "src/data/resolve.ts": "7499c00a5f4220021f3b6e0c3e925d338a02d99e9c401ddbf0bc15342dd011ce"
+  },
+  "verification_report": {
+    "path": "reports/unified-public-delivery-20261015.json",
+    "sha256": "ea04f1777265a3b1af37fd95f551ea97bea9fa3e680a963d5120ed04d9f29512"
+  }
+}
