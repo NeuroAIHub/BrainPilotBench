@@ -55,6 +55,13 @@ export interface RunResult {
 const isTerminal = (e: any) => e?.type === "RUN_FINISHED" || e?.type === "RUN_ERROR";
 type TurnResult = "completed" | "timeout" | "stream_end" | "error";
 
+/** Runtime's authoritative whole-session work state (newer Runtime versions). */
+function runtimeWorkActive(event: any): boolean | undefined {
+  if (event?.type !== "CUSTOM" || event?.name !== "session_state") return undefined;
+  const active = event?.value?.workState?.active;
+  return typeof active === "boolean" ? active : undefined;
+}
+
 /** Minimal SSE frame parser (multi-line data:, cross-chunk). */
 async function* parseSse(body: ReadableStream<Uint8Array>): AsyncGenerator<any> {
   const dec = new TextDecoder();
@@ -166,12 +173,19 @@ export class BenchRunner {
     let sawTerminal = false;
     let lastTerminalWasError = false;
     const activeRuns = new Set<string>();
+    const activeBackgroundJobs = new Set<string>();
+    let workStateActive: boolean | undefined;
     const timer = setInterval(() => {
       const now = Date.now();
+      // New Runtime versions aggregate Principal, experts, subagents, delivery
+      // loops, tools, and background jobs into workState. Fall back to the
+      // legacy run-id heuristic only until an authoritative snapshot appears.
+      const wholeSessionActive = workStateActive
+        ?? (activeRuns.size > 0 || activeBackgroundJobs.size > 0);
       if (now >= deadline || now - last > idleMs) {
         timedOut = true;
         ctrl.abort();
-      } else if ((turn.then ?? "wait_idle") === "wait_idle" && sawTerminal && activeRuns.size === 0 && now - last >= settleMs) {
+      } else if ((turn.then ?? "wait_idle") === "wait_idle" && sawTerminal && !wholeSessionActive && now - last >= settleMs) {
         settled = true;
         ctrl.abort();
       }
@@ -180,6 +194,14 @@ export class BenchRunner {
     try {
       for await (const e of stream) {
         acc.push(e); last = Date.now();
+        const observedWorkActive = runtimeWorkActive(e);
+        if (observedWorkActive !== undefined) workStateActive = observedWorkActive;
+        if (e?.type === "CUSTOM" && e?.name === "background_job_state") {
+          const jobId = typeof e?.value?.id === "string" ? e.value.id : undefined;
+          const status = e?.value?.status;
+          if (jobId && (status === "queued" || status === "running")) activeBackgroundJobs.add(jobId);
+          else if (jobId) activeBackgroundJobs.delete(jobId);
+        }
         const runId = typeof e?.run_id === "string" ? e.run_id : undefined;
         if ((e?.type === "RUN_STARTED" || (e?.type === "agent_status_update" && e?.status === "running")) && runId) {
           activeRuns.add(runId);
@@ -210,7 +232,9 @@ export class BenchRunner {
     }
     finally { clearInterval(timer); ctrl.abort(); }
     if (timedOut) return "timeout";
-    if (settled || (streamEnded && sawTerminal && activeRuns.size === 0)) {
+    const wholeSessionActive = workStateActive
+      ?? (activeRuns.size > 0 || activeBackgroundJobs.size > 0);
+    if (settled || (streamEnded && sawTerminal && !wholeSessionActive)) {
       return lastTerminalWasError ? "error" : "completed";
     }
     return "stream_end";
