@@ -1,14 +1,22 @@
 # B1: birdsong spectrogram
 
-A zebra finch sang while a Neuropixels probe recorded 85 threshold-crossing channels.
-The task predicts one vocalization spectrogram from each complete song motif.
+A Neuropixels probe recorded 85 threshold-crossing channels from a singing zebra finch. The task predicts one vocalization spectrogram for each complete song motif.
 It is not a human speech task.
-The active [task entry](task.yaml) and [acceptance record](acceptance.json) describe the locally checked version.
-Read the [FALCON paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/8c2e6bb15be1894b8fb4e0f9bcad1739-Abstract-Datasets_and_Benchmarks_Track.html), [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L159-L182), and [spectrogram scorer](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/evaluator.py#L603-L668).
 
 > [!NOTE]
-> This is a BrainPilotBench public-data task profile, not an official FALCON score.
-> Agent benchmark results are pending. The fixed reference is an interface check.
+> Agent benchmark results: not yet available. The fixed reference is an interface check, not an official FALCON score.
+
+## Task at a glance
+
+| Field | Task contract |
+|---|---|
+| Input | One `float32[27000,85]` neural motif: 900 ms sampled at 30 kHz. |
+| Output | One finite `float32[880,158]` vocalization spectrogram per motif. |
+| Split | Two earlier recording dates for Train, the last held-in date for Valid, and three calibration dates for evaluator-only Test. |
+| Metric | Native-mask normalized spectrogram MSE per motif, then the equal-weight date mean. Lower is better. |
+
+The active [task entry](task.yaml) and [acceptance record](acceptance.json) describe the locally checked version.
+Read the [FALCON paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/8c2e6bb15be1894b8fb4e0f9bcad1739-Abstract-Datasets_and_Benchmarks_Track.html), [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L159-L182), and [spectrogram scorer](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/evaluator.py#L603-L668).
 
 ## Data and split
 

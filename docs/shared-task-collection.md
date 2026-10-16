@@ -56,16 +56,12 @@ The catalog's `data_access` describes public Agent inputs.
 
 Large arrays and MRI files stay outside Git. The unified data layout uses
 `tasks/<category>/<task-id>/public/` at [Hugging Face revision `f50618208e3e748a8a16dfb6138e335f033d603c`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/f50618208e3e748a8a16dfb6138e335f033d603c/tasks).
-The data and 228 metadata files are published. Remote identity checks covered every hosted path.
-The current Hugging Face main tree removed 662 legacy paths at commit `46859131ae68fa2e1afdf91b5de135270563aaa0`.
-Old immutable revision URLs remain available. The cutover did not rewrite history or run garbage collection.
-The [delivery report](../reports/unified-public-delivery-20261015.json) records 116 anonymous root and task-manifest readbacks and 56 representative data downloads (426,564,046 bytes).
-All eight preparation checks passed: four fresh anonymous fetches and four verified existing public caches.
-The layout has 111 hosted task folders and 668 public files (37,945,533,281 bytes).
-BCI IV-4 contributes 14 files (324,773,839 bytes). H1 remains source-only under its source Data Use Agreement.
-The hosted count includes four retained v0 tasks. The four EEG preparation entries stay outside the runnable collection.
+The collection hosts public data for 111 tasks, including BCI IV-4 and the four retained v0 tasks.
+H1 remains source-only under its source Data Use Agreement.
+Each task guide explains the inputs, split, source terms, and required environment.
+The [data preparation record](data-preparation.md) preserves the fixed snapshots, transfer checks, and historical publication details.
 
-Run `node dist/cli.js prepare <task-id> --fetch --workspace /path/to/workspace` for one hosted task.
+Run `node dist/cli.js prepare <task-id> --fetch --workspace /absolute/outside-git/workspace` for one hosted task.
 The CLI verifies the pinned public files and copies mapped paths into `<workspace>/.bpb/public-data/`.
 Setup receives that root as `BPB_PUBLIC_DATA_ROOT`. Task-specific Python variables can still be required.
 BCI IV-4 and the four hosted FALCON scorers use staged `<workspace>/public_data`.

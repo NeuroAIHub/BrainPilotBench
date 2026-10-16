@@ -29,6 +29,31 @@ The public files retain their original source terms. The framework's MIT license
 BCI IV-4 has its own [source and citation instructions](../tasks/ieeg/ieeg-finger-flexion-bciciv4/README.md#source-and-citation).
 This repository does not assert a CC or Apache redistribution grant for BCI IV-4.
 
+## Maintain reader-facing task descriptions
+
+Task READMEs are the source for the descriptions shown on Hugging Face.
+Their introductions explain the research problem. Their task tables describe inputs, outputs, splits, and metrics.
+Internal `task.yaml` summaries do not replace this reader-facing text.
+
+The documentation builder reads the source guides, a frozen HF catalog, and public file manifests. It does not read arrays or upload files.
+Use a committed and published source revision for an update:
+
+```sh
+node scripts/build-hf-reader-docs.mjs \
+  --source-revision <published-github-commit> \
+  --catalog-input /path/to/frozen-hf-metadata/catalog.jsonl \
+  --manifest-root /path/to/frozen-hf-metadata \
+  --output /path/to/new-reader-docs
+```
+
+The builder creates task READMEs and updates only the catalog's `summary` fields.
+It rejects source guides that differ from the selected commit and introductions that lack reader-facing content.
+The four retained v0 tasks use descriptions and contract tables from their existing guides.
+Run `npm run test:reader-docs` to verify coverage, result labels, and catalog preservation.
+
+Review generated text and links before publication. Keep scientific manifests, data objects, and other catalog fields unchanged.
+The root HF README is reviewed separately. Documentation publication does not change task versions or add Agent results.
+
 <a id="historical-first-batch"></a>
 
 ## Historical first batch — 2026-10-13

@@ -1,8 +1,23 @@
 # Film speech versus music from clinical iEEG
 
+This task classifies speech and music intervals in a film from clinical ECoG and sEEG recordings. It tests held-out film blocks within each participant.
+
+> [!NOTE]
+> Agent benchmark results: not yet available. The fixed reference has one owner-only Test receipt.
+
+## Task at a glance
+
+| Field | Task contract |
+|---|---|
+| Input | One `float32[channels,512]` two-second neural window and an opaque participant ID. |
+| Output | One finite `float32` speech probability in `[0,1]` for each window. |
+| Split | Global film blocks: Train 1, 3, 6, 7, 8, 10, 13. Valid 4, 11. Evaluator-only Test 2, 5, 9, 12. |
+| Metric | Average window probabilities within each block. Compute balanced accuracy per participant, then average participants equally. Higher is better. |
+
 Status: **locally accepted public-validation task**, version `0.2-complete-guarded-windows`.
 The [task entry](task.yaml) is active; [acceptance.json](acceptance.json) binds its local checks to the exact files.
-No Agent benchmark result has been accepted. The fixed reference has one owner-only Test receipt.
+
+## Source and split
 
 The source is Berezutskaya et al. (2022), OpenNeuro `ds003688` version `1.0.7`.
 The [source manifest](source_manifest.json) pins the dataset commit and a small real example.
@@ -32,10 +47,12 @@ A block of at least 30 seconds can have 13 windows, through local second 26.
 The extraction never rounds a short block up, pads it, or reads another block.
 The old [representative receipt](representative_receipt.json) remains a historical version-1 result.
 
-## Full-cohort preparation
+<a id="full-cohort-preparation"></a>
+
+## Prepare the hosted public data
 
 Use Python 3.12 and install [requirements.txt](env/requirements.txt) in a separate environment.
-For an Agent workspace, use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task):
+For an Agent workspace, use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task). Public preparation does not require the private shuffle key or owner block mapping:
 
 ```sh
 BPB_FILM_PYTHON=/path/to/film-venv/bin/python \
@@ -49,6 +66,8 @@ The hosted public files do not contain the owner-held Test arrays or block mappi
 Preparation passed from a verified existing public cache.
 The [delivery acceptance](delivery-acceptance.json) binds the revised lock and setup to the [public delivery report](../../../reports/unified-public-delivery-20261015.json).
 This delivery check did not rerun the fixed reference or owner Test.
+
+## Owner source rebuild
 
 The commands below rebuild the frozen data from source and require the owner-held shuffle key.
 The owner stores source files, the shuffle key, derived files, and hidden lineage outside the Git checkout.
@@ -112,6 +131,8 @@ The Valid score covers all 51 eligible participants and 1,315 windows.
 Its block-first participant-macro balanced accuracy is 0.5098039215686274.
 An independent owner calculation returned the same Valid value.
 This fixed reference did not use Test for fitting or selection.
+
+## Model and scoring
 
 Submit exactly `model.py`, `config.json`, and `weights.safetensors`.
 `Model(config)` must return a PyTorch module.

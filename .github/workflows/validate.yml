@@ -98,6 +98,8 @@ jobs:
           BPB_TEST_INFERENCE_IMAGE: ${{ runner.os == 'Linux' && 'bpb-inference-test:ci' || '' }}
       - name: Documentation command smoke test
         run: npm run test:docs
+      - name: Reader documentation generator checks
+        run: npm run test:reader-docs
       - name: canary 检查
         run: node scripts/check-task-canary.mjs
       - name: Collection structure (no data downloads or reference training)

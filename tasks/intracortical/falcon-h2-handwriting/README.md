@@ -1,15 +1,21 @@
 # H2: attempted handwriting
 
-A BrainGate2 participant attempted to write prompted English sentences.
-Intracortical arrays recorded 192 spike-count channels in 20 ms bins.
-The task returns one sentence string after each complete trial.
-The primary metric is word error rate (WER). Character error rate (CER) is secondary.
-The active [task entry](task.yaml) and [acceptance record](acceptance.json) describe the locally checked version.
-Read the [FALCON paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/8c2e6bb15be1894b8fb4e0f9bcad1739-Abstract-Datasets_and_Benchmarks_Track.html) and [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L102-L113).
+A BrainGate2 participant attempted to write prompted English sentences while intracortical arrays recorded spike counts. The task decodes one sentence after each complete trial.
 
 > [!NOTE]
-> This is a BrainPilotBench public-data task profile, not an official FALCON score.
-> Agent benchmark results are pending. The fixed reference is an interface check.
+> Agent benchmark results: not yet available. The fixed reference is an interface check, not an official FALCON score.
+
+## Task at a glance
+
+| Field | Task contract |
+|---|---|
+| Input | One current mask-selected `float32[192]` neural bin per call. Bins are 20 ms apart and mark trial starts. |
+| Output | One UTF-8 sentence string of at most 2,048 bytes after each complete trial. |
+| Split | 20 earlier recording dates for Train, one later held-in date for Valid, and five calibration dates for evaluator-only Test. |
+| Metric | Word error rate (WER) per date, then the equal-weight date mean. Lower is better. Character error rate (CER) is secondary. |
+
+The active [task entry](task.yaml) and [acceptance record](acceptance.json) describe the locally checked version.
+Read the [FALCON paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/8c2e6bb15be1894b8fb4e0f9bcad1739-Abstract-Datasets_and_Benchmarks_Track.html) and [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L102-L113).
 
 ## Data and split
 

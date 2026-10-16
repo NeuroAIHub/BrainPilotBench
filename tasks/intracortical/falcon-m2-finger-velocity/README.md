@@ -1,7 +1,20 @@
 # M2: finger-group velocity
 
-M2 predicts two finger-group velocities from 96 intracortical channels.
-The [protocol](protocol.json) fixes three Train dates, one Valid date, and four evaluator-only Test dates.
+This task predicts two finger-group velocities from 96 macaque intracortical channels during finger control.
+
+> [!NOTE]
+> Agent benchmark results: not yet available. The fixed reference is an interface check, not an official FALCON score.
+
+## Task at a glance
+
+| Field | Task contract |
+|---|---|
+| Input | One current `float32[96]` neural bin per call, with a trial-start marker. Bins are 20 ms apart. |
+| Output | Finite `float32[2]` finger-group velocities for the current bin. |
+| Split | Three earlier recording dates for Train, one date for Valid, and four later dates for evaluator-only Test. |
+| Metric | Native-mask variance-weighted R² for each date, then the equal-weight mean across dates. Higher is better. |
+
+The [protocol](protocol.json) fixes the date split.
 The [asset manifest](../_preparation/assets.manifest.json) binds 13 assets from DANDI `000953` draft.
 These files total 15,792,196,664 bytes.
 The [native loader](https://github.com/snel-repo/falcon-challenge/blob/770c9b9597b8f58bf67b5a9ec6401ef705a2cb0f/falcon_challenge/dataloaders.py#L140-L157) uses velocity timestamps as 20 ms bin starts.
@@ -11,12 +24,12 @@ Status: **locally accepted public-validation task**, version `0.1-public-validat
 The [task entry](task.yaml) is active. [Acceptance evidence](acceptance.json) binds its critical files and fixed-reference checks.
 The [contract](contract.json) binds all 13 source assets, selected ranges, and derived arrays.
 The [data lock](data.lock) lists 30 hosted public derived files and 25 evaluator-only files.
-No Agent result is recorded. The owner Test reference report stays outside Git.
+The owner Test reference report stays outside Git.
 
 ## Data preparation
 
 The hosted Train/Valid files use the [unified public layout](../../../docs/invasive-task-preparation.md#prepare-one-public-task).
-Prepare a workspace with the pinned host Python:
+Use Python 3.12 with the [trusted preparation requirements](env/requirements.txt). Prepare a workspace with the pinned host Python:
 
     BPB_M2_PYTHON=/path/to/venv/bin/python \
       node dist/cli.js prepare falcon-m2-finger-velocity --fetch \
@@ -28,7 +41,6 @@ The [delivery acceptance](delivery-acceptance.json) binds the revised lock and s
 This delivery check did not rerun the fixed reference or owner Test.
 The original-source route below remains available for a local rebuild.
 
-Use Python 3.12 with [trusted preparation requirements](env/requirements.txt).
 Keep raw and derived roots outside Git checkouts.
 The [selected-range exporter](../_regression_shared/selective_m2.py) reads only the arrays used by the pinned native loader.
 It checks versioned DANDI metadata, the frozen ETag, `If-Match`, and each exact HTTP byte range.
