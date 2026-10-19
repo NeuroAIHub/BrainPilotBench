@@ -42,7 +42,8 @@
       "hosted_data_availability": "published_public_snapshot",
       "data_status": "published_public_package",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "maintainer_package_required"
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "celegans-structure-function-divergence",
@@ -61,7 +62,8 @@
       "hosted_data_availability": "published_public_snapshot",
       "data_status": "published_public_package",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "pinned_source_download"
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-cvep-thielen2015",
@@ -80,7 +82,9 @@
       "source_task_id": "cvep/thielen2015",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-cvep-thielen2021",
@@ -113,7 +117,9 @@
       "source_task_id": "dementia_diagnosis/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-erp-ern",
@@ -132,7 +138,9 @@
       "source_task_id": "ern/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-erp-lrp",
@@ -151,7 +159,9 @@
       "source_task_id": "lrp/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-erp-mmn",
@@ -170,7 +180,9 @@
       "source_task_id": "mismatch_negativity/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-erp-n170",
@@ -189,7 +201,9 @@
       "source_task_id": "n170/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-erp-n2pc",
@@ -208,7 +222,9 @@
       "source_task_id": "n2pc/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-erp-n400",
@@ -227,7 +243,9 @@
       "source_task_id": "n400/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-erp-p3",
@@ -246,7 +264,9 @@
       "source_task_id": "p3/kappenman2021p3",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-me-highgamma2017",
@@ -265,7 +285,9 @@
       "source_task_id": "motor_execution/schirrmeister2017",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-me-ofner2017",
@@ -284,7 +306,9 @@
       "source_task_id": "motor_execution/ofner2017",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-mental-arithmetic-zyma2019",
@@ -303,7 +327,9 @@
       "source_task_id": "mental_arithmetic/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-mi-barachant2012",
@@ -322,7 +348,9 @@
       "source_task_id": "motor_imagery/barachant2012",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-mi-bnci2014",
@@ -360,7 +388,9 @@
       "source_task_id": "motor_imagery/cho2017",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-mi-eegmmidb",
@@ -379,7 +409,9 @@
       "source_task_id": "motor_imagery/schalk2004bci2000",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-mi-openbmi2019",
@@ -398,7 +430,9 @@
       "source_task_id": "motor_imagery/lee2019mi",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-mi-zhou2016",
@@ -417,7 +451,9 @@
       "source_task_id": "motor_imagery/zhou2016",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-p3-openbmi2019",
@@ -436,7 +472,9 @@
       "source_task_id": "p3/lee2019erp",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-seizure-chbmit",
@@ -523,7 +561,9 @@
       "source_task_id": "sleep_stage/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-ssvep-openbmi2019",
@@ -542,7 +582,9 @@
       "source_task_id": "ssvep/lee2019ssvep",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "eeg-ssvep-wang2017",
@@ -580,7 +622,9 @@
       "source_task_id": "typing/default",
       "data_status": "published_public_package",
       "hosted_data_availability": "published_public_snapshot",
-      "data_access": "pinned_public_snapshot"
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
     },
     {
       "task_id": "falcon-b1-birdsong",
@@ -599,7 +643,8 @@
       "data_status": "source_bound_reproducible_export",
       "hosted_data_availability": "published_public_snapshot",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "pinned_source_download",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
       "validation_record": "tasks/intracortical/falcon-b1-birdsong/acceptance.json",
       "source_task_id": "b1",
       "source_verification": "full_source_files_and_derived_arrays_verified",
@@ -647,7 +692,8 @@
       "data_status": "source_bound_reproducible_export",
       "hosted_data_availability": "published_public_snapshot",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "pinned_source_download",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
       "validation_record": "tasks/intracortical/falcon-h2-handwriting/acceptance.json",
       "source_task_id": "h2",
       "source_verification": "full_source_files_and_derived_arrays_verified",
@@ -671,7 +717,8 @@
       "data_status": "source_bound_reproducible_export",
       "hosted_data_availability": "published_public_snapshot",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "pinned_source_download",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
       "validation_record": "tasks/intracortical/falcon-m1-emg/acceptance.json",
       "source_task_id": "m1",
       "source_verification": "full_source_files_and_derived_arrays_verified",
@@ -695,7 +742,8 @@
       "data_status": "source_bound_reproducible_export",
       "hosted_data_availability": "published_public_snapshot",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "maintainer_package_required",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
       "validation_record": "tasks/intracortical/falcon-m2-finger-velocity/acceptance.json",
       "source_task_id": "m2",
       "source_verification": "selected_source_ranges_and_full_derived_arrays_verified",
@@ -719,7 +767,8 @@
       "data_status": "owner_key_bound_prepared_export",
       "hosted_data_availability": "published_public_snapshot",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "pinned_source_download",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
       "validation_record": "tasks/ieeg/ieeg-film-speech-music/acceptance.json",
       "source_task_id": "ds003688/task-film",
       "source_verification": "native_source_digests_and_full_export_sha256_verified",
@@ -745,7 +794,8 @@
       "data_status": "source_bound_reproducible_export",
       "hosted_data_availability": "published_public_snapshot",
       "data_access": "pinned_public_snapshot",
-      "private_data_access": "maintainer_package_required",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
       "validation_record": "tasks/ieeg/ieeg-finger-flexion-bciciv4/acceptance.json",
       "source_verification": "full_source_files_and_derived_arrays_verified",
       "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",

@@ -5,6 +5,9 @@ This task predicts two finger-group velocities from 96 macaque intracortical cha
 > [!NOTE]
 > Agent benchmark results: not yet available. The fixed reference is an interface check, not an official FALCON score.
 
+Maintainers can prepare the hosted Test package and evaluate a frozen submission through the [private evaluation workflow](../../../docs/private-evaluation.md).
+This explicit route writes `scores.private.json`; the task's existing default scoring entry remains unchanged.
+
 ## Task at a glance
 
 | Field | Task contract |

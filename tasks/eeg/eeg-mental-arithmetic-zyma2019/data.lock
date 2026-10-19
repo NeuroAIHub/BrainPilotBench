@@ -21,3 +21,21 @@ datasets:
     sha256: 40f14d4c7125d761a1d9869b903f25181d2215b4b850add16327487d2a5c6480
     bytes: 23027
     scope: public
+  - name: evaluator__test__binding.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-mental-arithmetic-zyma2019/evaluator/test/binding.json
+    sha256: 806c2f3bde046c3436721565f13588327895b71e0d2e3e409ff958085c15b656
+    bytes: 1452
+    format: json
+  - name: evaluator__test__test-labels.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-mental-arithmetic-zyma2019/evaluator/test/test-labels.npy
+    sha256: 6d172fb55d1a9315bb308ff58699b30151b4bbeff35f809993b2e84edcec5aa8
+    bytes: 2816
+    format: npy
+  - name: evaluator__test__test.npz
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-mental-arithmetic-zyma2019/evaluator/test/test.npz
+    sha256: 743d3d7da5a12f3fa79df1b45af6db64538f30351825271b2f35777c03dad0c0
+    bytes: 16128256
+    format: npz

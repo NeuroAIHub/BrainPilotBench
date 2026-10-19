@@ -4,7 +4,7 @@ Agents develop classifiers for motor imagery, evoked responses, sleep stages,
 and other EEG conditions. Each task defines its own input representation, data
 split, and scoring profile.
 
-The EEG category in BrainPilotBench v1 includes 23 new public-validation tasks and the two retained
+The EEG category in BrainPilotBench v1 includes 23 new tasks with public validation and the two retained
 BrainPilotBench-v0 EEG tasks. The v1 additions cover 21 imported AgentEEGBench
 protocols, a native BCI-IV-2a protocol, and full Sleep-EDF sleep staging.
 
@@ -16,7 +16,7 @@ protocols, a native BCI-IV-2a protocol, and full Sleep-EDF sleep staging.
 
 | EEG collection status | Count | Boundary |
 | --- | ---: | --- |
-| v1 additions | 23 | Public train and validation only. No imported private Test score. |
+| v1 additions | 23 | Public Train/Valid. A separate maintainer Test route is available for 21 tasks. |
 | Retained v0 tasks | 2 | Included in v1, with their own data and scoring protocols. |
 | Preparation candidates | 4 | Not registered as runnable tasks. |
 | Withheld candidate | 1 | Not activated in this collection. |
@@ -57,6 +57,14 @@ node dist/cli.js prepare <task-id> --workspace /absolute/new-workspace
 ```
 
 Each task page gives its input shape, split, class count, metric, submission files, and source version. The [shared EEG guide](_shared/README.md) explains the isolated inference path. The public download does not include private Test data or labels.
+
+## Maintainer Test evaluation
+
+Twenty-one new EEG tasks have pinned private packages and an explicit `score --private` entry.
+The native BNCI2014 and Wang2017 processed Test packages remain source-only while redistribution permission is unconfirmed.
+The private scorer preserves the metric profile and three-seed contract. It does not expose Test labels to the Agent or replace public validation.
+See the [private evaluation guide](../../docs/private-evaluation.md) for preparation, freezing, and isolated scoring.
+These integration checks do not establish Agent benchmark results.
 
 ## Other EEG entries
 

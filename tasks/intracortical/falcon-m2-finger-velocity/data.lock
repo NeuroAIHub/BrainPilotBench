@@ -272,7 +272,7 @@
     },
     {
       "name": "m2-test-manifest.json",
-      "uri": "local://evaluator/test/manifest.json",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/manifest.json",
       "sha256": "caf1f950f12f1c8b6d8d2e3d851da74d2c69c80d5a7425e9bb3b02367e3c9d7a",
       "bytes": 8642,
       "format": "json",
@@ -280,7 +280,7 @@
     },
     {
       "name": "m2-test-0001-x.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0001/x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0001/x.npy",
       "sha256": "c921a762051c383342f034697e94fa383b6274c5183776d37e3c6e913f75788d",
       "bytes": 261920,
       "format": "npy",
@@ -288,7 +288,7 @@
     },
     {
       "name": "m2-test-0001-y.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0001/y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0001/y.npy",
       "sha256": "8216505cebe051e0255f0a329aafb66bc970168dd25b42863c938962e6a6106b",
       "bytes": 43760,
       "format": "npy",
@@ -296,7 +296,7 @@
     },
     {
       "name": "m2-test-0001-mask.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0001/mask.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0001/mask.npy",
       "sha256": "b3ad721023db29b0b5006f58cd43a8271d7ed1727e89cbde3eb7d190c7620918",
       "bytes": 2855,
       "format": "npy",
@@ -304,7 +304,7 @@
     },
     {
       "name": "m2-test-0001-trial_start.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0001/trial_start.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0001/trial_start.npy",
       "sha256": "a45660c0b72f4d7f4bca6cc5a4bdd233e9707bf1e3ae904e1957774bd5f58dee",
       "bytes": 2855,
       "format": "npy",
@@ -312,7 +312,7 @@
     },
     {
       "name": "m2-test-0002-x.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0002/x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0002/x.npy",
       "sha256": "070c39b4ec4b97d74d43bd033f1e0626659efbffb846a9e5311575ed2e87fc80",
       "bytes": 244928,
       "format": "npy",
@@ -320,7 +320,7 @@
     },
     {
       "name": "m2-test-0002-y.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0002/y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0002/y.npy",
       "sha256": "d7a2d754ca365da199308fbbcc53526cd11a9c5ad71c6249024b0727d0d66933",
       "bytes": 40928,
       "format": "npy",
@@ -328,7 +328,7 @@
     },
     {
       "name": "m2-test-0002-mask.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0002/mask.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0002/mask.npy",
       "sha256": "24c6f6fd2b3807058e3e19c4887845c7fe5e8ac27a944ee974841b074145ea8e",
       "bytes": 2678,
       "format": "npy",
@@ -336,7 +336,7 @@
     },
     {
       "name": "m2-test-0002-trial_start.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0002/trial_start.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0002/trial_start.npy",
       "sha256": "cc3ab5e0eb4ad3afa775a47bf8c82674d266b9a2d6c0af1e3c55e5462b88d86b",
       "bytes": 2678,
       "format": "npy",
@@ -344,7 +344,7 @@
     },
     {
       "name": "m2-test-0003-x.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0003/x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0003/x.npy",
       "sha256": "04a87f5e828676a8b4e5228e9327907f519bef877d6bfb141a45e0240756278b",
       "bytes": 241760,
       "format": "npy",
@@ -352,7 +352,7 @@
     },
     {
       "name": "m2-test-0003-y.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0003/y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0003/y.npy",
       "sha256": "0a505b85528e8b530346cf7e5eaddaeef0f82a4e7b02764aa6f7fb8d77e8a487",
       "bytes": 40400,
       "format": "npy",
@@ -360,7 +360,7 @@
     },
     {
       "name": "m2-test-0003-mask.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0003/mask.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0003/mask.npy",
       "sha256": "a1621486e90e57e563bb3cc2c0b00ef201c0c69974127d76f21eb14f0c28b49b",
       "bytes": 2645,
       "format": "npy",
@@ -368,7 +368,7 @@
     },
     {
       "name": "m2-test-0003-trial_start.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0003/trial_start.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0003/trial_start.npy",
       "sha256": "d2238f22c7616d3f487894a369d1408e279ed947923a1df906fd63f53e474c1a",
       "bytes": 2645,
       "format": "npy",
@@ -376,7 +376,7 @@
     },
     {
       "name": "m2-test-0004-x.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0004/x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0004/x.npy",
       "sha256": "2a6c7a4d74bb45a6ab574084b77f25ad2be3749d3e124d362155582e90e84eb2",
       "bytes": 292448,
       "format": "npy",
@@ -384,7 +384,7 @@
     },
     {
       "name": "m2-test-0004-y.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0004/y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0004/y.npy",
       "sha256": "f9240180f0ae3a5454e6022f754178ef088540bab1b95697546d20f73256f81a",
       "bytes": 48848,
       "format": "npy",
@@ -392,7 +392,7 @@
     },
     {
       "name": "m2-test-0004-mask.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0004/mask.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0004/mask.npy",
       "sha256": "41592eb53d5e102f02cb366a8044218835c8d3d890f4f138e5de988a0a80fa40",
       "bytes": 3173,
       "format": "npy",
@@ -400,7 +400,7 @@
     },
     {
       "name": "m2-test-0004-trial_start.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0004/trial_start.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0004/trial_start.npy",
       "sha256": "63917e3e50b72a51ecef5d37869d668eb92a71be3b63d119d9236605bdfb1a35",
       "bytes": 3173,
       "format": "npy",
@@ -408,7 +408,7 @@
     },
     {
       "name": "m2-test-0005-x.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0005/x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0005/x.npy",
       "sha256": "2b6107d2e0ad74ea14974ffedbc24309967fc3c49d6e331b080295b42e6bfeff",
       "bytes": 212672,
       "format": "npy",
@@ -416,7 +416,7 @@
     },
     {
       "name": "m2-test-0005-y.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0005/y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0005/y.npy",
       "sha256": "7a38ba0667b8043213785f601e2fc76965180139eba462b01aa57112d53f631e",
       "bytes": 35552,
       "format": "npy",
@@ -424,7 +424,7 @@
     },
     {
       "name": "m2-test-0005-mask.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0005/mask.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0005/mask.npy",
       "sha256": "a335fcb7b812746a0c8c7879a9e845a6f96eae7986817cd2dd2fc41d1285211c",
       "bytes": 2342,
       "format": "npy",
@@ -432,7 +432,7 @@
     },
     {
       "name": "m2-test-0005-trial_start.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0005/trial_start.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0005/trial_start.npy",
       "sha256": "4d2622110c245dc03d00d9b9b817424b2e936c61277437cd439dc73f24e70f15",
       "bytes": 2342,
       "format": "npy",
@@ -440,7 +440,7 @@
     },
     {
       "name": "m2-test-0006-x.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0006/x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0006/x.npy",
       "sha256": "ccee4553563725c2daa399ddd604e37d05581f65c116a26dcf37e0eeecc64860",
       "bytes": 225728,
       "format": "npy",
@@ -448,7 +448,7 @@
     },
     {
       "name": "m2-test-0006-y.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0006/y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0006/y.npy",
       "sha256": "6e2b58ea5c95c98639bab9428ea1bb33bac8c145d4acc65836de09e5e8f0b646",
       "bytes": 37728,
       "format": "npy",
@@ -456,7 +456,7 @@
     },
     {
       "name": "m2-test-0006-mask.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0006/mask.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0006/mask.npy",
       "sha256": "d3c8574966e7a93869d8656b62ae1a1225ac3ed834526387ef371cda8e15e520",
       "bytes": 2478,
       "format": "npy",
@@ -464,7 +464,7 @@
     },
     {
       "name": "m2-test-0006-trial_start.npy",
-      "uri": "local://evaluator/test/runs/m2-test-0006/trial_start.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-m2-finger-velocity/evaluator/test/runs/m2-test-0006/trial_start.npy",
       "sha256": "10d3c4545f85eb5a5ca8112148c9185350422778724a61751c90f54ee7b3c167",
       "bytes": 2478,
       "format": "npy",

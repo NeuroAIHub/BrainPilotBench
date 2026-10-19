@@ -1,5 +1,5 @@
 /** End-to-end workspace preparation and submission bundle assembly. */
-import { closeSync, constants, existsSync, fstatSync, ftruncateSync, linkSync, lstatSync, mkdirSync, openSync, readFileSync, readSync, rmSync, unlinkSync, writeFileSync, writeSync } from "node:fs";
+import { closeSync, constants, existsSync, fstatSync, ftruncateSync, linkSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, readSync, realpathSync, rmSync, unlinkSync, writeFileSync, writeSync } from "node:fs";
 import { createHash, randomUUID } from "node:crypto";
 import { basename, dirname, join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
@@ -49,6 +49,44 @@ export function assertAgentDataBoundary(task: Task): void {
     .map((entry) => entry.name);
   if (cachedPrivate.length) {
     throw new Error(`private evaluator data exists in the Agent cache (${cachedPrivate.join(", ")}); use a separate evaluator cache and remove it from the Agent environment`);
+  }
+}
+
+/** A private preparation/cache must never become an Agent workspace or ancestor mount. */
+export function assertNoEvaluatorWorkspace(workspace: string): void {
+  const markers = [".bpb-evaluator.json", ".bpb-preparing.json", ".bpb-private-cache.json", "PRIVATE_PREPARED.json"];
+  const root = resolve(workspace);
+  const inspect = (dir: string) => {
+    if (markers.some((name) => existsSync(join(dir, name)))) throw new Error("evaluator data or cache cannot be used inside an Agent workspace");
+  };
+  const ancestors = (path: string) => {
+    for (let dir = path; ; dir = dirname(dir)) {
+      inspect(dir);
+      if (dirname(dir) === dir) break;
+    }
+  };
+  ancestors(root);
+  if (!existsSync(root)) return;
+  const pending = [root];
+  const seen = new Set<string>();
+  let visited = 0;
+  while (pending.length) {
+    const dir = pending.pop()!;
+    const canonical = realpathSync(dir);
+    if (seen.has(canonical)) continue;
+    seen.add(canonical);
+    inspect(dir);
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (++visited > 100_000) throw new Error("workspace is too large to verify private-data isolation; use a fresh dedicated Agent workspace");
+      if (entry.isDirectory()) pending.push(join(dir, entry.name));
+      if (entry.isSymbolicLink()) {
+        let target: string;
+        try { target = realpathSync(join(dir, entry.name)); }
+        catch { continue; } // Existing workspace/materialization guards handle dangling links.
+        ancestors(target);
+        if (lstatSync(target).isDirectory()) pending.push(target);
+      }
+    }
   }
 }
 
@@ -168,6 +206,7 @@ function materializePublicData(task: Task, workspaceDir: string): string | undef
 export function prepareWorkspace(task: Task, workspaceDir: string): { setupRan: boolean; promptPath: string; publicDataRoot?: string } {
   assertAgentDataBoundary(task);
   const absoluteWorkspaceDir = resolve(workspaceDir);
+  assertNoEvaluatorWorkspace(absoluteWorkspaceDir);
   const hasMappedPublicData = validatePublicDatasetPaths(task.datasets).length > 0;
   if (hasMappedPublicData) assertPlainWorkspaceAncestors(absoluteWorkspaceDir);
   mkdirSync(absoluteWorkspaceDir, { recursive: true });
@@ -219,6 +258,7 @@ export async function buildSubmissionBundle(opts: {
   const { task, result, workspaceDir, runDir, agent } = opts;
   rmSync(join(runDir, "artifacts"), { recursive: true, force: true });
   rmSync(join(runDir, "scores.json"), { force: true });
+  rmSync(join(runDir, "scores.private.json"), { force: true });
   mkdirSync(join(runDir, "artifacts"), { recursive: true });
   const producedAt = new Date().toISOString();
   const meta: SubmissionMeta = {

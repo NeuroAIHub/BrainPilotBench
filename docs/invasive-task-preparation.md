@@ -154,6 +154,9 @@ This repository does not assert a CC or Apache license grant for its data.
 
 ### Prepare one public task
 
+For the six hosted tasks, the [private evaluation guide](private-evaluation.md) provides separate maintainer download and Test commands.
+H1 retains its original-source route. Public preparation below does not download evaluator data.
+
 Install the task's pinned Python requirements before preparation. Then run one task from the repository root:
 
 ```sh

@@ -2,6 +2,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, lstatSync, readFileSync, readdirSync } from "node:fs";
 import { join, relative, resolve, sep } from "node:path";
+import { validatePrivateEvaluatorIncrement } from "./private-evaluator-increment.mjs";
 
 const sha256 = bytes => createHash("sha256").update(bytes).digest("hex");
 const hex64 = value => /^[0-9a-f]{64}$/.test(value ?? "");
@@ -84,19 +85,36 @@ function validateDelivery(root, dir, task, acceptanceBytes, record, changedFiles
       JSON.stringify(Object.keys(delivery.new_file_sha256 ?? {}).sort()) !== JSON.stringify(allowed.sort()) ||
       JSON.stringify(changedFiles.sort()) !== JSON.stringify(allowed.sort()))
     throw new Error(`${deliveryPath}: invalid delivery binding or changed scope`);
+  let increment;
+  const currentIncrement = () => {
+    increment ??= validatePrivateEvaluatorIncrement(root);
+    const item = increment.byId.get(task.meta.id);
+    if (!item || item.prior_delivery_sha256 !== sha256(readFileSync(deliveryPath)))
+      throw new Error(`${deliveryPath}: private increment does not bind this delivery receipt`);
+    return item;
+  };
   for (const file of allowed) {
+    const actual = sha256(boundFile(root, file, [`${prefix}/`]));
     if (delivery.old_file_sha256[file] !== record.file_sha256[file] ||
         !hex64(delivery.new_file_sha256[file]) ||
-        sha256(boundFile(root, file, [`${prefix}/`])) !== delivery.new_file_sha256[file])
+        (actual !== delivery.new_file_sha256[file] &&
+          (file !== `${prefix}/data.lock` || currentIncrement().data_lock_sha256 !== actual ||
+            currentIncrement().prior_data_lock_sha256 !== delivery.new_file_sha256[file])))
       throw new Error(`${deliveryPath}: stale or incorrect delivery hash for ${file}`);
   }
   const bridge = delivery.bridge_file_sha256;
   if (!bridge || bridgeFiles.some(file => !hex64(bridge[file])) ||
       Object.keys(bridge).some(file => ![...bridgeFiles, ...optionalBridgeFiles].includes(file)))
     throw new Error(`${deliveryPath}: incomplete bridge bindings`);
-  for (const [file, expected] of Object.entries(bridge))
-    if (!hex64(expected) || sha256(boundFile(root, file, ["src/"])) !== expected)
-      throw new Error(`${deliveryPath}: stale bridge hash for ${file}`);
+  for (const [file, expected] of Object.entries(bridge)) {
+    const actual = sha256(boundFile(root, file, ["src/"]));
+    if (!hex64(expected)) throw new Error(`${deliveryPath}: invalid bridge hash for ${file}`);
+    if (actual !== expected) {
+      currentIncrement();
+      if (increment.report.core_file_sha256[file] !== actual)
+        throw new Error(`${deliveryPath}: stale bridge hash for ${file}`);
+    }
+  }
   const reportBinding = delivery.verification_report;
   if (!reportBinding || !hex64(reportBinding.sha256) ||
       !/^(?:tasks|reports)\/[A-Za-z0-9._/-]+\.json$/.test(reportBinding.path ?? ""))

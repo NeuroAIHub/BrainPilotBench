@@ -77,6 +77,9 @@ jobs:
         run: |
           set -euo pipefail
           python3 -B tasks/eeg/_shared/test_boundaries.py
+          python3 -B tasks/eeg/_shared/test_private_score.py
+          python3 -B tasks/_shared/evaluator/test_score.py
+          python3 -B tasks/_shared/evaluator/test_prepare.py
           python3 -B tasks/eeg/_preparation/test_contract.py
           python3 -B tasks/eeg/_preparation/test_package_public.py
           python3 -B tasks/eeg/_preparation/test_paths.py
@@ -107,6 +110,7 @@ jobs:
           npm run test:collection
           npm run catalog:check
           npm run test:invasive-metadata
+          node --test scripts/build-private-evaluator-locks.test.mjs scripts/private-evaluator-increment.test.mjs
           node dist/cli.js validate all --schema-only
       - name: Invasive contract and recovery unit checks (no research data)
         run: |

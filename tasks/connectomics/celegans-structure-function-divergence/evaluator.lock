@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "celegans-structure-function-divergence",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "aconnectome_white_1986_whole.csv",
+      "path": "aconnectome_white_1986_whole.csv",
+      "sha256": "768d2b16557d768b51f81548f630adb45d76c1f99586e8fd4c90279293cc9dae",
+      "bytes": 64492
+    },
+    {
+      "name": "cook2019_matlab_ready.zip",
+      "path": "cook2019_matlab_ready.zip",
+      "sha256": "734202acc42c30a5cce882e695bb2efa333ade5b76345d7e35908342ee640b2c",
+      "bytes": 160062
+    },
+    {
+      "name": "witvliet_2020_8.csv",
+      "path": "witvliet_2020_8.csv",
+      "sha256": "d6627c50f4295291e68c071e001e1e302b03d2d472a7f251f90cb36839e9be1a",
+      "bytes": 54974
+    }
+  ]
+}

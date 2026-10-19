@@ -21,3 +21,21 @@ datasets:
     sha256: 1ed37c5b34b238f60c54fd43aec2a5347822181b7cb54e418cbceed7542c7aae
     bytes: 88535
     scope: public
+  - name: evaluator__test__binding.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-cvep-thielen2015/evaluator/test/binding.json
+    sha256: 424392bc73731cf8bba5229b27899b30328eaa6fd4ff76a4e96003417369b3ff
+    bytes: 1441
+    format: json
+  - name: evaluator__test__test-labels.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-cvep-thielen2015/evaluator/test/test-labels.npy
+    sha256: 2533975282707f590379e69f3801624537337d5f8a2e3ce88e288bfab6a9f63a
+    bytes: 10496
+    format: npy
+  - name: evaluator__test__test.npz
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-cvep-thielen2015/evaluator/test/test.npz
+    sha256: a57d011f66484dbeed9953784ea519f66e8307e397e6732d5086fbe202ee1bab
+    bytes: 39813376
+    format: npz

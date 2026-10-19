@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "eeg-me-ofner2017",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__binding.json",
+      "path": "test/binding.json",
+      "sha256": "903e627789cc273f5d4bddcba4a2fc5b45382fa2492337d7f464360505e1e634",
+      "bytes": 1445
+    },
+    {
+      "name": "evaluator__test__test-labels.npy",
+      "path": "test/test-labels.npy",
+      "sha256": "935826cf784a55c4174645943c9dc614962a61760635e6b1f381575c79b8825f",
+      "bytes": 10208
+    },
+    {
+      "name": "evaluator__test__test.npz",
+      "path": "test/test.npz",
+      "sha256": "19a924e47a86f691362a6d3beec1463d6e8a37c939c29e0dfe3485369c86a114",
+      "bytes": 110678656
+    }
+  ]
+}

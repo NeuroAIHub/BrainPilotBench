@@ -13,6 +13,8 @@ import { loadTask } from "../dist/loader.js";
 import { loadCategories } from "../dist/categories.js";
 import { validateTaskSchema } from "../dist/validate.js";
 import { readInvasiveCandidates, invasiveDomains, invasiveCatalogRow } from "./invasive-candidates.mjs";
+import { readInvasiveAcceptance } from "./invasive-acceptance.mjs";
+import { validatePrivateEvaluatorIncrement, privateScoreEntry } from "./private-evaluator-increment.mjs";
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const tasksRoot = join(repo, "tasks");
@@ -79,6 +81,9 @@ function addIdentity(map, id, origin) {
 const identities = new Map();
 const runnables = new Map();
 const registry = loadCategories(repo);
+let privateIncrement = null;
+try { privateIncrement = validatePrivateEvaluatorIncrement(repo); }
+catch (error) { fail(`private evaluator increment: ${error.message}`); }
 for (const dir of discoverTaskDirs([tasksRoot])) {
   const relDir = relative(repo, dir).split(sep).join("/");
   const components = relative(tasksRoot, dir).split(sep);
@@ -93,6 +98,11 @@ for (const dir of discoverTaskDirs([tasksRoot])) {
   if (runnables.has(id)) fail(`duplicate runnable id ${id}`);
   runnables.set(id, { task, dir, relDir, domain: components[0] });
   if (id !== components[1]) fail(`${relDir}: task.yaml id differs from directory`);
+  if (["ieeg", "intracortical"].includes(components[0])) {
+    try {
+      if (!readInvasiveAcceptance(repo, dir, task)) fail(`${relDir}: missing scientific acceptance`);
+    } catch (error) { fail(`${relDir}: acceptance: ${error.message}`); }
+  }
 
   for (const issue of validateTaskSchema(task, registry)) {
     if (issue.level === "error") fail(`${relDir}: schema: ${issue.msg}`);
@@ -267,9 +277,15 @@ if (catalog) {
             fail(`catalog ${id}: public package status mismatch`);
           }
           const privateDatasets = datasets.filter(d => d.scope === "private");
-          const privateAccess = privateDatasets.length ? access(privateDatasets) : undefined;
+          const privateAccess = privateIncrement?.byId.has(id) ? "pinned_private_snapshot"
+            : privateDatasets.length ? access(privateDatasets) : undefined;
           if (entry.private_data_access !== privateAccess)
             fail(`catalog ${id}: private data access mismatch`);
+          const privateEntry = privateIncrement?.byId.has(id) ? privateScoreEntry : undefined;
+          if (entry.private_score_entry !== privateEntry)
+            fail(`catalog ${id}: private score entry mismatch`);
+          if (existsSync(join(runnables.get(id).dir, "evaluator.lock")) && !privateIncrement?.byId.has(id))
+            fail(`catalog ${id}: evaluator.lock is outside the frozen private increment`);
         }
       } else {
         const metadataPath = insideRepo(entry.metadata_file, `catalog ${id} metadata_file`);

@@ -1,0 +1,50 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "ieeg-finger-flexion-bciciv4",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "bci-test-manifest.json",
+      "path": "test/manifest.json",
+      "sha256": "1463ffa30f6ca08be5b2f46acc1a1c7367affd097001d8badddbb64228866caa",
+      "bytes": 2239
+    },
+    {
+      "name": "bci-test-sub1-x.npy",
+      "path": "test/sub1/x.npy",
+      "sha256": "54cbeb8b6ab46ff52f4aecd18afc1d41b462264ca49d3c484487fee276c36097",
+      "bytes": 49600128
+    },
+    {
+      "name": "bci-test-sub1-y.npy",
+      "path": "test/sub1/y.npy",
+      "sha256": "9ec74830e3d61284606c04c54118c132baff4249b3c750a39cc1205415147f1f",
+      "bytes": 8000128
+    },
+    {
+      "name": "bci-test-sub2-x.npy",
+      "path": "test/sub2/x.npy",
+      "sha256": "b6a9db590d0cbc5bf3aaa4f4108a03ec787f30232b47b112ac0c5827bfe57383",
+      "bytes": 38400128
+    },
+    {
+      "name": "bci-test-sub2-y.npy",
+      "path": "test/sub2/y.npy",
+      "sha256": "b67abd5f03d7d41faaec7d8275f840c005cd7751e4300c9b0d48dba274ecd507",
+      "bytes": 8000128
+    },
+    {
+      "name": "bci-test-sub3-x.npy",
+      "path": "test/sub3/x.npy",
+      "sha256": "9d1233d83b047dcd49fb8b9752b134d2ee810dda9bcdbc1d297d1bf34454df14",
+      "bytes": 51200128
+    },
+    {
+      "name": "bci-test-sub3-y.npy",
+      "path": "test/sub3/y.npy",
+      "sha256": "92c32a05cf65cc93d13d0f195c71646f21e60b4bb82bd5427506e6409fed80aa",
+      "bytes": 8000128
+    }
+  ]
+}

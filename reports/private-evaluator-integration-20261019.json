@@ -1,0 +1,111 @@
+{
+  "schema": "bpb-private-evaluator-integration/1",
+  "status": "representative_integration_passed",
+  "checked_at": "2026-10-19T09:07:10.449Z",
+  "source_base_commit": "7306cc0b0e8958cc8f84918b68446310d8dbc662",
+  "candidate": "local_worktree_not_committed_or_merged",
+  "data_revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "coverage": {
+    "hosted_tasks": 29,
+    "private_files": 301,
+    "private_bytes": 8353488018,
+    "public_entries_unchanged": 504
+  },
+  "code_binding": {
+    "path": "reports/private-evaluator-increment-20261019.json",
+    "sha256": "4ae822a6c2bf8bd3ab6099fc81927b36d6d57f7eed24dd6ccb3c7c9326051f1a"
+  },
+  "representative_private_scores": [
+    {
+      "task_id": "eeg-mi-barachant2012",
+      "status": "passed",
+      "scope": "fixed_reference_private_interface_not_Agent_benchmark",
+      "result_sha256": "7a1fe97f53e5dad26cf6295297843f9c637b4248badce233a137e015ef2c51d6",
+      "frozen_submission_sha256": "f4c436545de5ad3174016c594c6be87ef07e45a4947f7aee26044c29e55446d0",
+      "reference_source": "fixed ridge=10 fit on public Train only",
+      "Test_tuning": false
+    },
+    {
+      "task_id": "ieeg-finger-flexion-bciciv4",
+      "status": "passed",
+      "scope": "fixed_reference_private_interface_not_Agent_benchmark",
+      "result_sha256": "ac69f81148c6266a79b100b245d45670ef1a2acf9eddb5bc0460444478459922",
+      "frozen_submission_sha256": "5f45f8b92af8539874a5ae8012f202b0e876fe8fc26d46aad88b86cd2218c880",
+      "reference_source": "unchanged prior fixed reference",
+      "Test_tuning": false
+    },
+    {
+      "task_id": "celegans-structure-function-divergence",
+      "status": "passed",
+      "scope": "fixed_reference_private_interface_not_Agent_benchmark",
+      "result_sha256": "89588332d75d11ebe8b1110fdf2c4968487b6b0d6a0912af005cb67a19abf8d3",
+      "frozen_submission_sha256": "920bd03c4fde3eddd44b898d851318a99dd52668e9294cc4ddcb7184b1038908",
+      "reference_source": "unchanged prior fixed reference",
+      "Test_tuning": false
+    }
+  ],
+  "representative_preparation": {
+    "task_id": "brain-age-mri",
+    "preparation": "passed",
+    "private_scoring": "not_run_this_change",
+    "receipt_sha256": "0000342b8ce8b696ca7ec6b9fa753ae95029bf8293e4d099a513caabacf80284",
+    "prepared_files": 116
+  },
+  "fresh_network_fetch": [
+    "eeg-mi-barachant2012",
+    "celegans-structure-function-divergence"
+  ],
+  "verified_local_source_reuse": [
+    "ieeg-finger-flexion-bciciv4",
+    "brain-age-mri"
+  ],
+  "public_preparation_regression": {
+    "task_id": "eeg-mi-barachant2012",
+    "status": "passed",
+    "public_files": 4,
+    "private_data_staged": false
+  },
+  "tests": {
+    "typescript_build": "passed",
+    "typescript_typecheck": "passed",
+    "node": {
+      "total": 251,
+      "passed": 248,
+      "skipped": 3
+    },
+    "python_private_and_shared_boundary": {
+      "passed": 27
+    },
+    "lock_and_increment": {
+      "passed": 11
+    },
+    "reader_docs": {
+      "passed": 9
+    },
+    "invasive_metadata": {
+      "passed": 9
+    },
+    "docs_smoke_tasks": 112,
+    "canary_task_files": 113,
+    "catalog": "passed",
+    "collection": "passed"
+  },
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "node": "v24.13.0",
+    "docker": "29.5.2"
+  },
+  "limits": {
+    "all_tasks_private_scored": false,
+    "formal_Agent_benchmark_run": false,
+    "Test_tuned_models": false,
+    "new_model_training": "One deterministic EEG ridge reference using only public Train; existing BCI and worm references unchanged",
+    "synthetic_data_published": false,
+    "remote_writes": false,
+    "main_merged": false,
+    "upstream_official_score_equivalence": false,
+    "nonrepresentative_tasks": "Binding, dispatch, and failure-path checks only; no full real-data model replay"
+  },
+  "result_handling": "Reference Test values stay in owner-only local receipts; public validation results and historical acceptance records remain separate"
+}

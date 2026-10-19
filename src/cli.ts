@@ -22,7 +22,7 @@
  */
 import { installProxyFromEnv } from "./proxy.js";
 installProxyFromEnv();
-import { existsSync, writeFileSync, readFileSync } from "node:fs";
+import { existsSync, writeFileSync, readFileSync, lstatSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadTask } from "./loader.js";
 import { discoverTaskDirs } from "./discover.js";
@@ -41,6 +41,9 @@ import type { DatasetEntry, FetchProgress } from "./data/types.js";
 import { runDoctor } from "./doctor.js";
 import { dockerImageStatus, dockerStatus } from "./isolation.js";
 import { collectTelemetryStats, renderTelemetryStats, type TelemetryFormat } from "./telemetry.js";
+import { evaluatorCacheRoot, evaluatorDatasets, prepareEvaluatorData, readEvaluatorLock } from "./evaluator.js";
+import { evaluatorTool, runPrivateScorer, writePrivateScores } from "./private-score.js";
+import { localSubprocessSandbox } from "./sandbox.js";
 
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -184,6 +187,28 @@ async function main() {
     console.log(`  prompt: ${prepared.promptPath}`);
     console.log(`  setup: ${prepared.setupRan ? "ran" : "not required"}`);
     if (prepared.publicDataRoot) console.log(`  public data: ${prepared.publicDataRoot}`);
+    return;
+  }
+
+  if (cmd === "prepare-evaluator") {
+    const dir = dirsByTaskId(argv[1])[0];
+    if (!dir) throw new Error(`找不到任务：${argv[1]}`);
+    const root = arg("--evaluator-root");
+    if (!root) throw new Error("prepare-evaluator requires --evaluator-root <owner-only directory ending in /evaluator>");
+    const task = loadTask(dir);
+    const prepared = await prepareEvaluatorData(task, root, {
+      fetch: argv.includes("--fetch"), cacheRoot: arg("--cache-root"), onProgress: downloadProgress(),
+    });
+    if (["brain-age-mri", "celegans-structure-function-divergence"].includes(task.meta.id)) {
+      const result = await localSubprocessSandbox().run({ command: arg("--python", "python3")!,
+        args: [evaluatorTool(task, "prepare.py"), "--task", resolve(task.dir), "--data", prepared.root,
+          "--cache-root", evaluatorCacheRoot(task, arg("--cache-root"), [prepared.root])],
+        cwd: prepared.root, timeoutMs: 20 * 60_000 });
+      if (result.exitCode !== 0 || result.timedOut) throw new Error("evaluator source files are verified, but task preparation failed; check the task Python environment; no score was run");
+    }
+    console.log(`${G}✓${X} prepared evaluator ${task.meta.id} → ${prepared.root}`);
+    console.log(`  ${prepared.files} private files, ${prepared.bytes} bytes; revision ${prepared.revision}`);
+    console.log("  owner-only: do not mount this directory, its cache, or HF credentials into an Agent environment");
     return;
   }
 
@@ -390,12 +415,21 @@ async function main() {
     for (const d of dirs) {
       const t = loadTask(d);
       if (!t.datasets.length) { console.log(`${B}${t.meta.id}${X}  (无 data.lock，跳过)`); continue; }
-      const datasets = selectDatasets(t.datasets, selection!);
+      const hostedEvaluator = existsSync(join(t.dir, "evaluator.lock"));
+      const datasets = hostedEvaluator && selection !== "public"
+        ? [...(selection === "all" ? selectDatasets(t.datasets, "public") : []), ...evaluatorDatasets(t)]
+        : selectDatasets(t.datasets, selection!);
       if (!datasets.length) { console.log(`${B}${t.meta.id}${X}  (无 ${selection!} 数据，跳过)`); continue; }
       console.log(`${B}— fetch ${t.meta.id}${X}  (${datasets.length} ${selection!} 数据集)`);
       let resolved;
       try {
-        resolved = await resolveManifest({ datasets }, { onProgress: downloadProgress() });
+        if (hostedEvaluator && selection !== "public") {
+          const publicResults = await resolveManifest({ datasets: selectDatasets(datasets, "public") }, { onProgress: downloadProgress() });
+          const privateResults = await resolveManifest({ datasets: selectDatasets(datasets, "private") }, {
+            onProgress: downloadProgress(), cacheRoot: evaluatorCacheRoot(t, arg("--cache-root")),
+          });
+          resolved = [...publicResults, ...privateResults];
+        } else resolved = await resolveManifest({ datasets }, { onProgress: downloadProgress() });
       } catch (e) {
         if (selection === "private" || selection === "all") {
           console.error(`${Y}私有评测数据获取失败。请先获得数据集权限并设置 HF_TOKEN。${X}`);
@@ -412,15 +446,25 @@ async function main() {
   }
 
   if (cmd === "score") {
+    const privateScoring = argv.includes("--private");
+    const evaluatorRoot = arg("--evaluator-root");
+    if (privateScoring && !evaluatorRoot) throw new Error("--private requires --evaluator-root <prepared owner directory>");
+    if (!privateScoring && evaluatorRoot) throw new Error("--evaluator-root requires the explicit --private scoring mode");
+    if (privateScoring && argv.includes("--official")) throw new Error("--private is an independent BrainPilotBench Test, not an upstream official leaderboard mode; omit --official");
     const judgeModel = arg("--judge-model");
     if (judgeModel) process.env.BPB_JUDGE_MODEL = judgeModel;
-    const scoreIsolation = arg("--isolation", "process")!;
+    const scoreIsolation = arg("--isolation", privateScoring ? "docker" : "process")!;
     if (!(scoreIsolation === "process" || scoreIsolation === "docker")) {
       console.error(`未知 isolation: ${scoreIsolation}`); process.exit(2);
     }
     const officialScoring = argv.includes("--official");
     const inferenceImage = arg("--inference-image");
     const dockerBinary = arg("--docker-binary", "docker")!;
+    if (privateScoring && dockerBinary !== "docker") throw new Error("private Test adapters currently require the standard docker executable; omit --docker-binary");
+    if (privateScoring && (scoreIsolation !== "docker" ||
+      !/^(?:sha256:[a-f0-9]{64}|[A-Za-z0-9][A-Za-z0-9._:/-]*@sha256:[a-f0-9]{64})$/i.test(inferenceImage ?? ""))) {
+      throw new Error("private Test scoring requires --isolation docker and an immutable --inference-image");
+    }
     if (officialScoring && scoreIsolation !== "docker") {
       console.error("official scoring requires --isolation docker"); process.exit(2);
     }
@@ -461,6 +505,11 @@ async function main() {
     const dir = dirsByTaskId(taskId)[0];
     if (!dir) { console.error(`找不到任务：${taskId}`); process.exit(2); }
     const t = loadTask(dir);
+    const privateMetadata = privateScoring ? { evaluationScope: "independent-evaluator-test", evaluatorVersion: "1", dataRevision: readEvaluatorLock(t).revision } : {};
+    const scorePath = join(runDir, privateScoring ? "scores.private.json" : "scores.json");
+    if (privateScoring && existsSync(scorePath) && (lstatSync(scorePath).isSymbolicLink() || !lstatSync(scorePath).isFile() || lstatSync(scorePath).nlink !== 1)) {
+      throw new Error("private score output must be a regular independent file");
+    }
     const evPath = join(runDir, "events.jsonl");
     const events = existsSync(evPath)
       ? readFileSync(evPath, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
@@ -473,10 +522,11 @@ async function main() {
     if (signalsRaw?.completed === false) contractErrors.push({ level: "error", msg: "agent run is not completed" });
     if (contractErrors.length) {
       const invalid: RunScores = {
-        taskId, ...scoreMetadataForTask(t), runId, version, scoredAt, state: "submission_invalid",
+        taskId, ...scoreMetadataForTask(t), ...privateMetadata, runId, version, scoredAt, state: "submission_invalid",
         explanation: contractErrors.map((issue) => issue.msg).join("; "), results: [],
       };
-      writeFileSync(join(runDir, "scores.json"), JSON.stringify(invalid, null, 2));
+      if (privateScoring) writePrivateScores(scorePath, invalid);
+      else writeFileSync(scorePath, JSON.stringify(invalid, null, 2));
       console.error(`${Y}submission_invalid${X}: ${invalid.explanation}`);
       process.exitCode = 1;
       return;
@@ -485,12 +535,14 @@ async function main() {
     const bundle: RunBundle = { runDir, runId, version, events, signals: (signalsRaw ?? meta) as Record<string, unknown> };
     let scores: RunScores;
     try {
-      scores = await runScorers(t, bundle, scoredAt);
+      scores = privateScoring ? await runPrivateScorer(t, bundle, scoredAt, { evaluatorRoot: evaluatorRoot!, python: arg("--python") })
+        : await runScorers(t, bundle, scoredAt);
     } catch (error) {
-      scores = { taskId, ...scoreMetadataForTask(t), runId, version, scoredAt, state: "scoring_failed", explanation: (error as Error).message, results: [] };
+      scores = { taskId, ...scoreMetadataForTask(t), ...privateMetadata, runId, version, scoredAt, state: "scoring_failed", explanation: (error as Error).message, results: [] };
     }
-    writeFileSync(join(runDir, "scores.json"), JSON.stringify(scores, null, 2));
-    console.log(`${B}— score ${taskId}${X}  state=${scores.state} → ${join(runDir, "scores.json")}`);
+    if (privateScoring) writePrivateScores(scorePath, scores);
+    else writeFileSync(scorePath, JSON.stringify(scores, null, 2));
+    console.log(`${B}— score ${taskId}${X}  state=${scores.state} → ${scorePath}`);
     if (scores.explanation) console.log(`  ${scores.explanation}`);
     for (const r of scores.results) {
       const v = r.unscored ? `${Y}${r.state ?? "scoring_failed"}${X}` : (typeof r.value === "number" ? String(r.value) : JSON.stringify(r.value));
@@ -562,7 +614,7 @@ async function main() {
     return;
   }
 
-  console.log("用法: bp-bench list | doctor [id] [--private] [--python <path>] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] | score <bundle> [--isolation process|docker] [--inference-image <image>] [--official] [--judge-model <id>] | stats <bundle|runsDir> [--format table|json|markdown|csv] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
+  console.log("用法: bp-bench list | doctor [id] [--private] [--python <path>] [--base-url <url>] [--isolation process|docker] | prepare <id> [--workspace <dir>] [--fetch] | prepare-evaluator <id> --evaluator-root <owner/path/evaluator> [--cache-root <owner-cache>] [--fetch] [--python <path>] | run <id|all> --adapter brainpilot|command|manual [--isolation process|docker] [--agent <id>] [--resume <runDir>] | fetch <id|all> [--public|--private|--all] [--cache-root <owner-cache>] | score <bundle> [--private --evaluator-root <path>] [--isolation process|docker] [--inference-image <image>] [--python <path>] [--official] [--judge-model <id>] | stats <bundle|runsDir> [--format table|json|markdown|csv] | validate <id|all> [--allow-heldout] | leaderboard <runsDir> [--format table|json|markdown|csv] | freeze <name> [--ref <git-ref>] | registry verify | submit verify <bundle>");
   console.log("       通用: --tasks <dir1,dir2>(多根) | --visibility public|heldout|all(list/leaderboard/freeze;缺省 public)");
 }
 

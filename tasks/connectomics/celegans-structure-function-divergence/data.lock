@@ -75,19 +75,19 @@ datasets:
   # ---------------- private（仅 evaluator 可见；扫描/评测用，不进 agent 工作区） ----------------
   - name: witvliet_2020_8.csv
     scope: private
-    uri: https://raw.githubusercontent.com/qsimeon/worm-graph/f1d6175e0ccc574ace49ce537a3641806ddc6c2d/data/raw/witvliet_2020_8.csv
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/connectomics/celegans-structure-function-divergence/evaluator/witvliet_2020_8.csv
     sha256: d6627c50f4295291e68c071e001e1e302b03d2d472a7f251f90cb36839e9be1a
     bytes: 54974
     format: tsv
   - name: aconnectome_white_1986_whole.csv
     scope: private
-    uri: https://raw.githubusercontent.com/openworm/c302/f47b5a12db3a3e1d825ac838a5d7007554b55a1a/c302/data/aconnectome_white_1986_whole.csv
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/connectomics/celegans-structure-function-divergence/evaluator/aconnectome_white_1986_whole.csv
     sha256: 768d2b16557d768b51f81548f630adb45d76c1f99586e8fd4c90279293cc9dae
     bytes: 64492
     format: tsv
   - name: cook2019_matlab_ready.zip
     scope: private
-    uri: https://wormwiring.org/matlab%20scripts/Premaratne%20MATLAB-ready%20files%20.zip
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/connectomics/celegans-structure-function-divergence/evaluator/cook2019_matlab_ready.zip
     sha256: 734202acc42c30a5cce882e695bb2efa333ade5b76345d7e35908342ee640b2c
     bytes: 160062
     format: zip

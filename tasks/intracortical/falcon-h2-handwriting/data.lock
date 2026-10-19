@@ -633,3 +633,129 @@ datasets:
     bytes: 4790580
     format: nwb
     scope: private
+  - name: evaluator__test__manifest.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/manifest.json
+    sha256: 0556c5312fd100265098813a31bf010e352dbcc52907d70ffbd1014fbdf47bab
+    bytes: 7257
+    format: json
+  - name: evaluator__test__runs__h2-test-0001__labels.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0001/labels.json
+    sha256: 6776c42efafbbe466299437310bf55bc52543f271054008cc6c4deae51be49b3
+    bytes: 98
+    format: json
+  - name: evaluator__test__runs__h2-test-0001__mask.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0001/mask.npy
+    sha256: 199f7fe71ac60c9a781c02c335b6f5a98dc96c35b2d53948c195e038f2da2c4e
+    bytes: 4097
+    format: npy
+  - name: evaluator__test__runs__h2-test-0001__trial_end.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0001/trial_end.npy
+    sha256: f54f3d982b8197044ac63186d27a88b405b37d064cbd2a1613fafbcf7e78f8f9
+    bytes: 4097
+    format: npy
+  - name: evaluator__test__runs__h2-test-0001__x.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0001/x.npy
+    sha256: fb1aca48851bb38a011709fcd0625cd835d823a9d77d938b22e83db322eb2c47
+    bytes: 3048320
+    format: npy
+  - name: evaluator__test__runs__h2-test-0002__labels.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0002/labels.json
+    sha256: b409e70df5ba7c5c0670a6d8030e1715bd5db4afddd6c5320aec15aa357df0b9
+    bytes: 145
+    format: json
+  - name: evaluator__test__runs__h2-test-0002__mask.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0002/mask.npy
+    sha256: 9d695c3b18b9b41cf969954817f2efac44def4301228554beef3de1251b83015
+    bytes: 4335
+    format: npy
+  - name: evaluator__test__runs__h2-test-0002__trial_end.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0002/trial_end.npy
+    sha256: 255500e0673a26c9326973b730ab8e80f259ed075b5ea8193890050dc23165a6
+    bytes: 4335
+    format: npy
+  - name: evaluator__test__runs__h2-test-0002__x.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0002/x.npy
+    sha256: fbf10f824647ad6f0c858fd69d1613fc5c6a9e36feaa4ac779970efcd29bbbfd
+    bytes: 3231104
+    format: npy
+  - name: evaluator__test__runs__h2-test-0003__labels.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0003/labels.json
+    sha256: 694ab2cbbd2f44657d861b782422fcf10ac644d89df11e351c109b5584325417
+    bytes: 127
+    format: json
+  - name: evaluator__test__runs__h2-test-0003__mask.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0003/mask.npy
+    sha256: cf3292ef244d4c50bb5588bf46015eaff3b2ade324db3659eac42ccf5f237585
+    bytes: 4571
+    format: npy
+  - name: evaluator__test__runs__h2-test-0003__trial_end.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0003/trial_end.npy
+    sha256: 83a4da6a1033115a6b7883cca3bf4e53b12c8b2a7cf964e391c0d8686132b0ca
+    bytes: 4571
+    format: npy
+  - name: evaluator__test__runs__h2-test-0003__x.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0003/x.npy
+    sha256: 33cc5e8eb931f164e04ce6123bcf92856a99cada0d391f973f67555e2dfa18f3
+    bytes: 3412352
+    format: npy
+  - name: evaluator__test__runs__h2-test-0004__labels.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0004/labels.json
+    sha256: a36bd3f94f2a2cea4a710743f39fee0de20940c34439b76f7ea56c6e05ecc321
+    bytes: 120
+    format: json
+  - name: evaluator__test__runs__h2-test-0004__mask.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0004/mask.npy
+    sha256: 203ba30ec9238d9f92cf5cc44c3bdf1781461782d9836d663d03075ad7e47475
+    bytes: 4369
+    format: npy
+  - name: evaluator__test__runs__h2-test-0004__trial_end.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0004/trial_end.npy
+    sha256: b8dc51621a1f0bebe7fe48a2556dd69540493e3041e7d21e08847c37cddb7695
+    bytes: 4369
+    format: npy
+  - name: evaluator__test__runs__h2-test-0004__x.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0004/x.npy
+    sha256: 50327bc802231973f7149a9cf0a00210d4014112eada80635a2df6c1d25083f9
+    bytes: 3257216
+    format: npy
+  - name: evaluator__test__runs__h2-test-0005__labels.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0005/labels.json
+    sha256: 8645ead7f6beec7ec9187ce230d81c19c66a6e60a7911395a33cac5522c67d2f
+    bytes: 126
+    format: json
+  - name: evaluator__test__runs__h2-test-0005__mask.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0005/mask.npy
+    sha256: b3f4991bb2cc5816ef630c2775adfe7d74749e7f6c49fcb0ff591803ea6dc5bb
+    bytes: 5980
+    format: npy
+  - name: evaluator__test__runs__h2-test-0005__trial_end.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0005/trial_end.npy
+    sha256: f62b820626eef349381290dbe60cb8507cf4cfc3a0834415ab4bb9545562601f
+    bytes: 5980
+    format: npy
+  - name: evaluator__test__runs__h2-test-0005__x.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/falcon-h2-handwriting/evaluator/test/runs/h2-test-0005/x.npy
+    sha256: f8b7fd9005fb9e91722c76cdc4fbd2e3c0a19c79253b11d3cc1a933f4fceff63
+    bytes: 4494464
+    format: npy

@@ -5,6 +5,9 @@ This task classifies speech and music intervals in a film from clinical ECoG and
 > [!NOTE]
 > Agent benchmark results: not yet available. The fixed reference has one owner-only Test receipt.
 
+Maintainers can prepare the hosted Test package and evaluate a frozen submission through the [private evaluation workflow](../../../docs/private-evaluation.md).
+This explicit route writes `scores.private.json`; the task's existing default scoring entry remains unchanged.
+
 ## Task at a glance
 
 | Field | Task contract |

@@ -21,3 +21,21 @@ datasets:
     sha256: 807239bc0a149f2f78a815687a5d9396eb7ffe8a9ed063ec8a4fd603e8925799
     bytes: 203351
     scope: public
+  - name: evaluator__test__binding.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-me-highgamma2017/evaluator/test/binding.json
+    sha256: bb7a90e9b73834760c88ec10b5df4fbec1104c62faa5a40308e2e8fb8ffc61d3
+    bytes: 1463
+    format: json
+  - name: evaluator__test__test-labels.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-me-highgamma2017/evaluator/test/test-labels.npy
+    sha256: 5d8f8ffd845b4f6033cf5ca575212465e614b91e6c22309fd221cbdedaba17b2
+    bytes: 19432
+    format: npy
+  - name: evaluator__test__test.npz
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-me-highgamma2017/evaluator/test/test.npz
+    sha256: 266d8162899f11f08703abbf36a2054e3cf3a0b4a98f0e01b05f4bfbb81bcc15
+    bytes: 444764416
+    format: npz

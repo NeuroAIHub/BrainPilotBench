@@ -21,3 +21,21 @@ datasets:
     sha256: 84576f4794c81ea8ad041df8cad203bf897badce7a3fda98046d36984b03f183
     bytes: 196658
     scope: public
+  - name: evaluator__test__binding.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-dementia-dice/evaluator/test/binding.json
+    sha256: b8cccdbe325ff0c0cf7ed27f0941098726cbb4867107effd66479cde0c60dbd1
+    bytes: 1447
+    format: json
+  - name: evaluator__test__test-labels.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-dementia-dice/evaluator/test/test-labels.npy
+    sha256: 1349eb1ad2cb00a7ac6ebe551209850e9db4eafe2e08ac88cbbd0f69b922acae
+    bytes: 23232
+    format: npy
+  - name: evaluator__test__test.npz
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-dementia-dice/evaluator/test/test.npz
+    sha256: 7081b0ace8788f4f3256cf560b4ab35a4e11c225826a2ff4be7865aef78d708d
+    bytes: 131693056
+    format: npz

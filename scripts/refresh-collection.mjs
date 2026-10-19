@@ -9,6 +9,7 @@ import { validateTaskSchema } from "../dist/validate.js";
 import { loadCategories } from "../dist/categories.js";
 import { readInvasiveCandidates, invasiveCatalogRow } from "./invasive-candidates.mjs";
 import { readInvasiveAcceptance } from "./invasive-acceptance.mjs";
+import { validatePrivateEvaluatorIncrement, privateScoreEntry } from "./private-evaluator-increment.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const read = path => JSON.parse(readFileSync(path, "utf8"));
@@ -21,6 +22,7 @@ const referenceChecks = new Set([
 ]);
 const tasks = [];
 const categories = loadCategories(root);
+const privateIncrement = validatePrivateEvaluatorIncrement(root);
 for (const dir of discoverTaskDirs([join(root, "tasks")])) {
   const task = loadTask(dir);
   const errors = validateTaskSchema(task, categories).filter(issue => issue.level === "error");
@@ -67,6 +69,14 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
   const privateDatasets = task.datasets.filter(d => d.scope === "private");
   if (privateDatasets.length) row.private_data_access = privateDatasets.some(d => d.uri.startsWith("local://"))
     ? "maintainer_package_required" : "pinned_source_download";
+  if (privateIncrement.byId.has(id)) {
+    if (!privateDatasets.length || !existsSync(join(dir, "evaluator.lock")))
+      throw new Error(`${rel(dir)}: increment-backed private evaluator package is missing`);
+    row.private_data_access = "pinned_private_snapshot";
+    row.private_score_entry = privateScoreEntry;
+  } else if (existsSync(join(dir, "evaluator.lock"))) {
+    throw new Error(`${rel(dir)}: evaluator.lock is outside the frozen private increment`);
+  }
   if (accepted) {
     row.validation = "local_fixed_reference_and_isolation_passed";
     row.validation_record = `${rel(dir)}/acceptance.json`;

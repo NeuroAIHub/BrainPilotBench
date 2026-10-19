@@ -5,6 +5,9 @@ This task predicts continuous finger flexion from ECoG recordings in three parti
 > [!NOTE]
 > Agent benchmark results: not yet available. A fixed ridge reference passed local preparation, container scoring, and CLI checks. It is not an official competition result.
 
+Maintainers can prepare the hosted Test package and evaluate a frozen submission through the [private evaluation workflow](../../../docs/private-evaluation.md).
+This explicit route writes `scores.private.json`; the task's existing default scoring entry remains unchanged.
+
 ## Task at a glance
 
 | Field | Task contract |

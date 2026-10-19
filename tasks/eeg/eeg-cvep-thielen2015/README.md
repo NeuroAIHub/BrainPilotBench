@@ -40,7 +40,10 @@ Submit one chosen method with seeds 0, 1, and 2. Each `submission/seed-N/` direc
 
 `model.py` must define `Model(config)` and `forward(x)`. Each model must reload its own saved weights and return normalized `[B, 36]` probabilities. During inference, the model cannot train, use the network, or read task files. Parameters and saved numerical state must each stay at or below 10 million elements.
 
-The public scorer retains validation labels in the trusted parent process. It runs submitted code in isolated Docker inference. Extra files are ignored, but a missing required file fails the submission. Private Test data, labels, and feedback are unavailable. There is no fixed research duration or required improvement threshold.
+The public scorer retains validation labels in the trusted parent process. It runs submitted code in isolated Docker inference. Extra files are ignored, but a missing required file fails the submission. Private Test data and labels are unavailable to the Agent during research. There is no fixed research duration or required improvement threshold.
+
+Maintainers can use the separate [private evaluation workflow](../../../docs/private-evaluation.md) with this task's `evaluator.lock`.
+It evaluates a frozen submission and writes `scores.private.json`; the default scorer remains public validation.
 
 See the [shared EEG guide](../_shared/README.md) for the inference image, scorer, and metric-profile details.
 

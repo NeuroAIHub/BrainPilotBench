@@ -48,7 +48,6 @@ class SharedEegBoundaryTests(unittest.TestCase):
                 self.assertIn(f"profile: {contract['metric_profile']}", task_yaml)
                 lock = (task / "data.lock").read_text()
                 self.assertEqual(lock.count("scope: public"), 4)
-                self.assertNotIn("scope: private", lock)
                 records = []
                 for line in lock.splitlines():
                     if line.startswith("  - name: "):
@@ -58,10 +57,11 @@ class SharedEegBoundaryTests(unittest.TestCase):
                         if separator:
                             self.assertNotIn(key, records[-1])
                             records[-1][key] = value
-                self.assertEqual(len(records), 4)
+                public_records = [record for record in records if record.get("scope") == "public"]
+                self.assertEqual(len(public_records), 4)
                 self.assertTrue(all(set(record) == {"name", "uri", "sha256", "bytes", "scope"}
-                                    for record in records))
-                by_uri = {record["uri"]: record for record in records}
+                                    for record in public_records))
+                by_uri = {record["uri"]: record for record in public_records}
                 self.assertEqual(len(by_uri), 4)
                 prefix = ("hf://datasets/BrainPilot-Bench/Tasks-Data-Public@"
                           "f50618208e3e748a8a16dfb6138e335f033d603c/"

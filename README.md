@@ -37,6 +37,8 @@ From neural recordings to human choices: build models, analyze data, and submit 
 
 ## Project news
 
+- **2026-10-19 — Private evaluator workflow.** Maintainers can prepare 29 hosted Test packages and score frozen submissions through an explicit private route.
+  Test data remain outside Agent workspaces. See the [private evaluation guide](docs/private-evaluation.md) for coverage, source-only exceptions, and representative checks.
 - **2026-10-16 — Task guides and public data.** Explore the scientific question, inputs, split, and metric for each task.
   Public data for 111 tasks are available in the [unified Hugging Face collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public). H1 provides an original-source preparation route.
 - **2026-10-15 — BrainPilotBench v1 task collection.** v1 brings **108 new tasks and four retained v0 tasks** into one 112-task collection.
@@ -157,6 +159,14 @@ node dist/cli.js prepare <task-id> --fetch --workspace /absolute/outside-git/wor
 ~~~
 
 See the [data guide](docs/data-preparation.md) for delivery checks, fixed snapshots, and preparation details.
+
+### Private evaluation for maintainers
+
+The [private collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/62ff438a727aa5ca72c688526410930c8f1f664b/tasks) provides evaluator packages for 29 tasks.
+Use `prepare-evaluator` to create an owner-only data directory, then `score --private` to evaluate a frozen submission.
+Private results go to `scores.private.json`; public validation and its results stay separate.
+The [maintainer guide](docs/private-evaluation.md) lists the commands, environments, source restrictions, and validation limits.
+This data and interface update does not add Agent benchmark results.
 
 <details>
 <summary>Candidates outside the 112 runnable tasks</summary>

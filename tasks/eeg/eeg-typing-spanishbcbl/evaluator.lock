@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "eeg-typing-spanishbcbl",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__binding.json",
+      "path": "test/binding.json",
+      "sha256": "f078b6019f9518eab8fa7de1935dfafb2fcb767aaaf294babb708bc58ef275a0",
+      "bytes": 1437
+    },
+    {
+      "name": "evaluator__test__test-labels.npy",
+      "path": "test/test-labels.npy",
+      "sha256": "a3a79cf868e029ebbb2258812e96d2158c3290661d2aa38ea31dd8509966ea6d",
+      "bytes": 208064
+    },
+    {
+      "name": "evaluator__test__test.npz",
+      "path": "test/test.npz",
+      "sha256": "f3034605510221bca4a1cf5c6b519a1898608ff8c746290f27a06597cd0e62f5",
+      "bytes": 761046016
+    }
+  ]
+}

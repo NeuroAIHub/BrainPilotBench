@@ -51,6 +51,8 @@ discovery cannot mistake it for an executable task. The catalog records all
 entries and their status; it does not publish research performance rankings.
 The catalog's `data_access` describes public Agent inputs.
 `private_data_access`, when present, describes the separate evaluator data route.
+For 29 hosted evaluator packages, `private_score_entry` identifies the explicit private scoring route.
+The default evaluation scope and scientific versions remain unchanged.
 
 ## Data and environment
 
@@ -80,13 +82,21 @@ Each task owns its environment instructions. CPU Docker images are built locally
 and evaluated by immutable ID/digest; no images were published. A successful
 macOS/arm64 integration run does not verify Linux/amd64 or GPU compatibility.
 
+## Private evaluation
+
+The [maintainer workflow](private-evaluation.md) connects the hosted private snapshot to preparation and isolated Test scoring for 29 tasks.
+It includes 21 EEG tasks, six invasive tasks, brain-age MRI, and C. elegans.
+Private files stay in a separate owner cache and evaluator directory.
+Completed submissions are frozen before scoring; Test results use a separate result file.
+Source-only and retained legacy tasks keep their documented routes.
+
 <a id="low-cost-validation"></a>
 
 ## Reference implementation checks
 
-Four reference implementations check representative evaluation paths: native EEG
-BCI-IV-2a, Psych Lefebvre exp1, C. elegans and brain age. EEG and Psych use public
-train/valid only; historical private Test results are not replayed. The two new
+The initial four reference implementations checked representative evaluation paths: native EEG
+BCI-IV-2a, Psych Lefebvre exp1, C. elegans and brain age. Those EEG and Psych checks used public
+train/valid only; historical private Test results were not replayed. The two new
 contributions use their own reference-evaluation paths. These runs check data,
 environment, saved artifacts, inference and scoring; they are not Agent research
 experiments. No paid model calls are needed.
@@ -100,6 +110,8 @@ The catalog refuses to reuse acceptance after those files change.
 The original `acceptance.json` records remain evidence for the scientific and reference checks on the earlier task definitions.
 Six invasive `delivery-acceptance.json` records bind the updated public locks, setup bridge, and hosted revision to the [delivery report](../reports/unified-public-delivery-20261015.json).
 They do not imply that the reference, Agent, or owner Test runs were repeated.
+The later private-data integration preserves these original records and adds a separate, scope-limited delivery record.
+New reference checks cover selected private workflows, not all tasks or comparative Agent performance.
 
 The historical 101-task snapshot has full byte-level readback.
 The earlier invasive snapshot has metadata checks, representative anonymous downloads, and one complete M2 download/setup check.

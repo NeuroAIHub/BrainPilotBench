@@ -9,7 +9,7 @@ datasets:
     format: zip
   - name: brain-age-evaluator-data.zip
     scope: private
-    uri: local://evaluator_data.zip
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/mri/brain-age-mri/evaluator/evaluator_data.zip
     sha256: 08c908acef3fd26ea3efe59b4a0eaeb7c12f1c15d3c3f1b3a617b9fdecfd3c62
     bytes: 930013448
     format: zip

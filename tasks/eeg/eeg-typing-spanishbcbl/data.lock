@@ -21,3 +21,21 @@ datasets:
     sha256: 6b07e13c4502bfcafc227dbc8a31d92b82f6d6824abc29483c206681d45f6f19
     bytes: 2292753
     scope: public
+  - name: evaluator__test__binding.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-typing-spanishbcbl/evaluator/test/binding.json
+    sha256: f078b6019f9518eab8fa7de1935dfafb2fcb767aaaf294babb708bc58ef275a0
+    bytes: 1437
+    format: json
+  - name: evaluator__test__test-labels.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-typing-spanishbcbl/evaluator/test/test-labels.npy
+    sha256: a3a79cf868e029ebbb2258812e96d2158c3290661d2aa38ea31dd8509966ea6d
+    bytes: 208064
+    format: npy
+  - name: evaluator__test__test.npz
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-typing-spanishbcbl/evaluator/test/test.npz
+    sha256: f3034605510221bca4a1cf5c6b519a1898608ff8c746290f27a06597cd0e62f5
+    bytes: 761046016
+    format: npz
