@@ -139,6 +139,10 @@ They retain their IDs, scientific protocol versions, and historical v0 results.
 
 The [machine-readable catalog](tasks/catalog.json) lists task IDs and availability.
 `bp-bench list` shows runnable packages only.
+
+[Alignment task one](tasks/alignment/README.md) is an offline scaffold candidate,
+not part of the runnable count. Its [synthetic example](tasks/_example/alignment-synthetic/README.md)
+checks analysis correctness through the CLI without real data, models or formal results.
 See the [collection guide](docs/shared-task-collection.md) for protocol differences,
 data roles, and reuse across independent research projects.
 

@@ -61,7 +61,8 @@
     "test:invasive-metadata": "node --test scripts/invasive-candidates.test.mjs",
     "catalog:refresh": "node scripts/refresh-collection.mjs",
     "catalog:check": "node scripts/refresh-collection.mjs --check",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test:alignment": "node scripts/test-alignment.mjs"
   },
   "engines": {
     "node": ">=22"

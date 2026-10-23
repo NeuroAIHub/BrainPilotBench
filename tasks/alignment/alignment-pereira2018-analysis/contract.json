@@ -1,0 +1,49 @@
+{
+  "schema": "bpb-alignment-task1-draft/1",
+  "task_id": "alignment-pereira2018-analysis",
+  "intended_task_version": "0.1",
+  "status": "candidate-not-runnable",
+  "primary_metric": "analysis_success",
+  "entrypoint": "python submission/analyze.py --inputs /inputs --output /output",
+  "required_artifacts": [
+    "submission/analyze.py",
+    "analysis_config.json",
+    "results/summary.json",
+    "results/fold_scores.csv",
+    "results/predictions.npz",
+    "report.md"
+  ],
+  "protocol": "protocol.json",
+  "input_files": [
+    "manifest.json",
+    "stimuli.csv",
+    "model/features.npy",
+    "model/stimulus_ids.json",
+    "brain/responses.nc",
+    "protocol.json",
+    "folds.json",
+    "ceiling/",
+    "DATA_DICTIONARY.md"
+  ],
+  "input_axes": {
+    "features": [
+      "stimulus",
+      "feature"
+    ],
+    "responses": "official assembly with full named coordinates; mapping pending acceptance"
+  },
+  "boundaries": {
+    "worker_sees": "one case X/Y, protocol, submitted source",
+    "parent_only": "all reference answers and other cases"
+  },
+  "pending_acceptance": [
+    "model/tokenizer immutable revisions",
+    "full dependency lock",
+    "response assembly/ceiling export",
+    "official fold tracing",
+    "official vs traced numerical equivalence",
+    "live vs cached feature equivalence",
+    "CPU tolerances and resource calibration",
+    "public data license/access and artifact hashes"
+  ]
+}

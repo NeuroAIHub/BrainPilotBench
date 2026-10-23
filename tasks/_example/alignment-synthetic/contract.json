@@ -1,0 +1,75 @@
+{
+  "schema": "bpb-alignment-synthetic/1",
+  "task_id": "alignment-synthetic",
+  "task_version": "0.1",
+  "status": "synthetic-example-only",
+  "input_schema": "schemas/manifest.schema.json",
+  "protocol_schema": "schemas/protocol.schema.json",
+  "entrypoint": "python submission/analyze.py --inputs /inputs --output /output",
+  "required_artifacts": [
+    "submission/analyze.py",
+    "analysis_config.json",
+    "results/summary.json",
+    "results/fold_scores.csv",
+    "results/predictions.npz",
+    "report.md"
+  ],
+  "config_schema": "schemas/analysis-config.schema.json",
+  "summary_schema": "schemas/summary.schema.json",
+  "fold_scores": {
+    "format": "csv",
+    "columns": [
+      "fold_id",
+      "subject_id",
+      "neuroid_id",
+      "pearson_r"
+    ],
+    "key": [
+      "fold_id",
+      "subject_id",
+      "neuroid_id"
+    ],
+    "rows": "one per fold and neuroid; no duplicates, missing or extra rows"
+  },
+  "predictions": {
+    "format": "npz-no-pickle",
+    "values": "float64 [prediction_row, neuroid]",
+    "fold_ids": "Unicode [prediction_row]",
+    "stimulus_ids": "Unicode [prediction_row]",
+    "neuroid_ids": "Unicode [neuroid]",
+    "row_key": [
+      "fold_id",
+      "stimulus_id"
+    ],
+    "order": "arbitrary if all identities and values match; no missing, extra or duplicate keys"
+  },
+  "report": "UTF-8 nonempty report.md: methods, raw vs normalized, checks, synthetic limits; interpretation reviewed separately",
+  "comparison": {
+    "atol": 1e-08,
+    "rtol": 1e-07
+  },
+  "limits": {
+    "worker_wall_seconds": 8,
+    "parent_timeout_seconds": 120,
+    "worker_cpus": 1,
+    "worker_memory_mb": 512,
+    "worker_pids": 64,
+    "output_max_bytes": 10485760,
+    "network": "none"
+  },
+  "failure_semantics": {
+    "missing_submission": "submission_invalid/no score",
+    "wrong_calculation": "analysis_success=0",
+    "worker_timeout": "analysis_success=0",
+    "corrupt_inputs_or_reference": "scoring_failed/no score",
+    "missing_runtime_or_image": "scoring_failed/no score",
+    "parent_timeout": "scoring_failed/no score"
+  },
+  "notes": [
+    "Only synthetic numerical tolerances are frozen. Official tolerances remain uncalibrated.",
+    "Process mode requires explicit trusted-local opt-in and has no isolation or network enforcement.",
+    "Docker interface has resource limits; host output-disk quota remains an operator responsibility."
+  ],
+  "brain_coords_schema": "schemas/brain-coords.schema.json",
+  "scoring_report_schema": "schemas/score-report.schema.json"
+}

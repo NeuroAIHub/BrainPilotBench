@@ -1,0 +1,11 @@
+- send: >-
+    Synthetic-only workflow fixture. Implement python submission/analyze.py --inputs /inputs --output /output.
+    Read inputs/DATA_DICTIONARY.md, inputs/protocol.json, ALIGNMENT_CONTRACT.json and schemas/.
+    Match X and Y by stimulus ID, obey explicit passage-group folds, fit ridge with training-only
+    centering and alpha=0.7, compute per-fold per-neuroid Pearson r, median within subject then
+    mean subjects and folds. Divide raw score by synthetic ceiling 0.8 without clipping.
+    Save analysis_config.json, results/summary.json, results/fold_scores.csv,
+    results/predictions.npz and report.md under output. Keep source under submission/.
+    Outputs must bind this input manifest; new X/Y packets will be supplied at evaluation.
+    State that this is not biological data or official Brain-Score equivalence. Do not use network.
+  then: wait_idle

@@ -1,0 +1,43 @@
+{
+  "schema": "bpb-alignment-official-protocol-draft/1",
+  "id": "pereira2018-384-ridge-pending-v1",
+  "backend": "official_brainscore_language",
+  "status": "not-implemented-not-accepted",
+  "allow_fallback": false,
+  "upstream": {
+    "repository": "https://github.com/brain-score/language",
+    "commit": "3b4fde5d6f53a69c652c7a1128397549995547b0",
+    "benchmark_id": "Pereira2018.384sentences-ridge",
+    "benchmark_version": null
+  },
+  "model": {
+    "id": "meta-llama/Llama-3.2-1B",
+    "revision": null,
+    "tokenizer_revision": null,
+    "layer": "model.layers.8",
+    "layer_index_base": 0,
+    "read_location": "block-output",
+    "pooling": "last-token",
+    "context_rule": null,
+    "truncation_rule": null,
+    "inference_dtype": null
+  },
+  "experiment": "384sentences",
+  "region": "language-network",
+  "assembly_coordinates": null,
+  "missing_exclusion_rules": null,
+  "cv": {
+    "upstream_behavior": "preserve grouped CV, seed and training-only regularization selection",
+    "seed": null,
+    "fold_ids": null,
+    "alpha_selection": null
+  },
+  "aggregation": null,
+  "ceiling_binding": null,
+  "normalization": null,
+  "clipping": null,
+  "tolerances": null,
+  "resource_limits": null,
+  "dependency_lock": null,
+  "policy": "Null fields are acceptance blockers, never defaults. No standardization, PCA or alternate ridge fallback."
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 3,
+  "maxItems": 3,
+  "items": {
+    "type": "object",
+    "required": [
+      "fold_id",
+      "train_ids",
+      "test_ids"
+    ],
+    "properties": {
+      "fold_id": {
+        "type": "string",
+        "enum": [
+          "fold-0",
+          "fold-1",
+          "fold-2"
+        ]
+      },
+      "train_ids": {
+        "type": "array",
+        "minItems": 3,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "test_ids": {
+        "type": "array",
+        "minItems": 3,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "additionalProperties": false
+  }
+}

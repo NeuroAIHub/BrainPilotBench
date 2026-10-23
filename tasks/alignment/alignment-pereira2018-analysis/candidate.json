@@ -1,0 +1,20 @@
+{
+  "schema": "bpb-alignment-candidate/1",
+  "id": "alignment-pereira2018-analysis",
+  "domain": "alignment",
+  "status": "offline_scaffold_data_pending",
+  "runnable": false,
+  "validated": false,
+  "source_task_id": "Pereira2018.384sentences-ridge",
+  "upstream_source_sha": "3b4fde5d6f53a69c652c7a1128397549995547b0",
+  "primary_metric": {
+    "id": "analysis_success",
+    "direction": "maximize",
+    "unit": "binary"
+  },
+  "reason": "Real data, immutable model/tokenizer binding, official traced backend and equivalence acceptance remain pending.",
+  "contract": "contract.json",
+  "protocol": "protocol.json",
+  "offline_fixture": "tasks/_example/alignment-synthetic",
+  "agent_benchmark_results": "not_available"
+}

@@ -16,6 +16,8 @@ import { readInvasiveCandidates, invasiveDomains, invasiveCatalogRow } from "./i
 import { readInvasiveAcceptance } from "./invasive-acceptance.mjs";
 import { validatePrivateEvaluatorIncrement, privateScoreEntry } from "./private-evaluator-increment.mjs";
 
+import { readAlignmentCandidates, alignmentCatalogRow } from "./alignment-candidates.mjs";
+
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const tasksRoot = join(repo, "tasks");
 const errors = [];
@@ -43,7 +45,7 @@ const baselinePsychRunnable = new Set([
   "psych101-steingroever2015data-exp3",
   "psych101-wilson2014humans-exp5",
 ]);
-const domains = new Set(["eeg", "psychology", "mri", "connectomics", "calcium-imaging", ...invasiveDomains]);
+const domains = new Set(["eeg", "psychology", "mri", "connectomics", "calcium-imaging", "alignment", ...invasiveDomains]);
 
 function fail(message) { errors.push(message); }
 function readJson(path, label) {
@@ -198,12 +200,21 @@ if (psychMetadata) {
   }
 }
 
+const alignmentCandidates = new Map();
+try {
+  for (const entry of readAlignmentCandidates(repo)) {
+    addIdentity(identities, entry.card.id, entry.directory);
+    alignmentCandidates.set(entry.card.id, entry);
+  }
+} catch (error) { fail(`alignment candidates: ${error.message}`); }
+
 const counts = {
   runnable: runnables.size,
   eegCandidate: eegCandidates.size,
   psychologyMetadata: psychCandidates.size,
   invasiveCandidate: invasiveCandidates.size,
-  candidate: eegCandidates.size + psychCandidates.size + invasiveCandidates.size,
+  alignmentCandidate: alignmentCandidates.size,
+  candidate: eegCandidates.size + psychCandidates.size + invasiveCandidates.size + alignmentCandidates.size,
   preparation_ready: [...eegCandidates.values(), ...invasiveCandidates.values()].filter(e => e.card.status === "preparation_ready_data_pending").length,
   total: identities.size,
 };
@@ -231,11 +242,17 @@ if (catalog) {
       if (seen.has(id)) fail(`catalog duplicate task_id ${id}`);
       seen.add(id);
       const kind = runnables.has(id) ? "runnable" :
-        eegCandidates.has(id) || psychCandidates.has(id) || invasiveCandidates.has(id) ? "candidate" : null;
+        eegCandidates.has(id) || psychCandidates.has(id) || invasiveCandidates.has(id) || alignmentCandidates.has(id) ? "candidate" : null;
       if (!kind) { fail(`catalog unknown task_id ${id}`); continue; }
       if (entry.entry_kind !== kind) fail(`catalog ${id}: entry_kind mismatch`);
-      const domain = runnables.get(id)?.domain ?? invasiveCandidates.get(id)?.domain ?? (eegCandidates.has(id) ? "eeg" : "psychology");
+      const domain = runnables.get(id)?.domain ?? invasiveCandidates.get(id)?.domain ?? (alignmentCandidates.has(id) ? "alignment" : undefined) ?? (eegCandidates.has(id) ? "eeg" : "psychology");
       if (entry.domain !== domain) fail(`catalog ${id}: domain mismatch`);
+      if (alignmentCandidates.has(id)) {
+        for (const [field, expected] of Object.entries(alignmentCatalogRow(alignmentCandidates.get(id)))) {
+          if (JSON.stringify(entry[field]) !== JSON.stringify(expected)) fail(`catalog ${id}: alignment ${field} mismatch`);
+        }
+        continue;
+      }
       if (invasiveCandidates.has(id)) {
         for (const [field, expected] of Object.entries(invasiveCatalogRow(invasiveCandidates.get(id)))) {
           if (JSON.stringify(entry[field]) !== JSON.stringify(expected))

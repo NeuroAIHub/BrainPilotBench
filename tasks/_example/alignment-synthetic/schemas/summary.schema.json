@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema",
+    "task_id",
+    "task_version",
+    "protocol_id",
+    "backend",
+    "model",
+    "input_manifest_sha256",
+    "synthetic_only",
+    "raw_score",
+    "normalized_score",
+    "ceiling",
+    "coverage"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bpb-alignment-synthetic/1"
+    },
+    "task_id": {
+      "const": "alignment-synthetic"
+    },
+    "task_version": {
+      "const": "0.1"
+    },
+    "protocol_id": {
+      "const": "synthetic-ridge-v1"
+    },
+    "backend": {
+      "const": "synthetic_numpy"
+    },
+    "model": {
+      "const": {
+        "id": "synthetic-linear-generator",
+        "revision": "1",
+        "layer": "fixed.features",
+        "tokenizer_revision": "not-applicable",
+        "pooling": "not-applicable",
+        "context": "generated-independent-vectors",
+        "dtype": "float32"
+      }
+    },
+    "input_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "synthetic_only": {
+      "const": true
+    },
+    "raw_score": {
+      "type": "number"
+    },
+    "normalized_score": {
+      "type": "number"
+    },
+    "ceiling": {
+      "const": 0.8
+    },
+    "coverage": {
+      "type": "object",
+      "required": [
+        "stimuli",
+        "neuroids",
+        "folds",
+        "prediction_rows"
+      ],
+      "properties": {
+        "stimuli": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "neuroids": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "folds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "prediction_rows": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

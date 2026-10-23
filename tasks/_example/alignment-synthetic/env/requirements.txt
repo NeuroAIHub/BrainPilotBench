@@ -1,0 +1,3 @@
+# Environment specification, not an instruction to install or download.
+# Python 3.12; a complete official backend lock is still pending.
+numpy==2.3.5

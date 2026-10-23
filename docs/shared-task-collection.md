@@ -35,6 +35,8 @@ This repository does not add a top-level `runtimes/` layer.
 | **Total** | **112** | **108** | **Includes four retained v0 tasks.** |
 
 The five EEG candidates remain outside the 112 runnable tasks.
+The [Alignment task-one candidate](../tasks/alignment/README.md) adds an offline
+synthetic scaffold only; it also remains outside that runnable count.
 Invasive recordings groups `tasks/ieeg/` and `tasks/intracortical/` under one reader-facing category.
 Their canonical directories and catalog domain identifiers remain distinct.
 The v1 collection name does not replace task protocol versions or change their scoring contracts.

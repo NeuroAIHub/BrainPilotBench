@@ -1,0 +1,5 @@
+**
+!tasks/
+!tasks/alignment/
+!tasks/alignment/_shared/
+!tasks/alignment/_shared/worker.py

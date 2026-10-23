@@ -72,6 +72,8 @@ jobs:
         run: python3 -m pip install --disable-pip-version-check -r tasks/calcium-imaging/neuro-rsc-place-cell/checks/requirements.txt
       - run: npm ci --no-audit --no-fund
       - run: npm run build
+      - name: Alignment synthetic correctness and CLI lifecycle (no data or model downloads)
+        run: npm run test:alignment
       - name: Public task contracts and preparation (synthetic only)
         shell: bash
         run: |

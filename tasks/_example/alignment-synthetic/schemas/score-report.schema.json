@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema",
+    "synthetic_only",
+    "task_id",
+    "task_version",
+    "status",
+    "analysis_success",
+    "checks",
+    "report_interpretation"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bpb-alignment-score/1"
+    },
+    "synthetic_only": {
+      "const": true
+    },
+    "task_id": {
+      "const": "alignment-synthetic"
+    },
+    "task_version": {
+      "const": "0.1"
+    },
+    "status": {
+      "enum": [
+        "scored",
+        "submission_invalid",
+        "scoring_failed"
+      ]
+    },
+    "analysis_success": {
+      "enum": [
+        null,
+        0,
+        1
+      ]
+    },
+    "checks": {
+      "type": "array"
+    },
+    "report_interpretation": {
+      "const": "human_review_required"
+    },
+    "max_abs_error": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "elapsed_seconds": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "scored"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "analysis_success": {
+            "enum": [
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "analysis_success": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

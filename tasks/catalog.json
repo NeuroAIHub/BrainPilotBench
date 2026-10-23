@@ -1,16 +1,31 @@
 {
   "schema": "brainpilotbench-task-collection/1",
-  "date": "2026-10-15",
+  "date": "2026-10-23",
   "release_status": "integration_candidate_not_released",
-  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; no formal Agent results or historical private Test replay",
+  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment synthetic scaffold only, not real-data acceptance; no formal Agent results or historical private Test replay",
   "counts": {
-    "total": 117,
+    "total": 118,
     "runnable": 112,
-    "candidate": 5,
+    "candidate": 6,
     "preparation_ready": 4,
     "representative_runs": 11
   },
   "tasks": [
+    {
+      "task_id": "alignment-pereira2018-analysis",
+      "domain": "alignment",
+      "directory": "tasks/alignment/alignment-pereira2018-analysis",
+      "entry_kind": "candidate",
+      "validation": "offline_scaffold_only_not_data_accepted",
+      "primary_metric": {
+        "id": "analysis_success",
+        "direction": "maximize",
+        "unit": "binary"
+      },
+      "source_task_id": "Pereira2018.384sentences-ridge",
+      "reason": "Real data, immutable model/tokenizer binding, official traced backend and equivalence acceptance remain pending.",
+      "agent_benchmark_results": "not_available"
+    },
     {
       "task_id": "bciciv-2a",
       "domain": "eeg",

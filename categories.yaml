@@ -52,3 +52,7 @@ eeg-sleep-staging:
   # agent 看不到。
   metrics: [score, test_accuracy, test_balanced_accuracy, test_macro_f1, test_kappa,
             wake_recall, n1_recall, n2_recall, n3_recall, rem_recall]
+
+# Task-one correctness metric; real alignment task is still a candidate.
+alignment-analysis:
+  metrics: [analysis_success]

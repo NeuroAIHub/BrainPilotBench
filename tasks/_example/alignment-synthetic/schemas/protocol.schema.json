@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "const": {
+    "schema": "bpb-alignment-synthetic/1",
+    "id": "synthetic-ridge-v1",
+    "backend": "synthetic_numpy",
+    "scientific_equivalence": false,
+    "model": {
+      "id": "synthetic-linear-generator",
+      "revision": "1",
+      "layer": "fixed.features",
+      "tokenizer_revision": "not-applicable",
+      "pooling": "not-applicable",
+      "context": "generated-independent-vectors",
+      "dtype": "float32"
+    },
+    "experiment": "synthetic",
+    "region": "synthetic-language",
+    "missing_values": "reject",
+    "excluded_neuroids": [],
+    "split": {
+      "kind": "explicit-group-kfold",
+      "group": "passage_id",
+      "folds": 3,
+      "seed": 17,
+      "test_coverage": "exactly-once"
+    },
+    "fit": {
+      "method": "ridge",
+      "alpha": 0.7,
+      "alpha_selection": "fixed-no-search",
+      "intercept": true,
+      "center": "training-only",
+      "scale": false,
+      "pca": false
+    },
+    "metric": "pearson-r-per-fold-neuroid",
+    "constant_correlation": 0.0,
+    "aggregation": "median-neuroids-within-subject-then-mean-subjects-then-mean-folds",
+    "normalization": "raw-divided-by-ceiling",
+    "clip": false,
+    "ceiling_source": "synthetic-constant-not-biological",
+    "comparison": {
+      "atol": 1e-08,
+      "rtol": 1e-07
+    }
+  }
+}
