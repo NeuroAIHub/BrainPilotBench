@@ -74,6 +74,8 @@ jobs:
       - run: npm run build
       - name: Alignment synthetic correctness and CLI lifecycle (no data or model downloads)
         run: npm run test:alignment
+      - name: Alignment profile offline scaffold (stdlib fixtures only)
+        run: npm run test:alignment-profile
       - name: Public task contracts and preparation (synthetic only)
         shell: bash
         run: |

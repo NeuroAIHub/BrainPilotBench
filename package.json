@@ -62,7 +62,8 @@
     "catalog:refresh": "node scripts/refresh-collection.mjs",
     "catalog:check": "node scripts/refresh-collection.mjs --check",
     "prepublishOnly": "npm run build",
-    "test:alignment": "node scripts/test-alignment.mjs"
+    "test:alignment": "node scripts/test-alignment.mjs",
+    "test:alignment-profile": "node scripts/test-alignment-profile.mjs"
   },
   "engines": {
     "node": ">=22"

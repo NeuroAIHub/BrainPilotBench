@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "alignment-profile": {
+      "command": "/absolute/path/to/existing/python3",
+      "args": [
+        "-B",
+        "/absolute/path/to/BrainPilotBench/tasks/_example/alignment-profile-synthetic/lib/service.py",
+        "--packet", "/operator/session/packet.json",
+        "--journal", "/operator/session/journal.jsonl"
+      ]
+    }
+  }
+}

@@ -2,6 +2,8 @@
 # 且其 scorer 产出的 metric 覆盖该集(validate 校验)。leaderboard 按 category 分组出表。
 survey-writing:
   metrics: [correctness, completeness, methodology, presentation]
+alignment-profile-analysis:
+  metrics: [profile_analysis_success, four_question_score]
 eeg-native-classification:
   metrics: [balanced_accuracy]
 eeg-native-regression:

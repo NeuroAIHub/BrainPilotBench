@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Synthetic four-question answers",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "protocol_id", "packet_sha256", "questions"],
+  "properties": {
+    "schema": {"const": "bpb-profile-answers/2"},
+    "protocol_id": {"const": "synthetic-profile-descriptive-v2"},
+    "packet_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "questions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["q1", "q2", "q3", "q4"],
+      "properties": {
+        "q1": {"$ref": "#/$defs/question"},
+        "q2": {"$ref": "#/$defs/question"},
+        "q3": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["answer", "evidence"],
+          "properties": {
+            "answer": {"$ref": "#/$defs/q3Answer"},
+            "evidence": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"type": "string", "pattern": "^run-[0-9]{4}$"}
+            }
+          }
+        },
+        "q4": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["answer", "evidence"],
+          "properties": {
+            "answer": {"$ref": "#/$defs/q4Answer"},
+            "evidence": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"type": "string", "pattern": "^run-[0-9]{4}$"}
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["answer", "evidence"],
+      "properties": {
+        "answer": {
+          "type": "object",
+          "description": "Question-specific fields and interpretation rules are frozen in protocol.json and CONTRACT.md; grader validates them against recomputation."
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^run-[0-9]{4}$"}
+        }
+      }
+    },
+    "q3Answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "compared_layer",
+        "subject_highest_layers",
+        "subject_near_top",
+        "subject_gap_to_best",
+        "subject_agreement",
+        "leave_one_subject_out",
+        "representativeness",
+        "influential_subjects",
+        "leave_one_out_sensitive",
+        "scope"
+      ],
+      "properties": {
+        "dataset_id": {"type": "string", "minLength": 1},
+        "compared_layer": {"type": "string", "minLength": 1},
+        "subject_highest_layers": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+        },
+        "subject_near_top": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+        },
+        "subject_gap_to_best": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": {"type": "number", "minimum": 0, "maximum": 2}
+        },
+        "subject_agreement": {"type": "number", "minimum": 0, "maximum": 1},
+        "leave_one_subject_out": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["highest_layers", "near_top_layers", "selected_layer_gap_to_best"],
+            "properties": {
+              "highest_layers": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+              "near_top_layers": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+              "selected_layer_gap_to_best": {"type": "number", "minimum": 0, "maximum": 2}
+            }
+          }
+        },
+        "representativeness": {"enum": ["broadly_representative", "heterogeneous"]},
+        "influential_subjects": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "leave_one_out_sensitive": {"type": "boolean"},
+        "scope": {"const": ["observed_subjects"]}
+      }
+    },
+    "q4Answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "selected_layer",
+        "baseline_layer",
+        "source_dataset_id",
+        "target_dataset_id",
+        "declared_shift",
+        "source_difference",
+        "target_score",
+        "target_baseline_score",
+        "target_difference",
+        "difference_change",
+        "target_gap_to_best",
+        "scope",
+        "advantage_conclusion",
+        "near_optimality"
+      ],
+      "properties": {
+        "status": {"enum": ["evaluated", "not_evaluated"]},
+        "selected_layer": {"type": "string", "minLength": 1},
+        "baseline_layer": {"type": "string", "minLength": 1},
+        "source_dataset_id": {"type": "string", "minLength": 1},
+        "target_dataset_id": {"type": ["string", "null"]},
+        "declared_shift": {"enum": ["none", "new_material"]},
+        "source_difference": {"type": "number"},
+        "target_score": {"type": ["number", "null"]},
+        "target_baseline_score": {"type": ["number", "null"]},
+        "target_difference": {"type": ["number", "null"]},
+        "difference_change": {"type": ["number", "null"]},
+        "target_gap_to_best": {"type": ["number", "null"], "minimum": 0, "maximum": 2},
+        "scope": {"enum": ["same_subjects_new_material", "not_evaluated"]},
+        "advantage_conclusion": {
+          "enum": [
+            "not_evaluated",
+            "no_development_advantage",
+            "advantage_retained",
+            "advantage_not_retained",
+            "advantage_reversed"
+          ]
+        },
+        "near_optimality": {"enum": ["not_evaluated", "retained_near_optimal", "not_retained"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "not_evaluated"}}},
+          "then": {
+            "properties": {
+              "target_score": {"type": "null"},
+              "target_baseline_score": {"type": "null"},
+              "target_difference": {"type": "null"},
+              "difference_change": {"type": "null"},
+              "target_gap_to_best": {"type": "null"},
+              "target_dataset_id": {"type": "null"},
+              "declared_shift": {"const": "none"},
+              "scope": {"const": "not_evaluated"},
+              "advantage_conclusion": {"const": "not_evaluated"},
+              "near_optimality": {"const": "not_evaluated"}
+            }
+          },
+          "else": {
+            "properties": {
+              "target_score": {"type": "number"},
+              "target_baseline_score": {"type": "number"},
+              "target_difference": {"type": "number"},
+              "difference_change": {"type": "number"},
+              "target_gap_to_best": {"type": "number"},
+              "target_dataset_id": {"type": "string", "minLength": 1},
+              "declared_shift": {"const": "new_material"},
+              "scope": {"const": "same_subjects_new_material"},
+              "advantage_conclusion": {
+                "enum": ["no_development_advantage", "advantage_retained", "advantage_not_retained", "advantage_reversed"]
+              },
+              "near_optimality": {"enum": ["retained_near_optimal", "not_retained"]}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

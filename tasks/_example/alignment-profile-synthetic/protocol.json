@@ -1,0 +1,54 @@
+{
+  "schema": "bpb-profile-protocol/1",
+  "id": "synthetic-profile-descriptive-v2",
+  "synthetic_only": true,
+  "questions": {
+    "q1": "整体形态是什么？报告全层分数、最高层、近优层、极差和描述性形态。",
+    "q2": "差异有多大、证据有多强？比较开发均值最高层与预设最后层，报告受试者配对差异。",
+    "q3": "群体选层是否代表各受试者？报告个人最高/近优层、群体层距个人最高分的差距，以及逐一移除受试者后的选层敏感性。",
+    "q4": "选层结论能否在未参与选择的新材料上复现？固定层后比较其相对最后层的优势是否保持，并报告距确认材料最高观测分数的差距；无确认材料须回答未评价。"
+  },
+  "aggregation": "mean stimulus blocks within each subject; then equal-weight mean subjects",
+  "baseline_rule": "baseline_layer must be the last layer in the declared layer order",
+  "fixture_margin": 0.02,
+  "highest_layer_tie_tolerance": 1e-12,
+  "tie_break": "first in declared layer order for q2/q3 comparisons",
+  "shape_rules": {
+    "flat": "range <= margin",
+    "single_peak": "nonflat; exactly one layer within margin of maximum",
+    "plateau": "nonflat; multiple contiguous layers within margin of maximum",
+    "multiple_high_regions": "nonflat; near-top layers are not contiguous"
+  },
+  "difference_rules": {
+    "consistent_advantage": "every subject's paired difference > margin",
+    "mixed": "some subject differences < -margin and some > margin",
+    "no_consistent_advantage": "otherwise; does not imply equivalence"
+  },
+  "subject_consistency_rules": {
+    "subject_gap_to_best": "each subject's highest layer mean minus that subject's score for the group-selected layer",
+    "representativeness": "broadly_representative iff group-selected layer is within margin of the personal maximum for >=75% of observed subjects; otherwise heterogeneous",
+    "leave_one_subject_out": "omit each subject in turn, re-average remaining subjects equally, and report highest/near-top layers and original selected-layer gap; no model refitting",
+    "influential_subjects": "omitted subjects for which the original selected-layer gap exceeds margin + 1e-12; exact winner flips within a plateau do not qualify",
+    "leave_one_out_sensitive": "true iff influential_subjects is nonempty; false only means no single-subject removal exceeded the threshold, not absence of multi-subject influence",
+    "scope": "observed_subjects only; removal sensitivity is not held-out-subject generalization"
+  },
+  "material_replication_rules": {
+    "design": "same subjects, model layers and measurement protocol; disjoint development/confirmation stimulus-block IDs; freeze selection before confirmation",
+    "difference": "frozen layer minus the predeclared baseline, on development and confirmation separately",
+    "difference_change": "confirmation difference minus development difference",
+    "advantage_conclusion": {
+      "not_evaluated": "confirmation unavailable; all confirmation measurements are null",
+      "no_development_advantage": "confirmation exists but development difference <= margin + 1e-12; do not claim an advantage was retained",
+      "advantage_retained": "development difference > margin + 1e-12 and confirmation difference > margin + 1e-12; does not imply equal effect size",
+      "advantage_reversed": "development difference > margin + 1e-12 and confirmation difference < -margin - 1e-12",
+      "advantage_not_retained": "development difference > margin + 1e-12 and neither retention nor reversal rule holds; not proof of equivalence"
+    },
+    "near_optimality": "independently report retained_near_optimal iff frozen layer is within margin + 1e-12 of the confirmation observed maximum; otherwise not_retained; not_evaluated without confirmation",
+    "scope": "same_subjects_new_material when evaluated, otherwise not_evaluated; not a claim about OOD or unseen subjects"
+  },
+  "shift_rule": "only new_material with confirmation, otherwise none; subject sets must match and block sets must be disjoint",
+  "inference": "descriptive_only; no confidence intervals, p-values, equivalence tests, or biological inference",
+  "numeric_tolerance": {"atol": 1e-9, "rtol": 1e-7},
+  "scoring": "all four verified answers => profile_analysis_success=1; four_question_score is the fraction passing",
+  "free_prose": "retained for human review; not automatically evaluated"
+}
