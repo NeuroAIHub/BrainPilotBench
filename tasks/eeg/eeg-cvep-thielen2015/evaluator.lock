@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "eeg-cvep-thielen2015",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__binding.json",
+      "path": "test/binding.json",
+      "sha256": "424392bc73731cf8bba5229b27899b30328eaa6fd4ff76a4e96003417369b3ff",
+      "bytes": 1441
+    },
+    {
+      "name": "evaluator__test__test-labels.npy",
+      "path": "test/test-labels.npy",
+      "sha256": "2533975282707f590379e69f3801624537337d5f8a2e3ce88e288bfab6a9f63a",
+      "bytes": 10496
+    },
+    {
+      "name": "evaluator__test__test.npz",
+      "path": "test/test.npz",
+      "sha256": "a57d011f66484dbeed9953784ea519f66e8307e397e6732d5086fbe202ee1bab",
+      "bytes": 39813376
+    }
+  ]
+}

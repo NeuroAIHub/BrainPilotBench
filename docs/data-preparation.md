@@ -1,9 +1,67 @@
-# Public data preparation — 2026-10-13
+# Public data preparation
 
-Status: the first public-data batch is published at a fixed Hugging Face revision.
-The collection has 105 runnable interfaces: 101 added tasks and four original tasks.
-It also has four EEG preparation entries and one withheld EEG candidate.
-Interface readiness, data availability, and model validation are separate states.
+## Current unified layout
+
+The v1 collection has 112 runnable tasks. The unified layout covers 111 hosted task folders.
+H1 remains source-only under its source Data Use Agreement.
+The hosted tree is `tasks/<category>/<task-id>/public/` at [Hugging Face revision `f50618208e3e748a8a16dfb6138e335f033d603c`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/f50618208e3e748a8a16dfb6138e335f033d603c/tasks).
+It has 668 public files totaling 37,945,533,281 bytes, including the four retained v0 tasks.
+BCI IV-4 contributes 14 files and 324,773,839 bytes.
+The data and 228 metadata files are published at this immutable revision.
+The current Hugging Face main tree removed 662 legacy paths at commit `46859131ae68fa2e1afdf91b5de135270563aaa0`.
+The old immutable revision URLs remain available. The cutover did not rewrite history or run garbage collection.
+The [delivery report](../reports/unified-public-delivery-20261015.json) records identity checks for all hosted paths and 116 anonymous root and task-manifest readbacks.
+Anonymous downloads verified 56 representative data files (426,564,046 bytes) by size and SHA-256.
+They include all 14 BCI IV-4 and 30 M2 files, four EEG files, and two psychology files.
+They also include one input from each other hosted invasive task, MRI support, and a worm CSV.
+Eight preparation checks passed: four from fresh anonymous fetches and four from verified existing public caches.
+The full 37,945,533,281-byte collection was not redownloaded. No Agent, model, or owner Test ran for this delivery check.
+The 371 private `data.lock` entries kept their metadata and remain outside the public layout.
+
+Prepare one hosted task with `node dist/cli.js prepare <task-id> --fetch --workspace /path/to/workspace`.
+The CLI fetches only the task's public entries and checks their bytes and SHA-256 values.
+For mapped entries, it copies verified regular files into `<workspace>/.bpb/public-data/`.
+It gives `BPB_PUBLIC_DATA_ROOT` to the task setup script.
+Task-specific Python variables and scorer data roots remain in each task README.
+Keep evaluator data and credentials outside the Agent workspace.
+
+The public files retain their original source terms. The framework's MIT license does not grant data rights.
+BCI IV-4 has its own [source and citation instructions](../tasks/ieeg/ieeg-finger-flexion-bciciv4/README.md#source-and-citation).
+This repository does not assert a CC or Apache redistribution grant for BCI IV-4.
+
+## Maintain reader-facing task descriptions
+
+Task READMEs are the source for the descriptions shown on Hugging Face.
+Their introductions explain the research problem. Their task tables describe inputs, outputs, splits, and metrics.
+Internal `task.yaml` summaries do not replace this reader-facing text.
+
+The documentation builder reads the source guides, a frozen HF catalog, and public file manifests. It does not read arrays or upload files.
+Use a committed and published source revision for an update:
+
+```sh
+node scripts/build-hf-reader-docs.mjs \
+  --source-revision <published-github-commit> \
+  --catalog-input /path/to/frozen-hf-metadata/catalog.jsonl \
+  --manifest-root /path/to/frozen-hf-metadata \
+  --output /path/to/new-reader-docs
+```
+
+The builder creates task READMEs and updates only the catalog's `summary` and `protocol_url` fields. The latter links to the selected GitHub commit.
+It rejects source guides that differ from the selected commit and introductions that lack reader-facing content.
+The four retained v0 tasks use descriptions and contract tables from their existing guides.
+Run `npm run test:reader-docs` to verify coverage, result labels, and catalog preservation.
+
+Review generated text and links before publication. Keep scientific manifests, data objects, and other catalog fields unchanged.
+The root HF README is reviewed separately. Documentation publication does not change task versions or add Agent results.
+
+<a id="historical-first-batch"></a>
+
+## Historical first batch — 2026-10-13
+
+The first public-data batch was published at a fixed Hugging Face revision.
+At that point, the collection had 105 runnable interfaces: 101 additions and four original tasks.
+It also had four EEG preparation entries and one withheld EEG candidate.
+The counts and checks below describe that dated snapshot.
 
 ## Published first batch
 
@@ -136,10 +194,11 @@ All six pinned public URLs returned HTTP 200 to fresh HEAD requests. Their
 reported lengths and linked SHA-256 metadata match `data.lock`. This checks
 availability and server metadata, not freshly downloaded content hashes.
 
-## Using public data
+## Historical access notes
 
-For the published first batch, run `bp-bench fetch <task-id> --public` to load
-the files named in `data.lock`. The fetcher checks each file's size and SHA-256.
+At the time of the dated first batch, `bp-bench fetch <task-id> --public` loaded
+the files named in its then-current `data.lock`. The fetcher checked each file's size and SHA-256.
+Current data locks use the unified layout described above.
 The owner-only `BPB_LOCAL_DATA_ROOT` route remains a preparation fallback for
 unpublished packages. It is not required for the published first batch.
 
@@ -153,7 +212,7 @@ sources. Evaluator-only inputs stay in a separate maintainer-controlled location
 The four real reference checks are recorded in
 [integration-validation.md](integration-validation.md).
 
-## Publication boundary
+## Historical publication boundary
 
 The first public-data batch is complete at the fixed Hugging Face revision above.
 The public selection contains no private evaluator file or prepared EEG candidate.

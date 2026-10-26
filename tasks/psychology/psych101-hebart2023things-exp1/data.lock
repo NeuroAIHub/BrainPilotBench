@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-hebart2023things-exp1/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-hebart2023things-exp1/public/train.jsonl
     sha256: 07dd7d4313f6e88a05e00177631f4fa19000599d5857753a8e04c3105a65e7a6
     bytes: 125148769
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-hebart2023things-exp1/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-hebart2023things-exp1/public/valid.jsonl
     sha256: 483d2df54bbaa5b334ec0f631bfd8fbf4f8187e09799b941605a6f41abd8559b
     bytes: 31732940
     format: jsonl

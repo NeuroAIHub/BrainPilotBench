@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "eeg-mi-zhou2016",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__binding.json",
+      "path": "test/binding.json",
+      "sha256": "9114f10ae7c0816b627e5634ca68638b4140335a41b0b911d1c6048208c60ab6",
+      "bytes": 1434
+    },
+    {
+      "name": "evaluator__test__test-labels.npy",
+      "path": "test/test-labels.npy",
+      "sha256": "5bf0987f639143caf16ba6f32b29c55c79adf6794ad208657002336e35c840d8",
+      "bytes": 4928
+    },
+    {
+      "name": "evaluator__test__test.npz",
+      "path": "test/test.npz",
+      "sha256": "fa67a0863a4df560537af9dfee9548bbd58fc5fb6feee537042f963d10fd989c",
+      "bytes": 16128256
+    }
+  ]
+}

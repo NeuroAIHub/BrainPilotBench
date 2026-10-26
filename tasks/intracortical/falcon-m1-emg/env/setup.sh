@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 TASK_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-: "${BPB_M1_DATA_DIR:?Set BPB_M1_DATA_DIR to the verified public derived data directory}"
+: "${BPB_M1_DATA_DIR:=${BPB_PUBLIC_DATA_ROOT:-}}"
+BPB_M1_DATA_DIR="${BPB_PUBLIC_DATA_ROOT:-$BPB_M1_DATA_DIR}"
+: "${BPB_M1_DATA_DIR:?Set BPB_M1_DATA_DIR or BPB_PUBLIC_DATA_ROOT to the verified public derived data directory}"
 if [[ -n "${BPB_M1_EVALUATOR_DATA_DIR:-}" || -n "${BPB_M1_TEST_MANIFEST:-}" ]]; then
   echo "M1 setup accepts only public Train and Valid data" >&2
   exit 2

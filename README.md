@@ -5,7 +5,7 @@
 <p><strong>Evaluating AI agents on brain-science and behavioral research tasks.</strong></p>
 
 <p>
-Analyze data. Develop models. Submit code, predictions, and research reports.
+From neural recordings to human choices: build models, analyze data, and submit reproducible research artifacts.
 </p>
 
 <p>
@@ -22,6 +22,7 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 <p>
   <a href="#project-news">News</a> ·
   <a href="#task-suite">v1 Tasks</a> ·
+  <a href="#v1-data-access">Data</a> ·
   <a href="#quick-start">Quick Start</a> ·
   <a href="#evaluation-status">Evaluation Status</a> ·
   <a href="#brainpilotbench-v0-results">v0 Results</a> ·
@@ -36,37 +37,45 @@ Analyze data. Develop models. Submit code, predictions, and research reports.
 
 ## Project news
 
+- **2026-10-19 — Private evaluator workflow.** Maintainers can prepare 29 hosted Test packages and score frozen submissions through an explicit private route.
+  Test data remain outside Agent workspaces. See the [private evaluation guide](docs/private-evaluation.md) for coverage, source-only exceptions, and representative checks.
+- **2026-10-16 — Task guides and public data.** Explore the scientific question, inputs, split, and metric for each task.
+  Public data for 111 tasks are available in the [unified Hugging Face collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public). H1 provides an original-source preparation route.
 - **2026-10-15 — BrainPilotBench v1 task collection.** v1 brings **108 new tasks and four retained v0 tasks** into one 112-task collection.
   **Invasive recordings** is a new data category with seven ECoG, sEEG, and intracortical decoding tasks.
-  See the [v1 task suite](#task-suite) and [data access options](#v1-data-access). **Agent benchmark results for the 108 additions remain pending.**
+  See the [v1 task suite](#task-suite) and [evaluation status](#evaluation-status).
 - **2026-07-18** — BrainPilot was showcased at the “Intelligence in the Physical World” Science Forum at WAIC 2026. Follow us for the latest updates.
 - **2026-07-17** — BrainPilotBench-v0 was released as open source. It provides four real brain-science tasks for agent-agnostic, artifact-based evaluation of the code, figures, models, and reports produced by scientific agents.
 
 ## Overview
 
-BrainPilotBench is a benchmark and shared task collection for evaluating AI agents
-on brain-science and behavioral research problems. Agents analyze data, develop
-models, and submit code, predictions, or reports for task-specific evaluation.
+BrainPilotBench evaluates AI agents on research problems in brain science and human behavior.
+Agents receive task instructions and public data, develop an analysis or model, and submit artifacts for task-specific evaluation.
+The tasks include decoding neural activity, predicting human responses, and comparing anatomical connectivity with measured signal propagation.
 
-The repository provides task instructions, data access, environments, and scoring
-code. Independent research projects can reuse the same versioned tasks.
+**BrainPilotBench v1 brings 112 tasks across six data categories into one shared collection.**
+Each task specifies its data, research objective, submission format, and evaluation protocol.
+The repository supplies environments and scoring code so that different agents can work on the same problem.
 
-**BrainPilotBench v1** covers EEG, psychology, MRI, connectomics, calcium imaging, and invasive recordings in one task collection.
-The v1 label identifies the collection. Each task keeps its own scientific protocol version, data bindings, and scoring interface.
+AgentEEGBench and Psych101-Agent-Bench remain independent research projects that can reuse these versioned tasks.
+The v1 collection name does not change individual task protocols or transfer results from those projects.
+
+### What a task asks the agent to do
+
+| Research problem | Input and submission | Evaluation |
+|---|---|---|
+| [Model human casino choices](tasks/psychology/psych101-lefebvre2017behavioural-exp1/README.md) | Use trial history to predict participants' next responses. Submit response probabilities through a saved model. | Participant-disjoint Train/Valid data; mean negative log-likelihood per response. |
+| [Predict age from structural MRI](tasks/mri/brain-age-mri/README.md) | Learn from T1-weighted images. Submit an inference program that predicts age in years. | Held-out participants; mean absolute error in years. |
+| [Decode finger movement from ECoG](tasks/ieeg/ieeg-finger-flexion-bciciv4/README.md) | Map neural recordings to five finger-flexion trajectories. Submit a saved decoder. | Guarded chronological Train/Valid split; mean Pearson correlation across three participants and four scored fingers. |
 
 ## Evaluation status
 
 > [!IMPORTANT]
-> **v1 task collection: data access and evaluation workflows available. Agent benchmark results for the 108 additions are pending.**
->
-> No BrainPilotBench agent benchmark scores are available for the 108 new v1 tasks, including the seven invasive-recording tasks.
-> Current checks cover data integrity and selected preparation and reference-scoring workflows.
-> They do not measure comparative agent performance across v1.
->
-> Published **BrainPilotBench-v0 results cover only the four original tasks**. They remain historical v0 results, not a v1 evaluation.
+> **Agent benchmark results for the 108 new v1 tasks are not yet available.**
+> Data checks and fixed-reference runs cover selected workflows, not comparative Agent performance across the collection.
+> Published v0 results cover only the four original tasks and remain separate below.
 
-The complete v1 source collection is under review in [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75).
-It is not yet merged into main or distributed through npm. Use the v1 source branch in the quick start below.
+The [validation guide](docs/shared-task-collection.md#reference-implementation-checks) distinguishes task preparation, reference checks, and Agent evaluation.
 
 ## Task suite
 
@@ -108,17 +117,16 @@ These recording types share one category while retaining their distinct input fo
 | [FALCON M2](tasks/intracortical/falcon-m2-finger-velocity/README.md) | Two finger-group velocities | Date-mean variance-weighted R² |
 | [FALCON B1](tasks/intracortical/falcon-b1-birdsong/README.md) | Zebra finch vocalization spectrograms | Normalized spectrogram MSE |
 
-Their local checks cover real data, fixed reference submissions, container-isolated public Valid scoring,
-and separate owner Test interfaces. They do not provide Agent benchmark results.
-Five tasks have a [prepared public package](docs/invasive-task-preparation.md#download-a-prepared-public-package).
-H1 and BCI IV-4 retain original-source download, split definitions, and local preparation methods. Their data are not mirrored here.
-The film package does not require the owner-held shuffle key to use. Rebuilding the same opaque IDs and hashes does require it.
-See the [invasive-recording guide](docs/invasive-task-preparation.md) for access and evaluation boundaries.
+The FALCON-derived tasks use BrainPilotBench splits. Their scores are not official FALCON leaderboard results.
+The [invasive-recording guide](docs/invasive-task-preparation.md) describes public data access, model interfaces, and the separate reference checks.
 
 ### Retained v0 protocols · 4 tasks
 
 These four tasks are included in v1's 112-task total, not added on top of it.
 They retain their IDs, scientific protocol versions, and historical v0 results.
+
+<details>
+<summary>View the four retained task protocols</summary>
 
 | Task | Capability | Compute | Primary scoring |
 |---|---|---|---|
@@ -127,6 +135,8 @@ They retain their IDs, scientific protocol versions, and historical v0 results.
 | [<code>bciciv-2a</code>](tasks/eeg/bciciv-2a/README.md) | Four-class motor-imagery EEG decoding | GPU | Held-out accuracy + Cohen's kappa |
 | [<code>sleep-edf</code>](tasks/eeg/sleep-edf/README.md) | Five-class sleep staging | GPU | Held-out Cohen's kappa + per-class recall |
 
+</details>
+
 The [machine-readable catalog](tasks/catalog.json) lists task IDs and availability.
 `bp-bench list` shows runnable packages only.
 See the [collection guide](docs/shared-task-collection.md) for protocol differences,
@@ -134,27 +144,36 @@ data roles, and reuse across independent research projects.
 
 ### v1 data access
 
-Hosted packages for the v1 additions use two immutable storage snapshots:
+Browse the [Hugging Face task directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks) for public data from 111 tasks, including BCI IV-4.
+Each task has one directory: `tasks/<category>/<task-id>/public/`.
+Its `data.lock` pins the download revision, file sizes, and hashes. Native scientific file formats remain unchanged.
 
-- **EEG, psychology, structural MRI, and connectomics:** [101-task public package](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1), with 246 data files totaling 32.67 GB.
-- **Invasive recordings:** [five-task public package](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1), with 402 data files totaling 2.35 GB.
-- **H1 and BCI IV-4:** original-source download, fixed split definitions, and local preparation. Their data are not mirrored here.
+H1 uses original-source download and local preparation because its Data Use Agreement prohibits redistribution.
+The film task's public package supports Agent preparation, but block-first scoring still requires a trusted evaluator mapping.
+Source terms and citation instructions remain task-specific. Evaluator-only inputs are separate from public data.
 
-Download only the tasks you need. The four retained v0 tasks keep their task-specific data access instructions.
-EEG and psychology additions use public validation, not imported private Test scores. Evaluator-only inputs remain separate.
+Install the environment in the task README, then prepare one hosted task:
+
+~~~sh
+node dist/cli.js prepare <task-id> --fetch --workspace /absolute/outside-git/workspace
+~~~
+
+See the [data guide](docs/data-preparation.md) for delivery checks, fixed snapshots, and preparation details.
+
+### Private evaluation for maintainers
+
+The [private collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/62ff438a727aa5ca72c688526410930c8f1f664b/tasks) provides evaluator packages for 29 tasks.
+Use `prepare-evaluator` to create an owner-only data directory, then `score --private` to evaluate a frozen submission.
+Private results go to `scores.private.json`; public validation and its results stay separate.
+The [maintainer guide](docs/private-evaluation.md) lists the commands, environments, source restrictions, and validation limits.
+This data and interface update does not add Agent benchmark results.
 
 <details>
-<summary>Data checks and candidates outside v1's runnable count</summary>
-
-The 101-task package passed anonymous download and SHA-256 checks on all 247 paths, including its selection manifest.
-The invasive package passed metadata checks on all 405 paths and anonymous download checks on nine representative files.
-An additional complete M2 public-package download and workspace preparation passed.
-These checks establish data delivery and selected workflows, not Agent benchmark performance.
-See the [data preparation record](docs/data-preparation.md) and [invasive task guide](docs/invasive-task-preparation.md) for the exact scopes.
+<summary>Candidates outside the 112 runnable tasks</summary>
 
 Four EEG entries remain preparation-only: HMC sleep stage, HMC sleep onset, Sleep-EDF onset, and CHB-MIT seizure detection.
 Thielen2021 remains withheld. These five candidates are outside the 112 runnable tasks.
-Candidate packages and evaluator-only inputs are not included in the public packages above.
+Candidate packages and evaluator-only inputs are not included in the unified public layout.
 
 </details>
 
@@ -189,10 +208,11 @@ the technical report.
 - Git
 - Any task-specific Python, CPU, GPU, or storage requirements listed in its task README
 
-Until [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75) is merged, use the v1 source branch:
+The v1 source collection is on main. The unified download and preparation update is under review in [PR #77](https://github.com/NeuroAIHub/BrainPilotBench/pull/77).
+Use its source branch for the workflow below. This update is not an npm release.
 
 ~~~bash
-git clone --branch feat/invasive-task-collection https://github.com/NeuroAIHub/BrainPilotBench.git
+git clone --branch feat/unified-public-data-layout https://github.com/NeuroAIHub/BrainPilotBench.git
 cd BrainPilotBench
 npm ci
 npm run build
@@ -251,7 +271,8 @@ BrainPilotBench provides three adapters:
 For an agent-independent manual handoff:
 
 ~~~bash
-bp-bench run <task-id> --adapter manual --agent my-agent@1
+bp-bench run <task-id> --adapter manual --agent my-agent@1 --fetch \
+  --workspace /absolute/outside-git/workspace
 ~~~
 
 Run your agent in the printed workspace, then execute the printed resume command. Verify
@@ -340,6 +361,8 @@ or start a discussion.
 ## License
 
 The framework package is licensed under MIT.
+The hosted datasets retain their original source terms. The MIT license does not grant rights to those data.
+Read each task's source and citation instructions before use. In particular, this repository makes no CC or Apache redistribution claim for BCI IV-4.
 
 ---
 

@@ -11,7 +11,8 @@ if [[ -n "${BPB_H2_EVALUATOR_DATA_DIR:-}" ]]; then
   echo "Evaluator data must not be exposed to Agent setup" >&2
   exit 2
 fi
-if [[ -n "${BPB_H2_DATA_DIR:-}" ]]; then
+if [[ -n "${BPB_PUBLIC_DATA_ROOT:-${BPB_H2_DATA_DIR:-}}" ]]; then
+  BPB_H2_DATA_DIR="${BPB_PUBLIC_DATA_ROOT:-$BPB_H2_DATA_DIR}"
   "$PYTHON_BIN" "$SHARED/stage.py" --task h2 --source "$BPB_H2_DATA_DIR" \
     --stage-to "${BPB_H2_STAGE_DIR:-$PWD/public_data}"
   exit 0

@@ -1,0 +1,29 @@
+{
+  "schema": "bpb-unified-public-delivery/1",
+  "status": "passed",
+  "task_id": "ieeg-finger-flexion-bciciv4",
+  "task_version": "0.1-public-validation-offline",
+  "published_revision": "f50618208e3e748a8a16dfb6138e335f033d603c",
+  "prior_acceptance_sha256": "09de5cf540ad15310bb8d00a7a6e61df50bc868cc71676f1b7d114ee1717b47d",
+  "old_file_sha256": {
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/data.lock": "fa8b6a813d0b0beab08c5ec03bbd1f9b728a67fbbfe066686823706e1df3a6a3",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/setup.sh": "df2930d34b6743e4b405f5d0ec7159e783e2099acadc3ae1d7c140747be07178"
+  },
+  "new_file_sha256": {
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/data.lock": "c4419de73e0a3594cb9f9bcf995a5a8bf5495472b1d52f151f3072db87eb9a02",
+    "tasks/ieeg/ieeg-finger-flexion-bciciv4/env/setup.sh": "85b9d937683b2bbc393394f9a574aa53ee57ba1f1ff7d0dc008ca3fc09aa6dc1"
+  },
+  "bridge_file_sha256": {
+    "src/data/types.ts": "054d0252c71196d6d3b5b0d86dcc0c15898374d75dcb6ced52d046a5624fa25a",
+    "src/data/manifest.ts": "97ba2db02f16976e0b9d7555deb682e15dc030812134103060c1316dfcd960ff",
+    "src/workflow.ts": "42e6c96a425806c1b3a53613a8629876592661b4c0a4d68aa67ecb84668f69f8",
+    "src/cli.ts": "933587c8a71814c4a2b2dbfd6e641fcc5811ea7f4dc5d81e5fa1a94d1f561d04",
+    "src/data/cache.ts": "35e28eb86cb04e6c18fdeecc056493afdf72d50a74d5c3538dda3dbda1aaa003",
+    "src/data/fetch.ts": "874021b7e7054348457cd516d1b0cb1ecb1823fae6eff3107f611ebdfcdc3937",
+    "src/data/resolve.ts": "7499c00a5f4220021f3b6e0c3e925d338a02d99e9c401ddbf0bc15342dd011ce"
+  },
+  "verification_report": {
+    "path": "reports/unified-public-delivery-20261015.json",
+    "sha256": "ea04f1777265a3b1af37fd95f551ea97bea9fa3e680a963d5120ed04d9f29512"
+  }
+}

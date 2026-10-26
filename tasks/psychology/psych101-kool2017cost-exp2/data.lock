@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-kool2017cost-exp2/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-kool2017cost-exp2/public/train.jsonl
     sha256: 9c77783db7997ebfb1937dad9d2c4f4e94be408324a4b01830ce06d8c89731da
     bytes: 2878694
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-kool2017cost-exp2/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-kool2017cost-exp2/public/valid.jsonl
     sha256: 9479167fddfb60c60b0f40d6efea826855514403a79853178c1d6bef5fa57176
     bytes: 739986
     format: jsonl

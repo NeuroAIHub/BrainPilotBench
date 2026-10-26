@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "eeg-mental-arithmetic-zyma2019",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__binding.json",
+      "path": "test/binding.json",
+      "sha256": "806c2f3bde046c3436721565f13588327895b71e0d2e3e409ff958085c15b656",
+      "bytes": 1452
+    },
+    {
+      "name": "evaluator__test__test-labels.npy",
+      "path": "test/test-labels.npy",
+      "sha256": "6d172fb55d1a9315bb308ff58699b30151b4bbeff35f809993b2e84edcec5aa8",
+      "bytes": 2816
+    },
+    {
+      "name": "evaluator__test__test.npz",
+      "path": "test/test.npz",
+      "sha256": "743d3d7da5a12f3fa79df1b45af6db64538f30351825271b2f35777c03dad0c0",
+      "bytes": 16128256
+    }
+  ]
+}

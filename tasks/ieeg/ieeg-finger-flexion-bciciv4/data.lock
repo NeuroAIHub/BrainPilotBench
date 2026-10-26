@@ -1,116 +1,130 @@
 {
   "datasets": [
     {
+      "name": "bci-train-manifest.json",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/manifest.json",
+      "sha256": "edc93cac7991a39e2884a88beef7b785ec6e33cf6d14ae3ce04707001cfaa61e",
       "bytes": 2156,
       "format": "json",
-      "name": "bci-train-manifest.json",
       "scope": "public",
-      "sha256": "edc93cac7991a39e2884a88beef7b785ec6e33cf6d14ae3ce04707001cfaa61e",
-      "uri": "local://public/train/manifest.json"
+      "path": "train/manifest.json"
     },
     {
+      "name": "bci-train-sub1-x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub1/x.npy",
+      "sha256": "c6eff1e588afaaea72a5eb5a59224846fd4fa386d1e253407cffe5404e6e23ac",
       "bytes": 79112128,
       "format": "npy",
-      "name": "bci-train-sub1-x.npy",
       "scope": "public",
-      "sha256": "c6eff1e588afaaea72a5eb5a59224846fd4fa386d1e253407cffe5404e6e23ac",
-      "uri": "local://public/train/sub1/x.npy"
+      "path": "train/sub1/x.npy"
     },
     {
+      "name": "bci-train-sub1-y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub1/y.npy",
+      "sha256": "33f6b4bccf03086624d823ee5273938bb551905515a4661d3dfbefcdb2c3a1b6",
       "bytes": 12760128,
       "format": "npy",
-      "name": "bci-train-sub1-y.npy",
       "scope": "public",
-      "sha256": "33f6b4bccf03086624d823ee5273938bb551905515a4661d3dfbefcdb2c3a1b6",
-      "uri": "local://public/train/sub1/y.npy"
+      "path": "train/sub1/y.npy"
     },
     {
+      "name": "bci-train-sub2-x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub2/x.npy",
+      "sha256": "77a952846be5cb0541ad7b85c715d191ffc08e0a1aa0e6f69588d35c83f6ed32",
       "bytes": 61248128,
       "format": "npy",
-      "name": "bci-train-sub2-x.npy",
       "scope": "public",
-      "sha256": "77a952846be5cb0541ad7b85c715d191ffc08e0a1aa0e6f69588d35c83f6ed32",
-      "uri": "local://public/train/sub2/x.npy"
+      "path": "train/sub2/x.npy"
     },
     {
+      "name": "bci-train-sub2-y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub2/y.npy",
+      "sha256": "61c1ef70535fcb8dec95b3f8029191730e3dfcad2cd55f61d48cdf91cf6dbe4e",
       "bytes": 12760128,
       "format": "npy",
-      "name": "bci-train-sub2-y.npy",
       "scope": "public",
-      "sha256": "61c1ef70535fcb8dec95b3f8029191730e3dfcad2cd55f61d48cdf91cf6dbe4e",
-      "uri": "local://public/train/sub2/y.npy"
+      "path": "train/sub2/y.npy"
     },
     {
+      "name": "bci-train-sub3-x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub3/x.npy",
+      "sha256": "323d3f3634b571c8e36a2cd225f8377fbdc697aa641dea954b6214a5e57e54ee",
       "bytes": 81664128,
       "format": "npy",
-      "name": "bci-train-sub3-x.npy",
       "scope": "public",
-      "sha256": "323d3f3634b571c8e36a2cd225f8377fbdc697aa641dea954b6214a5e57e54ee",
-      "uri": "local://public/train/sub3/x.npy"
+      "path": "train/sub3/x.npy"
     },
     {
+      "name": "bci-train-sub3-y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub3/y.npy",
+      "sha256": "ce02295c257180dd3c1a6cb75f281a220dcf365391fd9e2742f572e92cee3f22",
       "bytes": 12760128,
       "format": "npy",
-      "name": "bci-train-sub3-y.npy",
       "scope": "public",
-      "sha256": "ce02295c257180dd3c1a6cb75f281a220dcf365391fd9e2742f572e92cee3f22",
-      "uri": "local://public/train/sub3/y.npy"
+      "path": "train/sub3/y.npy"
     },
     {
+      "name": "bci-valid-manifest.json",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/manifest.json",
+      "sha256": "70b9b7cb27b35006c350ac31fda929779884b8700a471118af610ea286a34650",
       "bytes": 2147,
       "format": "json",
-      "name": "bci-valid-manifest.json",
       "scope": "public",
-      "sha256": "70b9b7cb27b35006c350ac31fda929779884b8700a471118af610ea286a34650",
-      "uri": "local://public/valid/manifest.json"
+      "path": "valid/manifest.json"
     },
     {
+      "name": "bci-valid-sub1-x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub1/x.npy",
+      "sha256": "8b48c613b134cfc853d142e0d97c718ce6a0c9232ecd12887c9537e17f53abe9",
       "bytes": 19592128,
       "format": "npy",
-      "name": "bci-valid-sub1-x.npy",
       "scope": "public",
-      "sha256": "8b48c613b134cfc853d142e0d97c718ce6a0c9232ecd12887c9537e17f53abe9",
-      "uri": "local://public/valid/sub1/x.npy"
+      "path": "valid/sub1/x.npy"
     },
     {
+      "name": "bci-valid-sub1-y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub1/y.npy",
+      "sha256": "6cb862ff5d0c50a2af5e7d91a8e1aa5908f00fca7c0f9024418ac7008b7c8545",
       "bytes": 3160128,
       "format": "npy",
-      "name": "bci-valid-sub1-y.npy",
       "scope": "public",
-      "sha256": "6cb862ff5d0c50a2af5e7d91a8e1aa5908f00fca7c0f9024418ac7008b7c8545",
-      "uri": "local://public/valid/sub1/y.npy"
+      "path": "valid/sub1/y.npy"
     },
     {
+      "name": "bci-valid-sub2-x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub2/x.npy",
+      "sha256": "acf2044633143e25252bf8d7f5c6a489971008f30a9e94eb0e01d60c9ea9b37f",
       "bytes": 15168128,
       "format": "npy",
-      "name": "bci-valid-sub2-x.npy",
       "scope": "public",
-      "sha256": "acf2044633143e25252bf8d7f5c6a489971008f30a9e94eb0e01d60c9ea9b37f",
-      "uri": "local://public/valid/sub2/x.npy"
+      "path": "valid/sub2/x.npy"
     },
     {
+      "name": "bci-valid-sub2-y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub2/y.npy",
+      "sha256": "ceff1887785a1cb32db2bc6d231b99939b99d326e6f4d3e148edbc73355172ef",
       "bytes": 3160128,
       "format": "npy",
-      "name": "bci-valid-sub2-y.npy",
       "scope": "public",
-      "sha256": "ceff1887785a1cb32db2bc6d231b99939b99d326e6f4d3e148edbc73355172ef",
-      "uri": "local://public/valid/sub2/y.npy"
+      "path": "valid/sub2/y.npy"
     },
     {
+      "name": "bci-valid-sub3-x.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub3/x.npy",
+      "sha256": "60c46a4472e604d074804f5585a188aa405559eb46ede578a034cabf953a61cf",
       "bytes": 20224128,
       "format": "npy",
-      "name": "bci-valid-sub3-x.npy",
       "scope": "public",
-      "sha256": "60c46a4472e604d074804f5585a188aa405559eb46ede578a034cabf953a61cf",
-      "uri": "local://public/valid/sub3/x.npy"
+      "path": "valid/sub3/x.npy"
     },
     {
+      "name": "bci-valid-sub3-y.npy",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub3/y.npy",
+      "sha256": "e38273c61374d392575b3289b3b66c181d2facfdd3cd7dc42b6ac25eead96ac2",
       "bytes": 3160128,
       "format": "npy",
-      "name": "bci-valid-sub3-y.npy",
       "scope": "public",
-      "sha256": "e38273c61374d392575b3289b3b66c181d2facfdd3cd7dc42b6ac25eead96ac2",
-      "uri": "local://public/valid/sub3/y.npy"
+      "path": "valid/sub3/y.npy"
     },
     {
       "bytes": 2239,
@@ -118,7 +132,7 @@
       "name": "bci-test-manifest.json",
       "scope": "private",
       "sha256": "1463ffa30f6ca08be5b2f46acc1a1c7367affd097001d8badddbb64228866caa",
-      "uri": "local://evaluator/test/manifest.json"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/ieeg-finger-flexion-bciciv4/evaluator/test/manifest.json"
     },
     {
       "bytes": 49600128,
@@ -126,7 +140,7 @@
       "name": "bci-test-sub1-x.npy",
       "scope": "private",
       "sha256": "54cbeb8b6ab46ff52f4aecd18afc1d41b462264ca49d3c484487fee276c36097",
-      "uri": "local://evaluator/test/sub1/x.npy"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/ieeg-finger-flexion-bciciv4/evaluator/test/sub1/x.npy"
     },
     {
       "bytes": 8000128,
@@ -134,7 +148,7 @@
       "name": "bci-test-sub1-y.npy",
       "scope": "private",
       "sha256": "9ec74830e3d61284606c04c54118c132baff4249b3c750a39cc1205415147f1f",
-      "uri": "local://evaluator/test/sub1/y.npy"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/ieeg-finger-flexion-bciciv4/evaluator/test/sub1/y.npy"
     },
     {
       "bytes": 38400128,
@@ -142,7 +156,7 @@
       "name": "bci-test-sub2-x.npy",
       "scope": "private",
       "sha256": "b6a9db590d0cbc5bf3aaa4f4108a03ec787f30232b47b112ac0c5827bfe57383",
-      "uri": "local://evaluator/test/sub2/x.npy"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/ieeg-finger-flexion-bciciv4/evaluator/test/sub2/x.npy"
     },
     {
       "bytes": 8000128,
@@ -150,7 +164,7 @@
       "name": "bci-test-sub2-y.npy",
       "scope": "private",
       "sha256": "b67abd5f03d7d41faaec7d8275f840c005cd7751e4300c9b0d48dba274ecd507",
-      "uri": "local://evaluator/test/sub2/y.npy"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/ieeg-finger-flexion-bciciv4/evaluator/test/sub2/y.npy"
     },
     {
       "bytes": 51200128,
@@ -158,7 +172,7 @@
       "name": "bci-test-sub3-x.npy",
       "scope": "private",
       "sha256": "9d1233d83b047dcd49fb8b9752b134d2ee810dda9bcdbc1d297d1bf34454df14",
-      "uri": "local://evaluator/test/sub3/x.npy"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/ieeg-finger-flexion-bciciv4/evaluator/test/sub3/x.npy"
     },
     {
       "bytes": 8000128,
@@ -166,7 +180,7 @@
       "name": "bci-test-sub3-y.npy",
       "scope": "private",
       "sha256": "92c32a05cf65cc93d13d0f195c71646f21e60b4bb82bd5427506e6409fed80aa",
-      "uri": "local://evaluator/test/sub3/y.npy"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/invasive/ieeg-finger-flexion-bciciv4/evaluator/test/sub3/y.npy"
     }
   ]
 }

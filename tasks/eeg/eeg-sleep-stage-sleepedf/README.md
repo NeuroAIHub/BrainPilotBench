@@ -37,7 +37,10 @@ For an existing public-only package, set `BPB_EEG_PUBLIC_PACKAGE_DIR` to its dir
 
 Submit one chosen method with seeds 0, 1, and 2. Each `submission/seed-N/` directory must contain `model.py`, `config.json`, and `weights.safetensors`. Each model returns normalized `[B, 5]` probabilities after it reloads its own weights.
 
-The task limits parameters and saved numerical state to 10 million elements each. Inference cannot train, use the network, or read task files. The shared scorer keeps validation labels in its trusted parent process and runs model code in isolated containers. Private Test data, labels, and feedback are unavailable. There is no required research duration or improvement threshold.
+The task limits parameters and saved numerical state to 10 million elements each. Inference cannot train, use the network, or read task files. The shared scorer keeps validation labels in its trusted parent process and runs model code in isolated containers. Private Test data and labels are unavailable to the Agent during research. There is no required research duration or improvement threshold.
+
+Maintainers can use the separate [private evaluation workflow](../../../docs/private-evaluation.md) with this task's `evaluator.lock`.
+It reads frozen Test shards in bounded batches and writes `scores.private.json`; the default scorer remains public validation.
 
 See the [shared EEG guide](../_shared/README.md) for image and scoring instructions. This task differs from the legacy `sleep-edf` task. Do not combine their protocols or results under one task ID.
 

@@ -1,0 +1,213 @@
+{
+  "agent_benchmark_run": false,
+  "checked_at_utc": "2026-10-15T09:24:55.327808+00:00",
+  "collection": "v1",
+  "downloads": {
+    "anonymous": true,
+    "full_collection_downloaded": false,
+    "interruption": "BCI transfer resumed once from its retained anonymous-download partial; all final bytes and hashes passed.",
+    "scope": "representative",
+    "verified_data_bytes": 426564046,
+    "verified_data_files": 56,
+    "verified_targets": [
+      "tasks/connectomics/celegans-structure-function-divergence/public/neuron_master_sheet.csv",
+      "tasks/eeg/eeg-mi-barachant2012/public/train-groups.json",
+      "tasks/eeg/eeg-mi-barachant2012/public/train.npz",
+      "tasks/eeg/eeg-mi-barachant2012/public/val-groups.json",
+      "tasks/eeg/eeg-mi-barachant2012/public/val.npz",
+      "tasks/invasive/falcon-b1-birdsong/public/valid/runs/b1-valid-0001/x.npy",
+      "tasks/invasive/falcon-h2-handwriting/public/valid/runs/h2-valid-0001/x.npy",
+      "tasks/invasive/falcon-m1-emg/public/valid/runs/m1-valid-0001/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/manifest.json",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0001/mask.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0001/trial_start.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0001/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0001/y.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0002/mask.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0002/trial_start.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0002/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0002/y.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0003/mask.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0003/trial_start.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0003/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0003/y.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0004/mask.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0004/trial_start.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0004/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0004/y.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0005/mask.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0005/trial_start.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0005/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0005/y.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0006/mask.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0006/trial_start.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0006/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/train/runs/m2-train-0006/y.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/valid/manifest.json",
+      "tasks/invasive/falcon-m2-finger-velocity/public/valid/runs/m2-valid-0001/mask.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/valid/runs/m2-valid-0001/trial_start.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/valid/runs/m2-valid-0001/x.npy",
+      "tasks/invasive/falcon-m2-finger-velocity/public/valid/runs/m2-valid-0001/y.npy",
+      "tasks/invasive/ieeg-film-speech-music/public/9eec5ee2ccc254675350e505/validation.npz",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/manifest.json",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub1/x.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub1/y.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub2/x.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub2/y.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub3/x.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/train/sub3/y.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/manifest.json",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub1/x.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub1/y.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub2/x.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub2/y.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub3/x.npy",
+      "tasks/invasive/ieeg-finger-flexion-bciciv4/public/valid/sub3/y.npy",
+      "tasks/mri/tops-fmri/public/public_support.tar.zst",
+      "tasks/psychology/psych101-lefebvre2017behavioural-exp1/public/train.jsonl",
+      "tasks/psychology/psych101-lefebvre2017behavioural-exp1/public/valid.jsonl"
+    ]
+  },
+  "evidence_receipt_sha256": {
+    "family-workflow-state.json": "5573fdfca98481beb9fd89aba6cb4bb4e1e2f6069d1c229dbf44e4cf03de6711",
+    "public-verification.json": "baede99930d62f7fa092da2cc75c02d2c0a9b2850e50099061b9970c856425b3",
+    "representative-readback.json": "1b721cdc51140f3ad28fe0fa2a8b2631978c4b109935b2b092fd52b23121d5bb",
+    "workflow-state.json": "966fc32c1b6d0e57d90780d479a99f0f762f82df4361a5aa40df5ea0a5fb746c"
+  },
+  "historical_urls": {
+    "data_range_availability_checks": 2,
+    "metadata_full_sha_checks": 8,
+    "range_checks_are_not_full_data_sha_checks": true
+  },
+  "metadata": {
+    "anonymous_metadata_readbacks": 116,
+    "hosted_tasks": 111,
+    "identity_checks": "bytes plus LFS SHA-256 or regular Git blob identity",
+    "metadata_files": 228,
+    "public_bytes": 37945533281,
+    "public_files": 668,
+    "scope": "all",
+    "source_only_tasks": 1,
+    "tasks": 112
+  },
+  "owner_test_run": false,
+  "published_revision": "f50618208e3e748a8a16dfb6138e335f033d603c",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Public",
+  "schema": "bpb-unified-public-verification/1",
+  "scope": "public_data_delivery_only",
+  "setup": {
+    "family_checks": {
+      "eeg-mi-barachant2012": {
+        "actually_fetched_targets": [
+          "tasks/eeg/eeg-mi-barachant2012/public/train-groups.json",
+          "tasks/eeg/eeg-mi-barachant2012/public/train.npz",
+          "tasks/eeg/eeg-mi-barachant2012/public/val-groups.json",
+          "tasks/eeg/eeg-mi-barachant2012/public/val.npz"
+        ],
+        "bytes": 11825808,
+        "contract_files_verified": 4,
+        "fetch": {
+          "exit_code": 0,
+          "sanitized_log_sha256": "09fe521cec604d6078fa6b35c578f6e4142282078f2570b5ac0a7c2dbbe65991"
+        },
+        "files": 4,
+        "prepare": {
+          "exit_code": 0,
+          "sanitized_log_sha256": "d25310e1ccd0a2812b6b1fd4f1cd91deed1176a5b2f9ec9ba36a79bcadb798a2"
+        },
+        "prepare_passed": true,
+        "workspace_files": 5
+      },
+      "psych101-lefebvre2017behavioural-exp1": {
+        "actually_fetched_targets": [
+          "tasks/psychology/psych101-lefebvre2017behavioural-exp1/public/train.jsonl",
+          "tasks/psychology/psych101-lefebvre2017behavioural-exp1/public/valid.jsonl"
+        ],
+        "bytes": 450595,
+        "contract_files_verified": 2,
+        "fetch": {
+          "exit_code": 0,
+          "sanitized_log_sha256": "c3b964d9a0a4a0694867d8410230af42e2238ea2ef8cb33d3d77b1b08ae12626"
+        },
+        "files": 2,
+        "prepare": {
+          "exit_code": 0,
+          "sanitized_log_sha256": "f0babc57f3f286c60f01ce531526687d8b409c618e7ef337d45b91d156bbca82"
+        },
+        "prepare_passed": true,
+        "workspace_files": 3
+      }
+    },
+    "fresh_download_and_prepare": [
+      "ieeg-finger-flexion-bciciv4",
+      "falcon-m2-finger-velocity",
+      "eeg-mi-barachant2012",
+      "psych101-lefebvre2017behavioural-exp1"
+    ],
+    "public_output_checks": {
+      "falcon-b1-birdsong": {
+        "bytes": 170230855,
+        "files": 11,
+        "log_sha256": "2c0eef23015696a01ce033ad647782251b3f332b85693c573358e0fe3f25aa50",
+        "manifest_hash_verified": true,
+        "mode": "verified_local_cache_prepare",
+        "passed": true
+      },
+      "falcon-h2-handwriting": {
+        "bytes": 1110017522,
+        "files": 86,
+        "log_sha256": "ba4a2318642ed7f7ab821271c845fbbc0fa7e6f9a1491d9d1d0e6d993dec5f1c",
+        "manifest_hash_verified": true,
+        "mode": "verified_local_cache_prepare",
+        "passed": true
+      },
+      "falcon-m1-emg": {
+        "bytes": 134424422,
+        "files": 18,
+        "log_sha256": "8cd89d11852921ae5a3124c95f65c4de471e41f02a55a114d31b8bed291f110c",
+        "manifest_hash_verified": true,
+        "mode": "verified_local_cache_prepare",
+        "passed": true
+      },
+      "falcon-m2-finger-velocity": {
+        "bytes": 13234392,
+        "files": 30,
+        "log_sha256": "ba522fe1058b5efb4d49370319f4bd275e80fbe70631e90936ed0f384bb3a475",
+        "manifest_hash_verified": true,
+        "mode": "fresh_anonymous_fetch_prepare",
+        "passed": true
+      },
+      "ieeg-film-speech-music": {
+        "bytes": 922341200,
+        "files": 257,
+        "log_sha256": "2ec6deee7144594abccfa74fb3f0bb9cd98f34e2a4e860957bcd80cdf358cbf9",
+        "manifest_hash_verified": true,
+        "mode": "verified_local_cache_prepare",
+        "passed": true
+      },
+      "ieeg-finger-flexion-bciciv4": {
+        "bytes": 324773839,
+        "files": 14,
+        "log_sha256": "5f4577037835c857389d5c9ebcf2461cabf0a47f725f98b01adfa2436b2b14bd",
+        "manifest_hash_verified": true,
+        "mode": "fresh_anonymous_fetch_prepare",
+        "passed": true
+      }
+    },
+    "verified_local_public_cache_and_prepare": [
+      "falcon-h2-handwriting",
+      "falcon-m1-emg",
+      "falcon-b1-birdsong",
+      "ieeg-film-speech-music"
+    ]
+  },
+  "status": "passed",
+  "unchanged_scientific_scope": {
+    "data_bytes": true,
+    "original_reference_acceptance": true,
+    "private_lock_entries": 371,
+    "scorers": true,
+    "splits": true,
+    "task_versions": true
+  }
+}

@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-zhu2020bayesian-exp1/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-zhu2020bayesian-exp1/public/train.jsonl
     sha256: 947fdaa74ce247ef42eaa66d18d65844ab24f257661b1c7888e71d4a9c152f51
     bytes: 709531
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-zhu2020bayesian-exp1/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-zhu2020bayesian-exp1/public/valid.jsonl
     sha256: 5d15a34b8537d937ab15985556d68fae46387630c5067e80248163df73db8772
     bytes: 177397
     format: jsonl

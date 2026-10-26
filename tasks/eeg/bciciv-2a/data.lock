@@ -11,7 +11,7 @@
 datasets:
   - name: public.tar.zst
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@acce5609c72e76425566a287b1b46130ddc49d79/bciciv-2a/public.tar.zst
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/bciciv-2a/public/public.tar.zst
     sha256: a61fb8ecc83f826324ffb7ae578c546768b4ac975018340b5f2fdad3734b09a5
     bytes: 202714474
     format: tar.zst

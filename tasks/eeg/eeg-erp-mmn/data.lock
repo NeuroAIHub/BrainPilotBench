@@ -2,22 +2,40 @@
 # Source case mismatch_negativity/default; frozen task_spec SHA-256 70cafb9951a04358edb43e00596dac02c48c1c3c37ab59ef8be1f8f877ba6731.
 datasets:
   - name: eeg-erp-mmn-train-npz
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-mmn/expanded-three-seed-20260923-mmn-v1/train.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-erp-mmn/public/train.npz
     sha256: bd7fc13f2f4b38943c79bb4c8573833158ad17d321cd056dee98756c9cb1b30a
     bytes: 343415170
     scope: public
   - name: eeg-erp-mmn-val-npz
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-mmn/expanded-three-seed-20260923-mmn-v1/val.npz
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-erp-mmn/public/val.npz
     sha256: 82f59d8bcd6f677a77974abd9923bcdf0a63b04ea5725d6338f6eea83a3fca32
     bytes: 115264490
     scope: public
   - name: eeg-erp-mmn-train-groups-json
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-mmn/expanded-three-seed-20260923-mmn-v1/train-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-erp-mmn/public/train-groups.json
     sha256: 4c8fc2221a518087dd7920d2f9297a13a3c824d2089edac15b740b0b636f48e6
     bytes: 1657561
     scope: public
   - name: eeg-erp-mmn-val-groups-json
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/eeg-erp-mmn/expanded-three-seed-20260923-mmn-v1/val-groups.json
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/eeg/eeg-erp-mmn/public/val-groups.json
     sha256: 563eef64c08445600717382d7c7497008199f562c347aaeb214108dbc2e1dda5
     bytes: 551111
     scope: public
+  - name: evaluator__test__binding.json
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-erp-mmn/evaluator/test/binding.json
+    sha256: ca608faaf9420bfebf15183092ea61d15bb53917804175133db07ad683a94fb7
+    bytes: 1442
+    format: json
+  - name: evaluator__test__test-labels.npy
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-erp-mmn/evaluator/test/test-labels.npy
+    sha256: e8786b0a5954d154b9a3bf8bc0098ed7fcf64a2b8241e99529871a6336ef53c0
+    bytes: 64128
+    format: npy
+  - name: evaluator__test__test.npz
+    scope: private
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Private@62ff438a727aa5ca72c688526410930c8f1f664b/tasks/eeg/eeg-erp-mmn/evaluator/test/test.npz
+    sha256: 139ff6aab4ef0f4d6bf816fb4c34fe9a3fae0ab940fed0df6aea7ded3127bba9
+    bytes: 115200256
+    format: npz

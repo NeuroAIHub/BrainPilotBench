@@ -16,8 +16,8 @@ export function cacheDir(): string {
 }
 
 /** 某 sha256 的内容寻址绝对路径（<cacheDir>/<sha256>/data）。 */
-export function cachePathFor(sha256: string): string {
-  return join(cacheDir(), sha256, "data");
+export function cachePathFor(sha256: string, root = cacheDir()): string {
+  return join(root, sha256, "data");
 }
 
 /** 流式计算文件 sha256 并与期望比对（大文件不全读进内存）。 */
@@ -27,8 +27,8 @@ export async function verifySha256(path: string, expected: string): Promise<bool
 }
 
 /** 缓存命中 = 文件存在且 sha256 匹配（防止半截/损坏文件被当命中）。 */
-export async function isCached(sha256: string): Promise<boolean> {
-  const p = cachePathFor(sha256);
+export async function isCached(sha256: string, root = cacheDir()): Promise<boolean> {
+  const p = cachePathFor(sha256, root);
   try {
     const s = await stat(p);
     if (!s.isFile()) return false;

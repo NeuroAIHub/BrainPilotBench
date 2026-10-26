@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "eeg-p3-openbmi2019",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__binding.json",
+      "path": "test/binding.json",
+      "sha256": "bb2d073706dd114e7202c6781a7722cac55a1e7c9faa838bdf6a1082f5e5afdc",
+      "bytes": 1449
+    },
+    {
+      "name": "evaluator__test__test-labels.npy",
+      "path": "test/test-labels.npy",
+      "sha256": "5da6a7ae94e7adb2843a707de54b3461bb9f7c564bf8205e9f676de0248dd891",
+      "bytes": 728768
+    },
+    {
+      "name": "evaluator__test__test.npz",
+      "path": "test/test.npz",
+      "sha256": "96c0ed653461e5c20b3627dfccb62216ebb8c914151ad7a53a1c3afa6fef27b4",
+      "bytes": 2710541152
+    }
+  ]
+}

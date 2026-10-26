@@ -10,6 +10,9 @@ set of held-out subjects.
 > **Agent benchmark results: not yet available.**
 > Public data and evaluation code are available. The reference implementation checks below are separate from agent benchmark results.
 
+Maintainers can prepare the hosted Test package and evaluate a frozen submission through the [private evaluation workflow](../../../docs/private-evaluation.md).
+This explicit route writes `scores.private.json`; the task's existing default scoring entry remains unchanged.
+
 ## Task at a glance
 
 | Field | Details |

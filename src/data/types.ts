@@ -16,6 +16,8 @@ export interface DatasetEntry {
   bytes: number;
   /** 格式标签（parquet/csv/nii.gz/...），仅元数据。 */
   format?: string;
+  /** Optional POSIX-relative path under the prepared public data root. */
+  path?: string;
   /**
    * 数据可见范围。缺省为 public，以兼容旧 data.lock。
    * private 数据只允许 evaluator 显式拉取，绝不能进入 agent workspace。

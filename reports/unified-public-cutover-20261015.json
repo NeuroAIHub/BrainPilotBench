@@ -1,0 +1,20 @@
+{
+  "schema": "bpb-unified-hf-cutover/1",
+  "status": "passed",
+  "final_head": "46859131ae68fa2e1afdf91b5de135270563aaa0",
+  "canonical_data_revision": "f50618208e3e748a8a16dfb6138e335f033d603c",
+  "final_files": 898,
+  "current_head_old_paths_removed": 662,
+  "historical_public_source_metadata_verified": 654,
+  "historical_metadata_anonymous_readbacks": 8,
+  "historical_data_range_check": {
+    "path": "neuro-rsc-place-cell/VRBeltReframe.mat",
+    "revision": "7159b2dd2f3c8cad0167c1ded4b7dd7d7a655460",
+    "bytes_read": 1024,
+    "check": "range_availability_only_not_full_sha"
+  },
+  "all_canonical_data_and_metadata_unchanged_since_acceptance": true,
+  "history_rewritten": false,
+  "garbage_collection_requested": false,
+  "local_data_removed": false
+}

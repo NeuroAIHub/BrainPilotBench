@@ -6,13 +6,13 @@
 datasets:
   - name: train.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-ruggeri2022globalizability-exp1/published-20261002-v1/train.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-ruggeri2022globalizability-exp1/public/train.jsonl
     sha256: 7d17ed91d7489958af4e34303447b3bd9a8b1a6caf50a2c6aa1d143798f06caf
     bytes: 16402145
     format: jsonl
   - name: valid.jsonl
     scope: public
-    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1/psych101-ruggeri2022globalizability-exp1/published-20261002-v1/valid.jsonl
+    uri: hf://datasets/BrainPilot-Bench/Tasks-Data-Public@f50618208e3e748a8a16dfb6138e335f033d603c/tasks/psychology/psych101-ruggeri2022globalizability-exp1/public/valid.jsonl
     sha256: a470c197ec0db3c24e792fc6d7337e8283484c7eab687c89f98e7b2b0734a0e9
     bytes: 4093281
     format: jsonl

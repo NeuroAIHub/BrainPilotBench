@@ -1,0 +1,29 @@
+{
+  "schema": "bpb-unified-public-delivery/1",
+  "status": "passed",
+  "task_id": "falcon-b1-birdsong",
+  "task_version": "0.1-public-validation-motif",
+  "published_revision": "f50618208e3e748a8a16dfb6138e335f033d603c",
+  "prior_acceptance_sha256": "0369a3f6eab9602d740bb46803182740c0c00fba2008db01ba0778a50cc56d51",
+  "old_file_sha256": {
+    "tasks/intracortical/falcon-b1-birdsong/data.lock": "56d5461fa31225216aeac059d4dbd1f32388e450960bba2487193040fa463a18",
+    "tasks/intracortical/falcon-b1-birdsong/env/setup.sh": "a83a967d3de2889a7d205f997957e640a1392cfc72c10889092ae5c35eb3ef2a"
+  },
+  "new_file_sha256": {
+    "tasks/intracortical/falcon-b1-birdsong/data.lock": "6fdc7ba2b9495b8f13bc291355f8d373e072437623c34b14281fda4d2ebf7979",
+    "tasks/intracortical/falcon-b1-birdsong/env/setup.sh": "c5bd7b7d1360c7a3f0aae7cb10b6248decc624f7cdcb9483c805a2a0b8c51716"
+  },
+  "bridge_file_sha256": {
+    "src/data/types.ts": "054d0252c71196d6d3b5b0d86dcc0c15898374d75dcb6ced52d046a5624fa25a",
+    "src/data/manifest.ts": "97ba2db02f16976e0b9d7555deb682e15dc030812134103060c1316dfcd960ff",
+    "src/workflow.ts": "42e6c96a425806c1b3a53613a8629876592661b4c0a4d68aa67ecb84668f69f8",
+    "src/cli.ts": "933587c8a71814c4a2b2dbfd6e641fcc5811ea7f4dc5d81e5fa1a94d1f561d04",
+    "src/data/cache.ts": "35e28eb86cb04e6c18fdeecc056493afdf72d50a74d5c3538dda3dbda1aaa003",
+    "src/data/fetch.ts": "874021b7e7054348457cd516d1b0cb1ecb1823fae6eff3107f611ebdfcdc3937",
+    "src/data/resolve.ts": "7499c00a5f4220021f3b6e0c3e925d338a02d99e9c401ddbf0bc15342dd011ce"
+  },
+  "verification_report": {
+    "path": "reports/unified-public-delivery-20261015.json",
+    "sha256": "ea04f1777265a3b1af37fd95f551ea97bea9fa3e680a963d5120ed04d9f29512"
+  }
+}

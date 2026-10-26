@@ -117,6 +117,9 @@ All seven entries also passed one frozen-reference owner Test interface check ea
 Those reports stay separate from public Valid metrics. Test results did not select a model, hyperparameter, or split.
 Each task's `acceptance.json` binds the tested version, critical code, environment files, contracts, and reference artifacts.
 The catalog check rejects missing evidence or changed file hashes.
+Those records describe the original scientific and reference checks.
+Six `delivery-acceptance.json` records bind the revised public locks, setup bridge, and hosted revision to the [delivery report](../reports/unified-public-delivery-20261015.json).
+They do not imply new Agent, model, or owner Test runs.
 
 M2's source files include large fullband recordings that the native decoder does not use.
 Range extraction read 20,696,120 bytes across all 13 assets while preserving the task's required arrays.
@@ -129,74 +132,66 @@ Its 257-file public-only package contains Train/Valid arrays, labels, and channe
 Exact opaque IDs and shuffled file hashes also require the owner-held shuffle key to rebuild.
 The key stays outside Git and Agent workspaces. A new key does not reproduce the frozen package hashes.
 
-### Five-task public package
+### Unified public layout
 
-The [public package](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1) contains H2, M1-A, M2, B1, and the Berezutskaya film task.
-It has 402 data files (2,350,248,391 bytes), plus a selection manifest, README, and source attribution.
-All links use Hugging Face commit `a8a8adc87bab8d63253816dad0ae5c435e96a5f6`.
-The [selection manifest](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/resolve/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1/selection-manifest.json) binds every public file to its SHA-256, byte count, task version, and preparation source.
-All 405 published paths passed remote size and content-metadata checks. All pre-existing repository blobs remained unchanged.
-Nine representative files (66,383,187 bytes) passed anonymous download and SHA-256 checks, including one real neural input from each task.
-This was a representative download check, not a full download of the release.
+The hosted layout uses `tasks/<category>/<task-id>/public/` at [Hugging Face revision `f50618208e3e748a8a16dfb6138e335f033d603c`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/f50618208e3e748a8a16dfb6138e335f033d603c/tasks).
+The data and 228 metadata files are published. Remote identity checks covered every hosted path.
+The current Hugging Face main tree removed 662 legacy paths at commit `46859131ae68fa2e1afdf91b5de135270563aaa0`.
+The old immutable revision URLs remain available. The cutover did not rewrite history or run garbage collection.
+The [delivery report](../reports/unified-public-delivery-20261015.json) records 116 anonymous root and task-manifest readbacks and 56 representative data downloads (426,564,046 bytes).
+All 14 BCI IV-4 and 30 M2 public files passed anonymous size and SHA-256 checks.
+BCI IV-4 and M2 passed fresh anonymous fetch and setup checks.
+H2, M1-A, B1, and film iEEG passed setup from verified existing public caches.
+EEG and psychology supplied two other fresh fetch and preparation checks. The full collection was not redownloaded.
+It includes six invasive tasks: BCI IV-4, film iEEG, H2, M1-A, M2, and B1.
+BCI IV-4 contributes 14 public files (324,773,839 bytes).
+Across the collection, 111 task folders contain 668 public files (37,945,533,281 bytes).
+H1 remains source-only because its DANDI description prohibits redistribution.
+Users must read and follow the H1 Data Use Agreement before local download.
 
-H1 and BCI IV-4 are outside this package.
-H1 source and derived files stay out of mirrors because its DANDI description prohibits redistribution.
-Users can download and rebuild H1 locally after they read and comply with the agreement.
-BCI IV-4 redistribution terms have not been established here.
+BCI IV-4 has separate [source and citation terms](../tasks/ieeg/ieeg-finger-flexion-bciciv4/README.md#source-and-citation).
+This repository does not assert a CC or Apache license grant for its data.
 
-### Download a prepared public package
+### Prepare one public task
 
-This route downloads one prepared task folder. It does not download raw sources or Test data.
-The existing `data.lock` files retain their original-source or local-supply routes.
-`bp-bench fetch` still follows those locks. The prepared-folder route below is a separate option.
+For the six hosted tasks, the [private evaluation guide](private-evaluation.md) provides separate maintainer download and Test commands.
+H1 retains its original-source route. Public preparation below does not download evaluator data.
 
-Create a separate download environment outside Git:
+Install the task's pinned Python requirements before preparation. Then run one task from the repository root:
 
 ```sh
-python3.12 -m venv /path/outside-git/download-env
-/path/outside-git/download-env/bin/python -m pip install huggingface_hub==1.21.0
-/path/outside-git/download-env/bin/python - <<'PY'
-from huggingface_hub import snapshot_download
-
-task_id = "falcon-m2-finger-velocity"
-snapshot_download(
-    repo_id="BrainPilot-Bench/Tasks-Data-Public",
-    repo_type="dataset",
-    revision="a8a8adc87bab8d63253816dad0ae5c435e96a5f6",
-    allow_patterns=[f"bpb-public-data-20261015-invasive-v1/{task_id}/**"],
-    local_dir="/path/outside-git/invasive-download",
-    token=False,
-    endpoint="https://huggingface.co",
-    max_workers=2,
-)
-PY
+BPB_BCI_PYTHON=/path/to/bci-venv/bin/python \
+  node dist/cli.js prepare ieeg-finger-flexion-bciciv4 --fetch \
+  --workspace /path/outside-git/bci-workspace
 ```
 
-Choose one task ID from this table. Keep its complete folder structure.
-Set the corresponding variable to `/path/outside-git/invasive-download/bpb-public-data-20261015-invasive-v1/<task-id>`.
+For the other five hosted invasive tasks, replace the task ID and set its Python variable:
 
-| Task ID | Public setup variable |
+| Task ID | Python variable |
 |---|---|
-| `falcon-h2-handwriting` | `BPB_H2_DATA_DIR` |
-| `falcon-m1-emg` | `BPB_M1_DATA_DIR` |
-| `falcon-m2-finger-velocity` | `BPB_M2_DATA_DIR` |
-| `falcon-b1-birdsong` | `BPB_B1_DATA_DIR` |
-| `ieeg-film-speech-music` | `BPB_FILM_PUBLIC_ROOT` |
+| `ieeg-film-speech-music` | `BPB_FILM_PYTHON` |
+| `falcon-h2-handwriting` | `BPB_H2_PYTHON` |
+| `falcon-m1-emg` | `BPB_M1_PYTHON` |
+| `falcon-m2-finger-velocity` | `BPB_M2_PYTHON` |
+| `falcon-b1-birdsong` | `BPB_B1_PYTHON` |
 
-Install the task's own environment before you prepare an Agent workspace.
-Use its README for the manual run, submission, and scoring commands.
-The setup checks the downloaded files against the frozen task contract.
-It stages only Train and Valid data.
-Do not pass source archives, evaluator paths, or credentials to the Agent.
+The CLI checks each public cache file against `data.lock` before it copies the file.
+Mapped files become regular files under `<workspace>/.bpb/public-data/`.
+The setup script receives this path through `BPB_PUBLIC_DATA_ROOT` and stages Train and Valid into `<workspace>/public_data/`.
+Do not pass source archives, evaluator paths, credentials, or `BPB_LOCAL_DATA_ROOT` to the Agent.
+Use the task README for the manual run, submission, and scorer commands.
+For BCI IV-4 and the four hosted FALCON tasks, set the scorer's task-specific data-root variable to `<workspace>/public_data/`.
+Film scoring requires `BPB_FILM_EVALUATOR_DATA_ROOT` and the owner-held block mapping in a trusted process.
+That mapping is not in the hosted public layout.
 
-The M2 example also passed a fresh anonymous download and the task's setup script.
-Its prepared workspace contained all 30 public files (13,234,392 bytes), with the frozen Train and Valid manifest hashes.
-That check did not train a model or access Test data.
-
-The film package does not need the private shuffle key to prepare an Agent workspace.
-Its block-first scorer still requires the matching trusted evaluator data and block mapping.
-Those evaluator materials are not included in this public package.
-Downloading this package does not establish an Agent benchmark result.
+The earlier [five-task package](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/a8a8adc87bab8d63253816dad0ae5c435e96a5f6/bpb-public-data-20261015-invasive-v1) remains a historical storage snapshot.
+It contains 402 files (2,350,248,391 bytes) for film iEEG, H2, M1-A, M2, and B1.
+At revision `a8a8adc87bab8d63253816dad0ae5c435e96a5f6`, all 405 published paths passed remote metadata checks.
+Nine representative files (66,383,187 bytes) passed anonymous download and SHA-256 checks.
+One full M2 download and setup check covered 30 public files (13,234,392 bytes).
+Those historical checks do not verify revision `f50618208e3e748a8a16dfb6138e335f033d603c`.
+The separate [unified delivery report](../reports/unified-public-delivery-20261015.json) verifies the scoped checks above.
+Neither record establishes Agent benchmark performance.
 
 ### H1 runtime check
 
@@ -243,4 +238,4 @@ The existing 101-task batch was not rerun. Its representative and structural che
 The final local check covers macOS/arm64 preparation and Linux/arm64 CPU inference.
 AMD64 and GPU compatibility, an external Agent's training sandbox, and arbitrary-Python scientific-policy enforcement are not established by these checks.
 
-No new data upload, container publication, release, or main-branch merge is part of this local acceptance.
+The local acceptance recorded above did not include a new data upload, container publication, release, or main-branch merge.

@@ -1,0 +1,68 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "falcon-b1-birdsong",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__manifest.json",
+      "path": "test/manifest.json",
+      "sha256": "3cd5877cfa4421fe6fbae44d20f7789e856d7b598eb554ab5084a906ee242739",
+      "bytes": 3877
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0001__mask.npy",
+      "path": "test/runs/b1-test-0001/mask.npy",
+      "sha256": "a93bb05b45d3740a5e39e9cd49de04ba0a5156532777bf299b4774afa8e83ee1",
+      "bytes": 417248
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0001__x.npy",
+      "path": "test/runs/b1-test-0001/x.npy",
+      "sha256": "835b0a417d6d45bd6a91e0211b5da194cd101453d9496c4e8ba0adbe3d61a5ac",
+      "bytes": 6885128
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0001__y.npy",
+      "path": "test/runs/b1-test-0001/y.npy",
+      "sha256": "a64419829f32e1df3d43e046f8cc34250f33b40b9e00ab1f54cc915128217ae4",
+      "bytes": 3337088
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0002__mask.npy",
+      "path": "test/runs/b1-test-0002/mask.npy",
+      "sha256": "a93bb05b45d3740a5e39e9cd49de04ba0a5156532777bf299b4774afa8e83ee1",
+      "bytes": 417248
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0002__x.npy",
+      "path": "test/runs/b1-test-0002/x.npy",
+      "sha256": "2ac76668f33c7971c1ebeaf37b878dc00d1ff45b5150261daca9e68e44e0c6e9",
+      "bytes": 6885128
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0002__y.npy",
+      "path": "test/runs/b1-test-0002/y.npy",
+      "sha256": "a18ba04647f2e7f4f0462f06bb4fdfe49721cc4e3cb3d622dfff0078964b94b1",
+      "bytes": 3337088
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0003__mask.npy",
+      "path": "test/runs/b1-test-0003/mask.npy",
+      "sha256": "a93bb05b45d3740a5e39e9cd49de04ba0a5156532777bf299b4774afa8e83ee1",
+      "bytes": 417248
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0003__x.npy",
+      "path": "test/runs/b1-test-0003/x.npy",
+      "sha256": "597c38fe87d20f1081b0854c6aee29fbb1a6b9a2f2c7cadc06f8d2b47d1d98a6",
+      "bytes": 6885128
+    },
+    {
+      "name": "evaluator__test__runs__b1-test-0003__y.npy",
+      "path": "test/runs/b1-test-0003/y.npy",
+      "sha256": "185abedaac1e50cc173099a8069e2bc20b8fc8c7a3ae1729e62573ff1a3fe80e",
+      "bytes": 3337088
+    }
+  ]
+}

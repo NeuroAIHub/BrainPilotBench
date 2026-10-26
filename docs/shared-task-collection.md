@@ -51,29 +51,28 @@ discovery cannot mistake it for an executable task. The catalog records all
 entries and their status; it does not publish research performance rankings.
 The catalog's `data_access` describes public Agent inputs.
 `private_data_access`, when present, describes the separate evaluator data route.
+For 29 hosted evaluator packages, `private_score_entry` identifies the explicit private scoring route.
+The default evaluation scope and scientific versions remain unchanged.
 
 ## Data and environment
 
-Large arrays and MRI files stay outside Git. Existing published data URLs remain
-pinned to immutable revisions and SHA-256 hashes. The 101 EEG, psychology, MRI, and connectomics additions have
-246 public data files at Hugging Face revision
-[`09240a63ce2ec96050313c59221291114ff8df6f`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/09240a63ce2ec96050313c59221291114ff8df6f/bpb-public-data-20261013-v1).
-The revision also holds one selection manifest. Anonymous downloads verified
-the SHA-256 hashes of all 247 paths. The original four tasks keep their older
-data references. All four EEG preparation entries are outside this batch,
-including two with owner-held public packages.
+Large arrays and MRI files stay outside Git. The unified data layout uses
+`tasks/<category>/<task-id>/public/` at [Hugging Face revision `f50618208e3e748a8a16dfb6138e335f033d603c`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/f50618208e3e748a8a16dfb6138e335f033d603c/tasks).
+The collection hosts public data for 111 tasks, including BCI IV-4 and the four retained v0 tasks.
+H1 remains source-only under its source Data Use Agreement.
+Each task guide explains the inputs, split, source terms, and required environment.
+The [data preparation record](data-preparation.md) preserves the fixed snapshots, transfer checks, and historical publication details.
 
-Run `bp-bench fetch <task-id> --public` to load a task's pinned public files.
-The fetcher checks each size and SHA-256. `local://` requires files supplied
-locally. It is not a public download URL. Unset
-`BPB_LOCAL_DATA_ROOT` before starting an Agent. Keep public and evaluator caches
-separate. The launcher rejects a private cache visible to an Agent.
+Run `node dist/cli.js prepare <task-id> --fetch --workspace /absolute/outside-git/workspace` for one hosted task.
+The CLI verifies the pinned public files and copies mapped paths into `<workspace>/.bpb/public-data/`.
+Setup receives that root as `BPB_PUBLIC_DATA_ROOT`. Task-specific Python variables can still be required.
+BCI IV-4 and the four hosted FALCON scorers use staged `<workspace>/public_data`.
+The film scorer instead requires the owner-held evaluator data and block mapping in a trusted process.
+Unset `BPB_LOCAL_DATA_ROOT` before starting an Agent. Keep public and evaluator caches separate.
+The launcher rejects a private cache visible to an Agent.
 
-A second [prepared public package](invasive-task-preparation.md#download-a-prepared-public-package) covers H2, M1-A, M2, B1, and film iEEG.
-It contains 402 data files (2,350,248,391 bytes) at revision `a8a8adc87bab8d63253816dad0ae5c435e96a5f6`.
-These storage snapshots support the same v1 collection. They do not define separate benchmark versions.
-H1 and BCI IV-4 retain source-only download and local preparation routes.
-The catalog's `data_access` field describes the `data.lock` route, not this separate prepared-folder download.
+The earlier [101-task snapshot](data-preparation.md#historical-first-batch) and five-task invasive snapshot remain historical delivery evidence.
+They are not the recommended task download paths. Their successful checks do not establish delivery of the unified revision.
 
 The film package is available without a key. Regenerating its exact opaque IDs and hashes requires the owner's private shuffle key.
 Its `owner_key_bound_prepared_export` status describes that rebuild constraint, not restricted access to the prepared public files.
@@ -83,13 +82,21 @@ Each task owns its environment instructions. CPU Docker images are built locally
 and evaluated by immutable ID/digest; no images were published. A successful
 macOS/arm64 integration run does not verify Linux/amd64 or GPU compatibility.
 
+## Private evaluation
+
+The [maintainer workflow](private-evaluation.md) connects the hosted private snapshot to preparation and isolated Test scoring for 29 tasks.
+It includes 21 EEG tasks, six invasive tasks, brain-age MRI, and C. elegans.
+Private files stay in a separate owner cache and evaluator directory.
+Completed submissions are frozen before scoring; Test results use a separate result file.
+Source-only and retained legacy tasks keep their documented routes.
+
 <a id="low-cost-validation"></a>
 
 ## Reference implementation checks
 
-Four reference implementations check representative evaluation paths: native EEG
-BCI-IV-2a, Psych Lefebvre exp1, C. elegans and brain age. EEG and Psych use public
-train/valid only; historical private Test results are not replayed. The two new
+The initial four reference implementations checked representative evaluation paths: native EEG
+BCI-IV-2a, Psych Lefebvre exp1, C. elegans and brain age. Those EEG and Psych checks used public
+train/valid only; historical private Test results were not replayed. The two new
 contributions use their own reference-evaluation paths. These runs check data,
 environment, saved artifacts, inference and scoring; they are not Agent research
 experiments. No paid model calls are needed.
@@ -100,10 +107,15 @@ Owner Test checks use a frozen reference and return separate engineering reports
 They do not tune a model or contribute Agent leaderboard scores.
 Each promoted entry has an `acceptance.json` that binds its version and critical files.
 The catalog refuses to reuse acceptance after those files change.
+The original `acceptance.json` records remain evidence for the scientific and reference checks on the earlier task definitions.
+Six invasive `delivery-acceptance.json` records bind the updated public locks, setup bridge, and hosted revision to the [delivery report](../reports/unified-public-delivery-20261015.json).
+They do not imply that the reference, Agent, or owner Test runs were repeated.
+The later private-data integration preserves these original records and adds a separate, scope-limited delivery record.
+New reference checks cover selected private workflows, not all tasks or comparative Agent performance.
 
-The 101-task public package has full byte-level readback.
-The invasive public package has full remote metadata checks and representative anonymous download checks, plus one complete M2 download/setup check.
-These data checks do not rerun Agent experiments across v1.
+The historical 101-task snapshot has full byte-level readback.
+The earlier invasive snapshot has metadata checks, representative anonymous downloads, and one complete M2 download/setup check.
+Those historical checks do not verify the new layout or rerun Agent experiments across v1.
 Other family members have structure and contract checks. Some also have input
 checks against real public data. Four EEG entries remain preparation-only.
 HMC stage and Sleep-EDF onset have public candidate packages, but no runnable
@@ -148,8 +160,11 @@ Legacy tasks without this block retain their optional-version submission contrac
 
 ## Integration and publication
 
-Both public-data snapshots are published at the fixed Hugging Face revisions above.
-The full v1 source collection is under review in [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75), not merged into main.
+Both dated public-data snapshots are published at their recorded fixed revisions.
+The unified revision `f50618208e3e748a8a16dfb6138e335f033d603c` is published, and the scoped [delivery checks](../reports/unified-public-delivery-20261015.json) passed.
+The full collection was not redownloaded, and no Agent, model, or owner Test ran for this data migration.
+The v1 source collection entered main through [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75).
+The unified download and preparation update remains on the `feat/unified-public-data-layout` review branch.
 The collection name does not bump the CLI package version or create a release tag.
 This branch does not publish an npm package or image,
 update the Cloud catalog, or change the independent research projects. Private

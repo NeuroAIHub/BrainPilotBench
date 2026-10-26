@@ -2,14 +2,16 @@
  * data/resolve.ts — 编排：查缓存命中→直接返回；未命中→按 scheme fetch 到临时文件→
  * 流式 sha256 校验→原子重命名进内容寻址缓存。校验失败删临时文件、不留半截缓存。
  */
-import { mkdir, open, readFile, rename, rm, stat } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { chmod, lstat, mkdir, open, readFile, rename, rm, stat } from "node:fs/promises";
+import { dirname, join, resolve } from "node:path";
 import type { DataManifest, DatasetEntry, FetchProgress, ResolvedDataset } from "./types.js";
-import { cachePathFor, isCached, verifySha256 } from "./cache.js";
+import { cacheDir, cachePathFor, isCached, verifySha256 } from "./cache.js";
 import { DataFetchError, getFetcher, schemeOf } from "./fetch.js";
 
 export interface ResolveOptions {
   onProgress?: (entry: DatasetEntry, progress: FetchProgress) => void;
+  /** Explicit evaluator cache. This does not change the Agent cache environment. */
+  cacheRoot?: string;
 }
 
 const INFLIGHT = new Map<string, Promise<ResolvedDataset>>();
@@ -53,17 +55,43 @@ async function acquireCacheLock(dir: string): Promise<() => Promise<void>> {
 
 /** resolve 一个数据集到本地缓存（命中则不下载）。 */
 async function resolveDatasetOnce(entry: DatasetEntry, opts?: ResolveOptions): Promise<ResolvedDataset> {
-  const finalPath = cachePathFor(entry.sha256);
-  if (await isCached(entry.sha256)) {
+  const root = resolve(opts?.cacheRoot ?? cacheDir());
+  const finalPath = cachePathFor(entry.sha256, root);
+  const privateData = entry.scope === "private";
+  const plainPrivatePath = async (path: string) => {
+    for (let part = path; ; part = dirname(part)) {
+      try {
+        const info = await lstat(part);
+        if (info.isSymbolicLink()) throw new Error("private cache must not contain symbolic links");
+        if (part === path && info.isFile() && info.nlink !== 1) throw new Error("private cache cannot use hard links");
+      } catch (error) { if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error; }
+      if (part === root || dirname(part) === part) break;
+    }
+  };
+  if (privateData) await plainPrivatePath(finalPath);
+  if (await isCached(entry.sha256, root)) {
+    if ((await stat(finalPath)).size !== entry.bytes) throw new Error("cached dataset byte count differs from manifest");
+    if (privateData) await chmod(finalPath, 0o600);
     return { entry, path: finalPath, fetched: false };
   }
   const dir = dirname(finalPath);
-  await mkdir(dir, { recursive: true });
+  await mkdir(dir, { recursive: true, mode: privateData ? 0o700 : undefined });
+  if (privateData) { await plainPrivatePath(finalPath); await chmod(dir, 0o700); }
   const release = await acquireCacheLock(dir);
   const partial = join(dir, ".partial");
   try {
     // Another process may have completed while this caller waited for the lock.
-    if (await isCached(entry.sha256)) return { entry, path: finalPath, fetched: false };
+    if (await isCached(entry.sha256, root)) {
+      if ((await stat(finalPath)).size !== entry.bytes) throw new Error("cached dataset byte count differs from manifest");
+      if (privateData) await chmod(finalPath, 0o600);
+      return { entry, path: finalPath, fetched: false };
+    }
+    if (privateData) {
+      await plainPrivatePath(partial);
+      const handle = await open(partial, "a", 0o600);
+      await handle.close();
+      await chmod(partial, 0o600);
+    }
     try {
       if ((await stat(partial)).size > entry.bytes) await rm(partial, { force: true });
     } catch { /* no partial */ }
@@ -96,10 +124,11 @@ async function resolveDatasetOnce(entry: DatasetEntry, opts?: ResolveOptions): P
 
 /** resolve 一个数据集；同进程相同 hash 自动合并，跨进程用缓存锁协调。 */
 export async function resolveDataset(entry: DatasetEntry, opts?: ResolveOptions): Promise<ResolvedDataset> {
-  const current = INFLIGHT.get(entry.sha256);
+  const key = `${resolve(opts?.cacheRoot ?? cacheDir())}:${entry.sha256}`;
+  const current = INFLIGHT.get(key);
   if (current) return current;
-  const pending = resolveDatasetOnce(entry, opts).finally(() => INFLIGHT.delete(entry.sha256));
-  INFLIGHT.set(entry.sha256, pending);
+  const pending = resolveDatasetOnce(entry, opts).finally(() => INFLIGHT.delete(key));
+  INFLIGHT.set(key, pending);
   return pending;
 }
 

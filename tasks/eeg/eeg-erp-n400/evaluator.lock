@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "eeg-erp-n400",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "62ff438a727aa5ca72c688526410930c8f1f664b",
+  "files": [
+    {
+      "name": "evaluator__test__binding.json",
+      "path": "test/binding.json",
+      "sha256": "27063a87ecff332648a4341a4acd17762774cc12d12114b5f7531125f9241244",
+      "bytes": 1422
+    },
+    {
+      "name": "evaluator__test__test-labels.npy",
+      "path": "test/test-labels.npy",
+      "sha256": "859f73ac7746bcbdd3c8628e1fa8b89fb8b8fbf32850bdc9d209ee8675b7f562",
+      "bytes": 7808
+    },
+    {
+      "name": "evaluator__test__test.npz",
+      "path": "test/test.npz",
+      "sha256": "58aaa5b222bc1aaf5640f6293bb120cf73a9d07cd0d8e4a3706e3feb354a6d6c",
+      "bytes": 13824256
+    }
+  ]
+}
