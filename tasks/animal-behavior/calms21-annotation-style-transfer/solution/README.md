@@ -1,0 +1,1 @@
+The optional reference fits an independent small linear pose classifier for each annotator using `data/public/train` only. Run `bash solution/solution.sh` from a prepared Agent workspace to create the three required files under `submission/`. This is a functional reference, not an accepted benchmark result.

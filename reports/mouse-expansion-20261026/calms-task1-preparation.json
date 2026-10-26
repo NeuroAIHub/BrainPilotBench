@@ -1,0 +1,26 @@
+{
+  "agent_run_started": false,
+  "owner_test_counts": {
+    "frames": 262107,
+    "sequences": 19
+  },
+  "owner_test_manifest": "owner/test-manifest.json",
+  "public_counts": {
+    "train": {
+      "frames": 397631,
+      "sequences": 56
+    },
+    "valid": {
+      "frames": 110107,
+      "sequences": 14
+    }
+  },
+  "public_manifest": "public/manifest.json",
+  "schema": "bpb-calms21-preparation-evidence/1",
+  "source_bytes": 457357950,
+  "source_filename": "task1_classic_classification.zip",
+  "source_md5": "8a02654fddae28614ee24a6a082261b8",
+  "source_sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427",
+  "source_url": "https://data.caltech.edu/records/s0vdx-0k302",
+  "test_scored": false
+}

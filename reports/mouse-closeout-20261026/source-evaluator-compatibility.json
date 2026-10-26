@@ -1,0 +1,18 @@
+{
+  "schema": "bpb-source-evaluator-compatibility/1",
+  "scope": "Add source-prepared evaluator locks and explicit reviewed byte-identical public content without changing hosted locks or payloads.",
+  "files": {
+    "src/evaluator.ts": {
+      "previous_sha256": "b5ccbdf0d90894967f763f76cfaa921beec635a4a7f4eb03b0c1f4a6bce458d6",
+      "current_sha256": "3433bfa57d9a4b2a5f85cbdd242cca76981df8e72ded0ba1d915ebdfaed160b9"
+    },
+    "src/workflow.ts": {
+      "previous_sha256": "f9a79dd440874d323821be66dee22e9f3923e153ed12ab2537829341fb056293",
+      "current_sha256": "6913bdbc2cb9db20873b7cc00d19ac3dbff94d1f31094102c7662467354bfd99"
+    }
+  },
+  "test_path": "src/evaluator-source.test.ts",
+  "test_sha256": "34a554cc84e519d6cf217f514f8ccbb184f3465236edc1bf4e95b8f2c74f686a",
+  "verification": "25 source/hosted evaluator and workspace tests passed locally. Undeclared overlaps and malformed source declarations still fail. Existing hosted locks and historical publication receipt were not rewritten.",
+  "historical_publication_replayed": false
+}

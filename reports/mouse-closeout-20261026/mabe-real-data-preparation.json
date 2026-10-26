@@ -1,0 +1,61 @@
+{
+  "schema": "bpb-mabe-real-data-preparation/1",
+  "observed_at": "2026-10-26",
+  "status": "real_data_prepared_public_reference_validated_pending_isolated_agent_test_acceptance",
+  "source_versions": {
+    "caltech_record": "https://data.caltech.edu/records/rdsa8-rde65",
+    "caltech_version": "v1",
+    "resifuse_reference_sha": "ae4acf51962b1611656da00d3da92a6b02a56ef4",
+    "resifuse_pose_revision": "22019237bee137b74f8211977779c822236b8402",
+    "mabe_released_evaluator_sha": "234dae7098314d6035066e3028caedee3f3ee379"
+  },
+  "cache_root": ".cache/mouse-closeout-20261026/mabe",
+  "role_separated_local_delivery_root": ".cache/mouse-closeout-20261026/mabe-local-source",
+  "supervised_segmentation": {
+    "source_split_sha256": "ebb486c7351eff8c9ae0fcfd2a21423083d06d0795e2febd2677d000ad4bffc9",
+    "split_counts": {"train": 54, "val": 11, "test": 43},
+    "pose_h5_files_verified_against_pinned_lfs_oid": 108,
+    "pose_source_bytes": 179205264,
+    "pose_source_manifest_sha256": "def7a7b7f2b405bc42a58c696c7be2ebfc4bf9eb6cddf121258d7d9cfe69eb78",
+    "pose_preparation_manifest_sha256": "f237cb660a9a654c32fdb89696d0486017e1085b3de00219fadea54313b1d433",
+    "caltech_labels_md5": "7f10c2b676e7dd8b4348423f0ee0aa8a",
+    "caltech_frame_map_md5": "ffc1dcae90176cdac4ff4fe123e18f25",
+    "numeric_label_extraction_manifest_sha256": "dfc6584d3ea05c4e39640aee5c0b032680057a44120f6ce6cf4738ebe406f40b",
+    "task_delivery_revision": "545b653c45025b388f2ec0b7f79da68895aa049a188f5970a9462355a6db7716",
+    "task_public_manifest_sha256": "164196260ac14da6c0f8647dc3a959020db91d3bee3b9996d6d4e35caa73afa5",
+    "task_evaluator_manifest_sha256": "a6c5f5d7c665cbe7ec959c5a51426e1e270c8497339893b16179653e2db3df51",
+    "alignment": "Each H5 index is 0..1800; all source map spans are 1800 frames. Numeric inputs select 0..1799, matching pinned ResiFuse truncation to official label length. No source video was downloaded, so visual pose-to-video alignment was not independently tested.",
+    "agent_packet_whitelist": ["public/pose/train/*.npz", "public/pose/val/*.npz", "public/train_labels.npz", "public/val_labels.npz", "manifest.json"],
+    "evaluator_packet_only": ["public/pose/test/*.npz", "owner/test_labels.npz", "pose_preparation_manifest.json", "pose_source_manifest.json", "mabe_finetune_split.json", "label_extraction_manifest.json", "manifest.json"],
+    "frozen_model_output_contract": "predict_proba returns independent float probabilities [1800,4] in fixed class order for each full clip; the owner serializes Test predictions and no label-selected inference window is used.",
+    "public_reference": {"report": "reports/mouse-closeout-20261026/mabe-supervised-reference.json", "model": "pose-only weighted Ridge baseline", "train_videos": 54, "validation_videos": 11, "validation_macro_f1": 0.42002021389093225, "test_scored": false},
+    "metric_boundary": "Only any-positive grouped-behavior frames with source-style pose validity are scored. Background-only false alarms are not measured; this is a Bench adaptation, not a ResiFuse paper score."
+  },
+  "representation_classification": {
+    "source_submission_keypoints_md5": "68a9fe1fe71225787a4dae6369acc9dc",
+    "source_user_train_md5": "389bc12c9ad49b7cb50b531707b448a5",
+    "separate_manual_behavior_labels_sha256": "cae4936eee6213f7b5247dd14c021221c9ddbe12df69de7a150d906111ee207f",
+    "source_roles": {"condition_user_train": 784, "condition_submission_train": 1307, "condition_test1": 261, "condition_test2": 262, "manual_annotated_clips": 400, "manual_submission_train": 320, "manual_test1": 40, "manual_test2": 40},
+    "class_sources": {"strain": "Caltech submission labels", "lights": "Caltech submission labels", "huddle": "separate evaluator three_huddle label", "chase": "separate evaluator chase label", "face_sniff": "separate evaluator face_sniff label", "anogenital_sniff": "separate evaluator anal_sniff label"},
+    "profile_name": "BrainPilotBench-MABe22-six-classification-sequence-probe-v1",
+    "profile_sha256": "571a1655db4a02e44dd5c88ba228b785e84ecb7c4b2d9123d7bca7a3c94c4eca",
+    "subsets": "Three fixed 80% sequence samples, floor(4*N/5), lowest SHA256 ranks from seeds 0, 1, 2. This policy is public and Bench-specific because exact paper memberships and sampling unit are unpublished.",
+    "probe_preparation_manifest_sha256": "afbd02b140770597cc50a22b0501774241a011b5ac6de212e2fc69cf27a7a28f",
+    "usertrain_preparation_manifest_sha256": "c15b1915e4752deb4e535eb60cb95bc15882bcf7677c67232a63e06aa9f2c4f2",
+    "task_delivery_revision": "e9ae0d79f05b83a33ca8c96a29c36641847e2b1523e53faaa58c396061ebbe45",
+    "task_public_manifest_sha256": "7e67b9b99ed4a2265c9835a33294206489911e1a54f5b2cdbafb19df2e2e820a",
+    "task_evaluator_manifest_sha256": "dfd45a08fac0097fb4216119ded4d8874bf4c6b8c9635d87e33c04ae8bd95082",
+    "agent_packet_whitelist": ["public/probe_usertrain/*.npz", "public/probe_profile.json", "manifest.json"],
+    "evaluator_packet_only": ["public/probe_pose/*.npz", "public/probe_profile.json", "probe_preparation_manifest.json", "evaluator/probe_labels/*_SubmissionTrain.npz", "owner/probe_labels/*_publicTest.npz", "owner/probe_labels/*_privateTest.npz", "manifest.json"],
+    "frozen_model_output_contract": "embed returns finite float embedding [1800,d], 1<=d<=128, common d; the owner serializes all 1830 submission embeddings and fits fixed balanced Ridge probes. The Agent sees no six-target label files or submission poses during development.",
+    "public_internal_validation": {"report": "reports/mouse-closeout-20261026/mabe-probe-internal-validation-full.json", "source_embedding": "raw keypoints divided by 224, 72 dimensions", "six_task_mean_positive_f1": 0.11863991584640012, "test_scored": false},
+    "metric_boundary": "Per-sequence positive F1 gives zero to an all-negative sequence, including a correctly predicted negative condition sequence. It is a disclosed Bench convention, not an original evaluator equivalence claim."
+  },
+  "safe_extraction": "Object NPY files were unpickled only inside a disposable Docker container (local image sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562) with no network, read-only container filesystem, dropped capabilities, no-new-privileges, and only the data directory mounted. Host-side consumers load only numeric NPZ with allow_pickle=False. H5 column metadata uses a restricted unpickler that rejects class imports.",
+  "remaining_gates": [
+    "Source license/provenance and redistribution review before mirroring or publishing data",
+    "Isolated Agent packet and inference acceptance, including strict mount whitelist and owner-only Test scorer",
+    "Optional source video route requires separate download and visual frame alignment; pose-only supervised route is prepared"
+  ],
+  "claims_excluded": ["official MABe22 score", "ResiFuse paper-comparable score", "private Test acceptance", "Agent model result", "data redistribution permission"]
+}

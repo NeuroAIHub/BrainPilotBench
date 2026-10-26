@@ -1,0 +1,302 @@
+{
+  "files": [
+    {
+      "bytes": 1284,
+      "name": "evaluator__label_extraction_manifest.json",
+      "path": "label_extraction_manifest.json",
+      "sha256": "dfc6584d3ea05c4e39640aee5c0b032680057a44120f6ce6cf4738ebe406f40b"
+    },
+    {
+      "bytes": 3660,
+      "name": "evaluator__mabe_finetune_split.json",
+      "path": "mabe_finetune_split.json",
+      "sha256": "ebb486c7351eff8c9ae0fcfd2a21423083d06d0795e2febd2677d000ad4bffc9"
+    },
+    {
+      "bytes": 8969,
+      "name": "evaluator__manifest.json",
+      "path": "manifest.json",
+      "sha256": "a6c5f5d7c665cbe7ec959c5a51426e1e270c8497339893b16179653e2db3df51"
+    },
+    {
+      "bytes": 11507,
+      "name": "evaluator__owner__test_labels.npz",
+      "path": "owner/test_labels.npz",
+      "sha256": "1d4110f7ac012099639ff36f4542f661adc2103759a88abf60b89e36995c250f"
+    },
+    {
+      "bytes": 29581,
+      "name": "evaluator__pose_preparation_manifest.json",
+      "path": "pose_preparation_manifest.json",
+      "sha256": "f237cb660a9a654c32fdb89696d0486017e1085b3de00219fadea54313b1d433"
+    },
+    {
+      "bytes": 29298,
+      "name": "evaluator__pose_source_manifest.json",
+      "path": "pose_source_manifest.json",
+      "sha256": "def7a7b7f2b405bc42a58c696c7be2ebfc4bf9eb6cddf121258d7d9cfe69eb78"
+    },
+    {
+      "bytes": 387804,
+      "name": "evaluator__public__pose__test__0OMPSFLGR17FOG8MQDTK.npz",
+      "path": "public/pose/test/0OMPSFLGR17FOG8MQDTK.npz",
+      "sha256": "a1b970a1f2a7941e1e4a1f33715cb6eec2e91b465c63ff85e5c6e55fdb5f3863"
+    },
+    {
+      "bytes": 355855,
+      "name": "evaluator__public__pose__test__2Y70ZB0KQCAFA7E3CPI8.npz",
+      "path": "public/pose/test/2Y70ZB0KQCAFA7E3CPI8.npz",
+      "sha256": "7ce7a0f650572864a37dc85ca8c5c36aecdc4621c67aa318af9f16f9d787a3e0"
+    },
+    {
+      "bytes": 479042,
+      "name": "evaluator__public__pose__test__39HZ3ZF3L05KE6WJUQQJ.npz",
+      "path": "public/pose/test/39HZ3ZF3L05KE6WJUQQJ.npz",
+      "sha256": "f6b73436b4142f80dceaad64bb73d0687a2fa1299c7844de4c4cecbb9e72edc6"
+    },
+    {
+      "bytes": 477068,
+      "name": "evaluator__public__pose__test__3ZOUFPHJ7JOHFBE8RHY6.npz",
+      "path": "public/pose/test/3ZOUFPHJ7JOHFBE8RHY6.npz",
+      "sha256": "0518d4353b3fe8563065c2b881ad50c44253e31eb0a801e83d246e2e56171d0e"
+    },
+    {
+      "bytes": 469100,
+      "name": "evaluator__public__pose__test__44J6YN6ETJXX2IQBLSNB.npz",
+      "path": "public/pose/test/44J6YN6ETJXX2IQBLSNB.npz",
+      "sha256": "489bf37caab49a7d8d25211fce1a2204c21a7a835c204a65e65147cde29884a6"
+    },
+    {
+      "bytes": 499493,
+      "name": "evaluator__public__pose__test__4GE1YTOKCPFXZPYS92UK.npz",
+      "path": "public/pose/test/4GE1YTOKCPFXZPYS92UK.npz",
+      "sha256": "7fd7a832a5a055ef3366ccde32099c611b7bf26b99563290d0b2fa9dec518f4d"
+    },
+    {
+      "bytes": 452007,
+      "name": "evaluator__public__pose__test__5IUDSD9OWQZYY5LGH2TO.npz",
+      "path": "public/pose/test/5IUDSD9OWQZYY5LGH2TO.npz",
+      "sha256": "9b478d0744888484ddd16d35bdeaef2746b0b3a04138ed976ad526067baedc9b"
+    },
+    {
+      "bytes": 480327,
+      "name": "evaluator__public__pose__test__5LV8BK7CTIRIA94HVSWO.npz",
+      "path": "public/pose/test/5LV8BK7CTIRIA94HVSWO.npz",
+      "sha256": "23c978d2354cb6c784911f91ba06ea7e93da7a76d48194df9d9b6b70bdb7239b"
+    },
+    {
+      "bytes": 496492,
+      "name": "evaluator__public__pose__test__7EXR92FIE0FJCHU2GP2G.npz",
+      "path": "public/pose/test/7EXR92FIE0FJCHU2GP2G.npz",
+      "sha256": "fc9c54573e5f64927d4aedccf44d66af66fbff9f0f0556cd20480b06afc8af6c"
+    },
+    {
+      "bytes": 477293,
+      "name": "evaluator__public__pose__test__8SM85GDZSY1OV9QG57SF.npz",
+      "path": "public/pose/test/8SM85GDZSY1OV9QG57SF.npz",
+      "sha256": "d3e2bc34d26b5f6a8aed5dfde6a8a8b3b2ea5453e38ede463874e86fa2fc5902"
+    },
+    {
+      "bytes": 512005,
+      "name": "evaluator__public__pose__test__8WV3OF3A2RWUJ9LCW0AV.npz",
+      "path": "public/pose/test/8WV3OF3A2RWUJ9LCW0AV.npz",
+      "sha256": "3a4706ab9011cd05449308f98c1ce782b42dbd5dd0e1a98bef1cd852507cd8c1"
+    },
+    {
+      "bytes": 394503,
+      "name": "evaluator__public__pose__test__B59LS33DXD4HZJ8D943W.npz",
+      "path": "public/pose/test/B59LS33DXD4HZJ8D943W.npz",
+      "sha256": "2bf2cec6d9105dc27e4ba85a7d250a932d9790e4d68fe36657f5aa82c3ab72ef"
+    },
+    {
+      "bytes": 444478,
+      "name": "evaluator__public__pose__test__C23DGCLDRMUAZ0ABDIP1.npz",
+      "path": "public/pose/test/C23DGCLDRMUAZ0ABDIP1.npz",
+      "sha256": "fde57ec681e7d7627e01009198902620fef48162431b25e29a685ef45ee1aefa"
+    },
+    {
+      "bytes": 485212,
+      "name": "evaluator__public__pose__test__COC9MDLHQIBMHO0CHHDP.npz",
+      "path": "public/pose/test/COC9MDLHQIBMHO0CHHDP.npz",
+      "sha256": "b23c760af68188cd98f35e4f53521752513cd9cf995add3533cfce68b0620956"
+    },
+    {
+      "bytes": 453094,
+      "name": "evaluator__public__pose__test__D4D4ZRO4H8RX1OOML5U4.npz",
+      "path": "public/pose/test/D4D4ZRO4H8RX1OOML5U4.npz",
+      "sha256": "b6f43b5dd63f93298474f7c62e01d7b6579fbc8f46ab5827421ec1fdb5925d7f"
+    },
+    {
+      "bytes": 463052,
+      "name": "evaluator__public__pose__test__EKQSQWE01K4I8BM50KEG.npz",
+      "path": "public/pose/test/EKQSQWE01K4I8BM50KEG.npz",
+      "sha256": "d5b2f2151ec7e9ad23b08487ca67d77c0f17c711feaaf0dc42fa338556198aba"
+    },
+    {
+      "bytes": 472103,
+      "name": "evaluator__public__pose__test__EO8XPEXT742ZXCJMZF9X.npz",
+      "path": "public/pose/test/EO8XPEXT742ZXCJMZF9X.npz",
+      "sha256": "c7b867ba3fc770d51f1db30a8eb3fe855036feb78da920df908771f28be93ac1"
+    },
+    {
+      "bytes": 484115,
+      "name": "evaluator__public__pose__test__EX5Q64E4M778U8HWP07P.npz",
+      "path": "public/pose/test/EX5Q64E4M778U8HWP07P.npz",
+      "sha256": "195058ed962ccb176504efc1f11fd6ee7e529539a5651b67ea1b3a82877566c3"
+    },
+    {
+      "bytes": 423852,
+      "name": "evaluator__public__pose__test__FVESAI78JH1T0AOHLZX5.npz",
+      "path": "public/pose/test/FVESAI78JH1T0AOHLZX5.npz",
+      "sha256": "3344aa3cc06fef1ae13a07775aea13cf64cafa6e78f92e294053ef94a70ba5b1"
+    },
+    {
+      "bytes": 360360,
+      "name": "evaluator__public__pose__test__GPVMH7MY2D0BXS69FUVU.npz",
+      "path": "public/pose/test/GPVMH7MY2D0BXS69FUVU.npz",
+      "sha256": "3a87a8b1ccbbfc5c44ba012ce840f64a7fa1321d3ab773d1fa006092e7403cd1"
+    },
+    {
+      "bytes": 490986,
+      "name": "evaluator__public__pose__test__H0QPPIBX6UTYZB07VKSA.npz",
+      "path": "public/pose/test/H0QPPIBX6UTYZB07VKSA.npz",
+      "sha256": "d9d473485557b137c4ba1755ef528b6ce3a15e9d6a218c2ba37c6f34c7e6c874"
+    },
+    {
+      "bytes": 340346,
+      "name": "evaluator__public__pose__test__H62FILA0OD9DXH99S8FI.npz",
+      "path": "public/pose/test/H62FILA0OD9DXH99S8FI.npz",
+      "sha256": "eb014a9ac2f7c12bb8ee0e52a74a760c9df818ff1ed8deb37434a5dcd7795629"
+    },
+    {
+      "bytes": 427566,
+      "name": "evaluator__public__pose__test__HXD812MLCS71FYXV65OP.npz",
+      "path": "public/pose/test/HXD812MLCS71FYXV65OP.npz",
+      "sha256": "94d842730a390d3351b4b716dff42da190784b2f6ae61ccd1031abd6d2ea1db2"
+    },
+    {
+      "bytes": 428636,
+      "name": "evaluator__public__pose__test__IT0QTRWAAC85M2R7VLO1.npz",
+      "path": "public/pose/test/IT0QTRWAAC85M2R7VLO1.npz",
+      "sha256": "bcde81cf742c84f786d031bf6e906febfbdec306653ddc98a2e92ae9761fff68"
+    },
+    {
+      "bytes": 441593,
+      "name": "evaluator__public__pose__test__JRYV8WO9AHC8P615XOVR.npz",
+      "path": "public/pose/test/JRYV8WO9AHC8P615XOVR.npz",
+      "sha256": "d3ed23accbf961df19180c20d281e3c3a9aae44b4ebf1ac60c0e5b97fd7df8d4"
+    },
+    {
+      "bytes": 495482,
+      "name": "evaluator__public__pose__test__KPS135VD589ORS6CUO40.npz",
+      "path": "public/pose/test/KPS135VD589ORS6CUO40.npz",
+      "sha256": "0d4d62df6487f75113c6eb203d2617232192abf8d5ea9a132e49139b3f690211"
+    },
+    {
+      "bytes": 441251,
+      "name": "evaluator__public__pose__test__M0SPEUHB0HNOM437QBQC.npz",
+      "path": "public/pose/test/M0SPEUHB0HNOM437QBQC.npz",
+      "sha256": "9c1e803de4501bd4c32ed960cfc6332760bab0a2b131de8ee55d67235496def2"
+    },
+    {
+      "bytes": 438466,
+      "name": "evaluator__public__pose__test__M1I7SFNLP5GWCOS9GEFN.npz",
+      "path": "public/pose/test/M1I7SFNLP5GWCOS9GEFN.npz",
+      "sha256": "7794f9de23992aae6be67bd914646733c6b81399409b6ffb4370f154281e030e"
+    },
+    {
+      "bytes": 507124,
+      "name": "evaluator__public__pose__test__NAS7UDQEDVKJBAKUWZUW.npz",
+      "path": "public/pose/test/NAS7UDQEDVKJBAKUWZUW.npz",
+      "sha256": "7244006c67ef75f7ac27bac94da7bd886c866d795d254c95b61d8fa2a20128b1"
+    },
+    {
+      "bytes": 467069,
+      "name": "evaluator__public__pose__test__P3VEMB6HYPR594LEL3WT.npz",
+      "path": "public/pose/test/P3VEMB6HYPR594LEL3WT.npz",
+      "sha256": "144e002499dddbd7ec81909813c7d2d19f1b23eb3ac797f39d951c4624498c17"
+    },
+    {
+      "bytes": 441516,
+      "name": "evaluator__public__pose__test__PDP873BKQUBZIMHV1I0P.npz",
+      "path": "public/pose/test/PDP873BKQUBZIMHV1I0P.npz",
+      "sha256": "25a3e7963f482bcbec74d86ddd0efa008cff38aa6e8c0891726632b620fd369f"
+    },
+    {
+      "bytes": 416860,
+      "name": "evaluator__public__pose__test__RWVIOKQU6XRTDO14IC38.npz",
+      "path": "public/pose/test/RWVIOKQU6XRTDO14IC38.npz",
+      "sha256": "5165938474d0647bbd190e37aab3530ae9db45e23df9602f7959e87da0af87a4"
+    },
+    {
+      "bytes": 460150,
+      "name": "evaluator__public__pose__test__S036BM2OEV58V45I06R4.npz",
+      "path": "public/pose/test/S036BM2OEV58V45I06R4.npz",
+      "sha256": "45a1692318c317981a5084752f984f70f43a26132f1a128d1c6fb0dbe372fd6c"
+    },
+    {
+      "bytes": 437751,
+      "name": "evaluator__public__pose__test__SV1PCVJF7WPRK2GNDRUN.npz",
+      "path": "public/pose/test/SV1PCVJF7WPRK2GNDRUN.npz",
+      "sha256": "56fac04977b4354dc2cecbd512167613e56d98d674994a197120fa53e38f3dd4"
+    },
+    {
+      "bytes": 477576,
+      "name": "evaluator__public__pose__test__TDHXRQC9INLKOJF4UHXH.npz",
+      "path": "public/pose/test/TDHXRQC9INLKOJF4UHXH.npz",
+      "sha256": "2a79fbaff1aa9eabc349e3aafc7efd1def99844fe43c7477e46135e56ac5661b"
+    },
+    {
+      "bytes": 423250,
+      "name": "evaluator__public__pose__test__TSLF0YSAG9BO480VHOXM.npz",
+      "path": "public/pose/test/TSLF0YSAG9BO480VHOXM.npz",
+      "sha256": "a157ac0c3b2a46de4874f28ddbaeaf3a198485e790d5b195f5935ac77676edbe"
+    },
+    {
+      "bytes": 474689,
+      "name": "evaluator__public__pose__test__URCP2C6TDQK2MI1BK2KL.npz",
+      "path": "public/pose/test/URCP2C6TDQK2MI1BK2KL.npz",
+      "sha256": "6e439353eaacc202338f13d1c7ec368013bb3128203fcef2f570dc1bf835158d"
+    },
+    {
+      "bytes": 411961,
+      "name": "evaluator__public__pose__test__UZ7M1SU7LN98QQH4JSXR.npz",
+      "path": "public/pose/test/UZ7M1SU7LN98QQH4JSXR.npz",
+      "sha256": "6e51d81ab64f20a5f4ed47294cf7568589b549ba4bfcaf6b50f26118541d4ae8"
+    },
+    {
+      "bytes": 449252,
+      "name": "evaluator__public__pose__test__WFS97BU1JPTYG3U3CN8A.npz",
+      "path": "public/pose/test/WFS97BU1JPTYG3U3CN8A.npz",
+      "sha256": "a180f11ff58264c7cb7bd2ab7c98f08031959c1b5271417dd2c63aea43e84ba2"
+    },
+    {
+      "bytes": 411822,
+      "name": "evaluator__public__pose__test__X4200DUKI06KHKT6PADX.npz",
+      "path": "public/pose/test/X4200DUKI06KHKT6PADX.npz",
+      "sha256": "c32a409d282d92937ead86a1fff1be5bb81a8270fa1872c83851fe10d344cba1"
+    },
+    {
+      "bytes": 432988,
+      "name": "evaluator__public__pose__test__YOW9BQBR5OZS3JAVKKX3.npz",
+      "path": "public/pose/test/YOW9BQBR5OZS3JAVKKX3.npz",
+      "sha256": "a83e7f638ef91be375769b254852615528b79b3f2ee40007de1b44236cd5ca05"
+    },
+    {
+      "bytes": 404923,
+      "name": "evaluator__public__pose__test__YQV8U4JNFTRVUYLR3KXF.npz",
+      "path": "public/pose/test/YQV8U4JNFTRVUYLR3KXF.npz",
+      "sha256": "f3a0e34a6c128c27c639bfd33b780a717d72fa69e16f1fef1a4e9a99a163bafd"
+    },
+    {
+      "bytes": 423589,
+      "name": "evaluator__public__pose__test__Z8H7BSM8KQW2KZEDN2A7.npz",
+      "path": "public/pose/test/Z8H7BSM8KQW2KZEDN2A7.npz",
+      "sha256": "3a5b72b9825eb860b67217a45c973d4e3deedccf6ea6ebeb87b91eff8a3c2e98"
+    }
+  ],
+  "repo_id": "local-prepared",
+  "revision": "545b653c45025b388f2ec0b7f79da68895aa049a188f5970a9462355a6db7716",
+  "schema": "bpb-evaluator-source/1",
+  "task_id": "mabe22-supervised-segmentation"
+}

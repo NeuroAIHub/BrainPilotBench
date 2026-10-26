@@ -1,0 +1,46 @@
+{
+  "schema": "bpb-calms21-family-closeout/1",
+  "task": "task2",
+  "status": "source_verified_prepared_not_agent_accepted",
+  "source": {
+    "record": "https://data.caltech.edu/records/s0vdx-0k302",
+    "file": "task2_annotation_styles.zip",
+    "bytes": 912092847,
+    "md5": "c97e87e13e77ffb80c073e05c05a4683",
+    "sha256": "07af9c3a18157a072755c1d1987103f8927e4de5e8996a22a6af25add59b10ab",
+    "raw_path": ".cache/mouse-closeout-20261026/family/task2_annotation_styles.zip",
+    "receipt_paths": [
+      ".cache/mouse-closeout-20261026/family/task2_annotation_styles.zip.sha256",
+      ".cache/mouse-closeout-20261026/family/task2_annotation_styles.zip.bytes"
+    ]
+  },
+  "prepared_root": ".cache/mouse-closeout-20261026/family/task2-prepared-v3",
+  "public_delivery": ".cache/mouse-closeout-20261026/family/task2-public-delivery",
+  "owner_delivery": ".cache/mouse-closeout-20261026/family/task2-owner-delivery",
+  "groups": ["annotator-id_1", "annotator-id_2", "annotator-id_3", "annotator-id_4", "annotator-id_5"],
+  "counts": {
+    "train": {"sequences": 20, "frames": 406925, "per_group_sequences": 4},
+    "valid": {"sequences": 10, "frames": 175948, "per_group_sequences": 2},
+    "owner_test": {"sequences": 47, "frames": 954989}
+  },
+  "split": "Complete official-Train sequences ranked by SHA-256 of delivered pose+confidence fingerprint per annotator; first ceil(20%) per group selected, with exact repeated poses kept in one derived role across groups.",
+  "official_cross_role_pose_overlap": {
+    "fingerprints": 4,
+    "same_target_group_overlap": 0,
+    "scope": "Source Train in one annotator and source Test in another; official roles preserved. This is not evidence of globally novel Test recordings."
+  },
+  "privacy": "Owner Test labels remain only in owner NPZ. Public delivery contains a public manifest and local-only pointer, with no owner Test arrays or labels.",
+  "distribution": "Local-only preparation. The CaltechDATA Version 1.0 record displays no license value in its Rights section; no archive or derived NPZ was uploaded.",
+  "validation": {
+    "zip_exact_members_and_duplicate_keys": "passed",
+    "numeric_schema_vocab_frames": "passed",
+    "public_and_owner_manifest_bytes_sha256": "passed",
+    "completion_marker_and_modes": "passed",
+    "agent_run": "not_started",
+    "test_scoring": "not_started"
+  },
+  "limits": [
+    "Pose fingerprints detect exact equality of delivered float32 keypoints and scores, not near duplicates or shared animals.",
+    "Prepared source and trusted numeric verification are not reference acceptance or private Test acceptance."
+  ]
+}

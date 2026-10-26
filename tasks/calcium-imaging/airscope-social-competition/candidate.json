@@ -1,0 +1,17 @@
+{
+  "schema": "bpb-mouse-candidate/1",
+  "id": "airscope-social-competition",
+  "domain": "calcium-imaging",
+  "status": "metadata_only_not_runnable",
+  "runnable": false,
+  "validated": false,
+  "title": "Decode mouse social competition outcomes",
+  "source_task_id": "airscope/tube-test",
+  "dataset_group_id": "airscope-social-competition",
+  "input_description": "Aligned cortical calcium signals from both mice in a tube-test trial.",
+  "output_description": "One predicted winner identity for each trial; the evaluator converts identities to fixed binary labels.",
+  "native_split_description": "The author code supports trial-, mouse- and file-level splits. Released trial membership and the selected evaluation grouping remain unbound.",
+  "primary_metric": {"id": "F1", "direction": "maximize", "unit": "fraction"},
+  "protocol": "protocol.json",
+  "reason": "A 17-example processed validation cache with winner labels is verified. Matching training signals, stable trial provenance and a defined independent evaluation split for the planned source task remain unavailable."
+}

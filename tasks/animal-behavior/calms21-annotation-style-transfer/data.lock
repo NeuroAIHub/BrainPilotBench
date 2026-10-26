@@ -1,0 +1,667 @@
+{
+  "datasets": [
+    {
+      "bytes": 11921,
+      "format": "json",
+      "name": "public__manifest.json",
+      "path": "public/manifest.json",
+      "scope": "public",
+      "sha256": "45d38990775af55fc30de4e2e4599750cb4a2a15d994f55bd625da40e9e5104b",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/manifest.json"
+    },
+    {
+      "bytes": 3186579,
+      "format": "npz",
+      "name": "public__train__128f79c4d78278090e96ffa1bd97f9101a7ca0ed6e8b3d54620c84c809ab9568.npz",
+      "path": "public/train/128f79c4d78278090e96ffa1bd97f9101a7ca0ed6e8b3d54620c84c809ab9568.npz",
+      "scope": "public",
+      "sha256": "95dd8c8da72bcb4c8d3131b5aa0398cecc7e65bee13931ca56b9bf2a7d289bc5",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/128f79c4d78278090e96ffa1bd97f9101a7ca0ed6e8b3d54620c84c809ab9568.npz"
+    },
+    {
+      "bytes": 3263643,
+      "format": "npz",
+      "name": "public__train__1396b6378dd1143897c6d54548326c75d83f7900e22b4acbd0d2b2e965b34c94.npz",
+      "path": "public/train/1396b6378dd1143897c6d54548326c75d83f7900e22b4acbd0d2b2e965b34c94.npz",
+      "scope": "public",
+      "sha256": "a21f5b0601441bcf9ed4ed1ed692ee0101fb03c116b8219b2f824ad86d866957",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/1396b6378dd1143897c6d54548326c75d83f7900e22b4acbd0d2b2e965b34c94.npz"
+    },
+    {
+      "bytes": 4106108,
+      "format": "npz",
+      "name": "public__train__1f15aeb13057cc7a37ad6ecce06f9e890dc999267090ad2cdf14c91202336b9e.npz",
+      "path": "public/train/1f15aeb13057cc7a37ad6ecce06f9e890dc999267090ad2cdf14c91202336b9e.npz",
+      "scope": "public",
+      "sha256": "0a2e838a7efa4df4fb3293657e0c8ca3d6669a6f3a441b458bcc64547f022d7c",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/1f15aeb13057cc7a37ad6ecce06f9e890dc999267090ad2cdf14c91202336b9e.npz"
+    },
+    {
+      "bytes": 3151934,
+      "format": "npz",
+      "name": "public__train__4238a7751f21a1556b6d872af966dbc04a446c23fd55e6518451290279847240.npz",
+      "path": "public/train/4238a7751f21a1556b6d872af966dbc04a446c23fd55e6518451290279847240.npz",
+      "scope": "public",
+      "sha256": "dec9f821d7ad55d47777d4ee9ec3154a58d1a6e0f9376ad25c6a1a003fe7b970",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/4238a7751f21a1556b6d872af966dbc04a446c23fd55e6518451290279847240.npz"
+    },
+    {
+      "bytes": 2933417,
+      "format": "npz",
+      "name": "public__train__44798ce4808577e7f78e38068c5d45ea8ea749a8c83bc3f2c1660229288293a6.npz",
+      "path": "public/train/44798ce4808577e7f78e38068c5d45ea8ea749a8c83bc3f2c1660229288293a6.npz",
+      "scope": "public",
+      "sha256": "62b0ed6cac61681afa9e469f9df9e763b3e842bfd236b553945a191f89a23341",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/44798ce4808577e7f78e38068c5d45ea8ea749a8c83bc3f2c1660229288293a6.npz"
+    },
+    {
+      "bytes": 3033972,
+      "format": "npz",
+      "name": "public__train__6887a361d58cca7e2a396366913a94ba9ff393bb3057434df24fc4ed1417040b.npz",
+      "path": "public/train/6887a361d58cca7e2a396366913a94ba9ff393bb3057434df24fc4ed1417040b.npz",
+      "scope": "public",
+      "sha256": "a9384b44475aba26f3f76609a4f5d891d38cb1f590e388a0d16404d34955c96d",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/6887a361d58cca7e2a396366913a94ba9ff393bb3057434df24fc4ed1417040b.npz"
+    },
+    {
+      "bytes": 3649639,
+      "format": "npz",
+      "name": "public__train__6c74eb56a40667d32d045c4851aa7deb12d96823496a449b19f53980cd0698f2.npz",
+      "path": "public/train/6c74eb56a40667d32d045c4851aa7deb12d96823496a449b19f53980cd0698f2.npz",
+      "scope": "public",
+      "sha256": "720b71346e81953fefb2d7b71e0273a44524aa55607d46f0d8d23da1bd2fa98b",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/6c74eb56a40667d32d045c4851aa7deb12d96823496a449b19f53980cd0698f2.npz"
+    },
+    {
+      "bytes": 2943895,
+      "format": "npz",
+      "name": "public__train__7d01c4d30334cd5a0540d3aa37260024ac2a20cce2b95e05afca4ef0913b1fc8.npz",
+      "path": "public/train/7d01c4d30334cd5a0540d3aa37260024ac2a20cce2b95e05afca4ef0913b1fc8.npz",
+      "scope": "public",
+      "sha256": "af1a98729c6b47f4c80956032468ba1c1eb5893afda0917889bb36717772a16f",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/7d01c4d30334cd5a0540d3aa37260024ac2a20cce2b95e05afca4ef0913b1fc8.npz"
+    },
+    {
+      "bytes": 4637275,
+      "format": "npz",
+      "name": "public__train__8fb7805b4411e6366594a8bb72f8357afcb7498da8e178a8c17d7e71fe3e07a0.npz",
+      "path": "public/train/8fb7805b4411e6366594a8bb72f8357afcb7498da8e178a8c17d7e71fe3e07a0.npz",
+      "scope": "public",
+      "sha256": "c2aa19aeae95cb71020053617acb15c5b97ce848f1afaa2d637770c23ea5d6a1",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/8fb7805b4411e6366594a8bb72f8357afcb7498da8e178a8c17d7e71fe3e07a0.npz"
+    },
+    {
+      "bytes": 1633469,
+      "format": "npz",
+      "name": "public__train__93f0af70555981d104d86b29c7259b592981b5632db467eb80d9f8223a6bfba1.npz",
+      "path": "public/train/93f0af70555981d104d86b29c7259b592981b5632db467eb80d9f8223a6bfba1.npz",
+      "scope": "public",
+      "sha256": "1323efc9437e752732050bc038b695ebbf9862d6b24b3b6ea5cf02714e71cb44",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/93f0af70555981d104d86b29c7259b592981b5632db467eb80d9f8223a6bfba1.npz"
+    },
+    {
+      "bytes": 3277501,
+      "format": "npz",
+      "name": "public__train__a6dfb72a752ef67a7f4b0b5d7598c61f0dd7ee6488592f111754fb9615efc2c4.npz",
+      "path": "public/train/a6dfb72a752ef67a7f4b0b5d7598c61f0dd7ee6488592f111754fb9615efc2c4.npz",
+      "scope": "public",
+      "sha256": "8c2d52911147d545902f6321a1cc3c40b0d6f5a7b5b7682f8f7b73004a25e23e",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/a6dfb72a752ef67a7f4b0b5d7598c61f0dd7ee6488592f111754fb9615efc2c4.npz"
+    },
+    {
+      "bytes": 2788246,
+      "format": "npz",
+      "name": "public__train__a931f903b7a0c294964ab17bc9161f713cf174e6219f856e960a8a73a96613df.npz",
+      "path": "public/train/a931f903b7a0c294964ab17bc9161f713cf174e6219f856e960a8a73a96613df.npz",
+      "scope": "public",
+      "sha256": "341c0381c45e27289c7c4c1b02873af83f29f66b0fad1eef26a88b25492c933f",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/a931f903b7a0c294964ab17bc9161f713cf174e6219f856e960a8a73a96613df.npz"
+    },
+    {
+      "bytes": 5283362,
+      "format": "npz",
+      "name": "public__train__aadbd677a2a52b7bfc42cf694b210eb3b8a43d2fbee6361b58a3fef2d5fa7bb3.npz",
+      "path": "public/train/aadbd677a2a52b7bfc42cf694b210eb3b8a43d2fbee6361b58a3fef2d5fa7bb3.npz",
+      "scope": "public",
+      "sha256": "e7ac47c1e104a08458e3ad0b73ef1fd8cebff711e0a8eaaac76b028999ece92d",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/aadbd677a2a52b7bfc42cf694b210eb3b8a43d2fbee6361b58a3fef2d5fa7bb3.npz"
+    },
+    {
+      "bytes": 3414391,
+      "format": "npz",
+      "name": "public__train__b11c77ced00dd4e281593f555edba2be46c40d4f4852c5e40d60486b730a49f8.npz",
+      "path": "public/train/b11c77ced00dd4e281593f555edba2be46c40d4f4852c5e40d60486b730a49f8.npz",
+      "scope": "public",
+      "sha256": "996d92928d24e4746d94f8679f6b73cf15e9ee0be829e79cefe0a3ba507b34c9",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/b11c77ced00dd4e281593f555edba2be46c40d4f4852c5e40d60486b730a49f8.npz"
+    },
+    {
+      "bytes": 3373155,
+      "format": "npz",
+      "name": "public__train__b8facf2da4451abc96536ee28aed2d447866e6ca0c81694fc73ca97e06534721.npz",
+      "path": "public/train/b8facf2da4451abc96536ee28aed2d447866e6ca0c81694fc73ca97e06534721.npz",
+      "scope": "public",
+      "sha256": "ee0783cb6510f263ecc5ef76b14a924bc3af17b3e27c4f190abf71ae582f2c34",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/b8facf2da4451abc96536ee28aed2d447866e6ca0c81694fc73ca97e06534721.npz"
+    },
+    {
+      "bytes": 3053914,
+      "format": "npz",
+      "name": "public__train__bf7fd467d1a5853ae34102402ad4bb212cf17a0f328a475f52ddd1b8b8e2559b.npz",
+      "path": "public/train/bf7fd467d1a5853ae34102402ad4bb212cf17a0f328a475f52ddd1b8b8e2559b.npz",
+      "scope": "public",
+      "sha256": "911a2b7a9512984623781b8248e0d236a997135b6da3633e1c5cf20ca775997b",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/bf7fd467d1a5853ae34102402ad4bb212cf17a0f328a475f52ddd1b8b8e2559b.npz"
+    },
+    {
+      "bytes": 3277501,
+      "format": "npz",
+      "name": "public__train__c298edc31dec4d8464a5a31316337956089da302fd3ec3f5c21b262969ec17b8.npz",
+      "path": "public/train/c298edc31dec4d8464a5a31316337956089da302fd3ec3f5c21b262969ec17b8.npz",
+      "scope": "public",
+      "sha256": "64fe17d0bc7f705f5e32a49fa176c08a5b4f8e1cc5e0adb36987925df99bca02",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/c298edc31dec4d8464a5a31316337956089da302fd3ec3f5c21b262969ec17b8.npz"
+    },
+    {
+      "bytes": 4641669,
+      "format": "npz",
+      "name": "public__train__c7687fdcf04b63bd2d923487c9abf381b13ae72aafcbeb3e312041dc0949689e.npz",
+      "path": "public/train/c7687fdcf04b63bd2d923487c9abf381b13ae72aafcbeb3e312041dc0949689e.npz",
+      "scope": "public",
+      "sha256": "d2363f2a197737f6c42e53b1d3493315bc31b57d25f53d640f9c102c2c6cfb40",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/c7687fdcf04b63bd2d923487c9abf381b13ae72aafcbeb3e312041dc0949689e.npz"
+    },
+    {
+      "bytes": 4106108,
+      "format": "npz",
+      "name": "public__train__d1133acfcd35ce68b711335e560745ee1f2972e390e6b23dc0e2cac90038c49f.npz",
+      "path": "public/train/d1133acfcd35ce68b711335e560745ee1f2972e390e6b23dc0e2cac90038c49f.npz",
+      "scope": "public",
+      "sha256": "889b2b54c89ac1aa3a68b8a7cfb527113286bc1394cf6f3c9faf5cb79b8aa2df",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/d1133acfcd35ce68b711335e560745ee1f2972e390e6b23dc0e2cac90038c49f.npz"
+    },
+    {
+      "bytes": 3029747,
+      "format": "npz",
+      "name": "public__train__e5096ff0c2f5bc516d2a30f7c187950a1c2cff7d8403d7a0088983afd464257b.npz",
+      "path": "public/train/e5096ff0c2f5bc516d2a30f7c187950a1c2cff7d8403d7a0088983afd464257b.npz",
+      "scope": "public",
+      "sha256": "3905a5331329ea30164638a804079a424d83118a1791889b42f3fa4266c31ec5",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/train/e5096ff0c2f5bc516d2a30f7c187950a1c2cff7d8403d7a0088983afd464257b.npz"
+    },
+    {
+      "bytes": 2943895,
+      "format": "npz",
+      "name": "public__valid__511dc545ff87346050b1a22dc38307aadd57bdd8bc152f39a02a34f0f6021788.npz",
+      "path": "public/valid/511dc545ff87346050b1a22dc38307aadd57bdd8bc152f39a02a34f0f6021788.npz",
+      "scope": "public",
+      "sha256": "9a5e32057dffb52d24e9ae75b574ccd513fc99f41cafa1442d1dcf9f9dce3ceb",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/511dc545ff87346050b1a22dc38307aadd57bdd8bc152f39a02a34f0f6021788.npz"
+    },
+    {
+      "bytes": 1123089,
+      "format": "npz",
+      "name": "public__valid__71574bf38574fc5969a061349afa4352ce79e2c63f4f41b1ded4998d9e3d5e6f.npz",
+      "path": "public/valid/71574bf38574fc5969a061349afa4352ce79e2c63f4f41b1ded4998d9e3d5e6f.npz",
+      "scope": "public",
+      "sha256": "734ec168e803f64e95777ff70a095dd605ce893b951cfe049c6219c49741b8d3",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/71574bf38574fc5969a061349afa4352ce79e2c63f4f41b1ded4998d9e3d5e6f.npz"
+    },
+    {
+      "bytes": 4769940,
+      "format": "npz",
+      "name": "public__valid__787cd3de64d522b28a2b68048ad3835488329d6f6501112cb2efed6f6b721797.npz",
+      "path": "public/valid/787cd3de64d522b28a2b68048ad3835488329d6f6501112cb2efed6f6b721797.npz",
+      "scope": "public",
+      "sha256": "9d659b5495ef1b1170b56f7ad7cd7ad5b105619115831303959457c1e9965a8b",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/787cd3de64d522b28a2b68048ad3835488329d6f6501112cb2efed6f6b721797.npz"
+    },
+    {
+      "bytes": 4043916,
+      "format": "npz",
+      "name": "public__valid__8919edef83675e83a43cbc8252063a76aa515fbd9ad56ce7d83b180062e1017a.npz",
+      "path": "public/valid/8919edef83675e83a43cbc8252063a76aa515fbd9ad56ce7d83b180062e1017a.npz",
+      "scope": "public",
+      "sha256": "78b2c74adcb88e7268afb29ec6cff29b29930313b10b3ebd62446ca1d18ae529",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/8919edef83675e83a43cbc8252063a76aa515fbd9ad56ce7d83b180062e1017a.npz"
+    },
+    {
+      "bytes": 3126753,
+      "format": "npz",
+      "name": "public__valid__8fe88e2864feb5e62dacb71282ed53faf061dc2ce7a01ef49671f2ccefabf00a.npz",
+      "path": "public/valid/8fe88e2864feb5e62dacb71282ed53faf061dc2ce7a01ef49671f2ccefabf00a.npz",
+      "scope": "public",
+      "sha256": "fa772fc9187e6fc02f51de44cab592d010227e103f1977a7b3332109831115bd",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/8fe88e2864feb5e62dacb71282ed53faf061dc2ce7a01ef49671f2ccefabf00a.npz"
+    },
+    {
+      "bytes": 3086531,
+      "format": "npz",
+      "name": "public__valid__9ea92c45bfa0ab9a4f7feb983f436a8b0178535665c056f936592567e4ef8436.npz",
+      "path": "public/valid/9ea92c45bfa0ab9a4f7feb983f436a8b0178535665c056f936592567e4ef8436.npz",
+      "scope": "public",
+      "sha256": "c94fefa1849270461d86a1ea7167ab8a547eea4cb375d4f3374de3a770440c3f",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/9ea92c45bfa0ab9a4f7feb983f436a8b0178535665c056f936592567e4ef8436.npz"
+    },
+    {
+      "bytes": 1123089,
+      "format": "npz",
+      "name": "public__valid__a6f903fd28dd15a296ca4f959ccc1d6acd8c89e2224485e5ef860b01c54f8943.npz",
+      "path": "public/valid/a6f903fd28dd15a296ca4f959ccc1d6acd8c89e2224485e5ef860b01c54f8943.npz",
+      "scope": "public",
+      "sha256": "c23224b358e03481061897c30d1c0047bb0473b44302e44878a25a111d0a18f6",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/a6f903fd28dd15a296ca4f959ccc1d6acd8c89e2224485e5ef860b01c54f8943.npz"
+    },
+    {
+      "bytes": 1779654,
+      "format": "npz",
+      "name": "public__valid__d703a5466129963e9d187eb49c7921ffff9a7e9eaef4b0cf7903e375691fdc5c.npz",
+      "path": "public/valid/d703a5466129963e9d187eb49c7921ffff9a7e9eaef4b0cf7903e375691fdc5c.npz",
+      "scope": "public",
+      "sha256": "93950c246d15859c8396aaac52518897f87b43f9d95c54c0eac85c55792b81dc",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/d703a5466129963e9d187eb49c7921ffff9a7e9eaef4b0cf7903e375691fdc5c.npz"
+    },
+    {
+      "bytes": 3126753,
+      "format": "npz",
+      "name": "public__valid__dc4939a1b39f540997104b2d994c8103b5f689bf2f36dfb598a233fafa87774e.npz",
+      "path": "public/valid/dc4939a1b39f540997104b2d994c8103b5f689bf2f36dfb598a233fafa87774e.npz",
+      "scope": "public",
+      "sha256": "a22497a5fd8d22342dabf5f8ceb7074a794e7ab6aa2b39e838f8eeae76ab7174",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/dc4939a1b39f540997104b2d994c8103b5f689bf2f36dfb598a233fafa87774e.npz"
+    },
+    {
+      "bytes": 4619192,
+      "format": "npz",
+      "name": "public__valid__ff166a550c44b24895d26004ea27bc5750485344a5b558ed12e253c4ea1520a7.npz",
+      "path": "public/valid/ff166a550c44b24895d26004ea27bc5750485344a5b558ed12e253c4ea1520a7.npz",
+      "scope": "public",
+      "sha256": "b336b467216828ed04314b5470eee856e40e58160f8287dc86a4795fff3636f0",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/public/valid/ff166a550c44b24895d26004ea27bc5750485344a5b558ed12e253c4ea1520a7.npz"
+    },
+    {
+      "bytes": 16860,
+      "format": "json",
+      "name": "evaluator__test-manifest.json",
+      "scope": "private",
+      "sha256": "bf0f4b696a52e884ba5993e9ffaee278d26e0758416df078a2a68fd20e37ec53",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test-manifest.json"
+    },
+    {
+      "bytes": 3026367,
+      "format": "npz",
+      "name": "evaluator__test__01f8880b88d69b8ff2926be91f3cc7d714f646ac0e6077c522fb0e85ecdc57e1.npz",
+      "scope": "private",
+      "sha256": "4de937f8278b0d4a7ca00feea49858c110b3eaf6c94b6ef897d09a09db65cc3a",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/01f8880b88d69b8ff2926be91f3cc7d714f646ac0e6077c522fb0e85ecdc57e1.npz"
+    },
+    {
+      "bytes": 3066420,
+      "format": "npz",
+      "name": "evaluator__test__02d7bb8745442631463db7a03b6af29b51d676569ef5a1ae0f57aedf54370760.npz",
+      "scope": "private",
+      "sha256": "790719b8720071e0f199b00dad02a7686a68a94e8e9b82e6281744dd72fec49e",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/02d7bb8745442631463db7a03b6af29b51d676569ef5a1ae0f57aedf54370760.npz"
+    },
+    {
+      "bytes": 3112726,
+      "format": "npz",
+      "name": "evaluator__test__044917fbf2e8c6bca2a84223349c1836b67cfbede5dd4d6eea611db2a60ef762.npz",
+      "scope": "private",
+      "sha256": "46d1a9691b236532687d7943d762206d1ff1bf4740c86f2bf94cd3632f2d04d8",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/044917fbf2e8c6bca2a84223349c1836b67cfbede5dd4d6eea611db2a60ef762.npz"
+    },
+    {
+      "bytes": 3050196,
+      "format": "npz",
+      "name": "evaluator__test__09acd5487c648686e6a415b4d6f7d7bc2b5bc60b5705b5dfb966df18b819bcd4.npz",
+      "scope": "private",
+      "sha256": "e23de68a0fd947f37b0049d91b0f47909eca186cbde9c0e84d930fcb69ef0bf1",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/09acd5487c648686e6a415b4d6f7d7bc2b5bc60b5705b5dfb966df18b819bcd4.npz"
+    },
+    {
+      "bytes": 3063547,
+      "format": "npz",
+      "name": "evaluator__test__0abfde26af4ff7e51630175c451a68728868d3462f225d3aa8bbceec743fe843.npz",
+      "scope": "private",
+      "sha256": "e50d0d36413c8c94b0de6addf24d4f0bd03612af3adeae8d0d2ddf58f07a9620",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/0abfde26af4ff7e51630175c451a68728868d3462f225d3aa8bbceec743fe843.npz"
+    },
+    {
+      "bytes": 2992567,
+      "format": "npz",
+      "name": "evaluator__test__0e0734e40b99a73a50ee1b385dc846bd990c1a1526abc335c9b5c94506f799ff.npz",
+      "scope": "private",
+      "sha256": "12d1929fcc4675458a6379d2d98f3b01b9e5cede9731b5cce0c04027fa3d42fe",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/0e0734e40b99a73a50ee1b385dc846bd990c1a1526abc335c9b5c94506f799ff.npz"
+    },
+    {
+      "bytes": 3031775,
+      "format": "npz",
+      "name": "evaluator__test__11079da0935ad2116143354ddc1dd15fb79284d93041a1709b256b4dc5b409e0.npz",
+      "scope": "private",
+      "sha256": "1b894a197e1dfe59910b46df85b67d8a9c4de86db1ccf6a7fe69ceba255161bc",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/11079da0935ad2116143354ddc1dd15fb79284d93041a1709b256b4dc5b409e0.npz"
+    },
+    {
+      "bytes": 3053576,
+      "format": "npz",
+      "name": "evaluator__test__1482fbb6eacc0f996017834be5343206e6bc9eadc425a211af6bad81f0dff9f0.npz",
+      "scope": "private",
+      "sha256": "455b653e5571b9778a16499432037d60016740f5d415243b764954221275ecaf",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/1482fbb6eacc0f996017834be5343206e6bc9eadc425a211af6bad81f0dff9f0.npz"
+    },
+    {
+      "bytes": 3099713,
+      "format": "npz",
+      "name": "evaluator__test__265a47b21ec50216151c522af333faeea4faccc1ff8b8a75e68eb5ea4bb6d10f.npz",
+      "scope": "private",
+      "sha256": "aa0e7537e4eb90b86f74e857e13d37feaaae1b84c08880e19bde61a77098bebe",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/265a47b21ec50216151c522af333faeea4faccc1ff8b8a75e68eb5ea4bb6d10f.npz"
+    },
+    {
+      "bytes": 3319582,
+      "format": "npz",
+      "name": "evaluator__test__2d4752e6c533dc2f7e5e0b31c64503da33b1d478423ddaedfbceecd2bd6ebe3c.npz",
+      "scope": "private",
+      "sha256": "b504d7e2d9b6e8e588b2a14ed5bc2f41ebcc351be091a719b1873fd87adfcbc9",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/2d4752e6c533dc2f7e5e0b31c64503da33b1d478423ddaedfbceecd2bd6ebe3c.npz"
+    },
+    {
+      "bytes": 3189114,
+      "format": "npz",
+      "name": "evaluator__test__3952fd621481adf633d9b9bdb8dbf6c973a684d67cf31980d98fb27704786354.npz",
+      "scope": "private",
+      "sha256": "d344ba8220b381a442c2ebe7d93ca85eb6d7e40749f8358547be4f1115112644",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/3952fd621481adf633d9b9bdb8dbf6c973a684d67cf31980d98fb27704786354.npz"
+    },
+    {
+      "bytes": 4583026,
+      "format": "npz",
+      "name": "evaluator__test__395fdb1fea456c70d57ea6934335d5212e41920ee4e791fcaa713e853e4bc049.npz",
+      "scope": "private",
+      "sha256": "4f44ae499440b5c169aa1e6023a5470520046ae126c6121c9c1696570a4f4486",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/395fdb1fea456c70d57ea6934335d5212e41920ee4e791fcaa713e853e4bc049.npz"
+    },
+    {
+      "bytes": 4525397,
+      "format": "npz",
+      "name": "evaluator__test__3e97d68492a0a813dc3c136775c576eeb55306cc323446b28c7ac28b94f20c46.npz",
+      "scope": "private",
+      "sha256": "921a13e8e58e09518f346ebedbfc7640f5038a1936d18a2bccc53997776e2d06",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/3e97d68492a0a813dc3c136775c576eeb55306cc323446b28c7ac28b94f20c46.npz"
+    },
+    {
+      "bytes": 3004904,
+      "format": "npz",
+      "name": "evaluator__test__4e3ca7e587c265247de2f5fa6fcb1bc3cdfaeaf6f729175b65efd17911916365.npz",
+      "scope": "private",
+      "sha256": "9a7ad321b3435444145297e6207a7c82c1e11cae3bbc957dedb6afde79ab0656",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/4e3ca7e587c265247de2f5fa6fcb1bc3cdfaeaf6f729175b65efd17911916365.npz"
+    },
+    {
+      "bytes": 3414391,
+      "format": "npz",
+      "name": "evaluator__test__53d7dc5d2b83d152ec2b4ddc199920bf79e650b8e9d550d8998c74d60c2dfee9.npz",
+      "scope": "private",
+      "sha256": "2e39e9856cd52840e186ff4af52ad6501cf6b467a86d79e5e3efe8a19ec3ef29",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/53d7dc5d2b83d152ec2b4ddc199920bf79e650b8e9d550d8998c74d60c2dfee9.npz"
+    },
+    {
+      "bytes": 4955164,
+      "format": "npz",
+      "name": "evaluator__test__5b0918e4ec053a138b52e833bcaafafa05556381ae6446cafaf336f713a30a40.npz",
+      "scope": "private",
+      "sha256": "88a1856025e84dce0d8c36c826e1c4ba54fa3972b8c80da4a70d6c5459145ad3",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/5b0918e4ec053a138b52e833bcaafafa05556381ae6446cafaf336f713a30a40.npz"
+    },
+    {
+      "bytes": 3136724,
+      "format": "npz",
+      "name": "evaluator__test__5d70781a7e366fec42c484af4cdbf18fd09decc68f7287fa7c6ee5e05601bd4f.npz",
+      "scope": "private",
+      "sha256": "551f29a50d65575e8ca56e50de2c70ae6ec3097f618d7b742d3920a7fae8b497",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/5d70781a7e366fec42c484af4cdbf18fd09decc68f7287fa7c6ee5e05601bd4f.npz"
+    },
+    {
+      "bytes": 2857874,
+      "format": "npz",
+      "name": "evaluator__test__63169449bf5671243733b122f43e07c0bc234bb2449bd84f58f8561a416f6665.npz",
+      "scope": "private",
+      "sha256": "512b9fe5a6b14d68dccc89095077dc9de3dbc232ef70e463a01a476e1ce10148",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/63169449bf5671243733b122f43e07c0bc234bb2449bd84f58f8561a416f6665.npz"
+    },
+    {
+      "bytes": 2934769,
+      "format": "npz",
+      "name": "evaluator__test__6d0422477573ecce6c3c1da8507aba43251eabe36fc397f6e58045d9a28da8a3.npz",
+      "scope": "private",
+      "sha256": "5c6535f67f7d106b0e88b1f185f21e162f8187a3e527198196df7fc549d9eb18",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/6d0422477573ecce6c3c1da8507aba43251eabe36fc397f6e58045d9a28da8a3.npz"
+    },
+    {
+      "bytes": 3258235,
+      "format": "npz",
+      "name": "evaluator__test__6eeb5707666bd0fbf0d536baea57900e3d738ca7f57c8d9d5be8a76efe9ffe11.npz",
+      "scope": "private",
+      "sha256": "b961ad387c9fbf7abb527828e362b7b5313b59d4ad344f5c090008fb507149b6",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/6eeb5707666bd0fbf0d536baea57900e3d738ca7f57c8d9d5be8a76efe9ffe11.npz"
+    },
+    {
+      "bytes": 4934715,
+      "format": "npz",
+      "name": "evaluator__test__6fa8a6b57ffb97ce8fce0761d95a613e1064ce9ed22d274271a99cd9f9412c49.npz",
+      "scope": "private",
+      "sha256": "6d816f1e3802b4f6a4e6432fa26ea6dc8afa4dd242930afb42b95e4ba0fd07d7",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/6fa8a6b57ffb97ce8fce0761d95a613e1064ce9ed22d274271a99cd9f9412c49.npz"
+    },
+    {
+      "bytes": 3053407,
+      "format": "npz",
+      "name": "evaluator__test__782e41a551177df5d4777dfdf87aa0610bb506c266754f5b3ee945924c0720da.npz",
+      "scope": "private",
+      "sha256": "26fae3fea871d235bcde0f2d2bc97d2e4f70fedbdc1e767c4164325531113ca7",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/782e41a551177df5d4777dfdf87aa0610bb506c266754f5b3ee945924c0720da.npz"
+    },
+    {
+      "bytes": 3174749,
+      "format": "npz",
+      "name": "evaluator__test__7996eb2a5af82b9253e9ad2527849e238e9855e3973fe5a5611994ac353812df.npz",
+      "scope": "private",
+      "sha256": "d97b5368586b971d04870465d4df5c358064a5c6617595320016faaeaa94e4ae",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/7996eb2a5af82b9253e9ad2527849e238e9855e3973fe5a5611994ac353812df.npz"
+    },
+    {
+      "bytes": 3120669,
+      "format": "npz",
+      "name": "evaluator__test__7c6ab5067fd42b469aafc6e2bceeddceea755a735d0a57c6f7d6c395307e10fb.npz",
+      "scope": "private",
+      "sha256": "2356043cd69fb0ebe2dcd07b96a778d768d825a21d501c80b6788f27e1286d3e",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/7c6ab5067fd42b469aafc6e2bceeddceea755a735d0a57c6f7d6c395307e10fb.npz"
+    },
+    {
+      "bytes": 3319582,
+      "format": "npz",
+      "name": "evaluator__test__7d217e539ded14191765047b983e25a3523225480e24bdd1eb908f5f80a435dc.npz",
+      "scope": "private",
+      "sha256": "182c0b9db12e9e7f5ed912e617f06d7e6a831cf3582b141ee9932a026bb2ad7e",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/7d217e539ded14191765047b983e25a3523225480e24bdd1eb908f5f80a435dc.npz"
+    },
+    {
+      "bytes": 3257728,
+      "format": "npz",
+      "name": "evaluator__test__88ce3e5f2f661f24964c0899ddedcacae68d37e5b3f1ba228d0dce324b8d3a36.npz",
+      "scope": "private",
+      "sha256": "783d2b96577975ecf30d9c4043294216d1d42fe219d1349b1a8f427442500595",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/88ce3e5f2f661f24964c0899ddedcacae68d37e5b3f1ba228d0dce324b8d3a36.npz"
+    },
+    {
+      "bytes": 2938487,
+      "format": "npz",
+      "name": "evaluator__test__8c24ec2581fe83e7a985790e8fef0039a7292f31a2339af1b53d5b29586538af.npz",
+      "scope": "private",
+      "sha256": "dad6c1a96155ce8ecc6db300f37dc0db66fc3e352c3823ad2bbbdf6d62c9e6b5",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/8c24ec2581fe83e7a985790e8fef0039a7292f31a2339af1b53d5b29586538af.npz"
+    },
+    {
+      "bytes": 2296118,
+      "format": "npz",
+      "name": "evaluator__test__90891e823163e50cef47945b9c003b783aa7f2a96a13af632eaaafaa09af3f0f.npz",
+      "scope": "private",
+      "sha256": "9c5cf2961b02606b6d0ecd0fe7e2c666af374b0aa0fc938491f8040177732b6e",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/90891e823163e50cef47945b9c003b783aa7f2a96a13af632eaaafaa09af3f0f.npz"
+    },
+    {
+      "bytes": 4491428,
+      "format": "npz",
+      "name": "evaluator__test__9a36c50abfd2a9b871d9a783a6341382de5770b3e7eb7978b6b5a2d412d5d70c.npz",
+      "scope": "private",
+      "sha256": "d88fdc2309450f975d135f9426101c9ffff62003e545b0a50e787ff793c7ce6d",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/9a36c50abfd2a9b871d9a783a6341382de5770b3e7eb7978b6b5a2d412d5d70c.npz"
+    },
+    {
+      "bytes": 3036507,
+      "format": "npz",
+      "name": "evaluator__test__a2e08008addef753a65807c385e09d2a00946446eb9dd3a93560342bd4893424.npz",
+      "scope": "private",
+      "sha256": "fcab6de82458071469668bcc81332462408c4f50a467d52611cb8222b50fe28a",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/a2e08008addef753a65807c385e09d2a00946446eb9dd3a93560342bd4893424.npz"
+    },
+    {
+      "bytes": 3037352,
+      "format": "npz",
+      "name": "evaluator__test__a346c374a4e69185ea4f090bf63bb48627bf88d5013ac1de30d168731bf65048.npz",
+      "scope": "private",
+      "sha256": "4af9169777d0f533263f37e0157163bcf9c8d64d8f8040a8025cab054b66f711",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/a346c374a4e69185ea4f090bf63bb48627bf88d5013ac1de30d168731bf65048.npz"
+    },
+    {
+      "bytes": 4580153,
+      "format": "npz",
+      "name": "evaluator__test__a5844268aa356b8bb174a41cf731a173e291f6409213c296c412121c20bb0352.npz",
+      "scope": "private",
+      "sha256": "77f0223d30624bf80da9c8155c2d0d3606770e38f30770bc3b83b3874a256a96",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/a5844268aa356b8bb174a41cf731a173e291f6409213c296c412121c20bb0352.npz"
+    },
+    {
+      "bytes": 3373155,
+      "format": "npz",
+      "name": "evaluator__test__a71114e7d9de32a23c68e67fe84ed8ec2a6cbe49c71776d2d6c347201947c2c9.npz",
+      "scope": "private",
+      "sha256": "a5a97ecafaa0ad0bf5040e287a0df435e5aa6217d43d0f27623192208f35412b",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/a71114e7d9de32a23c68e67fe84ed8ec2a6cbe49c71776d2d6c347201947c2c9.npz"
+    },
+    {
+      "bytes": 2957922,
+      "format": "npz",
+      "name": "evaluator__test__aaf3216de87ed39cbc4443e2d8a709cd0d1ab19203940154b25694b517ca1bd0.npz",
+      "scope": "private",
+      "sha256": "32f4e5351aa93db6f1a84632301e54fed8deba273dda680059dc819fdba954cf",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/aaf3216de87ed39cbc4443e2d8a709cd0d1ab19203940154b25694b517ca1bd0.npz"
+    },
+    {
+      "bytes": 4565788,
+      "format": "npz",
+      "name": "evaluator__test__b1f6a38bae739bd08d7b71cb718ebb04979e32cab1b2b95f55dc8bfe01f6b805.npz",
+      "scope": "private",
+      "sha256": "1caeabe0486f5ca64bae7a22c51393343837de51b32f80beb98b8097c2d96fbe",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/b1f6a38bae739bd08d7b71cb718ebb04979e32cab1b2b95f55dc8bfe01f6b805.npz"
+    },
+    {
+      "bytes": 4484837,
+      "format": "npz",
+      "name": "evaluator__test__bd43a07a99af828fff412cda3a24a5d1bcd067809fd9d059e45ac45168f7e245.npz",
+      "scope": "private",
+      "sha256": "06742852d82902940c616e71b3c1f0dbed5977fa670fa9db2b3f3eb2d3272016",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/bd43a07a99af828fff412cda3a24a5d1bcd067809fd9d059e45ac45168f7e245.npz"
+    },
+    {
+      "bytes": 3151934,
+      "format": "npz",
+      "name": "evaluator__test__c0d4a7f6d47431f4c90a58e713f47d08ea2d3ba3a7f8bf42d1c2c49c8130cd5f.npz",
+      "scope": "private",
+      "sha256": "a5fb79627680bb6e29692bf9eb625fd3dd78575bc7fa56588709de1ffc674cac",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/c0d4a7f6d47431f4c90a58e713f47d08ea2d3ba3a7f8bf42d1c2c49c8130cd5f.npz"
+    },
+    {
+      "bytes": 3051041,
+      "format": "npz",
+      "name": "evaluator__test__c242bf9ddf02bc376e7fa838d6e86a2679cbc70c31f98c06f71017a73b7d09f6.npz",
+      "scope": "private",
+      "sha256": "dfa0bc1653631a0af3bc7512c1ccc958a9992f1ea4785f675354a8330dce0edd",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/c242bf9ddf02bc376e7fa838d6e86a2679cbc70c31f98c06f71017a73b7d09f6.npz"
+    },
+    {
+      "bytes": 3012678,
+      "format": "npz",
+      "name": "evaluator__test__c3f1bb932bae4cd10f04425a0b934b3fa254ee72a215189d5b856625748c82ed.npz",
+      "scope": "private",
+      "sha256": "e77dbc077aa7c4d703f464973e3514910558ab7bb3ad4b9dc46851c3d64ff00d",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/c3f1bb932bae4cd10f04425a0b934b3fa254ee72a215189d5b856625748c82ed.npz"
+    },
+    {
+      "bytes": 4618347,
+      "format": "npz",
+      "name": "evaluator__test__d2a522d738f5a9fb1d9f6d9968a2967d7e2835ac4256cd2b964472ca4bb598d3.npz",
+      "scope": "private",
+      "sha256": "954ac9d1d6c89a704a6185bb3afa237a1ca12981be04d073d8a040764b7d265d",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/d2a522d738f5a9fb1d9f6d9968a2967d7e2835ac4256cd2b964472ca4bb598d3.npz"
+    },
+    {
+      "bytes": 3034310,
+      "format": "npz",
+      "name": "evaluator__test__db42ce388647fed0613348288eea448711853ec69f512a6b4a5928d8c4b19b2e.npz",
+      "scope": "private",
+      "sha256": "ecf1274fe7c95940d17b8723f8fae17687ef6b69621d4e17e56103d6ef314724",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/db42ce388647fed0613348288eea448711853ec69f512a6b4a5928d8c4b19b2e.npz"
+    },
+    {
+      "bytes": 2979216,
+      "format": "npz",
+      "name": "evaluator__test__de50b305e7c77bdb19c8d9a01332267d2c9779a8373e9e9beac3429319ccef7f.npz",
+      "scope": "private",
+      "sha256": "db9c931569519d031caebbcb7c5a7b14434ece5052a0060a972a66d9555debc9",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/de50b305e7c77bdb19c8d9a01332267d2c9779a8373e9e9beac3429319ccef7f.npz"
+    },
+    {
+      "bytes": 4524890,
+      "format": "npz",
+      "name": "evaluator__test__e0534007620ac165cba7bb46ff470f0bb1348284995e1f01a47e1831ec590ffc.npz",
+      "scope": "private",
+      "sha256": "8be84f01a195266cc7872810943f3aa26d1375bfb2acc0d847fe38ecf949d8d6",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/e0534007620ac165cba7bb46ff470f0bb1348284995e1f01a47e1831ec590ffc.npz"
+    },
+    {
+      "bytes": 3028902,
+      "format": "npz",
+      "name": "evaluator__test__e24603f97394b07e2d1e19c1a65104d075ac3ec875e62d0a4692b89974071a9c.npz",
+      "scope": "private",
+      "sha256": "138ff12dedab6b21c17767d8a4a2f1fee032ecf3b9b8898f46cc95389bd67f94",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/e24603f97394b07e2d1e19c1a65104d075ac3ec875e62d0a4692b89974071a9c.npz"
+    },
+    {
+      "bytes": 3263643,
+      "format": "npz",
+      "name": "evaluator__test__e7994bfe5a12dda951b92fd369af553cbc062ec16d6743353184913fb7d170a4.npz",
+      "scope": "private",
+      "sha256": "81d0e74437165fcdd7b884d7c9c5aca2354c571eef9d24515b6d63a4fde27ef5",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/e7994bfe5a12dda951b92fd369af553cbc062ec16d6743353184913fb7d170a4.npz"
+    },
+    {
+      "bytes": 4433461,
+      "format": "npz",
+      "name": "evaluator__test__ee07e361f6d18c42a2b05766b54901c6cd75a6fb4596fffe0a236790c2c35633.npz",
+      "scope": "private",
+      "sha256": "7a211d3022ecdebe64b5b7fe2bddcba6e487eebf4299ad8f07f47d80266d761b",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/ee07e361f6d18c42a2b05766b54901c6cd75a6fb4596fffe0a236790c2c35633.npz"
+    },
+    {
+      "bytes": 3031775,
+      "format": "npz",
+      "name": "evaluator__test__f1bbe627991f8d26d9a50e549bedda065fe4a8ab19ce59b603b2169bde5d40ed.npz",
+      "scope": "private",
+      "sha256": "239b0488aaf3b58e51a2f8e9b68d49cf44db3e03b52725a3a3d2d1fd38eb56e2",
+      "uri": "local://tasks/animal-behavior/calms21-annotation-style-transfer/4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f/evaluator/test/f1bbe627991f8d26d9a50e549bedda065fe4a8ab19ce59b603b2169bde5d40ed.npz"
+    }
+  ]
+}

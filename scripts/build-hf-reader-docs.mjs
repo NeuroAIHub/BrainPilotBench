@@ -284,8 +284,12 @@ export function buildReaderDocs(options) {
       fail(`Working task catalog differs from source revision ${sourceRevision}; publish the final catalog first`);
     }
   }
-  const tasks = readJson(path.join(root, 'tasks/catalog.json')).tasks.filter((task) => task.entry_kind === 'runnable');
-  if (tasks.length !== 112) fail(`Expected 112 runnable tasks; found ${tasks.length}`);
+  // Local source-only additions do not silently expand the frozen HF delivery.
+  // Their guides are checked separately; publication requires a new HF snapshot.
+  const tasks = readJson(path.join(root, 'tasks/catalog.json')).tasks.filter((task) =>
+    task.entry_kind === 'runnable' && !(task.data_status === 'source_prepared_role_separated' &&
+      task.hosted_data_availability !== 'published_public_snapshot'));
+  if (!tasks.length) fail('No tasks belong to the frozen HF delivery');
   const taskMap = new Map(tasks.map((task) => [task.task_id, task]));
   if (taskMap.size !== tasks.length) fail('Task catalog has duplicate runnable IDs');
   const rawRows = readCatalogLines(catalogInput);

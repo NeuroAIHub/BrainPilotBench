@@ -7,7 +7,10 @@ import { discoverTaskDirs } from "../dist/discover.js";
 import { loadTask } from "../dist/loader.js";
 import { validateTaskSchema } from "../dist/validate.js";
 import { loadCategories } from "../dist/categories.js";
+import { readEvaluatorLock } from "../dist/evaluator.js";
+import { readMouseAcceptance } from "./mouse-acceptance.mjs";
 import { readInvasiveCandidates, invasiveCatalogRow } from "./invasive-candidates.mjs";
+import { readMouseCandidates, mouseCatalogRow } from "./mouse-candidates.mjs";
 import { readInvasiveAcceptance } from "./invasive-acceptance.mjs";
 import { validatePrivateEvaluatorIncrement, privateScoreEntry } from "./private-evaluator-increment.mjs";
 
@@ -41,6 +44,12 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
     evaluation_scope: publicOnly ? "public_validation_only" : "task_defined",
     primary_metric: task.meta.evaluation?.primaryMetric ?? null,
   };
+  const mouseAccepted = readMouseAcceptance(root, task);
+  if (mouseAccepted) {
+    row.validation = "local_fixed_reference_cli_and_isolation_passed";
+    row.validation_record = mouseAccepted.record;
+    row.evaluation_scope = mouseAccepted.privateOnly ? "owner_test_only" : "public_validation_and_owner_test";
+  }
   if (task.meta.evaluation?.profile) row.evaluation_profile = task.meta.evaluation.profile;
   if (contract.experiment_id) row.source_task_id = contract.experiment_id;
   else if (contract.source_task_id) row.source_task_id = contract.source_task_id;
@@ -75,7 +84,13 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
     row.private_data_access = "pinned_private_snapshot";
     row.private_score_entry = privateScoreEntry;
   } else if (existsSync(join(dir, "evaluator.lock"))) {
-    throw new Error(`${rel(dir)}: evaluator.lock is outside the frozen private increment`);
+    const sourceEvaluator = readEvaluatorLock(task);
+    if (row.domain !== "animal-behavior" || sourceEvaluator.schema !== "bpb-evaluator-source/1")
+      throw new Error(`${rel(dir)}: evaluator.lock is outside the frozen private increment`);
+    row.private_data_access = "source_prepared_evaluator";
+    row.private_score_entry = privateScoreEntry;
+    row.data_status = "source_prepared_role_separated";
+    row.agent_benchmark_results = "not_available";
   }
   if (accepted) {
     row.validation = "local_fixed_reference_and_isolation_passed";
@@ -108,6 +123,8 @@ for (const entry of readdirSync(join(root, "tasks/eeg"), { withFileTypes: true }
   });
 }
 for (const entry of readInvasiveCandidates(root)) tasks.push(invasiveCatalogRow(entry));
+const mouseCandidates = readMouseCandidates(root);
+for (const entry of mouseCandidates) tasks.push(mouseCatalogRow(entry));
 const metadata = read(join(root, "tasks/psychology/metadata-only.json"));
 for (const card of metadata.tasks) tasks.push({
   task_id: card.proposed_task_id, domain: "psychology", metadata_file: "tasks/psychology/metadata-only.json",
@@ -118,14 +135,15 @@ const ids = new Set(tasks.map(t => t.task_id));
 if (ids.size !== tasks.length) throw new Error("Duplicate catalog task IDs");
 tasks.sort((a,b) => a.task_id.localeCompare(b.task_id));
 const catalog = {
-  schema: "brainpilotbench-task-collection/1", date: "2026-10-15",
+  schema: "brainpilotbench-task-collection/1", date: "2026-10-26",
   release_status: "integration_candidate_not_released",
-  validation_policy: "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; no formal Agent results or historical private Test replay",
+  validation_policy: "Four first-batch reference checks; version-bound local invasive and five mouse task acceptances with fixed references and isolated owner Test interface checks; Airscope candidates remain outside runnable acceptance; no formal Agent results or historical private Test replay",
   counts: {
     total: tasks.length, runnable: tasks.filter(t => t.entry_kind === "runnable").length,
     candidate: tasks.filter(t => t.entry_kind === "candidate").length,
+    mouse_candidate: mouseCandidates.length,
     preparation_ready: tasks.filter(t => t.preparation_available).length,
-    representative_runs: referenceChecks.size + tasks.filter(t => t.validation === "local_fixed_reference_and_isolation_passed").length,
+    representative_runs: referenceChecks.size + tasks.filter(t => ["local_fixed_reference_and_isolation_passed", "local_fixed_reference_cli_and_isolation_passed"].includes(t.validation)).length,
   }, tasks,
 };
 const text = JSON.stringify(catalog, null, 2) + "\n";

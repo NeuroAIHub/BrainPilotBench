@@ -9,7 +9,7 @@ From neural recordings to human choices: build models, analyze data, and submit 
 </p>
 
 <p>
-  <strong>v1 task collection</strong> &nbsp;·&nbsp; <strong>112 runnable tasks</strong> &nbsp;·&nbsp; <strong>6 data categories</strong>
+  <strong>v1 task collection</strong> &nbsp;·&nbsp; <strong>117 runnable tasks</strong> &nbsp;·&nbsp; <strong>7 data categories</strong>
 </p>
 
 <p>
@@ -37,6 +37,8 @@ From neural recordings to human choices: build models, analyze data, and submit 
 
 ## Project news
 
+- **2026-10-26 — Mouse behavior joins v1.** Five CalMS21 and MABe22 tasks add frame classification, annotation transfer, few-shot behavior recognition and representation evaluation.
+  Source preparation, frozen submissions and isolated scoring passed local reference checks. Agent benchmark results remain pending. See the [mouse task guide](docs/mouse-task-preparation.md).
 - **2026-10-19 — Private evaluator workflow.** Maintainers can prepare 29 hosted Test packages and score frozen submissions through an explicit private route.
   Test data remain outside Agent workspaces. See the [private evaluation guide](docs/private-evaluation.md) for coverage, source-only exceptions, and representative checks.
 - **2026-10-16 — Task guides and public data.** Explore the scientific question, inputs, split, and metric for each task.
@@ -53,7 +55,7 @@ BrainPilotBench evaluates AI agents on research problems in brain science and hu
 Agents receive task instructions and public data, develop an analysis or model, and submit artifacts for task-specific evaluation.
 The tasks include decoding neural activity, predicting human responses, and comparing anatomical connectivity with measured signal propagation.
 
-**BrainPilotBench v1 brings 112 tasks across six data categories into one shared collection.**
+**BrainPilotBench v1 brings 117 tasks across seven data categories into one shared collection.**
 Each task specifies its data, research objective, submission format, and evaluation protocol.
 The repository supplies environments and scoring code so that different agents can work on the same problem.
 
@@ -71,7 +73,7 @@ The v1 collection name does not change individual task protocols or transfer res
 ## Evaluation status
 
 > [!IMPORTANT]
-> **Agent benchmark results for the 108 new v1 tasks are not yet available.**
+> **Agent benchmark results for the 113 new v1 tasks are not yet available.**
 > Data checks and fixed-reference runs cover selected workflows, not comparative Agent performance across the collection.
 > Published v0 results cover only the four original tasks and remain separate below.
 
@@ -79,7 +81,7 @@ The [validation guide](docs/shared-task-collection.md#reference-implementation-c
 
 ## Task suite
 
-### BrainPilotBench v1 · 112 tasks
+### BrainPilotBench v1 · 117 tasks
 
 Each task defines a research objective, the data available to the agent,
 the required outputs, and a task-specific metric.
@@ -88,11 +90,12 @@ the required outputs, and a task-specific metric.
 |---|---:|---:|---|
 | [EEG](tasks/eeg/README.md) | 25 | 23 | Motor imagery, evoked responses, sleep staging, and other scalp-EEG classification problems |
 | [Psychology](tasks/psychology/README.md) | 76 | 76 | Behavioral models of participants' choices and responses |
+| [Mouse behavior](tasks/animal-behavior/README.md) | 5 | 5 | Social behavior classification, annotation transfer, few-shot learning, and fixed-probe representation evaluation |
 | MRI | 2 | 1 | [Structural-MRI age prediction](tasks/mri/brain-age-mri/README.md) and [fMRI tonic-pain prediction](tasks/mri/tops-fmri/README.md) |
 | [Connectomics](tasks/connectomics/celegans-structure-function-divergence/README.md) | 1 | 1 | Comparison of anatomical connectivity and measured signal propagation in C. elegans |
 | [Calcium imaging](tasks/calcium-imaging/neuro-rsc-place-cell/README.md) | 1 | 0 | Place-cell analysis and decoding from calcium imaging and behavior |
 | [Invasive recordings](#invasive-recordings) | 7 | 7 | Finger flexion, film conditions, motor output, handwriting, and birdsong from invasive neural recordings |
-| **Total** | **112** | **108** | **Four v0 tasks are retained within the total.** |
+| **Total** | **117** | **113** | **Four v0 tasks are retained within the total.** |
 
 **Explore a task:** [AlexMI motor imagery](tasks/eeg/eeg-mi-barachant2012/README.md)
 · [Casino choice](tasks/psychology/psych101-lefebvre2017behavioural-exp1/README.md)
@@ -122,7 +125,7 @@ The [invasive-recording guide](docs/invasive-task-preparation.md) describes publ
 
 ### Retained v0 protocols · 4 tasks
 
-These four tasks are included in v1's 112-task total, not added on top of it.
+These four tasks are included in v1's 117-task total, not added on top of it.
 They retain their IDs, scientific protocol versions, and historical v0 results.
 
 <details>
@@ -149,6 +152,8 @@ Each task has one directory: `tasks/<category>/<task-id>/public/`.
 Its `data.lock` pins the download revision, file sizes, and hashes. Native scientific file formats remain unchanged.
 
 H1 uses original-source download and local preparation because its Data Use Agreement prohibits redistribution.
+The five mouse tasks also use original-source preparation and revisioned local packets; their data have not been mirrored to Hugging Face.
+Follow the [mouse task guide](docs/mouse-task-preparation.md) to build and verify those packets before fetching them into a public cache.
 The film task's public package supports Agent preparation, but block-first scoring still requires a trusted evaluator mapping.
 Source terms and citation instructions remain task-specific. Evaluator-only inputs are separate from public data.
 
@@ -169,10 +174,12 @@ The [maintainer guide](docs/private-evaluation.md) lists the commands, environme
 This data and interface update does not add Agent benchmark results.
 
 <details>
-<summary>Candidates outside the 112 runnable tasks</summary>
+<summary>Candidates outside the 117 runnable tasks</summary>
 
 Four EEG entries remain preparation-only: HMC sleep stage, HMC sleep onset, Sleep-EDF onset, and CHB-MIT seizure detection.
-Thielen2021 remains withheld. These five candidates are outside the 112 runnable tasks.
+Thielen2021 remains withheld. These five EEG candidates are outside the runnable task count.
+Three [Airscope candidates](tasks/calcium-imaging/README.md) remain pending experimental data or protocol definitions.
+The social-competition source has a 17-sample public validation cache; it does not establish the full planned benchmark or an independent Test.
 Candidate packages and evaluator-only inputs are not included in the unified public layout.
 
 </details>

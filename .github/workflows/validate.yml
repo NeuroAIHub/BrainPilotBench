@@ -94,6 +94,17 @@ jobs:
         run: |
           docker pull alpine:3.20
           docker build -t bpb-inference-test:ci -f docker/inference/Dockerfile .
+      - name: Mouse preparation and metric fixtures (no research data)
+        run: |
+          python3 -m venv .cache/mouse-fixtures
+          .cache/mouse-fixtures/bin/python -m pip install --disable-pip-version-check -r tasks/animal-behavior/_shared/calms_requirements.txt
+          .cache/mouse-fixtures/bin/python -B -m unittest discover -s tasks/animal-behavior/_shared -p 'test_*.py' -v
+      - name: Mouse inference isolation fixtures (no research data)
+        if: runner.os == 'Linux'
+        run: |
+          docker build -t bpb-mouse-fixtures:ci -f tasks/animal-behavior/_shared/calms_Dockerfile .
+          MOUSE_IMAGE_ID=$(docker image inspect bpb-mouse-fixtures:ci --format '{{.Id}}')
+          CALMS_TEST_IMAGE="$MOUSE_IMAGE_ID" MABE_TEST_IMAGE="$MOUSE_IMAGE_ID" .cache/mouse-fixtures/bin/python -B -m unittest discover -s tasks/animal-behavior/_shared -p 'test_*.py' -v
       - name: 单元测试(node --test)
         run: npm test
         env:
@@ -110,6 +121,7 @@ jobs:
           npm run test:collection
           npm run catalog:check
           npm run test:invasive-metadata
+          npm run test:mouse-metadata
           node --test scripts/build-private-evaluator-locks.test.mjs scripts/private-evaluator-increment.test.mjs
           node dist/cli.js validate all --schema-only
       - name: Invasive contract and recovery unit checks (no research data)

@@ -1,0 +1,17 @@
+{
+  "schema": "bpb-mouse-candidate/1",
+  "id": "airscope-forced-swim",
+  "domain": "calcium-imaging",
+  "status": "metadata_only_not_runnable",
+  "runnable": false,
+  "validated": false,
+  "title": "Decode forced-swimming behavior from calcium activity",
+  "source_task_id": "airscope/forced-swimming-test",
+  "dataset_group_id": "airscope-forced-swim",
+  "input_description": "Cortical calcium activity aligned to forced-swimming behavior annotations.",
+  "output_description": "Continuous scores for swimming, struggling and floating at each scored time point.",
+  "native_split_description": "The supplement reports five-fold evaluation. Actual animal/session membership and the independent split unit are not yet bound.",
+  "primary_metric": {"id": "AUC", "direction": "maximize", "unit": "fraction"},
+  "protocol": "protocol.json",
+  "reason": "Matching aligned signals and machine-readable phase labels were not located. AUC curve type and multiclass reduction remain undefined."
+}

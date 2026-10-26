@@ -11,8 +11,11 @@ import { fileURLToPath } from "node:url";
 import { discoverTaskDirs } from "../dist/discover.js";
 import { loadTask } from "../dist/loader.js";
 import { loadCategories } from "../dist/categories.js";
+import { readEvaluatorLock } from "../dist/evaluator.js";
+import { readMouseAcceptance } from "./mouse-acceptance.mjs";
 import { validateTaskSchema } from "../dist/validate.js";
 import { readInvasiveCandidates, invasiveDomains, invasiveCatalogRow } from "./invasive-candidates.mjs";
+import { readMouseCandidates, mouseDomains, mouseCatalogRow } from "./mouse-candidates.mjs";
 import { readInvasiveAcceptance } from "./invasive-acceptance.mjs";
 import { validatePrivateEvaluatorIncrement, privateScoreEntry } from "./private-evaluator-increment.mjs";
 
@@ -43,7 +46,7 @@ const baselinePsychRunnable = new Set([
   "psych101-steingroever2015data-exp3",
   "psych101-wilson2014humans-exp5",
 ]);
-const domains = new Set(["eeg", "psychology", "mri", "connectomics", "calcium-imaging", ...invasiveDomains]);
+const domains = new Set(["eeg", "psychology", "mri", "connectomics", ...mouseDomains, ...invasiveDomains]);
 
 function fail(message) { errors.push(message); }
 function readJson(path, label) {
@@ -94,6 +97,10 @@ for (const dir of discoverTaskDirs([tasksRoot])) {
   try { task = loadTask(dir); }
   catch (error) { fail(`${relDir}: loadTask failed (${error.message})`); continue; }
   const id = task.meta.id;
+  if (components[0] === "animal-behavior") {
+    try { readMouseAcceptance(repo, task); }
+    catch (error) { fail(`${relDir}: ${error.message}`); }
+  }
   addIdentity(identities, id, relDir);
   if (runnables.has(id)) fail(`duplicate runnable id ${id}`);
   runnables.set(id, { task, dir, relDir, domain: components[0] });
@@ -178,6 +185,14 @@ try {
   }
 } catch (error) { fail(`invasive candidates: ${error.message}`); }
 
+const mouseCandidates = new Map();
+try {
+  for (const entry of readMouseCandidates(repo)) {
+    addIdentity(identities, entry.card.id, entry.relDir);
+    mouseCandidates.set(entry.card.id, entry);
+  }
+} catch (error) { fail(`mouse candidates: ${error.message}`); }
+
 const psychMetadataPath = join(tasksRoot, "psychology", "metadata-only.json");
 const psychMetadata = plainFile(psychMetadataPath, "tasks/psychology/metadata-only.json")
   ? readJson(psychMetadataPath, "psychology metadata") : null;
@@ -203,8 +218,10 @@ const counts = {
   eegCandidate: eegCandidates.size,
   psychologyMetadata: psychCandidates.size,
   invasiveCandidate: invasiveCandidates.size,
-  candidate: eegCandidates.size + psychCandidates.size + invasiveCandidates.size,
-  preparation_ready: [...eegCandidates.values(), ...invasiveCandidates.values()].filter(e => e.card.status === "preparation_ready_data_pending").length,
+  mouseCandidate: mouseCandidates.size,
+  candidate: eegCandidates.size + psychCandidates.size + invasiveCandidates.size + mouseCandidates.size,
+  preparation_ready: [...eegCandidates.values(), ...invasiveCandidates.values(), ...mouseCandidates.values()]
+    .filter(e => e.card.status === "preparation_ready_data_pending").length,
   total: identities.size,
 };
 if (counts.runnable < baseline.runnable || counts.total < baseline.total) {
@@ -231,10 +248,11 @@ if (catalog) {
       if (seen.has(id)) fail(`catalog duplicate task_id ${id}`);
       seen.add(id);
       const kind = runnables.has(id) ? "runnable" :
-        eegCandidates.has(id) || psychCandidates.has(id) || invasiveCandidates.has(id) ? "candidate" : null;
+        eegCandidates.has(id) || psychCandidates.has(id) || invasiveCandidates.has(id) || mouseCandidates.has(id) ? "candidate" : null;
       if (!kind) { fail(`catalog unknown task_id ${id}`); continue; }
       if (entry.entry_kind !== kind) fail(`catalog ${id}: entry_kind mismatch`);
-      const domain = runnables.get(id)?.domain ?? invasiveCandidates.get(id)?.domain ?? (eegCandidates.has(id) ? "eeg" : "psychology");
+      const domain = runnables.get(id)?.domain ?? invasiveCandidates.get(id)?.domain ?? mouseCandidates.get(id)?.domain
+        ?? (eegCandidates.has(id) ? "eeg" : "psychology");
       if (entry.domain !== domain) fail(`catalog ${id}: domain mismatch`);
       if (invasiveCandidates.has(id)) {
         for (const [field, expected] of Object.entries(invasiveCatalogRow(invasiveCandidates.get(id)))) {
@@ -242,10 +260,21 @@ if (catalog) {
             fail(`catalog ${id}: candidate ${field} mismatch`);
         }
       }
-      const expectedPath = runnables.get(id)?.relDir ?? eegCandidates.get(id)?.relDir ?? invasiveCandidates.get(id)?.relDir;
-      if (kind === "runnable" || eegCandidates.has(id) || invasiveCandidates.has(id)) {
+      if (mouseCandidates.has(id)) {
+        const expectedRow = mouseCatalogRow(mouseCandidates.get(id));
+        if (JSON.stringify(Object.keys(entry).sort()) !== JSON.stringify(Object.keys(expectedRow).sort()))
+          fail(`catalog ${id}: mouse candidate fields mismatch`);
+        for (const [field, expected] of Object.entries(expectedRow)) {
+          if (JSON.stringify(entry[field]) !== JSON.stringify(expected))
+            fail(`catalog ${id}: candidate ${field} mismatch`);
+        }
+      }
+      const expectedPath = runnables.get(id)?.relDir ?? eegCandidates.get(id)?.relDir
+        ?? invasiveCandidates.get(id)?.relDir ?? mouseCandidates.get(id)?.relDir;
+      if (kind === "runnable" || eegCandidates.has(id) || invasiveCandidates.has(id) || mouseCandidates.has(id)) {
         if (entry.directory !== expectedPath) fail(`catalog ${id}: directory mismatch`);
-        const metric = runnables.get(id)?.task.meta.evaluation?.primaryMetric ?? eegCandidates.get(id)?.card.primary_metric ?? invasiveCandidates.get(id)?.card.primary_metric;
+        const metric = runnables.get(id)?.task.meta.evaluation?.primaryMetric ?? eegCandidates.get(id)?.card.primary_metric
+          ?? invasiveCandidates.get(id)?.card.primary_metric ?? mouseCandidates.get(id)?.card.primary_metric;
         if (metric && (entry.primary_metric?.id !== metric.id || entry.primary_metric?.direction !== metric.direction))
           fail(`catalog ${id}: primary metric mismatch`);
         if (kind === "runnable" && entry.task_version !== runnables.get(id).task.meta.version)
@@ -277,14 +306,22 @@ if (catalog) {
             fail(`catalog ${id}: public package status mismatch`);
           }
           const privateDatasets = datasets.filter(d => d.scope === "private");
+          let sourceEvaluator = false;
+          if (existsSync(join(runnables.get(id).dir, "evaluator.lock")) && !privateIncrement?.byId.has(id)) {
+            try {
+              sourceEvaluator = domain === "animal-behavior" &&
+                readEvaluatorLock(runnables.get(id).task).schema === "bpb-evaluator-source/1";
+            } catch (error) { fail(`catalog ${id}: invalid source evaluator (${error.message})`); }
+          }
           const privateAccess = privateIncrement?.byId.has(id) ? "pinned_private_snapshot"
+            : sourceEvaluator ? "source_prepared_evaluator"
             : privateDatasets.length ? access(privateDatasets) : undefined;
           if (entry.private_data_access !== privateAccess)
             fail(`catalog ${id}: private data access mismatch`);
-          const privateEntry = privateIncrement?.byId.has(id) ? privateScoreEntry : undefined;
+          const privateEntry = privateIncrement?.byId.has(id) || sourceEvaluator ? privateScoreEntry : undefined;
           if (entry.private_score_entry !== privateEntry)
             fail(`catalog ${id}: private score entry mismatch`);
-          if (existsSync(join(runnables.get(id).dir, "evaluator.lock")) && !privateIncrement?.byId.has(id))
+          if (existsSync(join(runnables.get(id).dir, "evaluator.lock")) && !privateIncrement?.byId.has(id) && !sourceEvaluator)
             fail(`catalog ${id}: evaluator.lock is outside the frozen private increment`);
         }
       } else {
@@ -293,7 +330,9 @@ if (catalog) {
       }
     }
     for (const id of identities.keys()) if (!seen.has(id)) fail(`catalog missing task_id ${id}`);
-    for (const [name, actual] of [["total", counts.total], ["runnable", counts.runnable], ["candidate", counts.candidate]]) {
+    for (const [name, actual] of [["total", counts.total], ["runnable", counts.runnable],
+      ["candidate", counts.candidate], ["mouse_candidate", counts.mouseCandidate],
+      ["preparation_ready", counts.preparation_ready]]) {
       if (catalog.counts?.[name] !== actual) fail(`catalog count ${name} mismatch: ${catalog.counts?.[name]} vs ${actual}`);
     }
   }

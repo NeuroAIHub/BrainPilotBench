@@ -11,7 +11,8 @@ const BASELINE = path.join(ROOT, '.cache/reader-docs-20261016/hf-baseline/catalo
 const CATALOG = path.join(ROOT, 'tasks/catalog.json');
 
 function makeMetadataFixture(scratch) {
-  const tasks = JSON.parse(readFileSync(CATALOG, 'utf8')).tasks.filter((item) => item.entry_kind === 'runnable');
+  const tasks = JSON.parse(readFileSync(CATALOG, 'utf8')).tasks.filter((item) => item.entry_kind === 'runnable' &&
+    !(item.data_status === 'source_prepared_role_separated' && item.hosted_data_availability !== 'published_public_snapshot'));
   const manifestRoot = path.join(scratch, 'manifests');
   const catalogInput = path.join(scratch, 'catalog.jsonl');
   const rows = [];
@@ -72,7 +73,7 @@ test('the Casino catalog summary is the human task description', () => {
 
 test('all runnable task guides yield a meaningful introduction', () => {
   const tasks = JSON.parse(readFileSync(CATALOG, 'utf8')).tasks.filter((item) => item.entry_kind === 'runnable');
-  assert.equal(tasks.length, 112);
+  assert.equal(tasks.length, JSON.parse(readFileSync(CATALOG, 'utf8')).counts.runnable);
   for (const task of tasks) {
     const readme = readFileSync(path.join(ROOT, task.directory, 'README.md'), 'utf8');
     const result = extractReaderContent(readme, task.task_id);

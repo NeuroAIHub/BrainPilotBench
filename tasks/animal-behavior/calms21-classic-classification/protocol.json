@@ -1,0 +1,22 @@
+{
+  "schema": "bpb-calms21-protocol/1",
+  "task": "task1",
+  "source": "https://data.caltech.edu/records/s0vdx-0k302",
+  "source_file": "task1_classic_classification.zip",
+  "source_bytes": 457357950,
+  "source_md5": "8a02654fddae28614ee24a6a082261b8",
+  "source_sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427",
+  "vocab": {"attack": 0, "investigation": 1, "mount": 2, "other": 3},
+  "input_shapes": {"keypoints": ["frames", 2, 2, 7], "scores": ["frames", 2, 7]},
+  "prediction_shape": ["frames", 4],
+  "prediction_type": "finite row-normalized probabilities in [0,1], argmax to labels",
+  "split": "Official Train only for BPB Train/Valid: rank SHA-256('bpb-calms21-valid-v1:' + sequence_id), first ceil(20%) Valid. Whole sequences do not overlap. Official Test stays owner-only.",
+  "metric": "Unweighted mean of framewise one-vs-rest F1 for labels 0,1,2; label-3 other frames are negative examples and cause false positives when predicted as a scored behavior; zero denominator yields 0.",
+  "local_preparation_counts": {"train_sequences": 56, "train_frames": 397631, "valid_sequences": 14, "valid_frames": 110107, "owner_test_sequences": 19, "owner_test_frames": 262107},
+  "local_reference": {"valid_f1": 0.26137150142003684, "official_test_scored": false, "agent_run_started": false},
+  "delivery_revision": "67ea0d3a5b0dfd8f374dc6a87512023533b2c65365982ddb2f95a43cf0fae835",
+  "source_only_local": true,
+  "runnable": true,
+  "engineering_acceptance": "Fixed-reference public and isolated owner Test CLI checks passed; see the task's cli-acceptance.json in reports/mouse-closeout-20261026. The earlier local_reference object describes the public-only preparation run.",
+  "agent_benchmark_results_available": false
+}
