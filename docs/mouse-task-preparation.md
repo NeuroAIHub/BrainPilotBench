@@ -1,8 +1,9 @@
-# Mouse behavior tasks and source preparation
+# Mouse behavior tasks: data access and preparation
 
 ## What is available
 
-Five source-prepared mouse tasks join the v1 collection. Together with the existing tasks, the checkout contains 117 runnable tasks.
+Five mouse tasks join the v1 collection through public HF mirrors and separate private evaluator packages.
+Together with the existing tasks, the checkout contains 117 runnable tasks.
 All five passed a local fixed-reference CLI workflow: public preparation, frozen submission, evaluator preparation and isolated scoring.
 These are engineering acceptance checks, not Agent benchmark results or official source-leaderboard scores.
 
@@ -18,25 +19,34 @@ The current MABe supervised package supplies pose, not the large video archives.
 Source video remains separately available from the original record; no multimodal paper-score reproduction is claimed.
 Experiment-day/time-of-day regression, unsupervised segmentation, 3D, position regression and region classification are excluded.
 
-## Source access
+## Hosted data and source access
 
-Dataset bodies are outside Git. These five tasks use original-source downloads and revisioned local packets, not new Hugging Face mirrors.
-The existing hosted task collection is unchanged.
+Dataset bodies remain outside Git.
+Browse the [public mouse directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks/animal-behavior) for development data.
+Authorized maintainers use the [private mouse directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/main/tasks/animal-behavior) for evaluator data.
+The active `data.lock` and `evaluator.lock` files pin immutable revisions, sizes, hashes, and destination paths.
+The [publication record](../reports/mouse-hf-20261027/publication.json) describes the exact delivery and its checks.
+
+The mouse increment contains 974 public data files totaling 311,644,191 bytes and 2,078 evaluator data files totaling 491,259,653 bytes.
+Source notices and delivery metadata accompany these files. Existing task payloads retain their previous bytes and bindings.
 Keep the raw source and mixed preparation roots outside Agent workspaces.
+Original-source helpers remain available for regeneration:
 
 - CalMS21: [official source record](https://data.caltech.edu/records/s0vdx-0k302).
 - MABe22: [original source record](https://data.caltech.edu/records/rdsa8-rde65), [re-estimated pose](https://huggingface.co/datasets/WeihanLikk/ResiFuse-MABe22).
 - [CalMS preparation commands](../tasks/animal-behavior/_shared/calms_README.md).
 - [MABe preparation commands](../tasks/animal-behavior/_shared/mabe_README.md).
 
-The source terms remain separate from the repository's software license.
-CalMS source-paper and platform license metadata differ; these checks do not grant new redistribution permission.
-MABe pose and original data retain their respective attribution and use conditions.
+The [license audit](../reports/mouse-hf-20261027/license-audit.json) records the permission for this noncommercial research mirror.
+Each task's `NOTICE.md` preserves its source attribution, license versions, and modification history.
+CalMS metadata differ from its paper license. The mirror follows the explicit noncommercial ShareAlike grant and records that difference.
+MABe original data, re-estimated pose, manual labels, and split metadata retain their respective source terms.
+The software license does not relicense these datasets.
 
-### Build a revisioned source tree
+### Optional regeneration from original sources
 
 Use the pinned requirements in the appropriate helper guide.
-After source preparation, materialize the checked-in task bindings without rewriting them:
+After source preparation, regenerate the revisioned local packets without rewriting the checked-in bindings:
 
 ~~~sh
 python tasks/animal-behavior/_shared/calms_task_package.py --materialize-only \
@@ -47,16 +57,28 @@ python tasks/animal-behavior/_shared/calms_task_package.py --materialize-only \
 
 Use the same command for Task 2/3 with their task IDs and prepared roots.
 For MABe, use `mabe_task_package.py --materialize-only` with the corresponding task directory.
-Existing metadata must match the regenerated plan. Partial metadata, changed bytes and incomplete delivery trees cause an error, not an overwrite.
+The materializer validates the accepted content and its recorded transport mapping.
+Partial metadata, changed bytes and incomplete delivery trees cause an error, not an overwrite.
+Regeneration does not change an active HF lock into a local download route.
 
 ## Prepare an Agent workspace
 
-Set `BPB_CALMS_PYTHON` or `BPB_MABE_PYTHON` to the corresponding isolated Python environment.
-Set `BPB_CACHE_ROOT` to a public-only cache.
-Use the source-root variable only for fetching; do not retain it in the Agent environment.
+Install Python 3.11 or newer and Docker. Hosted numeric packets do not require the original-source H5 preparation dependencies.
+Create the runtime environment from the pinned requirements:
 
 ~~~sh
-BPB_LOCAL_DATA_ROOT=/absolute/local-source node dist/cli.js fetch calms21-classic-classification --public
+python3 -m venv .cache/mouse-runtime
+.cache/mouse-runtime/bin/python -m pip install -r tasks/animal-behavior/_shared/calms_runner_requirements.txt
+export BPB_CALMS_PYTHON="$PWD/.cache/mouse-runtime/bin/python"
+export BPB_MABE_PYTHON="$PWD/.cache/mouse-runtime/bin/python"
+export BPB_CACHE_ROOT="$PWD/.cache/mouse-public-cache"
+~~~
+
+Use a public-only cache. Do not reuse the evaluator cache for Agent preparation.
+Unset `BPB_LOCAL_DATA_ROOT` before Agent preparation. Hosted downloads do not require a local source root.
+
+~~~sh
+node dist/cli.js fetch calms21-classic-classification --public
 node dist/cli.js prepare calms21-classic-classification --workspace /absolute/agent-workspace
 ~~~
 
@@ -76,6 +98,13 @@ The worker receives numeric features, the frozen model and an output directory, 
 The scorer checks artifact hashes before and after inference.
 Build the documented image and pass its immutable image ID; there is no host-process fallback.
 
+~~~sh
+docker build -f tasks/animal-behavior/_shared/calms_Dockerfile -t bpb-mouse-inference:local .
+docker image inspect bpb-mouse-inference:local --format '{{.Id}}'
+~~~
+
+Use the returned `sha256:...` value as the inference image in the scoring commands.
+
 Public scoring is available for CalMS21 Task 1/2 and MABe supervised segmentation:
 
 ~~~sh
@@ -88,13 +117,15 @@ Its public diagnostics cover six targets but never fabricate a seven-target aggr
 The representation task deliberately keeps probe-training labels outside the public packet.
 Both tasks use the explicit owner route for a complete score.
 
-## Evaluator-only source packets
+## Private evaluator packages
 
-The new `bpb-evaluator-source/1` lock binds local prepared files by revision, size and SHA-256.
-It does not claim Hugging Face publication or alter the 29 existing hosted evaluator locks.
+The five hosted evaluator locks use `bpb-evaluator-data/1` and the explicit private CLI route.
+The delivery record preserves their accepted content identities and source bindings.
+It does not replace the earlier 29-task receipt or change those task payloads.
+An authorized HF account is required for private downloads. Do not expose its credentials to an Agent.
 
 ~~~sh
-BPB_LOCAL_DATA_ROOT=/absolute/local-source node dist/cli.js prepare-evaluator TASK_ID \
+node dist/cli.js prepare-evaluator TASK_ID \
   --fetch --evaluator-root /absolute/owner/evaluator --cache-root /absolute/owner-cache
 node dist/cli.js score /absolute/completed-bundle --private \
   --evaluator-root /absolute/owner/evaluator --isolation docker \
@@ -104,6 +135,7 @@ node dist/cli.js score /absolute/completed-bundle --private \
 Private results go to `scores.private.json`.
 Do not mount the evaluator root, its cache, or source credentials in an Agent workspace.
 Source-public Test labels remain evaluator-only in this workflow; they are not described as historically secret.
+This access boundary protects evaluation integrity. It does not add copyright restrictions to the source licenses.
 
 ## Protocol distinctions
 
@@ -131,19 +163,23 @@ All other private objects retain the normal Agent-cache rejection rule.
 
 Three [Airscope candidates](../tasks/calcium-imaging/README.md) remain outside the 117 runnable tasks.
 A deeper public-source inspection found and safely inspected 17 labeled social-competition validation examples in a processed PCA cache.
-The published checkpoint was selected using validation; this cache does not establish the full planned source task or independent evaluation protocol.
-A new small cache-derived task would need its own scope and split decision.
+The published checkpoint used validation for model selection. Its cached features use PCA fitted to whole recordings before each trial is extracted.
+The complete paired signals and stable trial identities remain unavailable in the inspected sources.
+With those inputs, a separate BrainPilotBench split can keep preprocessing training-only and reserve independent evaluation trials.
+Splitting only the processed cache cannot undo the earlier PCA fit or establish the full planned task.
 Public availability alone is not the reason for withholding it.
 
 Forced-swim and tail-suspension paired signal/label releases were not found in the inspected public sources.
 The selected forced-swim metric is AUC only, but its curve type and multiclass reduction remain unresolved.
 No substitute recordings or guessed labels are used.
-See the [deep audit](../reports/mouse-closeout-20261026/airscope-deep-audit.json) and [actual cache inspection](../reports/mouse-closeout-20261026/airscope-cache-inspection.json).
+See the [release and preprocessing audit](../reports/mouse-hf-20261027/airscope-gap-audit.json) and [actual cache inspection](../reports/mouse-closeout-20261026/airscope-cache-inspection.json).
 
 ## Verification scope
 
-Five `*-cli-acceptance.json` records in [the closeout directory](../reports/mouse-closeout-20261026/) bind the accepted task versions and data locks.
+Five `*-cli-acceptance.json` records in [the closeout directory](../reports/mouse-closeout-20261026/) bind the original accepted task versions and source locks.
+The separate [HF publication record](../reports/mouse-hf-20261027/publication.json) binds the hosted transport to that accepted content.
 The public records include no Test numbers.
 Small deterministic references exercised the interfaces; no research Agent or comparative Agent experiment was run.
+The transport update does not rerun all scientific models or add Agent scores.
 Cold-clone materialization checks preserve the checked-in lock bytes.
 Fixture and container-boundary tests use software fixtures, never synthetic benchmark data.

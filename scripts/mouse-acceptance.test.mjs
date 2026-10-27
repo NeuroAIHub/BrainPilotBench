@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,6 +17,13 @@ function fixture(id, run) {
   mkdirSync(dirname(join(root, record)), { recursive: true });
   for (const file of ["task.yaml", "contract.json", "data.lock", "evaluator.lock"])
     copyFileSync(join(repo, "tasks", "animal-behavior", id, file), join(dir, file));
+  const deliveryPath = join(repo, "tasks", "animal-behavior", id, "hf-delivery.json");
+  if (existsSync(deliveryPath)) {
+    copyFileSync(deliveryPath, join(dir, "hf-delivery.json"));
+    const delivery = JSON.parse(readFileSync(deliveryPath, "utf8"));
+    mkdirSync(dirname(join(root, delivery.publication_receipt)), { recursive: true });
+    copyFileSync(join(repo, delivery.publication_receipt), join(root, delivery.publication_receipt));
+  }
   copyFileSync(join(repo, record), join(root, record));
   const report = JSON.parse(readFileSync(join(root, record), "utf8"));
   const task = { dir, meta: { id, domain: "animal-behavior", version: "0.1-source" } };
@@ -58,7 +65,7 @@ test("changed task bindings and linked evidence fail closed", () => fixture(ids[
   const file = join(f.dir, "contract.json");
   const original = readFileSync(file);
   writeFileSync(file, Buffer.concat([original, Buffer.from("\n")]));
-  assert.throws(() => readMouseAcceptance(f.root, f.task), /stale accepted/);
+  assert.throws(() => readMouseAcceptance(f.root, f.task), /stale accepted|scientific contract/);
   writeFileSync(file, original);
   const evidence = join(f.root, f.record);
   const target = join(f.root, "receipt-copy.json");

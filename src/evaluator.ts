@@ -12,7 +12,7 @@ export interface EvaluatorFile { name: string; path: string; sha256: string; byt
 export interface EvaluatorLock {
   schema: "bpb-evaluator-data/1" | "bpb-evaluator-source/1";
   task_id: string; repo_id: string; revision: string; files: EvaluatorFile[];
-  /** Source-only objects reviewed as byte-identical to an explicit public entry. */
+  /** Objects reviewed as byte-identical to an explicit public entry. */
   public_equivalent_sha256?: string[];
 }
 
@@ -56,12 +56,12 @@ export function readEvaluatorLock(task: Task): EvaluatorLock {
   }
   if (lock.public_equivalent_sha256 !== undefined) {
     const shared = lock.public_equivalent_sha256;
-    if (!source || !Array.isArray(shared) || !shared.length ||
+    if (!Array.isArray(shared) || !shared.length ||
         JSON.stringify(shared) !== JSON.stringify([...new Set(shared)].sort()) ||
         shared.some(sha => typeof sha !== "string" || !/^[a-f0-9]{64}$/.test(sha) ||
           !task.datasets.some(entry => entry.scope === "public" && entry.sha256 === sha &&
             lock.files.some(file => file.sha256 === sha && file.bytes === entry.bytes)))) {
-      throw new Error("invalid explicit public-equivalent source objects");
+      throw new Error("invalid explicit public-equivalent objects");
     }
   }
   return lock;

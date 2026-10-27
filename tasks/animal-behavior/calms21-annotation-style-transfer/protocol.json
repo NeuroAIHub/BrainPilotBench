@@ -17,7 +17,9 @@
   "same_target_train_test_pose_overlap": 0,
   "split_limit": "Exact delivered pose+confidence repeats are grouped across local Train/Valid; official cross-annotator Train/Test reuse is retained and does not establish globally novel Test recordings.",
   "delivery_revision": "4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f",
-  "source_only_local": true,
+  "source_preparation_available": true,
+  "hosted_transport_binding": "hf-delivery.json",
+  "data_license_notice": "NOTICE.md",
   "runnable": true,
   "engineering_acceptance": "Fixed-reference public and isolated owner Test CLI checks passed; see the task's cli-acceptance.json in reports/mouse-closeout-20261026.",
   "agent_benchmark_results_available": false

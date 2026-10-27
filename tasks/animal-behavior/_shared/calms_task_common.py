@@ -11,6 +11,7 @@ import stat
 
 from calms_freeze import FILES
 from calms_runner import _role_packet
+from mouse_transport import transport_metadata
 
 
 def read_json(path: Path) -> dict:
@@ -108,16 +109,27 @@ def lock_entries(task_dir: Path, contract: dict, *, private: bool) -> list[dict]
     if len(selected) != len(records):
         raise ValueError("data.lock file count mismatch")
     prefix = f"local://tasks/animal-behavior/{contract['task_id']}/{contract['revision']}"
-    for entry, item in zip(selected, records):
-        rel, size, sha = _record(item)
-        expected_name = ("evaluator__" if private else "public__") + rel.replace("/", "__")
-        expected = {"name": expected_name, "uri": f"{prefix}/{'evaluator' if private else 'public'}/{rel}",
-                    "sha256": sha, "bytes": size, "scope": "private" if private else "public",
-                    "format": "json" if rel.endswith(".json") else "npz"}
-        if not private:
-            expected["path"] = "public/" + rel
-        if entry != expected:
-            raise ValueError("data.lock mapping differs from contract")
+    # Validate both roles together, including transport hashes, before selecting one.
+    all_entries = []
+    for is_private, key in ((False, "public_files"), (True, "owner_files")):
+        for item in contract[key]:
+            rel, size, sha = _record(item)
+            packet_role = "evaluator" if is_private else "public"
+            value = {"name": packet_role + "__" + rel.replace("/", "__"),
+                     "uri": f"{prefix}/{packet_role}/{rel}", "sha256": sha, "bytes": size,
+                     "scope": "private" if is_private else "public",
+                     "format": "json" if rel.endswith(".json") else "npz"}
+            if not is_private:
+                value["path"] = "public/" + rel
+            all_entries.append(value)
+    source_evaluator = {"schema": "bpb-evaluator-source/1", "task_id": contract["task_id"],
+                        "repo_id": "local-prepared", "revision": contract["revision"],
+                        "files": [{"name": "evaluator__" + row["path"].replace("/", "__"), **row}
+                                  for row in contract["owner_files"]]}
+    expected_data, expected_evaluator = transport_metadata(task_dir, contract,
+                                                          {"datasets": all_entries}, source_evaluator)
+    if lock != expected_data or read_json(task_dir / "evaluator.lock") != expected_evaluator:
+        raise ValueError("data.lock or evaluator.lock mapping differs from contract")
     return selected
 
 
@@ -200,15 +212,14 @@ def stage_owner(task_dir: Path, contract: dict, evaluator_root: Path, output: Pa
     lock = read_json(lock_path)
     expected_files = [{"name": "evaluator__" + item["path"].replace("/", "__"), **item}
                       for item in contract["owner_files"]]
-    if lock != {"schema": "bpb-evaluator-source/1", "task_id": contract["task_id"],
-                "repo_id": "local-prepared", "revision": contract["revision"], "files": expected_files}:
-        raise ValueError("evaluator.lock differs from contract")
+    # lock_entries validates exact source or pinned-hosted transport against the contract.
+    lock_entries(task_dir, contract, private=True)
     marker = evaluator_root / ".bpb-evaluator.json"
     safe_path(marker)
     receipt = read_json(marker)
     if (receipt.get("schema") != "bpb-prepared-evaluator/1"
             or receipt.get("task_id") != contract["task_id"]
-            or receipt.get("revision") != contract["revision"]
+            or receipt.get("revision") != lock["revision"]
             or receipt.get("files") != len(expected_files)
             or receipt.get("evaluator_lock_sha256") != digest(lock_path)[1]):
         raise ValueError("evaluator receipt differs from contract and lock")

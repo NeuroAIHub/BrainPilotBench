@@ -2,6 +2,7 @@
 import { createHash } from "node:crypto";
 import { lstatSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { readMouseDelivery } from "./mouse-hf-delivery.mjs";
 
 const TASKS = new Set(["calms21-classic-classification", "calms21-annotation-style-transfer",
   "calms21-few-shot-behavior", "mabe22-supervised-segmentation", "mabe22-representation-classification"]);
@@ -30,13 +31,14 @@ export function readMouseAcceptance(root, task) {
       !/^sha256:[0-9a-f]{64}$/.test(report.image_id ?? "") || !hex(report.private_result_sha256) ||
       JSON.stringify(Object.keys(report.bindings ?? {}).sort()) !== JSON.stringify(FILES))
     throw new Error(`${id}: invalid or overstated CLI acceptance`);
+  const delivery = readMouseDelivery(root, task, report);
   for (const file of FILES) {
-    if (!hex(report.bindings[file]) || createHash("sha256").update(bytes(join(task.dir, file))).digest("hex") !== report.bindings[file])
+    if (!hex(report.bindings[file]) || (!delivery && createHash("sha256").update(bytes(join(task.dir, file))).digest("hex") !== report.bindings[file]))
       throw new Error(`${id}: stale accepted ${file}`);
   }
   if (!Array.isArray(report.steps) || report.steps.some(step => step.ok !== true || step.exit_code !== 0) ||
       new Set(report.steps.map(step => step.step)).size !== report.steps.length ||
       [...STEPS, ...(!PRIVATE_ONLY.has(id) ? ["score-public"] : [])].some(name => !report.steps.some(step => step.step === name)))
     throw new Error(`${id}: incomplete CLI acceptance steps`);
-  return { record, report, privateOnly: PRIVATE_ONLY.has(id) };
+  return { record, report, privateOnly: PRIVATE_ONLY.has(id), delivery };
 }

@@ -9,6 +9,7 @@ import unittest
 from unittest.mock import patch
 
 from calms_task_package import build
+from test_mouse_transport import hosted_task_metadata
 
 
 class ColdMaterializeTest(unittest.TestCase):
@@ -69,6 +70,14 @@ class ColdMaterializeTest(unittest.TestCase):
             build(self.task, self.prepared, self.root / "partial", materialize_only=True)
         self.assertFalse((self.task / "evaluator.lock").exists())
         self.assertFalse((self.root / "partial").exists())
+
+    def test_hosted_locks_remain_unchanged_during_source_materialization(self) -> None:
+        (self.task / "task.yaml").write_text("# fixture only\n")
+        hosted_task_metadata(self.task)
+        old = {name: (self.task / name).read_bytes() for name in self.metadata_bytes}
+        result = build(self.task, self.prepared, self.root / "hosted-cold", materialize_only=True)
+        self.assertEqual(result["delivery_state"], "created_verified")
+        self.assertEqual(old, {name: (self.task / name).read_bytes() for name in old})
 
     def test_incomplete_destination_is_preserved_and_rejected(self) -> None:
         first = build(self.task, self.prepared, self.root / "cold", materialize_only=True)

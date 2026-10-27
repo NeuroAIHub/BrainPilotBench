@@ -29,8 +29,8 @@
   "comparability": "This is a BrainPilotBench adaptation. Re-estimated pose, changed frame count/resolution, four grouped labels and split prevent direct comparison with original MABe22 Appendix D. Replacing source label-selected Test windows with label-independent Agent inference changes the evaluated input, so it is not an exact ResiFuse paper reproduction either. No paper score is claimed.",
   "prepared_artifacts": {"cache_root": ".cache/mouse-closeout-20261026/mabe", "source_manifest_sha256": "def7a7b7f2b405bc42a58c696c7be2ebfc4bf9eb6cddf121258d7d9cfe69eb78", "pose_preparation_manifest_sha256": "f237cb660a9a654c32fdb89696d0486017e1085b3de00219fadea54313b1d433", "numeric_label_extraction_manifest_sha256": "dfc6584d3ea05c4e39640aee5c0b032680057a44120f6ce6cf4738ebe406f40b", "public_validation_report": "reports/mouse-closeout-20261026/mabe-supervised-reference.json"},
   "engineering_acceptance": "Fixed-reference public and isolated owner Test CLI checks passed; see reports/mouse-closeout-20261026/mabe22-supervised-segmentation-cli-acceptance.json. Test values remain private. No Agent benchmark run was performed.",
-  "remaining_gates": [
-    "License/provenance and redistribution review for original labels and derived pose before publication",
-    "Video input is outside this pose-only task version; adding it requires a separate protocol and frame-level alignment check"
-  ]
+  "data_license_notice": "NOTICE.md",
+  "hosted_transport_binding": "hf-delivery.json",
+  "remaining_gates": [],
+  "excluded_scope": "Video input is outside this pose-only task version; adding it requires a separate protocol and frame-level alignment check"
 }

@@ -1,10 +1,10 @@
 {
   "schema": "bpb-source-evaluator-compatibility/1",
-  "scope": "Add source-prepared evaluator locks and explicit reviewed byte-identical public content without changing hosted locks or payloads.",
+  "scope": "Add source-prepared evaluator locks and retain explicit byte-identical public content declarations after pinned HF transport binding. Existing hosted task locks and payloads remain unchanged.",
   "files": {
     "src/evaluator.ts": {
       "previous_sha256": "b5ccbdf0d90894967f763f76cfaa921beec635a4a7f4eb03b0c1f4a6bce458d6",
-      "current_sha256": "3433bfa57d9a4b2a5f85cbdd242cca76981df8e72ded0ba1d915ebdfaed160b9"
+      "current_sha256": "a07fd84b9f8fb697570f39302c6174033776f7bcf832c3a0e1003ad28051aec9"
     },
     "src/workflow.ts": {
       "previous_sha256": "f9a79dd440874d323821be66dee22e9f3923e153ed12ab2537829341fb056293",
@@ -12,7 +12,7 @@
     }
   },
   "test_path": "src/evaluator-source.test.ts",
-  "test_sha256": "34a554cc84e519d6cf217f514f8ccbb184f3465236edc1bf4e95b8f2c74f686a",
-  "verification": "25 source/hosted evaluator and workspace tests passed locally. Undeclared overlaps and malformed source declarations still fail. Existing hosted locks and historical publication receipt were not rewritten.",
+  "test_sha256": "b9d7c428d245589f72ae47f4493fb84acdde5a376bde47cdf55d6b6bf3401866",
+  "verification": "26 source/hosted evaluator and workspace tests passed locally. Hosted public-equivalent declarations require exact public/private byte identity. Undeclared overlaps, changed sizes and duplicate declarations fail. Existing hosted task locks and historical publication receipt were not rewritten.",
   "historical_publication_replayed": false
 }

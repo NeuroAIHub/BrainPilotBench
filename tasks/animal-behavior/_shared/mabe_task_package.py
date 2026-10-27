@@ -14,6 +14,7 @@ from pathlib import Path
 import shutil
 import stat
 import tempfile
+from mouse_transport import encoded, transport_metadata
 
 TASKS = ("mabe22-supervised-segmentation", "mabe22-representation-classification")
 SOURCE = "tasks/animal-behavior"
@@ -262,6 +263,9 @@ def deliver(task_dir: Path, local_root: Path, result: dict,
     if present and present != set(metadata):
         raise ValueError("partial task metadata; preserve and repair the frozen lock set")
     if present:
+        data, evaluator = transport_metadata(task_dir, json.loads(metadata["contract.json"]),
+                                             json.loads(metadata["data.lock"]), json.loads(metadata["evaluator.lock"]))
+        metadata["data.lock"], metadata["evaluator.lock"] = encoded(data), encoded(evaluator)
         for name, expected in metadata.items():
             path = task_dir / name
             if digest(path) != (len(expected), hashlib.sha256(expected).hexdigest()) or path.read_bytes() != expected:

@@ -88,3 +88,25 @@ test("only explicitly reviewed, byte-identical public objects can share an Agent
     f.cleanup();
   }
 });
+
+test("hosted transport preserves exact public-equivalent byte validation", () => {
+  const f = fixture();
+  try {
+    f.lock.schema = "bpb-evaluator-data/1";
+    f.lock.repo_id = "BrainPilot-Bench/Tasks-Data-Private";
+    f.lock.revision = "b".repeat(40);
+    f.entry.uri = `hf://datasets/${f.lock.repo_id}@${f.lock.revision}/tasks/animal-behavior/calms21-example/evaluator/owner/test.bin`;
+    f.lock.public_equivalent_sha256 = [f.entry.sha256];
+    f.save();
+    assert.throws(() => readEvaluatorLock(f.task), /public-equivalent/);
+    f.task.datasets.push({ ...f.entry, name: "public-copy", scope: "public",
+      uri: `hf://datasets/BrainPilot-Bench/Tasks-Data-Public@${"c".repeat(40)}/tasks/animal-behavior/calms21-example/public/shared.bin` });
+    assert.deepEqual(readEvaluatorLock(f.task), f.lock);
+    f.task.datasets[1].bytes += 1;
+    assert.throws(() => readEvaluatorLock(f.task), /public-equivalent/);
+    f.task.datasets[1].bytes -= 1;
+    f.lock.public_equivalent_sha256.push(f.entry.sha256);
+    f.save();
+    assert.throws(() => readEvaluatorLock(f.task), /public-equivalent/);
+  } finally { f.cleanup(); }
+});

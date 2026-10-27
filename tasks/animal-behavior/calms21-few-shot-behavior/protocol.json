@@ -18,7 +18,9 @@
   "official_cross_group_pose_overlap_fingerprints": 5,
   "same_target_train_test_pose_overlap": 0,
   "delivery_revision": "375719eaf2c321f8bee5c0b8a85b87ce1b4bb6d424877c8db740d86c6d981488",
-  "source_only_local": true,
+  "source_preparation_available": true,
+  "hosted_transport_binding": "hf-delivery.json",
+  "data_license_notice": "NOTICE.md",
   "runnable": true,
   "engineering_acceptance": "Fixed-reference isolated owner Test CLI checks passed for all seven targets; see the task's cli-acceptance.json in reports/mouse-closeout-20261026. A complete public Valid score remains unavailable.",
   "agent_benchmark_results_available": false

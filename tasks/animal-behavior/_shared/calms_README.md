@@ -1,4 +1,10 @@
-# CalMS21 preparation and metric helpers
+# CalMS21 access, source regeneration, and metric helpers
+
+The three CalMS21 tasks have public HF mirrors and separate private evaluator packages.
+For normal use, install the task environment and follow the [hosted CLI workflow](../../../docs/mouse-task-preparation.md).
+Original-source regeneration is optional. The commands below rebuild local packets, not the active HF download route.
+
+## Optional source regeneration
 
 Source: [CaltechDATA record 10.22002/D1.1991](https://data.caltech.edu/records/s0vdx-0k302), version 1.0. The record's `readme.md` defines JSON field shapes, task vocabularies, and official Train/Test roles. The helpers consume the native JSON, not the upstream `allow_pickle=True` conversion script.
 
@@ -31,6 +37,13 @@ The earlier `task1-prepared` and `calms-task1-reference.json` from this same loc
 
 `calms_metrics.py` accepts evaluator-owned numeric truth and probabilities from an isolated predictor. Task1/2 average F1 over attack, investigation, and mount. The `other` frames contribute errors but are not a fourth averaged class. Task2 scores each annotator group, then averages group scores. Task3 averages positive-class F1 over all seven behaviors. Missing sequences, groups, behaviors, or class mappings cause an error. The helper does not execute untrusted model code.
 
-All three task packages now include the isolated runner and source-prepared evaluator binding. Their fixed-reference CLI acceptance passed, including owner Test interfaces. These checks do not provide Agent benchmark results. The [complete preparation guide](../../../docs/mouse-task-preparation.md) describes local materialization, public staging and private scoring.
+All three task packages include an isolated runner and hosted evaluator bindings.
+Their fixed-reference CLI acceptance passed with the original source packets, including owner Test interfaces.
+The [HF publication record](../../../reports/mouse-hf-20261027/publication.json) binds hosted transport to the same accepted scientific content.
+These checks do not provide Agent benchmark results or imply a repeated scientific evaluation.
+The [complete preparation guide](../../../docs/mouse-task-preparation.md) describes regeneration, public staging, and private scoring.
 
-The source's licensing metadata needs reconciliation: the associated paper states a noncommercial share-alike term, while platform metadata has presented CC BY 4.0. This preparation makes no license resolution or redistribution claim. No dataset bodies are committed or uploaded to Hugging Face.
+The [license audit](../../../reports/mouse-hf-20261027/license-audit.json) records the paper's NC-SA 2.0 grant and the platform's differing CC BY 4.0 metadata.
+The mirror follows the explicit noncommercial ShareAlike permission without removing independently granted source rights.
+See the task notices for [classification](../calms21-classic-classification/NOTICE.md), [annotation transfer](../calms21-annotation-style-transfer/NOTICE.md), and [few-shot behavior](../calms21-few-shot-behavior/NOTICE.md).
+Data bodies remain outside Git.

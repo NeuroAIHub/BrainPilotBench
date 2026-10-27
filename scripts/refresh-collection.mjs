@@ -85,12 +85,14 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
     row.private_score_entry = privateScoreEntry;
   } else if (existsSync(join(dir, "evaluator.lock"))) {
     const sourceEvaluator = readEvaluatorLock(task);
-    if (row.domain !== "animal-behavior" || sourceEvaluator.schema !== "bpb-evaluator-source/1")
+    const hostedMouse = sourceEvaluator.schema === "bpb-evaluator-data/1" && mouseAccepted?.delivery?.privateHosted;
+    if (row.domain !== "animal-behavior" || !mouseAccepted || (!hostedMouse && sourceEvaluator.schema !== "bpb-evaluator-source/1"))
       throw new Error(`${rel(dir)}: evaluator.lock is outside the frozen private increment`);
-    row.private_data_access = "source_prepared_evaluator";
+    row.private_data_access = hostedMouse ? "pinned_private_snapshot" : "source_prepared_evaluator";
     row.private_score_entry = privateScoreEntry;
-    row.data_status = "source_prepared_role_separated";
+    row.data_status = hostedPublic ? "published_public_package" : "source_prepared_role_separated";
     row.agent_benchmark_results = "not_available";
+    if (mouseAccepted.delivery) row.delivery_validation_record = mouseAccepted.delivery.record;
   }
   if (accepted) {
     row.validation = "local_fixed_reference_and_isolation_passed";

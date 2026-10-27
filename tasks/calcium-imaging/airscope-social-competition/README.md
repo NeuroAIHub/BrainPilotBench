@@ -24,8 +24,18 @@ It can support a small public demonstration, but does not establish the full pla
 Free-behavior and enriched-habitat recordings cannot replace these experiments.
 No preparation command, data lock, reference result, or private scoring route is published for this candidate.
 
+The release ZIP directory and historical repository trees contain no complete tube-test training payload.
+The source preprocessing fits scaling and PCA on whole recordings before it extracts trial intervals.
+A new split of the 17 cached examples cannot undo that preprocessing.
+Public labels alone are not the obstacle, and an official new Test release is not required.
+
+With original signals, winner labels, trial times and stable recording identities, BrainPilotBench can define its own session- or pair-grouped split.
+That split must precede model fitting and define training-only preprocessing or a separate calibration protocol.
+Global animal identities are required only if the task claims animal-disjoint evaluation.
+
 - [Versioned source code](https://github.com/Neurallabware/Airscope_toolbox/tree/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT)
 - [Protocol and promotion requirements](protocol.json)
 - [Source audit](../../../reports/mouse-expansion-20261026/airscope-source-audit.json)
 - [Verified public cache and limits](../../../reports/mouse-closeout-20261026/airscope-cache-inspection.json)
+- [Archive, history and preprocessing follow-up](../../../reports/mouse-hf-20261027/airscope-gap-audit.json)
 - [Mouse expansion guide](../../../docs/mouse-task-preparation.md)

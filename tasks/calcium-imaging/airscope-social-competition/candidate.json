@@ -10,8 +10,8 @@
   "dataset_group_id": "airscope-social-competition",
   "input_description": "Aligned cortical calcium signals from both mice in a tube-test trial.",
   "output_description": "One predicted winner identity for each trial; the evaluator converts identities to fixed binary labels.",
-  "native_split_description": "The author code supports trial-, mouse- and file-level splits. Released trial membership and the selected evaluation grouping remain unbound.",
+  "native_split_description": "The released pipeline splits trials but fits scaling/PCA on full recordings before extracting them. A new BPB session- or pair-grouped split requires original signals, winner labels and stable trial identities; an official new Test release is not required.",
   "primary_metric": {"id": "F1", "direction": "maximize", "unit": "fraction"},
   "protocol": "protocol.json",
-  "reason": "A 17-example processed validation cache with winner labels is verified. Matching training signals, stable trial provenance and a defined independent evaluation split for the planned source task remain unavailable."
+  "reason": "Only 17 processed validation examples are available in the inspected archive and source history. Original tube-test signals, trial times and stable identities are missing; repartitioning the cache cannot undo whole-recording PCA fitting."
 }

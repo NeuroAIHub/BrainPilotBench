@@ -18,6 +18,7 @@ import stat
 
 from calms_family_prepare import verify_prepared as verify_family
 from calms_prepare import verify_prepared as verify_task1
+from mouse_transport import transport_metadata
 
 
 TASKS = {
@@ -193,6 +194,8 @@ def build(task_dir: Path, prepared: Path, local_root: Path, *, materialize_only:
     if materialize_only and not present:
         raise ValueError("--materialize-only requires all three checked-in metadata files")
     if present:
+        planned["data.lock"], planned["evaluator.lock"] = transport_metadata(
+            task_dir, contract, planned["data.lock"], planned["evaluator.lock"])
         for name, expected in planned.items():
             path = task_dir / name
             _digest(path)

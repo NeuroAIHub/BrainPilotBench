@@ -29,7 +29,16 @@ The [bounded audit](../../../reports/mouse-closeout-20261026/mabe-shared-public-
 
 ## Prepare and run
 
-Use the [preparation runbook](../_shared/mabe_README.md) and [mouse task guide](../../../docs/mouse-task-preparation.md).
+Install the environment in the [mouse task guide](../../../docs/mouse-task-preparation.md), then download the pinned public package:
+
+```sh
+node dist/cli.js fetch mabe22-representation-classification --public
+node dist/cli.js prepare mabe22-representation-classification --workspace /absolute/agent-workspace
+```
+
+The [public HF directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks/animal-behavior/mabe22-representation-classification/public) is for navigation. The data locks select fixed revisions.
+The [preparation runbook](../_shared/mabe_README.md) also describes regeneration from the original sources.
+The [data notice](NOTICE.md) distinguishes the original MABe22 license from the separate manual-label repository license.
 The [protocol](protocol.json) and [contract](contract.json) pin sampling, probe fitting and role-separated files.
 Submit `load_model(config, weights_path).embed(keypoints, scores, context)` in the three-file model bundle.
 The public-Train reference builder is `solution/reference.sh`. There is no public Oracle label set; complete scoring uses `score --private`.
@@ -38,4 +47,6 @@ The public-Train reference builder is `solution/reference.sh`. There is no publi
 
 The [CLI acceptance record](../../../reports/mouse-closeout-20261026/mabe22-representation-classification-cli-acceptance.json) covers public preparation, a frozen PCA reference and isolated evaluator scoring.
 All 1,830 evaluation clips were processed; Test numbers were kept private.
-These checks do not report Agent performance. Data remain source-prepared, with no Hugging Face mirror.
+These checks do not report Agent performance.
+The [HF publication record](../../../reports/mouse-hf-20261027/publication.json) binds the mirrors to the accepted content.
+This transport update does not rerun the scientific reference or change its score.

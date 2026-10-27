@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
+from mouse_transport import transport_metadata
 import shutil
 import stat
 
@@ -132,8 +133,6 @@ def verify_locks(task_dir: Path, contract: dict) -> None:
             if role == "public":
                 value["path"] = rel
             expected.append(value)
-    if entries != expected:
-        raise ValueError("data.lock differs from contract")
     evaluator_files = [{"name": "evaluator__" + row["path"].replace("/", "__"), **row}
                        for row in contract["owner_files"]]
     expected_lock = {"schema": "bpb-evaluator-source/1",
@@ -143,6 +142,9 @@ def verify_locks(task_dir: Path, contract: dict) -> None:
                      "files": evaluator_files}
     if "public_equivalent_sha256" in contract:
         expected_lock["public_equivalent_sha256"] = contract["public_equivalent_sha256"]
+    expected_data, expected_lock = transport_metadata(task_dir, contract, {"datasets": expected}, expected_lock)
+    if entries != expected_data["datasets"]:
+        raise ValueError("data.lock differs from contract")
     if read_json(task_dir / "evaluator.lock") != expected_lock:
         raise ValueError("evaluator.lock differs from contract")
 
@@ -227,7 +229,7 @@ def stage_evaluator(task_dir: Path, contract: dict, prepared_root: Path,
     receipt = read_json(marker)
     if (receipt.get("schema") != "bpb-prepared-evaluator/1"
             or receipt.get("task_id") != contract["task_id"]
-            or receipt.get("revision") != contract["revision"]
+            or receipt.get("revision") != read_json(task_dir / "evaluator.lock")["revision"]
             or receipt.get("files") != len(contract["owner_files"])
             or receipt.get("evaluator_lock_sha256") != digest(task_dir / "evaluator.lock")[1]):
         raise ValueError("prepared evaluator receipt mismatch")

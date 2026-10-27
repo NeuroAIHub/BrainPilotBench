@@ -661,8 +661,8 @@
       "sha256": "d24694cb7637dc5c1411c328dfe6a2a300da11e57ae2ad5cd4b9b6c9ff39002c"
     }
   ],
-  "repo_id": "local-prepared",
-  "revision": "375719eaf2c321f8bee5c0b8a85b87ce1b4bb6d424877c8db740d86c6d981488",
-  "schema": "bpb-evaluator-source/1",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a",
+  "schema": "bpb-evaluator-data/1",
   "task_id": "calms21-few-shot-behavior"
 }

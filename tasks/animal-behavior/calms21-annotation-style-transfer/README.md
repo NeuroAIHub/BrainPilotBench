@@ -20,7 +20,16 @@ Background frames remain in evaluation.
 
 ## Prepare and run
 
-Use the [official source record](https://data.caltech.edu/records/s0vdx-0k302), [shared helpers](../_shared/calms_README.md) and [mouse task guide](../../../docs/mouse-task-preparation.md).
+Install the environment in the [mouse task guide](../../../docs/mouse-task-preparation.md), then download the pinned public package:
+
+```sh
+node dist/cli.js fetch calms21-annotation-style-transfer --public
+node dist/cli.js prepare calms21-annotation-style-transfer --workspace /absolute/agent-workspace
+```
+
+The [public HF directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks/animal-behavior/calms21-annotation-style-transfer/public) is for navigation. The data locks select fixed revisions.
+The [official source](https://data.caltech.edu/records/s0vdx-0k302) and [shared helpers](../_shared/calms_README.md) remain available for regeneration.
+The [data notice](NOTICE.md) records attribution, source permissions, and the CalMS license-metadata difference.
 The [protocol](protocol.json) defines the annotation groups; the [contract](contract.json) binds source and prepared files.
 The inference API is `load_model(config, weights_path).predict_proba(keypoints, scores, context)`.
 The context identifies the target annotator. Submitted code runs only in a network-disabled Docker worker.
@@ -29,4 +38,5 @@ The context identifies the target annotator. Submitted code runs only in a netwo
 
 A fixed public-Train reference passed the complete local CLI workflow and isolated owner scoring.
 The [acceptance record](../../../reports/mouse-closeout-20261026/calms21-annotation-style-transfer-cli-acceptance.json) is engineering evidence, not an Agent or official source score.
-No Test numbers are published, and the data have not been mirrored.
+Test numbers remain private. The [HF publication record](../../../reports/mouse-hf-20261027/publication.json) binds the mirrors to the accepted content.
+This transport update does not rerun the scientific reference or change its score.

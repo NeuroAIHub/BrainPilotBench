@@ -289,8 +289,8 @@
       "sha256": "239b0488aaf3b58e51a2f8e9b68d49cf44db3e03b52725a3a3d2d1fd38eb56e2"
     }
   ],
-  "repo_id": "local-prepared",
-  "revision": "4e41e730bb39966c2e21e07e5cfb5bb42e4d08dc11005cac06c2637d99dadb3f",
-  "schema": "bpb-evaluator-source/1",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a",
+  "schema": "bpb-evaluator-data/1",
   "task_id": "calms21-annotation-style-transfer"
 }

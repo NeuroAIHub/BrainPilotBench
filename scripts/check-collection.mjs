@@ -307,21 +307,28 @@ if (catalog) {
           }
           const privateDatasets = datasets.filter(d => d.scope === "private");
           let sourceEvaluator = false;
+          let hostedMouseEvaluator = false;
           if (existsSync(join(runnables.get(id).dir, "evaluator.lock")) && !privateIncrement?.byId.has(id)) {
             try {
-              sourceEvaluator = domain === "animal-behavior" &&
-                readEvaluatorLock(runnables.get(id).task).schema === "bpb-evaluator-source/1";
+              if (domain === "animal-behavior") {
+                const acceptedMouse = readMouseAcceptance(repo, runnables.get(id).task);
+                const lock = readEvaluatorLock(runnables.get(id).task);
+                sourceEvaluator = !!acceptedMouse && lock.schema === "bpb-evaluator-source/1";
+                hostedMouseEvaluator = !!acceptedMouse?.delivery?.privateHosted && lock.schema === "bpb-evaluator-data/1";
+                if (entry.delivery_validation_record !== acceptedMouse?.delivery?.record)
+                  fail(`catalog ${id}: mouse delivery record mismatch`);
+              }
             } catch (error) { fail(`catalog ${id}: invalid source evaluator (${error.message})`); }
           }
-          const privateAccess = privateIncrement?.byId.has(id) ? "pinned_private_snapshot"
+          const privateAccess = privateIncrement?.byId.has(id) || hostedMouseEvaluator ? "pinned_private_snapshot"
             : sourceEvaluator ? "source_prepared_evaluator"
             : privateDatasets.length ? access(privateDatasets) : undefined;
           if (entry.private_data_access !== privateAccess)
             fail(`catalog ${id}: private data access mismatch`);
-          const privateEntry = privateIncrement?.byId.has(id) || sourceEvaluator ? privateScoreEntry : undefined;
+          const privateEntry = privateIncrement?.byId.has(id) || sourceEvaluator || hostedMouseEvaluator ? privateScoreEntry : undefined;
           if (entry.private_score_entry !== privateEntry)
             fail(`catalog ${id}: private score entry mismatch`);
-          if (existsSync(join(runnables.get(id).dir, "evaluator.lock")) && !privateIncrement?.byId.has(id) && !sourceEvaluator)
+          if (existsSync(join(runnables.get(id).dir, "evaluator.lock")) && !privateIncrement?.byId.has(id) && !sourceEvaluator && !hostedMouseEvaluator)
             fail(`catalog ${id}: evaluator.lock is outside the frozen private increment`);
         }
       } else {

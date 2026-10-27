@@ -295,8 +295,8 @@
       "sha256": "3a5b72b9825eb860b67217a45c973d4e3deedccf6ea6ebeb87b91eff8a3c2e98"
     }
   ],
-  "repo_id": "local-prepared",
-  "revision": "545b653c45025b388f2ec0b7f79da68895aa049a188f5970a9462355a6db7716",
-  "schema": "bpb-evaluator-source/1",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a",
+  "schema": "bpb-evaluator-data/1",
   "task_id": "mabe22-supervised-segmentation"
 }

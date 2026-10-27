@@ -284,16 +284,16 @@ export function buildReaderDocs(options) {
       fail(`Working task catalog differs from source revision ${sourceRevision}; publish the final catalog first`);
     }
   }
-  // Local source-only additions do not silently expand the frozen HF delivery.
-  // Their guides are checked separately; publication requires a new HF snapshot.
+  // The caller's frozen HF catalog defines the publication task set. The current
+  // repository catalog validates those identities; it must not silently expand
+  // an earlier publication when new tasks gain hosted data.
   const tasks = readJson(path.join(root, 'tasks/catalog.json')).tasks.filter((task) =>
-    task.entry_kind === 'runnable' && !(task.data_status === 'source_prepared_role_separated' &&
-      task.hosted_data_availability !== 'published_public_snapshot'));
-  if (!tasks.length) fail('No tasks belong to the frozen HF delivery');
+    task.entry_kind === 'runnable');
+  if (!tasks.length) fail('No runnable task definitions are available');
   const taskMap = new Map(tasks.map((task) => [task.task_id, task]));
   if (taskMap.size !== tasks.length) fail('Task catalog has duplicate runnable IDs');
   const rawRows = readCatalogLines(catalogInput);
-  if (rawRows.length !== tasks.length) fail(`HF catalog has ${rawRows.length} rows; expected ${tasks.length}`);
+  if (!rawRows.length) fail('Frozen HF catalog must select at least one task');
   const outputs = [];
   const seen = new Set();
   const updatedRows = [];
@@ -335,7 +335,7 @@ export function buildReaderDocs(options) {
     updatedRows.push(replaceReaderFields(rawRow, { summary: reader.plain, protocol_url: protocolUrl }, row.task_id));
     outputs.push({ relative: `${directory}/README.md`, content: buildCard({ task, row, manifest, reader, sourceRevision }) });
   }
-  if (seen.size !== taskMap.size) fail('HF catalog does not cover every runnable task');
+  if (seen.size !== rawRows.length) fail('HF catalog task coverage differs from its frozen rows');
   mkdirSync(output);
   writeFileSync(path.join(output, 'catalog.jsonl'), `${updatedRows.join('\n')}\n`);
   for (const { relative, content } of outputs) {

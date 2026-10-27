@@ -37,6 +37,8 @@ From neural recordings to human choices: build models, analyze data, and submit 
 
 ## Project news
 
+- **2026-10-27 — Mouse data join the unified HF collection.** Five CalMS21 and MABe22 tasks now have public mirrors and separate private evaluator packages.
+  Public coverage reaches 116 of 117 runnable tasks. H1 remains source-only. See the [mouse delivery record](reports/mouse-hf-20261027/publication.json).
 - **2026-10-26 — Mouse behavior joins v1.** Five CalMS21 and MABe22 tasks add frame classification, annotation transfer, few-shot behavior recognition and representation evaluation.
   Source preparation, frozen submissions and isolated scoring passed local reference checks. Agent benchmark results remain pending. See the [mouse task guide](docs/mouse-task-preparation.md).
 - **2026-10-19 — Private evaluator workflow.** Maintainers can prepare 29 hosted Test packages and score frozen submissions through an explicit private route.
@@ -147,13 +149,13 @@ data roles, and reuse across independent research projects.
 
 ### v1 data access
 
-Browse the [Hugging Face task directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks) for public data from 111 tasks, including BCI IV-4.
+Browse the [Hugging Face task directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks) for public data from 116 tasks, including BCI IV-4 and the five mouse tasks.
 Each task has one directory: `tasks/<category>/<task-id>/public/`.
-Its `data.lock` pins the download revision, file sizes, and hashes. Native scientific file formats remain unchanged.
+Its `data.lock` pins the download revision, file sizes, and hashes. Mirroring preserves each prepared file's format and bytes.
 
 H1 uses original-source download and local preparation because its Data Use Agreement prohibits redistribution.
-The five mouse tasks also use original-source preparation and revisioned local packets; their data have not been mirrored to Hugging Face.
-Follow the [mouse task guide](docs/mouse-task-preparation.md) to build and verify those packets before fetching them into a public cache.
+The five mouse tasks use the same directory layout and pinned downloads. Original-source preparation remains available for regeneration.
+The [mouse task guide](docs/mouse-task-preparation.md) describes public preparation, private evaluation, and source-specific license notices.
 The film task's public package supports Agent preparation, but block-first scoring still requires a trusted evaluator mapping.
 Source terms and citation instructions remain task-specific. Evaluator-only inputs are separate from public data.
 
@@ -167,7 +169,8 @@ See the [data guide](docs/data-preparation.md) for delivery checks, fixed snapsh
 
 ### Private evaluation for maintainers
 
-The [private collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/62ff438a727aa5ca72c688526410930c8f1f664b/tasks) provides evaluator packages for 29 tasks.
+The [private collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/main/tasks) provides canonical evaluator packages for 34 tasks: the earlier 29 plus five mouse tasks.
+Three retained legacy tasks keep their existing private routes. Each task's locks select its fixed data revision.
 Use `prepare-evaluator` to create an owner-only data directory, then `score --private` to evaluate a frozen submission.
 Private results go to `scores.private.json`; public validation and its results stay separate.
 The [maintainer guide](docs/private-evaluation.md) lists the commands, environments, source restrictions, and validation limits.
@@ -179,7 +182,8 @@ This data and interface update does not add Agent benchmark results.
 Four EEG entries remain preparation-only: HMC sleep stage, HMC sleep onset, Sleep-EDF onset, and CHB-MIT seizure detection.
 Thielen2021 remains withheld. These five EEG candidates are outside the runnable task count.
 Three [Airscope candidates](tasks/calcium-imaging/README.md) remain pending experimental data or protocol definitions.
-The social-competition source has a 17-sample public validation cache; it does not establish the full planned benchmark or an independent Test.
+The social-competition source has a 17-sample validation cache with PCA fitted to whole recordings before trial extraction.
+Complete signals and trial identities remain missing. They are needed for a separate BrainPilotBench split with training-only preprocessing.
 Candidate packages and evaluator-only inputs are not included in the unified public layout.
 
 </details>
@@ -215,11 +219,12 @@ the technical report.
 - Git
 - Any task-specific Python, CPU, GPU, or storage requirements listed in its task README
 
-The v1 source collection is on main. The unified download and preparation update is under review in [PR #77](https://github.com/NeuroAIHub/BrainPilotBench/pull/77).
-Use its source branch for the workflow below. This update is not an npm release.
+The unified download and private evaluation workflow entered main through [PR #77](https://github.com/NeuroAIHub/BrainPilotBench/pull/77).
+The mouse-task increment is under review in [PR #80](https://github.com/NeuroAIHub/BrainPilotBench/pull/80).
+Use its source branch for the complete workflow below. This update is not an npm release.
 
 ~~~bash
-git clone --branch feat/unified-public-data-layout https://github.com/NeuroAIHub/BrainPilotBench.git
+git clone --branch feat/mouse-behavior-task-expansion https://github.com/NeuroAIHub/BrainPilotBench.git
 cd BrainPilotBench
 npm ci
 npm run build

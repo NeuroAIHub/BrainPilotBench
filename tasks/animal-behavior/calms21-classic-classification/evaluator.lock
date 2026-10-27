@@ -121,8 +121,8 @@
       "sha256": "ac09d78fd5d6f9195e787c2bea7a8674011ab0e25fed2d981348b6398c5e60ab"
     }
   ],
-  "repo_id": "local-prepared",
-  "revision": "67ea0d3a5b0dfd8f374dc6a87512023533b2c65365982ddb2f95a43cf0fae835",
-  "schema": "bpb-evaluator-source/1",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a",
+  "schema": "bpb-evaluator-data/1",
   "task_id": "calms21-classic-classification"
 }

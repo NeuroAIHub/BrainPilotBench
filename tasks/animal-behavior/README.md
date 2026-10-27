@@ -1,7 +1,8 @@
 # Mouse behavior
 
 These five tasks study social behavior from real two-dimensional mouse pose recordings.
-They join the v1 collection through source-prepared data and isolated model scoring. No new Agent benchmark results are available.
+They join the v1 collection through public HF data, separate evaluator packages, and isolated model scoring.
+No new Agent benchmark results are available.
 
 | Task | Research question | Primary metric |
 |---|---|---|
@@ -14,6 +15,10 @@ They join the v1 collection through source-prepared data and isolated model scor
 CalMS21 keeps the `other` class and all background frames. Only its own F1 is excluded from the main class average.
 MABe22 representation learning and supervised prediction are separate protocols, not independent source datasets.
 ResiFuse provides a method and protocol reference. It does not restrict the submitted model architecture.
+
+The [public mouse directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks/animal-behavior) follows the collection's existing task layout.
+Each task's locks select immutable download revisions. Original-source helpers remain available for regeneration.
+Each task's `NOTICE.md` preserves its source licenses and attribution, including the noncommercial terms for these mirrors.
 
 The [preparation guide](../../docs/mouse-task-preparation.md) gives data access, environments, model contracts and verified CLI workflows.
 The [Airscope candidates](../calcium-imaging/README.md) concern calcium-to-behavior decoding rather than video-only behavior recognition.

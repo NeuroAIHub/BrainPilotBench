@@ -1,4 +1,10 @@
-# MABe22 source-only tasks: preparation, materialization, and role boundary
+# MABe22 data access, source regeneration, and role boundary
+
+Both MABe22 tasks have public HF mirrors and separate private evaluator packages.
+For normal use, install the task environment and follow the [hosted CLI workflow](../../../docs/mouse-task-preparation.md).
+The active data locks pin immutable HF revisions. Original-source regeneration is optional and does not override those locks.
+
+## Optional source regeneration
 
 This runbook creates local, ignored data under
 `.cache/mouse-closeout-20261026/mabe`. It does not publish the data or run
@@ -38,10 +44,10 @@ docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-
 ```
 
 Repeat that isolated command for the three named scripts. Then materialize
-the exact revisioned `local://` packets from the numeric preparation files.
-A clone already has `contract.json`, `data.lock`, and `evaluator.lock`; the
-materializer compares all three byte for byte with the pinned source and
-does not rewrite them. It verifies and reuses an existing complete packet.
+the exact revisioned local packets from the numeric preparation files.
+A clone already has `contract.json`, `data.lock`, and `evaluator.lock`.
+The materializer validates regenerated content against the accepted contract and recorded transport mapping.
+It does not rewrite those files. It verifies and reuses an existing complete packet.
 Partial or altered metadata and incomplete packet trees fail closed.
 
 ```sh
@@ -52,16 +58,25 @@ for TASK_ID in mabe22-supervised-segmentation mabe22-representation-classificati
     --task-dir "tasks/animal-behavior/$TASK_ID" \
     --prepared "$MABE_PREPARED" --local-root "$MABE_LOCAL" --materialize-only
 done
+```
+
+## Hosted preparation after environment setup
+
+The commands below fetch the hosted packets, independently of optional local regeneration.
+The source-root environment variable does not override HF entries in a data lock.
+First create `.cache/mouse-runtime` with the environment commands in the [mouse guide](../../../docs/mouse-task-preparation.md).
+
+```sh
 unset BPB_LOCAL_DATA_ROOT
-export BPB_MABE_PYTHON="$PWD/$MABE_PREPARED/venv/bin/python"
+export BPB_MABE_PYTHON="$PWD/.cache/mouse-runtime/bin/python"
 export BPB_CACHE_ROOT="$PWD/.cache/mouse-closeout-20261026/mabe-public-cache"
 npm run build
-BPB_LOCAL_DATA_ROOT="$PWD/$MABE_LOCAL" node dist/cli.js fetch mabe22-supervised-segmentation --public
+node dist/cli.js fetch mabe22-supervised-segmentation --public
 node dist/cli.js prepare mabe22-supervised-segmentation --workspace "$PWD/.cache/mouse-closeout-20261026/workspace-supervised"
-BPB_LOCAL_DATA_ROOT="$PWD/$MABE_LOCAL" node dist/cli.js fetch mabe22-representation-classification --public
+node dist/cli.js fetch mabe22-representation-classification --public
 node dist/cli.js prepare mabe22-representation-classification --workspace "$PWD/.cache/mouse-closeout-20261026/workspace-representation"
-BPB_LOCAL_DATA_ROOT="$PWD/$MABE_LOCAL" node dist/cli.js prepare-evaluator mabe22-supervised-segmentation --evaluator-root "$PWD/.cache/mouse-closeout-20261026/owner-supervised/evaluator" --cache-root "$PWD/.cache/mouse-closeout-20261026/mabe-owner-cache" --fetch
-BPB_LOCAL_DATA_ROOT="$PWD/$MABE_LOCAL" node dist/cli.js prepare-evaluator mabe22-representation-classification --evaluator-root "$PWD/.cache/mouse-closeout-20261026/owner-representation/evaluator" --cache-root "$PWD/.cache/mouse-closeout-20261026/mabe-owner-cache" --fetch
+node dist/cli.js prepare-evaluator mabe22-supervised-segmentation --evaluator-root "$PWD/.cache/mouse-closeout-20261026/owner-supervised/evaluator" --cache-root "$PWD/.cache/mouse-closeout-20261026/mabe-owner-cache" --fetch
+node dist/cli.js prepare-evaluator mabe22-representation-classification --evaluator-root "$PWD/.cache/mouse-closeout-20261026/owner-representation/evaluator" --cache-root "$PWD/.cache/mouse-closeout-20261026/mabe-owner-cache" --fetch
 ```
 
 The two `prepare-evaluator` commands are maintainer-only and stage the
@@ -105,7 +120,7 @@ The latter is not an Agent-facing public Oracle. Neither reads Test labels:
 .cache/mouse-closeout-20261026/mabe/venv/bin/python tasks/animal-behavior/_shared/mabe_probe.py --root .cache/mouse-closeout-20261026/mabe --internal-validation --report .cache/mouse-closeout-20261026/mabe/probe-internal-validation-local.json
 ```
 
-The pose-only supervised route is prepared. Original video input remains
-optional and was not downloaded; visual pose/video alignment therefore has
-not been checked. Provenance/licensing review is still required before data
-publication; a local source-only preparation does not grant redistribution.
+The current supervised task is pose-only. Original videos were not downloaded, so visual pose/video alignment was not checked.
+The [representation notice](../mabe22-representation-classification/NOTICE.md) and [supervised notice](../mabe22-supervised-segmentation/NOTICE.md) preserve the source licenses and attribution.
+The [license audit](../../../reports/mouse-hf-20261027/license-audit.json) records permission for this noncommercial research mirror, not unrestricted commercial reuse.
+The [HF publication record](../../../reports/mouse-hf-20261027/publication.json) binds delivery to the accepted content. It does not claim new Agent results.

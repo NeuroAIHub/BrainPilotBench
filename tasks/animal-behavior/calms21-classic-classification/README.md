@@ -19,8 +19,16 @@ The derived validation split uses whole recordings and does not claim animal-dis
 
 ## Prepare and run
 
-Use the [official source record](https://data.caltech.edu/records/s0vdx-0k302) and [preparation helpers](../_shared/calms_README.md).
-The [mouse task guide](../../../docs/mouse-task-preparation.md) covers source materialization, public preparation and explicit private scoring.
+Install the environment in the [mouse task guide](../../../docs/mouse-task-preparation.md), then download the pinned public package:
+
+```sh
+node dist/cli.js fetch calms21-classic-classification --public
+node dist/cli.js prepare calms21-classic-classification --workspace /absolute/agent-workspace
+```
+
+The [public HF directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks/animal-behavior/calms21-classic-classification/public) is for navigation. The data locks select fixed revisions.
+The [official source](https://data.caltech.edu/records/s0vdx-0k302) and [helpers](../_shared/calms_README.md) remain available for regeneration.
+The [data notice](NOTICE.md) records attribution, source permissions, and the CalMS license-metadata difference.
 The [protocol](protocol.json) and [contract](contract.json) pin labels, split rules, byte hashes and model inputs.
 Submit `submission/model.py`, `submission/config.json` and numeric `submission/weights.npz`.
 The model implements `load_model(config, weights_path).predict_proba(keypoints, scores, context)`.
@@ -30,4 +38,5 @@ The model implements `load_model(config, weights_path).predict_proba(keypoints, 
 The complete local CLI workflow passed with a fixed public-Train reference, including isolated owner Test scoring.
 See the [acceptance record](../../../reports/mouse-closeout-20261026/calms21-classic-classification-cli-acceptance.json).
 This is not an Agent benchmark result or an official CalMS21 score. No Test numbers are published here.
-Source data remain locally prepared and have not been mirrored to Hugging Face.
+The [HF publication record](../../../reports/mouse-hf-20261027/publication.json) binds the mirrored public and private packages to the accepted content.
+This transport update does not rerun the scientific reference or change its score.

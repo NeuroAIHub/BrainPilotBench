@@ -15,7 +15,9 @@
   "local_preparation_counts": {"train_sequences": 56, "train_frames": 397631, "valid_sequences": 14, "valid_frames": 110107, "owner_test_sequences": 19, "owner_test_frames": 262107},
   "local_reference": {"valid_f1": 0.26137150142003684, "official_test_scored": false, "agent_run_started": false},
   "delivery_revision": "67ea0d3a5b0dfd8f374dc6a87512023533b2c65365982ddb2f95a43cf0fae835",
-  "source_only_local": true,
+  "source_preparation_available": true,
+  "hosted_transport_binding": "hf-delivery.json",
+  "data_license_notice": "NOTICE.md",
   "runnable": true,
   "engineering_acceptance": "Fixed-reference public and isolated owner Test CLI checks passed; see the task's cli-acceptance.json in reports/mouse-closeout-20261026. The earlier local_reference object describes the public-only preparation run.",
   "agent_benchmark_results_available": false

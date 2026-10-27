@@ -10,6 +10,7 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from mabe_task_package import TASKS, _manifest, deliver, record
+from test_mouse_transport import hosted_task_metadata
 
 
 class MaterializeTest(unittest.TestCase):
@@ -74,6 +75,15 @@ class MaterializeTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "differs from frozen binding"):
             deliver(self.task, cold, self.result, materialize_only=True)
         self.assertTrue(file.read_bytes().endswith(b"x"))
+
+    def test_hosted_locks_keep_source_fallback_materialization(self) -> None:
+        deliver(self.task, self.root / "initial", self.result)
+        (self.task / "task.yaml").write_text("# fixture only\n")
+        hosted_task_metadata(self.task)
+        old = {name: (self.task / name).read_bytes() for name in ("contract.json", "data.lock", "evaluator.lock")}
+        result = deliver(self.task, self.root / "hosted-cold", self.result, materialize_only=True)
+        self.assertEqual(result["delivery_state"], "materialized")
+        self.assertEqual(old, {name: (self.task / name).read_bytes() for name in old})
 
 
 if __name__ == "__main__":
