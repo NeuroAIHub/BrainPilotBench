@@ -1,0 +1,14 @@
+- send: |-
+    Train a CalMS21 Task 1 behavior classifier using only data/public/train and data/public/valid.
+    Each manifest row identifies a complete recording and an NPZ with keypoints [frames,2,2,7],
+    scores [frames,2,7], and labels [frames]. The four labels are attack=0,
+    investigation=1, mount=2, other=3. Preserve temporal order and all frames.
+    Submit submission/model.py, submission/config.json, and submission/weights.npz.
+    model.py must define load_model(config, weights_path), returning an object with
+    predict_proba(keypoints, scores, context). The method must return finite
+    normalized probabilities [frames,4]. Context gives task, group, and class_count.
+    Inference runs in a pinned, network-disabled container with no labels or task files.
+    Fit and select your method with public Train and Valid only. The primary F1
+    averages attack, investigation, and mount class F1; other frames enter their
+    negative denominators but other is not averaged. Official Test labels are private.
+    The three files must reload without fitting during inference. No GPU is required.

@@ -1,0 +1,21 @@
+{
+  "schema": "bpb-mouse-private-access-checks/1",
+  "date": "2026-10-27",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a",
+  "anonymous": true,
+  "redirects_followed": false,
+  "checks": [
+    {
+      "task_id": "calms21-classic-classification",
+      "path": "tasks/animal-behavior/calms21-classic-classification/evaluator/test/0007347af1beb4b107c887cc7160034a0f7345d2cf139684061a756339f81a79.npz",
+      "status": 401
+    },
+    {
+      "task_id": "mabe22-supervised-segmentation",
+      "path": "tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/owner/test_labels.npz",
+      "status": 401
+    }
+  ],
+  "scope": "Anonymous HEAD requests to representative evaluator NPZ objects were refused; authorized full byte readbacks are recorded separately in publication.json"
+}

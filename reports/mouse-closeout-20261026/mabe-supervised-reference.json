@@ -1,0 +1,28 @@
+{
+  "schema": "bpb-mabe-supervised-reference/1",
+  "role": "public train and validation only",
+  "model": "pose-only weighted ridge baseline; 0.5 threshold on clipped scores",
+  "train": {
+    "videos": 54,
+    "foreground_frames": 12183,
+    "positive_frames_by_class": [
+      706,
+      8595,
+      1668,
+      1330
+    ]
+  },
+  "validation": {
+    "macro_f1": 0.42002021389093225,
+    "f1_by_class": {
+      "chases": 0.4067796610169492,
+      "huddles": 0.29577464788732394,
+      "oral_contact": 0.6021220159151194,
+      "oral_genital_contact": 0.37540453074433655
+    },
+    "eligible_frames": 996,
+    "videos": 11
+  },
+  "eligibility": "owner-side any-positive grouped behavior intersected with label-independent source-style pose validity (union over mice); no background-only frames scored",
+  "comparability": "Bench data-path check, not original MABe22 or ResiFuse paper score"
+}

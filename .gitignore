@@ -24,3 +24,4 @@ docs/*
 !docs/data-preparation.md
 !docs/invasive-task-preparation.md
 !docs/private-evaluation.md
+!docs/mouse-task-preparation.md

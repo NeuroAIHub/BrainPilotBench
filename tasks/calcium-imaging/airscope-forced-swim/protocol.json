@@ -1,0 +1,21 @@
+{
+  "schema": "bpb-mouse-protocol/1",
+  "task_id": "airscope-forced-swim",
+  "protocol_status": "candidate_not_frozen",
+  "source_url": "https://doi.org/10.1038/s41586-026-11293-x",
+  "source_location": "Supplementary Note 4",
+  "sample_unit": "annotated time point in a grouped animal/session recording",
+  "classes": ["swimming", "struggling", "floating"],
+  "input": "aligned cortical calcium activity",
+  "output": "continuous class scores; hard class IDs alone are insufficient",
+  "metric": {"id": "AUC", "curve_type": null, "multiclass_reduction": null, "fold_aggregation": null},
+  "metric_policy": "AUC only. Do not implement a guessed ROC/PR definition or add F1 as a second selected metric.",
+  "required_before_promotion": [
+    "matching signal and machine-readable three-class annotations",
+    "first-party AUC definition, class order and aggregation",
+    "timestamps, recording/animal IDs and independent split grouping",
+    "source terms, bytes and hashes, isolated submission interface and representative real acceptance"
+  ],
+  "data_substitution_forbidden": ["free-behavior calcium recordings", "rendered supplementary videos used as guessed labels"],
+  "agent_benchmark_results": "not_available"
+}

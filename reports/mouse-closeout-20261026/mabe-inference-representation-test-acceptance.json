@@ -1,0 +1,15 @@
+{
+  "schema": "bpb-mabe-isolated-test-acceptance/1",
+  "task": "mabe22-representation-classification",
+  "kind": "fixed-reference",
+  "comparability": "BrainPilotBench adaptation, not an official MABe22 leaderboard score",
+  "agent_run_started": false,
+  "isolated_scoring_completed": true,
+  "probe_clips": 1830,
+  "embedding_dimension": 32,
+  "numeric_score_public": false,
+  "owner_report": ".cache/mouse-closeout-20261026/mabe-inference/owner/representation-test-report.json",
+  "packet_manifest_sha256": "dfd45a08fac0097fb4216119ded4d8874bf4c6b8c9635d87e33c04ae8bd95082",
+  "frozen_model_manifest_sha256": "52f434c29115612e0a0d2ad3f1b33c07680dd64b505c394d440c62acfe84d020",
+  "image_id": "sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562"
+}

@@ -1,16 +1,62 @@
 {
   "schema": "brainpilotbench-task-collection/1",
-  "date": "2026-10-15",
+  "date": "2026-10-26",
   "release_status": "integration_candidate_not_released",
-  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; no formal Agent results or historical private Test replay",
+  "validation_policy": "Four first-batch reference checks; version-bound local invasive and five mouse task acceptances with fixed references and isolated owner Test interface checks; Airscope candidates remain outside runnable acceptance; no formal Agent results or historical private Test replay",
   "counts": {
-    "total": 117,
-    "runnable": 112,
-    "candidate": 5,
+    "total": 125,
+    "runnable": 117,
+    "candidate": 8,
+    "mouse_candidate": 3,
     "preparation_ready": 4,
-    "representative_runs": 11
+    "representative_runs": 16
   },
   "tasks": [
+    {
+      "task_id": "airscope-forced-swim",
+      "domain": "calcium-imaging",
+      "directory": "tasks/calcium-imaging/airscope-forced-swim",
+      "entry_kind": "candidate",
+      "validation": "metadata_structure_checked",
+      "preparation_available": false,
+      "source_task_id": "airscope/forced-swimming-test",
+      "primary_metric": {
+        "id": "AUC",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "reason": "Matching aligned signals and machine-readable phase labels were not located. AUC curve type and multiclass reduction remain undefined."
+    },
+    {
+      "task_id": "airscope-social-competition",
+      "domain": "calcium-imaging",
+      "directory": "tasks/calcium-imaging/airscope-social-competition",
+      "entry_kind": "candidate",
+      "validation": "metadata_structure_checked",
+      "preparation_available": false,
+      "source_task_id": "airscope/tube-test",
+      "primary_metric": {
+        "id": "F1",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "reason": "Only 17 processed validation examples are available in the inspected archive and source history. Original tube-test signals, trial times and stable identities are missing; repartitioning the cache cannot undo whole-recording PCA fitting."
+    },
+    {
+      "task_id": "airscope-tail-suspension",
+      "domain": "calcium-imaging",
+      "directory": "tasks/calcium-imaging/airscope-tail-suspension",
+      "entry_kind": "candidate",
+      "validation": "metadata_structure_checked",
+      "preparation_available": false,
+      "source_task_id": "airscope/tail-suspension-test",
+      "primary_metric": {
+        "id": "accuracy",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "reason": "The inspected public release lacks the matching tail-suspension signals, state annotations and reproducible split definition."
+    },
     {
       "task_id": "bciciv-2a",
       "domain": "eeg",
@@ -44,6 +90,75 @@
       "data_access": "pinned_public_snapshot",
       "private_data_access": "pinned_private_snapshot",
       "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>"
+    },
+    {
+      "task_id": "calms21-annotation-style-transfer",
+      "domain": "animal-behavior",
+      "directory": "tasks/animal-behavior/calms21-annotation-style-transfer",
+      "entry_kind": "runnable",
+      "task_version": "0.1-source",
+      "validation": "local_fixed_reference_cli_and_isolation_passed",
+      "evaluation_scope": "public_validation_and_owner_test",
+      "primary_metric": {
+        "id": "F1",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "validation_record": "reports/mouse-closeout-20261026/calms21-annotation-style-transfer-cli-acceptance.json",
+      "evaluation_profile": "five-annotator-equal-mean-F1",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
+      "agent_benchmark_results": "not_available",
+      "delivery_validation_record": "tasks/animal-behavior/calms21-annotation-style-transfer/hf-delivery.json"
+    },
+    {
+      "task_id": "calms21-classic-classification",
+      "domain": "animal-behavior",
+      "directory": "tasks/animal-behavior/calms21-classic-classification",
+      "entry_kind": "runnable",
+      "task_version": "0.1-source",
+      "validation": "local_fixed_reference_cli_and_isolation_passed",
+      "evaluation_scope": "public_validation_and_owner_test",
+      "primary_metric": {
+        "id": "F1",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "validation_record": "reports/mouse-closeout-20261026/calms21-classic-classification-cli-acceptance.json",
+      "evaluation_profile": "classic-three-behavior-F1",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
+      "agent_benchmark_results": "not_available",
+      "delivery_validation_record": "tasks/animal-behavior/calms21-classic-classification/hf-delivery.json"
+    },
+    {
+      "task_id": "calms21-few-shot-behavior",
+      "domain": "animal-behavior",
+      "directory": "tasks/animal-behavior/calms21-few-shot-behavior",
+      "entry_kind": "runnable",
+      "task_version": "0.1-source",
+      "validation": "local_fixed_reference_cli_and_isolation_passed",
+      "evaluation_scope": "owner_test_only",
+      "primary_metric": {
+        "id": "F1",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "validation_record": "reports/mouse-closeout-20261026/calms21-few-shot-behavior-cli-acceptance.json",
+      "evaluation_profile": "seven-binary-positive-F1-private-only",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
+      "agent_benchmark_results": "not_available",
+      "delivery_validation_record": "tasks/animal-behavior/calms21-few-shot-behavior/hf-delivery.json"
     },
     {
       "task_id": "celegans-structure-function-divergence",
@@ -800,6 +915,52 @@
       "source_verification": "full_source_files_and_derived_arrays_verified",
       "owner_test": "fixed_reference_interface_passed_not_agent_benchmark",
       "agent_benchmark_results": "not_available"
+    },
+    {
+      "task_id": "mabe22-representation-classification",
+      "domain": "animal-behavior",
+      "directory": "tasks/animal-behavior/mabe22-representation-classification",
+      "entry_kind": "runnable",
+      "task_version": "0.1-source",
+      "validation": "local_fixed_reference_cli_and_isolation_passed",
+      "evaluation_scope": "owner_test_only",
+      "primary_metric": {
+        "id": "F1",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "validation_record": "reports/mouse-closeout-20261026/mabe22-representation-classification-cli-acceptance.json",
+      "evaluation_profile": "bpb-mabe22-paper-style-three-probe-sequence-v1",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
+      "agent_benchmark_results": "not_available",
+      "delivery_validation_record": "tasks/animal-behavior/mabe22-representation-classification/hf-delivery.json"
+    },
+    {
+      "task_id": "mabe22-supervised-segmentation",
+      "domain": "animal-behavior",
+      "directory": "tasks/animal-behavior/mabe22-supervised-segmentation",
+      "entry_kind": "runnable",
+      "task_version": "0.1-source",
+      "validation": "local_fixed_reference_cli_and_isolation_passed",
+      "evaluation_scope": "public_validation_and_owner_test",
+      "primary_metric": {
+        "id": "macro_f1",
+        "direction": "maximize",
+        "unit": "fraction"
+      },
+      "validation_record": "reports/mouse-closeout-20261026/mabe22-supervised-segmentation-cli-acceptance.json",
+      "evaluation_profile": "BrainPilotBench-MABe22-supervised-positive-pose-valid-v1",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
+      "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
+      "agent_benchmark_results": "not_available",
+      "delivery_validation_record": "tasks/animal-behavior/mabe22-supervised-segmentation/hf-delivery.json"
     },
     {
       "task_id": "neuro-rsc-place-cell",

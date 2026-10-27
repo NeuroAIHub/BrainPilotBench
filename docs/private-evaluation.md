@@ -1,22 +1,28 @@
 # Private evaluation for maintainers
 
 Agents work with public Train/Valid data. Maintainers evaluate a completed, frozen submission against separate Test data.
-The new private route supports 29 tasks: 21 EEG, six invasive recordings, brain-age MRI, and C. elegans.
+The canonical private route supports 34 tasks: the earlier 29 plus five CalMS21 and MABe22 tasks.
 It does not replace public validation or publish Agent benchmark results.
 
 ## Data and scope
 
-The [private task directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/62ff438a727aa5ca72c688526410930c8f1f664b/tasks) requires an authorized Hugging Face account.
-Its 301 data files total 8,353,488,018 bytes. These are task-specific evaluator packages, not a mirror of every raw recording.
+The [private task directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/main/tasks) requires an authorized Hugging Face account.
+Task locks select fixed revisions. The navigation page does not select the evaluation data version.
+These are task-specific evaluator packages, not a mirror of every raw recording.
 Each supported task has an `evaluator.lock` that maps the published files to its native directory layout.
 Its `data.lock` pins the HF revision, sizes, and SHA-256 hashes.
 
 | Route | Tasks | Behavior |
 |---|---:|---|
-| New hosted evaluator packages | 29 | Use the commands below. |
+| Canonical hosted evaluator packages | 34 | The earlier 29 plus five mouse tasks use the commands below. |
 | Retained private tasks | 3 | BCI-IV-2a, Sleep-EDF, and TOPS keep their existing evaluator setup and scoring commands. |
 | Original-source access | 78 | Follow the source terms and task guide. No Test payload is mirrored by this route. |
 | No independent or official Test | 2 | RSC has no separate private package here. Wilson exp2 has no official Test. |
+
+The catalogue contains 117 runnable-task entries across these access states. It does not claim 117 downloadable evaluator packages.
+The [frozen 29-task snapshot](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/62ff438a727aa5ca72c688526410930c8f1f664b/tasks) retains its original receipt.
+Its 301 data files total 8,353,488,018 bytes. Those figures describe that snapshot, not the enlarged private collection.
+The [mouse increment](../reports/mouse-hf-20261027/publication.json) adds 2,078 evaluator data files totaling 491,259,653 bytes, plus source notices and delivery metadata.
 
 Source-only entries include 75 Psych-101 experiments, FALCON H1, native BNCI2014, and Wang2017.
 Psych-101 and H1 prohibit redistribution. Redistribution permission for the latter two processed packages is not confirmed.
@@ -57,6 +63,24 @@ C. elegans preparation also downloads three pinned public source files into the 
 Both record output hashes and recheck them before and after scoring.
 Other hosted tasks retain their native `test/` or `derived-v2/` layout.
 
+## Five mouse evaluator packages
+
+CalMS21 classification, annotation transfer, few-shot behavior, MABe22 representations, and MABe22 supervised segmentation use the same private CLI commands.
+Their `evaluator.lock` files bind hosted bytes to the accepted task contracts. The delivery mapping changes transport, not scientific content or splits.
+Use the environment and inference image from the [mouse guide](mouse-task-preparation.md).
+
+```sh
+node dist/cli.js prepare-evaluator calms21-classic-classification \
+  --evaluator-root /absolute/owner/calms21/evaluator \
+  --cache-root /absolute/owner/mouse-evaluator-cache --fetch \
+  --python /absolute/task-venv/bin/python
+```
+
+Each mouse package carries a source-specific `NOTICE.md`. The data are not covered by the software's MIT license.
+The [license audit](../reports/mouse-hf-20261027/license-audit.json) records the noncommercial redistribution terms and the CalMS metadata difference.
+Private access protects experimental integrity. It does not add a copyright restriction or change rights that the source licensors grant.
+The labels were publicly available upstream, even though this workflow keeps them outside Agent workspaces.
+
 ## Score a completed submission
 
 Stop the Agent and select its final submission before Test evaluation. Do not tune the model against Test feedback.
@@ -96,3 +120,5 @@ Other supported tasks receive file-binding, interface, and failure-path checks.
 No new comparative Agent result follows from these checks.
 The historical scientific acceptance records remain unchanged and retain their original scope.
 The [integration record](../reports/private-evaluator-integration-20261019.json) lists the tested paths and the checks that did not run.
+The five mouse tasks have separate [fixed-reference acceptance records](../reports/mouse-closeout-20261026/).
+The later [HF delivery record](../reports/mouse-hf-20261027/publication.json) covers publication and transport checks, not a new round of scientific or Agent evaluation.

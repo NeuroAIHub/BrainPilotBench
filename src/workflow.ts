@@ -11,6 +11,7 @@ import { verifySubmission, type SubmissionIssue, type SubmissionMeta } from "./s
 import { cachePathFor } from "./data/cache.js";
 import { validatePublicDatasetPaths } from "./data/manifest.js";
 import type { DatasetEntry } from "./data/types.js";
+import { readEvaluatorLock } from "./evaluator.js";
 
 export interface BundleResult {
   runDir: string;
@@ -43,8 +44,17 @@ export function assertAgentDataBoundary(task: Task): void {
   if (process.env.BPB_PUBLIC_DATA_ROOT) {
     throw new Error("unset BPB_PUBLIC_DATA_ROOT before starting an Agent; prepareWorkspace supplies a verified public root to setup");
   }
+  // Some source releases repeat immutable public metadata or all-zero input
+  // objects in evaluation. Only a validated, explicit source-lock declaration
+  // can distinguish those already-public bytes from private-only content.
+  const publicEquivalent = new Set<string>();
+  if (task.dir && existsSync(join(task.dir, "evaluator.lock"))) {
+    const lock = readEvaluatorLock(task);
+    for (const sha of lock.public_equivalent_sha256 ?? []) publicEquivalent.add(sha);
+  }
   const cachedPrivate = task.datasets
     .filter((entry) => entry.scope === "private")
+    .filter((entry) => !publicEquivalent.has(entry.sha256))
     .filter((entry) => existsSync(cachePathFor(entry.sha256)))
     .map((entry) => entry.name);
   if (cachedPrivate.length) {

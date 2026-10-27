@@ -59,6 +59,7 @@
     "test:reader-docs": "node --test scripts/build-hf-reader-docs.test.mjs",
     "test:collection": "node scripts/check-collection.mjs",
     "test:invasive-metadata": "node --test scripts/invasive-candidates.test.mjs",
+    "test:mouse-metadata": "node --test scripts/mouse-candidates.test.mjs scripts/mouse-acceptance.test.mjs scripts/mouse-hf-delivery.test.mjs",
     "catalog:refresh": "node scripts/refresh-collection.mjs",
     "catalog:check": "node scripts/refresh-collection.mjs --check",
     "prepublishOnly": "npm run build"

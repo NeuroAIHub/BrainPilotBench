@@ -10,7 +10,10 @@ import { resolveManifest, type ResolveOptions } from "./data/resolve.js";
 
 export interface EvaluatorFile { name: string; path: string; sha256: string; bytes: number }
 export interface EvaluatorLock {
-  schema: "bpb-evaluator-data/1"; task_id: string; repo_id: string; revision: string; files: EvaluatorFile[];
+  schema: "bpb-evaluator-data/1" | "bpb-evaluator-source/1";
+  task_id: string; repo_id: string; revision: string; files: EvaluatorFile[];
+  /** Objects reviewed as byte-identical to an explicit public entry. */
+  public_equivalent_sha256?: string[];
 }
 
 export function readEvaluatorLock(task: Task): EvaluatorLock {
@@ -18,12 +21,16 @@ export function readEvaluatorLock(task: Task): EvaluatorLock {
   if (!existsSync(path)) throw new Error("no hosted evaluator package for this task; use its documented source-only or legacy evaluation route");
   if (lstatSync(path).isSymbolicLink()) throw new Error("evaluator.lock cannot be a symbolic link");
   const lock = JSON.parse(readFileSync(path, "utf8")) as EvaluatorLock;
-  if (lock.schema !== "bpb-evaluator-data/1" || lock.task_id !== task.meta.id ||
-      lock.repo_id !== "BrainPilot-Bench/Tasks-Data-Private" || !/^[a-f0-9]{40}$/.test(lock.revision) ||
+  const hosted = lock.schema === "bpb-evaluator-data/1";
+  const source = lock.schema === "bpb-evaluator-source/1";
+  if ((!hosted && !source) || lock.task_id !== task.meta.id ||
+      (hosted && (lock.repo_id !== "BrainPilot-Bench/Tasks-Data-Private" || !/^[a-f0-9]{40}$/.test(lock.revision))) ||
+      (source && (lock.repo_id !== "local-prepared" || !/^[a-f0-9]{64}$/.test(lock.revision))) ||
       !Array.isArray(lock.files) || !lock.files.length) throw new Error("invalid evaluator.lock identity");
   const paths: string[] = [], names = new Set<string>();
   const category = ({ eeg: "eeg", mri: "mri", psychology: "psychology", ieeg: "invasive", intracortical: "invasive",
-    "structure-function-divergence": "connectomics" } as Record<string, string>)[task.meta.domain];
+    "structure-function-divergence": "connectomics", "animal-behavior": "animal-behavior",
+    "calcium-imaging": "calcium-imaging" } as Record<string, string>)[task.meta.domain];
   if (!category) throw new Error("unsupported evaluator task domain");
   for (const file of lock.files) {
     if (typeof file.path !== "string" || !file.path || file.path.split("/").some((part) =>
@@ -39,10 +46,22 @@ export function readEvaluatorLock(task: Task): EvaluatorLock {
     names.add(file.name); paths.push(folded);
     const entries = task.datasets.filter((entry) => entry.name === file.name);
     const entry = entries[0];
-    const expectedUri = `hf://datasets/${lock.repo_id}@${lock.revision}/tasks/${category}/${task.meta.id}/evaluator/${file.path}`;
+    const expectedUri = hosted
+      ? `hf://datasets/${lock.repo_id}@${lock.revision}/tasks/${category}/${task.meta.id}/evaluator/${file.path}`
+      : `local://tasks/${category}/${task.meta.id}/${lock.revision}/evaluator/${file.path}`;
     if (entries.length !== 1 || entry.scope !== "private" || entry.sha256 !== file.sha256 || entry.bytes !== file.bytes ||
         entry.uri !== expectedUri) {
       throw new Error("evaluator mapping does not match a pinned private data.lock entry");
+    }
+  }
+  if (lock.public_equivalent_sha256 !== undefined) {
+    const shared = lock.public_equivalent_sha256;
+    if (!Array.isArray(shared) || !shared.length ||
+        JSON.stringify(shared) !== JSON.stringify([...new Set(shared)].sort()) ||
+        shared.some(sha => typeof sha !== "string" || !/^[a-f0-9]{64}$/.test(sha) ||
+          !task.datasets.some(entry => entry.scope === "public" && entry.sha256 === sha &&
+            lock.files.some(file => file.sha256 === sha && file.bytes === entry.bytes)))) {
+      throw new Error("invalid explicit public-equivalent objects");
     }
   }
   return lock;
@@ -166,7 +185,7 @@ export async function prepareEvaluatorData(task: Task, output: string, options: 
   }
   for (const file of lock.files) {
     const source = cachePathFor(file.sha256, cache);
-    if (!existsSync(source)) throw new Error("private cache missing; use prepare-evaluator --fetch with an authorized HF token");
+    if (!existsSync(source)) throw new Error("private cache missing; use prepare-evaluator --fetch with the task's authorized source route");
     await checkFile(source, cache, file);
   }
   mkdirSync(dirname(root), { recursive: true, mode: 0o700 });

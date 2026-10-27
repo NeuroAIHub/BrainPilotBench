@@ -1,0 +1,18 @@
+{
+  "agent_run_started": false,
+  "official_test_scored": false,
+  "protocol": "pose and confidence diagonal shared-covariance classifier; no tuning",
+  "schema": "bpb-calms21-reference-evidence/1",
+  "source_sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427",
+  "task": "task1",
+  "train_frames": 397631,
+  "train_sequences": 56,
+  "valid_f1": 0.26137150142003684,
+  "valid_f1_by_class": {
+    "attack": 0.1501850872554204,
+    "investigation": 0.37238105067602434,
+    "mount": 0.2615483663286657
+  },
+  "valid_frames": 110107,
+  "valid_sequences": 14
+}

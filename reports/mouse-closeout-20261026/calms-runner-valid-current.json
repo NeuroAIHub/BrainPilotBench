@@ -1,0 +1,36 @@
+{
+  "frozen_files": {
+    "config.json": {
+      "bytes": 61,
+      "sha256": "db164b7918ff3a525d70f338021352e8e8718ae466fbd2a4c4b0b0f7bccdbc88"
+    },
+    "model.py": {
+      "bytes": 1630,
+      "sha256": "46ad53ea7608eb8e90319d326e32381fca71d208b9ec8c7f9444a8eb0f55f493"
+    },
+    "weights.npz": {
+      "bytes": 2854,
+      "sha256": "2c84662369b6eff3cc0f7b78b342e91b2791f135481e472f97ab752107dc6e04"
+    }
+  },
+  "image_id": "sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562",
+  "kind": "fixed-reference",
+  "metrics": {
+    "f1": 0.26137150142003684,
+    "f1_by_class": {
+      "attack": 0.1501850872554204,
+      "investigation": 0.37238105067602434,
+      "mount": 0.2615483663286657
+    },
+    "frames": 110107,
+    "sequences": 14
+  },
+  "prepared_manifest_sha256": "7028e39cbdc0f4d090e1d7fc18bf482287d52ae93f02e30e08a3c150886a4ae6",
+  "schema": "bpb-calms21-isolated-result/1",
+  "source_zip": {
+    "bytes": 457357950,
+    "sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427"
+  },
+  "split": "valid",
+  "task": "task1"
+}

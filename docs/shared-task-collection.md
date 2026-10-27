@@ -5,11 +5,11 @@
 BrainPilotBench brings brain-science and behavioral research tasks into one shared collection.
 Each task describes the problem, available data, required outputs, and evaluation method.
 Researchers can use the same task definitions with different agents and research workflows.
-The v1 collection has 112 runnable tasks: 108 additions and four retained v0 tasks.
+The v1 collection has 117 runnable tasks: 113 additions and four retained v0 tasks.
 The additions form one collection, not separate benchmark versions based on their upload dates.
 
 > [!IMPORTANT]
-> **Agent benchmark results for the 108 new v1 tasks are not yet available.**
+> **Agent benchmark results for the 113 new v1 tasks are not yet available.**
 > Task data access and evaluation code are available. Representative reference checks are not agent benchmark results.
 > Published BrainPilotBench-v0 results cover the four original tasks only.
 
@@ -32,9 +32,10 @@ This repository does not add a top-level `runtimes/` layer.
 | [Connectomics](../tasks/connectomics/celegans-structure-function-divergence/README.md) | 1 | 1 | Anatomical connectivity and signal propagation in C. elegans |
 | [Calcium imaging](../tasks/calcium-imaging/neuro-rsc-place-cell/README.md) | 1 | 0 | The retained RSC place-cell task |
 | [Invasive recordings](invasive-task-preparation.md) | 7 | 7 | Clinical ECoG/sEEG and intracortical movement, muscle, handwriting, and birdsong decoding |
-| **Total** | **112** | **108** | **Includes four retained v0 tasks.** |
+| [Mouse behavior](mouse-task-preparation.md) | 5 | 5 | CalMS21 classification and transfer, MABe22 representations and supervised pose segmentation |
+| **Total** | **117** | **113** | **Includes four retained v0 tasks.** |
 
-The five EEG candidates remain outside the 112 runnable tasks.
+Five EEG and three Airscope candidates remain outside the 117 runnable tasks.
 Invasive recordings groups `tasks/ieeg/` and `tasks/intracortical/` under one reader-facing category.
 Their canonical directories and catalog domain identifiers remain distinct.
 The v1 collection name does not replace task protocol versions or change their scoring contracts.
@@ -51,15 +52,17 @@ discovery cannot mistake it for an executable task. The catalog records all
 entries and their status; it does not publish research performance rankings.
 The catalog's `data_access` describes public Agent inputs.
 `private_data_access`, when present, describes the separate evaluator data route.
-For 29 hosted evaluator packages, `private_score_entry` identifies the explicit private scoring route.
+For 34 canonical hosted evaluator packages, `private_score_entry` identifies the explicit private scoring route.
 The default evaluation scope and scientific versions remain unchanged.
 
 ## Data and environment
 
-Large arrays and MRI files stay outside Git. The unified data layout uses
-`tasks/<category>/<task-id>/public/` at [Hugging Face revision `f50618208e3e748a8a16dfb6138e335f033d603c`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/f50618208e3e748a8a16dfb6138e335f033d603c/tasks).
-The collection hosts public data for 111 tasks, including BCI IV-4 and the four retained v0 tasks.
+Large arrays and MRI files stay outside Git. The [unified HF layout](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks) uses `tasks/<category>/<task-id>/public/`.
+The collection hosts public data for 116 of its 117 runnable tasks, including BCI IV-4 and the four retained v0 tasks.
+Each `data.lock` selects a fixed revision, not the mutable navigation page.
 H1 remains source-only under its source Data Use Agreement.
+The five mouse tasks have public mirrors and separate private evaluator packages. Their source helpers remain available for regeneration.
+Their [preparation guide](mouse-task-preparation.md) describes the public and evaluator data routes.
 Each task guide explains the inputs, split, source terms, and required environment.
 The [data preparation record](data-preparation.md) preserves the fixed snapshots, transfer checks, and historical publication details.
 
@@ -84,11 +87,13 @@ macOS/arm64 integration run does not verify Linux/amd64 or GPU compatibility.
 
 ## Private evaluation
 
-The [maintainer workflow](private-evaluation.md) connects the hosted private snapshot to preparation and isolated Test scoring for 29 tasks.
-It includes 21 EEG tasks, six invasive tasks, brain-age MRI, and C. elegans.
+The [maintainer workflow](private-evaluation.md) connects 34 canonical hosted evaluator packages to preparation and isolated Test scoring.
+The earlier 29 cover 21 EEG tasks, six invasive tasks, brain-age MRI, and C. elegans. Five mouse tasks form the new increment.
 Private files stay in a separate owner cache and evaluator directory.
 Completed submissions are frozen before scoring; Test results use a separate result file.
 Source-only and retained legacy tasks keep their documented routes.
+Three retained legacy tasks keep their existing private routes.
+The private catalogue has 117 runnable-task entries across all access states, not 117 hosted evaluator packages.
 
 <a id="low-cost-validation"></a>
 
@@ -113,6 +118,12 @@ They do not imply that the reference, Agent, or owner Test runs were repeated.
 The later private-data integration preserves these original records and adds a separate, scope-limited delivery record.
 New reference checks cover selected private workflows, not all tasks or comparative Agent performance.
 
+All five mouse tasks passed fixed-reference CLI checks, including evaluator preparation and isolated owner Test scoring.
+Their [acceptance records](../reports/mouse-closeout-20261026/) bind task versions, contracts and data locks without publishing Test values.
+They do not claim new Agent results or exact source-paper reproduction.
+The [mouse HF publication record](../reports/mouse-hf-20261027/publication.json) adds transport evidence without rewriting those original reference records.
+It does not claim that every scientific model or historical Test run was repeated.
+
 The historical 101-task snapshot has full byte-level readback.
 The earlier invasive snapshot has metadata checks, representative anonymous downloads, and one complete M2 download/setup check.
 Those historical checks do not verify the new layout or rerun Agent experiments across v1.
@@ -133,6 +144,7 @@ npm test
 npm run test:collection
 npm run catalog:check
 npm run test:invasive-metadata
+npm run test:mouse-metadata
 npm run test:docs
 ```
 
@@ -164,7 +176,10 @@ Both dated public-data snapshots are published at their recorded fixed revisions
 The unified revision `f50618208e3e748a8a16dfb6138e335f033d603c` is published, and the scoped [delivery checks](../reports/unified-public-delivery-20261015.json) passed.
 The full collection was not redownloaded, and no Agent, model, or owner Test ran for this data migration.
 The v1 source collection entered main through [PR #75](https://github.com/NeuroAIHub/BrainPilotBench/pull/75).
-The unified download and preparation update remains on the `feat/unified-public-data-layout` review branch.
+The unified download and private evaluator update entered main through [PR #77](https://github.com/NeuroAIHub/BrainPilotBench/pull/77).
+The five mouse tasks remain under review in [PR #80](https://github.com/NeuroAIHub/BrainPilotBench/pull/80) on `feat/mouse-behavior-task-expansion`.
+Their [HF data increment](../reports/mouse-hf-20261027/publication.json) adds 974 public and 2,078 evaluator data files under the existing task directories.
+The [license audit](../reports/mouse-hf-20261027/license-audit.json) and per-task notices preserve source permissions and distinguish data terms from software licensing.
 The collection name does not bump the CLI package version or create a release tag.
 This branch does not publish an npm package or image,
 update the Cloud catalog, or change the independent research projects. Private

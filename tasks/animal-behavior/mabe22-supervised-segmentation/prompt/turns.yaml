@@ -1,0 +1,19 @@
+- send: |-
+    Build a frozen model that predicts four MABe22 mouse behaviors from re-estimated
+    three-mouse pose. Your workspace contains only `data/public/pose/train` and
+    `data/public/pose/val`, with numeric `data/public/train_labels.npz` and
+    `data/public/val_labels.npz`. Each pose file has `pose` float32
+    [1800,3,12,3] for x, y, likelihood and frame_index int32 0..1799; NaNs
+    denote missing keypoints. The label classes are chases, huddles,
+    oral_contact, and oral_genital_contact. Fit and select your method with
+    these public roles only. Submit exactly `submission/model.py`,
+    `submission/config.json`, and `submission/weights.npz`; they must reload
+    without fitting during inference. model.py must define load_model(config,
+    weights_path), returning an object with predict_proba(keypoints, scores,
+    context). Return finite independent probabilities [1800,4] in [0,1];
+    they need not sum to one. Inference runs in a pinned, network-disabled
+    container and receives complete clips without labels. The owner applies
+    a 0.5 threshold and reports macro positive F1 on frames with any grouped
+    positive behavior and source-style pose validity. Background-only false
+    alarms are outside this metric. Test pose and labels are owner-only until
+    frozen-model scoring. No GPU or network is required.

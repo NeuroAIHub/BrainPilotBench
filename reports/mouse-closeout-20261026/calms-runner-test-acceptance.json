@@ -1,0 +1,13 @@
+{
+  "schema": "bpb-calms21-test-interface-acceptance/1",
+  "task": "task1",
+  "kind": "fixed-reference",
+  "split": "test",
+  "scoring_completed": true,
+  "owner_sequences": 19,
+  "scores_public": false,
+  "owner_report": ".cache/mouse-closeout-20261026/runner/owner/calms-runner-test.json",
+  "image_id": "sha256:8a557fe4afe520f80bd13c5eb8f1a6368c011124fdb183a3347485161f734ab8",
+  "frozen_model_sha256": "46ad53ea7608eb8e90319d326e32381fca71d208b9ec8c7f9444a8eb0f55f493",
+  "source_sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427"
+}

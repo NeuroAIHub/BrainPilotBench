@@ -1,0 +1,26 @@
+{
+  "schema": "bpb-mabe-pose-inspection/1",
+  "observed_at": "2026-10-26",
+  "scope": "One pinned 1.66 MB H5 sample only; metadata inspection without reading or printing pose values or deserializing pickle attributes",
+  "source_dataset": "https://huggingface.co/datasets/WeihanLikk/ResiFuse-MABe22",
+  "source_revision": "22019237bee137b74f8211977779c822236b8402",
+  "source_path": "deeplabcut_filtered/01KZRAVLR6311AUVETI7DLC_CtdCoamW48_multi_mouse2025-11-21shuffle5_snapshot_best-180_el.h5",
+  "size_bytes": 1659308,
+  "sha256": "cbe02ed554ff58ff21a4c49e752a540d3288b96a7ecb182924f3867fdb066d17",
+  "sha256_matches_pinned_lfs_oid": true,
+  "method": "h5py 3.16.0 in an isolated cache venv inspected HDF5 keys, dataset shape/dtype and attribute names. pickletools statically scanned metadata string opcodes; no pickle loads or pose-value reads.",
+  "observed_hdf5": {
+    "root_keys": ["tracks"],
+    "data_path": "tracks/table",
+    "dataset_shape": [1801],
+    "compound_fields": {"index": "int64", "values_block_0": "float64[108]"},
+    "column_metadata_type": "pandas MultiIndex table metadata",
+    "column_level_names": ["scorer", "individuals", "bodyparts", "coords"],
+    "scorer": "DLC_CtdCoamW48_multi_mouse2025-11-21shuffle5_snapshot_best-180",
+    "individuals": ["A0", "A1", "A2"],
+    "bodyparts": ["center back", "left ear", "left forepaw", "left hindpaw", "neck", "nose", "right ear", "right forepaw", "right hindpaw", "tail base", "tail middle", "tail tip"],
+    "coords": ["x", "y", "likelihood"],
+    "column_count_consistency": "3 individuals x 12 bodyparts x 3 coords = 108 float64 columns"
+  },
+  "not_verified_by_this_sample": ["full 1810-file coverage", "pose coordinates or NaN prevalence", "frame alignment to original 1800-frame videos", "per-video model quality", "labels or split membership"]
+}

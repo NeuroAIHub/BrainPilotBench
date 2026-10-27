@@ -1,0 +1,21 @@
+- send: |-
+    Build a frozen mouse-pose representation model from the 784 disjoint
+    UserTrain clips in `data/public/probe_usertrain`. Each numeric NPZ has
+    only `keypoints` int32 [1800,3,12,2]; no six-target probe labels or
+    submission/Test clips are present in your workspace. The published
+    `data/public/probe_profile.json` describes source sequence memberships
+    and the BrainPilotBench sequence-sampling policy, but contains no label
+    values. Submit exactly `submission/model.py`, `submission/config.json`,
+    and `submission/weights.npz`; they must reload without fitting during
+    inference. model.py must define load_model(config, weights_path), returning
+    an object with embed(keypoints, scores, context). Return a finite float
+    embedding [1800,d], common 1<=d<=128, for each complete clip. A trusted
+    evaluator will extract embeddings for 1,830 submission clips and fit
+    separate balanced default Ridge probes for strain, lights, huddle, chase,
+    face sniff, and anogenital sniff from evaluator-only SubmissionTrain
+    labels. It votes three frozen 80% sequence-sampled probes per target and
+    averages positive F1 by sequence and target. The exact sampling seeds
+    0, 1, and 2 are a disclosed BrainPilotBench adaptation, not the original
+    paper's unpublished probe memberships. This task has no public Oracle
+    labels; use the owner-only private scoring route after model freeze.
+    No GPU or network is required.

@@ -1,0 +1,59 @@
+{
+  "audit_time_utc": "2026-10-26T12:52:06Z",
+  "scope": "Read-only audit of public Airscope sources for three proposed BrainPilotBench mouse tasks; no task or evaluator code changed.",
+  "pinned_git_commit": "80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98",
+  "source_urls": {
+    "repository": "https://github.com/Neurallabware/Airscope_toolbox/tree/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98",
+    "repository_tree_api": "https://api.github.com/repos/Neurallabware/Airscope_toolbox/git/trees/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98?recursive=1",
+    "neuron_bert_readme": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/README.md",
+    "neuron_bert_dataset": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/datasets/dataset_augment.py",
+    "neuron_bert_metrics": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/engine/train_engine.py",
+    "data_release_readme": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Data_release/README.md",
+    "drive_release_readme": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Data_release/README_google_drive.md",
+    "public_drive_root": "https://drive.google.com/drive/folders/1z9ibX8Ob2NnCdjQDHI7Z4tdhdspn647B",
+    "public_drive_raw_recordings": "https://drive.google.com/drive/folders/1n4SrOn43ZyrIbjGnWmpvP8xp_o9noi-H",
+    "figshare_article_api": "https://api.figshare.com/v2/articles/33942097",
+    "figshare_article": "https://doi.org/10.6084/m9.figshare.33942097.v1",
+    "supplement": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-026-11293-x/MediaObjects/41586_2026_11293_MOESM1_ESM.pdf"
+  },
+  "source_observations": [
+    "The pinned Neuron-BERT README documents tube-test win/lose prediction from dual-animal calcium signals and expects trial records in data_aligned.pkl with winner and time_start_end fields. Its reported five-fold result includes F1.",
+    "The pinned dataset code yields one sample per trial, sets label 1 when the first mouse in the pair is the winner, and swaps animal order with label inversion only during training. The pinned metric code calls sklearn f1_score with average='binary'.",
+    "The pinned repository tree contains Neuron-BERT tube-test code and model artifacts but no data_aligned.pkl or FST/TST analysis module. The data-release README names only enriched_habitat and multi_animal_interaction experiments.",
+    "The public Figshare v1 API exposes 28 named files (approximately 11.88 GB total); the only files named data_aligned.mat are associated with multi-animal interaction and enriched habitat. Its visible file list contains no tube-test data_aligned.pkl or winner-label file, and no FST/TST aligned data or machine-readable labels.",
+    "The public Drive root HTML lists code, enriched_habitat, Multi_animal_interaction, MCU_timestamps, optical_characteristic, raw_recordings, and SAM2_Mice. The unauthenticated raw_recordings folder HTML displayed frames.zip only. This is a public-page listing check, not a full authenticated Drive inventory.",
+    "Supplementary Note 4 reports FST three-phase decoding with five-fold AUC 0.957 +/- 0.02 and per-class precision/recall/F1 for struggling, swimming, and floating. It reports TST active/passive SVM accuracy 0.832 +/- 0.055 across four animals. The supplement mentions manually annotated FST behavior in Supplementary Video 10 and TST active/passive motion overlays in Video 11, but these are not identified as machine-readable label tables.",
+    "A text search of the public supplement found no definition of whether FST AUC is ROC or PR, nor a multiclass aggregation rule. The published AUC must not be operationalized until that definition is established from first-party methods or code."
+  ],
+  "task_assessments": {
+    "social_competition_trial_binary_f1": {
+      "target_metric": "binary F1 per trial",
+      "source_support": "Code specifies the sample, winner label orientation, training swap, and binary F1.",
+      "missing_public_inputs": ["Matching tube-test data_aligned.pkl trial records", "Winner labels for those trials", "Provenance and permitted train/test split for a benchmark release"],
+      "readiness": "candidate_only",
+      "reason": "A task contract can be drafted from pinned code, but public source inventory does not expose the labeled trial payload. The published multi-animal data_aligned.mat cannot be assumed equivalent."
+    },
+    "forced_swim_phase_auc": {
+      "target_metric": "AUC only",
+      "source_support": "Supplementary Note 4 identifies swimming, struggling, and floating phases and reports an AUC across five folds.",
+      "missing_public_inputs": ["FST calcium-to-phase aligned examples", "Machine-readable three-class phase labels", "AUC curve type (ROC or PR)", "Multiclass reduction/aggregation and score format", "Unit and grouping for independent split"],
+      "readiness": "candidate_only",
+      "reason": "The reported metric is not a sufficiently defined evaluator contract, and labeled input data were not located in the inspected public inventory."
+    },
+    "tail_suspension_active_passive_accuracy": {
+      "target_metric": "accuracy",
+      "source_support": "Supplementary Note 4 reports active/passive SVM decoding accuracy across four animals.",
+      "missing_public_inputs": ["TST calcium-to-state aligned examples", "Machine-readable active/passive labels", "Sampling and animal-level split specification"],
+      "readiness": "candidate_only",
+      "reason": "The public supplement names the label classes and accuracy, but the inspected release inventory does not expose benchmark-ready examples and labels."
+    }
+  },
+  "inferences_and_limits": [
+    "Absence from the inspected GitHub tree, Figshare v1 file list, and unauthenticated Drive pages does not prove the research data do not exist elsewhere or cannot be released.",
+    "FST AUC is treated as undefined rather than assumed to be ROC AUC or PR AUC.",
+    "No 3D, position-regression, or region-classification task is included in this audit batch."
+  ],
+  "next_action": "Keep all three as candidate tasks. Obtain a public first-party manifest or release for each experiment's aligned calcium examples and machine-readable labels; for FST also obtain the exact ROC/PR and multiclass AUC computation before implementing or accepting the task.",
+  "dataset_payload_downloaded": false,
+  "external_write_or_contact": false
+}

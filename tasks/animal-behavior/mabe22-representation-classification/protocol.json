@@ -1,0 +1,43 @@
+{
+  "schema": "bpb-mouse-protocol/1",
+  "id": "mabe22-representation-classification",
+  "scientific_question": "How much of the mouse experimental condition and expert-annotated social behavior is linearly decodable from learned frame embeddings?",
+  "source": {
+    "paper": "https://arxiv.org/html/2207.10553",
+    "paper_version": "arXiv:2207.10553v2",
+    "dataset": "https://data.caltech.edu/records/rdsa8-rde65",
+    "dataset_version": "CaltechDATA v1, DOI 10.22002/rdsa8-rde65",
+    "released_evaluator_repository": "https://github.com/damaggu/MABe2022",
+    "released_evaluator_sha": "234dae7098314d6035066e3028caedee3f3ee379",
+    "source_sections": ["3.1 Mouse Triplets", "Appendix C.2", "Appendix D Evaluation"]
+  },
+  "data_role": "BrainPilotBench six-target representation-learning adaptation using original Caltech submission keypoints and condition labels plus the pinned evaluator repository's separate four-manual-behavior labels and splits. No supervised behavior-segmentation model is prescribed.",
+  "tasks_in_one_suite": [
+    {"id": "strain", "level": "sequence", "classes": [0, 1]},
+    {"id": "lights", "level": "sequence", "classes": [0, 1]},
+    {"id": "huddle", "level": "frame", "classes": [0, 1]},
+    {"id": "chase", "level": "frame", "classes": [0, 1]},
+    {"id": "face_sniff", "level": "frame", "classes": [0, 1]},
+    {"id": "anogenital_sniff", "level": "frame", "classes": [0, 1]}
+  ],
+  "excluded_regression_targets": ["experiment_day", "time_of_day"],
+  "linear_evaluation": {
+    "model": "Ridge classifier, default hyperparameters, trained separately per task",
+    "class_weight": "Balanced inverse frame-class frequency calculated separately from each training subset; numeric RidgeClassifier-equivalent normal equations use alpha=1, targets -1/+1 and an unpenalized intercept.",
+    "training_subsets": "BrainPilotBench-MABe22-six-classification-sequence-probe-v1: three fixed 80% sequence subsets of each source SubmissionTrain role, floor(4*N/5), ranked by SHA256 of bpb-mabe-probe-v1/{task}/{seed}/{video_id} with public seeds 0, 1 and 2. This is an explicit Bench adaptation; the paper's exact memberships and sampling unit are not published.",
+    "frozen_profile": ".cache/mouse-closeout-20261026/mabe/public/probe_profile.json, SHA256 571a1655db4a02e44dd5c88ba228b785e84ecb7c4b2d9123d7bca7a3c94c4eca",
+    "prediction_combination": "Per-frame majority vote of three classifiers",
+    "feature_normalization": "Not prescribed by the original framework; any normalization must occur before evaluator input and must be disclosed.",
+    "metric": "F1 computed per sequence, then averaged over sequences; equal average across classification tasks in the mouse suite.",
+    "metric_kernel": "tasks/animal-behavior/_shared/mabe_metrics.py",
+    "metric_interpretation": "Positive-class binary F1 per sequence with zero for an undefined denominator, then equal sequence and task means. For a sequence-constant negative strain or lights label, even a correct all-negative prediction contributes zero to this positive-class per-sequence F1. This follows the explicit Bench convention and is not claimed identical to the released evaluator."
+  },
+  "isolation": "Agent development packet contains only numeric-only 784 user-train keypoint clips and the published frozen membership profile. Source user-train annotations, all 1,830 submission keypoint clips, SubmissionTrain probe labels, and Test 1/Test 2 labels are excluded. The frozen Agent model receives submission poses only inside isolated evaluator inference. The trusted evaluator reads evaluator/probe_labels and owner/probe_labels to fit and score the frozen probes. Internal validation feedback is maintainer-only, not a public Oracle or label export.",
+  "prepared_artifacts": {"cache_root": ".cache/mouse-closeout-20261026/mabe", "profile_sha256": "571a1655db4a02e44dd5c88ba228b785e84ecb7c4b2d9123d7bca7a3c94c4eca", "probe_preparation_manifest_sha256": "afbd02b140770597cc50a22b0501774241a011b5ac6de212e2fc69cf27a7a28f", "usertrain_preparation_manifest_sha256": "c15b1915e4752deb4e535eb60cb95bc15882bcf7677c67232a63e06aa9f2c4f2", "public_internal_validation_report": "reports/mouse-closeout-20261026/mabe-probe-internal-validation-full.json"},
+  "engineering_acceptance": "Frozen embedding export and isolated owner Test CLI checks passed; see reports/mouse-closeout-20261026/mabe22-representation-classification-cli-acceptance.json. Test values remain private. No Agent benchmark run was performed.",
+  "data_license_notice": "NOTICE.md",
+  "hosted_transport_binding": "hf-delivery.json",
+  "remaining_gates": [],
+  "released_evaluator_discrepancy": "The checked-in round2 mouse evaluator at the pinned SHA has seed [42], 10% internal holdout, a four-task mouse list and a frame-pooled score; it is not a direct implementation of the six-classification-task Appendix D recipe. Do not substitute it silently.",
+  "comparability": "This BrainPilotBench profile uses the original source sequence memberships and paper-aligned six tasks, default Ridge, three 80% probes, vote and per-sequence F1. It substitutes published Bench sequence-sampling seeds, a specified positive-F1 convention, and separate released manual-behavior labels; its score is not an exact original-MABe22 or released-evaluator score. The original split is not animal-identity-disjoint."
+}

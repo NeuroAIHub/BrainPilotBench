@@ -18,6 +18,12 @@ intracortical-birdsong:
   metrics: [normalized_spectrogram_MSE]
 psychology-behavior:
   metrics: [mean_response_nll]
+mouse-behavior-classification:
+  metrics: [F1]
+mouse-representation-classification:
+  metrics: [F1]
+mouse-supervised-segmentation:
+  metrics: [macro_f1]
 mri-brain-age:
   metrics: [test_mae]
 structure-function-divergence:

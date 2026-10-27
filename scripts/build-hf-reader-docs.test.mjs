@@ -10,8 +10,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASELINE = path.join(ROOT, '.cache/reader-docs-20261016/hf-baseline/catalog.jsonl');
 const CATALOG = path.join(ROOT, 'tasks/catalog.json');
 
-function makeMetadataFixture(scratch) {
-  const tasks = JSON.parse(readFileSync(CATALOG, 'utf8')).tasks.filter((item) => item.entry_kind === 'runnable');
+const MOUSE_IDS = new Set(['calms21-classic-classification', 'calms21-annotation-style-transfer',
+  'calms21-few-shot-behavior', 'mabe22-representation-classification', 'mabe22-supervised-segmentation']);
+
+function makeMetadataFixture(scratch, taskIds = null) {
+  const tasks = JSON.parse(readFileSync(CATALOG, 'utf8')).tasks.filter((item) =>
+    item.entry_kind === 'runnable' && (!taskIds || taskIds.has(item.task_id)));
   const manifestRoot = path.join(scratch, 'manifests');
   const catalogInput = path.join(scratch, 'catalog.jsonl');
   const rows = [];
@@ -72,7 +76,7 @@ test('the Casino catalog summary is the human task description', () => {
 
 test('all runnable task guides yield a meaningful introduction', () => {
   const tasks = JSON.parse(readFileSync(CATALOG, 'utf8')).tasks.filter((item) => item.entry_kind === 'runnable');
-  assert.equal(tasks.length, 112);
+  assert.equal(tasks.length, JSON.parse(readFileSync(CATALOG, 'utf8')).counts.runnable);
   for (const task of tasks) {
     const readme = readFileSync(path.join(ROOT, task.directory, 'README.md'), 'utf8');
     const result = extractReaderContent(readme, task.task_id);
@@ -110,8 +114,8 @@ test('build changes only reader fields and creates one card per task', () => {
     const input = readFileSync(catalogInput, 'utf8');
     const output = path.join(scratch, 'preview');
     const result = buildReaderDocs({ repoRoot: ROOT, catalogInput, manifestRoot, output, workingDraft: true });
-    assert.equal(result.tasks, 112);
-    assert.deepEqual(result.introductionSources, { 'README lead': 108, 'What the agent does': 4 });
+    assert.equal(result.tasks, 117);
+    assert.deepEqual(result.introductionSources, { 'README lead': 113, 'What the agent does': 4 });
     const oldLines = input.trimEnd().split('\n');
     const newLines = readFileSync(path.join(output, 'catalog.jsonl'), 'utf8').trimEnd().split('\n');
     assert.equal(newLines.length, oldLines.length);
@@ -151,11 +155,63 @@ test('build changes only reader fields and creates one card per task', () => {
         assert.match(card, /\[Frozen source record\]/);
       }
     }
-    assert.equal(ids.size, 112);
+    assert.equal(ids.size, 117);
     assert.deepEqual(readdirSync(output).sort(), ['catalog.jsonl', 'tasks']);
   } finally {
     rmSync(scratch, { recursive: true, force: true });
   }
+});
+
+test('a caller-frozen 112-task publication does not expand with the current 117-task catalog', () => {
+  const scratch = mkdtempSync(path.join(os.tmpdir(), 'bpb-reader-frozen-scope-'));
+  try {
+    // The fixture models the exact pre-mouse publication scope. Its row set, not
+    // current hosted availability, is the explicit publication selection.
+    const taskIds = new Set(JSON.parse(readFileSync(CATALOG, 'utf8')).tasks
+      .filter(item => item.entry_kind === 'runnable' && !MOUSE_IDS.has(item.task_id)).map(item => item.task_id));
+    assert.equal(taskIds.size, 112);
+    const { catalogInput, manifestRoot } = makeMetadataFixture(scratch, taskIds);
+    const output = path.join(scratch, 'preview');
+    const result = buildReaderDocs({ repoRoot: ROOT, catalogInput, manifestRoot, output, workingDraft: true });
+    assert.equal(result.tasks, 112);
+    const rows = readFileSync(path.join(output, 'catalog.jsonl'), 'utf8').trimEnd().split('\n').map(JSON.parse);
+    assert.deepEqual(new Set(rows.map(row => row.task_id)), taskIds);
+    assert.ok(rows.every(row => !MOUSE_IDS.has(row.task_id)));
+  } finally { rmSync(scratch, { recursive: true, force: true }); }
+});
+
+test('an explicit mouse-only manifest scope yields five cards, not the whole repository', () => {
+  const scratch = mkdtempSync(path.join(os.tmpdir(), 'bpb-reader-mouse-scope-'));
+  try {
+    const { catalogInput, manifestRoot } = makeMetadataFixture(scratch, MOUSE_IDS);
+    const output = path.join(scratch, 'preview');
+    const result = buildReaderDocs({ repoRoot: ROOT, catalogInput, manifestRoot, output, workingDraft: true });
+    assert.equal(result.tasks, 5);
+    const rows = readFileSync(path.join(output, 'catalog.jsonl'), 'utf8').trimEnd().split('\n').map(JSON.parse);
+    assert.deepEqual(new Set(rows.map(row => row.task_id)), MOUSE_IDS);
+  } finally { rmSync(scratch, { recursive: true, force: true }); }
+});
+
+test('unknown or duplicate frozen IDs and missing manifests fail before output', () => {
+  const scratch = mkdtempSync(path.join(os.tmpdir(), 'bpb-reader-bad-scope-'));
+  try {
+    const { catalogInput, manifestRoot } = makeMetadataFixture(scratch, MOUSE_IDS);
+    const original = readFileSync(catalogInput, 'utf8');
+    const output = path.join(scratch, 'preview');
+    const options = { repoRoot: ROOT, catalogInput, manifestRoot, output, workingDraft: true };
+    const rows = original.trimEnd().split('\n');
+    writeFileSync(catalogInput, `${rows.concat(rows[0]).join('\n')}\n`);
+    assert.throws(() => buildReaderDocs(options), /unknown or duplicate/);
+    const first = JSON.parse(rows[0]);
+    first.task_id = 'unreviewed-task';
+    writeFileSync(catalogInput, `${JSON.stringify(first)}\n`);
+    assert.throws(() => buildReaderDocs(options), /unknown or duplicate/);
+    writeFileSync(catalogInput, original);
+    const row = JSON.parse(rows[0]);
+    rmSync(path.join(manifestRoot, 'tasks', row.data_category, row.task_id, 'manifest.json'));
+    assert.throws(() => buildReaderDocs(options), /ENOENT/);
+    assert.equal(existsSync(output), false);
+  } finally { rmSync(scratch, { recursive: true, force: true }); }
 });
 
 test('publish mode rejects a revision that is not a local commit', () => {

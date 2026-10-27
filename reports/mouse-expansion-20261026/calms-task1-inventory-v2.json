@@ -1,0 +1,52 @@
+{
+  "schema": "bpb-calms21-local-inventory/2",
+  "task": "calms21-classic-classification",
+  "source": {
+    "url": "https://data.caltech.edu/records/s0vdx-0k302",
+    "filename": "task1_classic_classification.zip",
+    "bytes": 457357950,
+    "md5": "8a02654fddae28614ee24a6a082261b8",
+    "sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427"
+  },
+  "local_environment": {
+    "python": "3.13.0",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.2",
+    "ijson": "3.4.0",
+    "isolation": "local venv under .cache/mouse-expansion-20261026/calms/venv; no global package changes"
+  },
+  "script_sha256": {
+    "tasks/animal-behavior/_shared/calms_prepare.py": "108c878a4402bae2caea4359a4ac6728acac442125e10f9d249cb61ee97742a1",
+    "tasks/animal-behavior/_shared/calms_metrics.py": "550498322c69e75b2a259068e25ba8f97b1590a66e02504ee964679de61ab63f",
+    "tasks/animal-behavior/_shared/calms_reference.py": "b47d330890a648d592e0064052047f24fb40e2127cec0a71c0304bf736c4df58",
+    "tasks/animal-behavior/_shared/calms_requirements.txt": "c0f1a3c0261c17c682970447cc6bd4d66d32e7aaa7e4325122fe280a55512798"
+  },
+  "executed_preparation_script_sha256": "f2f35deae1259596003498f7bb2ac01dad1a161061277468b772d72fe9f4bfdf",
+  "script_hash_note": "V2 preparation and reference ran before a CLI-only verify-prepared option was added to calms_prepare.py. The executed hash was reconstructed from the final file by reversing that exact CLI-only patch. The final script hash above was used for the later full verification and tests; preparation and metric logic did not change.",
+  "prepared_v2": {
+    "path": ".cache/mouse-expansion-20261026/calms/task1-prepared-v2",
+    "public_manifest_sha256": "7028e39cbdc0f4d090e1d7fc18bf482287d52ae93f02e30e08a3c150886a4ae6",
+    "owner_test_manifest_sha256": "634f5bbda4477e99d6459d9cce87330a41ea362a6358c59ca3407856e68a8c73",
+    "completion_sha256": "9842547d1d5034e13a0eade75725b416796ad557cf6a647adf16689e96aa6415",
+    "per_npz_bytes_and_sha256_verified": true,
+    "exact_public_and_owner_file_sets_verified": true,
+    "train_sequences": 56,
+    "train_frames": 397631,
+    "valid_sequences": 14,
+    "valid_frames": 110107,
+    "owner_test_sequences": 19,
+    "owner_test_frames": 262107
+  },
+  "reference": {
+    "report": "reports/mouse-expansion-20261026/calms-task1-reference-v2.json",
+    "report_sha256": "c027fe38e7a9e1c0781cb08d2313d96c4285fb16125935deb4fa9524552c861d",
+    "derived_valid_f1": 0.26137150142003684,
+    "official_test_scored": false,
+    "agent_run_started": false
+  },
+  "supersedes": [
+    "reports/mouse-expansion-20261026/calms-task1-preparation.json",
+    "reports/mouse-expansion-20261026/calms-task1-reference.json"
+  ],
+  "supersession_reason": "The earlier local preparation did not bind each NPZ file by bytes and SHA-256. It is retained as historical output, not acceptance evidence."
+}

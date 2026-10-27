@@ -1,0 +1,37 @@
+{
+  "f1": 0.13684564365325366,
+  "tasks": {
+    "strain": {
+      "f1": 0.366801780842945,
+      "fit_videos": 90,
+      "validation_videos": 10
+    },
+    "lights": {
+      "f1": 0.37834965137979265,
+      "fit_videos": 90,
+      "validation_videos": 10
+    },
+    "huddle": {
+      "f1": 0.061484918793503485,
+      "fit_videos": 90,
+      "validation_videos": 10
+    },
+    "chase": {
+      "f1": 0.003592814371257485,
+      "fit_videos": 90,
+      "validation_videos": 10
+    },
+    "face_sniff": {
+      "f1": 0.00961203089257808,
+      "fit_videos": 90,
+      "validation_videos": 10
+    },
+    "anogenital_sniff": {
+      "f1": 0.0012326656394453005,
+      "fit_videos": 90,
+      "validation_videos": 10
+    }
+  },
+  "scope": "public SubmissionTrain internal holdout only",
+  "max_train_videos": 100
+}
