@@ -1,0 +1,12 @@
+# Server bootstrap constraints, NOT a validated transitive lock.
+# setup-server.sh records pip freeze after resolution. Validate that environment
+# on the target server before distributing an immutable worker image.
+numpy==1.26.4
+pandas>=1.5,<3
+scikit-learn>=1.6,<1.8
+torch>=2.2,<3
+transformers>=4.51,<5
+accelerate>=0.26,<2
+netCDF4>=1.6,<2
+brainscore-core==2.1
+brainscore-language @ git+https://github.com/brain-score/language.git@3b4fde5d6f53a69c652c7a1128397549995547b0

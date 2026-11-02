@@ -2,6 +2,7 @@
 import hashlib
 import json
 import math
+import sys
 from pathlib import Path
 
 PROFILE = 'synthetic-profile-descriptive-v2'
@@ -9,6 +10,17 @@ TASK_ID = 'alignment-profile-synthetic'
 VERSION = '0.2'
 ANSWER_SCHEMA = 'bpb-profile-answers/2'
 MAX_BYTES = 2_000_000
+REAL_PROFILE = 'pereira-subject-material-descriptive-v1'
+REAL_TASK_ID = 'alignment-pereira2018-profile'
+REAL_VERSION = '0.1-server-draft'
+
+
+def real_packet_module():
+    shared = Path(__file__).resolve().parents[3] / 'alignment' / '_shared'
+    if str(shared) not in sys.path:
+        sys.path.insert(0, str(shared))
+    from real_brainscore import profile_packet
+    return profile_packet
 
 
 class ContractError(ValueError):
@@ -63,6 +75,11 @@ def mean(values):
 
 
 def validate_packet(packet):
+    if isinstance(packet, dict) and packet.get('schema') == 'bpb-real-profile-packet/1':
+        try:
+            return real_packet_module().validate_real_packet(packet)
+        except ValueError as exc:
+            raise ContractError(str(exc)) from exc
     if not isinstance(packet, dict) or packet.get('schema') != 'bpb-profile-packet/1' or packet.get('synthetic_only') is not True:
         raise ContractError('only synthetic profile packets are supported')
     if packet.get('protocol_id') != PROFILE:
@@ -118,6 +135,8 @@ def load_packet(path):
 
 
 def profile(packet, dataset_id):
+    if packet.get('schema') == 'bpb-real-profile-packet/1':
+        return real_packet_module().real_profile(packet, dataset_id)
     dataset = packet['datasets'][dataset_id]
     layers = packet['layers']
     by_subject = {s: {l: mean([r['score'] for r in dataset['rows'] if r['subject'] == s and r['layer'] == l]) for l in layers} for s in dataset['subjects']}

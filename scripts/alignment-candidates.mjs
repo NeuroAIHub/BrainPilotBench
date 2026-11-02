@@ -18,7 +18,7 @@ export function readAlignmentCandidates(root) {
       if (!existsSync(join(dir, file))) throw new Error(`${directory}: missing ${file}`);
     }
     const protocol = JSON.parse(readFileSync(join(dir, 'protocol.json'), 'utf8'));
-    if (protocol.allow_fallback !== false || protocol.status !== 'not-implemented-not-accepted' ||
+    if (protocol.allow_fallback !== false || !['not-implemented-not-accepted', 'implemented-not-validated'].includes(protocol.status) ||
         protocol.upstream.commit !== card.upstream_source_sha)
       throw new Error(`${directory}: candidate protocol binding/status differs`);
     return { card, directory };

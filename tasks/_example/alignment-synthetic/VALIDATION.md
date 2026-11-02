@@ -1,5 +1,11 @@
 # Offline validation record — 2026-10-23
 
+2026-11-02 note: the separate real backend and its no-fallback unit-test expectation
+were updated for a server-code handoff. At the user's request no tests, data/model
+downloads or environment installation were executed for that update; only static
+source/configuration checks were made. The historical results below do not cover
+the new real backend. See `tasks/alignment/SERVER_RUNBOOK.md` for server validation.
+
 Scope: P0/P1 offline scaffolding and synthetic P3–P5 workflow checks only.
 This is an engineering record, not a scientific acceptance or Agent benchmark result.
 

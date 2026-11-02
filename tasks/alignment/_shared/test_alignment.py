@@ -274,7 +274,7 @@ class AlignmentTests(unittest.TestCase):
         self.assertEqual(report['security_boundary'], 'container')
 
     def test_official_backend_never_falls_back(self):
-        with self.assertRaises(NotImplementedError):
+        with self.assertRaises(ValueError):
             run_official(self.inputs, self.root / 'out')
 
     def test_input_validation(self):

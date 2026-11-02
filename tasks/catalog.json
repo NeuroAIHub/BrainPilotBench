@@ -23,7 +23,7 @@
         "unit": "binary"
       },
       "source_task_id": "Pereira2018.384sentences-ridge",
-      "reason": "Real data, immutable model/tokenizer binding, official traced backend and equivalence acceptance remain pending.",
+      "reason": "Server integration code is implemented but untested; real inputs, immutable model/tokenizer binding, runtime, numerical equivalence and isolation acceptance remain pending.",
       "agent_benchmark_results": "not_available"
     },
     {

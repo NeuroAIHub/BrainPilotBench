@@ -20,7 +20,7 @@ def schema(properties=None, required=None):
 
 
 TOOL_SPECS = [
-    {'name': 'describe', 'description': 'Describe the synthetic experiment, units, and confirmation availability.', 'inputSchema': schema()},
+    {'name': 'describe', 'description': 'Describe the experiment, protocol, units, acceptance status and confirmation availability.', 'inputSchema': schema()},
     {'name': 'profile', 'description': 'Read all development-layer scores and observed subject/block summaries. Does not interpret the curve.', 'inputSchema': schema({'dataset_id': {'type': 'string'}}, ['dataset_id'])},
     {'name': 'compare', 'description': 'Paired descriptive differences on the development set. No significance test.', 'inputSchema': schema({'layer_a': {'type': 'string'}, 'layer_b': {'type': 'string'}}, ['layer_a', 'layer_b'])},
     {'name': 'stability', 'description': 'Per-subject highest/near-top layers and score gaps, plus leave-one-subject-out removal sensitivity. Describes observed subjects, not unseen-subject generalization.', 'inputSchema': schema({'layer': {'type': 'string'}}, ['layer'])},
@@ -47,7 +47,10 @@ class Engine:
             if key.startswith('layer') and value not in self.packet['layers']:
                 raise ContractError('unknown layer')
         if name == 'describe':
-            return public_context(self.packet) | {'scope': 'synthetic_only', 'inference': 'descriptive_only'}
+            return public_context(self.packet) | {
+                'scope': 'synthetic_only' if self.packet['synthetic_only'] else 'experimental_real_data',
+                'inference': 'descriptive_only',
+                'acceptance': 'synthetic_fixture' if self.packet['synthetic_only'] else 'server-validation-pending'}
         if name == 'profile':
             if args['dataset_id'] != self.packet['source_id']:
                 raise ContractError('confirmation is only accessible through generalization after commitment')
@@ -95,8 +98,10 @@ def replay(packet, journal):
 
 
 class Service:
-    def __init__(self, packet_path, journal, resume=False):
+    def __init__(self, packet_path, journal, resume=False, allow_real=False):
         self.packet = load_packet(packet_path)
+        if self.packet['synthetic_only'] is False and not allow_real:
+            raise ContractError('real packets require explicit --allow-real on the server')
         self.journal = Path(journal)
         if resume:
             self.engine, self.records = replay(self.packet, self.journal)
@@ -154,7 +159,7 @@ def serve(service, incoming, outgoing):
                 initialized = True
                 result = {'protocolVersion': PROTOCOL_VERSION, 'capabilities': {'tools': {}},
                           'serverInfo': {'name': 'bpb-alignment-profile-fixture', 'version': VERSION},
-                          'instructions': 'Synthetic descriptive measurements only. Commit before confirmation. No significance or OOD inference from a score curve.'}
+                          'instructions': 'Descriptive engineering analysis only; inspect describe for synthetic/real scope. Commit before confirmation. No significance or OOD inference from a score curve.'}
             elif method == 'ping':
                 result = {}
             elif not initialized:
@@ -183,8 +188,9 @@ def main():
     parser.add_argument('--packet', type=Path, required=True)
     parser.add_argument('--journal', type=Path, required=True)
     parser.add_argument('--resume', action='store_true')
+    parser.add_argument('--allow-real', action='store_true', help='Opt into the unvalidated real-data protocol')
     args = parser.parse_args()
-    serve(Service(args.packet, args.journal, args.resume), sys.stdin, sys.stdout)
+    serve(Service(args.packet, args.journal, args.resume, allow_real=args.allow_real), sys.stdin, sys.stdout)
 
 
 if __name__ == '__main__':

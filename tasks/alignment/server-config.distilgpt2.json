@@ -1,0 +1,9 @@
+{
+  "schema": "bpb-brainscore-server-config/1",
+  "upstream_commit": "3b4fde5d6f53a69c652c7a1128397549995547b0",
+  "benchmark": "Pereira2018.384sentences-ridge",
+  "model": {"id": "distilgpt2", "revision": null, "tokenizer_revision": null, "dtype": "float32"},
+  "layers": ["transformer.h.0", "transformer.h.1", "transformer.h.2", "transformer.h.3", "transformer.h.4", "transformer.h.5"],
+  "task1_layer": "transformer.h.5",
+  "baseline_layer": "transformer.h.5"
+}

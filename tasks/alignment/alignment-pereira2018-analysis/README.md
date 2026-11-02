@@ -1,5 +1,12 @@
 # Alignment task one: Pereira2018 analysis candidate
 
+2026-11-02 update: the real server backend is implemented as an **untested server
+draft**. See [SERVER_RUNBOOK.md](../SERVER_RUNBOOK.md) and
+[REAL_TASK1_CONTRACT.md](../REAL_TASK1_CONTRACT.md). No dependencies, model weights
+or neural data were downloaded for this implementation. This candidate remains
+non-runnable in the canonical collection; explicitly staged server tasks have
+version `0.1-server-draft` and do not constitute acceptance.
+
 **Not runnable, not data accepted, no Agent results.** The objective is correct,
 reproducible analysis of fixed cached representations and brain responses.
 `analysis_success` measures implementation correctness, not the model's brain score.

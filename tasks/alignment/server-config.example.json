@@ -1,0 +1,19 @@
+{
+  "schema": "bpb-brainscore-server-config/1",
+  "upstream_commit": "3b4fde5d6f53a69c652c7a1128397549995547b0",
+  "benchmark": "Pereira2018.384sentences-ridge",
+  "model": {
+    "id": "meta-llama/Llama-3.2-1B",
+    "revision": null,
+    "tokenizer_revision": null,
+    "dtype": "float32"
+  },
+  "layers": [
+    "model.layers.0", "model.layers.1", "model.layers.2", "model.layers.3",
+    "model.layers.4", "model.layers.5", "model.layers.6", "model.layers.7",
+    "model.layers.8", "model.layers.9", "model.layers.10", "model.layers.11",
+    "model.layers.12", "model.layers.13", "model.layers.14", "model.layers.15"
+  ],
+  "task1_layer": "model.layers.8",
+  "baseline_layer": "model.layers.15"
+}

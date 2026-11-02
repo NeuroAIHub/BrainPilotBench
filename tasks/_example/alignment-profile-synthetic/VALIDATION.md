@@ -1,5 +1,15 @@
 # Local validation — 2026-10-23
 
+## 2026-11-02 server-code handoff (not runtime validation)
+
+The service, loader, reference client and grader now accept an explicit real-data
+mode for a separately versioned, server-prepared packet. The no-fallback test was
+updated for the new loader. At the user's request, **no test suite, data download,
+model execution or environment installation was run on the Mac for this update**.
+Only source/configuration syntax and consistency checks were performed. All pass
+counts below refer to earlier revisions and do not validate the new code. Server
+commands and remaining acceptance criteria are in `tasks/alignment/SERVER_RUNBOOK.md`.
+
 Scope: **synthetic engineering checks only**. No neural dataset, model weights,
 remote fixture, package, Docker image, or paid model was downloaded/called for this
 change. Existing Node dependencies were reused locally. Python calculations use

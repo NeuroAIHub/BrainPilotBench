@@ -7,7 +7,7 @@ import math
 import os
 from pathlib import Path
 import sys
-from core import (ANSWER_SCHEMA, ContractError, PROFILE, TASK_ID, VERSION, digest, expected_answers,
+from core import (ANSWER_SCHEMA, ContractError, PROFILE, TASK_ID, VERSION, REAL_PROFILE, REAL_TASK_ID, REAL_VERSION, digest, expected_answers,
                   load_packet, read_json, write_json)
 from service import replay
 
@@ -24,14 +24,17 @@ def equivalent(actual, expected):
     return type(actual) is type(expected) and actual == expected
 
 
-def score(bundle, evidence_root):
+def score(bundle, evidence_root, allow_real=False):
     bundle = Path(bundle).resolve()
-    report = {'schema': 'bpb-profile-grade/1', 'synthetic_only': True, 'state': 'scoring_failed',
+    task_id, version, profile_id = (REAL_TASK_ID, REAL_VERSION, REAL_PROFILE) if allow_real else (TASK_ID, VERSION, PROFILE)
+    report = {'schema': 'bpb-profile-grade/1', 'synthetic_only': not allow_real, 'state': 'scoring_failed',
               'profile_analysis_success': None, 'question_results': [], 'prose_review': 'not_assessed'}
+    if allow_real:
+        report['acceptance'] = 'server-validation-pending'
     artifacts = bundle / 'artifacts'
     try:
         meta = read_json(bundle / 'meta.json')
-        if meta.get('taskId') != TASK_ID or meta.get('taskVersion') != VERSION or not meta.get('agent'):
+        if meta.get('taskId') != task_id or meta.get('taskVersion') != version or not meta.get('agent'):
             raise ContractError('submission identity mismatch')
         if artifacts.is_symlink():
             raise ContractError('artifact directory symlink')
@@ -44,7 +47,7 @@ def score(bundle, evidence_root):
             raise ContractError('missing or oversized report')
         if not isinstance(answers, dict) or set(answers) != {'schema', 'protocol_id', 'packet_sha256', 'questions'}:
             raise ContractError('invalid answer envelope')
-        if answers['schema'] != ANSWER_SCHEMA or answers['protocol_id'] != PROFILE or not isinstance(answers['questions'], dict) or set(answers['questions']) != {'q1', 'q2', 'q3', 'q4'}:
+        if answers['schema'] != ANSWER_SCHEMA or answers['protocol_id'] != profile_id or not isinstance(answers['questions'], dict) or set(answers['questions']) != {'q1', 'q2', 'q3', 'q4'}:
             raise ContractError('all four questions are required')
     except (ContractError, ValueError, TypeError, AttributeError, OSError) as exc:
         report.update(state='submission_invalid', error=str(exc))
@@ -56,6 +59,8 @@ def score(bundle, evidence_root):
         if root == bundle or bundle in root.parents:
             raise ContractError('authoritative evidence cannot come from the submitted bundle')
         packet = load_packet(root / 'packet.json')
+        if packet['protocol_id'] != profile_id:
+            raise ContractError('operator packet and selected scoring protocol differ')
         engine, records = replay(packet, root / 'journal.jsonl')
         by_id = {r['run_id']: r for r in records}
         expected = expected_answers(packet, engine.selected or packet['baseline_layer'])
@@ -93,8 +98,9 @@ def score(bundle, evidence_root):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('bundle', type=Path)
+    parser.add_argument('--allow-real', action='store_true')
     args = parser.parse_args()
-    report = score(args.bundle, os.environ.get('BPB_ALIGNMENT_PROFILE_EVIDENCE_DIR'))
+    report = score(args.bundle, os.environ.get('BPB_ALIGNMENT_PROFILE_EVIDENCE_DIR'), allow_real=args.allow_real)
     write_json(args.bundle / 'alignment-profile-score.json', report)
     if report['state'] == 'scored':
         print('>>>>> BPB_SCORES')

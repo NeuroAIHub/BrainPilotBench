@@ -23,7 +23,8 @@ See [CONTRACT.md](CONTRACT.md), [protocol.json](protocol.json) and the
 - `solution/reference_report.py`: scripted baseline that uses the actual stdio
   service and produces the same artifacts required of an Agent.
 - `lib/grader.py`: data-only scorer, using separately supplied operator evidence.
-- `lib/official_backend.py`: explicit unsupported real-data entry, without fallback.
+- `lib/official_backend.py`: loader for an explicitly prepared real server packet,
+  without synthetic fallback. The fixture remains the default protocol.
 
 No external MCP SDK is installed. Implemented protocol subset (2025-06-18):
 initialize, initialized notifications, ping, tools/list and tools/call, with
@@ -94,6 +95,13 @@ operator/Agent storage separation. Do not label this local scaffold formally
 isolated or OOD-validated. See VALIDATION.md for what was actually checked.
 
 ## Planned real-data integration
+
+The [server development implementation](../../alignment/SERVER_RUNBOOK.md) now
+prepares separate real packets under `pereira-subject-material-descriptive-v1`.
+The service/client/grader require explicit `--allow-real`; they never silently
+interpret real scores as synthetic results. The real packet uses pooled held-out
+predictions per subject, not invented per-block score cells. No real backend or
+updated tests were executed on the Mac. The following acceptance work remains:
 
 Consume task one's accepted cached features, held-out predictions and provenance
 through a versioned backend adapter. Confirm numerical compatibility and scientific

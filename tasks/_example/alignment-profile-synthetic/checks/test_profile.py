@@ -386,7 +386,9 @@ class FixtureTest(unittest.TestCase):
         self.assertEqual(json.loads(output.getvalue())['error']['code'], -32700)
 
     def test_real_backend_does_not_fall_back(self):
-        with self.assertRaises(NotImplementedError): load_official_profile()
+        packet = self.root / 'synthetic.json'
+        write_json(packet, generate())
+        with self.assertRaises(ContractError): load_official_profile(packet)
 
 
 if __name__ == '__main__':

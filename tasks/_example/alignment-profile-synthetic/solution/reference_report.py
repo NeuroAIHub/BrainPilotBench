@@ -11,8 +11,11 @@ from core import ANSWER_SCHEMA, PROFILE, VERSION, canonical, write_json
 
 
 class Client:
-    def __init__(self, packet, journal):
-        self.process = subprocess.Popen([sys.executable, '-B', str(LIB / 'service.py'), '--packet', str(packet), '--journal', str(journal)],
+    def __init__(self, packet, journal, allow_real=False):
+        command = [sys.executable, '-B', str(LIB / 'service.py'), '--packet', str(packet), '--journal', str(journal)]
+        if allow_real:
+            command.append('--allow-real')
+        self.process = subprocess.Popen(command,
                                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         self.sequence = 0
         result = self.request('initialize', {'protocolVersion': '2025-06-18', 'capabilities': {}, 'clientInfo': {'name': 'synthetic-baseline', 'version': VERSION}})
@@ -50,8 +53,8 @@ class Client:
         self.process.stderr.close()
 
 
-def run(packet, journal, output, selected=None):
-    client = Client(packet, journal)
+def run(packet, journal, output, selected=None, allow_real=False):
+    client = Client(packet, journal, allow_real=allow_real)
     try:
         context = client.call('describe')['result']
         layers, margin = context['layers'], context['margin']
@@ -80,7 +83,7 @@ def run(packet, journal, output, selected=None):
         subject_result = st['result']
         influential = [subject for subject, removal in subject_result['leave_one_subject_out'].items()
                        if removal['selected_layer_gap_to_best'] > margin + 1e-12]
-        answers = {'schema': ANSWER_SCHEMA, 'protocol_id': PROFILE, 'packet_sha256': p['packet_sha256'], 'questions': {
+        answers = {'schema': ANSWER_SCHEMA, 'protocol_id': context['protocol_id'], 'packet_sha256': p['packet_sha256'], 'questions': {
             'q1': {'answer': {'dataset_id': context['source_id'], 'layer_means': values, 'highest_layers': top,
                              'near_top_layers': near, 'range': span, 'shape': shape}, 'evidence': [p['run_id']]},
             'q2': {'answer': {'dataset_id': context['source_id'], 'compared_layer': top[0], 'baseline_layer': context['baseline_layer'],
@@ -99,9 +102,9 @@ def run(packet, journal, output, selected=None):
         }}
         output = Path(output)
         write_json(output / 'answers.json', answers)
-        (output / 'report.md').write_text('# Synthetic profile report\n\nThis is a scripted baseline, not an Agent or biological result.\n\n'
+        (output / 'report.md').write_text('# Profile scripted baseline\n\nThis is a maintainer baseline, not an Agent benchmark result.\n\n'
             + '\n\n'.join(f'{key}: {canonical(value["answer"])}' for key, value in answers['questions'].items())
-            + '\n\nAll comparisons are descriptive fixture rules. No statistical significance, equivalence, or real OOD conclusion is claimed.\n')
+            + '\n\nComparisons use descriptive engineering rules. No statistical significance, equivalence, or real OOD conclusion is claimed.\n')
         return answers
     finally:
         client.close()
@@ -113,8 +116,9 @@ def main():
     parser.add_argument('--journal', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--selected-layer')
+    parser.add_argument('--allow-real', action='store_true')
     args = parser.parse_args()
-    run(args.packet, args.journal, args.output, args.selected_layer)
+    run(args.packet, args.journal, args.output, args.selected_layer, allow_real=args.allow_real)
 
 
 if __name__ == '__main__':

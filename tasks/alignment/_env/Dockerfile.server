@@ -1,0 +1,17 @@
+# Development server image. Resolve/pin the base digest and all dependency
+# versions after server acceptance; this Dockerfile is not a tested image.
+ARG PYTHON_BASE=python:3.11-slim-bookworm
+FROM ${PYTHON_BASE}
+RUN apt-get update && apt-get install -y --no-install-recommends git libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+COPY tasks/alignment/_env/requirements-server.txt /opt/alignment/requirements-server.txt
+RUN python -m pip install --no-cache-dir -r /opt/alignment/requirements-server.txt && python -m pip check
+COPY tasks/alignment/_shared/real_brainscore /opt/alignment/lib/real_brainscore
+COPY tasks/alignment/_shared/official_backend.py /opt/alignment/lib/official_backend.py
+COPY tasks/alignment/_shared/worker.py /opt/alignment/worker.py
+ENV PYTHONPATH=/opt/alignment/lib PYTHONDONTWRITEBYTECODE=1 \
+    HOME=/tmp HF_HOME=/tmp/huggingface XDG_CACHE_HOME=/tmp/cache \
+    BS_INSTALL_DEPENDENCIES=no HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+    OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=""
+WORKDIR /tmp
+ENTRYPOINT ["python", "/opt/alignment/worker.py"]
