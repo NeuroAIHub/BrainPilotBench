@@ -1,6 +1,8 @@
 # Forced-swimming behavior decoding
 
-**Candidate only. This task is not runnable and has no BrainPilotBench Agent results.**
+**Deferred proposal as of 2026-11-02. Excluded from the current task catalogue and this increment.**
+
+This archived proposal is not a runnable task and has no BrainPilotBench Agent results.
 
 Can cortical calcium activity distinguish swimming, struggling and floating?
 The proposed model returns continuous scores for these three states at annotated time points.

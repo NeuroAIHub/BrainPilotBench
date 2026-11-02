@@ -3,18 +3,10 @@
 The runnable [RSC place-cell task](neuro-rsc-place-cell/README.md) studies spatial coding and decoding from calcium activity.
 Its protocol and historical results remain unchanged.
 
-## Airscope candidates
+## Deferred Airscope research
 
-These three records are **not runnable** and do not increase the v1 runnable task count.
-The inspected release does not establish their complete experiment-specific data and evaluation splits.
-Social competition has a verified 17-example processed validation cache, with limitations described in its task guide.
-Paired forced-swim and tail-suspension signals and machine-readable labels were not found.
-
-| Candidate | Prediction target | Selected metric |
-|---|---|---|
-| [Social competition](airscope-social-competition/README.md) | Winner of a dual-animal tube-test trial | Binary F1 |
-| [Forced swimming](airscope-forced-swim/README.md) | Swimming, struggling or floating state | AUC only; exact definition pending |
-| [Tail suspension](airscope-tail-suspension/README.md) | Active or passive state | Accuracy |
-
-Free-behavior and enriched-habitat data cannot substitute for these experiments.
-See the [source audit](../../reports/mouse-expansion-20261026/airscope-source-audit.json) and [preparation guide](../../docs/mouse-task-preparation.md).
+The three Airscope proposals are excluded from the current catalogue and mouse-task increment.
+Their [archived protocols and evidence](../../reports/deferred-task-proposals/README.md) remain available. No data were deleted.
+The public 17-example social-competition cache could support a separately defined small task, but it has not passed a new task acceptance.
+Natural-habitat and free-interaction data do not substitute for the selected experiment-specific labels.
+The accepted additions remain the five tasks in the [mouse guide](../../docs/mouse-task-preparation.md).

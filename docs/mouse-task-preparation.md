@@ -159,14 +159,17 @@ The representation source repeats one all-zero public pose object in seven evalu
 Only those two audited hashes have explicit public-equivalent declarations. No label is shared.
 All other private objects retain the normal Agent-cache rejection rule.
 
-## Airscope remains separate
+## Airscope is deferred, not a release blocker
 
-Three [Airscope candidates](../tasks/calcium-imaging/README.md) remain outside the 117 runnable tasks.
+The three [Airscope proposals](../reports/deferred-task-proposals/README.md) are excluded from the active catalogue as of 2026-11-02.
+This increment contains the five accepted CalMS21/MABe22 tasks. Further Airscope data collection and author contact are not required to complete it.
 A deeper public-source inspection found and safely inspected 17 labeled social-competition validation examples in a processed PCA cache.
 The published checkpoint used validation for model selection. Its cached features use PCA fitted to whole recordings before each trial is extracted.
 The complete paired signals and stable trial identities remain unavailable in the inspected sources.
 With those inputs, a separate BrainPilotBench split can keep preprocessing training-only and reserve independent evaluation trials.
 Splitting only the processed cache cannot undo the earlier PCA fit or establish the full planned task.
+This does not prove label leakage or rule out a separately defined processed-feature evaluation.
+The 17-example subset is not included as a runnable task without its own protocol and acceptance.
 Public availability alone is not the reason for withholding it.
 
 Forced-swim and tail-suspension paired signal/label releases were not found in the inspected public sources.

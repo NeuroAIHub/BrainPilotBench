@@ -35,7 +35,8 @@ This repository does not add a top-level `runtimes/` layer.
 | [Mouse behavior](mouse-task-preparation.md) | 5 | 5 | CalMS21 classification and transfer, MABe22 representations and supervised pose segmentation |
 | **Total** | **117** | **113** | **Includes four retained v0 tasks.** |
 
-Five EEG and three Airscope candidates remain outside the 117 runnable tasks.
+Five EEG candidates remain outside the 117 runnable tasks.
+Three [Airscope proposals](../reports/deferred-task-proposals/README.md) are deferred and excluded from the active catalogue.
 Invasive recordings groups `tasks/ieeg/` and `tasks/intracortical/` under one reader-facing category.
 Their canonical directories and catalog domain identifiers remain distinct.
 The v1 collection name does not replace task protocol versions or change their scoring contracts.

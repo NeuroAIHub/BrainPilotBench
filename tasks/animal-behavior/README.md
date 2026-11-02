@@ -21,4 +21,4 @@ Each task's locks select immutable download revisions. Original-source helpers r
 Each task's `NOTICE.md` preserves its source licenses and attribution, including the noncommercial terms for these mirrors.
 
 The [preparation guide](../../docs/mouse-task-preparation.md) gives data access, environments, model contracts and verified CLI workflows.
-The [Airscope candidates](../calcium-imaging/README.md) concern calcium-to-behavior decoding rather than video-only behavior recognition.
+The [deferred Airscope proposals](../../reports/deferred-task-proposals/README.md) are outside this increment and the active catalogue.

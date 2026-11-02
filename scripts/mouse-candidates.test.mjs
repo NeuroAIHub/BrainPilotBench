@@ -126,3 +126,13 @@ test("candidate, directory, protocol, and intermediate preparation links are rej
   symlinkSync(f.dir, linkedDir);
   assert.throws(() => readMouseCandidates(f.root), /task directory link forbidden/);
 }));
+
+test("archived proposals outside tasks are excluded from active candidates", () => fixture(f => {
+  const archive = `reports/deferred-task-proposals/${f.name}`;
+  f.put(`${archive}/candidate.json`, JSON.stringify(f.card));
+  f.put(`${archive}/protocol.json`, '{"archived":true}\n');
+  f.put(`${archive}/README.md`, "# Deferred proposal\n");
+  rmSync(join(f.dir, "candidate.json"));
+  assert.deepEqual(readMouseCandidates(f.root), []);
+  assert.equal(JSON.parse(readFileSync(join(f.root, archive, "candidate.json"))).id, f.name);
+}));

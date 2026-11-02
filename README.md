@@ -181,9 +181,9 @@ This data and interface update does not add Agent benchmark results.
 
 Four EEG entries remain preparation-only: HMC sleep stage, HMC sleep onset, Sleep-EDF onset, and CHB-MIT seizure detection.
 Thielen2021 remains withheld. These five EEG candidates are outside the runnable task count.
-Three [Airscope candidates](tasks/calcium-imaging/README.md) remain pending experimental data or protocol definitions.
-The social-competition source has a 17-sample validation cache with PCA fitted to whole recordings before trial extraction.
-Complete signals and trial identities remain missing. They are needed for a separate BrainPilotBench split with training-only preprocessing.
+Three [Airscope proposals](reports/deferred-task-proposals/README.md) are deferred and excluded from the active catalogue.
+This increment includes the five accepted CalMS21 and MABe22 tasks. It does not depend on further Airscope data or author contact.
+The 17-example social-competition subset is retained as research material, not silently promoted to a full runnable task.
 Candidate packages and evaluator-only inputs are not included in the unified public layout.
 
 </details>

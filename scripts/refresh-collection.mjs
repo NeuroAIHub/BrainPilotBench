@@ -137,9 +137,9 @@ const ids = new Set(tasks.map(t => t.task_id));
 if (ids.size !== tasks.length) throw new Error("Duplicate catalog task IDs");
 tasks.sort((a,b) => a.task_id.localeCompare(b.task_id));
 const catalog = {
-  schema: "brainpilotbench-task-collection/1", date: "2026-10-26",
+  schema: "brainpilotbench-task-collection/1", date: "2026-11-02",
   release_status: "integration_candidate_not_released",
-  validation_policy: "Four first-batch reference checks; version-bound local invasive and five mouse task acceptances with fixed references and isolated owner Test interface checks; Airscope candidates remain outside runnable acceptance; no formal Agent results or historical private Test replay",
+  validation_policy: "Four first-batch reference checks; version-bound local invasive and five mouse task acceptances with fixed references and isolated owner Test interface checks; deferred Airscope proposals are excluded from the active catalogue; no formal Agent results or historical private Test replay",
   counts: {
     total: tasks.length, runnable: tasks.filter(t => t.entry_kind === "runnable").length,
     candidate: tasks.filter(t => t.entry_kind === "candidate").length,
