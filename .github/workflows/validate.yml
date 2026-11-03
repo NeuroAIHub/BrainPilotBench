@@ -118,7 +118,7 @@ jobs:
       - name: SAM2Mice inference isolation fixtures
         if: runner.os == 'Linux'
         run: |
-          docker build -t bpb-sam2mice-fixtures:ci -f tasks/animal-behavior/_sam2mice_tracking/Dockerfile .
+          docker build -t bpb-sam2mice-fixtures:ci -f tasks/animal-behavior/_sam2mice_tracking/Dockerfile tasks/animal-behavior/_sam2mice_tracking
           SAM2MICE_IMAGE_ID=$(docker image inspect bpb-sam2mice-fixtures:ci --format '{{.Id}}')
           SAM2MICE_TEST_IMAGE="$SAM2MICE_IMAGE_ID" .cache/sam2mice-fixtures/bin/python -B -m unittest discover -s tasks/animal-behavior/_sam2mice_tracking -p 'test_*.py'
       - name: Documentation command smoke test
