@@ -54,16 +54,16 @@ discovery cannot mistake it for an executable task. The catalog records all
 entries and their status; it does not publish research performance rankings.
 The catalog's `data_access` describes public Agent inputs.
 `private_data_access`, when present, describes the separate evaluator data route.
-For 34 canonical hosted evaluator packages, `private_score_entry` identifies the explicit private scoring route.
+For 35 canonical hosted evaluator packages, `private_score_entry` identifies the explicit private scoring route.
 The default evaluation scope and scientific versions remain unchanged.
 
 ## Data and environment
 
 Large arrays and MRI files stay outside Git. The [unified HF layout](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks) uses `tasks/<category>/<task-id>/public/`.
-The collection hosts public data for 116 of its 118 runnable tasks, including BCI IV-4 and the four retained v0 tasks.
+The collection hosts public data for 117 of its 118 runnable tasks, including BCI IV-4 and the four retained v0 tasks.
 Each `data.lock` selects a fixed revision, not the mutable navigation page.
 H1 remains source-only under its source Data Use Agreement.
-SAM2Mice tracking uses source-prepared local packets. Its [guide](sam2mice-tracking-preparation.md) covers verified reconstruction and evaluation.
+SAM2Mice tracking has verified public and private HF packets. Its [guide](sam2mice-tracking-preparation.md) covers downloads, source reconstruction and evaluation.
 The five mouse tasks have public mirrors and separate private evaluator packages. Their source helpers remain available for regeneration.
 Their [preparation guide](mouse-task-preparation.md) describes the public and evaluator data routes.
 Each task guide explains the inputs, split, source terms, and required environment.
@@ -90,14 +90,14 @@ macOS/arm64 integration run does not verify Linux/amd64 or GPU compatibility.
 
 ## Private evaluation
 
-The [maintainer workflow](private-evaluation.md) connects 34 canonical hosted evaluator packages to preparation and isolated Test scoring.
+The [maintainer workflow](private-evaluation.md) connects 35 canonical hosted evaluator packages to preparation and isolated Test scoring.
 The earlier 29 cover 21 EEG tasks, six invasive tasks, brain-age MRI, and C. elegans. Five mouse tasks form the new increment.
 Private files stay in a separate owner cache and evaluator directory.
 Completed submissions are frozen before scoring; Test results use a separate result file.
 Source-only and retained legacy tasks keep their documented routes.
 Three retained legacy tasks keep their existing private routes.
-The published HF private catalogue contains 117 task entries across all access states.
-SAM2Mice tracking adds a local source-prepared evaluator alongside that hosted catalogue.
+The published HF private catalogue contains 118 task entries across all access states.
+SAM2Mice tracking adds one hosted evaluator package to that catalogue.
 
 <a id="low-cost-validation"></a>
 
@@ -125,6 +125,7 @@ New reference checks cover selected private workflows, not all tasks or comparat
 All five mouse tasks passed fixed-reference CLI checks, including evaluator preparation and isolated owner Test scoring.
 Their [acceptance records](../reports/mouse-closeout-20261026/) bind task versions, contracts and data locks without publishing Test values.
 SAM2Mice has a separate [acceptance record](../reports/sam2mice-tracking-20261103/acceptance.json) for author GT, frozen split and isolated public/private scoring.
+Its [HF publication record](../reports/sam2mice-hf-20261103/publication.json) verifies transport of those exact scientific files.
 They do not claim new Agent results or exact source-paper reproduction.
 The [mouse HF publication record](../reports/mouse-hf-20261027/publication.json) adds transport evidence without rewriting those original reference records.
 It does not claim that every scientific model or historical Test run was repeated.

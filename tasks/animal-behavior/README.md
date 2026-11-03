@@ -1,7 +1,7 @@
 # Mouse behavior
 
 These six tasks study mouse behavior and identity tracking from real two-dimensional pose recordings and video frames.
-The five pose tasks use public HF data and separate evaluator packages. SAM2Mice tracking currently uses verified source-prepared packets.
+All six tasks use public HF data and separate evaluator packages with fixed download revisions.
 No new Agent benchmark results are available.
 
 | Task | Research question | Primary metric |
@@ -19,7 +19,8 @@ ResiFuse provides a method and protocol reference. It does not restrict the subm
 
 The [public mouse directory](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks/animal-behavior) follows the collection's existing task layout.
 Each task's locks select immutable download revisions. Original-source helpers remain available for regeneration.
-Each task's `NOTICE.md` preserves its source licenses and attribution, including the noncommercial terms for these mirrors.
+Each task's `NOTICE.md` preserves its source licenses and attribution.
+The five pose-task mirrors have source-specific noncommercial terms. SAM2Mice images and annotations use CC BY 4.0.
 
 The [preparation guide](../../docs/mouse-task-preparation.md) gives data access, environments, model contracts and verified CLI workflows.
 The [SAM2Mice preparation guide](../../docs/sam2mice-tracking-preparation.md) records its author GT, source review and isolated scoring acceptance.

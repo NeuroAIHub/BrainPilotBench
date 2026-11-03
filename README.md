@@ -38,7 +38,7 @@ From neural recordings to human choices: build models, analyze data, and submit 
 ## Project news
 
 - **2026-11-03 — SAM2Mice tracking joins v1.** Author-annotated boxes support two-dimensional mouse detection and identity tracking.
-  Source review, byte-identical reconstruction and fixed-reference public/private CLI scoring passed locally. The [task](tasks/animal-behavior/sam2mice-multi-animal-tracking/README.md) uses source-prepared data and reports MOTA and IDF1.
+  Source review, reconstruction and fixed-reference scoring passed locally. Verified public and private HF mirrors now supply the [task](tasks/animal-behavior/sam2mice-multi-animal-tracking/README.md), scored with MOTA and IDF1.
 - **2026-10-27 — Mouse data join the unified HF collection.** Five CalMS21 and MABe22 tasks now have public mirrors and separate private evaluator packages.
   Public coverage reaches 116 of 117 runnable tasks. H1 remains source-only. See the [mouse delivery record](reports/mouse-hf-20261027/publication.json).
 - **2026-10-26 — Mouse behavior joins v1.** Five CalMS21 and MABe22 tasks add frame classification, annotation transfer, few-shot behavior recognition and representation evaluation.
@@ -156,7 +156,7 @@ Each task has one directory: `tasks/<category>/<task-id>/public/`.
 Its `data.lock` pins the download revision, file sizes, and hashes. Mirroring preserves each prepared file's format and bytes.
 
 H1 uses original-source download and local preparation because its Data Use Agreement prohibits redistribution.
-The [SAM2Mice tracking task](docs/sam2mice-tracking-preparation.md) currently uses verified local source packets. Its HF mirror is pending.
+The [SAM2Mice tracking task](docs/sam2mice-tracking-preparation.md) uses pinned public and private HF packets with the author's CC BY 4.0 terms.
 The five mouse tasks use the same directory layout and pinned downloads. Original-source preparation remains available for regeneration.
 The [mouse task guide](docs/mouse-task-preparation.md) describes public preparation, private evaluation, and source-specific license notices.
 The film task's public package supports Agent preparation, but block-first scoring still requires a trusted evaluator mapping.
@@ -172,9 +172,9 @@ See the [data guide](docs/data-preparation.md) for delivery checks, fixed snapsh
 
 ### Private evaluation for maintainers
 
-The [private collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/main/tasks) provides canonical evaluator packages for 34 tasks: the earlier 29 plus five mouse tasks.
+The [private collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/main/tasks) provides canonical evaluator packages for 35 tasks, including six mouse tasks.
 Three retained legacy tasks keep their existing private routes. Each task's locks select its fixed data revision.
-SAM2Mice tracking adds a source-prepared evaluator route with isolated frozen-model scoring.
+SAM2Mice tracking uses the same hosted evaluator preparation and isolated frozen-model scoring route.
 Use `prepare-evaluator` to create an owner-only data directory, then `score --private` to evaluate a frozen submission.
 Private results go to `scores.private.json`; public validation and its results stay separate.
 The [maintainer guide](docs/private-evaluation.md) lists the commands, environments, source restrictions, and validation limits.

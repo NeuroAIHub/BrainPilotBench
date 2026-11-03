@@ -2,10 +2,11 @@
 
 ## Current unified layout
 
-The v1 collection has 118 runnable tasks. Public HF data currently cover 116 tasks, including the five CalMS21 and MABe22 additions.
-H1 uses original-source access under its Data Use Agreement. SAM2Mice tracking currently uses verified local source packets.
+The v1 collection has 118 runnable tasks. Public HF data cover 117 tasks, including the six mouse tasks.
+H1 uses original-source access under its Data Use Agreement.
 The [mouse delivery record](../reports/mouse-hf-20261027/publication.json) records the five-task mirror increment.
-The [SAM2Mice guide](sam2mice-tracking-preparation.md) describes its source preparation and isolated scoring workflow.
+The [SAM2Mice guide](sam2mice-tracking-preparation.md) describes its hosted downloads, source reconstruction and isolated scoring workflow.
+Its [publication record](../reports/sam2mice-hf-20261103/publication.json) binds 49 public files and 13 separate evaluator files to verified HF revisions.
 
 The unified layout uses `tasks/<category>/<task-id>/public/`.
 Each task's `data.lock` pins its own immutable revision, sizes and SHA-256 values.

@@ -83,9 +83,11 @@ These adaptations address assumptions in the author's input loader. They do not 
 
 ## Prepare and evaluate
 
-The task currently uses local source-prepared packets. A task-specific HF mirror is not yet published.
-The [preparation guide](../../../docs/sam2mice-tracking-preparation.md) covers source download, packet reconstruction, submission and isolated scoring.
+The public packet is hosted at HF revision `2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93`.
+The evaluator packet uses private revision `76dfee8c7228a3f4da8484b63cc6312448b14fa8` and requires authorized maintainer access.
+The [preparation guide](../../../docs/sam2mice-tracking-preparation.md) covers hosted downloads, source reconstruction, submission and isolated scoring.
 The [contract](contract.json), [public lock](data.lock) and [evaluator lock](evaluator.lock) bind the prepared bytes.
+The [delivery record](hf-delivery.json) preserves the original scientific acceptance while binding the same files to HF.
 
 The fixed reference estimates a background image and box-size statistics from Train data.
 It then uses image components and nearest-centroid assignments to detect and track mice.

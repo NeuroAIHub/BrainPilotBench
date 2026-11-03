@@ -2378,11 +2378,13 @@
       },
       "validation_record": "reports/sam2mice-tracking-20261103/acceptance.json",
       "evaluation_profile": "bpb-sam2mice-automatic-tracking-v1",
-      "data_access": "maintainer_package_required",
-      "private_data_access": "source_prepared_evaluator",
+      "hosted_data_availability": "published_public_snapshot",
+      "data_status": "published_public_package",
+      "data_access": "pinned_public_snapshot",
+      "private_data_access": "pinned_private_snapshot",
       "private_score_entry": "bp-bench score <bundle> --private --evaluator-root <owner/evaluator> --isolation docker --inference-image <digest>",
-      "data_status": "source_prepared_role_separated",
-      "agent_benchmark_results": "not_available"
+      "agent_benchmark_results": "not_available",
+      "delivery_validation_record": "tasks/animal-behavior/sam2mice-multi-animal-tracking/hf-delivery.json"
     },
     {
       "task_id": "sleep-edf",

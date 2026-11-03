@@ -1,7 +1,7 @@
 # Private evaluation for maintainers
 
 Agents work with public Train/Valid data. Maintainers evaluate a completed, frozen submission against separate Test data.
-The canonical private route supports 34 tasks: the earlier 29 plus five CalMS21 and MABe22 tasks.
+The canonical private route supports 35 tasks, including five CalMS21/MABe22 tasks and SAM2Mice tracking.
 It does not replace public validation or publish Agent benchmark results.
 
 ## Data and scope
@@ -14,14 +14,13 @@ Its `data.lock` pins the HF revision, sizes, and SHA-256 hashes.
 
 | Route | Tasks | Behavior |
 |---|---:|---|
-| Canonical hosted evaluator packages | 34 | The earlier 29 plus five mouse tasks use the commands below. |
+| Canonical hosted evaluator packages | 35 | The earlier 29 plus six mouse tasks use the commands below. |
 | Retained private tasks | 3 | BCI-IV-2a, Sleep-EDF, and TOPS keep their existing evaluator setup and scoring commands. |
 | Original-source access | 78 | Follow the source terms and task guide. No Test payload is mirrored by this route. |
-| Prepared local evaluator | 1 | SAM2Mice tracking uses verified source packets and isolated frozen-model scoring. |
 | No independent or official Test | 2 | RSC has no separate private package here. Wilson exp2 has no official Test. |
 
-The local catalogue contains 118 runnable tasks across these access states. The published HF catalogue contains 117 entries.
-The [SAM2Mice tracking guide](sam2mice-tracking-preparation.md) documents its source-prepared evaluator route.
+The local and HF catalogues contain 118 task entries across these access states.
+The [SAM2Mice tracking guide](sam2mice-tracking-preparation.md) documents its hosted evaluator route.
 The [frozen 29-task snapshot](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/62ff438a727aa5ca72c688526410930c8f1f664b/tasks) retains its original receipt.
 Its 301 data files total 8,353,488,018 bytes. Those figures describe that snapshot, not the enlarged private collection.
 The [mouse increment](../reports/mouse-hf-20261027/publication.json) adds 2,078 evaluator data files totaling 491,259,653 bytes, plus source notices and delivery metadata.
@@ -84,6 +83,11 @@ Private access protects experimental integrity. It does not add a copyright rest
 The labels were publicly available upstream, even though this workflow keeps them outside Agent workspaces.
 
 ## Score a completed submission
+
+SAM2Mice tracking uses Python 3.12 and its own pinned numerical environment and inference image.
+Its 13 evaluator files total 50,627,029 bytes and retain CC BY 4.0.
+Use the [tracking guide](sam2mice-tracking-preparation.md) for its preparation commands and source terms.
+The [tracking publication receipt](../reports/sam2mice-hf-20261103/publication.json) records its immutable HF data revision.
 
 Stop the Agent and select its final submission before Test evaluation. Do not tune the model against Test feedback.
 Use the task's inference image, pinned by an immutable digest or local image ID.

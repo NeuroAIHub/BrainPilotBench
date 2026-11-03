@@ -7,7 +7,7 @@
       "path": "manifest.json",
       "scope": "public",
       "sha256": "ee1ae98f509e07f4edf0d3853cde5c23a712ac5394806b0088600fd9b4e2528a",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/manifest.json"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/manifest.json"
     },
     {
       "bytes": 2100893,
@@ -16,7 +16,7 @@
       "path": "train/sequence-0011f2eb30e2fabb.features.npz",
       "scope": "public",
       "sha256": "87f8e804871718d040c7c13e51405db0db45e1a9ae1452bda752cea18d1d4e9e",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-0011f2eb30e2fabb.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-0011f2eb30e2fabb.features.npz"
     },
     {
       "bytes": 708,
@@ -25,7 +25,7 @@
       "path": "train/sequence-0011f2eb30e2fabb.truth.npz",
       "scope": "public",
       "sha256": "b24245278ac3607936733219b28dd45980cdd16cf45b3e8df8fc45e9febd9412",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-0011f2eb30e2fabb.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-0011f2eb30e2fabb.truth.npz"
     },
     {
       "bytes": 24372837,
@@ -34,7 +34,7 @@
       "path": "train/sequence-0e1df961f775821d.features.npz",
       "scope": "public",
       "sha256": "f293c2620bd89c1c2b73eb62790dca37028ce74c5ecc4db93f8505029e75b82c",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-0e1df961f775821d.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-0e1df961f775821d.features.npz"
     },
     {
       "bytes": 4057,
@@ -43,7 +43,7 @@
       "path": "train/sequence-0e1df961f775821d.truth.npz",
       "scope": "public",
       "sha256": "77d2025a597bc1e7e21d819b6fa206ffde0ebb8e36e81464b8160dc121379d80",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-0e1df961f775821d.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-0e1df961f775821d.truth.npz"
     },
     {
       "bytes": 688105,
@@ -52,7 +52,7 @@
       "path": "train/sequence-11c5912783badd9b.features.npz",
       "scope": "public",
       "sha256": "57b2691f3fd92678f3cbe31d9f30d496de9d7eff9959948f3451f0965edc0e5f",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-11c5912783badd9b.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-11c5912783badd9b.features.npz"
     },
     {
       "bytes": 390,
@@ -61,7 +61,7 @@
       "path": "train/sequence-11c5912783badd9b.truth.npz",
       "scope": "public",
       "sha256": "42aa7a27f47a729a9cf37f55a5ca6f6c22cdc8af9f6a895b822b12ddf84a82d6",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-11c5912783badd9b.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-11c5912783badd9b.truth.npz"
     },
     {
       "bytes": 679514,
@@ -70,7 +70,7 @@
       "path": "train/sequence-2564a1c5867802dd.features.npz",
       "scope": "public",
       "sha256": "2e3b00f460f4a7fc36f3cedc010374de9e0c777cf6d10d93be39ded0f56748b0",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-2564a1c5867802dd.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-2564a1c5867802dd.features.npz"
     },
     {
       "bytes": 396,
@@ -79,7 +79,7 @@
       "path": "train/sequence-2564a1c5867802dd.truth.npz",
       "scope": "public",
       "sha256": "385322633a787514d121811f10cb1a36b906d20742fefcf4d61f5dfe808d9ebf",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-2564a1c5867802dd.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-2564a1c5867802dd.truth.npz"
     },
     {
       "bytes": 4836877,
@@ -88,7 +88,7 @@
       "path": "train/sequence-2f92274ad6518168.features.npz",
       "scope": "public",
       "sha256": "6bd3a7674fbb4560e16aea2a260db2b6027f95520d23cb587c749f3d1be97292",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-2f92274ad6518168.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-2f92274ad6518168.features.npz"
     },
     {
       "bytes": 1268,
@@ -97,7 +97,7 @@
       "path": "train/sequence-2f92274ad6518168.truth.npz",
       "scope": "public",
       "sha256": "402862b89de56b403251307e4bc0363a0c13932b946872216b5a2fab1ee279ec",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-2f92274ad6518168.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-2f92274ad6518168.truth.npz"
     },
     {
       "bytes": 3407017,
@@ -106,7 +106,7 @@
       "path": "train/sequence-3867a6db80c5bea5.features.npz",
       "scope": "public",
       "sha256": "abc158120d7ab36c6fc7d2e9dbe22af80af66c17580e5496eaf68ec8ad0841e4",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-3867a6db80c5bea5.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-3867a6db80c5bea5.features.npz"
     },
     {
       "bytes": 968,
@@ -115,7 +115,7 @@
       "path": "train/sequence-3867a6db80c5bea5.truth.npz",
       "scope": "public",
       "sha256": "451217d4391f3817f577fb80600b638295f33fba8d0a57df4a912c5e67bdb7da",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-3867a6db80c5bea5.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-3867a6db80c5bea5.truth.npz"
     },
     {
       "bytes": 21285141,
@@ -124,7 +124,7 @@
       "path": "train/sequence-475518582ede4cf9.features.npz",
       "scope": "public",
       "sha256": "160970008569bff2e3d061d28e7fac82f01accc7e0c6928369509c309324a974",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-475518582ede4cf9.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-475518582ede4cf9.features.npz"
     },
     {
       "bytes": 3583,
@@ -133,7 +133,7 @@
       "path": "train/sequence-475518582ede4cf9.truth.npz",
       "scope": "public",
       "sha256": "565cc5951c02c148285cdd80a344eacf55e956715590b02726cf3de6c1010498",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-475518582ede4cf9.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-475518582ede4cf9.truth.npz"
     },
     {
       "bytes": 4789061,
@@ -142,7 +142,7 @@
       "path": "train/sequence-5ca2d8ffe23b7593.features.npz",
       "scope": "public",
       "sha256": "90910a7cb745e976ab042510b15add9aca9fb243c8323c78f717ea4ad1d12177",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-5ca2d8ffe23b7593.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-5ca2d8ffe23b7593.features.npz"
     },
     {
       "bytes": 1238,
@@ -151,7 +151,7 @@
       "path": "train/sequence-5ca2d8ffe23b7593.truth.npz",
       "scope": "public",
       "sha256": "b520779e522a95af68c3e5b89ccb1a50daca635ad2853010cddd0009e555028f",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-5ca2d8ffe23b7593.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-5ca2d8ffe23b7593.truth.npz"
     },
     {
       "bytes": 2074756,
@@ -160,7 +160,7 @@
       "path": "train/sequence-62c22701e8c739f4.features.npz",
       "scope": "public",
       "sha256": "ddd9bc72b7714caa9a5d0a94f43c2d339e3ede7e91724e9db7c172dbe76354fa",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-62c22701e8c739f4.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-62c22701e8c739f4.features.npz"
     },
     {
       "bytes": 658,
@@ -169,7 +169,7 @@
       "path": "train/sequence-62c22701e8c739f4.truth.npz",
       "scope": "public",
       "sha256": "16ac75ad887f299aa23e35dbbb0615be7af8eb7a21e0ac963a502a885de5c036",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-62c22701e8c739f4.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-62c22701e8c739f4.truth.npz"
     },
     {
       "bytes": 17931137,
@@ -178,7 +178,7 @@
       "path": "train/sequence-6d17ce29c05ad734.features.npz",
       "scope": "public",
       "sha256": "fcf94ce7839518b8cb0c1cdf025f776817d29ed9e47f13f80ea73caf9f11af76",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-6d17ce29c05ad734.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-6d17ce29c05ad734.features.npz"
     },
     {
       "bytes": 3313,
@@ -187,7 +187,7 @@
       "path": "train/sequence-6d17ce29c05ad734.truth.npz",
       "scope": "public",
       "sha256": "7db48b3ac2e6691dc17d0d262ff44e92953f1a156329dbba25dab566ac7ed713",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-6d17ce29c05ad734.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-6d17ce29c05ad734.truth.npz"
     },
     {
       "bytes": 2624670,
@@ -196,7 +196,7 @@
       "path": "train/sequence-8f79480115141e17.features.npz",
       "scope": "public",
       "sha256": "ae7a2b95afd1d577cc90eef4f71049001c95c86d3830a0ce752a06a2bf17df7e",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-8f79480115141e17.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-8f79480115141e17.features.npz"
     },
     {
       "bytes": 850,
@@ -205,7 +205,7 @@
       "path": "train/sequence-8f79480115141e17.truth.npz",
       "scope": "public",
       "sha256": "9ab690222326eb22af2e5f61e88d62dac07bf529b72cda7bea5ae5c8a8d905e9",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-8f79480115141e17.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-8f79480115141e17.truth.npz"
     },
     {
       "bytes": 688904,
@@ -214,7 +214,7 @@
       "path": "train/sequence-997865ee76aa5803.features.npz",
       "scope": "public",
       "sha256": "864a7e25570315cfa791fa0754071ca482c13d4b54a7654beb187c1fcd59788f",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-997865ee76aa5803.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-997865ee76aa5803.features.npz"
     },
     {
       "bytes": 388,
@@ -223,7 +223,7 @@
       "path": "train/sequence-997865ee76aa5803.truth.npz",
       "scope": "public",
       "sha256": "16a35c8e2d83e730bb8a9cfae69e5f24f67de831e1b34e48511c472a96505bd4",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-997865ee76aa5803.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-997865ee76aa5803.truth.npz"
     },
     {
       "bytes": 43626294,
@@ -232,7 +232,7 @@
       "path": "train/sequence-a0465e27cd4b88a0.features.npz",
       "scope": "public",
       "sha256": "3a271c22502418d4f586c7f861e519bf099ba32e8866154b04650e02cbafc431",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-a0465e27cd4b88a0.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-a0465e27cd4b88a0.features.npz"
     },
     {
       "bytes": 6574,
@@ -241,7 +241,7 @@
       "path": "train/sequence-a0465e27cd4b88a0.truth.npz",
       "scope": "public",
       "sha256": "1918a6d0a1bf0d85e0c069f9c361acc0ce0832b42cef7d2dc6c0a56fce995d32",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-a0465e27cd4b88a0.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-a0465e27cd4b88a0.truth.npz"
     },
     {
       "bytes": 23303055,
@@ -250,7 +250,7 @@
       "path": "train/sequence-aa25f96b7ac81501.features.npz",
       "scope": "public",
       "sha256": "24f7bc7e696e3b5142511258515a35fb2ce1a18777e15add0a6f2dc798ddd146",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-aa25f96b7ac81501.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-aa25f96b7ac81501.features.npz"
     },
     {
       "bytes": 3958,
@@ -259,7 +259,7 @@
       "path": "train/sequence-aa25f96b7ac81501.truth.npz",
       "scope": "public",
       "sha256": "98a104fe2f20eac36ad77e5f3f1fe9e9322952497f2bb6ae910f53db1e7d6840",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-aa25f96b7ac81501.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-aa25f96b7ac81501.truth.npz"
     },
     {
       "bytes": 668371,
@@ -268,7 +268,7 @@
       "path": "train/sequence-c0903a147de2259c.features.npz",
       "scope": "public",
       "sha256": "5a4331c1a1a00c1c2f5ef46c602545ac52eeb4afc2daf75346fb08e74ddb026a",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-c0903a147de2259c.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-c0903a147de2259c.features.npz"
     },
     {
       "bytes": 400,
@@ -277,7 +277,7 @@
       "path": "train/sequence-c0903a147de2259c.truth.npz",
       "scope": "public",
       "sha256": "6a2c954fee5fdf661edb9cb15c6d9b9c082192f931db28e942d8e9833c40067e",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-c0903a147de2259c.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-c0903a147de2259c.truth.npz"
     },
     {
       "bytes": 15119547,
@@ -286,7 +286,7 @@
       "path": "train/sequence-dddbd29b5c8afd55.features.npz",
       "scope": "public",
       "sha256": "fa65d6cc6bd0cfbf826f62d7b77dfc6ec016bc8b804c774acfcc3462950018b5",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-dddbd29b5c8afd55.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-dddbd29b5c8afd55.features.npz"
     },
     {
       "bytes": 2741,
@@ -295,7 +295,7 @@
       "path": "train/sequence-dddbd29b5c8afd55.truth.npz",
       "scope": "public",
       "sha256": "244dcbd579022890d5743f857b0821a680df72c54f8acc5afaa0e5f170f8766c",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-dddbd29b5c8afd55.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-dddbd29b5c8afd55.truth.npz"
     },
     {
       "bytes": 4051995,
@@ -304,7 +304,7 @@
       "path": "train/sequence-ec46bce2cec1f57b.features.npz",
       "scope": "public",
       "sha256": "e47791299ea4b1269de4bc000ab4389ac69e3d2ce13190c596ef81664ffdb8a3",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-ec46bce2cec1f57b.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-ec46bce2cec1f57b.features.npz"
     },
     {
       "bytes": 1123,
@@ -313,7 +313,7 @@
       "path": "train/sequence-ec46bce2cec1f57b.truth.npz",
       "scope": "public",
       "sha256": "ddb136e56e84e11bc46fa1748691458f3f52f8e8d3603d93305679e6fc05159e",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/train/sequence-ec46bce2cec1f57b.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/train/sequence-ec46bce2cec1f57b.truth.npz"
     },
     {
       "bytes": 693183,
@@ -322,7 +322,7 @@
       "path": "valid/sequence-33cf28bfac60937e.features.npz",
       "scope": "public",
       "sha256": "e417708a02735d893b19b3214d7eeab8222b874c74376ce772eda0fbfc446120",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-33cf28bfac60937e.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-33cf28bfac60937e.features.npz"
     },
     {
       "bytes": 394,
@@ -331,7 +331,7 @@
       "path": "valid/sequence-33cf28bfac60937e.truth.npz",
       "scope": "public",
       "sha256": "bfce766272b29252bf4945bd8c6f6193acb9ee71e8d166a8a181626d40d76271",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-33cf28bfac60937e.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-33cf28bfac60937e.truth.npz"
     },
     {
       "bytes": 680756,
@@ -340,7 +340,7 @@
       "path": "valid/sequence-3547a3d28165ddd9.features.npz",
       "scope": "public",
       "sha256": "8ed6d6d53ffe48040cc5f67f21609673754d0ba8fc9f84781f40e738e7aa235c",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-3547a3d28165ddd9.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-3547a3d28165ddd9.features.npz"
     },
     {
       "bytes": 397,
@@ -349,7 +349,7 @@
       "path": "valid/sequence-3547a3d28165ddd9.truth.npz",
       "scope": "public",
       "sha256": "660b8f7492cf3fde9687cfb7aeb7152590eb9e0eea805e8c55816e5c2f73ee38",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-3547a3d28165ddd9.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-3547a3d28165ddd9.truth.npz"
     },
     {
       "bytes": 1378932,
@@ -358,7 +358,7 @@
       "path": "valid/sequence-55043e603f68c0eb.features.npz",
       "scope": "public",
       "sha256": "0e19b306e338a00194326ac00c6ddd03bef84ba39105353cb5528e2d70022681",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-55043e603f68c0eb.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-55043e603f68c0eb.features.npz"
     },
     {
       "bytes": 551,
@@ -367,7 +367,7 @@
       "path": "valid/sequence-55043e603f68c0eb.truth.npz",
       "scope": "public",
       "sha256": "9f566e2ae3c9d401868f7ced6617ef02fd51b016e14b88eb7745665de4f8af1d",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-55043e603f68c0eb.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-55043e603f68c0eb.truth.npz"
     },
     {
       "bytes": 665853,
@@ -376,7 +376,7 @@
       "path": "valid/sequence-a38dfa4f09016695.features.npz",
       "scope": "public",
       "sha256": "a3dff4a8a9b5bccbb3a116555a1147a3bf55bf96d1967a2d117afff63c41b09d",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-a38dfa4f09016695.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-a38dfa4f09016695.features.npz"
     },
     {
       "bytes": 389,
@@ -385,7 +385,7 @@
       "path": "valid/sequence-a38dfa4f09016695.truth.npz",
       "scope": "public",
       "sha256": "ec2759ece970b49d8ab41ff12fc465014b00c74558c2235fa6fb0aa781053ba8",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-a38dfa4f09016695.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-a38dfa4f09016695.truth.npz"
     },
     {
       "bytes": 3381482,
@@ -394,7 +394,7 @@
       "path": "valid/sequence-b80b0cd395958ca2.features.npz",
       "scope": "public",
       "sha256": "148d8b256df3ad8d063a2c9d6068bb66c5d62e5edcfa605231ed509f4ba197b9",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-b80b0cd395958ca2.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-b80b0cd395958ca2.features.npz"
     },
     {
       "bytes": 949,
@@ -403,7 +403,7 @@
       "path": "valid/sequence-b80b0cd395958ca2.truth.npz",
       "scope": "public",
       "sha256": "3565bfc742056e2e4f4c8177600f6fc5193ea09bb8cd12444de9df083b84bbdd",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-b80b0cd395958ca2.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-b80b0cd395958ca2.truth.npz"
     },
     {
       "bytes": 8199798,
@@ -412,7 +412,7 @@
       "path": "valid/sequence-caac9a9feef18c55.features.npz",
       "scope": "public",
       "sha256": "7dad49984d42325bdf60dc775828911a94c12c63c3c78a30e390a6eb2391397f",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-caac9a9feef18c55.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-caac9a9feef18c55.features.npz"
     },
     {
       "bytes": 1689,
@@ -421,7 +421,7 @@
       "path": "valid/sequence-caac9a9feef18c55.truth.npz",
       "scope": "public",
       "sha256": "559765b7184269fb4c47848777740b86f05b8524ae4aac61dbe5bd0114444f98",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-caac9a9feef18c55.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-caac9a9feef18c55.truth.npz"
     },
     {
       "bytes": 23036098,
@@ -430,7 +430,7 @@
       "path": "valid/sequence-d0af6d30603b4a8f.features.npz",
       "scope": "public",
       "sha256": "ee8e16befad728e1f5bf36b9297932d00fe54ba84f2ea2dd4dee2dc458218125",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-d0af6d30603b4a8f.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-d0af6d30603b4a8f.features.npz"
     },
     {
       "bytes": 3806,
@@ -439,7 +439,7 @@
       "path": "valid/sequence-d0af6d30603b4a8f.truth.npz",
       "scope": "public",
       "sha256": "4b769f9b5b88439d8a3a08b2ed8e4a1ce3f956a7ed2731b2032c59417985c0e3",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/public/valid/sequence-d0af6d30603b4a8f.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93/tasks/animal-behavior/sam2mice-multi-animal-tracking/public/valid/sequence-d0af6d30603b4a8f.truth.npz"
     },
     {
       "bytes": 5229,
@@ -447,7 +447,7 @@
       "name": "evaluator__manifest.json",
       "scope": "private",
       "sha256": "2cf74d5e471981856932b08ad7cea7e2761a328362502f5776aeeededb370fae",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/manifest.json"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/manifest.json"
     },
     {
       "bytes": 685120,
@@ -455,7 +455,7 @@
       "name": "evaluator__test__sequence-35e4e44c3d3c419b.features.npz",
       "scope": "private",
       "sha256": "53f245c0802c05f380350149e96a81faca9a6ef906b75cba91a5d6db97bee1ac",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-35e4e44c3d3c419b.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-35e4e44c3d3c419b.features.npz"
     },
     {
       "bytes": 392,
@@ -463,7 +463,7 @@
       "name": "evaluator__test__sequence-35e4e44c3d3c419b.truth.npz",
       "scope": "private",
       "sha256": "b4b46392b7eb72effa39457dcbbf68b5eda2c265d05fed10d71136772447c839",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-35e4e44c3d3c419b.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-35e4e44c3d3c419b.truth.npz"
     },
     {
       "bytes": 25616332,
@@ -471,7 +471,7 @@
       "name": "evaluator__test__sequence-785a8dccb27eac11.features.npz",
       "scope": "private",
       "sha256": "d20deb168ca8f985213e07d92aaba5f8dec8716015ee7520a8e535bde0db2535",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-785a8dccb27eac11.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-785a8dccb27eac11.features.npz"
     },
     {
       "bytes": 4084,
@@ -479,7 +479,7 @@
       "name": "evaluator__test__sequence-785a8dccb27eac11.truth.npz",
       "scope": "private",
       "sha256": "7e2837cdaac3069637530a32c654392b27dcc87ce3a20348f07a85eefab4754d",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-785a8dccb27eac11.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-785a8dccb27eac11.truth.npz"
     },
     {
       "bytes": 691913,
@@ -487,7 +487,7 @@
       "name": "evaluator__test__sequence-954ea1192c96649e.features.npz",
       "scope": "private",
       "sha256": "de56aaaefea9ef2432dd4683e86c29634b8b70c49d8a5d285e65e16bcac44df0",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-954ea1192c96649e.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-954ea1192c96649e.features.npz"
     },
     {
       "bytes": 388,
@@ -495,7 +495,7 @@
       "name": "evaluator__test__sequence-954ea1192c96649e.truth.npz",
       "scope": "private",
       "sha256": "d84162a0f2de9e1b46bfaef77d51ce3f957320f44aae32826dbff5e04e5044d9",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-954ea1192c96649e.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-954ea1192c96649e.truth.npz"
     },
     {
       "bytes": 11449137,
@@ -503,7 +503,7 @@
       "name": "evaluator__test__sequence-a20cee09ce83b93c.features.npz",
       "scope": "private",
       "sha256": "701b9d08ac20a18027501d84da606f845e77825cdfb03c9ea4395f77b9603e11",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-a20cee09ce83b93c.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-a20cee09ce83b93c.features.npz"
     },
     {
       "bytes": 2142,
@@ -511,7 +511,7 @@
       "name": "evaluator__test__sequence-a20cee09ce83b93c.truth.npz",
       "scope": "private",
       "sha256": "f2b193ddfbb16af3a5b441e3a4cf6393f5c2ab8aa385c2df0c39ef075cb1ba7a",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-a20cee09ce83b93c.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-a20cee09ce83b93c.truth.npz"
     },
     {
       "bytes": 4083868,
@@ -519,7 +519,7 @@
       "name": "evaluator__test__sequence-bee18e20531c9c89.features.npz",
       "scope": "private",
       "sha256": "ac5658cc1178684b75ead0de34ccfa1ec1463ce6600889189bdfa412f7224b46",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-bee18e20531c9c89.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-bee18e20531c9c89.features.npz"
     },
     {
       "bytes": 1046,
@@ -527,7 +527,7 @@
       "name": "evaluator__test__sequence-bee18e20531c9c89.truth.npz",
       "scope": "private",
       "sha256": "68ed95be9efbac287a10d872d15243245c9d6422aaaed2736f7e56c0ebf48ac8",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-bee18e20531c9c89.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-bee18e20531c9c89.truth.npz"
     },
     {
       "bytes": 8085768,
@@ -535,7 +535,7 @@
       "name": "evaluator__test__sequence-d97f8b537ce0d76f.features.npz",
       "scope": "private",
       "sha256": "26ee0ddce4d43651f6a0eae42c7585a19cd9a51b8f089e90bd16da903780ab80",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-d97f8b537ce0d76f.features.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-d97f8b537ce0d76f.features.npz"
     },
     {
       "bytes": 1610,
@@ -543,7 +543,7 @@
       "name": "evaluator__test__sequence-d97f8b537ce0d76f.truth.npz",
       "scope": "private",
       "sha256": "15a9ebc65a0b8857972860aa9a5be9861c5efb7de0543109c0f17db44b31ab69",
-      "uri": "local://tasks/animal-behavior/sam2mice-multi-animal-tracking/c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d/evaluator/test/sequence-d97f8b537ce0d76f.truth.npz"
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@76dfee8c7228a3f4da8484b63cc6312448b14fa8/tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator/test/sequence-d97f8b537ce0d76f.truth.npz"
     }
   ]
 }

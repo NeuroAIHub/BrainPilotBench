@@ -1,0 +1,30 @@
+{
+  "content_revision": "c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d",
+  "hosted_bindings": {
+    "data.lock": "93344673f67e44a42c2a3e503a18e0e45fed8009b726c5792fa6b4cb638be228",
+    "evaluator.lock": "7de8b1407824777f8cc810207d2fccbabe5643909e6a8cc449035b2863176b96",
+    "task.yaml": "06c1c70e86283d9bc09b91525329ea97422ed011a2b795ae11814fbc799a159f"
+  },
+  "private": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+    "revision": "76dfee8c7228a3f4da8484b63cc6312448b14fa8"
+  },
+  "public": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Public",
+    "revision": "2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93"
+  },
+  "publication_receipt": "reports/sam2mice-hf-20261103/publication.json",
+  "publication_receipt_sha256": "ea980cb4468732312984ff18c6c59ea088d873593ccc34167d1fd00de688ded0",
+  "schema": "bpb-mouse-hf-delivery/1",
+  "scope": "Exact accepted scientific bytes at pinned public and private repositories. Only task availability metadata changes.",
+  "source_bindings": {
+    "contract.json": "a190263609578cdd193fad1293510f84bfd866379a245e6fbd9544d2f63e7879",
+    "data.lock": "b4faa5e18a811cfb50e69cfc150cfdbb8e70cfad4d409845e79bafce0cf2f1fd",
+    "evaluator.lock": "9f2bce4eeee3590886ae2bcf5de60f0137e56823f6021d9372c02160a6583517",
+    "task.yaml": "551fbd241d55fa25f58560d00c72ac00cb5892e24f09784ca7ea229a489dfa02"
+  },
+  "task_id": "sam2mice-multi-animal-tracking",
+  "transport_code_review": "reports/sam2mice-hf-20261103/transport-code-review.json",
+  "transport_code_review_sha256": "3a2f9bf0cf16e78a5fcabd8031bbad92f047b34ff0fa48a82217315b60e6a416",
+  "transport_only": true
+}

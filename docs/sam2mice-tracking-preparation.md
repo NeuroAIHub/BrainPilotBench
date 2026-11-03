@@ -6,7 +6,10 @@ The [task](../tasks/animal-behavior/sam2mice-multi-animal-tracking/README.md) pr
 Its labels come from the author's tracking benchmark ground truth.
 Complete archive verification, source decoding, six-frame visual review and split freezing are complete.
 Full local CLI acceptance passed, including public preparation, a frozen reference, evaluator preparation and isolated public/private scoring.
-No formal Agent result or task-specific HF mirror is published.
+Public and private HF mirrors are published. Formal Agent benchmark results remain unavailable.
+The public packet has 49 files and 210,345,243 bytes. The evaluator packet has 13 files and 50,627,029 bytes.
+The [publication receipt](../reports/sam2mice-hf-20261103/publication.json) records their fixed revisions and representative download checks.
+The [transport check](../reports/sam2mice-hf-20261103/transport-acceptance.json) also passed fresh public-workspace and authorized evaluator preparation through the normal CLI.
 
 The prepared source has 421 image/annotation pairs from one recording.
 The frozen intervals retain 251 Train frames, 56 Valid frames and 75 Test frames.
@@ -56,7 +59,25 @@ npm run build
 The requirements pin NumPy 1.26.4, SciPy 1.12.0, Pillow 10.4.0, pandas 2.2.3 and motmetrics 1.4.0.
 The source downloader uses the Python standard library and normal HTTPS certificate verification.
 
-## Download and prepare the source
+## Download the hosted public packet
+
+Set a public cache and prepare a workspace from the pinned HF files.
+Public downloads require no login.
+
+```sh
+export BPB_CACHE_ROOT="$TRACK_ROOT/public-cache"
+node dist/cli.js fetch sam2mice-multi-animal-tracking --public
+node dist/cli.js prepare sam2mice-multi-animal-tracking --workspace /absolute/agent-workspace
+```
+
+The public lock pins revision `2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93`.
+The private evaluator lock pins `76dfee8c7228a3f4da8484b63cc6312448b14fa8`.
+Reader-card revisions can advance while these scientific data revisions stay fixed.
+Continue with the submission and scoring sections below for normal use.
+
+## Optional original-source preparation
+
+Maintainers can reconstruct the accepted packets from the original archive and the frozen reviews.
 
 Download the pinned archive.
 
@@ -106,19 +127,12 @@ Build the public and evaluator packets from the checked-in reviews.
 ```
 
 `--materialize-only` compares regenerated metadata against the checked-in contract and locks.
+It preserves the active HF download bindings through the verified delivery record.
 Changed bytes or partial bindings produce an error.
 The public packet contains Train/Valid frames and labels. The evaluator packet contains Test frames and labels.
 Both packets use numeric NPZ files and exact manifest bindings.
 
-## Prepare a public workspace
-
-Set a public cache and fetch the prepared public packet.
-
-```sh
-export BPB_CACHE_ROOT="$TRACK_ROOT/public-cache"
-BPB_LOCAL_DATA_ROOT="$TRACK_ROOT/local-source" node dist/cli.js fetch sam2mice-multi-animal-tracking --public
-node dist/cli.js prepare sam2mice-multi-animal-tracking --workspace /absolute/agent-workspace
-```
+## Submission interface
 
 The feature NPZ contains only `frames`, with dtype uint8 and shape `[T,H,W,3]`.
 The truth NPZ contains `detections`, with dtype float64 and shape `[N,6]`.
@@ -166,9 +180,10 @@ Only its bounded prediction file is writable. The trusted host loads the labels 
 ## Prepare the evaluator and score Test
 
 After the submission is frozen, prepare the evaluator on the trusted owner host.
+Use an authorized HF login cache or an `HF_TOKEN` environment variable on that host.
 
 ```sh
-BPB_LOCAL_DATA_ROOT="$TRACK_ROOT/local-source" node dist/cli.js prepare-evaluator sam2mice-multi-animal-tracking \
+node dist/cli.js prepare-evaluator sam2mice-multi-animal-tracking \
   --fetch --evaluator-root "$TRACK_ROOT/owner/evaluator" --cache-root "$TRACK_ROOT/owner-cache"
 node dist/cli.js score "$TRACK_BUNDLE" --private \
   --evaluator-root "$TRACK_ROOT/owner/evaluator" --isolation docker \

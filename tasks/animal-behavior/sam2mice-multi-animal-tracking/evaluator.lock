@@ -79,8 +79,8 @@
       "sha256": "15a9ebc65a0b8857972860aa9a5be9861c5efb7de0543109c0f17db44b31ab69"
     }
   ],
-  "repo_id": "local-prepared",
-  "revision": "c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d",
-  "schema": "bpb-evaluator-source/1",
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "76dfee8c7228a3f4da8484b63cc6312448b14fa8",
+  "schema": "bpb-evaluator-data/1",
   "task_id": "sam2mice-multi-animal-tracking"
 }
