@@ -9,7 +9,7 @@ From neural recordings to human choices: build models, analyze data, and submit 
 </p>
 
 <p>
-  <strong>v1 task collection</strong> &nbsp;·&nbsp; <strong>117 runnable tasks</strong> &nbsp;·&nbsp; <strong>7 data categories</strong>
+  <strong>v1 task collection</strong> &nbsp;·&nbsp; <strong>118 runnable tasks</strong> &nbsp;·&nbsp; <strong>7 data categories</strong>
 </p>
 
 <p>
@@ -37,6 +37,8 @@ From neural recordings to human choices: build models, analyze data, and submit 
 
 ## Project news
 
+- **2026-11-03 — SAM2Mice tracking joins v1.** Author-annotated boxes support two-dimensional mouse detection and identity tracking.
+  Source review, byte-identical reconstruction and fixed-reference public/private CLI scoring passed locally. The [task](tasks/animal-behavior/sam2mice-multi-animal-tracking/README.md) uses source-prepared data and reports MOTA and IDF1.
 - **2026-10-27 — Mouse data join the unified HF collection.** Five CalMS21 and MABe22 tasks now have public mirrors and separate private evaluator packages.
   Public coverage reaches 116 of 117 runnable tasks. H1 remains source-only. See the [mouse delivery record](reports/mouse-hf-20261027/publication.json).
 - **2026-10-26 — Mouse behavior joins v1.** Five CalMS21 and MABe22 tasks add frame classification, annotation transfer, few-shot behavior recognition and representation evaluation.
@@ -57,7 +59,7 @@ BrainPilotBench evaluates AI agents on research problems in brain science and hu
 Agents receive task instructions and public data, develop an analysis or model, and submit artifacts for task-specific evaluation.
 The tasks include decoding neural activity, predicting human responses, and comparing anatomical connectivity with measured signal propagation.
 
-**BrainPilotBench v1 brings 117 tasks across seven data categories into one shared collection.**
+**BrainPilotBench v1 brings 118 tasks across seven data categories into one shared collection.**
 Each task specifies its data, research objective, submission format, and evaluation protocol.
 The repository supplies environments and scoring code so that different agents can work on the same problem.
 
@@ -75,7 +77,7 @@ The v1 collection name does not change individual task protocols or transfer res
 ## Evaluation status
 
 > [!IMPORTANT]
-> **Agent benchmark results for the 113 new v1 tasks are not yet available.**
+> **Agent benchmark results for the 114 new v1 tasks are not yet available.**
 > Data checks and fixed-reference runs cover selected workflows, not comparative Agent performance across the collection.
 > Published v0 results cover only the four original tasks and remain separate below.
 
@@ -83,7 +85,7 @@ The [validation guide](docs/shared-task-collection.md#reference-implementation-c
 
 ## Task suite
 
-### BrainPilotBench v1 · 117 tasks
+### BrainPilotBench v1 · 118 tasks
 
 Each task defines a research objective, the data available to the agent,
 the required outputs, and a task-specific metric.
@@ -92,12 +94,12 @@ the required outputs, and a task-specific metric.
 |---|---:|---:|---|
 | [EEG](tasks/eeg/README.md) | 25 | 23 | Motor imagery, evoked responses, sleep staging, and other scalp-EEG classification problems |
 | [Psychology](tasks/psychology/README.md) | 76 | 76 | Behavioral models of participants' choices and responses |
-| [Mouse behavior](tasks/animal-behavior/README.md) | 5 | 5 | Social behavior classification, annotation transfer, few-shot learning, and fixed-probe representation evaluation |
+| [Mouse behavior](tasks/animal-behavior/README.md) | 6 | 6 | Behavior classification, annotation transfer, few-shot learning, representation evaluation, and video identity tracking |
 | MRI | 2 | 1 | [Structural-MRI age prediction](tasks/mri/brain-age-mri/README.md) and [fMRI tonic-pain prediction](tasks/mri/tops-fmri/README.md) |
 | [Connectomics](tasks/connectomics/celegans-structure-function-divergence/README.md) | 1 | 1 | Comparison of anatomical connectivity and measured signal propagation in C. elegans |
 | [Calcium imaging](tasks/calcium-imaging/neuro-rsc-place-cell/README.md) | 1 | 0 | Place-cell analysis and decoding from calcium imaging and behavior |
 | [Invasive recordings](#invasive-recordings) | 7 | 7 | Finger flexion, film conditions, motor output, handwriting, and birdsong from invasive neural recordings |
-| **Total** | **117** | **113** | **Four v0 tasks are retained within the total.** |
+| **Total** | **118** | **114** | **Four v0 tasks are retained within the total.** |
 
 **Explore a task:** [AlexMI motor imagery](tasks/eeg/eeg-mi-barachant2012/README.md)
 · [Casino choice](tasks/psychology/psych101-lefebvre2017behavioural-exp1/README.md)
@@ -127,7 +129,7 @@ The [invasive-recording guide](docs/invasive-task-preparation.md) describes publ
 
 ### Retained v0 protocols · 4 tasks
 
-These four tasks are included in v1's 117-task total, not added on top of it.
+These four tasks are included in v1's 118-task total, not added on top of it.
 They retain their IDs, scientific protocol versions, and historical v0 results.
 
 <details>
@@ -154,6 +156,7 @@ Each task has one directory: `tasks/<category>/<task-id>/public/`.
 Its `data.lock` pins the download revision, file sizes, and hashes. Mirroring preserves each prepared file's format and bytes.
 
 H1 uses original-source download and local preparation because its Data Use Agreement prohibits redistribution.
+The [SAM2Mice tracking task](docs/sam2mice-tracking-preparation.md) currently uses verified local source packets. Its HF mirror is pending.
 The five mouse tasks use the same directory layout and pinned downloads. Original-source preparation remains available for regeneration.
 The [mouse task guide](docs/mouse-task-preparation.md) describes public preparation, private evaluation, and source-specific license notices.
 The film task's public package supports Agent preparation, but block-first scoring still requires a trusted evaluator mapping.
@@ -171,18 +174,20 @@ See the [data guide](docs/data-preparation.md) for delivery checks, fixed snapsh
 
 The [private collection](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/main/tasks) provides canonical evaluator packages for 34 tasks: the earlier 29 plus five mouse tasks.
 Three retained legacy tasks keep their existing private routes. Each task's locks select its fixed data revision.
+SAM2Mice tracking adds a source-prepared evaluator route with isolated frozen-model scoring.
 Use `prepare-evaluator` to create an owner-only data directory, then `score --private` to evaluate a frozen submission.
 Private results go to `scores.private.json`; public validation and its results stay separate.
 The [maintainer guide](docs/private-evaluation.md) lists the commands, environments, source restrictions, and validation limits.
 This data and interface update does not add Agent benchmark results.
 
 <details>
-<summary>Candidates outside the 117 runnable tasks</summary>
+<summary>Candidates outside the 118 runnable tasks</summary>
 
 Four EEG entries remain preparation-only: HMC sleep stage, HMC sleep onset, Sleep-EDF onset, and CHB-MIT seizure detection.
 Thielen2021 remains withheld. These five EEG candidates are outside the runnable task count.
-Three [Airscope proposals](reports/deferred-task-proposals/README.md) are deferred and excluded from the active catalogue.
-This increment includes the five accepted CalMS21 and MABe22 tasks. It does not depend on further Airscope data or author contact.
+Four [Airscope proposals](reports/deferred-task-proposals/README.md) are deferred and excluded from the active catalogue, including calcium-contact decoding pending label validation.
+The accepted SAM2Mice task uses the author's tracking GT.
+The earlier mouse increment contains five CalMS21 and MABe22 tasks. SAM2Mice adds a separately reviewed tracking task from the Airscope work.
 The 17-example social-competition subset is retained as research material, not silently promoted to a full runnable task.
 Candidate packages and evaluator-only inputs are not included in the unified public layout.
 

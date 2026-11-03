@@ -3,7 +3,7 @@
 ## What is available
 
 Five mouse tasks join the v1 collection through public HF mirrors and separate private evaluator packages.
-Together with the existing tasks, the checkout contains 117 runnable tasks.
+The separate [SAM2Mice tracking task](sam2mice-tracking-preparation.md) brings the checkout total to 118 runnable tasks.
 All five passed a local fixed-reference CLI workflow: public preparation, frozen submission, evaluator preparation and isolated scoring.
 These are engineering acceptance checks, not Agent benchmark results or official source-leaderboard scores.
 
@@ -159,10 +159,11 @@ The representation source repeats one all-zero public pose object in seven evalu
 Only those two audited hashes have explicit public-equivalent declarations. No label is shared.
 All other private objects retain the normal Agent-cache rejection rule.
 
-## Airscope is deferred, not a release blocker
+## Deferred Airscope neural-decoding proposals
 
-The three [Airscope proposals](../reports/deferred-task-proposals/README.md) are excluded from the active catalogue as of 2026-11-02.
-This increment contains the five accepted CalMS21/MABe22 tasks. Further Airscope data collection and author contact are not required to complete it.
+Four [Airscope proposals](../reports/deferred-task-proposals/README.md) are excluded from the active catalogue as of 2026-11-03.
+The [SAM2Mice tracking task](../tasks/animal-behavior/sam2mice-multi-animal-tracking/README.md) passed source review and isolated scoring with the author's benchmark boxes.
+The earlier pose-data increment contains five accepted CalMS21/MABe22 tasks. SAM2Mice tracking has its own source review and acceptance.
 A deeper public-source inspection found and safely inspected 17 labeled social-competition validation examples in a processed PCA cache.
 The published checkpoint used validation for model selection. Its cached features use PCA fitted to whole recordings before each trial is extracted.
 The complete paired signals and stable trial identities remain unavailable in the inspected sources.

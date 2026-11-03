@@ -5,11 +5,11 @@
 BrainPilotBench brings brain-science and behavioral research tasks into one shared collection.
 Each task describes the problem, available data, required outputs, and evaluation method.
 Researchers can use the same task definitions with different agents and research workflows.
-The v1 collection has 117 runnable tasks: 113 additions and four retained v0 tasks.
+The v1 collection has 118 runnable tasks, including 114 additions and four retained v0 tasks.
 The additions form one collection, not separate benchmark versions based on their upload dates.
 
 > [!IMPORTANT]
-> **Agent benchmark results for the 113 new v1 tasks are not yet available.**
+> **Agent benchmark results for the 114 new v1 tasks are not yet available.**
 > Task data access and evaluation code are available. Representative reference checks are not agent benchmark results.
 > Published BrainPilotBench-v0 results cover the four original tasks only.
 
@@ -32,11 +32,12 @@ This repository does not add a top-level `runtimes/` layer.
 | [Connectomics](../tasks/connectomics/celegans-structure-function-divergence/README.md) | 1 | 1 | Anatomical connectivity and signal propagation in C. elegans |
 | [Calcium imaging](../tasks/calcium-imaging/neuro-rsc-place-cell/README.md) | 1 | 0 | The retained RSC place-cell task |
 | [Invasive recordings](invasive-task-preparation.md) | 7 | 7 | Clinical ECoG/sEEG and intracortical movement, muscle, handwriting, and birdsong decoding |
-| [Mouse behavior](mouse-task-preparation.md) | 5 | 5 | CalMS21 classification and transfer, MABe22 representations and supervised pose segmentation |
-| **Total** | **117** | **113** | **Includes four retained v0 tasks.** |
+| [Mouse behavior](../tasks/animal-behavior/README.md) | 6 | 6 | CalMS21 classification and transfer, MABe22 representations and behavior segmentation, SAM2Mice video tracking |
+| **Total** | **118** | **114** | **Includes four retained v0 tasks.** |
 
-Five EEG candidates remain outside the 117 runnable tasks.
-Three [Airscope proposals](../reports/deferred-task-proposals/README.md) are deferred and excluded from the active catalogue.
+Five EEG candidates remain outside the 118 runnable tasks.
+Four [Airscope proposals](../reports/deferred-task-proposals/README.md) are deferred and excluded from the active catalogue.
+The [SAM2Mice tracking task](../tasks/animal-behavior/sam2mice-multi-animal-tracking/README.md) passed local source review and fixed-reference isolated scoring.
 Invasive recordings groups `tasks/ieeg/` and `tasks/intracortical/` under one reader-facing category.
 Their canonical directories and catalog domain identifiers remain distinct.
 The v1 collection name does not replace task protocol versions or change their scoring contracts.
@@ -59,9 +60,10 @@ The default evaluation scope and scientific versions remain unchanged.
 ## Data and environment
 
 Large arrays and MRI files stay outside Git. The [unified HF layout](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/main/tasks) uses `tasks/<category>/<task-id>/public/`.
-The collection hosts public data for 116 of its 117 runnable tasks, including BCI IV-4 and the four retained v0 tasks.
+The collection hosts public data for 116 of its 118 runnable tasks, including BCI IV-4 and the four retained v0 tasks.
 Each `data.lock` selects a fixed revision, not the mutable navigation page.
 H1 remains source-only under its source Data Use Agreement.
+SAM2Mice tracking uses source-prepared local packets. Its [guide](sam2mice-tracking-preparation.md) covers verified reconstruction and evaluation.
 The five mouse tasks have public mirrors and separate private evaluator packages. Their source helpers remain available for regeneration.
 Their [preparation guide](mouse-task-preparation.md) describes the public and evaluator data routes.
 Each task guide explains the inputs, split, source terms, and required environment.
@@ -94,7 +96,8 @@ Private files stay in a separate owner cache and evaluator directory.
 Completed submissions are frozen before scoring; Test results use a separate result file.
 Source-only and retained legacy tasks keep their documented routes.
 Three retained legacy tasks keep their existing private routes.
-The private catalogue has 117 runnable-task entries across all access states, not 117 hosted evaluator packages.
+The published HF private catalogue contains 117 task entries across all access states.
+SAM2Mice tracking adds a local source-prepared evaluator alongside that hosted catalogue.
 
 <a id="low-cost-validation"></a>
 
@@ -121,6 +124,7 @@ New reference checks cover selected private workflows, not all tasks or comparat
 
 All five mouse tasks passed fixed-reference CLI checks, including evaluator preparation and isolated owner Test scoring.
 Their [acceptance records](../reports/mouse-closeout-20261026/) bind task versions, contracts and data locks without publishing Test values.
+SAM2Mice has a separate [acceptance record](../reports/sam2mice-tracking-20261103/acceptance.json) for author GT, frozen split and isolated public/private scoring.
 They do not claim new Agent results or exact source-paper reproduction.
 The [mouse HF publication record](../reports/mouse-hf-20261027/publication.json) adds transport evidence without rewriting those original reference records.
 It does not claim that every scientific model or historical Test run was repeated.

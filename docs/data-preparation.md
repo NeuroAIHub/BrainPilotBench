@@ -2,7 +2,17 @@
 
 ## Current unified layout
 
-The v1 collection has 112 runnable tasks. The unified layout covers 111 hosted task folders.
+The v1 collection has 118 runnable tasks. Public HF data currently cover 116 tasks, including the five CalMS21 and MABe22 additions.
+H1 uses original-source access under its Data Use Agreement. SAM2Mice tracking currently uses verified local source packets.
+The [mouse delivery record](../reports/mouse-hf-20261027/publication.json) records the five-task mirror increment.
+The [SAM2Mice guide](sam2mice-tracking-preparation.md) describes its source preparation and isolated scoring workflow.
+
+The unified layout uses `tasks/<category>/<task-id>/public/`.
+Each task's `data.lock` pins its own immutable revision, sizes and SHA-256 values.
+
+## Unified layout snapshot — 2026-10-15
+
+This snapshot had 112 runnable tasks and 111 hosted task folders.
 H1 remains source-only under its source Data Use Agreement.
 The hosted tree is `tasks/<category>/<task-id>/public/` at [Hugging Face revision `f50618208e3e748a8a16dfb6138e335f033d603c`](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Public/tree/f50618208e3e748a8a16dfb6138e335f033d603c/tasks).
 It has 668 public files totaling 37,945,533,281 bytes, including the four retained v0 tasks.

@@ -1,0 +1,374 @@
+{
+  "counts": {
+    "test": {
+      "frames": 75,
+      "sequences": 6
+    },
+    "train": {
+      "frames": 251,
+      "sequences": 17
+    },
+    "valid": {
+      "frames": 56,
+      "sequences": 7
+    }
+  },
+  "evaluator_manifest_sha256": "2cf74d5e471981856932b08ad7cea7e2761a328362502f5776aeeededb370fae",
+  "image_size": [
+    1224,
+    1024
+  ],
+  "iou_threshold": 0.5,
+  "metric": "mota",
+  "owner_files": [
+    {
+      "bytes": 5229,
+      "path": "manifest.json",
+      "sha256": "2cf74d5e471981856932b08ad7cea7e2761a328362502f5776aeeededb370fae"
+    },
+    {
+      "bytes": 685120,
+      "path": "test/sequence-35e4e44c3d3c419b.features.npz",
+      "sha256": "53f245c0802c05f380350149e96a81faca9a6ef906b75cba91a5d6db97bee1ac"
+    },
+    {
+      "bytes": 392,
+      "path": "test/sequence-35e4e44c3d3c419b.truth.npz",
+      "sha256": "b4b46392b7eb72effa39457dcbbf68b5eda2c265d05fed10d71136772447c839"
+    },
+    {
+      "bytes": 25616332,
+      "path": "test/sequence-785a8dccb27eac11.features.npz",
+      "sha256": "d20deb168ca8f985213e07d92aaba5f8dec8716015ee7520a8e535bde0db2535"
+    },
+    {
+      "bytes": 4084,
+      "path": "test/sequence-785a8dccb27eac11.truth.npz",
+      "sha256": "7e2837cdaac3069637530a32c654392b27dcc87ce3a20348f07a85eefab4754d"
+    },
+    {
+      "bytes": 691913,
+      "path": "test/sequence-954ea1192c96649e.features.npz",
+      "sha256": "de56aaaefea9ef2432dd4683e86c29634b8b70c49d8a5d285e65e16bcac44df0"
+    },
+    {
+      "bytes": 388,
+      "path": "test/sequence-954ea1192c96649e.truth.npz",
+      "sha256": "d84162a0f2de9e1b46bfaef77d51ce3f957320f44aae32826dbff5e04e5044d9"
+    },
+    {
+      "bytes": 11449137,
+      "path": "test/sequence-a20cee09ce83b93c.features.npz",
+      "sha256": "701b9d08ac20a18027501d84da606f845e77825cdfb03c9ea4395f77b9603e11"
+    },
+    {
+      "bytes": 2142,
+      "path": "test/sequence-a20cee09ce83b93c.truth.npz",
+      "sha256": "f2b193ddfbb16af3a5b441e3a4cf6393f5c2ab8aa385c2df0c39ef075cb1ba7a"
+    },
+    {
+      "bytes": 4083868,
+      "path": "test/sequence-bee18e20531c9c89.features.npz",
+      "sha256": "ac5658cc1178684b75ead0de34ccfa1ec1463ce6600889189bdfa412f7224b46"
+    },
+    {
+      "bytes": 1046,
+      "path": "test/sequence-bee18e20531c9c89.truth.npz",
+      "sha256": "68ed95be9efbac287a10d872d15243245c9d6422aaaed2736f7e56c0ebf48ac8"
+    },
+    {
+      "bytes": 8085768,
+      "path": "test/sequence-d97f8b537ce0d76f.features.npz",
+      "sha256": "26ee0ddce4d43651f6a0eae42c7585a19cd9a51b8f089e90bd16da903780ab80"
+    },
+    {
+      "bytes": 1610,
+      "path": "test/sequence-d97f8b537ce0d76f.truth.npz",
+      "sha256": "15a9ebc65a0b8857972860aa9a5be9861c5efb7de0543109c0f17db44b31ab69"
+    }
+  ],
+  "profile": "bpb-sam2mice-automatic-tracking-v1",
+  "public_files": [
+    {
+      "bytes": 20179,
+      "path": "manifest.json",
+      "sha256": "ee1ae98f509e07f4edf0d3853cde5c23a712ac5394806b0088600fd9b4e2528a"
+    },
+    {
+      "bytes": 2100893,
+      "path": "train/sequence-0011f2eb30e2fabb.features.npz",
+      "sha256": "87f8e804871718d040c7c13e51405db0db45e1a9ae1452bda752cea18d1d4e9e"
+    },
+    {
+      "bytes": 708,
+      "path": "train/sequence-0011f2eb30e2fabb.truth.npz",
+      "sha256": "b24245278ac3607936733219b28dd45980cdd16cf45b3e8df8fc45e9febd9412"
+    },
+    {
+      "bytes": 24372837,
+      "path": "train/sequence-0e1df961f775821d.features.npz",
+      "sha256": "f293c2620bd89c1c2b73eb62790dca37028ce74c5ecc4db93f8505029e75b82c"
+    },
+    {
+      "bytes": 4057,
+      "path": "train/sequence-0e1df961f775821d.truth.npz",
+      "sha256": "77d2025a597bc1e7e21d819b6fa206ffde0ebb8e36e81464b8160dc121379d80"
+    },
+    {
+      "bytes": 688105,
+      "path": "train/sequence-11c5912783badd9b.features.npz",
+      "sha256": "57b2691f3fd92678f3cbe31d9f30d496de9d7eff9959948f3451f0965edc0e5f"
+    },
+    {
+      "bytes": 390,
+      "path": "train/sequence-11c5912783badd9b.truth.npz",
+      "sha256": "42aa7a27f47a729a9cf37f55a5ca6f6c22cdc8af9f6a895b822b12ddf84a82d6"
+    },
+    {
+      "bytes": 679514,
+      "path": "train/sequence-2564a1c5867802dd.features.npz",
+      "sha256": "2e3b00f460f4a7fc36f3cedc010374de9e0c777cf6d10d93be39ded0f56748b0"
+    },
+    {
+      "bytes": 396,
+      "path": "train/sequence-2564a1c5867802dd.truth.npz",
+      "sha256": "385322633a787514d121811f10cb1a36b906d20742fefcf4d61f5dfe808d9ebf"
+    },
+    {
+      "bytes": 4836877,
+      "path": "train/sequence-2f92274ad6518168.features.npz",
+      "sha256": "6bd3a7674fbb4560e16aea2a260db2b6027f95520d23cb587c749f3d1be97292"
+    },
+    {
+      "bytes": 1268,
+      "path": "train/sequence-2f92274ad6518168.truth.npz",
+      "sha256": "402862b89de56b403251307e4bc0363a0c13932b946872216b5a2fab1ee279ec"
+    },
+    {
+      "bytes": 3407017,
+      "path": "train/sequence-3867a6db80c5bea5.features.npz",
+      "sha256": "abc158120d7ab36c6fc7d2e9dbe22af80af66c17580e5496eaf68ec8ad0841e4"
+    },
+    {
+      "bytes": 968,
+      "path": "train/sequence-3867a6db80c5bea5.truth.npz",
+      "sha256": "451217d4391f3817f577fb80600b638295f33fba8d0a57df4a912c5e67bdb7da"
+    },
+    {
+      "bytes": 21285141,
+      "path": "train/sequence-475518582ede4cf9.features.npz",
+      "sha256": "160970008569bff2e3d061d28e7fac82f01accc7e0c6928369509c309324a974"
+    },
+    {
+      "bytes": 3583,
+      "path": "train/sequence-475518582ede4cf9.truth.npz",
+      "sha256": "565cc5951c02c148285cdd80a344eacf55e956715590b02726cf3de6c1010498"
+    },
+    {
+      "bytes": 4789061,
+      "path": "train/sequence-5ca2d8ffe23b7593.features.npz",
+      "sha256": "90910a7cb745e976ab042510b15add9aca9fb243c8323c78f717ea4ad1d12177"
+    },
+    {
+      "bytes": 1238,
+      "path": "train/sequence-5ca2d8ffe23b7593.truth.npz",
+      "sha256": "b520779e522a95af68c3e5b89ccb1a50daca635ad2853010cddd0009e555028f"
+    },
+    {
+      "bytes": 2074756,
+      "path": "train/sequence-62c22701e8c739f4.features.npz",
+      "sha256": "ddd9bc72b7714caa9a5d0a94f43c2d339e3ede7e91724e9db7c172dbe76354fa"
+    },
+    {
+      "bytes": 658,
+      "path": "train/sequence-62c22701e8c739f4.truth.npz",
+      "sha256": "16ac75ad887f299aa23e35dbbb0615be7af8eb7a21e0ac963a502a885de5c036"
+    },
+    {
+      "bytes": 17931137,
+      "path": "train/sequence-6d17ce29c05ad734.features.npz",
+      "sha256": "fcf94ce7839518b8cb0c1cdf025f776817d29ed9e47f13f80ea73caf9f11af76"
+    },
+    {
+      "bytes": 3313,
+      "path": "train/sequence-6d17ce29c05ad734.truth.npz",
+      "sha256": "7db48b3ac2e6691dc17d0d262ff44e92953f1a156329dbba25dab566ac7ed713"
+    },
+    {
+      "bytes": 2624670,
+      "path": "train/sequence-8f79480115141e17.features.npz",
+      "sha256": "ae7a2b95afd1d577cc90eef4f71049001c95c86d3830a0ce752a06a2bf17df7e"
+    },
+    {
+      "bytes": 850,
+      "path": "train/sequence-8f79480115141e17.truth.npz",
+      "sha256": "9ab690222326eb22af2e5f61e88d62dac07bf529b72cda7bea5ae5c8a8d905e9"
+    },
+    {
+      "bytes": 688904,
+      "path": "train/sequence-997865ee76aa5803.features.npz",
+      "sha256": "864a7e25570315cfa791fa0754071ca482c13d4b54a7654beb187c1fcd59788f"
+    },
+    {
+      "bytes": 388,
+      "path": "train/sequence-997865ee76aa5803.truth.npz",
+      "sha256": "16a35c8e2d83e730bb8a9cfae69e5f24f67de831e1b34e48511c472a96505bd4"
+    },
+    {
+      "bytes": 43626294,
+      "path": "train/sequence-a0465e27cd4b88a0.features.npz",
+      "sha256": "3a271c22502418d4f586c7f861e519bf099ba32e8866154b04650e02cbafc431"
+    },
+    {
+      "bytes": 6574,
+      "path": "train/sequence-a0465e27cd4b88a0.truth.npz",
+      "sha256": "1918a6d0a1bf0d85e0c069f9c361acc0ce0832b42cef7d2dc6c0a56fce995d32"
+    },
+    {
+      "bytes": 23303055,
+      "path": "train/sequence-aa25f96b7ac81501.features.npz",
+      "sha256": "24f7bc7e696e3b5142511258515a35fb2ce1a18777e15add0a6f2dc798ddd146"
+    },
+    {
+      "bytes": 3958,
+      "path": "train/sequence-aa25f96b7ac81501.truth.npz",
+      "sha256": "98a104fe2f20eac36ad77e5f3f1fe9e9322952497f2bb6ae910f53db1e7d6840"
+    },
+    {
+      "bytes": 668371,
+      "path": "train/sequence-c0903a147de2259c.features.npz",
+      "sha256": "5a4331c1a1a00c1c2f5ef46c602545ac52eeb4afc2daf75346fb08e74ddb026a"
+    },
+    {
+      "bytes": 400,
+      "path": "train/sequence-c0903a147de2259c.truth.npz",
+      "sha256": "6a2c954fee5fdf661edb9cb15c6d9b9c082192f931db28e942d8e9833c40067e"
+    },
+    {
+      "bytes": 15119547,
+      "path": "train/sequence-dddbd29b5c8afd55.features.npz",
+      "sha256": "fa65d6cc6bd0cfbf826f62d7b77dfc6ec016bc8b804c774acfcc3462950018b5"
+    },
+    {
+      "bytes": 2741,
+      "path": "train/sequence-dddbd29b5c8afd55.truth.npz",
+      "sha256": "244dcbd579022890d5743f857b0821a680df72c54f8acc5afaa0e5f170f8766c"
+    },
+    {
+      "bytes": 4051995,
+      "path": "train/sequence-ec46bce2cec1f57b.features.npz",
+      "sha256": "e47791299ea4b1269de4bc000ab4389ac69e3d2ce13190c596ef81664ffdb8a3"
+    },
+    {
+      "bytes": 1123,
+      "path": "train/sequence-ec46bce2cec1f57b.truth.npz",
+      "sha256": "ddb136e56e84e11bc46fa1748691458f3f52f8e8d3603d93305679e6fc05159e"
+    },
+    {
+      "bytes": 693183,
+      "path": "valid/sequence-33cf28bfac60937e.features.npz",
+      "sha256": "e417708a02735d893b19b3214d7eeab8222b874c74376ce772eda0fbfc446120"
+    },
+    {
+      "bytes": 394,
+      "path": "valid/sequence-33cf28bfac60937e.truth.npz",
+      "sha256": "bfce766272b29252bf4945bd8c6f6193acb9ee71e8d166a8a181626d40d76271"
+    },
+    {
+      "bytes": 680756,
+      "path": "valid/sequence-3547a3d28165ddd9.features.npz",
+      "sha256": "8ed6d6d53ffe48040cc5f67f21609673754d0ba8fc9f84781f40e738e7aa235c"
+    },
+    {
+      "bytes": 397,
+      "path": "valid/sequence-3547a3d28165ddd9.truth.npz",
+      "sha256": "660b8f7492cf3fde9687cfb7aeb7152590eb9e0eea805e8c55816e5c2f73ee38"
+    },
+    {
+      "bytes": 1378932,
+      "path": "valid/sequence-55043e603f68c0eb.features.npz",
+      "sha256": "0e19b306e338a00194326ac00c6ddd03bef84ba39105353cb5528e2d70022681"
+    },
+    {
+      "bytes": 551,
+      "path": "valid/sequence-55043e603f68c0eb.truth.npz",
+      "sha256": "9f566e2ae3c9d401868f7ced6617ef02fd51b016e14b88eb7745665de4f8af1d"
+    },
+    {
+      "bytes": 665853,
+      "path": "valid/sequence-a38dfa4f09016695.features.npz",
+      "sha256": "a3dff4a8a9b5bccbb3a116555a1147a3bf55bf96d1967a2d117afff63c41b09d"
+    },
+    {
+      "bytes": 389,
+      "path": "valid/sequence-a38dfa4f09016695.truth.npz",
+      "sha256": "ec2759ece970b49d8ab41ff12fc465014b00c74558c2235fa6fb0aa781053ba8"
+    },
+    {
+      "bytes": 3381482,
+      "path": "valid/sequence-b80b0cd395958ca2.features.npz",
+      "sha256": "148d8b256df3ad8d063a2c9d6068bb66c5d62e5edcfa605231ed509f4ba197b9"
+    },
+    {
+      "bytes": 949,
+      "path": "valid/sequence-b80b0cd395958ca2.truth.npz",
+      "sha256": "3565bfc742056e2e4f4c8177600f6fc5193ea09bb8cd12444de9df083b84bbdd"
+    },
+    {
+      "bytes": 8199798,
+      "path": "valid/sequence-caac9a9feef18c55.features.npz",
+      "sha256": "7dad49984d42325bdf60dc775828911a94c12c63c3c78a30e390a6eb2391397f"
+    },
+    {
+      "bytes": 1689,
+      "path": "valid/sequence-caac9a9feef18c55.truth.npz",
+      "sha256": "559765b7184269fb4c47848777740b86f05b8524ae4aac61dbe5bd0114444f98"
+    },
+    {
+      "bytes": 23036098,
+      "path": "valid/sequence-d0af6d30603b4a8f.features.npz",
+      "sha256": "ee8e16befad728e1f5bf36b9297932d00fe54ba84f2ea2dd4dee2dc458218125"
+    },
+    {
+      "bytes": 3806,
+      "path": "valid/sequence-d0af6d30603b4a8f.truth.npz",
+      "sha256": "4b769f9b5b88439d8a3a08b2ed8e4a1ce3f956a7ed2731b2032c59417985c0e3"
+    }
+  ],
+  "public_manifest_sha256": "ee1ae98f509e07f4edf0d3853cde5c23a712ac5394806b0088600fd9b4e2528a",
+  "revision": "c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d",
+  "revision_rule": "sha256(raw32(public_manifest_sha256) || raw32(evaluator_manifest_sha256))",
+  "schema": "bpb-sam2mice-tracking-task-contract/1",
+  "secondary_metrics": [
+    "idf1"
+  ],
+  "source_complete_sha256": "ccb350870aa0769c123e9e067168fa8ef22e0cdcf81adbbee81276002ca52e3e",
+  "source_review_sha256": "05a0494f593f005792097aeb88de5eef03650cac49cfa88d1a66265e27c57fe6",
+  "split_review_sha256": "4ff2d38f8aecbf99e53ebfe5b946bc83f32aec822c2531083b5dddb29f5eecbd",
+  "split_rule": {
+    "boundaries": [
+      297,
+      396
+    ],
+    "boundary_trim_frames_per_side": 10,
+    "description": "Use the paired source frame extent [0, max_index+1). Set chronological boundaries floor(3*N/5) and floor(4*N/5). Omit ten source indices on each side of each boundary. Keep every paired frame in its remaining role interval and split sequences at missing observations. Tracker state resets per sequence.",
+    "observed_frames_excluded_by_gap": 39,
+    "role_intervals_half_open": {
+      "test": [
+        406,
+        496
+      ],
+      "train": [
+        0,
+        287
+      ],
+      "valid": [
+        307,
+        386
+      ]
+    },
+    "source_extent_frames": 496
+  },
+  "task_id": "sam2mice-multi-animal-tracking",
+  "task_version": "0.1"
+}

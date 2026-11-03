@@ -1,4 +1,4 @@
-"""Trusted CalMS private Test scorer; only a flat F1 sentinel leaves owner temp."""
+"""Trusted animal-behavior private scorers with explicit task dispatch."""
 
 from __future__ import annotations
 
@@ -11,12 +11,11 @@ import sys
 import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from calms_freeze import FILES, freeze, snapshot
-from calms_runner import evaluate
-from calms_task_common import load_contract, read_json, stage_owner, submission_dir, digest
 
 
 def _node_freeze(frozen_path: Path, contract: dict, artifacts: Path) -> Path:
+    from calms_freeze import FILES, snapshot
+    from calms_task_common import read_json, submission_dir
     manifest = read_json(frozen_path)
     if (manifest.get("schema") != "bpb-private-submission-freeze/1"
             or manifest.get("task_id") != contract["task_id"]
@@ -31,6 +30,9 @@ def _node_freeze(frozen_path: Path, contract: dict, artifacts: Path) -> Path:
 
 
 def score(task_dir: Path, artifacts: Path, evaluator_root: Path, frozen_path: Path) -> float:
+    from calms_freeze import freeze, snapshot
+    from calms_runner import evaluate
+    from calms_task_common import digest, load_contract, stage_owner
     contract = load_contract(task_dir)
     if os.environ.get("BPB_SUBMISSION_ISOLATION") != "docker":
         raise ValueError("private scoring requires Docker submission isolation")
@@ -68,6 +70,14 @@ def main() -> None:
     parser.add_argument("--data", type=Path, required=True)
     parser.add_argument("--frozen", type=Path, required=True)
     args = parser.parse_args()
+    if args.task.name == "sam2mice-multi-animal-tracking":
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "_sam2mice_tracking"))
+        from score_task import score_private
+        result = score_private(args.task, args.artifacts, args.data, args.frozen)
+        print(">>>>> BPB_SCORES")
+        print(json.dumps({"mota": result["mota"], "idf1": result["idf1"]}, separators=(",", ":")))
+        print("<<<<< BPB_SCORES")
+        return
     if args.task.name in ("mabe22-supervised-segmentation", "mabe22-representation-classification"):
         from mabe_task_score import score_private
         value = score_private(args.task, args.artifacts, args.data, args.frozen)

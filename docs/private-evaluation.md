@@ -17,9 +17,11 @@ Its `data.lock` pins the HF revision, sizes, and SHA-256 hashes.
 | Canonical hosted evaluator packages | 34 | The earlier 29 plus five mouse tasks use the commands below. |
 | Retained private tasks | 3 | BCI-IV-2a, Sleep-EDF, and TOPS keep their existing evaluator setup and scoring commands. |
 | Original-source access | 78 | Follow the source terms and task guide. No Test payload is mirrored by this route. |
+| Prepared local evaluator | 1 | SAM2Mice tracking uses verified source packets and isolated frozen-model scoring. |
 | No independent or official Test | 2 | RSC has no separate private package here. Wilson exp2 has no official Test. |
 
-The catalogue contains 117 runnable-task entries across these access states. It does not claim 117 downloadable evaluator packages.
+The local catalogue contains 118 runnable tasks across these access states. The published HF catalogue contains 117 entries.
+The [SAM2Mice tracking guide](sam2mice-tracking-preparation.md) documents its source-prepared evaluator route.
 The [frozen 29-task snapshot](https://huggingface.co/datasets/BrainPilot-Bench/Tasks-Data-Private/tree/62ff438a727aa5ca72c688526410930c8f1f664b/tasks) retains its original receipt.
 Its 301 data files total 8,353,488,018 bytes. Those figures describe that snapshot, not the enlarged private collection.
 The [mouse increment](../reports/mouse-hf-20261027/publication.json) adds 2,078 evaluator data files totaling 491,259,653 bytes, plus source notices and delivery metadata.

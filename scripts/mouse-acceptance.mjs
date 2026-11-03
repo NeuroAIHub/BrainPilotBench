@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { lstatSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { readMouseDelivery } from "./mouse-hf-delivery.mjs";
+import { TRACKING_TASK_ID, readTrackingAcceptance } from "./sam2mice-tracking-acceptance.mjs";
 
 const TASKS = new Set(["calms21-classic-classification", "calms21-annotation-style-transfer",
   "calms21-few-shot-behavior", "mabe22-supervised-segmentation", "mabe22-representation-classification"]);
@@ -19,6 +20,7 @@ function bytes(path) {
 
 export function readMouseAcceptance(root, task) {
   if (task.meta.domain !== "animal-behavior") return null;
+  if (task.meta.id === TRACKING_TASK_ID) return readTrackingAcceptance(root, task);
   if (!TASKS.has(task.meta.id)) throw new Error("mouse task lacks a reviewed acceptance profile");
   const id = task.meta.id;
   const record = `reports/mouse-closeout-20261026/${id}-cli-acceptance.json`;

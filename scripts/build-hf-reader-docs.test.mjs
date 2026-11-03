@@ -9,6 +9,7 @@ import { buildReaderDocs, extractReaderContent, parseArgs, pinMarkdownLinks } fr
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASELINE = path.join(ROOT, '.cache/reader-docs-20261016/hf-baseline/catalog.jsonl');
 const CATALOG = path.join(ROOT, 'tasks/catalog.json');
+const FROZEN_112_IDS = new Set(JSON.parse(readFileSync(path.join(ROOT, 'scripts/fixtures/hf-collection-20261015-task-ids.json'), 'utf8')).task_ids);
 
 const MOUSE_IDS = new Set(['calms21-classic-classification', 'calms21-annotation-style-transfer',
   'calms21-few-shot-behavior', 'mabe22-representation-classification', 'mabe22-supervised-segmentation']);
@@ -114,8 +115,9 @@ test('build changes only reader fields and creates one card per task', () => {
     const input = readFileSync(catalogInput, 'utf8');
     const output = path.join(scratch, 'preview');
     const result = buildReaderDocs({ repoRoot: ROOT, catalogInput, manifestRoot, output, workingDraft: true });
-    assert.equal(result.tasks, 117);
-    assert.deepEqual(result.introductionSources, { 'README lead': 113, 'What the agent does': 4 });
+    const currentCount = JSON.parse(readFileSync(CATALOG, 'utf8')).counts.runnable;
+    assert.equal(result.tasks, currentCount);
+    assert.deepEqual(result.introductionSources, { 'README lead': currentCount - 4, 'What the agent does': 4 });
     const oldLines = input.trimEnd().split('\n');
     const newLines = readFileSync(path.join(output, 'catalog.jsonl'), 'utf8').trimEnd().split('\n');
     assert.equal(newLines.length, oldLines.length);
@@ -155,20 +157,19 @@ test('build changes only reader fields and creates one card per task', () => {
         assert.match(card, /\[Frozen source record\]/);
       }
     }
-    assert.equal(ids.size, 117);
+    assert.equal(ids.size, currentCount);
     assert.deepEqual(readdirSync(output).sort(), ['catalog.jsonl', 'tasks']);
   } finally {
     rmSync(scratch, { recursive: true, force: true });
   }
 });
 
-test('a caller-frozen 112-task publication does not expand with the current 117-task catalog', () => {
+test('a caller-frozen 112-task publication does not expand with the current catalog', () => {
   const scratch = mkdtempSync(path.join(os.tmpdir(), 'bpb-reader-frozen-scope-'));
   try {
     // The fixture models the exact pre-mouse publication scope. Its row set, not
     // current hosted availability, is the explicit publication selection.
-    const taskIds = new Set(JSON.parse(readFileSync(CATALOG, 'utf8')).tasks
-      .filter(item => item.entry_kind === 'runnable' && !MOUSE_IDS.has(item.task_id)).map(item => item.task_id));
+    const taskIds = FROZEN_112_IDS;
     assert.equal(taskIds.size, 112);
     const { catalogInput, manifestRoot } = makeMetadataFixture(scratch, taskIds);
     const output = path.join(scratch, 'preview');

@@ -86,13 +86,13 @@ for (const dir of discoverTaskDirs([join(root, "tasks")])) {
   } else if (existsSync(join(dir, "evaluator.lock"))) {
     const sourceEvaluator = readEvaluatorLock(task);
     const hostedMouse = sourceEvaluator.schema === "bpb-evaluator-data/1" && mouseAccepted?.delivery?.privateHosted;
-    if (row.domain !== "animal-behavior" || !mouseAccepted || (!hostedMouse && sourceEvaluator.schema !== "bpb-evaluator-source/1"))
+    if (!mouseAccepted || (!hostedMouse && sourceEvaluator.schema !== "bpb-evaluator-source/1"))
       throw new Error(`${rel(dir)}: evaluator.lock is outside the frozen private increment`);
     row.private_data_access = hostedMouse ? "pinned_private_snapshot" : "source_prepared_evaluator";
     row.private_score_entry = privateScoreEntry;
     row.data_status = hostedPublic ? "published_public_package" : "source_prepared_role_separated";
     row.agent_benchmark_results = "not_available";
-    if (mouseAccepted.delivery) row.delivery_validation_record = mouseAccepted.delivery.record;
+    if (mouseAccepted?.delivery) row.delivery_validation_record = mouseAccepted.delivery.record;
   }
   if (accepted) {
     row.validation = "local_fixed_reference_and_isolation_passed";
@@ -137,9 +137,9 @@ const ids = new Set(tasks.map(t => t.task_id));
 if (ids.size !== tasks.length) throw new Error("Duplicate catalog task IDs");
 tasks.sort((a,b) => a.task_id.localeCompare(b.task_id));
 const catalog = {
-  schema: "brainpilotbench-task-collection/1", date: "2026-11-02",
+  schema: "brainpilotbench-task-collection/1", date: "2026-11-03",
   release_status: "integration_candidate_not_released",
-  validation_policy: "Four first-batch reference checks; version-bound local invasive and five mouse task acceptances with fixed references and isolated owner Test interface checks; deferred Airscope proposals are excluded from the active catalogue; no formal Agent results or historical private Test replay",
+  validation_policy: "Four first-batch reference checks; version-bound local invasive, five pose-task and source-reviewed SAM2Mice tracking acceptances with fixed references and isolated owner Test interface checks; four deferred Airscope proposals are excluded from the active catalogue; no formal Agent results or historical private Test replay",
   counts: {
     total: tasks.length, runnable: tasks.filter(t => t.entry_kind === "runnable").length,
     candidate: tasks.filter(t => t.entry_kind === "candidate").length,

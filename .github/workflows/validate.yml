@@ -110,6 +110,17 @@ jobs:
         env:
           BPB_DOCKER_TEST: ${{ runner.os == 'Linux' && '1' || '0' }}
           BPB_TEST_INFERENCE_IMAGE: ${{ runner.os == 'Linux' && 'bpb-inference-test:ci' || '' }}
+      - name: SAM2Mice tracking source and scoring fixtures
+        run: |
+          python3 -m venv .cache/sam2mice-fixtures
+          .cache/sam2mice-fixtures/bin/python -m pip install --disable-pip-version-check -r tasks/animal-behavior/_sam2mice_tracking/requirements.txt
+          .cache/sam2mice-fixtures/bin/python -B -m unittest discover -s tasks/animal-behavior/_sam2mice_tracking -p 'test_*.py'
+      - name: SAM2Mice inference isolation fixtures
+        if: runner.os == 'Linux'
+        run: |
+          docker build -t bpb-sam2mice-fixtures:ci -f tasks/animal-behavior/_sam2mice_tracking/Dockerfile .
+          SAM2MICE_IMAGE_ID=$(docker image inspect bpb-sam2mice-fixtures:ci --format '{{.Id}}')
+          SAM2MICE_TEST_IMAGE="$SAM2MICE_IMAGE_ID" .cache/sam2mice-fixtures/bin/python -B -m unittest discover -s tasks/animal-behavior/_sam2mice_tracking -p 'test_*.py'
       - name: Documentation command smoke test
         run: npm run test:docs
       - name: Reader documentation generator checks
