@@ -4,6 +4,7 @@ The opt-in process backend is only a local test harness, not a security boundary
 """
 import os
 import json
+import math
 from pathlib import Path
 import signal
 import subprocess
@@ -55,8 +56,11 @@ def bounded(command, cwd, env, timeout=WORKER_SECONDS):
 
 
 class Executor:
-    def __init__(self, mode=None):
+    def __init__(self, mode=None, *, timeout=WORKER_SECONDS, cpus=1, memory='512m', tmpfs='32m'):
         self.mode = mode or os.environ.get('BPB_SUBMISSION_ISOLATION', 'docker')
+        if not math.isfinite(timeout) or timeout <= 0 or not math.isfinite(cpus) or cpus <= 0:
+            raise InfrastructureError('worker timeout and CPU quota must be finite and positive')
+        self.timeout, self.cpus, self.memory, self.tmpfs = timeout, cpus, memory, tmpfs
         self.docker = os.environ.get('BPB_DOCKER_BINARY', 'docker')
         self.image = os.environ.get('BPB_INFERENCE_IMAGE', '')
         self.host = None
@@ -64,9 +68,9 @@ class Executor:
     def docker_command(self, name, source, inputs, output):
         return [self.docker, *(['--host', self.host] if self.host else []), 'run', '--pull=never', '--name', name,
                 '--network=none', '--read-only', '--cap-drop=ALL', '--security-opt=no-new-privileges',
-                '--cpus=1', '--memory=512m', '--pids-limit=64',
+                '--cpus=%g' % self.cpus, '--memory=' + self.memory, '--pids-limit=64',
                 '--user', f'{os.getuid()}:{os.getgid()}',
-                '--tmpfs', '/tmp:rw,nosuid,nodev,size=32m',
+                '--tmpfs', '/tmp:rw,nosuid,nodev,size=' + self.tmpfs,
                 '--mount', f'type=bind,src={source},dst=/submission,readonly',
                 '--mount', f'type=bind,src={inputs},dst=/inputs,readonly',
                 '--mount', f'type=bind,src={output},dst=/output',
@@ -127,11 +131,11 @@ class Executor:
                'HF_HUB_OFFLINE': '1', 'TRANSFORMERS_OFFLINE': '1', 'HF_DATASETS_OFFLINE': '1'}
         if self.mode == 'process':
             code = bounded([sys.executable, '-B', str(WORKER), '--submission', str(source),
-                            '--inputs', str(inputs), '--output', str(output)], output, env)
+                            '--inputs', str(inputs), '--output', str(output)], output, env, timeout=self.timeout)
         else:
             name = 'bpb-alignment-' + uuid.uuid4().hex
             try:
-                code = bounded(self.docker_command(name, source, inputs, output), output, env)
+                code = bounded(self.docker_command(name, source, inputs, output), output, env, timeout=self.timeout)
                 state = self.admin(['inspect', '--format', '{{json .State}}', name])
                 if state.returncode:
                     raise InfrastructureError('worker container state unavailable')

@@ -49,6 +49,8 @@ def main():
     evaluate.add_argument('--saved-results')
     evaluate.add_argument('--timeout', type=int, default=900)
     evaluate.add_argument('--memory', default='8g')
+    evaluate.add_argument('--cpus', type=float, default=os.environ.get('BPB_ALIGNMENT_WORKER_CPUS', '4'),
+                          help='Worker CPU quota; defaults to BPB_ALIGNMENT_WORKER_CPUS or 4')
     for name in ('stage-task1', 'stage-task2'):
         stage = commands.add_parser(name, help='Create an experimental task outside the repository for explicit --tasks use')
         stage.add_argument('--input', required=True, help='Task1 cache directory or Task2 packet.json')

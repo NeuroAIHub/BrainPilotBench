@@ -61,6 +61,11 @@ def feature_assembly(root, layer):
         **{key: ('presentation', [row[key] for row in stimuli])
            for key in ('stimulus_id', 'stimulus', 'story', 'passage_label', 'passage_index')},
         'layer': ('neuroid', [layer] * values.shape[1]),
+        # Match HuggingfaceSubject's recording coordinates. With only layer and
+        # neuroid_id, selecting a layer collapses the axis name to neuroid_id.
+        'region': ('neuroid', ['language_system'] * values.shape[1]),
+        'recording_type': ('neuroid', ['fMRI'] * values.shape[1]),
+        'neuron_number_in_layer': ('neuroid', np.arange(values.shape[1])),
         'neuroid_id': ('neuroid', ['%s--%d' % (layer, i) for i in range(values.shape[1])]),
     })
 
@@ -88,7 +93,11 @@ class CachedSubject:
         key = (text,) if isinstance(text, str) else tuple(str(value) for value in text)
         if key not in self.calls:
             raise BackendError('cache has no exact passage/context match')
-        return {'behavior': None, 'neural': self.calls[key].copy(deep=True)}
+        # The official benchmark assigns stimulus_id to the returned passage.
+        # Keep cached metadata as ordinary coordinates so that assignment does
+        # not collide with BrainIO's presentation MultiIndex level names.
+        neural = self.calls[key].reset_index('presentation').copy(deep=True)
+        return {'behavior': None, 'neural': neural}
 
 
 def traced_metric(metric, run):

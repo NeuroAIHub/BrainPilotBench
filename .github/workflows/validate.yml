@@ -76,6 +76,10 @@ jobs:
         run: npm run test:alignment
       - name: Alignment profile offline scaffold (stdlib fixtures only)
         run: npm run test:alignment-profile
+      - name: Alignment incremental analysis and context design (offline fixtures)
+        run: npm run test:alignment-incremental
+      - name: Alignment B-F analyses and hidden stimulus selection (offline fixtures)
+        run: npm run test:alignment-expansion
       - name: Public task contracts and preparation (synthetic only)
         shell: bash
         run: |

@@ -1,0 +1,70 @@
+{
+  "schema": "bpb-expansion-source-lock/1",
+  "created_at": "2026-11-04",
+  "description": "Owner downloads only. OSF hashes verified against API; Figshare MD5 and immutable Git blob SHA1 additionally checked when locking. No redistribution of source data in this repository.",
+  "files": [
+    {
+      "task": "F",
+      "file": "f-data.tar",
+      "url": "https://files.osf.io/v1/resources/ru38b/providers/osfstorage/69d6c2ea7eb3996e78790563",
+      "bytes": 7794928,
+      "sha256": "5b3f614b1f629629bed5e52ab9f7f1c33bf46ad558d7e030bb74c67eba5ffcdc"
+    },
+    {
+      "task": "C",
+      "file": "things-behavior-trainset.txt",
+      "url": "https://files.osf.io/v1/resources/f5rn6/providers/osfstorage/62d6b36dc79a4c38799e6220",
+      "bytes": 54407680,
+      "sha256": "877c0ae2af6767923e0ee44e32f5cbe07e5544cbde14d9c3a5ea93fde2b35944"
+    },
+    {
+      "task": "C",
+      "file": "things-concept-ids.txt",
+      "url": "https://files.osf.io/v1/resources/f5rn6/providers/osfstorage/62d6b598588bb93a56b87850",
+      "bytes": 15201,
+      "sha256": "e2e59d02197e89776034938e7a73940a0823cacac4b6084b56b1d8959816ff76"
+    },
+    {
+      "task": "C",
+      "file": "things-preprocess_triplets.m",
+      "url": "https://files.osf.io/v1/resources/f5rn6/providers/osfstorage/62d7d736f66a943f8623028b",
+      "bytes": 34513,
+      "sha256": "d5170ee40e4a9ea50f2be689675ab6dbb5daaa51a40a50134ba73b63ebf3913b"
+    },
+    {
+      "task": "D",
+      "file": "eeg-image_metadata.npy",
+      "url": "https://files.osf.io/v1/resources/y63gw/providers/osfstorage/625c3f0d0bfe3c21cf182889",
+      "bytes": 656579,
+      "sha256": "681a75633c59a356a66ca19a277429c1d48a00a98405ff96e53ee0b9f00b397c"
+    },
+    {
+      "task": "D",
+      "file": "eeg-sub-01.zip",
+      "url": "https://files.osf.io/v1/resources/anp5v/providers/osfstorage/62f6b4ff170d520c73c27c1e",
+      "bytes": 1071722467,
+      "sha256": "f25d5ea30ba6811edd7ebd460d7b271edaf527b6920ab2d3d6e7950e9ee9639f"
+    },
+    {
+      "task": "D",
+      "file": "eeg-sub-02.zip",
+      "url": "https://files.osf.io/v1/resources/anp5v/providers/osfstorage/62f6b6eb170d520c73c27e35",
+      "bytes": 1071516660,
+      "sha256": "e1eba2d74009c6dd41becf53d84b8d47532103b41110a5855e7e286bcca6fe41"
+    },
+    {
+      "task": "C",
+      "file": "things-it.zip",
+      "url": "https://ndownloader.figshare.com/files/41039093",
+      "bytes": 48422810,
+      "sha256": "4754fe90abbadab568cc6657946d385ee8beda644e7c13a2cba778037ce657b0"
+    },
+    {
+      "task": "E",
+      "file": "e-data_participants_trial_df.csv",
+      "url": "https://raw.githubusercontent.com/eleanorholton/transfer-interference/dcd451046759ebbbfa2987031a64da8c773e750d/data/participants/trial_df.csv",
+      "bytes": 23867095,
+      "sha256": "b39172511906758516f2d73c7964399244a7db5eb10830190f227a0c57d5a3dc"
+    }
+  ]
+}

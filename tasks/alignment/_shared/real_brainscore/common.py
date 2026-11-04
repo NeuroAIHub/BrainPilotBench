@@ -87,8 +87,8 @@ def config(path, require_revision=True):
 
 def runtime(device='cpu', online=False):
     """Called only by explicit server commands, before importing Torch/Brain-Score."""
-    if sys.platform != 'linux' or sys.version_info < (3, 11):
-        raise BackendError('real execution targets Linux with Python >=3.11; Mac development is static only')
+    if sys.platform != 'linux' or sys.version_info[:2] != (3, 11):
+        raise BackendError('real execution requires Linux with Python 3.11; the pinned xarray backend is incompatible with Python 3.12+')
     if device not in ('cpu', 'cuda'):
         raise BackendError('device must be cpu or cuda')
     if device == 'cpu':

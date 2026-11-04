@@ -102,7 +102,7 @@ def compare_results(actual, expected, atol=1e-6, rtol=1e-5):
     return {'passed': not errors, 'errors': errors, 'atol': atol, 'rtol': rtol}
 
 
-def evaluate(cache, submission, output, image, saved_results=None, timeout=900, memory='8g'):
+def evaluate(cache, submission, output, image, saved_results=None, timeout=900, memory='8g', cpus=4):
     root, _, _ = load_cache(cache)
     source = Path(submission).resolve()
     separate_paths(root, output)
@@ -113,6 +113,9 @@ def evaluate(cache, submission, output, image, saved_results=None, timeout=900, 
               'acceptance': 'server-validation-pending', 'state': 'scoring_failed',
               'analysis_success': None, 'isolation': 'docker', 'prose_review': 'not_assessed'}
     try:
+        if not math.isfinite(cpus) or cpus <= 0:
+            raise BackendError('worker CPU limit must be finite and positive')
+        report['worker_limits'] = {'cpus': cpus, 'memory': memory, 'timeout_seconds': timeout}
         if not (source / 'analyze.py').is_file() or not image:
             raise BackendError('submission/analyze.py and a prebuilt local image are required')
         if os.getuid() == 0:
@@ -144,7 +147,7 @@ def evaluate(cache, submission, output, image, saved_results=None, timeout=900, 
                     raise BackendError('Docker mount paths cannot contain commas or newlines')
             name = 'bpb-real-alignment-' + uuid.uuid4().hex
             command = ['docker', 'run', '--pull=never', '--name', name, '--network=none', '--read-only',
-                       '--cap-drop=ALL', '--security-opt=no-new-privileges', '--cpus=4', '--memory=' + memory,
+                       '--cap-drop=ALL', '--security-opt=no-new-privileges', '--cpus=%g' % cpus, '--memory=' + memory,
                        '--pids-limit=128', '--user=%d:%d' % (os.getuid(), os.getgid()),
                        '--tmpfs=/tmp:rw,nosuid,nodev,size=512m',
                        '--mount=type=bind,src=%s,dst=/submission,readonly' % source,
@@ -156,6 +159,10 @@ def evaluate(cache, submission, output, image, saved_results=None, timeout=900, 
                        '--submission', '/submission', '--inputs', '/inputs', '--output', '/output']
             try:
                 process = subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=timeout)
+                state = subprocess.run(['docker', 'inspect', '--format', '{{json .State}}', name],
+                                       capture_output=True, text=True, timeout=15)
+                if state.returncode or json.loads(state.stdout).get('Error'):
+                    raise BackendError('Docker could not start the worker; check daemon resources and runtime configuration')
                 if process.returncode:
                     report.update(state='scored', analysis_success=0, error='submitted program failed')
                 else:

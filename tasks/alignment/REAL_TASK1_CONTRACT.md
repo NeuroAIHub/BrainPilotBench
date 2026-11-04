@@ -1,6 +1,7 @@
 # Real Task1 server draft
 
-Status: implemented for server validation, **not executed or accepted on real data**.
+Status: exercised on real Pereira384 data with distilgpt2; **acceptance pending**.
+See [SERVER_VALIDATION.md](SERVER_VALIDATION.md) for the tested scope and limits.
 Task ID `alignment-pereira2018-analysis`, staged version `0.1-server-draft`.
 The canonical candidate remains inactive. This protocol uses the pinned upstream
 `Pereira2018.384sentences-ridge` implementation, not the synthetic NumPy solver.
@@ -50,5 +51,8 @@ in Docker without network or access to the reference directory. It compares both
 saved artifacts (when a bundle is supplied) and rerun outputs. Provisional
 tolerances are atol=1e-6 and rtol=1e-5; they require server calibration. Default
 worker limits are 4 CPUs, 8 GiB, 128 PIDs, and 900 seconds; these are uncalibrated.
+The operator can set `BPB_ALIGNMENT_WORKER_CPUS` (or `evaluate --cpus`) to fit the
+daemon's capacity; the grade records the actual quota. A container creation/start
+failure is an infrastructure failure and produces no Agent score.
 The draft currently checks one real packet and does not replace the synthetic
 suite's metamorphic cases or constitute full scientific/Agent acceptance.

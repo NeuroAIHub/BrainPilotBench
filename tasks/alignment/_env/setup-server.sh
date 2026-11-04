@@ -16,8 +16,8 @@ python="${BPB_PYTHON:-python3.11}"
 "$python" - "$repository" "$BPB_ALIGNMENT_VENV" <<'PY'
 from pathlib import Path
 import sys
-if not (3, 11) <= sys.version_info[:2] <= (3, 12):
-    raise SystemExit('Use Python 3.11 or 3.12 for the server draft.')
+if sys.version_info[:2] != (3, 11):
+    raise SystemExit('Use Python 3.11: the pinned xarray backend is incompatible with Python 3.12+.')
 repository, environment = (Path(value).resolve() for value in sys.argv[1:])
 if repository == environment or repository in environment.parents:
     raise SystemExit('Choose a virtual environment outside Git.')

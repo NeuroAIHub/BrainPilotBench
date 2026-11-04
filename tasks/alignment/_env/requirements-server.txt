@@ -8,5 +8,7 @@ torch>=2.2,<3
 transformers>=4.51,<5
 accelerate>=0.26,<2
 netCDF4>=1.6,<2
-brainscore-core==2.1
+# The pinned Language source imports the vendored supported_data_standards API.
+# Core 2.1 installs successfully but does not provide that package.
+brainscore-core==2.5.0
 brainscore-language @ git+https://github.com/brain-score/language.git@3b4fde5d6f53a69c652c7a1128397549995547b0

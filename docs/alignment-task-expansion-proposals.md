@@ -1,6 +1,16 @@
 # Brain–Model Alignment：可扩展标准化任务提案
 
-日期：2026-11-02。状态：候选任务设计，尚未完成本文新增任务的数据包、参考结果和运行验收；不增加 canonical runnable task 数量。
+原始提案日期：2026-11-02。新增任务尚未正式验收；开发进度见下方更新，不增加 canonical runnable task 数量。
+
+2026-11-04 开发更新：已按 **A → B → F → E → C → D** 实现六项实验版的数据准备、
+参考分析、任务生成和隔离评分，并完成真实数据与 CLI 链路验证。具体数值、验收证据和未完成事项以
+[扩展验收记录](../tasks/alignment/EXPANSION_VALIDATION.md)和
+[运行说明](../tasks/alignment/EXPANSION_RUNBOOK.md)为准。
+A/B 首版是 Pereira 短段落协议；C 使用概念名称的语言模型表示、100 个 IT 图像概念与行为数据；
+D 使用两名受试者的 THINGS-EEG2，未使用 MEG；E 是真实人类序列与明确标注的派生线性模型，
+不是原论文模拟的精确复现；F 隐藏真实响应并限制首次选择提交。
+这些是下述研究方向的有界首版，契约见 [B–F 实现规范](../tasks/alignment/EXPANSION_CONTRACT.md)。
+没有新增 canonical runnable task；独立 Agent 与科学审阅验收仍待进行。
 
 本文将 Brain–Model Alignment 调研中的研究问题整理为适合 BrainPilotBench 的任务族。默认资源条件为公开数据与有限算力：模型表示和脑数据预处理尽量由维护者提前完成，Agent 侧以离线分析为主。优先级是针对本仓库的设计建议，不代表领域共识或已有实验结论。
 
@@ -24,7 +34,7 @@
 | `alignment-incremental-explanation` | 模型是否提供简单变量之外的脑响应预测信息？ | 混杂控制、增量比较、替代解释 | LeBel/Huth 自然语言 fMRI | 第一批 |
 | `alignment-context-dependence` | 长历史及历史结构是否改善独立材料上的预测？ | 历史对照、确认性验证、结论边界 | LeBel/Huth；Narratives 作为扩展 | 第一批 |
 | `alignment-brain-behavior` | 脑预测更好的模型是否也更接近人的行为？ | 跨数据整合、排名比较、证据分离 | THINGS-fMRI 与行为三元组 | 第一批 |
-| `alignment-temporal-profile` | 模型表示在哪些时间阶段与脑响应对应？ | 时间对齐、时间分辨分析、多重比较 | THINGS-MEG | 第二批 |
+| `alignment-temporal-correspondence` | 模型表示在哪些时间阶段与脑响应对应？ | 时间对齐、时间分辨分析、多重比较 | 原提案 THINGS-MEG；首版 THINGS-EEG2 | 第二批 |
 | `alignment-learning-transfer` | 人与模型的学习、迁移和干扰规律是否一致？ | 经验匹配、逐试次分析、学习过程比较 | Holton 等的 A→B→A 数据 | 第二批 |
 | `alignment-stimulus-selection` | 应选择哪些刺激验证增强或抑制脑响应的预测？ | 实验选择、冻结预测、独立验证 | Tuckute 等的刺激与脑响应数据 | 第二批 |
 
@@ -157,10 +167,9 @@ delta_R2 = R2_test(C + X) - R2_test(C)
 
 建议先完成现有任务一、二的真实数据接口与验收，再复用其身份校验、逐折输出和可信评分边界。可并行设计新协议，但不能把现有合成 fixture 的成功当作真实数据验收。
 
-1. **先做任务 A 的最小切片。** 审计一套故事 fMRI 数据，冻结简单基线、读出和故事划分，产出可信逐折参考结果。
-2. **在同一数据包上做任务 B。** 增加受控历史缓存，验证样本对应与无未来信息泄漏，加入独立故事确认。
-3. **引入 THINGS，完成任务 C。** 先解决图像/概念对应和行为概率读出，再讨论模型排序。
-4. **扩展任务 D、E、F。** 分别补充时间推断、学习经历契约和隐藏响应选择协议。开发顺序依据数据审计与基线表现调整，不预先承诺日程或算力数值。
+实际采用的顺序为 A → B → F → E → C → D：先复用已有语言数据，接着完成隐藏响应选择与学习经历审计，
+最后引入 THINGS 的概念对应和时间轴。首版已完成；下阶段扩展包括长故事的独立材料确认、
+更多行为判断和视觉模型、更多 EEG/MEG 受试者，以及独立 Agent 能力校准。
 
 首批不直接开展开放式“哪种架构总体最像脑”排名、缺少人类测量的生成式刺激评分、完整跨日人机记忆实验或内部机制同一性的自动判定。这些方向有研究价值，但需要额外的经验匹配、实验采集或因果证据。
 
@@ -170,7 +179,8 @@ RSA/CKA/encoding 差异及读出容量敏感性，可先作为任务一、二的
 
 ## 11. 来源与证据范围
 
-本提案基于 2026-10-27 至 2026-11-02 的 Brain–Model Alignment 调研、原论文/官方数据说明和现有仓库任务契约。数据公开性依据来源说明核查；本次文档整理未下载完整数据、执行新增任务或验证其分发包。下列论文支撑科学动机或数据可用性，不表示论文已经实现本文提出的 Agent benchmark。
+原始提案基于 2026-10-27 至 2026-11-02 的调研。2026-11-04 已下载并校验首版所需真实子集、执行新增任务；
+具体下载锁和运行证据见上述验收记录。下列论文支撑科学动机或数据可用性，不表示作者已经实现本文提出的 Agent benchmark。
 
 1. Hadidi et al. (2026). [Spurious alignment between large language models and brains can emerge from non-robust methods and overlooked confounds](https://doi.org/10.1038/s41467-026-72253-7). *Nature Communications*. 支撑混杂控制与分析有效性动机。
 2. LeBel et al. (2023). [A natural language fMRI dataset for voxelwise encoding models](https://www.nature.com/articles/s41597-023-02437-z). *Scientific Data*. 故事 fMRI、时间标注、预处理数据和编码代码。
@@ -179,3 +189,4 @@ RSA/CKA/encoding 差异及读出容量敏感性，可先作为任务一、二的
 5. Holton et al. (2025 年在线发表，2026 年卷期). [Humans and neural networks show similar patterns of transfer and interference during continual learning](https://pmc.ncbi.nlm.nih.gov/articles/PMC12846915/). *Nature Human Behaviour*. [数据与代码](https://github.com/eleanorholton/transfer-interference)。方法明确记载模型重复人类试次序列的训练安排。
 6. Tuckute et al. (2024). [Driving and suppressing the human language network using large language models](https://www.nature.com/articles/s41562-023-01783-7). *Nature Human Behaviour*. [数据与代码](https://github.com/gretatuckute/drive_suppress_brains)。支撑刺激选择与真实脑响应验证。
 7. Conwell et al. (2024). [A large-scale examination of inductive biases shaping high-level visual representation in brains and machines](https://doi.org/10.1038/s41467-024-53147-y). *Nature Communications*. 支撑受控模型比较与读出依赖分析。
+8. Gifford et al. (2022). [A large and rich EEG dataset for modeling human visual object recognition](https://doi.org/10.1016/j.neuroimage.2022.119754). *NeuroImage*. D 首版使用的 [THINGS-EEG2 数据](https://osf.io/3jk45/)与[作者代码](https://github.com/gifale95/eeg_encoding)。

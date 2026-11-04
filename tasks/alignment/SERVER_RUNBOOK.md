@@ -1,9 +1,10 @@
 # Real Brain-Score server development runbook
 
-Status on 2026-11-02: code written on macOS; **no dependency installation, data
-download, model inference, numerical test or Docker execution has been performed
-for this real backend**. The commands below are for the Linux server. This is a
-development handoff, not an accepted benchmark release.
+Status on 2026-11-02: Linux CPU validation has exercised the real distilgpt2 /
+Pereira384 path, including official live/cache and traced/untraced equivalence.
+See [SERVER_VALIDATION.md](SERVER_VALIDATION.md) for exact results, environment,
+fixes and remaining checks. This is not an accepted benchmark release or an
+Agent result; the intended Llama model requires separate validation.
 
 Keep the existing synthetic tasks as fixtures. The real candidate is still absent
 from canonical `bp-bench list`. `stage-task1` and `stage-task2` generate temporary
@@ -11,7 +12,7 @@ task definitions outside Git for explicit `--tasks` runs, without promoting them
 
 ## 1. Server environment and storage
 
-Use a normal non-root user, Python 3.11 (3.12 is also allowed by the bootstrap),
+Use a normal non-root user and Python 3.11,
 Node >=22 and Git. Docker is needed only when evaluating submitted Task1 code.
 Example paths below are placeholders; choose a writable data disk outside Git.
 
@@ -21,17 +22,25 @@ export BPB_ALIGNMENT_RUN_ROOT=/data/brainpilot-alignment
 export BPB_ALIGNMENT_VENV="$BPB_ALIGNMENT_RUN_ROOT/venv"
 export HF_HOME="$BPB_ALIGNMENT_RUN_ROOT/huggingface"
 export XDG_CACHE_HOME="$BPB_ALIGNMENT_RUN_ROOT/cache"
+export BRAINIO_HOME="$BPB_ALIGNMENT_RUN_ROOT/brainio"
 export BS_INSTALL_DEPENDENCIES=no
 mkdir -p "$BPB_ALIGNMENT_RUN_ROOT"
 cd "$BPB_REPO"
 BPB_PYTHON=python3.11 bash tasks/alignment/_env/setup-server.sh --install
 source "$BPB_ALIGNMENT_VENV/bin/activate"
 python tasks/alignment/_shared/server.py doctor
+python -c 'from brainscore_core.supported_data_standards.brainio.assemblies import NeuroidAssembly; from brainscore_language.benchmarks.pereira2018.benchmark import _Pereira2018Experiment; print("Brain-Score imports OK")'
+python -B tasks/alignment/_shared/test_server.py
 ```
 
 The bootstrap downloads Python dependencies only. Its requirements file is a
 bootstrap constraint set, not a validated full lock. It records resolved versions
 in `$BPB_ALIGNMENT_VENV/requirements.resolved.txt`; keep that with server results.
+Core 2.5.0 supplies the `supported_data_standards` imports used by the pinned
+Language source. Core 2.1 does not; metadata-only `doctor` output and `pip check`
+cannot detect that incompatibility, so run the import check above as well.
+Python 3.12+ is excluded because Core's pinned xarray version calls the legacy
+`importlib.metadata.entry_points().get` API when opening real NetCDF data.
 The upstream environment_lock.yml contains pandas 3.0.0 while pyproject.toml
 requires pandas <3, so this draft does not blindly copy that environment file.
 Resolve any platform-specific package conflict on the server, record the final
@@ -141,6 +150,8 @@ After the Agent finishes, run the printed resume command, then:
 ```bash
 node dist/cli.js submit verify "$BPB_ALIGNMENT_RUN_ROOT/runs/task1-001" \
   --tasks "$BPB_ALIGNMENT_RUN_ROOT/task1"
+# Choose a quota supported by `docker info --format '{{.NCPU}}'`.
+export BPB_ALIGNMENT_WORKER_CPUS=2
 node dist/cli.js score "$BPB_ALIGNMENT_RUN_ROOT/runs/task1-001" \
   --tasks "$BPB_ALIGNMENT_RUN_ROOT/task1" \
   --isolation docker --inference-image bpb-brainscore-server-draft
@@ -152,10 +163,14 @@ No reference answers, evaluator directory or model weights are mounted. The
 image tag is resolved to a local immutable ID before execution and never pulled
 on demand. Before submitted code runs, the parent compares the image's numerical
 package versions and adapter source hashes with its own environment; a mismatch
-is an infrastructure failure, not an Agent zero. Rebuild with the resolved server
+is an infrastructure failure, not an Agent zero. Docker creation/start failures
+also produce no score; a program that starts and then fails receives zero.
+Rebuild with the resolved server
 versions if the bootstrap ranges resolved differently. Draft limits are 4 CPUs,
-8 GiB, 900 seconds and 512 MiB result files;
-calibrate them on the server. Docker disk quotas and full isolation acceptance
+8 GiB, 900 seconds and 512 MiB result files. Set `BPB_ALIGNMENT_WORKER_CPUS`
+for staged CLI runs, or `evaluate --cpus` for direct runs, when the daemon has
+fewer CPUs; the grade records the selected limit. Calibrate these limits on the
+server. Docker disk quotas and full isolation acceptance
 remain operator responsibilities. This path checks saved outputs and one rerun;
 do not claim the synthetic suite's extra metamorphic checks ran on real data.
 

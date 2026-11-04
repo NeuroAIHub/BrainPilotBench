@@ -58,3 +58,8 @@ eeg-sleep-staging:
 # Task-one correctness metric; real alignment task is still a candidate.
 alignment-analysis:
   metrics: [analysis_success]
+
+# Experimental Task F: actual hidden response difference; invalid submissions
+# emit no effect score. Keep this separate from analysis correctness.
+alignment-selection:
+  metrics: [selection_effect, selection_valid]
