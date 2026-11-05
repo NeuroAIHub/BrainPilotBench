@@ -1,0 +1,20 @@
+{
+  "schema": "bpb-mouse-hf-owner-packet-check/1",
+  "date": "2026-10-27",
+  "model_executed": false,
+  "test_scores_computed": false,
+  "tasks": [
+    {
+      "task_id": "calms21-classic-classification",
+      "scorer_packet_verified": true,
+      "owner_files": 20,
+      "evaluator_lock_sha256": "6720edb2edcda712e6ef7c8b20f9bfaca8a7e5d9da15a7437d5970161344cd71"
+    },
+    {
+      "task_id": "mabe22-supervised-segmentation",
+      "scorer_packet_verified": true,
+      "owner_files": 49,
+      "evaluator_lock_sha256": "fdf5d307a4bb02e39703eb031fbe4abe04221044ec6252d93d25feef7edd0e7d"
+    }
+  ]
+}

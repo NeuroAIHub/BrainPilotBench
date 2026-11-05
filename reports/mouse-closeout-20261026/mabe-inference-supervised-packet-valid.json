@@ -1,0 +1,50 @@
+{
+  "frozen_files": {
+    "config.json": {
+      "bytes": 63,
+      "sha256": "5588f3ce7a28ef79b0251e496a72e26130a64b65e234ec3fa5c694b92a1ce6ba"
+    },
+    "model.py": {
+      "bytes": 1473,
+      "sha256": "01097ec2dac97571b3f27256d34a9870da19ff33f19b5a28a0e163dffa47635f"
+    },
+    "weights.npz": {
+      "bytes": 16334,
+      "sha256": "ced78a3b1fe5e90a211086c8912ba379536c7b3f20fe39d9de800205242659cd"
+    }
+  },
+  "image_id": "sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562",
+  "kind": "fixed-reference",
+  "label_manifest_sha256": null,
+  "metrics": {
+    "eligible_frames": 996,
+    "f1_by_class": {
+      "chases": 0.4067796610169492,
+      "huddles": 0.29577464788732394,
+      "oral_contact": 0.6021220159151194,
+      "oral_genital_contact": 0.37540453074433655
+    },
+    "macro_f1": 0.42002021389093225,
+    "videos": 11
+  },
+  "mode": "supervised",
+  "output_sha256_by_video": {
+    "4L97WF2QN2J061GCYFC6": "225c6ff476d2586056900f6c15342cf7ea994ccb6bb529bfcd195f63041d9cfa",
+    "4LUG8VAOP4R5IQZ77Y8R": "007cf44f00a86fba7bdce0c5bbbcb292142784eb8e3236022bc36dc955502ef2",
+    "C6VBI5GC8YQ71UOGGSU3": "f2a74af8e82e954c0f40fdb751a32601607cc4be02d5c2bd84537f7e23b61a5a",
+    "G4OC9LVV93NMZ2OUY8SJ": "c24ee03249794042cd7d45d8e8f112d6fad3e378ebe24dc4d386d488fbc0d448",
+    "GCGA0TEZ654PTUSRHUFL": "bcfda25f6292417112bc0ee92f32416bb580ff7694e69fdc6490529122ba51cd",
+    "HJG5NP1HPUQOJR1SNPLN": "317ac92e58c0e07311a0602d9faa5adbc5e50b1818b083b18dd3b73294a5d945",
+    "IS335YXE4MDVYSMMFN2X": "fea3ff1b4a5bed452aef71ec093e71d37de87a1bd54b1633a557e52c62a4edf0",
+    "WR0RPEAHO6HY3BS2AP2M": "e9fd3775752c294d2326b448b80836374cd848377e7ddaaa94c626c99618e94a",
+    "X7YHL8Z57TFBO7X41L3H": "0936ec4955f886c6f8be4f535854579e842333ae077e4f7baec461dfc0389aad",
+    "YCT5FMWHFJ0E4WWL2DP1": "aec8dec1d7f7cbb636876df57c26b051eb991f8dc11cf390c3d0cc87c605043e",
+    "YHIT8V00TLFZNO3O2RYA": "e4ec226def4d468633f1c5d9eb9370a0572dd4e5a992e4f81611967466ea1205"
+  },
+  "packet_manifest_sha256": "164196260ac14da6c0f8647dc3a959020db91d3bee3b9996d6d4e35caa73afa5",
+  "pose_manifest_sha256": null,
+  "profile": "Bench adaptation; source-style pose validity and positive frame eligibility",
+  "schema": "bpb-mabe-isolated-inference/1",
+  "split": "val",
+  "videos": 11
+}

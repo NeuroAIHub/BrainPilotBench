@@ -1,0 +1,48 @@
+{
+  "schema": "bpb-calms21-family-closeout/1",
+  "task": "task3",
+  "status": "source_verified_prepared_not_agent_accepted",
+  "source": {
+    "record": "https://data.caltech.edu/records/s0vdx-0k302",
+    "file": "task3_new_behaviors.zip",
+    "bytes": 556170163,
+    "md5": "df59df02d069bab1cfc376cdc1a3925b",
+    "sha256": "ed9edd3009b063a8edb4c31b38d4a6773b5d6a1ee80cd57b5df89417ca647821",
+    "raw_path": ".cache/mouse-closeout-20261026/family/task3_new_behaviors.zip",
+    "receipt_paths": [
+      ".cache/mouse-closeout-20261026/family/task3_new_behaviors.zip.sha256",
+      ".cache/mouse-closeout-20261026/family/task3_new_behaviors.zip.bytes"
+    ]
+  },
+  "prepared_root": ".cache/mouse-closeout-20261026/family/task3-prepared-v4",
+  "public_delivery": ".cache/mouse-closeout-20261026/family/task3-public-delivery",
+  "owner_delivery": ".cache/mouse-closeout-20261026/family/task3-owner-delivery",
+  "groups": ["approach", "disengaged", "groom", "intromission", "mount_attempt", "sniff_face", "whiterearing"],
+  "counts": {
+    "train": {"sequences": 11, "frames": 136723, "by_group": {"approach": 2, "disengaged": 1, "groom": 1, "intromission": 1, "mount_attempt": 3, "sniff_face": 2, "whiterearing": 1}},
+    "valid": {"sequences": 6, "frames": 86298, "by_group": {"approach": 1, "disengaged": 1, "groom": 1, "intromission": 0, "mount_attempt": 1, "sniff_face": 1, "whiterearing": 1}},
+    "owner_test": {"sequences": 109, "frames": 713006}
+  },
+  "split": "Complete official-Train sequences ranked by SHA-256 of delivered pose+confidence fingerprint per behavior. A full sequence is reserved for Train in each target; exact repeated poses stay in one derived role across groups.",
+  "validation_unavailable_groups": ["intromission"],
+  "validation_limit": "Official intromission Train contains one sequence. A disjoint nonempty intromission Train and Valid cannot both be formed. No seven-target Valid aggregate is supported by this split.",
+  "official_cross_role_pose_overlap": {
+    "fingerprints": 5,
+    "same_target_group_overlap": 0,
+    "scope": "Source Train in one binary target and source Test in another; official roles preserved. Target-specific Test labels remain owner-only."
+  },
+  "privacy": "Owner Test labels remain only in owner NPZ. Public delivery contains a public manifest and local-only pointer, with no owner Test arrays or labels.",
+  "distribution": "Local-only preparation. The CaltechDATA Version 1.0 record displays no license value in its Rights section; no archive or derived NPZ was uploaded.",
+  "validation": {
+    "zip_exact_members_and_duplicate_keys": "passed",
+    "numeric_schema_vocab_frames": "passed",
+    "public_and_owner_manifest_bytes_sha256": "passed",
+    "completion_marker_and_modes": "passed",
+    "agent_run": "not_started",
+    "test_scoring": "not_started"
+  },
+  "limits": [
+    "Pose fingerprints detect exact equality of delivered float32 keypoints and scores, not near duplicates or shared animals.",
+    "Prepared source and trusted numeric verification are not reference acceptance or private Test acceptance."
+  ]
+}

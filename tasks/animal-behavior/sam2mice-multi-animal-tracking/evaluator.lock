@@ -1,0 +1,86 @@
+{
+  "files": [
+    {
+      "bytes": 5229,
+      "name": "evaluator__manifest.json",
+      "path": "manifest.json",
+      "sha256": "2cf74d5e471981856932b08ad7cea7e2761a328362502f5776aeeededb370fae"
+    },
+    {
+      "bytes": 685120,
+      "name": "evaluator__test__sequence-35e4e44c3d3c419b.features.npz",
+      "path": "test/sequence-35e4e44c3d3c419b.features.npz",
+      "sha256": "53f245c0802c05f380350149e96a81faca9a6ef906b75cba91a5d6db97bee1ac"
+    },
+    {
+      "bytes": 392,
+      "name": "evaluator__test__sequence-35e4e44c3d3c419b.truth.npz",
+      "path": "test/sequence-35e4e44c3d3c419b.truth.npz",
+      "sha256": "b4b46392b7eb72effa39457dcbbf68b5eda2c265d05fed10d71136772447c839"
+    },
+    {
+      "bytes": 25616332,
+      "name": "evaluator__test__sequence-785a8dccb27eac11.features.npz",
+      "path": "test/sequence-785a8dccb27eac11.features.npz",
+      "sha256": "d20deb168ca8f985213e07d92aaba5f8dec8716015ee7520a8e535bde0db2535"
+    },
+    {
+      "bytes": 4084,
+      "name": "evaluator__test__sequence-785a8dccb27eac11.truth.npz",
+      "path": "test/sequence-785a8dccb27eac11.truth.npz",
+      "sha256": "7e2837cdaac3069637530a32c654392b27dcc87ce3a20348f07a85eefab4754d"
+    },
+    {
+      "bytes": 691913,
+      "name": "evaluator__test__sequence-954ea1192c96649e.features.npz",
+      "path": "test/sequence-954ea1192c96649e.features.npz",
+      "sha256": "de56aaaefea9ef2432dd4683e86c29634b8b70c49d8a5d285e65e16bcac44df0"
+    },
+    {
+      "bytes": 388,
+      "name": "evaluator__test__sequence-954ea1192c96649e.truth.npz",
+      "path": "test/sequence-954ea1192c96649e.truth.npz",
+      "sha256": "d84162a0f2de9e1b46bfaef77d51ce3f957320f44aae32826dbff5e04e5044d9"
+    },
+    {
+      "bytes": 11449137,
+      "name": "evaluator__test__sequence-a20cee09ce83b93c.features.npz",
+      "path": "test/sequence-a20cee09ce83b93c.features.npz",
+      "sha256": "701b9d08ac20a18027501d84da606f845e77825cdfb03c9ea4395f77b9603e11"
+    },
+    {
+      "bytes": 2142,
+      "name": "evaluator__test__sequence-a20cee09ce83b93c.truth.npz",
+      "path": "test/sequence-a20cee09ce83b93c.truth.npz",
+      "sha256": "f2b193ddfbb16af3a5b441e3a4cf6393f5c2ab8aa385c2df0c39ef075cb1ba7a"
+    },
+    {
+      "bytes": 4083868,
+      "name": "evaluator__test__sequence-bee18e20531c9c89.features.npz",
+      "path": "test/sequence-bee18e20531c9c89.features.npz",
+      "sha256": "ac5658cc1178684b75ead0de34ccfa1ec1463ce6600889189bdfa412f7224b46"
+    },
+    {
+      "bytes": 1046,
+      "name": "evaluator__test__sequence-bee18e20531c9c89.truth.npz",
+      "path": "test/sequence-bee18e20531c9c89.truth.npz",
+      "sha256": "68ed95be9efbac287a10d872d15243245c9d6422aaaed2736f7e56c0ebf48ac8"
+    },
+    {
+      "bytes": 8085768,
+      "name": "evaluator__test__sequence-d97f8b537ce0d76f.features.npz",
+      "path": "test/sequence-d97f8b537ce0d76f.features.npz",
+      "sha256": "26ee0ddce4d43651f6a0eae42c7585a19cd9a51b8f089e90bd16da903780ab80"
+    },
+    {
+      "bytes": 1610,
+      "name": "evaluator__test__sequence-d97f8b537ce0d76f.truth.npz",
+      "path": "test/sequence-d97f8b537ce0d76f.truth.npz",
+      "sha256": "15a9ebc65a0b8857972860aa9a5be9861c5efb7de0543109c0f17db44b31ab69"
+    }
+  ],
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "76dfee8c7228a3f4da8484b63cc6312448b14fa8",
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "sam2mice-multi-animal-tracking"
+}

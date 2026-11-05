@@ -1,0 +1,39 @@
+{
+  "schema": "bpb-mabe-shared-public-content-audit/1",
+  "observed_at": "2026-10-26",
+  "task_id": "mabe22-representation-classification",
+  "revision": "e9ae0d79f05b83a33ca8c96a29c36641847e2b1523e53faaa58c396061ebbe45",
+  "method": "Intersected unique SHA-256 values in this task's public_files and owner_files contracts, then inspected the corresponding numeric NPZ and profile JSON. No labels or Test score were read.",
+  "public_equivalent_sha256": [
+    "571a1655db4a02e44dd5c88ba228b785e84ecb7c4b2d9123d7bca7a3c94c4eca",
+    "f8c696049cf6244e3f39c5cd6e88b8b425fbaf18b2e9e56610871d1e27e2299e"
+  ],
+  "objects": [
+    {
+      "kind": "published membership and sampling profile metadata",
+      "sha256": "571a1655db4a02e44dd5c88ba228b785e84ecb7c4b2d9123d7bca7a3c94c4eca",
+      "bytes": 490059,
+      "public_paths": ["public/probe_profile.json"],
+      "evaluator_paths": ["public/probe_profile.json"],
+      "evidence": "The profile contains source sequence memberships and the Bench sequence-sampling policy. Its top-level keys are schema, name, source_evaluator_sha, sampling, comparability, tasks, source_hashes, and agent_boundary; it contains no label_array field."
+    },
+    {
+      "kind": "all-zero numeric keypoint clip",
+      "sha256": "f8c696049cf6244e3f39c5cd6e88b8b425fbaf18b2e9e56610871d1e27e2299e",
+      "bytes": 753,
+      "public_paths": ["public/probe_usertrain/JGC8WCVWHFGORUKI50MD.npz"],
+      "evaluator_paths": [
+        "public/probe_pose/3AFSX2ZDWSIJ8VFEGRRX.npz",
+        "public/probe_pose/ATXQE7EP4S74V7E7KVC6.npz",
+        "public/probe_pose/DT9FRIAHTJLJU82CI3EY.npz",
+        "public/probe_pose/VUKWVXHLBLMXUYUOAI6G.npz",
+        "public/probe_pose/X96ZBSBLQ4FN7EP189KE.npz",
+        "public/probe_pose/ZH9YHIYW6B7OMYOXSSEL.npz",
+        "public/probe_pose/ZSM3CD0N4G4KPU3FRZOC.npz"
+      ],
+      "numeric_inspection": {"npz_members": ["keypoints"], "dtype": "int32", "shape": [1800, 3, 12, 2], "nonzero_elements": 0},
+      "evidence": "The public UserTrain file and a representative evaluator submission-pose file have identical bytes, SHA-256, NPZ member, shape, dtype, and zero nonzero elements. The other six evaluator paths have the same pinned SHA-256. No annotation, label, or probability array is present."
+    }
+  ],
+  "boundary": "Only these two byte-identical, already-public contents are explicitly declared in the representation source-only evaluator lock. All other evaluator content, including every probe-training and Test label file, remains private. Dataset bytes, source membership, and task delivery revision are unchanged."
+}

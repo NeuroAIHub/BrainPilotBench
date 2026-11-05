@@ -1,0 +1,17 @@
+{
+  "schema": "bpb-mouse-candidate/1",
+  "id": "airscope-tail-suspension",
+  "domain": "calcium-imaging",
+  "status": "metadata_only_not_runnable",
+  "runnable": false,
+  "validated": false,
+  "title": "Decode active and passive states during tail suspension",
+  "source_task_id": "airscope/tail-suspension-test",
+  "dataset_group_id": "airscope-tail-suspension",
+  "input_description": "Cortical calcium signals aligned to active/passive tail-suspension annotations.",
+  "output_description": "One active/passive prediction for each scored time point.",
+  "native_split_description": "The supplement reports results across four animals. Exact session membership, split units and animal-level aggregation remain unbound.",
+  "primary_metric": {"id": "accuracy", "direction": "maximize", "unit": "fraction"},
+  "protocol": "protocol.json",
+  "reason": "The inspected public release lacks the matching tail-suspension signals, state annotations and reproducible split definition."
+}

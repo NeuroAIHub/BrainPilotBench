@@ -1,0 +1,41 @@
+{
+  "schema": "bpb-mouse-source-audit/1",
+  "observed_at": "2026-10-26",
+  "status": "source_only_no_real_data_acceptance",
+  "candidate_ids": ["mabe22-representation-classification", "mabe22-supervised-segmentation"],
+  "original_mabe22": {
+    "paper": "https://arxiv.org/html/2207.10553",
+    "paper_version": "arXiv:2207.10553v2",
+    "dataset": "https://data.caltech.edu/records/rdsa8-rde65",
+    "dataset_version": "CaltechDATA v1",
+    "source_sections": ["3.1", "Appendix C.2.3", "Appendix C.2.4", "Appendix D"],
+    "released_evaluator": {
+      "url": "https://github.com/damaggu/MABe2022",
+      "sha": "234dae7098314d6035066e3028caedee3f3ee379",
+      "conflict": "Pinned round2 mouse config uses seed [42], a four-task list, test_size 0.1 and frame-pooled scoring. This does not match the paper's three fixed 80% probes, six classification targets and per-sequence F1. Its split files do not resolve the paper recipe's exact probe memberships."
+    },
+    "official_assets_not_downloaded": {
+      "mouse_submission_labels.npy": {"listed_size_mb": 171.4, "listed_md5": "7f10c2b676e7dd8b4348423f0ee0aa8a"},
+      "mouse_frame_number_map.npy": {"listed_size_kb": 83.6, "listed_md5": "ffc1dcae90176cdac4ff4fe123e18f25"}
+    },
+    "unresolved": ["authoritative Appendix D evaluator and fixed 80% subset memberships/sampling unit", "safe label decoding and frame map inspection", "exact split sequence membership"]
+  },
+  "resifuse_supervised": {
+    "reference_repository": "https://github.com/BRAINML-GT/ResiFuse",
+    "reference_sha": "ae4acf51962b1611656da00d3da92a6b02a56ef4",
+    "pose_dataset": "https://huggingface.co/datasets/WeihanLikk/ResiFuse-MABe22",
+    "pose_revision": "22019237bee137b74f8211977779c822236b8402",
+    "dataset_card_license_claim": "CC-BY-NC-SA-4.0; original-source provenance and redistribution still require review",
+    "dataset_card_coverage": "1810/1829 videos, H5 tables with 1801 frames, 3 mice, 12 bodyparts and x/y/likelihood in 448-pixel coordinates",
+    "sample_file": "deeplabcut_filtered/01KZRAVLR6311AUVETI7DLC_CtdCoamW48_multi_mouse2025-11-21shuffle5_snapshot_best-180_el.h5",
+    "sample_size_bytes": 1659308,
+    "sample_sha256_verified_against_hf_lfs_oid": "cbe02ed554ff58ff21a4c49e752a540d3288b96a7ecb182924f3867fdb066d17",
+    "sample_inspection_report": "reports/mouse-expansion-20261026/mabe-pose-inspection.json",
+    "sample_inspection": "Independently inspected one cached HDF5 sample with h5py in an isolated cache venv: tracks/table has 1801 rows and 108 float64 pose columns. Static metadata scan found scorer, A0/A1/A2, 12 bodyparts and x/y/likelihood. Full-dataset 1810/1829 coverage remains a pinned dataset-card statement, not independently audited here.",
+    "supervised_split": {"train": 54, "validation": 11, "test": 43, "total": 108, "source_seed": 42},
+    "source_label_groups": {"chases": ["chases"], "huddles": ["huddles"], "oral_contact": ["oral_ear_contact", "oral_oral_contact"], "oral_genital_contact": ["oral_genital_contact"]},
+    "critical_boundary": "Source fine-tune preprocessing creates windows centered on label-positive segments and scores frames with any positive grouped label. Excluded all-zero frames may be annotated negatives or unannotated; the resulting foreground-conditioned F1 cannot measure background false alarms. Label-independent Agent Test input and owner-only positive-frame eligibility are required; this changes input/windowing and prevents exact ResiFuse paper comparison. The 0.5 sigmoid threshold itself is present in the source scorer.",
+    "unresolved": ["pose-to-video frame alignment and 19 missing files", "official label load without unsafe pickle", "license/provenance review", "real-data preflight and isolated Agent/Test acceptance"]
+  },
+  "claims_excluded": ["runnable benchmark", "official MABe22 score", "ResiFuse paper-comparable score", "private Test acceptance", "data redistribution permission"]
+}

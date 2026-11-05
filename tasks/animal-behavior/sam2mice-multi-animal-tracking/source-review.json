@@ -1,0 +1,18 @@
+{
+  "schema": "bpb-sam2mice-tracking-source-review/1",
+  "status": "passed",
+  "source_complete_sha256": "ccb350870aa0769c123e9e067168fa8ef22e0cdcf81adbbee81276002ca52e3e",
+  "paired_manifest_sha256": "24553d7831e721be4beb4a4c7f2e184ffbf45d9d1d734cfb0bab71b25e0e4f6f",
+  "source_archive_sha256": "86871617cc08a954994eb7b053c48a5ed79d99f6d44cf951b88db6b5f53e3883",
+  "author_gt_verified": true,
+  "image_label_alignment_verified": true,
+  "identity_continuity_verified": true,
+  "clean_input_verified": true,
+  "basis": "The author benchmark identifies ground_truth_bb_labels as annotated GT used in MOT evaluation. All 502 original JPEGs decoded, and 421 share source indices with GT. Every paired frame has five legal boxes with IDs 0 through 4. Root inspected the predetermined six-frame overlay and consecutive triplets 295-297 and 338-340. An independent reviewer inspected five consecutive triplets and the unmodified original frame 300. Sampled boxes cover the visible animals, sampled identities remain continuous, and original prediction inputs contain no annotation overlays. Numeric continuity screening covers all 392 observed consecutive transitions per ID. This review preserves author labels and does not claim exhaustive independent reannotation or global biological identity across missing intervals.",
+  "overview_indices": [0, 100, 201, 300, 400, 495],
+  "independent_consecutive_groups": [[0, 1, 2], [252, 253, 254], [295, 296, 297], [300, 301, 302], [338, 339, 340]],
+  "annotation_changes": "none",
+  "frame_offset_changes": "none",
+  "paired_frames": 421,
+  "independent_recordings": 1
+}

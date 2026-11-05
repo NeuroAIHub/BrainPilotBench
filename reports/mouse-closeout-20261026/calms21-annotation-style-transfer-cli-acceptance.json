@@ -1,0 +1,61 @@
+{
+  "schema": "bpb-mouse-cli-acceptance/1",
+  "task_id": "calms21-annotation-style-transfer",
+  "task_version": "0.1-source",
+  "kind": "fixed_reference_not_agent_benchmark",
+  "image_id": "sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562",
+  "public_score_executed": true,
+  "private_interface_passed": true,
+  "private_metrics_published": false,
+  "private_result_sha256": "2a9294eeafcd0d4eae0761ab6f936c3e628d32e6cad80bf878668c9a3bb451ef",
+  "source_only": true,
+  "data_uploaded": false,
+  "steps": [
+    {
+      "step": "fetch-public",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "manual-prepare",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "reference-public-train",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "manual-resume",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "verify-submission",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "score-public",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "prepare-evaluator",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "score-private",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "bindings": {
+    "task.yaml": "25da76a83aa0e6be45120735c24d3998484f70de3bf3618ec03cb3fdde929ab4",
+    "contract.json": "8ebbd63bf5b73c4188365c618de56e91305fac1737d8f3aeebee4b3fda0e9cb5",
+    "data.lock": "9332a5f48e7495d8c4d39eeb253bb90f5e44285de94f60f595be9085008df3ac",
+    "evaluator.lock": "eff1590a67cabf72cdaa788010605d45f288ec0e1d12de1a0ac2cdd6d8255431"
+  }
+}

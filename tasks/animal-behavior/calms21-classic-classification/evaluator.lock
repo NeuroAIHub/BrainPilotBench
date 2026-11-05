@@ -1,0 +1,128 @@
+{
+  "files": [
+    {
+      "bytes": 6025,
+      "name": "evaluator__test-manifest.json",
+      "path": "test-manifest.json",
+      "sha256": "634f5bbda4477e99d6459d9cce87330a41ea362a6358c59ca3407856e68a8c73"
+    },
+    {
+      "bytes": 825649,
+      "name": "evaluator__test__0007347af1beb4b107c887cc7160034a0f7345d2cf139684061a756339f81a79.npz",
+      "path": "test/0007347af1beb4b107c887cc7160034a0f7345d2cf139684061a756339f81a79.npz",
+      "sha256": "0665728538bd096b9315ac2bf032474060e27c288bccba4b5c0383ced475359d"
+    },
+    {
+      "bytes": 834268,
+      "name": "evaluator__test__02c3d39287f673c4c55b6d5c254830e02d4f7e014da6f4339fcfa8440a853f4f.npz",
+      "path": "test/02c3d39287f673c4c55b6d5c254830e02d4f7e014da6f4339fcfa8440a853f4f.npz",
+      "sha256": "612bad5642afa1405d3967cf9f28457f4a1b38bd255c475a6917ef3eae0e3ba2"
+    },
+    {
+      "bytes": 4024650,
+      "name": "evaluator__test__28fd76197f8643234d41f0b04c5462233cdc16b6d036955e838e33ddf1f1cd8e.npz",
+      "path": "test/28fd76197f8643234d41f0b04c5462233cdc16b6d036955e838e33ddf1f1cd8e.npz",
+      "sha256": "c2979ffb7f293136e0ff0e23fa1060b44e99389d6e88b31b293e2d8930d3ebf9"
+    },
+    {
+      "bytes": 3070476,
+      "name": "evaluator__test__31d4d1279cf20f1826135ebbcedb5cae067d8a38df04460f1e94f9a2e8f413ad.npz",
+      "path": "test/31d4d1279cf20f1826135ebbcedb5cae067d8a38df04460f1e94f9a2e8f413ad.npz",
+      "sha256": "7672a726707fa9d4dd822062823a1a348637be494186233a4726dd2b52da132e"
+    },
+    {
+      "bytes": 3245560,
+      "name": "evaluator__test__4395d5b2bfef1dd8fed6555c9e09b5e02b2cd3bcc6563fa82e2db1f7abc88baf.npz",
+      "path": "test/4395d5b2bfef1dd8fed6555c9e09b5e02b2cd3bcc6563fa82e2db1f7abc88baf.npz",
+      "sha256": "9733e549cf1b8549aaf62cbb8fc8b78231054125f2c4ec00f9e16ffeb8b5125e"
+    },
+    {
+      "bytes": 1492185,
+      "name": "evaluator__test__441908c58bc1e12cd663d4b241f31fd6712e0a3d6610e4e2892a34824dffcd71.npz",
+      "path": "test/441908c58bc1e12cd663d4b241f31fd6712e0a3d6610e4e2892a34824dffcd71.npz",
+      "sha256": "dc15d8bf4430d9c4228caf0461536a5c85025ea7e9381863c43f3c759ffe17f0"
+    },
+    {
+      "bytes": 1457033,
+      "name": "evaluator__test__4c3ef0a3b10faa2468360b4bac73a8bcf2a8ff6030dd4f71270df462aae9a140.npz",
+      "path": "test/4c3ef0a3b10faa2468360b4bac73a8bcf2a8ff6030dd4f71270df462aae9a140.npz",
+      "sha256": "068818e22207524cbcfab9cda1db312474e718abb5c29fbd131cca83d1fd7352"
+    },
+    {
+      "bytes": 3196043,
+      "name": "evaluator__test__5986ae30fc68f798166636a5a4161971203ac3667118facf3f85e8ac1e605675.npz",
+      "path": "test/5986ae30fc68f798166636a5a4161971203ac3667118facf3f85e8ac1e605675.npz",
+      "sha256": "77c598064109996a531d197df01a68ca32409a9db7143de4ff3ee8babaa28103"
+    },
+    {
+      "bytes": 3331750,
+      "name": "evaluator__test__64ea17d06a872a1a4c49f252b98e4aefc27c76bc0dc76bf27c6a7796facece10.npz",
+      "path": "test/64ea17d06a872a1a4c49f252b98e4aefc27c76bc0dc76bf27c6a7796facece10.npz",
+      "sha256": "df08b10c44f64708a263ae5c87aec38ed3f8ae2f1d3f420016aa17eb26cfd4ab"
+    },
+    {
+      "bytes": 3182185,
+      "name": "evaluator__test__67a119d70e08f6238a4a2bcbadf9eeb82523490595f3e162376605091b4b9984.npz",
+      "path": "test/67a119d70e08f6238a4a2bcbadf9eeb82523490595f3e162376605091b4b9984.npz",
+      "sha256": "41564c89a020245036c770cc5d6df393ad63f1d92d71ef8ddc6ccabef2c74272"
+    },
+    {
+      "bytes": 2014395,
+      "name": "evaluator__test__69269d95745b8dc1ae5e77e936812fd183535be9652c87324681396efa8170fd.npz",
+      "path": "test/69269d95745b8dc1ae5e77e936812fd183535be9652c87324681396efa8170fd.npz",
+      "sha256": "b06906891b3b90d3e9714cfce15ac5d7522f8f8e1c3cf2b6a2bd04d4f3f6b475"
+    },
+    {
+      "bytes": 951554,
+      "name": "evaluator__test__6add69b34491357d871a21cd2543cc0b937a9a0df87c1dceb1c3b7f7f691146c.npz",
+      "path": "test/6add69b34491357d871a21cd2543cc0b937a9a0df87c1dceb1c3b7f7f691146c.npz",
+      "sha256": "f060ef60227b262112b0f130b16353127f78d14aa7f794b15f9056737496c102"
+    },
+    {
+      "bytes": 2955387,
+      "name": "evaluator__test__8f934d7213a2c988da21ac750e5524a383364fba974ab77646e72c5d921ccb69.npz",
+      "path": "test/8f934d7213a2c988da21ac750e5524a383364fba974ab77646e72c5d921ccb69.npz",
+      "sha256": "57329fc556ca669e35968456266442c14a3e9521b10bafd295d65499a6870223"
+    },
+    {
+      "bytes": 1203195,
+      "name": "evaluator__test__9cfada4bb34448409d87cfdae0b0441cffb2057ff5fa5987af91584c9b3b1ac6.npz",
+      "path": "test/9cfada4bb34448409d87cfdae0b0441cffb2057ff5fa5987af91584c9b3b1ac6.npz",
+      "sha256": "57789707040fd904b38fc46275bacf1d8caded9ed4ea77072fccd0de3a86f5c0"
+    },
+    {
+      "bytes": 1906066,
+      "name": "evaluator__test__a08811998bf8f91c58501a5a5d82303ed58de9b25760b908f1e05b41e4b566fa.npz",
+      "path": "test/a08811998bf8f91c58501a5a5d82303ed58de9b25760b908f1e05b41e4b566fa.npz",
+      "sha256": "ef9bc5d3b00a78e08d0294506a1ade46ad14de037e6e00c50ad840240fea585e"
+    },
+    {
+      "bytes": 3045295,
+      "name": "evaluator__test__efba187100a5b1bbef63617ee12882799792e55c0f4abaf276922612cda2d6c8.npz",
+      "path": "test/efba187100a5b1bbef63617ee12882799792e55c0f4abaf276922612cda2d6c8.npz",
+      "sha256": "e0e0335cc428a961583cf2f3dd5193312a01cbc6f34c1fca0faf10070d585826"
+    },
+    {
+      "bytes": 1045011,
+      "name": "evaluator__test__f3a9c1b40f53d634a44ab1223f53bf8ebba6da2796524d7b7004aaeefe2c4928.npz",
+      "path": "test/f3a9c1b40f53d634a44ab1223f53bf8ebba6da2796524d7b7004aaeefe2c4928.npz",
+      "sha256": "5e7f2f70a8e3b293b46094cf5a9c63e965ab7fa2b728fd40e4e2e3670a5c33fa"
+    },
+    {
+      "bytes": 3291697,
+      "name": "evaluator__test__f40eb950286eed6475499b4a6130ffefe56afb4e935c7c6f17c52b21b3c34e33.npz",
+      "path": "test/f40eb950286eed6475499b4a6130ffefe56afb4e935c7c6f17c52b21b3c34e33.npz",
+      "sha256": "9e16175c9bcafbce7a6e5099d1924e13846955ec8f55b0adda795532c6091ed2"
+    },
+    {
+      "bytes": 3238124,
+      "name": "evaluator__test__fd0a20ca4aca9b2c186d093493e5956ad40227000d370c7babde14566c8ca0a8.npz",
+      "path": "test/fd0a20ca4aca9b2c186d093493e5956ad40227000d370c7babde14566c8ca0a8.npz",
+      "sha256": "ac09d78fd5d6f9195e787c2bea7a8674011ab0e25fed2d981348b6398c5e60ab"
+    }
+  ],
+  "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+  "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a",
+  "schema": "bpb-evaluator-data/1",
+  "task_id": "calms21-classic-classification"
+}

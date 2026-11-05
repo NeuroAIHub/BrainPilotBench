@@ -1,0 +1,62 @@
+{
+  "schema": "bpb-mouse-local-readiness/1",
+  "date": "2026-10-26",
+  "base_commit": "270c3e19e322262fbed6bf8e117c769f38befc3c",
+  "branch": "feat/mouse-behavior-task-expansion",
+  "scope": "Five real-data source-prepared tasks; local engineering acceptance, not Agent benchmark results or source leaderboard reproduction",
+  "counts": {"runnable": 117, "new_mouse_runnable": 5, "candidates": 8, "airscope_candidates": 3, "total_records": 125},
+  "accepted_task_ids": [
+    "calms21-classic-classification",
+    "calms21-annotation-style-transfer",
+    "calms21-few-shot-behavior",
+    "mabe22-representation-classification",
+    "mabe22-supervised-segmentation"
+  ],
+  "acceptance_records": "One version-bound <task-id>-cli-acceptance.json per task in this directory",
+  "acceptance_scope": [
+    "Real source bytes and hashes, role-separated numeric preparation",
+    "Public fetch and workspace preparation",
+    "Fixed reference fitted on permitted public training inputs",
+    "Frozen three-file model submission and submission verification",
+    "Source evaluator preparation and nonroot no-network container inference",
+    "Owner-only Test interface scoring, with Test values withheld",
+    "Public validation scoring where the complete protocol defines it",
+    "Fresh local packet materialization without rewriting checked-in locks"
+  ],
+  "inference_image_id": "sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562",
+  "mabe_representation_profile": "bpb-mabe22-paper-style-three-probe-sequence-v1",
+  "mabe_probe_seeds": [0, 1, 2],
+  "mabe_exact_official_reproduction": false,
+  "checks": {
+    "typescript_build": "passed",
+    "node_suite": {"passed": 251, "skipped_existing_optional": 3, "failed": 0},
+    "mouse_python_with_docker": {"passed": 48, "failed": 0},
+    "mouse_metadata_and_acceptance": {"passed": 10, "failed": 0},
+    "reader_documentation": {"passed": 9, "failed": 0},
+    "private_compatibility_and_invasive_metadata": {"passed": 21, "failed": 0},
+    "documentation_smoke": "117 canonical task guides passed",
+    "schema_only": "118 task definitions passed, including the example task",
+    "collection_and_catalog": "passed",
+    "old_catalog_rows_unchanged": 117,
+    "old_task_payloads_changed": false,
+    "git_diff_whitespace": "passed"
+  },
+  "limits": [
+    "Local macOS/arm64 acceptance does not establish Linux/amd64 or GPU acceptance",
+    "No research Agent run, Test tuning, comparative ranking or official paper score",
+    "No raw video download or visual pose/video alignment check",
+    "CalMS21 Task 3 cannot define a complete seven-target public Valid score",
+    "Source-public Test labels are evaluator-only in this workflow, not historically secret",
+    "Airscope has a verified 17-example processed social validation cache but lacks the planned complete task and independent split",
+    "Matched Airscope forced-swim and tail-suspension signals and labels remain unavailable in inspected sources",
+    "Forced-swim AUC curve type and multiclass reduction remain unresolved"
+  ],
+  "publication": {
+    "source_data_only": true,
+    "new_hf_mirror": false,
+    "private_test_metrics_published": false,
+    "push_and_pr_authorized": true,
+    "main_merge_authorized": false,
+    "remote_ci_included_in_local_evidence": false
+  }
+}

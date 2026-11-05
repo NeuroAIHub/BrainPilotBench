@@ -1,0 +1,67 @@
+{
+  "schema": "bpb-mouse-hf-transport-acceptance/1",
+  "date": "2026-10-27",
+  "scope": "Two real-data family representatives, fresh HF caches and public/owner preparation; no model training or scoring",
+  "tasks": [
+    {
+      "task_id": "calms21-classic-classification",
+      "steps": [
+        {
+          "step": "anonymous-public-fetch",
+          "passed": true
+        },
+        {
+          "step": "public-workspace-prepare",
+          "passed": true
+        },
+        {
+          "step": "authorized-evaluator-fetch-prepare",
+          "passed": true
+        }
+      ],
+      "public_files": 71,
+      "evaluator_files": 20,
+      "bindings": {
+        "data.lock": "7e5b5a3412c76667900e259d14bd666413661e32d004dc99176755ba5e3dd5b0",
+        "evaluator.lock": "6720edb2edcda712e6ef7c8b20f9bfaca8a7e5d9da15a7437d5970161344cd71",
+        "contract.json": "25d8a348c70ea619578cd3b71aa9ebea0da39439a901322856bb697956fede4e",
+        "task.yaml": "3b36658e212eb3e56890cd1f4b4fe064ffce811817ba14c189be9789f330603d",
+        "hf-delivery.json": "d267ecbdcaf8c7a0502e0e625289f6db9535e1ac859f9020851a53fb4f548ff5"
+      },
+      "public_fetch_anonymous": true,
+      "evaluator_owner_only": true,
+      "model_rerun": false,
+      "test_scores_read": false
+    },
+    {
+      "task_id": "mabe22-supervised-segmentation",
+      "steps": [
+        {
+          "step": "anonymous-public-fetch",
+          "passed": true
+        },
+        {
+          "step": "public-workspace-prepare",
+          "passed": true
+        },
+        {
+          "step": "authorized-evaluator-fetch-prepare",
+          "passed": true
+        }
+      ],
+      "public_files": 68,
+      "evaluator_files": 49,
+      "bindings": {
+        "data.lock": "a908345f6051219c50e7ec3d10a68983fc372aec4ac79637bde13ec3093ffa09",
+        "evaluator.lock": "fdf5d307a4bb02e39703eb031fbe4abe04221044ec6252d93d25feef7edd0e7d",
+        "contract.json": "e1d1575365b0258890e603a4a632ea0d6ea3952e8baa1b3a228421adf7677788",
+        "task.yaml": "5e9b3bab06bf8136d7788687fe19cb5be100917bd28cf4c160d2a0cb348be97e",
+        "hf-delivery.json": "5d4787d185eee97426afaa2ab152bc15e667b3d0873edbb66191f80f06a5272f"
+      },
+      "public_fetch_anonymous": true,
+      "evaluator_owner_only": true,
+      "model_rerun": false,
+      "test_scores_read": false
+    }
+  ]
+}

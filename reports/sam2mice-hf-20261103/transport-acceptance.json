@@ -1,0 +1,134 @@
+{
+  "schema": "bpb-sam2mice-hf-transport-acceptance/1",
+  "status": "passed",
+  "task_id": "sam2mice-multi-animal-tracking",
+  "checked_at_utc": "2026-11-03T10:07:40.887Z",
+  "content_revision": "c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d",
+  "publication_receipt": "reports/sam2mice-hf-20261103/publication.json",
+  "publication_receipt_sha256": "ea980cb4468732312984ff18c6c59ea088d873593ccc34167d1fd00de688ded0",
+  "public_revision": "2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93",
+  "private_revision": "76dfee8c7228a3f4da8484b63cc6312448b14fa8",
+  "steps": [
+    {
+      "step": "anonymous-context-check",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "step": "anonymous-public-fetch",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "step": "public-workspace-prepare",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "step": "verify-reused-public-packets",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "step": "authorized-evaluator-fetch-prepare",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "step": "trusted-packet-hash-verification",
+      "passed": true,
+      "exit_code": 0
+    }
+  ],
+  "public_files": 49,
+  "public_bytes": 210345243,
+  "evaluator_files": 13,
+  "evaluator_bytes": 50627029,
+  "public_fetch_anonymous": true,
+  "public_token_file_fallback_disabled": true,
+  "public_fetch_reused_from_initial_success": true,
+  "public_files_redownloaded_during_recovery": 0,
+  "fresh_public_cache_at_initial_start": true,
+  "empty_owner_cache_at_recovery_start": true,
+  "owner_auth_scope": "SDK token in owner child only",
+  "evaluator_owner_only": true,
+  "evaluator_marker_matches_hf_revision": true,
+  "private_objects_absent_from_public_cache": true,
+  "trusted_packet_hashes_passed": true,
+  "critical_bindings_unchanged": {
+    "tasks/animal-behavior/_sam2mice_tracking/Dockerfile": "1c4d26ed026ac417e96a48a3f3b8f6f2da1850212e51ce5040ca2c8de0bfeab2",
+    "tasks/animal-behavior/_sam2mice_tracking/fetch_sources.py": "bccbf53ef452d9a55bd7ed5f22bb1f69adfb54f68ba4696fc6d55982a772e102",
+    "tasks/animal-behavior/_sam2mice_tracking/inference.py": "5de2c7a7496869bc5b2d42a34c255a87ab349ccbdf2e132de0c623dd1259462b",
+    "tasks/animal-behavior/_sam2mice_tracking/metrics.py": "b9ccf41c157d8f0d43dd802199755cde9f10cfeb5112e2daaa8ea2f92cbbf8ed",
+    "tasks/animal-behavior/_sam2mice_tracking/package_task.py": "8e031d9691b484812a439e44631dde14d973a81bbbe1a07ee049c138abd6aea2",
+    "tasks/animal-behavior/_sam2mice_tracking/prepare_source.py": "0f57371d39d6d5633da3a64d78d97f19eb2bb0703a82ba9a3e9c277ad0ead237",
+    "tasks/animal-behavior/_sam2mice_tracking/prepare_task.py": "eb23be7216ba0fb4a78011882dfe1384b6414731556f53343598374ca08d20e9",
+    "tasks/animal-behavior/_sam2mice_tracking/reference.py": "6832545a3245328b184b347345f66eb6f716b25b598d8e087f120a3ce599ac49",
+    "tasks/animal-behavior/_sam2mice_tracking/requirements.txt": "215102bb73fff62458ef73119d09b7daebbb6cd2c54fc01e3d2cf742a806ed94",
+    "tasks/animal-behavior/_sam2mice_tracking/score_task.py": "df5cb411dbe2a5c00cd274d9820b90fb856fa2bfc7b59fead526d0d47a4d0bc5",
+    "tasks/animal-behavior/_sam2mice_tracking/task_common.py": "b7c3864ea121abeb8a2e9183c6a57aa7b5ef3c758c2f3e9c718b0b4241890c6a",
+    "tasks/animal-behavior/_sam2mice_tracking/worker.py": "791af91e047346346246262b4fca279e5cc46eab10cce604b4bdc077ce5e301c",
+    "tasks/animal-behavior/_shared/evaluator/score.py": "4a6ebabf411078a1842b1ecb5c21107039e2effd72338a84c729534f5517815f",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/checks/check.sh": "5c4eb6d1aa5da0020594d4b6789593879695c5975015ebecc4eb16363ffe543d",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/contract.json": "a190263609578cdd193fad1293510f84bfd866379a245e6fbd9544d2f63e7879",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/data.lock": "93344673f67e44a42c2a3e503a18e0e45fed8009b726c5792fa6b4cb638be228",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/env/setup.sh": "ac8cc3111593bdf7bc2aa8fe57f631266085e7de13c654b03948d3f2bd53c6fc",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator.lock": "7de8b1407824777f8cc810207d2fccbabe5643909e6a8cc449035b2863176b96",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/prompt/turns.yaml": "802bdfcda483af01eb79cf4f61d2862d6dd95cd59e6e5b75ba02ec7471fc9a5b",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/solution/reference.sh": "8df8f279060444c5e034cd14ac1f48cc5d10c1de8690e72bb11711d3b735df32",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/source-review.json": "05a0494f593f005792097aeb88de5eef03650cac49cfa88d1a66265e27c57fe6",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/split-review.json": "4ff2d38f8aecbf99e53ebfe5b946bc83f32aec822c2531083b5dddb29f5eecbd",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/task.yaml": "06c1c70e86283d9bc09b91525329ea97422ed011a2b795ae11814fbc799a159f",
+    "tasks/animal-behavior/_sam2mice_tracking/sam2mice_transport.py": "9d09169d09ae4f1fdb16e982acf448b4bedefce555e17981f99645952f3f7309",
+    "reports/sam2mice-tracking-20261103/acceptance.json": "946c072b2e0bcdb665177614f2bf9dba8ab31c00766141e51c15c53dc2942841",
+    "reports/sam2mice-hf-20261103/publication.json": "ea980cb4468732312984ff18c6c59ea088d873593ccc34167d1fd00de688ded0",
+    "reports/sam2mice-hf-20261103/transport-code-review.json": "3a2f9bf0cf16e78a5fcabd8031bbad92f047b34ff0fa48a82217315b60e6a416",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/hf-delivery.json": "9824e0acf9b3975b076db572cdfdb6ad9b195baa6175ca43661204586ed97721"
+  },
+  "recovery": {
+    "initial_failure": "Harness set BPB_CACHE_ROOT to the evaluator cache, so the product isolation guard rejected preparation before download.",
+    "correction": "Retain BPB_CACHE_ROOT as the Agent/public cache and use the separate explicit --cache-root for evaluator storage.",
+    "original_script_sha256": "d238ab2d61eaad5add38bc01f57e0e6f53b06778198e6d4e393b78896e64219c",
+    "corrected_harness_sha256": "924f947364d1453861a11006b7fdb5c506c4ab05c9add4712ab3d202b21d5cb9",
+    "initial_failure_evidence": {
+      "reservation.json": {
+        "bytes": 352,
+        "sha256": "0e933304dea1f8cf7c760fa1feab3a02b10d979e78c4f4b4d7d215ff244f2ead"
+      },
+      "steps.json": {
+        "bytes": 363,
+        "sha256": "e75ae4afcf57e0e2f2b51830479ef59a5ae338215611d96debd9d282a3938de4"
+      },
+      "status.json": {
+        "bytes": 182,
+        "sha256": "92cd17f05aad091c461b584a02f85e64e0ec064a0b65235a2f197e95f817ffc2"
+      },
+      "owner-step-state.json": {
+        "bytes": 124,
+        "sha256": "89f49da1e8cc759317e05e972496af122973c0d7697ab15d6d593f5b62d204dd"
+      },
+      "anonymous-context-check.log": {
+        "bytes": 77,
+        "sha256": "c183768211c279abd90ce71493b7f2d88caa5666b6c7ac3bec5d39b1e2f8b2ee"
+      },
+      "anonymous-public-fetch.log": {
+        "bytes": 41483,
+        "sha256": "3b3f5e59fe7dfc233537366afe28a9abc6bc96e0ceff34b9b765d10ecfaf2ee3"
+      },
+      "public-workspace-prepare.log": {
+        "bytes": 641,
+        "sha256": "dc921c96f3e2464c90defd486d7bf18904aef4900d28fc9bcb21d61914014fe3"
+      },
+      "authorized-evaluator-fetch-prepare.log": {
+        "bytes": 103,
+        "sha256": "6df978d0835d9dd86b9629b3187fcf1424479a48b226eae30ee3507849118c91"
+      }
+    },
+    "initial_failure_records_unchanged": true,
+    "owner_payload_files_before": 0,
+    "owner_payload_files_after": 13,
+    "owner_cache_after_evidence_sha256": "b2dc90f0881dda9c46d8ba1091aeaa11d11d126329bc8fde699746af436e59d4"
+  },
+  "model_rerun": false,
+  "test_scores_read": false
+}

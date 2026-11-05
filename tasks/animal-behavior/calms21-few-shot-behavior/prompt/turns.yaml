@@ -1,0 +1,17 @@
+- send: |-
+    Train seven separate CalMS21 Task 3 binary behavior predictors using only
+    data/public/train and data/public/valid. Each manifest row names its behavior
+    group and a complete NPZ sequence with keypoints [frames,2,2,7], scores
+    [frames,2,7], and labels [frames]. Within each group, other=0 and that group's
+    named behavior=1. Do not treat the groups as one seven-class label set.
+    Submit submission/model.py, submission/config.json, and submission/weights.npz.
+    model.py must define load_model(config, weights_path), returning an object with
+    predict_proba(keypoints, scores, context). Return finite normalized probabilities
+    [frames,2] for the context behavior. Inference runs in a pinned, network-disabled
+    container with no labels or task files.
+    Official intromission Train has one complete sequence, so it has no disjoint
+    public Valid sequence. Public Valid cannot produce the seven-target primary F1;
+    it is unscored as an aggregate. Use available public data for development while
+    keeping all seven targets in the submission. The owner-only Test computes the
+    equal mean of seven positive-class frame F1 values. The three files must reload
+    without fitting during inference. No GPU is required.

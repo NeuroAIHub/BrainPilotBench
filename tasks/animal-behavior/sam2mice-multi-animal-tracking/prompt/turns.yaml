@@ -1,0 +1,18 @@
+- send: |-
+    Build an automatic mouse detector and identity tracker using the prepared public Train data.
+    Use Valid data to evaluate your model. The primary metric is MOTA. IDF1 is also reported.
+    MOTA can be negative. Each sequence contains contiguous observed frames from the same source recording.
+    Read data/manifest.json for public sequence paths and roles.
+    Feature NPZ files contain only uint8 RGB frames with shape [T, H, W, 3].
+    Public truth NPZ files contain float64 detections with six columns.
+    The columns are local frame index, object ID, x1, y1, x2 and y2. Box coordinates are normalized to [0, 1].
+    Submit exactly submission/model.py, submission/config.json and numeric submission/weights.npz.
+    model.py must define load_model(config, weights_path), returning an object with predict(frames, context).
+    predict returns a numeric floating-point array with shape [N, 6] using the same output columns.
+    Context contains task_id, width and height. Track IDs can use any nonnegative integer up to 2147483647.
+    Keep each ID unique within a frame and persistent across frames. Reset tracker state for each call.
+    Return at most 64 detections per frame and 1024 distinct IDs per sequence.
+    The evaluator matches boxes at IoU >= 0.5 and pools MOT counts across sequences.
+    All submitted boxes are scored. Empty predictions count as missed detections.
+    Inference runs in a nonroot, network-disabled container with two CPU cores and 2 GiB memory.
+    Keep model fitting within the Train role. Evaluation labels and original-source downloads are reserved for the evaluator.

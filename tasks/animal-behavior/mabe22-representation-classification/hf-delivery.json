@@ -1,0 +1,27 @@
+{
+  "content_revision": "e9ae0d79f05b83a33ca8c96a29c36641847e2b1523e53faaa58c396061ebbe45",
+  "hosted_bindings": {
+    "data.lock": "41aecfb792824ee58c3d69e24387cbe4a10b14f4e24dfeb41b42870ac9412b96",
+    "evaluator.lock": "e4cc7efa8b23ce9e6b7771f80720e17d45619b4eb8e383c421699929eff19d1b"
+  },
+  "private": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+    "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a"
+  },
+  "public": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Public",
+    "revision": "2e13df514c9bd5b007d2c6e5bd2e45e053ee8500"
+  },
+  "publication_receipt": "reports/mouse-hf-20261027/publication.json",
+  "publication_receipt_sha256": "bf41f2a06ae65bc377dc6b2b44e45b56af1d2e34877a5b54bd891f030d6cd886",
+  "schema": "bpb-mouse-hf-delivery/1",
+  "scope": "Transport-only mirror of accepted content; no model rerun or new Agent benchmark result",
+  "source_bindings": {
+    "contract.json": "3f0dbd62afb8b13acd24b0d5708b9b5d12b05720bb3d08ec31797b905d0e9519",
+    "data.lock": "439f59c10b8f6aad684ead6f59b64147b6c5d2f197a1d219dc0aca833b0f67cd",
+    "evaluator.lock": "d5d6e08c88606082e7aed91bad0355f9dbc72c874bf2356a3755c72e0b677158",
+    "task.yaml": "9fa76566e4363a71e040207ecf16c27db63641a35f66c64c5de8c79e24df607f"
+  },
+  "task_id": "mabe22-representation-classification",
+  "transport_only": true
+}

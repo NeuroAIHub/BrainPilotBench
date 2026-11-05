@@ -1,0 +1,35 @@
+{
+  "schema": "bpb-mouse-hf-readiness/1",
+  "date": "2026-10-27",
+  "status": "mouse_mirrors_and_representative_transport_verified",
+  "scientific_base_commit": "8b59add4c9d02a324f61606ac8db1ccbe7fbe94e",
+  "public": {"repo_id": "BrainPilot-Bench/Tasks-Data-Public", "revision": "2e13df514c9bd5b007d2c6e5bd2e45e053ee8500", "files": 974, "bytes": 311644191, "fresh_anonymous_readbacks": 31},
+  "private": {"repo_id": "BrainPilot-Bench/Tasks-Data-Private", "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a", "files": 2078, "bytes": 491259653, "fresh_authorized_readbacks": 30, "anonymous_representative_npz_status": 401},
+  "source_terms": "Per-task NOTICE and full applicable repository license texts accompany both data roles. Noncommercial source permissions remain distinct from benchmark eligibility.",
+  "delivery_scope": "Prepared real pose/label data only. No raw video mirror, synthetic benchmark data, new research Agent run or Test score publication.",
+  "layout": "Existing tasks/animal-behavior/<task-id>/{public,evaluator}/ trees; no dated top-level publication folder",
+  "verification": {
+    "all_local_bytes_and_hashes_checked": true,
+    "all_remote_object_identities_checked": true,
+    "full_batch_download_repeated": false,
+    "old_data_blobs_unchanged": true,
+    "representative_tasks": ["calms21-classic-classification", "mabe22-supervised-segmentation"],
+    "fresh_public_fetch_and_workspace_preparation": true,
+    "fresh_private_fetch_and_evaluator_preparation": true,
+    "trusted_scorer_packet_validation": true,
+    "models_retrained_or_scored_for_transport": false,
+    "original_scientific_contracts_and_task_versions_unchanged": true,
+    "historical_cli_acceptance_records_unchanged": true,
+    "preexpansion_catalog_rows_unchanged": 117,
+    "public_viewer_rows": 117,
+    "public_viewer_contains_five_new_task_ids": true
+  },
+  "checks": {"build": "passed", "node_passed": 252, "node_existing_optional_skips": 3, "mouse_python_container_passed": 54, "mouse_metadata_delivery_passed": 14, "reader_documentation_passed": 12, "private_compatibility_and_invasive_passed": 15, "publisher_fixture_checks_passed": 3, "schema_and_canary_definitions": 118, "catalog_collection_docs_whitespace": "passed"},
+  "evidence": ["publication.json", "transport-acceptance.json", "owner-packet-check.json", "private-access-checks.json", "license-audit.json", "airscope-gap-audit.json"],
+  "remaining": {
+    "airscope": "Original tube/FST/TST paired signals and labels remain unavailable in inspected releases. A separate BPB split is possible once raw inputs and appropriate grouping identifiers are available; random repartition of the 17-example PCA cache is not the remedy.",
+    "author_request": "Concrete request drafted; public issue awaits explicit user authorization",
+    "main_merge": "not authorized",
+    "new_commit_ci": "not included in this local readiness record"
+  }
+}

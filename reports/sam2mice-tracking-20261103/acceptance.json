@@ -1,0 +1,86 @@
+{
+  "schema": "bpb-sam2mice-tracking-acceptance/1",
+  "task_id": "sam2mice-multi-animal-tracking",
+  "task_version": "0.1",
+  "status": "local_cli_passed",
+  "kind": "fixed_reference_not_agent_benchmark",
+  "author_gt_verified": true,
+  "source_review_passed": true,
+  "split_frozen_before_model": true,
+  "private_interface_passed": true,
+  "private_metrics_published": false,
+  "public_score_executed": true,
+  "image_id": "sha256:0a38eaab302bf6536380456b2dbfee49ddf8292d514f6dcdb4b082f21cdbab51",
+  "private_result_sha256": "f9d59fba6ca268051ad7126f76c5ab97ddd33b4556e565a040922658312327e1",
+  "source_only": true,
+  "data_uploaded": false,
+  "steps": [
+    {
+      "step": "fetch-public",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "manual-prepare",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "reference-public-train",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "manual-resume",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "verify-submission",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "score-public",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "prepare-evaluator",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "step": "score-private",
+      "ok": true,
+      "exit_code": 0
+    }
+  ],
+  "repaired_failure": "The first private attempt failed during eager import of the unrelated CalMS ijson dependency, before model prediction. Task-specific dependency loading fixed the entrypoint. The retry reused identical frozen reference artifacts.",
+  "initial_failed_steps_sha256": "b73ad59c41baf0129a3bb6c07b557ed2a5c5ccc48eea58fde6a2f6c48d999aed",
+  "bindings": {
+    "tasks/animal-behavior/_sam2mice_tracking/Dockerfile": "1c4d26ed026ac417e96a48a3f3b8f6f2da1850212e51ce5040ca2c8de0bfeab2",
+    "tasks/animal-behavior/_sam2mice_tracking/fetch_sources.py": "bccbf53ef452d9a55bd7ed5f22bb1f69adfb54f68ba4696fc6d55982a772e102",
+    "tasks/animal-behavior/_sam2mice_tracking/inference.py": "5de2c7a7496869bc5b2d42a34c255a87ab349ccbdf2e132de0c623dd1259462b",
+    "tasks/animal-behavior/_sam2mice_tracking/metrics.py": "b9ccf41c157d8f0d43dd802199755cde9f10cfeb5112e2daaa8ea2f92cbbf8ed",
+    "tasks/animal-behavior/_sam2mice_tracking/package_task.py": "ffafbf50e6e9fa8c46dbe2e28b7e71649603d0a7cebaeb9c2c46a129e68efe1c",
+    "tasks/animal-behavior/_sam2mice_tracking/prepare_source.py": "0f57371d39d6d5633da3a64d78d97f19eb2bb0703a82ba9a3e9c277ad0ead237",
+    "tasks/animal-behavior/_sam2mice_tracking/prepare_task.py": "eb23be7216ba0fb4a78011882dfe1384b6414731556f53343598374ca08d20e9",
+    "tasks/animal-behavior/_sam2mice_tracking/reference.py": "6832545a3245328b184b347345f66eb6f716b25b598d8e087f120a3ce599ac49",
+    "tasks/animal-behavior/_sam2mice_tracking/requirements.txt": "215102bb73fff62458ef73119d09b7daebbb6cd2c54fc01e3d2cf742a806ed94",
+    "tasks/animal-behavior/_sam2mice_tracking/score_task.py": "df5cb411dbe2a5c00cd274d9820b90fb856fa2bfc7b59fead526d0d47a4d0bc5",
+    "tasks/animal-behavior/_sam2mice_tracking/task_common.py": "8dbacfa562b93e3568addb74ef6f281a201c75c4e0b2d8a04a7bff191398f5ec",
+    "tasks/animal-behavior/_sam2mice_tracking/worker.py": "791af91e047346346246262b4fca279e5cc46eab10cce604b4bdc077ce5e301c",
+    "tasks/animal-behavior/_shared/evaluator/score.py": "4a6ebabf411078a1842b1ecb5c21107039e2effd72338a84c729534f5517815f",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/checks/check.sh": "5c4eb6d1aa5da0020594d4b6789593879695c5975015ebecc4eb16363ffe543d",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/contract.json": "a190263609578cdd193fad1293510f84bfd866379a245e6fbd9544d2f63e7879",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/data.lock": "b4faa5e18a811cfb50e69cfc150cfdbb8e70cfad4d409845e79bafce0cf2f1fd",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/env/setup.sh": "ac8cc3111593bdf7bc2aa8fe57f631266085e7de13c654b03948d3f2bd53c6fc",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/evaluator.lock": "9f2bce4eeee3590886ae2bcf5de60f0137e56823f6021d9372c02160a6583517",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/prompt/turns.yaml": "802bdfcda483af01eb79cf4f61d2862d6dd95cd59e6e5b75ba02ec7471fc9a5b",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/solution/reference.sh": "8df8f279060444c5e034cd14ac1f48cc5d10c1de8690e72bb11711d3b735df32",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/source-review.json": "05a0494f593f005792097aeb88de5eef03650cac49cfa88d1a66265e27c57fe6",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/split-review.json": "4ff2d38f8aecbf99e53ebfe5b946bc83f32aec822c2531083b5dddb29f5eecbd",
+    "tasks/animal-behavior/sam2mice-multi-animal-tracking/task.yaml": "551fbd241d55fa25f58560d00c72ac00cb5892e24f09784ca7ea229a489dfa02"
+  }
+}

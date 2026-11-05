@@ -1,0 +1,30 @@
+{
+  "schema": "bpb-sam2mice-transport-code-review/1",
+  "status": "reviewed",
+  "task_id": "sam2mice-multi-animal-tracking",
+  "transport_only": true,
+  "scientific_protocol_unchanged": true,
+  "no_model_rerun": true,
+  "source_acceptance_sha256": "946c072b2e0bcdb665177614f2bf9dba8ab31c00766141e51c15c53dc2942841",
+  "changes": {
+    "tasks/animal-behavior/_sam2mice_tracking/package_task.py": {
+      "current_sha256": "8e031d9691b484812a439e44631dde14d973a81bbbe1a07ee049c138abd6aea2",
+      "source_sha256": "ffafbf50e6e9fa8c46dbe2e28b7e71649603d0a7cebaeb9c2c46a129e68efe1c"
+    },
+    "tasks/animal-behavior/_sam2mice_tracking/task_common.py": {
+      "current_sha256": "b7c3864ea121abeb8a2e9183c6a57aa7b5ef3c758c2f3e9c718b0b4241890c6a",
+      "source_sha256": "8dbacfa562b93e3568addb74ef6f281a201c75c4e0b2d8a04a7bff191398f5ec"
+    }
+  },
+  "dependencies": {
+    "tasks/animal-behavior/_sam2mice_tracking/sam2mice_transport.py": "9d09169d09ae4f1fdb16e982acf448b4bedefce555e17981f99645952f3f7309"
+  },
+  "checks": {
+    "source_and_hosted_locks": "passed",
+    "materialize_only_preserves_hf_locks": "passed",
+    "evaluator_marker_revision": "passed",
+    "tracking_python_docker_tests_passed": 53,
+    "delivery_and_acceptance_tests_passed": 9
+  },
+  "review_note": "Root reviewed the exact diffs against reconstructed source files whose hashes match the historical acceptance. Changes select strictly verified hosted equivalents of the same scientific files, bind evaluator markers to the active transport revision and preserve hosted locks during source reconstruction. Root reran the targeted tests. The task availability field has a separate exact single-line transition enforced by the delivery bridge."
+}

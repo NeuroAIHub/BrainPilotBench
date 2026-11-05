@@ -1,0 +1,77 @@
+{
+  "schema": "bpb-sam2mice-hf-readiness/1",
+  "date": "2026-11-03",
+  "status": "mirrors_and_normal_cli_transport_verified",
+  "task_id": "sam2mice-multi-animal-tracking",
+  "source_code_commit": "da01451e7ec3780bf17c4fd3e082c56424046f2b",
+  "content_revision": "c7088784fb28dc942f5f44f96a93fef41ad253c718e744d30952a0ebe52a2c6d",
+  "public": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Public",
+    "revision": "2cad4f3582c5bf756a9f72e912b5e1e48f7d5c93",
+    "data_files": 49,
+    "data_bytes": 210345243,
+    "representative_anonymous_readbacks": 10,
+    "fresh_cli_files_downloaded_and_prepared": 49
+  },
+  "private": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+    "revision": "76dfee8c7228a3f4da8484b63cc6312448b14fa8",
+    "data_files": 13,
+    "data_bytes": 50627029,
+    "representative_authorized_readbacks": 9,
+    "fresh_cli_files_downloaded_and_prepared": 13,
+    "anonymous_metadata_status": 401,
+    "anonymous_data_status": 401
+  },
+  "verification": {
+    "all_source_bytes_and_hashes_checked": true,
+    "all_remote_object_identities_checked": true,
+    "existing_data_objects_unchanged": true,
+    "gitattributes_unchanged": true,
+    "old_catalogue_rows_preserved": 117,
+    "public_fetch_anonymous": true,
+    "private_cache_separate_and_owner_only": true,
+    "evaluator_marker_matches_private_hf_revision": true,
+    "trusted_public_and_evaluator_packet_hashes_passed": true,
+    "original_contract_and_split_unchanged": true,
+    "original_model_acceptance_unchanged": true,
+    "models_retrained_or_scored_for_transport": false,
+    "private_scores_read_or_published_for_transport": false
+  },
+  "source_terms": {
+    "dataset_license": "CC-BY-4.0",
+    "notice_in_both_repositories": true,
+    "source_images_and_author_gt_historically_public": true,
+    "mirrored_content": "Accepted RGB and author-box packets in the existing task hierarchy",
+    "source_archive_or_model_checkpoints_mirrored": false
+  },
+  "recovered_checks": {
+    "ci": "The first Linux run used an incorrect Docker build context. Commit da01451e7ec3780bf17c4fd3e082c56424046f2b fixes the context and passed both workflows.",
+    "transport_harness": "The first owner preparation was rejected before download because the verification script selected the evaluator cache as BPB_CACHE_ROOT. The corrected script preserves the public cache and passes the owner cache explicitly. Original failure records remain intact.",
+    "public_files_redownloaded_for_recovery": 0
+  },
+  "checks": {
+    "build": "passed",
+    "core_node_passed": 252,
+    "core_existing_optional_skips": 3,
+    "tracking_python_docker_passed": 53,
+    "mouse_metadata_delivery_passed": 24,
+    "reader_documentation_passed": 12,
+    "publisher_fixtures_passed": 11,
+    "transport_environment_fixtures_passed": 6,
+    "task_guides_checked": 118,
+    "source_commit_ci_validate_run": 41613626134,
+    "source_commit_ci_task_size_run": 41613626135,
+    "source_commit_ci": "passed"
+  },
+  "evidence": ["publication.json", "transport-code-review.json", "transport-acceptance.json"],
+  "collection": {
+    "runnable_tasks": 118,
+    "public_hosted_tasks": 117,
+    "private_canonical_hosted_tasks": 35,
+    "private_retained_legacy_routes": 3,
+    "mouse_tasks": 6
+  },
+  "scope": "One source recording and short tracking sequences. No new research Agent score or paper-score reproduction.",
+  "closeout": "Final hosted-code PR CI and metadata-only reader-link verification are checked after publishing this record. Main merge is separate."
+}

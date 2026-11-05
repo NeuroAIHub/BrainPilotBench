@@ -1,0 +1,81 @@
+{
+  "inspection_time_utc": "2026-10-26T14:18:58Z",
+  "scope": "Authorized bounded inspection of the single public Airscope Neuron-BERT validation cache; aggregate schema only, no per-trial labels, identifiers, or arrays disclosed.",
+  "source": {
+    "pinned_github_commit": "80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98",
+    "raw_file_url": "https://raw.githubusercontent.com/Neurallabware/Airscope_toolbox/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/cache/val_data_seed_42_pca.pkl",
+    "git_tree_api": "https://api.github.com/repos/Neurallabware/Airscope_toolbox/git/trees/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98?recursive=1",
+    "validation_notebook": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/validate_dual_stream.ipynb",
+    "dataset_class": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/datasets/dataset_augment.py",
+    "training_script": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/train_dual_stream_BERT.py",
+    "split_script": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/datasets/split_dataset.py",
+    "training_engine": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/engine/train_engine.py",
+    "readme": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/README.md"
+  },
+  "file_integrity": {
+    "bytes_downloaded": 7279875,
+    "git_blob_sha1_expected_from_pinned_tree": "267eab64632ae8249753f0f8471cb5ebb00f82f7",
+    "git_blob_sha1_computed": "267eab64632ae8249753f0f8471cb5ebb00f82f7",
+    "md5_computed": "efc414da21baf954cf33ccfaabd32857",
+    "md5_source": "Computed locally after download; no first-party MD5 was published in the inspected metadata.",
+    "sha256_computed": "fecb2bf1d20b716cb93f8ac3dd58a5f8edceace07c2dd6ba351b3417e8429e62",
+    "sha256_source": "Computed locally after download; no first-party SHA-256 was published in the inspected metadata.",
+    "local_cache_path": "/Users/lucasli/Desktop/BrainPilot/worktrees/bench-shared-task-collection/.cache/mouse-closeout-20261026/airscope/val_data_seed_42_pca.pkl",
+    "local_cache_directory_mode": "0700",
+    "local_cache_file_mode": "0600",
+    "git_ignored": true
+  },
+  "inspection_controls": {
+    "container_image_digest": "sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562",
+    "container_image_platform": "linux/arm64",
+    "container_runtime": "non-root uid 501, read-only filesystem, network none, all capabilities dropped, no-new-privileges, 64 PID limit, 512 MiB memory limit, one CPU; only cache and trusted inspector mounted read-only",
+    "unpickling": "Only inside the restricted container. Preflight found no extension or persistent-reference opcodes; custom Unpickler allowed four NumPy array/dtype reconstruction globals and rejected other globals.",
+    "host_pickle_loads": false
+  },
+  "verified_payload_summary": {
+    "top_level_keys": ["pca_stats", "processed_trials", "trial_lengths", "win_labels"],
+    "sample_count": 17,
+    "label_count": 17,
+    "class_counts": {"0": 8, "1": 9},
+    "per_sample_fields": ["mouse1_data", "mouse2_data", "mouse_ids", "mouse_pair", "trial_length"],
+    "per_animal_feature_shape": "timepoints x 128 PCA components",
+    "feature_dtype": "float64",
+    "timepoints_min": 44,
+    "timepoints_max": 365,
+    "pair_id_field_present": true,
+    "unique_pair_count": 9,
+    "mouse_ids_field_present": true,
+    "unique_mouse_id_count": 4,
+    "explicit_trial_id_field_present": false,
+    "pair_size_histogram": {"one_trial": 4, "two_trials": 2, "three_trials": 3},
+    "pair_class_composition_histogram": {
+      "class0=0,class1=1": 1,
+      "class0=0,class1=2": 1,
+      "class0=0,class1=3": 1,
+      "class0=1,class1=0": 3,
+      "class0=1,class1=2": 1,
+      "class0=2,class1=0": 1,
+      "class0=2,class1=1": 1
+    },
+    "trial_lengths_count": 17,
+    "pca_stats_count": 11,
+    "pca_stats_fields": ["mouse1_neurons", "mouse1_var_explained", "mouse2_neurons", "mouse2_var_explained", "mouse_pair", "total_timepoints"],
+    "raw_source_file_or_trial_id_field_present": false
+  },
+  "source_lineage_findings": [
+    "The published validation notebook names this seed-42 cache, passes None instead of raw data to the dataset class, and its saved output explicitly says 'Validation samples: 17'. Its saved validation F1 is 85.71% on these public labels.",
+    "The training script defaults to a single trial-level 80/20 train/validation split with test_ratio 0 and seed 42, writes val_data_seed_42_pca.pkl, and has no five-fold loop. Its split function permits the same mouse pair in train and validation at different trials.",
+    "The README separately reports five-fold cross-validation with 19 held-out trials per fold. This cache has 17 examples and no fold identifier; it cannot be assigned to one of those five folds from the inspected evidence.",
+    "The training engine selects best_model.pth by validation accuracy. The published checkpoint and notebook therefore expose performance on a validation set used in model selection, not an independent hidden test."
+  ],
+  "pair_disjoint_assessment": {
+    "within_this_cache": "Technically possible to partition the 17 examples by exact mouse_pair key: at least one three-example pair contains both classes, leaving 14 examples with both classes. This is a very small public 14/3 demonstration split, not an accepted benchmark split.",
+    "against_original_training": "Cannot establish pair disjointness from the original author's training data because that training payload and trial IDs are absent; the published training pipeline expressly uses a trial-level split that can reuse pairs across train and validation.",
+    "hidden_test_readiness": "No. All 17 labels are public in the cache, the published model has been selected on this validation set, and no independent held-out payload is available from this file."
+  },
+  "reconciliation_with_prior_audits": "The earlier deep audit correctly identified the public cache but left its contents unverified; this report verifies 17 labeled samples. The earlier audit's no-payload-downloaded statement is historical to that audit and no longer describes the current authorized inspection.",
+  "recommended_disposition": "A reproducible public Neuron-BERT validation example can be prepared from this cache, with explicit 17-sample and provenance limits. Do not present it as the published five-fold result or as an independent private Test. Airscope FST and TST remain without located paired labeled data, and FST AUC definition remains unresolved.",
+  "dataset_payload_downloaded": true,
+  "other_payloads_downloaded": false,
+  "external_write_or_contact": false
+}

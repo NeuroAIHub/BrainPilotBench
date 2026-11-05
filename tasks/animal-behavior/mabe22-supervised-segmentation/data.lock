@@ -1,0 +1,1008 @@
+{
+  "datasets": [
+    {
+      "bytes": 12431,
+      "format": "json",
+      "name": "public__manifest.json",
+      "path": "manifest.json",
+      "scope": "public",
+      "sha256": "164196260ac14da6c0f8647dc3a959020db91d3bee3b9996d6d4e35caa73afa5",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/manifest.json"
+    },
+    {
+      "bytes": 475274,
+      "format": "npz",
+      "name": "public__public__pose__train__0H82FCZV5JC8HUALP7G2.npz",
+      "path": "public/pose/train/0H82FCZV5JC8HUALP7G2.npz",
+      "scope": "public",
+      "sha256": "17cac500d7c38d88a1f54aa4fc47359c5282d2aa016f5c61440fa96690075db9",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/0H82FCZV5JC8HUALP7G2.npz"
+    },
+    {
+      "bytes": 446849,
+      "format": "npz",
+      "name": "public__public__pose__train__1M84PEX8WMOBJ9VBEY7E.npz",
+      "path": "public/pose/train/1M84PEX8WMOBJ9VBEY7E.npz",
+      "scope": "public",
+      "sha256": "cf1e57014f430f77da45244e862a9081c19ccad5bc914c9ef0542326819334b5",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/1M84PEX8WMOBJ9VBEY7E.npz"
+    },
+    {
+      "bytes": 431603,
+      "format": "npz",
+      "name": "public__public__pose__train__1QYWIAXFHBB6LMQQX3U4.npz",
+      "path": "public/pose/train/1QYWIAXFHBB6LMQQX3U4.npz",
+      "scope": "public",
+      "sha256": "5af92f866852479cc574ac0d04c720d2c6c247113bb8be8e485de5c7bcee3b34",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/1QYWIAXFHBB6LMQQX3U4.npz"
+    },
+    {
+      "bytes": 474091,
+      "format": "npz",
+      "name": "public__public__pose__train__2UOKXFYMH37SIIUKEDIB.npz",
+      "path": "public/pose/train/2UOKXFYMH37SIIUKEDIB.npz",
+      "scope": "public",
+      "sha256": "90cce47583481aec972865619eed26ee9cbb675680578be093a5db3ae96f228c",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/2UOKXFYMH37SIIUKEDIB.npz"
+    },
+    {
+      "bytes": 404229,
+      "format": "npz",
+      "name": "public__public__pose__train__3DWYTOFNRC9E4Z7U2YRS.npz",
+      "path": "public/pose/train/3DWYTOFNRC9E4Z7U2YRS.npz",
+      "scope": "public",
+      "sha256": "11e8d9cc2a91741db80c1313bf65937d81ee46e429d320614b69fffe2961c523",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/3DWYTOFNRC9E4Z7U2YRS.npz"
+    },
+    {
+      "bytes": 360191,
+      "format": "npz",
+      "name": "public__public__pose__train__3H74CDAWI1K6LDVIOOA7.npz",
+      "path": "public/pose/train/3H74CDAWI1K6LDVIOOA7.npz",
+      "scope": "public",
+      "sha256": "a148e3085044d2ce856a29433715ed9be5e1b8035faa27ca7730b19f6ed73717",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/3H74CDAWI1K6LDVIOOA7.npz"
+    },
+    {
+      "bytes": 393629,
+      "format": "npz",
+      "name": "public__public__pose__train__614U99R0G4HJXJ9LWD0K.npz",
+      "path": "public/pose/train/614U99R0G4HJXJ9LWD0K.npz",
+      "scope": "public",
+      "sha256": "9e2b96c434462501da4a835da4e7e6d90cee4759a97c5e3550759649154d4e29",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/614U99R0G4HJXJ9LWD0K.npz"
+    },
+    {
+      "bytes": 400333,
+      "format": "npz",
+      "name": "public__public__pose__train__6OT80I9HXZKZRKDVVD1D.npz",
+      "path": "public/pose/train/6OT80I9HXZKZRKDVVD1D.npz",
+      "scope": "public",
+      "sha256": "9cf7f1211110af76930bc8390824890d6e7b5f7739a526daa133cec8420aaeff",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/6OT80I9HXZKZRKDVVD1D.npz"
+    },
+    {
+      "bytes": 483147,
+      "format": "npz",
+      "name": "public__public__pose__train__7RKWMYVZIDUKRPF9FQ2R.npz",
+      "path": "public/pose/train/7RKWMYVZIDUKRPF9FQ2R.npz",
+      "scope": "public",
+      "sha256": "0c9b015840409c70c3022d6d25f90417f2620e9ad782d58c93552c4141bc2ac3",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/7RKWMYVZIDUKRPF9FQ2R.npz"
+    },
+    {
+      "bytes": 450984,
+      "format": "npz",
+      "name": "public__public__pose__train__8E0I9V6PEP0E52H7JV6D.npz",
+      "path": "public/pose/train/8E0I9V6PEP0E52H7JV6D.npz",
+      "scope": "public",
+      "sha256": "b9e7f9b733f9e99f3cba58475d1306a65083a869aa6d87cbf3fe46d755b4fdec",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/8E0I9V6PEP0E52H7JV6D.npz"
+    },
+    {
+      "bytes": 450776,
+      "format": "npz",
+      "name": "public__public__pose__train__8FSP26KT95Z1P9LBWZUB.npz",
+      "path": "public/pose/train/8FSP26KT95Z1P9LBWZUB.npz",
+      "scope": "public",
+      "sha256": "450606985581651294eed9a530176bd2174735ad7148aa1310381942d1dd3cbf",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/8FSP26KT95Z1P9LBWZUB.npz"
+    },
+    {
+      "bytes": 339628,
+      "format": "npz",
+      "name": "public__public__pose__train__8SGYREZXKE613JQ1WZD4.npz",
+      "path": "public/pose/train/8SGYREZXKE613JQ1WZD4.npz",
+      "scope": "public",
+      "sha256": "7c35bb8515f099141061194d16ba7c56b53f46e1b6974edf99aaac1611c7ead1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/8SGYREZXKE613JQ1WZD4.npz"
+    },
+    {
+      "bytes": 415462,
+      "format": "npz",
+      "name": "public__public__pose__train__9PPXS5PSU6CR6VN57TDY.npz",
+      "path": "public/pose/train/9PPXS5PSU6CR6VN57TDY.npz",
+      "scope": "public",
+      "sha256": "6d5989629a5bdb642576d59936ebe78e2812c9dbf7792a581ea147cfa32418d4",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/9PPXS5PSU6CR6VN57TDY.npz"
+    },
+    {
+      "bytes": 477401,
+      "format": "npz",
+      "name": "public__public__pose__train__ABLQJ1XO63HZFZR16BUC.npz",
+      "path": "public/pose/train/ABLQJ1XO63HZFZR16BUC.npz",
+      "scope": "public",
+      "sha256": "43a2725f8c85a7772be68389c07fa2bc80900deacb58ea442f4db8911d50e3aa",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/ABLQJ1XO63HZFZR16BUC.npz"
+    },
+    {
+      "bytes": 438410,
+      "format": "npz",
+      "name": "public__public__pose__train__AHSPMSN5I69MRA8L16OF.npz",
+      "path": "public/pose/train/AHSPMSN5I69MRA8L16OF.npz",
+      "scope": "public",
+      "sha256": "6d3254474032a02d53ca8e900ff8b31f2407fc174287a9c89986c75f6e4db606",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/AHSPMSN5I69MRA8L16OF.npz"
+    },
+    {
+      "bytes": 380505,
+      "format": "npz",
+      "name": "public__public__pose__train__B1MO713MB9CUUDO7K79R.npz",
+      "path": "public/pose/train/B1MO713MB9CUUDO7K79R.npz",
+      "scope": "public",
+      "sha256": "af0a79b315094566b455961367bff2333c745a7ec065ac6c1434d23c609dc1b4",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/B1MO713MB9CUUDO7K79R.npz"
+    },
+    {
+      "bytes": 458918,
+      "format": "npz",
+      "name": "public__public__pose__train__DVKJWX9MDSKI10L1CFBW.npz",
+      "path": "public/pose/train/DVKJWX9MDSKI10L1CFBW.npz",
+      "scope": "public",
+      "sha256": "4e497e15550488f593665a1c8d06a14e0cfcac8b30aac4785f12798933522bb6",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/DVKJWX9MDSKI10L1CFBW.npz"
+    },
+    {
+      "bytes": 441873,
+      "format": "npz",
+      "name": "public__public__pose__train__E9KK65ORO1JR6P9OCV8M.npz",
+      "path": "public/pose/train/E9KK65ORO1JR6P9OCV8M.npz",
+      "scope": "public",
+      "sha256": "8cde6c55a2dcb916560a8b202e4acf6e242563e4d1af6ff01dafaf25bb439443",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/E9KK65ORO1JR6P9OCV8M.npz"
+    },
+    {
+      "bytes": 505119,
+      "format": "npz",
+      "name": "public__public__pose__train__EFNPOUSNH5KQZ2LPBBOP.npz",
+      "path": "public/pose/train/EFNPOUSNH5KQZ2LPBBOP.npz",
+      "scope": "public",
+      "sha256": "9e5dbc3458d9784ffd2962d4da04c78adecd0704aab2eaad947d3e6a047b7dde",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/EFNPOUSNH5KQZ2LPBBOP.npz"
+    },
+    {
+      "bytes": 431006,
+      "format": "npz",
+      "name": "public__public__pose__train__F9PRT5WE6D7BDTE7VXLK.npz",
+      "path": "public/pose/train/F9PRT5WE6D7BDTE7VXLK.npz",
+      "scope": "public",
+      "sha256": "1c3d16d73deb5de4469093944b7f1df1e70f5531a125cafb8bfb9af4c3b4e410",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/F9PRT5WE6D7BDTE7VXLK.npz"
+    },
+    {
+      "bytes": 321358,
+      "format": "npz",
+      "name": "public__public__pose__train__FE22CFXQVKVJQB5MZJ0A.npz",
+      "path": "public/pose/train/FE22CFXQVKVJQB5MZJ0A.npz",
+      "scope": "public",
+      "sha256": "1b753e33136a79f5ef214e810f3e0b4e019ccf2825374f933b2f515bca9c2f26",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/FE22CFXQVKVJQB5MZJ0A.npz"
+    },
+    {
+      "bytes": 427846,
+      "format": "npz",
+      "name": "public__public__pose__train__GHOU7DPLPC3S7MIMBQZ4.npz",
+      "path": "public/pose/train/GHOU7DPLPC3S7MIMBQZ4.npz",
+      "scope": "public",
+      "sha256": "e5bde74738d10adc1b8a02b64586dca05a0e849a0194873e88a9179bb2c0ca9c",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/GHOU7DPLPC3S7MIMBQZ4.npz"
+    },
+    {
+      "bytes": 426060,
+      "format": "npz",
+      "name": "public__public__pose__train__GTCEG41W3PDIJ6H5GG3A.npz",
+      "path": "public/pose/train/GTCEG41W3PDIJ6H5GG3A.npz",
+      "scope": "public",
+      "sha256": "c488f701878b8e8ea86e7c15482414a1fb8e40aab0fa56f8db9ca1e97db5ef4a",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/GTCEG41W3PDIJ6H5GG3A.npz"
+    },
+    {
+      "bytes": 436889,
+      "format": "npz",
+      "name": "public__public__pose__train__H1H4SCG6FKPA4OJA70E6.npz",
+      "path": "public/pose/train/H1H4SCG6FKPA4OJA70E6.npz",
+      "scope": "public",
+      "sha256": "97cb645d6b39f87ffe7ab8f2c2a9636024d791d6a47fd682b02634b8edb101fa",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/H1H4SCG6FKPA4OJA70E6.npz"
+    },
+    {
+      "bytes": 438822,
+      "format": "npz",
+      "name": "public__public__pose__train__HG78HCQMZSVJ1GXKGZUG.npz",
+      "path": "public/pose/train/HG78HCQMZSVJ1GXKGZUG.npz",
+      "scope": "public",
+      "sha256": "88b4787db17a6de4de2cdf01326fc02468afcb5853df23c437a1189f78be17e7",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/HG78HCQMZSVJ1GXKGZUG.npz"
+    },
+    {
+      "bytes": 473839,
+      "format": "npz",
+      "name": "public__public__pose__train__HT3GL0EY9S3HQQ2ILGUO.npz",
+      "path": "public/pose/train/HT3GL0EY9S3HQQ2ILGUO.npz",
+      "scope": "public",
+      "sha256": "3f6f82e52770eab1d17be3893ee69eb54133468e5d5f2164b3d7469cfc26d1ba",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/HT3GL0EY9S3HQQ2ILGUO.npz"
+    },
+    {
+      "bytes": 393063,
+      "format": "npz",
+      "name": "public__public__pose__train__I41A4BX9TI6LKR4UL5ES.npz",
+      "path": "public/pose/train/I41A4BX9TI6LKR4UL5ES.npz",
+      "scope": "public",
+      "sha256": "72c1ac8b948dd5f7f633ce75d99a32073e3ade3267669f34f09c0364b389cf98",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/I41A4BX9TI6LKR4UL5ES.npz"
+    },
+    {
+      "bytes": 358512,
+      "format": "npz",
+      "name": "public__public__pose__train__I4B8EPEERXE8W88DEYRZ.npz",
+      "path": "public/pose/train/I4B8EPEERXE8W88DEYRZ.npz",
+      "scope": "public",
+      "sha256": "dd7fe38df7dfef96a65a8af0263587c9c08785be21ab6a1964c43e430735cd6a",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/I4B8EPEERXE8W88DEYRZ.npz"
+    },
+    {
+      "bytes": 378615,
+      "format": "npz",
+      "name": "public__public__pose__train__IO0AKX9G3VWLAORML2V8.npz",
+      "path": "public/pose/train/IO0AKX9G3VWLAORML2V8.npz",
+      "scope": "public",
+      "sha256": "040d028aed9a4718a1b463cda6947cff54cef2f34737d1852eddb61082956334",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/IO0AKX9G3VWLAORML2V8.npz"
+    },
+    {
+      "bytes": 470815,
+      "format": "npz",
+      "name": "public__public__pose__train__JJMZ0KT4B68X1YUD7569.npz",
+      "path": "public/pose/train/JJMZ0KT4B68X1YUD7569.npz",
+      "scope": "public",
+      "sha256": "fb1dacb737be7c94433e9ca83abbd7ed0d5e25ba44fcb9c0491b5e687bfa283f",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/JJMZ0KT4B68X1YUD7569.npz"
+    },
+    {
+      "bytes": 476853,
+      "format": "npz",
+      "name": "public__public__pose__train__JS313D4EM0MEAUUA2ZYQ.npz",
+      "path": "public/pose/train/JS313D4EM0MEAUUA2ZYQ.npz",
+      "scope": "public",
+      "sha256": "8e389d6be151f12dc66aa59722f10f0efe70b5ec7ae0c7919ac63aee3041cd3c",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/JS313D4EM0MEAUUA2ZYQ.npz"
+    },
+    {
+      "bytes": 460129,
+      "format": "npz",
+      "name": "public__public__pose__train__K0WO3CTZT4F1S91AZDX7.npz",
+      "path": "public/pose/train/K0WO3CTZT4F1S91AZDX7.npz",
+      "scope": "public",
+      "sha256": "81c67549702f87998be38a1292eadf471240b71886d4ead7254f577bfbc7ee87",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/K0WO3CTZT4F1S91AZDX7.npz"
+    },
+    {
+      "bytes": 464424,
+      "format": "npz",
+      "name": "public__public__pose__train__KXPBY5PNUL82L40I3U8H.npz",
+      "path": "public/pose/train/KXPBY5PNUL82L40I3U8H.npz",
+      "scope": "public",
+      "sha256": "73e757e6b2537ffda2307fbefec414b104d20c35d35d8a0c3948faec816d46ed",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/KXPBY5PNUL82L40I3U8H.npz"
+    },
+    {
+      "bytes": 354852,
+      "format": "npz",
+      "name": "public__public__pose__train__L550VSHPF4KVKA6D3MT2.npz",
+      "path": "public/pose/train/L550VSHPF4KVKA6D3MT2.npz",
+      "scope": "public",
+      "sha256": "5404aecce0d257d3ea0cb69a5d7f777a3d8635605025002bb650d1c2b2b4c9aa",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/L550VSHPF4KVKA6D3MT2.npz"
+    },
+    {
+      "bytes": 435808,
+      "format": "npz",
+      "name": "public__public__pose__train__M8BVZEQ4SIZ8LMQDLQTU.npz",
+      "path": "public/pose/train/M8BVZEQ4SIZ8LMQDLQTU.npz",
+      "scope": "public",
+      "sha256": "efce678fcf537d56dcf387842582f6295357a39dd33475d1ec464473c49e1c90",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/M8BVZEQ4SIZ8LMQDLQTU.npz"
+    },
+    {
+      "bytes": 348657,
+      "format": "npz",
+      "name": "public__public__pose__train__NYOF9JMMQKFUP7VNWMYC.npz",
+      "path": "public/pose/train/NYOF9JMMQKFUP7VNWMYC.npz",
+      "scope": "public",
+      "sha256": "c2f802f8561faf0207b1bad4a3a8c862cb4594937468695482821ec79bd444f3",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/NYOF9JMMQKFUP7VNWMYC.npz"
+    },
+    {
+      "bytes": 431810,
+      "format": "npz",
+      "name": "public__public__pose__train__OQC0WOLIQMNIT6N1BXMX.npz",
+      "path": "public/pose/train/OQC0WOLIQMNIT6N1BXMX.npz",
+      "scope": "public",
+      "sha256": "99019808a37280068003426a6d2a9d3d5746b30fc390a36e75926f34cade56fe",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/OQC0WOLIQMNIT6N1BXMX.npz"
+    },
+    {
+      "bytes": 484394,
+      "format": "npz",
+      "name": "public__public__pose__train__PRSKKD7H0W7X41XBW3HZ.npz",
+      "path": "public/pose/train/PRSKKD7H0W7X41XBW3HZ.npz",
+      "scope": "public",
+      "sha256": "87d23276f335cc17aaed510d3e4ae7cc8c4bdad2ef0e6f33d10c509bd693d420",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/PRSKKD7H0W7X41XBW3HZ.npz"
+    },
+    {
+      "bytes": 469910,
+      "format": "npz",
+      "name": "public__public__pose__train__U2PW3OGU0VX4PJRC0D4L.npz",
+      "path": "public/pose/train/U2PW3OGU0VX4PJRC0D4L.npz",
+      "scope": "public",
+      "sha256": "3980d624087ade6d6b46f5e5ab6469f3399db8100d0a540671a15b3c2d53e9fa",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/U2PW3OGU0VX4PJRC0D4L.npz"
+    },
+    {
+      "bytes": 336735,
+      "format": "npz",
+      "name": "public__public__pose__train__USXIOKQYUECEY0ZQN5LI.npz",
+      "path": "public/pose/train/USXIOKQYUECEY0ZQN5LI.npz",
+      "scope": "public",
+      "sha256": "fec07e65627391a4e36bf96d304bfcce50fdb643adfb3d636686b009784313a5",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/USXIOKQYUECEY0ZQN5LI.npz"
+    },
+    {
+      "bytes": 447532,
+      "format": "npz",
+      "name": "public__public__pose__train__UU9RUBJJ22RQ5GSFZX26.npz",
+      "path": "public/pose/train/UU9RUBJJ22RQ5GSFZX26.npz",
+      "scope": "public",
+      "sha256": "c878f824d490cf7b8ba7f322b4f34fb3fa1c34b72e9ccdb90dc0a916740dadc6",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/UU9RUBJJ22RQ5GSFZX26.npz"
+    },
+    {
+      "bytes": 451002,
+      "format": "npz",
+      "name": "public__public__pose__train__UZUV0RAX0K2W9A109IDN.npz",
+      "path": "public/pose/train/UZUV0RAX0K2W9A109IDN.npz",
+      "scope": "public",
+      "sha256": "95c5523b334c0fa96d7280febde6a04fe3e4209972c758b28375a178d1c70d66",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/UZUV0RAX0K2W9A109IDN.npz"
+    },
+    {
+      "bytes": 453145,
+      "format": "npz",
+      "name": "public__public__pose__train__V1SHVCAO1CMBWDDSHO6L.npz",
+      "path": "public/pose/train/V1SHVCAO1CMBWDDSHO6L.npz",
+      "scope": "public",
+      "sha256": "04712544bd250138a4d1f08b790dcf32f04fb810579cefa71e5ede5b730e0a61",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/V1SHVCAO1CMBWDDSHO6L.npz"
+    },
+    {
+      "bytes": 424667,
+      "format": "npz",
+      "name": "public__public__pose__train__W7FDQJJ3W22V0BCQT0ZC.npz",
+      "path": "public/pose/train/W7FDQJJ3W22V0BCQT0ZC.npz",
+      "scope": "public",
+      "sha256": "01ade20ab338c3b55d7f14c2ba67f94783f2064cbb28d5da2691310cfee17716",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/W7FDQJJ3W22V0BCQT0ZC.npz"
+    },
+    {
+      "bytes": 388512,
+      "format": "npz",
+      "name": "public__public__pose__train__WE9BIY6LM9M4LCXE5UME.npz",
+      "path": "public/pose/train/WE9BIY6LM9M4LCXE5UME.npz",
+      "scope": "public",
+      "sha256": "376d77a4aa2892f273861c683bdcf062fefb55ad2d7b43a2333dd854521b54d1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/WE9BIY6LM9M4LCXE5UME.npz"
+    },
+    {
+      "bytes": 350159,
+      "format": "npz",
+      "name": "public__public__pose__train__WULQKL3R6E5MDJZW25SV.npz",
+      "path": "public/pose/train/WULQKL3R6E5MDJZW25SV.npz",
+      "scope": "public",
+      "sha256": "2c08ae653223c4f7d8f7a7887915764a1ab219e40bad9f3e4c7574c24ed10cf0",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/WULQKL3R6E5MDJZW25SV.npz"
+    },
+    {
+      "bytes": 488712,
+      "format": "npz",
+      "name": "public__public__pose__train__YEV3WRM2L4G2NSG0QVLV.npz",
+      "path": "public/pose/train/YEV3WRM2L4G2NSG0QVLV.npz",
+      "scope": "public",
+      "sha256": "146a85f4b6dc6b4bb71e8c46b74edf27049f39c7474a8e03fc2abc7f69622e8d",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/YEV3WRM2L4G2NSG0QVLV.npz"
+    },
+    {
+      "bytes": 462685,
+      "format": "npz",
+      "name": "public__public__pose__train__Z1Q0JBU562RUHLECM3U1.npz",
+      "path": "public/pose/train/Z1Q0JBU562RUHLECM3U1.npz",
+      "scope": "public",
+      "sha256": "838ccf57253ebe1cefa6a4bd2407d0f7f94886f021bbcea6969c4b6a5d50fb3d",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/Z1Q0JBU562RUHLECM3U1.npz"
+    },
+    {
+      "bytes": 456333,
+      "format": "npz",
+      "name": "public__public__pose__train__Z599QJG2O1Q3M6VUT7SR.npz",
+      "path": "public/pose/train/Z599QJG2O1Q3M6VUT7SR.npz",
+      "scope": "public",
+      "sha256": "bdad9379bd5e82ff72a7db5973833d26dedf8ff5332eecac7545e01ebc5c3eeb",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/Z599QJG2O1Q3M6VUT7SR.npz"
+    },
+    {
+      "bytes": 421845,
+      "format": "npz",
+      "name": "public__public__pose__train__Z88DB4CB7L2DQ3XROY7Q.npz",
+      "path": "public/pose/train/Z88DB4CB7L2DQ3XROY7Q.npz",
+      "scope": "public",
+      "sha256": "adc5c75a24cc03d07b1fbd5fbf09c564a615ba971eff347b9d6457c2df82a729",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/Z88DB4CB7L2DQ3XROY7Q.npz"
+    },
+    {
+      "bytes": 506422,
+      "format": "npz",
+      "name": "public__public__pose__train__ZFY1ESAO1XQGNJDNL7PV.npz",
+      "path": "public/pose/train/ZFY1ESAO1XQGNJDNL7PV.npz",
+      "scope": "public",
+      "sha256": "6a02ac7a3ce625610245df0b086a1790992b13d10db2a3fd51b2f9016e1fa876",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/ZFY1ESAO1XQGNJDNL7PV.npz"
+    },
+    {
+      "bytes": 443815,
+      "format": "npz",
+      "name": "public__public__pose__train__ZHDHTOOR1RDW4BJL3U0I.npz",
+      "path": "public/pose/train/ZHDHTOOR1RDW4BJL3U0I.npz",
+      "scope": "public",
+      "sha256": "24de2483c860201976fbcfc7dbc7727baa1f89a9db4e47a8de828c0662b9f078",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/ZHDHTOOR1RDW4BJL3U0I.npz"
+    },
+    {
+      "bytes": 365427,
+      "format": "npz",
+      "name": "public__public__pose__train__ZSNKDHK3A5LWVRINYMO4.npz",
+      "path": "public/pose/train/ZSNKDHK3A5LWVRINYMO4.npz",
+      "scope": "public",
+      "sha256": "db2338ad2dc6830191f64ac722c232fdd017d3a62a5eb04bc044a8472761891d",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/ZSNKDHK3A5LWVRINYMO4.npz"
+    },
+    {
+      "bytes": 424955,
+      "format": "npz",
+      "name": "public__public__pose__train__ZXCAKMKDMQKICB1A10DZ.npz",
+      "path": "public/pose/train/ZXCAKMKDMQKICB1A10DZ.npz",
+      "scope": "public",
+      "sha256": "6b2807168240607b1afb3f1402ffc5d8b8bbf567f82348a448916a6ea9f91b7a",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/train/ZXCAKMKDMQKICB1A10DZ.npz"
+    },
+    {
+      "bytes": 372663,
+      "format": "npz",
+      "name": "public__public__pose__val__4L97WF2QN2J061GCYFC6.npz",
+      "path": "public/pose/val/4L97WF2QN2J061GCYFC6.npz",
+      "scope": "public",
+      "sha256": "16f728d4a6b9569e329780de4ff026b507ffac7b4a720e4300b18c6f7fd6a6c9",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/4L97WF2QN2J061GCYFC6.npz"
+    },
+    {
+      "bytes": 448473,
+      "format": "npz",
+      "name": "public__public__pose__val__4LUG8VAOP4R5IQZ77Y8R.npz",
+      "path": "public/pose/val/4LUG8VAOP4R5IQZ77Y8R.npz",
+      "scope": "public",
+      "sha256": "7389cea6d3f53e541daabfcf4897eaaa1da696b2b0b7ab6391963e8ebdafcccc",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/4LUG8VAOP4R5IQZ77Y8R.npz"
+    },
+    {
+      "bytes": 467656,
+      "format": "npz",
+      "name": "public__public__pose__val__C6VBI5GC8YQ71UOGGSU3.npz",
+      "path": "public/pose/val/C6VBI5GC8YQ71UOGGSU3.npz",
+      "scope": "public",
+      "sha256": "00650745b5dbb1228cb4c733f6d49a410b52e88358fb65d8c71628d2435b2c61",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/C6VBI5GC8YQ71UOGGSU3.npz"
+    },
+    {
+      "bytes": 467534,
+      "format": "npz",
+      "name": "public__public__pose__val__G4OC9LVV93NMZ2OUY8SJ.npz",
+      "path": "public/pose/val/G4OC9LVV93NMZ2OUY8SJ.npz",
+      "scope": "public",
+      "sha256": "1312190de35ef9ef9d2b82f23626a336d90509a419ecdfc78d7f6338f0c35a63",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/G4OC9LVV93NMZ2OUY8SJ.npz"
+    },
+    {
+      "bytes": 438397,
+      "format": "npz",
+      "name": "public__public__pose__val__GCGA0TEZ654PTUSRHUFL.npz",
+      "path": "public/pose/val/GCGA0TEZ654PTUSRHUFL.npz",
+      "scope": "public",
+      "sha256": "de165773c2c23e0d73af15dd5bb2c583043a85a0d9c38fb23004b7ff09ade8b1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/GCGA0TEZ654PTUSRHUFL.npz"
+    },
+    {
+      "bytes": 367011,
+      "format": "npz",
+      "name": "public__public__pose__val__HJG5NP1HPUQOJR1SNPLN.npz",
+      "path": "public/pose/val/HJG5NP1HPUQOJR1SNPLN.npz",
+      "scope": "public",
+      "sha256": "07b7e68ae0dae89e4701193f2d13e99ecc7b13398629005d225646c74bdd3d94",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/HJG5NP1HPUQOJR1SNPLN.npz"
+    },
+    {
+      "bytes": 334414,
+      "format": "npz",
+      "name": "public__public__pose__val__IS335YXE4MDVYSMMFN2X.npz",
+      "path": "public/pose/val/IS335YXE4MDVYSMMFN2X.npz",
+      "scope": "public",
+      "sha256": "dbd10bb7ee78b349537d56276bc1d94485b4cd82d332455127589fd3761ec134",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/IS335YXE4MDVYSMMFN2X.npz"
+    },
+    {
+      "bytes": 489894,
+      "format": "npz",
+      "name": "public__public__pose__val__WR0RPEAHO6HY3BS2AP2M.npz",
+      "path": "public/pose/val/WR0RPEAHO6HY3BS2AP2M.npz",
+      "scope": "public",
+      "sha256": "3a9897b998a69a6e3f3ed80a0064c23a671d8725fd4ca14b27a596d24c04dde9",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/WR0RPEAHO6HY3BS2AP2M.npz"
+    },
+    {
+      "bytes": 443461,
+      "format": "npz",
+      "name": "public__public__pose__val__X7YHL8Z57TFBO7X41L3H.npz",
+      "path": "public/pose/val/X7YHL8Z57TFBO7X41L3H.npz",
+      "scope": "public",
+      "sha256": "a84bd85f520f5af6aa24d04ee4d6d061f14c44bc0a56e2293cda250d58892487",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/X7YHL8Z57TFBO7X41L3H.npz"
+    },
+    {
+      "bytes": 349026,
+      "format": "npz",
+      "name": "public__public__pose__val__YCT5FMWHFJ0E4WWL2DP1.npz",
+      "path": "public/pose/val/YCT5FMWHFJ0E4WWL2DP1.npz",
+      "scope": "public",
+      "sha256": "8e93b475efd503f4f5765851da39253a9bdaea8051073aa0f0876bc0ce13ac01",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/YCT5FMWHFJ0E4WWL2DP1.npz"
+    },
+    {
+      "bytes": 371635,
+      "format": "npz",
+      "name": "public__public__pose__val__YHIT8V00TLFZNO3O2RYA.npz",
+      "path": "public/pose/val/YHIT8V00TLFZNO3O2RYA.npz",
+      "scope": "public",
+      "sha256": "f08af16d459c82ed1aac27c657ae686a0ce7e84cbc9f9740c2f8273223cd8545",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/pose/val/YHIT8V00TLFZNO3O2RYA.npz"
+    },
+    {
+      "bytes": 14388,
+      "format": "npz",
+      "name": "public__public__train_labels.npz",
+      "path": "public/train_labels.npz",
+      "scope": "public",
+      "sha256": "ad1b78e1ac98b8684e3bb71d8cdab69bb5a03bca84d03f8b77d8ebbb9e913080",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/train_labels.npz"
+    },
+    {
+      "bytes": 2935,
+      "format": "npz",
+      "name": "public__public__val_labels.npz",
+      "path": "public/val_labels.npz",
+      "scope": "public",
+      "sha256": "521c83240986d82fdfe2ba8ba995697fa178e5f89dbadc0ede63dc7342bfc196",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Public@2e13df514c9bd5b007d2c6e5bd2e45e053ee8500/tasks/animal-behavior/mabe22-supervised-segmentation/public/val_labels.npz"
+    },
+    {
+      "bytes": 1284,
+      "format": "json",
+      "name": "evaluator__label_extraction_manifest.json",
+      "scope": "private",
+      "sha256": "dfc6584d3ea05c4e39640aee5c0b032680057a44120f6ce6cf4738ebe406f40b",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/label_extraction_manifest.json"
+    },
+    {
+      "bytes": 3660,
+      "format": "json",
+      "name": "evaluator__mabe_finetune_split.json",
+      "scope": "private",
+      "sha256": "ebb486c7351eff8c9ae0fcfd2a21423083d06d0795e2febd2677d000ad4bffc9",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/mabe_finetune_split.json"
+    },
+    {
+      "bytes": 8969,
+      "format": "json",
+      "name": "evaluator__manifest.json",
+      "scope": "private",
+      "sha256": "a6c5f5d7c665cbe7ec959c5a51426e1e270c8497339893b16179653e2db3df51",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/manifest.json"
+    },
+    {
+      "bytes": 11507,
+      "format": "npz",
+      "name": "evaluator__owner__test_labels.npz",
+      "scope": "private",
+      "sha256": "1d4110f7ac012099639ff36f4542f661adc2103759a88abf60b89e36995c250f",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/owner/test_labels.npz"
+    },
+    {
+      "bytes": 29581,
+      "format": "json",
+      "name": "evaluator__pose_preparation_manifest.json",
+      "scope": "private",
+      "sha256": "f237cb660a9a654c32fdb89696d0486017e1085b3de00219fadea54313b1d433",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/pose_preparation_manifest.json"
+    },
+    {
+      "bytes": 29298,
+      "format": "json",
+      "name": "evaluator__pose_source_manifest.json",
+      "scope": "private",
+      "sha256": "def7a7b7f2b405bc42a58c696c7be2ebfc4bf9eb6cddf121258d7d9cfe69eb78",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/pose_source_manifest.json"
+    },
+    {
+      "bytes": 387804,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__0OMPSFLGR17FOG8MQDTK.npz",
+      "scope": "private",
+      "sha256": "a1b970a1f2a7941e1e4a1f33715cb6eec2e91b465c63ff85e5c6e55fdb5f3863",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/0OMPSFLGR17FOG8MQDTK.npz"
+    },
+    {
+      "bytes": 355855,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__2Y70ZB0KQCAFA7E3CPI8.npz",
+      "scope": "private",
+      "sha256": "7ce7a0f650572864a37dc85ca8c5c36aecdc4621c67aa318af9f16f9d787a3e0",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/2Y70ZB0KQCAFA7E3CPI8.npz"
+    },
+    {
+      "bytes": 479042,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__39HZ3ZF3L05KE6WJUQQJ.npz",
+      "scope": "private",
+      "sha256": "f6b73436b4142f80dceaad64bb73d0687a2fa1299c7844de4c4cecbb9e72edc6",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/39HZ3ZF3L05KE6WJUQQJ.npz"
+    },
+    {
+      "bytes": 477068,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__3ZOUFPHJ7JOHFBE8RHY6.npz",
+      "scope": "private",
+      "sha256": "0518d4353b3fe8563065c2b881ad50c44253e31eb0a801e83d246e2e56171d0e",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/3ZOUFPHJ7JOHFBE8RHY6.npz"
+    },
+    {
+      "bytes": 469100,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__44J6YN6ETJXX2IQBLSNB.npz",
+      "scope": "private",
+      "sha256": "489bf37caab49a7d8d25211fce1a2204c21a7a835c204a65e65147cde29884a6",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/44J6YN6ETJXX2IQBLSNB.npz"
+    },
+    {
+      "bytes": 499493,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__4GE1YTOKCPFXZPYS92UK.npz",
+      "scope": "private",
+      "sha256": "7fd7a832a5a055ef3366ccde32099c611b7bf26b99563290d0b2fa9dec518f4d",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/4GE1YTOKCPFXZPYS92UK.npz"
+    },
+    {
+      "bytes": 452007,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__5IUDSD9OWQZYY5LGH2TO.npz",
+      "scope": "private",
+      "sha256": "9b478d0744888484ddd16d35bdeaef2746b0b3a04138ed976ad526067baedc9b",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/5IUDSD9OWQZYY5LGH2TO.npz"
+    },
+    {
+      "bytes": 480327,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__5LV8BK7CTIRIA94HVSWO.npz",
+      "scope": "private",
+      "sha256": "23c978d2354cb6c784911f91ba06ea7e93da7a76d48194df9d9b6b70bdb7239b",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/5LV8BK7CTIRIA94HVSWO.npz"
+    },
+    {
+      "bytes": 496492,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__7EXR92FIE0FJCHU2GP2G.npz",
+      "scope": "private",
+      "sha256": "fc9c54573e5f64927d4aedccf44d66af66fbff9f0f0556cd20480b06afc8af6c",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/7EXR92FIE0FJCHU2GP2G.npz"
+    },
+    {
+      "bytes": 477293,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__8SM85GDZSY1OV9QG57SF.npz",
+      "scope": "private",
+      "sha256": "d3e2bc34d26b5f6a8aed5dfde6a8a8b3b2ea5453e38ede463874e86fa2fc5902",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/8SM85GDZSY1OV9QG57SF.npz"
+    },
+    {
+      "bytes": 512005,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__8WV3OF3A2RWUJ9LCW0AV.npz",
+      "scope": "private",
+      "sha256": "3a4706ab9011cd05449308f98c1ce782b42dbd5dd0e1a98bef1cd852507cd8c1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/8WV3OF3A2RWUJ9LCW0AV.npz"
+    },
+    {
+      "bytes": 394503,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__B59LS33DXD4HZJ8D943W.npz",
+      "scope": "private",
+      "sha256": "2bf2cec6d9105dc27e4ba85a7d250a932d9790e4d68fe36657f5aa82c3ab72ef",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/B59LS33DXD4HZJ8D943W.npz"
+    },
+    {
+      "bytes": 444478,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__C23DGCLDRMUAZ0ABDIP1.npz",
+      "scope": "private",
+      "sha256": "fde57ec681e7d7627e01009198902620fef48162431b25e29a685ef45ee1aefa",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/C23DGCLDRMUAZ0ABDIP1.npz"
+    },
+    {
+      "bytes": 485212,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__COC9MDLHQIBMHO0CHHDP.npz",
+      "scope": "private",
+      "sha256": "b23c760af68188cd98f35e4f53521752513cd9cf995add3533cfce68b0620956",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/COC9MDLHQIBMHO0CHHDP.npz"
+    },
+    {
+      "bytes": 453094,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__D4D4ZRO4H8RX1OOML5U4.npz",
+      "scope": "private",
+      "sha256": "b6f43b5dd63f93298474f7c62e01d7b6579fbc8f46ab5827421ec1fdb5925d7f",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/D4D4ZRO4H8RX1OOML5U4.npz"
+    },
+    {
+      "bytes": 463052,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__EKQSQWE01K4I8BM50KEG.npz",
+      "scope": "private",
+      "sha256": "d5b2f2151ec7e9ad23b08487ca67d77c0f17c711feaaf0dc42fa338556198aba",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/EKQSQWE01K4I8BM50KEG.npz"
+    },
+    {
+      "bytes": 472103,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__EO8XPEXT742ZXCJMZF9X.npz",
+      "scope": "private",
+      "sha256": "c7b867ba3fc770d51f1db30a8eb3fe855036feb78da920df908771f28be93ac1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/EO8XPEXT742ZXCJMZF9X.npz"
+    },
+    {
+      "bytes": 484115,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__EX5Q64E4M778U8HWP07P.npz",
+      "scope": "private",
+      "sha256": "195058ed962ccb176504efc1f11fd6ee7e529539a5651b67ea1b3a82877566c3",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/EX5Q64E4M778U8HWP07P.npz"
+    },
+    {
+      "bytes": 423852,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__FVESAI78JH1T0AOHLZX5.npz",
+      "scope": "private",
+      "sha256": "3344aa3cc06fef1ae13a07775aea13cf64cafa6e78f92e294053ef94a70ba5b1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/FVESAI78JH1T0AOHLZX5.npz"
+    },
+    {
+      "bytes": 360360,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__GPVMH7MY2D0BXS69FUVU.npz",
+      "scope": "private",
+      "sha256": "3a87a8b1ccbbfc5c44ba012ce840f64a7fa1321d3ab773d1fa006092e7403cd1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/GPVMH7MY2D0BXS69FUVU.npz"
+    },
+    {
+      "bytes": 490986,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__H0QPPIBX6UTYZB07VKSA.npz",
+      "scope": "private",
+      "sha256": "d9d473485557b137c4ba1755ef528b6ce3a15e9d6a218c2ba37c6f34c7e6c874",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/H0QPPIBX6UTYZB07VKSA.npz"
+    },
+    {
+      "bytes": 340346,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__H62FILA0OD9DXH99S8FI.npz",
+      "scope": "private",
+      "sha256": "eb014a9ac2f7c12bb8ee0e52a74a760c9df818ff1ed8deb37434a5dcd7795629",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/H62FILA0OD9DXH99S8FI.npz"
+    },
+    {
+      "bytes": 427566,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__HXD812MLCS71FYXV65OP.npz",
+      "scope": "private",
+      "sha256": "94d842730a390d3351b4b716dff42da190784b2f6ae61ccd1031abd6d2ea1db2",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/HXD812MLCS71FYXV65OP.npz"
+    },
+    {
+      "bytes": 428636,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__IT0QTRWAAC85M2R7VLO1.npz",
+      "scope": "private",
+      "sha256": "bcde81cf742c84f786d031bf6e906febfbdec306653ddc98a2e92ae9761fff68",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/IT0QTRWAAC85M2R7VLO1.npz"
+    },
+    {
+      "bytes": 441593,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__JRYV8WO9AHC8P615XOVR.npz",
+      "scope": "private",
+      "sha256": "d3ed23accbf961df19180c20d281e3c3a9aae44b4ebf1ac60c0e5b97fd7df8d4",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/JRYV8WO9AHC8P615XOVR.npz"
+    },
+    {
+      "bytes": 495482,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__KPS135VD589ORS6CUO40.npz",
+      "scope": "private",
+      "sha256": "0d4d62df6487f75113c6eb203d2617232192abf8d5ea9a132e49139b3f690211",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/KPS135VD589ORS6CUO40.npz"
+    },
+    {
+      "bytes": 441251,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__M0SPEUHB0HNOM437QBQC.npz",
+      "scope": "private",
+      "sha256": "9c1e803de4501bd4c32ed960cfc6332760bab0a2b131de8ee55d67235496def2",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/M0SPEUHB0HNOM437QBQC.npz"
+    },
+    {
+      "bytes": 438466,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__M1I7SFNLP5GWCOS9GEFN.npz",
+      "scope": "private",
+      "sha256": "7794f9de23992aae6be67bd914646733c6b81399409b6ffb4370f154281e030e",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/M1I7SFNLP5GWCOS9GEFN.npz"
+    },
+    {
+      "bytes": 507124,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__NAS7UDQEDVKJBAKUWZUW.npz",
+      "scope": "private",
+      "sha256": "7244006c67ef75f7ac27bac94da7bd886c866d795d254c95b61d8fa2a20128b1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/NAS7UDQEDVKJBAKUWZUW.npz"
+    },
+    {
+      "bytes": 467069,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__P3VEMB6HYPR594LEL3WT.npz",
+      "scope": "private",
+      "sha256": "144e002499dddbd7ec81909813c7d2d19f1b23eb3ac797f39d951c4624498c17",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/P3VEMB6HYPR594LEL3WT.npz"
+    },
+    {
+      "bytes": 441516,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__PDP873BKQUBZIMHV1I0P.npz",
+      "scope": "private",
+      "sha256": "25a3e7963f482bcbec74d86ddd0efa008cff38aa6e8c0891726632b620fd369f",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/PDP873BKQUBZIMHV1I0P.npz"
+    },
+    {
+      "bytes": 416860,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__RWVIOKQU6XRTDO14IC38.npz",
+      "scope": "private",
+      "sha256": "5165938474d0647bbd190e37aab3530ae9db45e23df9602f7959e87da0af87a4",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/RWVIOKQU6XRTDO14IC38.npz"
+    },
+    {
+      "bytes": 460150,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__S036BM2OEV58V45I06R4.npz",
+      "scope": "private",
+      "sha256": "45a1692318c317981a5084752f984f70f43a26132f1a128d1c6fb0dbe372fd6c",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/S036BM2OEV58V45I06R4.npz"
+    },
+    {
+      "bytes": 437751,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__SV1PCVJF7WPRK2GNDRUN.npz",
+      "scope": "private",
+      "sha256": "56fac04977b4354dc2cecbd512167613e56d98d674994a197120fa53e38f3dd4",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/SV1PCVJF7WPRK2GNDRUN.npz"
+    },
+    {
+      "bytes": 477576,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__TDHXRQC9INLKOJF4UHXH.npz",
+      "scope": "private",
+      "sha256": "2a79fbaff1aa9eabc349e3aafc7efd1def99844fe43c7477e46135e56ac5661b",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/TDHXRQC9INLKOJF4UHXH.npz"
+    },
+    {
+      "bytes": 423250,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__TSLF0YSAG9BO480VHOXM.npz",
+      "scope": "private",
+      "sha256": "a157ac0c3b2a46de4874f28ddbaeaf3a198485e790d5b195f5935ac77676edbe",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/TSLF0YSAG9BO480VHOXM.npz"
+    },
+    {
+      "bytes": 474689,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__URCP2C6TDQK2MI1BK2KL.npz",
+      "scope": "private",
+      "sha256": "6e439353eaacc202338f13d1c7ec368013bb3128203fcef2f570dc1bf835158d",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/URCP2C6TDQK2MI1BK2KL.npz"
+    },
+    {
+      "bytes": 411961,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__UZ7M1SU7LN98QQH4JSXR.npz",
+      "scope": "private",
+      "sha256": "6e51d81ab64f20a5f4ed47294cf7568589b549ba4bfcaf6b50f26118541d4ae8",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/UZ7M1SU7LN98QQH4JSXR.npz"
+    },
+    {
+      "bytes": 449252,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__WFS97BU1JPTYG3U3CN8A.npz",
+      "scope": "private",
+      "sha256": "a180f11ff58264c7cb7bd2ab7c98f08031959c1b5271417dd2c63aea43e84ba2",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/WFS97BU1JPTYG3U3CN8A.npz"
+    },
+    {
+      "bytes": 411822,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__X4200DUKI06KHKT6PADX.npz",
+      "scope": "private",
+      "sha256": "c32a409d282d92937ead86a1fff1be5bb81a8270fa1872c83851fe10d344cba1",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/X4200DUKI06KHKT6PADX.npz"
+    },
+    {
+      "bytes": 432988,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__YOW9BQBR5OZS3JAVKKX3.npz",
+      "scope": "private",
+      "sha256": "a83e7f638ef91be375769b254852615528b79b3f2ee40007de1b44236cd5ca05",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/YOW9BQBR5OZS3JAVKKX3.npz"
+    },
+    {
+      "bytes": 404923,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__YQV8U4JNFTRVUYLR3KXF.npz",
+      "scope": "private",
+      "sha256": "f3a0e34a6c128c27c639bfd33b780a717d72fa69e16f1fef1a4e9a99a163bafd",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/YQV8U4JNFTRVUYLR3KXF.npz"
+    },
+    {
+      "bytes": 423589,
+      "format": "npz",
+      "name": "evaluator__public__pose__test__Z8H7BSM8KQW2KZEDN2A7.npz",
+      "scope": "private",
+      "sha256": "3a5b72b9825eb860b67217a45c973d4e3deedccf6ea6ebeb87b91eff8a3c2e98",
+      "uri": "hf://datasets/BrainPilot-Bench/Tasks-Data-Private@0fcb4e3050f9ba271f894c844ee24e5df072e74a/tasks/animal-behavior/mabe22-supervised-segmentation/evaluator/public/pose/test/Z8H7BSM8KQW2KZEDN2A7.npz"
+    }
+  ]
+}

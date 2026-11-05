@@ -1,0 +1,70 @@
+{
+  "schema": "bpb-mouse-local-readiness/1",
+  "date": "2026-10-26",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "270c3e19e322262fbed6bf8e117c769f38befc3c",
+  "local_branch": "feat/mouse-behavior-task-expansion",
+  "status": "first_preparation_increment_verified_not_published",
+  "counts": {
+    "existing_catalog_entries_preserved": 117,
+    "runnable_tasks_unchanged": 112,
+    "new_mouse_candidates": 8,
+    "total_candidates": 13,
+    "catalog_entries": 125
+  },
+  "real_data_checks": {
+    "calms21_task1": {
+      "source_archive_bytes": 457357950,
+      "source_sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427",
+      "prepared_numeric_files": 89,
+      "public_train_sequences": 56,
+      "public_valid_sequences": 14,
+      "owner_test_sequences": 19,
+      "independent_final_verifier_passed": true,
+      "independent_public_reference_repeated": true,
+      "public_valid_f1": 0.26137150142003684,
+      "official_test_scored": false,
+      "isolated_agent_submission_accepted": false,
+      "evidence": "calms-task1-inventory-v2.json"
+    },
+    "mabe22_pose": {
+      "samples": 1,
+      "sample_bytes": 1659308,
+      "sample_sha256": "cbe02ed554ff58ff21a4c49e752a540d3288b96a7ecb182924f3867fdb066d17",
+      "independent_sha_and_hdf5_shape_checked": true,
+      "observed_rows": 1801,
+      "observed_numeric_columns": 108,
+      "full_data_alignment_or_training": false,
+      "evidence": "mabe-pose-inspection.json"
+    },
+    "airscope": {
+      "experiment_payloads_prepared": false,
+      "evidence": "airscope-source-audit.json"
+    }
+  },
+  "local_checks": {
+    "build": "passed",
+    "mouse_python_fixture_tests": {"passed": 18, "research_data_used": false},
+    "mouse_candidate_node_tests": {"passed": 6, "task_code_executed": false},
+    "existing_node_tests": {"passed": 248, "skipped": 3, "failed": 0},
+    "reader_documentation_tests": {"passed": 9},
+    "invasive_metadata_tests": {"passed": 9},
+    "collection_and_regenerated_catalog": "passed",
+    "runnable_schema_only": "passed",
+    "documentation_command_smoke": "passed, 112 runnable tasks",
+    "task_canary": "passed, 113 task.yaml files including example",
+    "existing_catalog_rows": "all 117 rows unchanged",
+    "git_diff_whitespace": "passed"
+  },
+  "remaining_work": [
+    "CalMS21: implement and accept an isolated frozen-model inference interface and explicit owner Test binding before promotion",
+    "CalMS21 Task 2/3: prepare source arrays; only the shared metric conventions and metadata were checked",
+    "MABe22 representation: reconcile the paper recipe with the inspected reference evaluator and bind exact labels/memberships",
+    "MABe22 supervised: bind video/pose/labels and label-independent inference; keep foreground eligibility limitations explicit",
+    "Airscope: locate matching tube/FST/TST experimental signals and labels; establish FST AUC definition",
+    "Run remote CI only after a separately authorized push/PR; local checks do not imply remote CI success"
+  ],
+  "publication": {"git_commit": false, "git_push": false, "hf_upload": false, "main_merge": false},
+  "agent_benchmark_results": "not_available",
+  "data_scope": "Official CalMS21 Task 1 pose archive and one pinned MABe22 H5 sample only; no large video or other experiment payload downloads."
+}

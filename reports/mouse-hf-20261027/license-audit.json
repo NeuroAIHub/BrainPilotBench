@@ -1,0 +1,122 @@
+{
+  "schema": "bpb-mouse-mirror-license-audit/1",
+  "date": "2026-10-27",
+  "scope": "Five prepared mouse tasks, their public packets, and their evaluator packets. No videos, checkpoints, or unrelated datasets.",
+  "conclusion": "Conditional redistribution permitted for a noncommercial research mirror with source attribution, source license preservation, modification notices, and applicable ShareAlike obligations.",
+  "legal_opinion": false,
+  "source_only_required_by_a_no_redistribution_clause": false,
+  "assets": [
+    {
+      "asset_group": "calms21_pose_confidence_labels",
+      "tasks": ["calms21-classic-classification", "calms21-annotation-style-transfer", "calms21-few-shot-behavior"],
+      "decision": "conditional_mirror",
+      "source_record": "https://data.caltech.edu/records/s0vdx-0k302",
+      "source_doi": "10.22002/D1.1991",
+      "source_version": "1.0",
+      "license_basis": "CC-BY-NC-SA-2.0",
+      "license_evidence": "https://arxiv.org/html/2104.02710",
+      "license_evidence_sections": ["Appendix A CalMS21 Hosting and Licensing", "Datasheet Distribution"],
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/2.0/legalcode.en",
+      "metadata_conflict": {
+        "api": "https://data.caltech.edu/api/records/s0vdx-0k302",
+        "observed_rights_id": "cc-by-4.0",
+        "resolution": "Use the author's explicit noncommercial ShareAlike grant for this mirror. Record the difference without cancelling independently granted source permissions."
+      },
+      "credit": ["Jennifer J. Sun", "Tomomi Karigo", "David J. Anderson", "Pietro Perona", "Yisong Yue", "Ann Kennedy"],
+      "source_hashes": {
+        "task1_classic_classification.zip": {"bytes": 457357950, "md5": "8a02654fddae28614ee24a6a082261b8", "sha256": "f1cd2f46771cc3834020d187604da53e5ff330121f5a816146f14192fb0bf427"},
+        "task2_annotation_styles.zip": {"bytes": 912092847, "md5": "c97e87e13e77ffb80c073e05c05a4683", "sha256": "07af9c3a18157a072755c1d1987103f8927e4de5e8996a22a6af25add59b10ab"},
+        "task3_new_behaviors.zip": {"bytes": 556170163, "md5": "df59df02d069bab1cfc376cdc1a3925b", "sha256": "ed9edd3009b063a8edb4c31b38d4a6773b5d6a1ee80cd57b5df89417ca647821"}
+      },
+      "hash_provenance": "Caltech supplies MD5. The task protocol.json files bind locally computed source SHA-256 values to the verified bytes."
+    },
+    {
+      "asset_group": "mabe22_original_mouse_data",
+      "tasks": ["mabe22-representation-classification", "mabe22-supervised-segmentation"],
+      "decision": "conditional_mirror",
+      "source_record": "https://data.caltech.edu/records/rdsa8-rde65",
+      "source_doi": "10.22002/rdsa8-rde65",
+      "source_version": "v1",
+      "license_basis": "CC-BY-NC-SA-2.0",
+      "license_evidence": "https://arxiv.org/html/2207.10553v2",
+      "license_evidence_section": "B.1 Mouse Datasheet, Distribution",
+      "published_pdf_evidence": "https://proceedings.mlr.press/v202/sun23g/sun23g.pdf#page=29",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/2.0/legalcode.en",
+      "metadata_note": "The Caltech API has no rights field. The author's paper supplies the explicit dataset license.",
+      "credit": "Jennifer J. Sun, Markus Marks, Ann Kennedy, and the MABe22 collaborators. The official record and paper provide the complete creator and author lists.",
+      "source_hashes": {
+        "mouse_user_train.npy": {"md5": "389bc12c9ad49b7cb50b531707b448a5"},
+        "mouse_submission_keypoints.npy": {"md5": "68a9fe1fe71225787a4dae6369acc9dc"},
+        "mouse_submission_labels.npy": {"md5": "7f10c2b676e7dd8b4348423f0ee0aa8a"},
+        "mouse_frame_number_map.npy": {"md5": "ffc1dcae90176cdac4ff4fe123e18f25"}
+      },
+      "hash_provenance": "Published Caltech checksums, pinned in tasks/animal-behavior/_shared/mabe_fetch_sources.py."
+    },
+    {
+      "asset_group": "mabe22_manual_behavior_labels_and_splits",
+      "tasks": ["mabe22-representation-classification"],
+      "decision": "conditional_mirror",
+      "source_repository": "https://github.com/damaggu/MABe2022",
+      "source_commit": "234dae7098314d6035066e3028caedee3f3ee379",
+      "license_basis": "CC-BY-NC-4.0 repository grant, with original MABe22 attribution and CC-BY-NC-SA-2.0 source terms preserved",
+      "license_evidence": "https://raw.githubusercontent.com/damaggu/MABe2022/234dae7098314d6035066e3028caedee3f3ee379/LICENCE",
+      "license_git_blob_sha1": "67846aa0c4d75d272acbec5d9f4fc91fdfe05bc4",
+      "license_url": "https://creativecommons.org/licenses/by-nc/4.0/legalcode.en",
+      "scope_basis": "Root repository license. The inspected metadata directories contain no separate license exception. This is not an MIT software-license inference.",
+      "credit": ["Jennifer J. Sun", "Ann Kennedy", "Kristin Branson", "Markus Marks", "Dipam Chakraborty"],
+      "source_hashes": {
+        "round2/metadata/mouse_new_splits/labels.npy": {"sha256": "cae4936eee6213f7b5247dd14c021221c9ddbe12df69de7a150d906111ee207f"},
+        "round2/metadata/mouse_new_splits/frame_number_map.npy": {"sha256": "7d4c6f891050ac5e6816a5d501c9bb6ea05b7d5f18bc5018a7981c61b4aee82a"},
+        "each_selected_condition_split_json": {"sha256": "ef306e4f369f72b64a53df8f00b45747b50554678dd08b7300553c36feb22eaf"},
+        "each_selected_manual_behavior_split_json": {"sha256": "049f99e3ffb5b939962654265fda18f01088b6905d1a2f8f237c38df1fe41aa3"}
+      },
+      "hash_provenance": "Pinned GitHub source files and local SHA-256 values in tasks/animal-behavior/_shared/mabe_fetch_sources.py."
+    },
+    {
+      "asset_group": "resifuse_mabe22_pose",
+      "tasks": ["mabe22-supervised-segmentation"],
+      "decision": "conditional_mirror",
+      "source_dataset": "WeihanLikk/ResiFuse-MABe22",
+      "source_revision": "22019237bee137b74f8211977779c822236b8402",
+      "license_basis": "CC-BY-NC-SA-4.0",
+      "license_evidence": "https://huggingface.co/datasets/WeihanLikk/ResiFuse-MABe22/blob/22019237bee137b74f8211977779c822236b8402/README.md",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en",
+      "credit": "WeihanLikk and the ResiFuse authors, with the original MABe22 attribution retained.",
+      "selected_h5_files": 108,
+      "source_manifest_sha256": "def7a7b7f2b405bc42a58c696c7be2ebfc4bf9eb6cddf121258d7d9cfe69eb78",
+      "hash_provenance": "pose_source_manifest.json records source paths, byte lengths and LFS SHA-256 values. The supervised protocol.json binds that manifest."
+    },
+    {
+      "asset_group": "resifuse_supervised_split_metadata",
+      "tasks": ["mabe22-supervised-segmentation"],
+      "decision": "conditional_mirror",
+      "source_repository": "https://github.com/BRAINML-GT/ResiFuse",
+      "source_commit": "ae4acf51962b1611656da00d3da92a6b02a56ef4",
+      "source_file": "splits/mabe_finetune_split.json",
+      "source_sha256": "ebb486c7351eff8c9ae0fcfd2a21423083d06d0795e2febd2677d000ad4bffc9",
+      "license_basis": "MIT for repository software/documentation, not for the separate pose or label data",
+      "license_evidence": "https://raw.githubusercontent.com/BRAINML-GT/ResiFuse/ae4acf51962b1611656da00d3da92a6b02a56ef4/LICENSE",
+      "credit": "Copyright (c) 2026 Weihan Li, Jingyang Ke, Qinheng Pu, Yule Wang, Chengrui Li, Anqi Wu",
+      "condition": "Redistribution of the source split or substantial software material must include the full upstream MIT copyright, permission and disclaimer notice."
+    }
+  ],
+  "required_delivery_notices": [
+    "Each task's NOTICE.md accompanies both public and evaluator packages.",
+    "The supervised task includes LICENSE-ResiFuse.txt, and the representation task includes LICENSE-MABe-evaluator.txt, unchanged from their pinned source licenses.",
+    "Source material retains its original license and attribution.",
+    "Any copyrightable BrainPilotBench dataset adaptations use CC-BY-NC-SA-4.0 without replacing source terms.",
+    "The mirror records format conversion, source membership, derived Valid partitions, label grouping and role separation.",
+    "Source warranty disclaimers and non-endorsement limits remain applicable.",
+    "The dataset is not described under a blanket MIT, Apache, CC-BY-4.0 or replacement NC-SA license."
+  ],
+  "private_evaluation_access": {
+    "permitted_access_model": "Owner-only or password-protected storage for experiment integrity.",
+    "rights_boundary": "Access control does not remove licensed recipients' source rights or add a copyright ban on redistribution.",
+    "upstream_labels_historically_secret": false,
+    "guidance": "https://creativecommons.org/faq/#can-i-share-cc-licensed-material-on-password-protected-sites"
+  },
+  "adapter_license_guidance": "https://creativecommons.org/faq/#if-i-derive-or-adapt-material-offered-under-a-creative-commons-license-which-cc-licenses-can-i-use",
+  "commercial_use_authorized_by_this_audit": false,
+  "payloads_read_for_this_audit": false,
+  "external_upload_or_author_contact_performed": false
+}

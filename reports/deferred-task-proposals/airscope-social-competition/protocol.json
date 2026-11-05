@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-mouse-protocol/1",
+  "task_id": "airscope-social-competition",
+  "protocol_status": "candidate_not_frozen",
+  "source_revision": "80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98",
+  "source_url": "https://github.com/Neurallabware/Airscope_toolbox/tree/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT",
+  "sample_unit": "one trial containing both animals",
+  "input": "calcium activity from the two identified animals within a declared trial interval",
+  "planned_output": ["trial_id", "winner_animal_id"],
+  "metric": {
+    "id": "F1", "average": "binary", "positive_label": 1,
+    "source_label_definition": "The first animal in the pair input wins.",
+    "zero_division": 0,
+    "test_pair_order": "Freeze before evaluation, independently of outcomes.",
+    "aggregation": "One prediction per trial. Fold membership and fold aggregation remain pending."
+  },
+  "source_training_augmentation": "Swap both animal inputs and masks, then replace the relative label with 1-label.",
+  "verified_public_validation_cache": {
+    "path": "Software/Neuron_BERT/cache/val_data_seed_42_pca.pkl",
+    "sha256": "fecb2bf1d20b716cb93f8ac3dd58a5f8edceace07c2dd6ba351b3417e8429e62",
+    "bytes": 7279875,
+    "examples": 17,
+    "input": "Two time-by-128 PCA feature arrays per example, not original calcium traces",
+    "limits": "The source checkpoint was selected on validation. Stable original trial IDs and corresponding training data are absent. A new cache-derived split would be a separate small-task protocol, not the planned full source benchmark."
+  },
+  "planned_interface_difference": "Winner IDs are a proposed BrainPilotBench output interface, not the source repository's existing output format.",
+  "required_before_promotion": [
+    "matching calcium trial records and winner labels",
+    "complete animal and session membership with frozen evaluation splits",
+    "explicit whole-trial decoding or pre-outcome prediction interval; never call whole-trial classification prospective prediction",
+    "train-only preprocessing for the selected protocol, or an explicit source-compatible transductive profile",
+    "source terms, bytes and hashes, isolated submission interface and representative real acceptance"
+  ],
+  "data_substitution_forbidden": ["multi_animal_interaction/data_aligned.mat", "enriched_habitat/data_aligned.mat"],
+  "agent_benchmark_results": "not_available"
+}

@@ -1,0 +1,599 @@
+{
+  "no_model_scores_used": true,
+  "paired_manifest_sha256": "24553d7831e721be4beb4a4c7f2e184ffbf45d9d1d734cfb0bab71b25e0e4f6f",
+  "profile": "bpb-sam2mice-automatic-tracking-v1",
+  "rule": {
+    "boundaries": [
+      297,
+      396
+    ],
+    "boundary_trim_frames_per_side": 10,
+    "description": "Use the paired source frame extent [0, max_index+1). Set chronological boundaries floor(3*N/5) and floor(4*N/5). Omit ten source indices on each side of each boundary. Keep every paired frame in its remaining role interval and split sequences at missing observations. Tracker state resets per sequence.",
+    "observed_frames_excluded_by_gap": 39,
+    "role_intervals_half_open": {
+      "test": [
+        406,
+        496
+      ],
+      "train": [
+        0,
+        287
+      ],
+      "valid": [
+        307,
+        386
+      ]
+    },
+    "source_extent_frames": 496
+  },
+  "schema": "bpb-sam2mice-tracking-split-review/1",
+  "sequences": [
+    {
+      "frame_indices": [
+        8,
+        9,
+        10
+      ],
+      "id": "sequence-0011f2eb30e2fabb",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286
+      ],
+      "id": "sequence-0e1df961f775821d",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        32
+      ],
+      "id": "sequence-11c5912783badd9b",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        195
+      ],
+      "id": "sequence-2564a1c5867802dd",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "id": "sequence-2f92274ad6518168",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        382
+      ],
+      "id": "sequence-33cf28bfac60937e",
+      "split": "valid"
+    },
+    {
+      "frame_indices": [
+        342
+      ],
+      "id": "sequence-3547a3d28165ddd9",
+      "split": "valid"
+    },
+    {
+      "frame_indices": [
+        426
+      ],
+      "id": "sequence-35e4e44c3d3c419b",
+      "split": "test"
+    },
+    {
+      "frame_indices": [
+        73,
+        74,
+        75,
+        76,
+        77
+      ],
+      "id": "sequence-3867a6db80c5bea5",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ],
+      "id": "sequence-475518582ede4cf9",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        357,
+        358
+      ],
+      "id": "sequence-55043e603f68c0eb",
+      "split": "valid"
+    },
+    {
+      "frame_indices": [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ],
+      "id": "sequence-5ca2d8ffe23b7593",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        126,
+        127,
+        128
+      ],
+      "id": "sequence-62c22701e8c739f4",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226
+      ],
+      "id": "sequence-6d17ce29c05ad734",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        493,
+        494,
+        495
+      ],
+      "id": "sequence-785a8dccb27eac11",
+      "split": "test"
+    },
+    {
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "id": "sequence-8f79480115141e17",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        428
+      ],
+      "id": "sequence-954ea1192c96649e",
+      "split": "test"
+    },
+    {
+      "frame_indices": [
+        198
+      ],
+      "id": "sequence-997865ee76aa5803",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193
+      ],
+      "id": "sequence-a0465e27cd4b88a0",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422
+      ],
+      "id": "sequence-a20cee09ce83b93c",
+      "split": "test"
+    },
+    {
+      "frame_indices": [
+        385
+      ],
+      "id": "sequence-a38dfa4f09016695",
+      "split": "valid"
+    },
+    {
+      "frame_indices": [
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "id": "sequence-aa25f96b7ac81501",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        350,
+        351,
+        352,
+        353,
+        354
+      ],
+      "id": "sequence-b80b0cd395958ca2",
+      "split": "valid"
+    },
+    {
+      "frame_indices": [
+        435,
+        436,
+        437,
+        438,
+        439,
+        440
+      ],
+      "id": "sequence-bee18e20531c9c89",
+      "split": "test"
+    },
+    {
+      "frame_indices": [
+        13
+      ],
+      "id": "sequence-c0903a147de2259c",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372
+      ],
+      "id": "sequence-caac9a9feef18c55",
+      "split": "valid"
+    },
+    {
+      "frame_indices": [
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340
+      ],
+      "id": "sequence-d0af6d30603b4a8f",
+      "split": "valid"
+    },
+    {
+      "frame_indices": [
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453
+      ],
+      "id": "sequence-d97f8b537ce0d76f",
+      "split": "test"
+    },
+    {
+      "frame_indices": [
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250
+      ],
+      "id": "sequence-dddbd29b5c8afd55",
+      "split": "train"
+    },
+    {
+      "frame_indices": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "id": "sequence-ec46bce2cec1f57b",
+      "split": "train"
+    }
+  ],
+  "source_complete_sha256": "ccb350870aa0769c123e9e067168fa8ef22e0cdcf81adbbee81276002ca52e3e",
+  "source_review_sha256": "05a0494f593f005792097aeb88de5eef03650cac49cfa88d1a66265e27c57fe6",
+  "status": "frozen",
+  "task_id": "sam2mice-multi-animal-tracking",
+  "task_version": "0.1"
+}

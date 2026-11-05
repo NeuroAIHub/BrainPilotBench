@@ -1,0 +1,19 @@
+{
+  "schema": "bpb-mouse-protocol/1",
+  "task_id": "airscope-tail-suspension",
+  "protocol_status": "candidate_not_frozen",
+  "source_url": "https://doi.org/10.1038/s41586-026-11293-x",
+  "source_location": "Supplementary Note 4",
+  "input": "cortical calcium signals aligned to behavior annotations",
+  "classes": ["active", "passive"],
+  "output": "one predicted state per scored time point",
+  "metric": {"id": "accuracy", "formula": "correct_predictions / scored_predictions", "across_recordings_aggregation": null},
+  "required_before_promotion": [
+    "matching calcium data, machine-readable state labels and timestamps",
+    "animal/session membership, label definitions and frozen splits",
+    "original per-animal versus pooled-frame aggregation",
+    "source terms, bytes and hashes, isolated submission interface and representative real acceptance"
+  ],
+  "data_substitution_forbidden": ["free-behavior calcium recordings", "guessed activity labels derived from unrelated experiments"],
+  "agent_benchmark_results": "not_available"
+}

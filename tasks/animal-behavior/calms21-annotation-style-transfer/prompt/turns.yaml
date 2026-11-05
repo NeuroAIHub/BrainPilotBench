@@ -1,0 +1,16 @@
+- send: |-
+    Train a CalMS21 Task 2 classifier for five annotator-specific label styles using
+    only data/public/train and data/public/valid. Each manifest row names its annotator
+    group and a complete NPZ sequence with keypoints [frames,2,2,7], scores [frames,2,7],
+    and labels [frames]. Each group uses attack=0, investigation=1, mount=2, other=3.
+    Submit submission/model.py, submission/config.json, and submission/weights.npz.
+    model.py must define load_model(config, weights_path), returning an object with
+    predict_proba(keypoints, scores, context). Return finite normalized probabilities
+    [frames,4] for the context group. Inference runs in a pinned, network-disabled
+    container with no labels or task files.
+    Use only public labels for fitting and method selection. The metric computes
+    attack/investigation/mount frame F1 within each annotator, then averages five
+    annotator scores equally. Official Test target labels remain private. Source
+    recordings can appear in different annotator groups; group-specific target
+    labels and official roles remain distinct. The three files must reload without
+    fitting during inference. No GPU is required.

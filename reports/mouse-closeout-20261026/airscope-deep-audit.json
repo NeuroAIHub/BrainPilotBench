@@ -1,0 +1,43 @@
+{
+  "audit_time_utc": "2026-10-26T14:15:51Z",
+  "scope": "Additional anonymous, read-only inspection of public Airscope author Drive code folders, pinned GitHub source, Figshare metadata, and supplement. No authentication, private API, author contact, code change, or dataset payload download.",
+  "pinned_github_commit": "80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98",
+  "sources": {
+    "drive_root": "https://drive.google.com/drive/folders/1z9ibX8Ob2NnCdjQDHI7Z4tdhdspn647B",
+    "drive_neuron_bert": "https://drive.google.com/drive/folders/1plYxNShgu1D-SIVra6ELVR_OijpyQcHZ",
+    "drive_neuron_bert_datasets": "https://drive.google.com/drive/folders/1DXy2nH39dA9ouV5zvs5j7UJfJTDV-GWp",
+    "drive_neuron_bert_cache": "https://drive.google.com/drive/folders/1Zhm4wCe0DPVcRNAqe5nLYHBO4Tu5BiFm",
+    "drive_data_release": "https://drive.google.com/drive/folders/1iN-GKYyw4XPUKVd7_1r9TP5MjUERkInU",
+    "drive_data_release_experiments": "https://drive.google.com/drive/folders/1fDctpAtHAub49uIoKFkKHSAz6z4XwfDC",
+    "drive_checkpoint": "https://drive.google.com/drive/folders/1UuLxzTA0PmYvqz8UPbQ9a1BIXx_mHZjt",
+    "drive_raw_recordings": "https://drive.google.com/drive/folders/1n4SrOn43ZyrIbjGnWmpvP8xp_o9noi-H",
+    "github_cache_metadata": "https://api.github.com/repos/Neurallabware/Airscope_toolbox/git/trees/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98?recursive=1",
+    "github_validation_notebook": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/validate_dual_stream.ipynb",
+    "github_dataset_code": "https://github.com/Neurallabware/Airscope_toolbox/blob/80a01ecd8aafe7bb2eb2c0a74f76088c650fbf98/Software/Neuron_BERT/datasets/dataset_augment.py",
+    "figshare_data_api": "https://api.figshare.com/v2/articles/33942097",
+    "figshare_toolbox_api": "https://api.figshare.com/v2/articles/33942148",
+    "supplement": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-026-11293-x/MediaObjects/41586_2026_11293_MOESM1_ESM.pdf"
+  },
+  "direct_public_observations": [
+    "The author Drive Neuron_BERT/datasets page shows five source/notebook files: __init__.py, data_set_vis.ipynb, dataset_augment.py, dataset.py, split_dataset.py. It shows no data_aligned.pkl or experiment-specific label file in that folder.",
+    "The author Drive Neuron_BERT/cache page shows val_data_seed_42_pca.pkl. GitHub's pinned tree lists the same file at 7,279,875 bytes (blob 267eab64632ae8249753f0f8471cb5ebb00f82f7). This corrects the earlier overbroad impression that no public social-competition label-bearing artifact exists.",
+    "The pinned validate_dual_stream.ipynb passes None as input data to CalciumDataset_two_stream_pair_pca and names val_data_seed_42_pca.pkl as its validation cache; it evaluates a published best_model.pth using binary F1. The dataset class source expects cache keys processed_trials and win_labels. The cache content was not opened, so its actual sample count, labels, and provenance remain unverified.",
+    "The author Drive Data_release page shows only experiments, MCU_timestamp, optical_characteristic, and README files; experiments shows enriched_habitat and muiti_animal_interaction. The Checkpoint page shows CorrectionMap.npz, background_rejection_ckpt_resize_2.pth, vessel_model.pt, and yolo_v8s.pt, with no target experiment data file listed.",
+    "The public raw_recordings page displays frames.zip only. A HEAD request to the Figshare mirror for that frames.zip returned 302 followed by 403 at the file store; no range request or alternate route was attempted after denial.",
+    "Figshare data article 33942097 v1 lists 28 files, with no explicitly named social competition trial data_aligned.pkl or FST/TST paired neural data and labels. Figshare toolbox article 33942148 v1 lists Airscope_toolbox.zip plus four model/calibration artifacts, not a separately named dataset.",
+    "The supplement reports FST three-phase AUC and TST binary accuracy, but the inspected public text does not define FST ROC versus PR AUC or its multiclass aggregation, nor provide machine-readable aligned examples or labels."
+  ],
+  "source_vs_inference": {
+    "source": "The named validation cache, code, and notebook are genuinely public in the author release. The GitHub tree and public Drive page both expose the cache filename; the notebook identifies its intended validation use.",
+    "inference": "The cache likely contains processed social-competition validation features and winner labels because the notebook constructs a dataset from it and the class expects processed_trials and win_labels. This is inferred from code paths, not verified by reading the pickle payload.",
+    "limit": "A public validation cache used with a published checkpoint is not evidence of an independent hidden test set. It lacks verified raw-trial lineage and split separation, so it cannot by itself establish a defensible private benchmark. Absence from the visible public listings is not proof that data do not exist elsewhere; pages may paginate or omit items."
+  },
+  "task_readiness": {
+    "social_competition_trial_binary_f1": "Public validation-demo candidate exists via the 7.28 MB cache, but independent benchmark readiness is unverified. Need inspect cache structure and provenance under a separately authorized bounded payload check, and obtain an independent held-out trial release if private scoring is intended.",
+    "forced_swim_auc": "Not implementable from located public sources: no paired machine-readable examples/phase labels or exact AUC definition.",
+    "tail_suspension_accuracy": "Not implementable from located public sources: no paired machine-readable examples/active-passive labels."
+  },
+  "most_actionable_next_step": "Treat the published social-competition cache as a possible public validation example only. Before promoting any Airscope task, verify cache lineage and independence; for FST and TST, require a first-party public paired data/label manifest, and for FST the exact AUC computation. Without those, keep all three out of independent scored Test.",
+  "dataset_payload_downloaded": false,
+  "external_write_or_contact": false
+}

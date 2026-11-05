@@ -1,0 +1,38 @@
+{
+  "schema": "bpb-supported-mouse-scope/1",
+  "date": "2026-11-02",
+  "source_commit": "4b02579b394dc48983abc8dc83e631b2a658453b",
+  "decision": "Proceed with the accepted task subset and defer unsupported full Airscope proposals outside the active catalogue",
+  "accepted_additions": [
+    "calms21-classic-classification",
+    "calms21-annotation-style-transfer",
+    "calms21-few-shot-behavior",
+    "mabe22-representation-classification",
+    "mabe22-supervised-segmentation"
+  ],
+  "deferred_full_proposals": [
+    "airscope-social-competition",
+    "airscope-forced-swim",
+    "airscope-tail-suspension"
+  ],
+  "archive_directory": "reports/deferred-task-proposals",
+  "candidate_and_protocol_json_preserved_byte_for_byte": true,
+  "historical_audits_and_acceptance_records_preserved": true,
+  "data_or_scores_deleted": false,
+  "scientific_contracts_data_locks_and_scoring_code_changed": false,
+  "counts": {"runnable": 117, "active_candidates": 5, "active_catalogue_records": 122, "hf_runnable_catalogue_rows": 117},
+  "hf_status_check": {
+    "public_reader_revision": "a13fceb9c59f5681273dae107a5867c09e24bde9",
+    "private_reader_revision": "37e7d6fb9f87b75d899353720f11cb6e87ef5d19",
+    "all_five_public_and_private_task_directories_present": true,
+    "repository_visibility_correct": true,
+    "data_downloads_or_uploads_repeated": false
+  },
+  "checks": {"mouse_metadata_and_delivery_tests_passed": 15, "reader_documentation_tests_passed": 12, "canonical_task_guides_checked": 117, "collection_and_catalogue": "passed", "relative_links": "passed", "diff_whitespace": "passed", "remaining_catalogue_rows_unchanged": true},
+  "limitations": [
+    "The 17-example Airscope processed subset is retained as research material. It was not promoted to a runnable task by this scope change.",
+    "Natural-habitat and free-interaction data do not replace the originally selected experiment-specific labels.",
+    "A separately approved small-sample adaptation requires its own protocol and acceptance.",
+    "No author contact, Agent experiment, main merge or new release action was performed."
+  ]
+}

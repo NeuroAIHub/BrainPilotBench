@@ -1,0 +1,36 @@
+{
+  "schema": "bpb-mouse-protocol/1",
+  "id": "mabe22-supervised-segmentation",
+  "scientific_question": "Can a supervised model identify four social behaviors at frame resolution from re-estimated mouse pose?",
+  "source": {
+    "original_dataset": "https://data.caltech.edu/records/rdsa8-rde65",
+    "pose_dataset": "https://huggingface.co/datasets/WeihanLikk/ResiFuse-MABe22",
+    "pose_revision": "22019237bee137b74f8211977779c822236b8402",
+    "reference_repository": "https://github.com/BRAINML-GT/ResiFuse",
+    "reference_sha": "ae4acf51962b1611656da00d3da92a6b02a56ef4",
+    "reference_paths": ["resifuse/preprocessing/mabe.py", "resifuse/preprocessing/split_mabe.py", "resifuse/training/mabe.py", "splits/mabe_finetune_split.json"]
+  },
+  "task_type": "Supervised multilabel frame segmentation. ResiFuse is a source reference, not an architecture requirement. Its unsupervised DEC task is excluded.",
+  "pose": {
+    "coverage": "1,810 of 1,829 official mouse submission videos is a dataset-card claim; all 108 split-matched H5 files were independently resolved, LFS-hash verified, and prepared",
+    "format": "One DeepLabCut H5 table per video; 1,801 rows indexed 0..1800; individuals A0/A1/A2; 12 bodyparts each; coords x/y/likelihood; undetected keypoints NaN. Numeric-only Agent NPZ contains indexed rows 0..1799; the terminal row is excluded following the pinned source preprocessor's truncation to 1,800 official label frames.",
+    "resolution": "Pose coordinates are in 448 x 448 pixels; the official videos are 224 x 224. Downscale coordinates by 2 for 224-pixel overlays only after confirming frame alignment.",
+    "preflight_sample_sha256": "cbe02ed554ff58ff21a4c49e752a540d3288b96a7ecb182924f3867fdb066d17"
+  },
+  "labels": {
+    "class_order": ["chases", "huddles", "oral_contact", "oral_genital_contact"],
+    "source_groups": {"chases": ["chases"], "huddles": ["huddles"], "oral_contact": ["oral_ear_contact", "oral_oral_contact"], "oral_genital_contact": ["oral_genital_contact"]},
+    "evaluation_mask": "BrainPilotBench-MABe22-supervised-positive-pose-valid-v1: owner intersects any-positive grouped behavior with label-independent source-style pose validity (0.2 mean confidence, gaps bridged up to 60 frames, nonfinite keypoints excluded, union across three mice). Unlike source label-centered windows, this mask does not require a 30-frame behavior bout. An excluded all-zero frame may be an annotated negative or unannotated; source code alone cannot distinguish them. This metric does not measure false alarms on background-only frames. The owner retains the Test mask and does not use it to select Agent inputs.",
+    "score": "Pool TP/FP/FN across eligible unique Test frame indices per class, calculate positive F1 for each class, then mean the four F1 values. Source training code uses sigmoid(logits) >= 0.5 and deduplicates frame indices; probability threshold 0.5 follows that code. Label-independent inference windows are the benchmark adaptation."
+  },
+  "split": {"source": "splits/mabe_finetune_split.json at reference_sha", "source_sha256": "ebb486c7351eff8c9ae0fcfd2a21423083d06d0795e2febd2677d000ad4bffc9", "unit": "video", "train": 54, "validation": 11, "test": 43, "total": 108, "source_seed": 42},
+  "inference_boundary": "Agent development workspace receives only Train/Val pose and labels. The frozen model receives Test pose only inside isolated evaluator inference; Test labels and positive-frame eligibility remain owner-only. Complete 1,800-frame inputs are fixed from pose indices independently of behavior labels. Never transfer upstream label-centered fine-tune windows or frame_labels into model inference.",
+  "metric_kernel": "tasks/animal-behavior/_shared/mabe_metrics.py",
+  "comparability": "This is a BrainPilotBench adaptation. Re-estimated pose, changed frame count/resolution, four grouped labels and split prevent direct comparison with original MABe22 Appendix D. Replacing source label-selected Test windows with label-independent Agent inference changes the evaluated input, so it is not an exact ResiFuse paper reproduction either. No paper score is claimed.",
+  "prepared_artifacts": {"cache_root": ".cache/mouse-closeout-20261026/mabe", "source_manifest_sha256": "def7a7b7f2b405bc42a58c696c7be2ebfc4bf9eb6cddf121258d7d9cfe69eb78", "pose_preparation_manifest_sha256": "f237cb660a9a654c32fdb89696d0486017e1085b3de00219fadea54313b1d433", "numeric_label_extraction_manifest_sha256": "dfc6584d3ea05c4e39640aee5c0b032680057a44120f6ce6cf4738ebe406f40b", "public_validation_report": "reports/mouse-closeout-20261026/mabe-supervised-reference.json"},
+  "engineering_acceptance": "Fixed-reference public and isolated owner Test CLI checks passed; see reports/mouse-closeout-20261026/mabe22-supervised-segmentation-cli-acceptance.json. Test values remain private. No Agent benchmark run was performed.",
+  "data_license_notice": "NOTICE.md",
+  "hosted_transport_binding": "hf-delivery.json",
+  "remaining_gates": [],
+  "excluded_scope": "Video input is outside this pose-only task version; adding it requires a separate protocol and frame-level alignment check"
+}

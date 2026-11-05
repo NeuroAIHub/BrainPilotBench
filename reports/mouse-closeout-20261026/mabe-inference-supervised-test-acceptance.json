@@ -1,0 +1,14 @@
+{
+  "schema": "bpb-mabe-isolated-test-acceptance/1",
+  "task": "mabe22-supervised-segmentation",
+  "kind": "fixed-reference",
+  "comparability": "BrainPilotBench adaptation, not an official MABe22 leaderboard score",
+  "agent_run_started": false,
+  "isolated_scoring_completed": true,
+  "test_videos": 43,
+  "numeric_score_public": false,
+  "owner_report": ".cache/mouse-closeout-20261026/mabe-inference/owner/supervised-test-report.json",
+  "packet_manifest_sha256": "a6c5f5d7c665cbe7ec959c5a51426e1e270c8497339893b16179653e2db3df51",
+  "frozen_model_manifest_sha256": "c4d868fe2f806bb89ebccfa125d2c06a8ed97276ddfc362ec86eacd258a99e6d",
+  "image_id": "sha256:81e3aad255285fddf094d885b3fb4facc9efcafe6c2c05bfcab298ae805eb562"
+}

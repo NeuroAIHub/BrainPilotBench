@@ -111,7 +111,7 @@ function validateDelivery(root, dir, task, acceptanceBytes, record, changedFiles
     if (!hex64(expected)) throw new Error(`${deliveryPath}: invalid bridge hash for ${file}`);
     if (actual !== expected) {
       currentIncrement();
-      if (increment.report.core_file_sha256[file] !== actual)
+      if (increment.verifiedCoreSha256[file] !== actual)
         throw new Error(`${deliveryPath}: stale bridge hash for ${file}`);
     }
   }

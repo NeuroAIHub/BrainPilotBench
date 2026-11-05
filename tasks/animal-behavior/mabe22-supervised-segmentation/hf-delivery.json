@@ -1,0 +1,27 @@
+{
+  "content_revision": "545b653c45025b388f2ec0b7f79da68895aa049a188f5970a9462355a6db7716",
+  "hosted_bindings": {
+    "data.lock": "a908345f6051219c50e7ec3d10a68983fc372aec4ac79637bde13ec3093ffa09",
+    "evaluator.lock": "fdf5d307a4bb02e39703eb031fbe4abe04221044ec6252d93d25feef7edd0e7d"
+  },
+  "private": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Private",
+    "revision": "0fcb4e3050f9ba271f894c844ee24e5df072e74a"
+  },
+  "public": {
+    "repo_id": "BrainPilot-Bench/Tasks-Data-Public",
+    "revision": "2e13df514c9bd5b007d2c6e5bd2e45e053ee8500"
+  },
+  "publication_receipt": "reports/mouse-hf-20261027/publication.json",
+  "publication_receipt_sha256": "bf41f2a06ae65bc377dc6b2b44e45b56af1d2e34877a5b54bd891f030d6cd886",
+  "schema": "bpb-mouse-hf-delivery/1",
+  "scope": "Transport-only mirror of accepted content; no model rerun or new Agent benchmark result",
+  "source_bindings": {
+    "contract.json": "e1d1575365b0258890e603a4a632ea0d6ea3952e8baa1b3a228421adf7677788",
+    "data.lock": "aabac2ee3787ee72e61d6028e618eaf64c8db08f8293a41df4ab7ab4f8aa236b",
+    "evaluator.lock": "1ef012434a8f16fb8de29cdb6444a4b18224e55e056fb04c43d257a6078c240e",
+    "task.yaml": "5e9b3bab06bf8136d7788687fe19cb5be100917bd28cf4c160d2a0cb348be97e"
+  },
+  "task_id": "mabe22-supervised-segmentation",
+  "transport_only": true
+}

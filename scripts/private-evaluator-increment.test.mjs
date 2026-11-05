@@ -14,6 +14,8 @@ const report = JSON.parse(readFileSync(path.join(ROOT, INCREMENT_PATH), 'utf8'))
 function copyEvidence() {
   const root = mkdtempSync(path.join(os.tmpdir(), 'bpb-private-increment-'));
   const paths = new Set([INCREMENT_PATH, ...Object.keys(report.core_file_sha256)]);
+  paths.add('reports/mouse-closeout-20261026/source-evaluator-compatibility.json');
+  paths.add('src/evaluator-source.test.ts');
   for (const item of report.tasks) {
     paths.add(`${item.directory}/data.lock`);
     paths.add(`${item.directory}/evaluator.lock`);
@@ -96,5 +98,14 @@ test('old receipts and core code remain exact; future edits require new evidence
     const corePath = path.join(f.root, 'src/private-score.ts');
     writeFileSync(corePath, readFileSync(corePath, 'utf8') + '\n');
     assert.throws(() => validatePrivateEvaluatorIncrement(f.root, f.report), /stale core code hash/);
+  } finally { f.cleanup(); }
+});
+
+test('source compatibility cannot hide an unbound evaluator edit', () => {
+  const f = copyEvidence();
+  try {
+    const file = path.join(f.root, 'src/evaluator.ts');
+    writeFileSync(file, readFileSync(file, 'utf8') + '\n// unbound edit\n');
+    assert.throws(() => validatePrivateEvaluatorIncrement(f.root), /stale core code hash/);
   } finally { f.cleanup(); }
 });

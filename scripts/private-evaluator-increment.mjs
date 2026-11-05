@@ -55,6 +55,24 @@ const CORE_FILES = Object.freeze([
   'tasks/_shared/evaluator/prepare.py', 'tasks/_shared/evaluator/score.py',
   'tasks/eeg/_shared/private_score.py', 'scripts/build-private-evaluator-locks.mjs',
 ].sort());
+// Preserve the historical upload receipt. This separate, narrow code increment
+// binds source-only lock support; it cannot amend any hosted data identities.
+function sourceCompatibility(root, path, previous, current) {
+  const baseline = {
+    'src/evaluator.ts': 'b5ccbdf0d90894967f763f76cfaa921beec635a4a7f4eb03b0c1f4a6bce458d6',
+    'src/workflow.ts': 'f9a79dd440874d323821be66dee22e9f3923e153ed12ab2537829341fb056293',
+  };
+  if (!Object.hasOwn(baseline, path)) return false;
+  const location = 'reports/mouse-closeout-20261026/source-evaluator-compatibility.json';
+  if (!existsSync(join(root, location))) return false;
+  const item = JSON.parse(fileBytes(root, location));
+  return item.schema === 'bpb-source-evaluator-compatibility/1' &&
+    item.files?.[path]?.previous_sha256 === previous && item.files[path].current_sha256 === current &&
+    previous === baseline[path] &&
+    item.test_path === 'src/evaluator-source.test.ts' && SHA_RE.test(item.test_sha256) &&
+    sha(fileBytes(root, item.test_path)) === item.test_sha256 &&
+    item.historical_publication_replayed === false;
+}
 const REPORT_KEYS = Object.freeze([
   'schema', 'status', 'scope', 'scientific_acceptance_replayed', 'source_commit',
   'repo_id', 'revision', 'plan_sha256', 'upload_receipt_sha256',
@@ -206,8 +224,10 @@ export function validatePrivateEvaluatorIncrement(root = ROOT, supplied) {
       JSON.stringify(Object.keys(report.core_file_sha256 ?? {}).sort()) !== JSON.stringify(CORE_FILES))
     fail('unexpected schema, scope, frozen upload, task set, or core bindings');
   for (const path of CORE_FILES) {
+    const current = sha(fileBytes(root, path));
     if (!SHA_RE.test(report.core_file_sha256[path]) ||
-        sha(fileBytes(root, path)) !== report.core_file_sha256[path])
+        (current !== report.core_file_sha256[path] &&
+         !sourceCompatibility(root, path, report.core_file_sha256[path], current)))
       fail(`stale core code hash: ${path}`);
   }
   let files = 0, bytes = 0, publicEntries = 0;
@@ -261,7 +281,8 @@ export function validatePrivateEvaluatorIncrement(root = ROOT, supplied) {
       report.public_entries_unchanged !== publicEntries ||
       sha(JSON.stringify(objects)) !== OBJECT_BINDINGS_SHA256)
     fail('object or unchanged public-entry totals differ');
-  return { report, byId, tasks: TASK_IDS.length, files, bytes, publicEntries };
+  return { report, byId, tasks: TASK_IDS.length, files, bytes, publicEntries,
+    verifiedCoreSha256: Object.fromEntries(CORE_FILES.map(path => [path, sha(fileBytes(root, path))])) };
 }
 
 /** Generate the additive record from the fixed pre-upload Git commit. */
