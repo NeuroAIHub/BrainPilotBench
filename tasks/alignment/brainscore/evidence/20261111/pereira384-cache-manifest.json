@@ -1,0 +1,30 @@
+{
+  "schema": "bpb-bs-cache/1",
+  "synthetic_only": false,
+  "benchmark_id": "Pereira2018.384sentences-ridge",
+  "candidate_id": "distilgpt2",
+  "dataset_family_id": "pereira2018",
+  "stimulus_family_id": "Pereira2018",
+  "files": {
+    "candidate.npy": {
+      "bytes": 1179776,
+      "sha256": "573e5ffc944afdaf44091ebb5d99ecc50a12242eb6faa7c7ee8c3c3112166348"
+    },
+    "metadata.json": {
+      "bytes": 5842297,
+      "sha256": "7772ffa87e15c7f23a463d9c857429a835a403b028f011f84884155f0a241448"
+    },
+    "provenance.json": {
+      "bytes": 870,
+      "sha256": "acffeb85eca92b4c0bc6fe6ba58c02840a78864767f50253c1afbec5d8004c4b"
+    },
+    "response_valid.npy": {
+      "bytes": 4667648,
+      "sha256": "96cc19e5fa92ad3e43e24ba008399fbc58895fd2b7a040b9c7b1067f1ffc53ab"
+    },
+    "responses.npy": {
+      "bytes": 37340288,
+      "sha256": "322767c4a32d9f0a0d384ea573af0f90e47d547547403925f802cc0db554f74f"
+    }
+  }
+}

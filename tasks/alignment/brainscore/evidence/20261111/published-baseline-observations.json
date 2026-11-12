@@ -1,0 +1,432 @@
+{
+  "schema": "bpb-bs-published-baseline-audit/1",
+  "checked_on": "2026-11-11",
+  "scope": "Official source and public score webpages only; no datasets, stimuli or weights downloaded; no new real benchmark execution.",
+  "upstream_commits": {
+    "vision": "c5608668783fe654f83611305fb7e717db0a0cbf",
+    "language": "cc9f623151b5e64be1919c8a8a8b08edc317b784"
+  },
+  "summary": {
+    "t1_instances": 18,
+    "same_benchmark_published_rounded_score": 10,
+    "tutorial_example_with_normalization_mismatch": 1,
+    "exact_public_score_not_found_in_checked_model_pages_and_tests": 7,
+    "t2_derived_agent_tasks": 6,
+    "local_real_reference_verified": 1
+  },
+  "pages": {
+    "distilgpt2": {
+      "url": "https://www.brain-score.org/model/language/1651",
+      "sha256": "bf9c2b076e9d1f004f87f1a30cfc87fb2a44bf679796940fad3eeb3159f621c5",
+      "bytes": 601536
+    },
+    "gpt2": {
+      "url": "https://www.brain-score.org/model/language/2072",
+      "sha256": "444350e824ecacd3e0fbea8b02d5d0b46f72ffac4fa031b4246cafe9c0f3245c",
+      "bytes": 622159
+    },
+    "alexnet": {
+      "url": "https://www.brain-score.org/model/vision/982",
+      "sha256": "2a78f057d58dca2b0c5f019b0354d03bf08dc3ca7f30bd8945e9f7144163de92",
+      "bytes": 3161472
+    },
+    "pixels": {
+      "url": "https://www.brain-score.org/model/vision/678",
+      "sha256": "74658a796c1688f8725ef194c4cd7328de712edbb83941548eb9357c5d314fc5",
+      "bytes": 336290
+    },
+    "quickstart": {
+      "url": "https://www.brain-score.org/tutorials/models/quickstart",
+      "sha256": "33344e8f2541f89497d870ab0fd6156b5fd7908d0775f128ccbb28d75669169c",
+      "bytes": 27385
+    }
+  },
+  "reproduction_instances": [
+    {
+      "task_id": "alignment-bs-majajhong2015-it-alexnet-reproduce",
+      "benchmark_id": "MajajHong2015public.IT-pls",
+      "benchmark_version": 4,
+      "candidate_id": "alexnet",
+      "official_model_identifier": "alexnet",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "exact_public_score_not_found_in_checked_model_pages_and_tests",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "MajajHong2015.IT-pls",
+        "version": 4,
+        "normalized_display": "0.417",
+        "source": "https://www.brain-score.org/model/vision/982",
+        "reason": "private benchmark; different data subset"
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-majajhong2015-it-pixels-reproduce",
+      "benchmark_id": "MajajHong2015public.IT-pls",
+      "benchmark_version": 4,
+      "candidate_id": "pixels",
+      "official_model_identifier": "pixels",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "tutorial_example_with_normalization_mismatch",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "MajajHong2015.IT-pls",
+        "version": 4,
+        "normalized_display": "0.013",
+        "source": "https://www.brain-score.org/model/vision/678",
+        "reason": "private benchmark; different data subset"
+      },
+      "tutorial_example": {
+        "source": "https://www.brain-score.org/tutorials/models/quickstart",
+        "score_display": "0.07637264",
+        "raw_display": "0.22545106",
+        "ceiling_display": "0.81579938",
+        "arithmetic_under_pinned_formula": 0.06230475494492728,
+        "arithmetic_under_tutorial_formula": 0.07637264316740137,
+        "is_new_experimental_result": false
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-freemanziemba2013-v1-alexnet-reproduce",
+      "benchmark_id": "FreemanZiemba2013public.V1-pls",
+      "benchmark_version": 1,
+      "candidate_id": "alexnet",
+      "official_model_identifier": "alexnet",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "exact_public_score_not_found_in_checked_model_pages_and_tests",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "FreemanZiemba2013.V1-pls",
+        "version": 3,
+        "normalized_display": "0.276",
+        "source": "https://www.brain-score.org/model/vision/982",
+        "reason": "private benchmark; different data subset"
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-freemanziemba2013-v1-pixels-reproduce",
+      "benchmark_id": "FreemanZiemba2013public.V1-pls",
+      "benchmark_version": 1,
+      "candidate_id": "pixels",
+      "official_model_identifier": "pixels",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "exact_public_score_not_found_in_checked_model_pages_and_tests",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "FreemanZiemba2013.V1-pls",
+        "version": 3,
+        "normalized_display": "0.047",
+        "source": "https://www.brain-score.org/model/vision/678",
+        "reason": "private benchmark; different data subset"
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-freemanziemba2013-v2-alexnet-reproduce",
+      "benchmark_id": "FreemanZiemba2013public.V2-pls",
+      "benchmark_version": 1,
+      "candidate_id": "alexnet",
+      "official_model_identifier": "alexnet",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "exact_public_score_not_found_in_checked_model_pages_and_tests",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "FreemanZiemba2013.V2-pls",
+        "version": 3,
+        "normalized_display": "0.291",
+        "source": "https://www.brain-score.org/model/vision/982",
+        "reason": "private benchmark; different data subset"
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-freemanziemba2013-v2-pixels-reproduce",
+      "benchmark_id": "FreemanZiemba2013public.V2-pls",
+      "benchmark_version": 1,
+      "candidate_id": "pixels",
+      "official_model_identifier": "pixels",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "exact_public_score_not_found_in_checked_model_pages_and_tests",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "FreemanZiemba2013.V2-pls",
+        "version": 3,
+        "normalized_display": "0.003",
+        "source": "https://www.brain-score.org/model/vision/678",
+        "reason": "private benchmark; different data subset"
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-majajhong2015-v4-alexnet-reproduce",
+      "benchmark_id": "MajajHong2015public.V4-pls",
+      "benchmark_version": 4,
+      "candidate_id": "alexnet",
+      "official_model_identifier": "alexnet",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "exact_public_score_not_found_in_checked_model_pages_and_tests",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "MajajHong2015.V4-pls",
+        "version": 4,
+        "normalized_display": "0.492",
+        "source": "https://www.brain-score.org/model/vision/982",
+        "reason": "private benchmark; different data subset"
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-majajhong2015-v4-pixels-reproduce",
+      "benchmark_id": "MajajHong2015public.V4-pls",
+      "benchmark_version": 4,
+      "candidate_id": "pixels",
+      "official_model_identifier": "pixels",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "exact_public_score_not_found_in_checked_model_pages_and_tests",
+      "published_normalized_display": null,
+      "nonmatching_counterpart": {
+        "benchmark_id": "MajajHong2015.V4-pls",
+        "version": 4,
+        "normalized_display": "0.061",
+        "source": "https://www.brain-score.org/model/vision/678",
+        "reason": "private benchmark; different data subset"
+      },
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-blank2014-fmri-distilgpt2-reproduce",
+      "benchmark_id": "Blank2014-ridge",
+      "benchmark_version": 1,
+      "candidate_id": "distilgpt2",
+      "official_model_identifier": "distilgpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.176",
+      "source": "https://www.brain-score.org/model/language/1651",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-blank2014-fmri-gpt2-small-reproduce",
+      "benchmark_id": "Blank2014-ridge",
+      "benchmark_version": 1,
+      "candidate_id": "gpt2-small",
+      "official_model_identifier": "gpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.121",
+      "source": "https://www.brain-score.org/model/language/2072",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-fedorenko2016-ecog-distilgpt2-reproduce",
+      "benchmark_id": "Fedorenko2016-ridge",
+      "benchmark_version": 3,
+      "candidate_id": "distilgpt2",
+      "official_model_identifier": "distilgpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.476",
+      "source": "https://www.brain-score.org/model/language/1651",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-fedorenko2016-ecog-gpt2-small-reproduce",
+      "benchmark_id": "Fedorenko2016-ridge",
+      "benchmark_version": 3,
+      "candidate_id": "gpt2-small",
+      "official_model_identifier": "gpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.413",
+      "source": "https://www.brain-score.org/model/language/2072",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-futrell2018-reading-times-distilgpt2-reproduce",
+      "benchmark_id": "Futrell2018-pearsonr",
+      "benchmark_version": 1,
+      "candidate_id": "distilgpt2",
+      "official_model_identifier": "distilgpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.361",
+      "source": "https://www.brain-score.org/model/language/1651",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-futrell2018-reading-times-gpt2-small-reproduce",
+      "benchmark_id": "Futrell2018-pearsonr",
+      "benchmark_version": 1,
+      "candidate_id": "gpt2-small",
+      "official_model_identifier": "gpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.367",
+      "source": "https://www.brain-score.org/model/language/2072",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-pereira2018-243sentences-distilgpt2-reproduce",
+      "benchmark_id": "Pereira2018.243sentences-ridge",
+      "benchmark_version": 1,
+      "candidate_id": "distilgpt2",
+      "official_model_identifier": "distilgpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.821",
+      "source": "https://www.brain-score.org/model/language/1651",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-pereira2018-243sentences-gpt2-small-reproduce",
+      "benchmark_id": "Pereira2018.243sentences-ridge",
+      "benchmark_version": 1,
+      "candidate_id": "gpt2-small",
+      "official_model_identifier": "gpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.835",
+      "source": "https://www.brain-score.org/model/language/2072",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    },
+    {
+      "task_id": "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce",
+      "benchmark_id": "Pereira2018.384sentences-ridge",
+      "benchmark_version": 1,
+      "candidate_id": "distilgpt2",
+      "official_model_identifier": "distilgpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.583",
+      "source": "https://www.brain-score.org/model/language/1651",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": true
+    },
+    {
+      "task_id": "alignment-bs-pereira2018-384sentences-gpt2-small-reproduce",
+      "benchmark_id": "Pereira2018.384sentences-ridge",
+      "benchmark_version": 1,
+      "candidate_id": "gpt2-small",
+      "official_model_identifier": "gpt2",
+      "official_implementation_exists": true,
+      "exact_candidate_score_assertion_found_in_pinned_tests": false,
+      "published_score_is_strict_grading_reference": false,
+      "status": "same_benchmark_published_rounded_score",
+      "published_normalized_display": "0.656",
+      "source": "https://www.brain-score.org/model/language/2072",
+      "configuration_limit": "Official pinned registration layers agree; webpage submission code, weight revisions and full numeric traces are not established.",
+      "local_real_reference_verified": false
+    }
+  ],
+  "comparison_instances": [
+    {
+      "task_id": "alignment-bs-blank2014-compare",
+      "origin": "BrainPilotBench derived Agent task",
+      "official_agent_baseline_found": false,
+      "published_approximate_comparisons": [
+        {
+          "benchmark_id": "Blank2014-ridge",
+          "gpt2_minus_distilgpt2_from_rounded_display": "-0.055",
+          "is_official_agent_baseline": false
+        }
+      ]
+    },
+    {
+      "task_id": "alignment-bs-fedorenko2016-compare",
+      "origin": "BrainPilotBench derived Agent task",
+      "official_agent_baseline_found": false,
+      "published_approximate_comparisons": [
+        {
+          "benchmark_id": "Fedorenko2016-ridge",
+          "gpt2_minus_distilgpt2_from_rounded_display": "-0.063",
+          "is_official_agent_baseline": false
+        }
+      ]
+    },
+    {
+      "task_id": "alignment-bs-freemanziemba2013-compare",
+      "origin": "BrainPilotBench derived Agent task",
+      "official_agent_baseline_found": false,
+      "published_approximate_comparisons": []
+    },
+    {
+      "task_id": "alignment-bs-futrell2018-compare",
+      "origin": "BrainPilotBench derived Agent task",
+      "official_agent_baseline_found": false,
+      "published_approximate_comparisons": [
+        {
+          "benchmark_id": "Futrell2018-pearsonr",
+          "gpt2_minus_distilgpt2_from_rounded_display": "0.006",
+          "is_official_agent_baseline": false
+        }
+      ]
+    },
+    {
+      "task_id": "alignment-bs-majajhong2015-compare",
+      "origin": "BrainPilotBench derived Agent task",
+      "official_agent_baseline_found": false,
+      "published_approximate_comparisons": []
+    },
+    {
+      "task_id": "alignment-bs-pereira2018-compare",
+      "origin": "BrainPilotBench derived Agent task",
+      "official_agent_baseline_found": false,
+      "published_approximate_comparisons": [
+        {
+          "benchmark_id": "Pereira2018.243sentences-ridge",
+          "gpt2_minus_distilgpt2_from_rounded_display": "0.014",
+          "is_official_agent_baseline": false
+        },
+        {
+          "benchmark_id": "Pereira2018.384sentences-ridge",
+          "gpt2_minus_distilgpt2_from_rounded_display": "0.073",
+          "is_official_agent_baseline": false
+        }
+      ]
+    }
+  ]
+}

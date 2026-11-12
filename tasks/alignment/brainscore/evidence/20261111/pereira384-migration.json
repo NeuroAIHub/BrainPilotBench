@@ -1,0 +1,100 @@
+{
+  "schema": "bpb-bs-migration-audit/1",
+  "scope": "Pereira384/distilgpt2/transformer.h.5 only",
+  "from_commit": "3b4fde5d6f53a69c652c7a1128397549995547b0",
+  "to_commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+  "old_cache_manifest_sha256": "f6cc1194d94a9b3022c866fa0e503a984db5114a120d8a4f83ab6eeea0fe4e32",
+  "new_cache_manifest_sha256": "3655a71b4ea36f2da065c05f21f96c71a7ae6a475b160e0fa1ffb56fa32b9c88",
+  "checks": {
+    "aligned_features_exact": true,
+    "scalar_scores_exact": true,
+    "folds_equivalent": true
+  },
+  "folds": [
+    {
+      "id": "fold-0",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-1",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-2",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-3",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-4",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-5",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-6",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-7",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-8",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    },
+    {
+      "id": "fold-9",
+      "train_test_ids_equal": true,
+      "alpha_equal": true,
+      "predictions_allclose": true,
+      "max_prediction_difference": 0.0,
+      "unit_metrics_allclose": true
+    }
+  ],
+  "passed": true,
+  "atol": 1e-06,
+  "rtol": 1e-05,
+  "historical_scores_rewritten": false,
+  "independent_agent_acceptance": false
+}

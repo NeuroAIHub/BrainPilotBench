@@ -1,0 +1,140 @@
+[
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scored",
+    "analysis_success": 1,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-majajhong2015-it-alexnet-reproduce",
+    "synthetic_only": true,
+    "input_manifest_sha256": "05bd221058e4f5423821c0b904bbedd5a7714540d456e5bde0812ef8d7c03938",
+    "image": "sha256:8861b2c0f91a93a3ee551cf2c0f78da096b0652db86fde27999d6ba1c540e382",
+    "worker_limits": {
+      "timeout_seconds": 900.0,
+      "cpus": 2.0,
+      "memory": "8g"
+    },
+    "comparisons": [
+      {
+        "kind": "rerun",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "saved",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "functional-control",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      }
+    ],
+    "inputs_unchanged": true,
+    "source_unchanged": true,
+    "wall_seconds": 20.930474270135164
+  },
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scored",
+    "analysis_success": 1,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-freemanziemba2013-compare",
+    "synthetic_only": true,
+    "input_manifest_sha256": "92596f59fadb88575ff8f3522e67534a80a464beb5e607abc6f7942ffa218866",
+    "image": "sha256:8861b2c0f91a93a3ee551cf2c0f78da096b0652db86fde27999d6ba1c540e382",
+    "worker_limits": {
+      "timeout_seconds": 900.0,
+      "cpus": 2.0,
+      "memory": "8g"
+    },
+    "comparisons": [
+      {
+        "kind": "rerun",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "saved",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "functional-control",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      }
+    ],
+    "inputs_unchanged": true,
+    "source_unchanged": true,
+    "wall_seconds": 27.49984748288989
+  },
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scored",
+    "analysis_success": 0,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-majajhong2015-it-alexnet-reproduce",
+    "synthetic_only": true,
+    "input_manifest_sha256": "05bd221058e4f5423821c0b904bbedd5a7714540d456e5bde0812ef8d7c03938",
+    "image": "sha256:8861b2c0f91a93a3ee551cf2c0f78da096b0652db86fde27999d6ba1c540e382",
+    "worker_limits": {
+      "timeout_seconds": 900.0,
+      "cpus": 2.0,
+      "memory": "8g"
+    },
+    "comparisons": [
+      {
+        "kind": "rerun",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "functional-control",
+        "passed": false,
+        "errors": [
+          "results/summary.json differs",
+          "ScaleUpError: unit metrics differ"
+        ],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      }
+    ],
+    "inputs_unchanged": true,
+    "source_unchanged": true,
+    "wall_seconds": 4.955075213685632
+  },
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scoring_failed",
+    "analysis_success": null,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-majajhong2015-it-alexnet-reproduce",
+    "synthetic_only": true,
+    "input_manifest_sha256": "05bd221058e4f5423821c0b904bbedd5a7714540d456e5bde0812ef8d7c03938",
+    "error": "InfrastructureError: local worker image missing (never pulled automatically)",
+    "wall_seconds": 0.2109255325049162
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "category": "alignment-analysis",
+    "metrics": [
+      "analysis_success"
+    ],
+    "rows": [
+      {
+        "taskId": "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce",
+        "version": "maintainer-baseline-not-independent-agent",
+        "taskVersion": "0.2-offline-experimental",
+        "primaryMetric": {
+          "id": "analysis_success",
+          "direction": "maximize",
+          "unit": "binary"
+        },
+        "evaluationProfile": "bpb-bs-t1-reproduce-v1",
+        "cells": [
+          {
+            "metric": "analysis_success",
+            "value": 1,
+            "coverage": {
+              "scored": 1,
+              "total": 1
+            }
+          }
+        ],
+        "states": {
+          "scored": 1
+        }
+      }
+    ]
+  }
+]

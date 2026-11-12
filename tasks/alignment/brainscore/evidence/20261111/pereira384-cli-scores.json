@@ -1,0 +1,23 @@
+{
+  "taskId": "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce",
+  "taskVersion": "0.2-offline-experimental",
+  "primaryMetric": {
+    "id": "analysis_success",
+    "direction": "maximize",
+    "unit": "binary"
+  },
+  "evaluationProfile": "bpb-bs-t1-reproduce-v1",
+  "runId": "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce-maintainer-baseline-not-independent-agent",
+  "version": "maintainer-baseline-not-independent-agent",
+  "scoredAt": "2026-11-11T07:30:54.091Z",
+  "state": "scored",
+  "results": [
+    {
+      "kind": "exec-script",
+      "value": {
+        "analysis_success": 1
+      },
+      "explanation": "exec-script checks/check.sh (exit 0)"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "schema": "bpb-bs-candidates/1",
+  "candidates": [
+    {
+      "id": "pixels",
+      "ecosystem": "vision",
+      "model_name": "pixels",
+      "binding": "vision-registry",
+      "binding_verified": true,
+      "requires_weights": false,
+      "weight_revision": null,
+      "weight_files_sha256": null,
+      "tokenizer_revision": null,
+      "layer_mapping": {
+        "V1": "pixels",
+        "V2": "pixels",
+        "V4": "pixels",
+        "IT": "pixels"
+      },
+      "preprocessing_sha256": "f46e718c507e6611b549885deb188bc16cf90fd77414d0580817e160dfd53aea",
+      "configuration_sha256": "32f1d83c2eb5fd4eae25d049e6f585f053037cdbb54ec647d8bf61487089be0b",
+      "notes": "Fixed upstream mapping/preprocessing audited 2026-11-11. Pretrained weight availability and live feature equivalence remain local-asset gates.",
+      "preprocessing": {
+        "rgb": true,
+        "resize": [
+          256,
+          256
+        ],
+        "resize_implementation": "PIL.Image.resize default resampling",
+        "value_range": [
+          0,
+          255
+        ],
+        "source": "official PixelModel"
+      },
+      "binding_verification_scope": "official wrapper with generated images, all four regions; real neural data pending"
+    },
+    {
+      "id": "alexnet",
+      "ecosystem": "vision",
+      "model_name": "alexnet",
+      "binding": "vision-registry",
+      "binding_verified": false,
+      "requires_weights": true,
+      "weight_revision": null,
+      "weight_files_sha256": null,
+      "tokenizer_revision": null,
+      "layer_mapping": {
+        "V1": "features.2",
+        "V2": "features.7",
+        "V4": "features.7",
+        "IT": "features.12"
+      },
+      "preprocessing_sha256": "9dfcef7d679cfe5027fae9fbb0f315af72a269ede66842713122d760c9631c20",
+      "configuration_sha256": "b5e9803d9ef182079baabd0de9f3b5001ebeabbacf5c41df89c83f26e70aeec6",
+      "notes": "Fixed upstream mapping/preprocessing audited 2026-11-11. Pretrained weight availability and live feature equivalence remain local-asset gates.",
+      "preprocessing": {
+        "rgb": true,
+        "resize": [
+          224,
+          224
+        ],
+        "center_crop": false,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "source": "official load_preprocess_images"
+      },
+      "weight_artifact": {
+        "url": "https://download.pytorch.org/models/alexnet-owt-7be5be79.pth",
+        "sha256_prefix": "7be5be79"
+      }
+    },
+    {
+      "id": "distilgpt2",
+      "ecosystem": "language",
+      "model_name": "distilbert/distilgpt2",
+      "binding": "HuggingfaceSubject",
+      "binding_verified": true,
+      "requires_weights": true,
+      "weight_revision": "2290a62682d06624634c1f46a6ad5be0f47f38aa",
+      "weight_files_sha256": "5956ec2388d8d39cb2291ad74a9800df7e6b28bdf32335d4c5702008f734484e",
+      "tokenizer_revision": "2290a62682d06624634c1f46a6ad5be0f47f38aa",
+      "layer_mapping": {
+        "language_system": "transformer.h.5"
+      },
+      "preprocessing_sha256": "210b3264f427e18f3e33707e630342de5cec41b522b56971894f7eb884aa7824",
+      "configuration_sha256": "df065304c29be63f7f22a0f247d9c31aad02889259637d0f029d7325be8c103f",
+      "notes": "Fixed upstream mapping/preprocessing audited 2026-11-11. Pretrained weight availability and live feature equivalence remain local-asset gates.",
+      "preprocessing": {
+        "wrapper": "HuggingfaceSubject",
+        "pooling": "last token of each part",
+        "truncation_side": "left",
+        "localizer": false,
+        "eval": true,
+        "dtype": "float32",
+        "context_reset": "per official digest_text call",
+        "reading_times": "sum of newly introduced token surprisals in bits; official KV path"
+      },
+      "binding_verification_scope": "local pinned model/tokenizer bytes; Pereira384 official experiment verified"
+    },
+    {
+      "id": "gpt2-small",
+      "ecosystem": "language",
+      "model_name": "openai-community/gpt2",
+      "binding": "HuggingfaceSubject",
+      "binding_verified": false,
+      "requires_weights": true,
+      "weight_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "weight_files_sha256": null,
+      "tokenizer_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "layer_mapping": {
+        "language_system": "transformer.h.11"
+      },
+      "preprocessing_sha256": "210b3264f427e18f3e33707e630342de5cec41b522b56971894f7eb884aa7824",
+      "configuration_sha256": "67cf7ac77e219a4ab638e10f0f1e82b4973917dc08ba51d482939f3999e3dcfa",
+      "notes": "Fixed upstream mapping/preprocessing audited 2026-11-11. Pretrained weight availability and live feature equivalence remain local-asset gates.",
+      "preprocessing": {
+        "wrapper": "HuggingfaceSubject",
+        "pooling": "last token of each part",
+        "truncation_side": "left",
+        "localizer": false,
+        "eval": true,
+        "dtype": "float32",
+        "context_reset": "per official digest_text call",
+        "reading_times": "sum of newly introduced token surprisals in bits; official KV path"
+      }
+    }
+  ]
+}

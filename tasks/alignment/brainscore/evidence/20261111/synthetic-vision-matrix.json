@@ -1,0 +1,200 @@
+[
+  {
+    "instance_id": "alignment-bs-majajhong2015-it-alexnet-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9081563467627406,
+        "ceiling": 0.8,
+        "normalized": 1.0309349377068089,
+        "unclipped": 1.0309349377068089,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-majajhong2015-it-pixels-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9978868750406964,
+        "ceiling": 0.8,
+        "normalized": 1.244722769223108,
+        "unclipped": 1.244722769223108,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-freemanziemba2013-v1-alexnet-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9124573707673049,
+        "ceiling": 0.8,
+        "normalized": 1.0407230668344787,
+        "unclipped": 1.0407230668344787,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-freemanziemba2013-v1-pixels-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.998177218030848,
+        "ceiling": 0.8,
+        "normalized": 1.245447198244754,
+        "unclipped": 1.245447198244754,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-freemanziemba2013-v2-alexnet-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9124573707673049,
+        "ceiling": 0.8,
+        "normalized": 1.0407230668344787,
+        "unclipped": 1.0407230668344787,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-freemanziemba2013-v2-pixels-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.998177218030848,
+        "ceiling": 0.8,
+        "normalized": 1.245447198244754,
+        "unclipped": 1.245447198244754,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-majajhong2015-v4-alexnet-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9081563467627406,
+        "ceiling": 0.8,
+        "normalized": 1.0309349377068089,
+        "unclipped": 1.0309349377068089,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-majajhong2015-v4-pixels-reproduce",
+    "cases": 1,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9978868750406964,
+        "ceiling": 0.8,
+        "normalized": 1.244722769223108,
+        "unclipped": 1.244722769223108,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-freemanziemba2013-compare",
+    "cases": 4,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9124573707673049,
+        "ceiling": 0.8,
+        "normalized": 1.0407230668344787,
+        "unclipped": 1.0407230668344787,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      },
+      {
+        "raw": 0.998177218030848,
+        "ceiling": 0.8,
+        "normalized": 1.245447198244754,
+        "unclipped": 1.245447198244754,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      },
+      {
+        "raw": 0.9124573707673049,
+        "ceiling": 0.8,
+        "normalized": 1.0407230668344787,
+        "unclipped": 1.0407230668344787,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      },
+      {
+        "raw": 0.998177218030848,
+        "ceiling": 0.8,
+        "normalized": 1.245447198244754,
+        "unclipped": 1.245447198244754,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  },
+  {
+    "instance_id": "alignment-bs-majajhong2015-compare",
+    "cases": 4,
+    "synthetic_only": true,
+    "scores": [
+      {
+        "raw": 0.9081563467627406,
+        "ceiling": 0.8,
+        "normalized": 1.0309349377068089,
+        "unclipped": 1.0309349377068089,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      },
+      {
+        "raw": 0.9978868750406964,
+        "ceiling": 0.8,
+        "normalized": 1.244722769223108,
+        "unclipped": 1.244722769223108,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      },
+      {
+        "raw": 0.9081563467627406,
+        "ceiling": 0.8,
+        "normalized": 1.0309349377068089,
+        "unclipped": 1.0309349377068089,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      },
+      {
+        "raw": 0.9978868750406964,
+        "ceiling": 0.8,
+        "normalized": 1.244722769223108,
+        "unclipped": 1.244722769223108,
+        "normalization": "vision-explained-variance",
+        "aggregation": "median neuroids within each split, then mean splits"
+      }
+    ]
+  }
+]

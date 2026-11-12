@@ -1,0 +1,896 @@
+{
+  "schema_version": 1,
+  "created_date": "2026-11-11",
+  "purpose": "Static upstream object locks for validating original local imports; not a download manifest or redistribution grant.",
+  "scope": {
+    "sources": 6,
+    "benchmark_ids": 9,
+    "artifacts": 16
+  },
+  "source_revisions": {
+    "vision": "c5608668783fe654f83611305fb7e717db0a0cbf",
+    "language": "cc9f623151b5e64be1919c8a8a8b08edc317b784"
+  },
+  "path_derivation_reference": {
+    "core_revision": "2e1cb4ea2708cb2a7df77b2a77bb1c10e445cb17",
+    "core_source": "https://github.com/brain-score/core/blob/2e1cb4ea2708cb2a7df77b2a77bb1c10e445cb17/brainscore_core/supported_data_standards/brainio/s3.py",
+    "language_source": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/utils/s3.py",
+    "status": "Derived from static source; no S3 request made."
+  },
+  "validation_policy": {
+    "before_open": "Check original raw file bytes against the recorded SHA1; reject or explicitly classify nonmatching files as derived inputs.",
+    "strong_local_provenance": "After a successful upstream SHA1 check, record a local SHA256 and byte length.",
+    "derived_files": "Do not expect netCDF rewritten by xarray or repacked ZIP to keep the upstream SHA1. Preserve original artifact separately and record derived hashes/transforms.",
+    "zip_handling": "Check ZIP hash before extraction; reject traversal/absolute paths and symlinks; verify image_id/stimulus_id and CSV filenames match extracted regular files.",
+    "data_only_is_not_execution_ready": true,
+    "unrequested_remote_access": false
+  },
+  "sources": [
+    {
+      "source_id": "majajhong2015",
+      "domain": "vision",
+      "data_registry_id": "MajajHong2015.public",
+      "benchmark_ids": [
+        "MajajHong2015public.V4-pls",
+        "MajajHong2015public.IT-pls"
+      ],
+      "stimulus_registry_id": "hvm-public",
+      "assets": [
+        {
+          "asset_id": "MajajHong2015.public:assembly",
+          "kind": "data_only_assembly",
+          "format": "nc",
+          "upstream_identifier": "dicarlo.MajajHong2015.public",
+          "original_filename": "assy_dicarlo_MajajHong2015_public.nc",
+          "sha1": "13d28ca0ce88ee550b54db3004374ae19096e9b9",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainio-brainscore/assy_dicarlo_MajajHong2015_public.nc",
+            "version_id": "null",
+            "version_semantics": "literal_null_version"
+          },
+          "required_for": [
+            "data_only_import",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/vision",
+            "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+            "path": "brainscore_vision/data/majajhong2015/__init__.py",
+            "line": 49,
+            "source_file_sha256": "36be8a918235e54f7dd2fbbcb7d6c3fa0f508772d088c7670c5b0aabf57ac56a",
+            "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/majajhong2015/__init__.py#L49"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        },
+        {
+          "asset_id": "hvm-public:csv",
+          "kind": "stimulus_metadata",
+          "format": "csv",
+          "upstream_identifier": "hvm-public",
+          "original_filename": "stimulus_hvm-public.csv",
+          "sha1": "5ca7a3da00d8e9c694a9cd725df5ba0ad6d735af",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainio-brainscore/stimulus_hvm-public.csv",
+            "version_id": "null",
+            "version_semantics": "literal_null_version"
+          },
+          "required_for": [
+            "metadata_complete_assembly",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/vision",
+            "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+            "path": "brainscore_vision/data/majajhong2015/__init__.py",
+            "line": 98,
+            "source_file_sha256": "36be8a918235e54f7dd2fbbcb7d6c3fa0f508772d088c7670c5b0aabf57ac56a",
+            "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/majajhong2015/__init__.py#L98"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        },
+        {
+          "asset_id": "hvm-public:zip",
+          "kind": "stimulus_images_zip",
+          "format": "zip",
+          "upstream_identifier": "hvm-public",
+          "original_filename": "stimulus_hvm-public.zip",
+          "sha1": "8aa44e038d7b551efa8077467622f9d48d72e473",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainio-brainscore/stimulus_hvm-public.zip",
+            "version_id": "null",
+            "version_semantics": "literal_null_version"
+          },
+          "required_for": [
+            "live_model_feature_extraction"
+          ],
+          "source_code": {
+            "repository": "brain-score/vision",
+            "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+            "path": "brainscore_vision/data/majajhong2015/__init__.py",
+            "line": 98,
+            "source_file_sha256": "36be8a918235e54f7dd2fbbcb7d6c3fa0f508772d088c7670c5b0aabf57ac56a",
+            "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/majajhong2015/__init__.py#L98"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        }
+      ],
+      "import_contract": {
+        "data_only": {
+          "loader": "brainscore_core.supported_data_standards.brainio.assemblies.AssemblyLoader",
+          "assembly_class": "NeuronRecordingAssembly",
+          "network_required": false,
+          "warning": "Does not attach stimulus_set or merge external CSV coordinates."
+        },
+        "metadata_complete": {
+          "loader": "StimulusMergeAssemblyLoader",
+          "requires_stimulus_csv": true,
+          "requires_images_for_metadata_merge": false,
+          "requires_images_for_live_vision_execution": true,
+          "warning": "Official StimulusSetLoader checks every image path. For metadata-only import, build a metadata-only StimulusSet and merge by stimulus_id without claiming image readiness."
+        },
+        "identity_postload": "dicarlo.MajajHong2015.public"
+      },
+      "access": {
+        "source_level_status": "declared_public_subset",
+        "runtime_access": "not_checked",
+        "test_source": {
+          "repository": "brain-score/vision",
+          "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+          "path": "brainscore_vision/data/majajhong2015/test.py",
+          "line": 1,
+          "source_file_sha256": "97a9f530572e1148facccbc1f14e75f9fc1a3e39cd0a4519a007647c56167c54",
+          "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/majajhong2015/test.py#L1"
+        }
+      },
+      "license": {
+        "repository_code_license": "MIT",
+        "dataset_license": "not_resolved_from_selected_family_source_files",
+        "stimulus_license": "not_resolved_from_selected_family_source_files",
+        "redistribution_authorized_by_this_lock": false,
+        "note": "Repository code license, public loader naming and an available URL do not establish data, image or text redistribution rights."
+      },
+      "ceiling": {
+        "source": "computed_from_repetition_assembly",
+        "artifact_chains": []
+      }
+    },
+    {
+      "source_id": "freemanziemba2013",
+      "domain": "vision",
+      "data_registry_id": "FreemanZiemba2013.public",
+      "benchmark_ids": [
+        "FreemanZiemba2013public.V1-pls",
+        "FreemanZiemba2013public.V2-pls"
+      ],
+      "stimulus_registry_id": "FreemanZiemba2013.aperture-public",
+      "assets": [
+        {
+          "asset_id": "FreemanZiemba2013.public:assembly",
+          "kind": "data_only_assembly",
+          "format": "nc",
+          "upstream_identifier": "movshon.FreemanZiemba2013.public",
+          "original_filename": "assy_movshon_FreemanZiemba2013_public.nc",
+          "sha1": "761c08f796db4e342555cdb60eef23a4f19ead43",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainio-brainscore/assy_movshon_FreemanZiemba2013_public.nc",
+            "version_id": "W2vx7jdh9utZdVumHHarXa4L1zOrA8Fd",
+            "version_semantics": "explicit_version_id"
+          },
+          "required_for": [
+            "data_only_import",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/vision",
+            "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+            "path": "brainscore_vision/data/freemanziemba2013/__init__.py",
+            "line": 18,
+            "source_file_sha256": "d68eead2cbd97c638f60c65e314b2037c37644634da03dceba7d29f4984914f8",
+            "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/freemanziemba2013/__init__.py#L18"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        },
+        {
+          "asset_id": "FreemanZiemba2013.aperture-public:csv",
+          "kind": "stimulus_metadata",
+          "format": "csv",
+          "upstream_identifier": "FreemanZiemba2013.aperture-public",
+          "original_filename": "stimulus_FreemanZiemba2013_aperture-public.csv",
+          "sha1": "194c9b301a4e3e9cff02481d4c19b39331d52660",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainio-brainscore/stimulus_FreemanZiemba2013_aperture-public.csv",
+            "version_id": "null",
+            "version_semantics": "literal_null_version"
+          },
+          "required_for": [
+            "metadata_complete_assembly",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/vision",
+            "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+            "path": "brainscore_vision/data/freemanziemba2013/__init__.py",
+            "line": 38,
+            "source_file_sha256": "d68eead2cbd97c638f60c65e314b2037c37644634da03dceba7d29f4984914f8",
+            "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/freemanziemba2013/__init__.py#L38"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        },
+        {
+          "asset_id": "FreemanZiemba2013.aperture-public:zip",
+          "kind": "stimulus_images_zip",
+          "format": "zip",
+          "upstream_identifier": "FreemanZiemba2013.aperture-public",
+          "original_filename": "stimulus_FreemanZiemba2013_aperture-public.zip",
+          "sha1": "3a6fec1fc28c212882d6833e267ea8654d289611",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainio-brainscore/stimulus_FreemanZiemba2013_aperture-public.zip",
+            "version_id": "null",
+            "version_semantics": "literal_null_version"
+          },
+          "required_for": [
+            "live_model_feature_extraction"
+          ],
+          "source_code": {
+            "repository": "brain-score/vision",
+            "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+            "path": "brainscore_vision/data/freemanziemba2013/__init__.py",
+            "line": 38,
+            "source_file_sha256": "d68eead2cbd97c638f60c65e314b2037c37644634da03dceba7d29f4984914f8",
+            "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/freemanziemba2013/__init__.py#L38"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        }
+      ],
+      "import_contract": {
+        "data_only": {
+          "loader": "brainscore_core.supported_data_standards.brainio.assemblies.AssemblyLoader",
+          "assembly_class": "NeuronRecordingAssembly",
+          "network_required": false,
+          "warning": "Does not attach stimulus_set or merge external CSV coordinates."
+        },
+        "metadata_complete": {
+          "loader": "StimulusMergeAssemblyLoader",
+          "requires_stimulus_csv": true,
+          "requires_images_for_metadata_merge": false,
+          "requires_images_for_live_vision_execution": true,
+          "warning": "Official StimulusSetLoader checks every image path. For metadata-only import, build a metadata-only StimulusSet and merge by stimulus_id without claiming image readiness."
+        },
+        "identity_postload": "movshon.FreemanZiemba2013.public"
+      },
+      "access": {
+        "source_level_status": "declared_public_subset",
+        "runtime_access": "not_checked",
+        "test_source": {
+          "repository": "brain-score/vision",
+          "commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+          "path": "brainscore_vision/data/freemanziemba2013/test.py",
+          "line": 1,
+          "source_file_sha256": "23ad4746ae2e97e83c6e1767a5e212a7fbf8af616652cbc14828c66a91c7051d",
+          "url": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/freemanziemba2013/test.py#L1"
+        }
+      },
+      "license": {
+        "repository_code_license": "MIT",
+        "dataset_license": "not_resolved_from_selected_family_source_files",
+        "stimulus_license": "not_resolved_from_selected_family_source_files",
+        "redistribution_authorized_by_this_lock": false,
+        "note": "Repository code license, public loader naming and an available URL do not establish data, image or text redistribution rights."
+      },
+      "ceiling": {
+        "source": "computed_from_repetition_assembly",
+        "artifact_chains": []
+      }
+    },
+    {
+      "source_id": "pereira2018",
+      "domain": "language",
+      "data_registry_id": "Pereira2018.language",
+      "benchmark_ids": [
+        "Pereira2018.243sentences-ridge",
+        "Pereira2018.384sentences-ridge"
+      ],
+      "stimulus_registry_id": null,
+      "assets": [
+        {
+          "asset_id": "Pereira2018.language:assembly",
+          "kind": "data_only_assembly",
+          "format": "nc",
+          "upstream_identifier": "Pereira2018.language",
+          "original_filename": "assy_Pereira2018_language.nc",
+          "sha1": "f8434b4022f5b2c862f0ff2854d5b3f5f2a7fb96",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/assy_Pereira2018_language.nc",
+            "version_id": null,
+            "version_semantics": "unspecified_latest_subject_to_sha1_check"
+          },
+          "required_for": [
+            "data_only_import",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/data/pereira2018/__init__.py",
+            "line": 20,
+            "source_file_sha256": "93c519c4513d1905a36d8444b558f48458148158b8d57708caddad22a973f962",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/pereira2018/__init__.py#L20"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        },
+        {
+          "asset_id": "Pereira2018.243sentences-ridge:ceiling",
+          "kind": "ceiling",
+          "format": "nc",
+          "upstream_identifier": "Pereira2018.243sentences-ridge",
+          "original_filename": "ceiling_Pereira2018_243sentences-ridge.nc",
+          "sha1": "ba4c077bf0a9e1c46a9582790221c48113e0c5cf",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/ceiling_Pereira2018_243sentences-ridge.nc",
+            "version_id": "r3xGy2REPZfE7h1oFSnsNg5Rml9R5Ulz",
+            "version_semantics": "explicit_version_id"
+          },
+          "required_for": [
+            "official_ceiling_chain",
+            "normalized_scoring"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/benchmarks/pereira2018/benchmark.py",
+            "line": 22,
+            "source_file_sha256": "3d37fbd0ef61b6c373f7d038a33784afec77ce248956be29c0a7a4dcd9e765a8",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/pereira2018/benchmark.py#L22"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false,
+          "score_class": "brainscore_core.metrics.Score",
+          "raw_parent_asset_id": null,
+          "attached_as": "ceiling"
+        },
+        {
+          "asset_id": "Pereira2018.243sentences-ridge:ceiling:raw",
+          "kind": "ceiling_raw",
+          "format": "nc",
+          "upstream_identifier": "Pereira2018.243sentences-ridge",
+          "original_filename": "ceiling_raw_Pereira2018_243sentences-ridge.nc",
+          "sha1": "aad71036f0aa2eac14d1e665fc9e9a955c5d4259",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/ceiling_raw_Pereira2018_243sentences-ridge.nc",
+            "version_id": "d4ip8z9Hrh94GOLhF69bua8dgfky9m0H",
+            "version_semantics": "explicit_version_id"
+          },
+          "required_for": [
+            "official_ceiling_chain",
+            "ceiling_audit"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/benchmarks/pereira2018/benchmark.py",
+            "line": 22,
+            "source_file_sha256": "3d37fbd0ef61b6c373f7d038a33784afec77ce248956be29c0a7a4dcd9e765a8",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/pereira2018/benchmark.py#L22"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false,
+          "score_class": "brainscore_core.metrics.Score",
+          "raw_parent_asset_id": "Pereira2018.243sentences-ridge:ceiling",
+          "attached_as": "attrs.raw"
+        },
+        {
+          "asset_id": "Pereira2018.243sentences-ridge:ceiling:raw:raw",
+          "kind": "ceiling_raw",
+          "format": "nc",
+          "upstream_identifier": "Pereira2018.243sentences-ridge",
+          "original_filename": "ceiling_raw_raw_Pereira2018_243sentences-ridge.nc",
+          "sha1": "b18cd06fd8b8d077bb884ebf0f3624e5283d49f3",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/ceiling_raw_raw_Pereira2018_243sentences-ridge.nc",
+            "version_id": "CcENzwx7_dX1N_OucOhKznpjkcmvYM8C",
+            "version_semantics": "explicit_version_id"
+          },
+          "required_for": [
+            "official_ceiling_chain",
+            "ceiling_audit"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/benchmarks/pereira2018/benchmark.py",
+            "line": 22,
+            "source_file_sha256": "3d37fbd0ef61b6c373f7d038a33784afec77ce248956be29c0a7a4dcd9e765a8",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/pereira2018/benchmark.py#L22"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false,
+          "score_class": "brainscore_core.metrics.Score",
+          "raw_parent_asset_id": "Pereira2018.243sentences-ridge:ceiling:raw",
+          "attached_as": "attrs.raw"
+        },
+        {
+          "asset_id": "Pereira2018.384sentences-ridge:ceiling",
+          "kind": "ceiling",
+          "format": "nc",
+          "upstream_identifier": "Pereira2018.384sentences-ridge",
+          "original_filename": "ceiling_Pereira2018_384sentences-ridge.nc",
+          "sha1": "167005f57c3f2826a9e6a24ba36d96640fcbf3df",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/ceiling_Pereira2018_384sentences-ridge.nc",
+            "version_id": "u1_f1sJvv9J8eVjWFfA4siHsFHH6rMc1",
+            "version_semantics": "explicit_version_id"
+          },
+          "required_for": [
+            "official_ceiling_chain",
+            "normalized_scoring"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/benchmarks/pereira2018/benchmark.py",
+            "line": 43,
+            "source_file_sha256": "3d37fbd0ef61b6c373f7d038a33784afec77ce248956be29c0a7a4dcd9e765a8",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/pereira2018/benchmark.py#L43"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false,
+          "score_class": "brainscore_core.metrics.Score",
+          "raw_parent_asset_id": null,
+          "attached_as": "ceiling"
+        },
+        {
+          "asset_id": "Pereira2018.384sentences-ridge:ceiling:raw",
+          "kind": "ceiling_raw",
+          "format": "nc",
+          "upstream_identifier": "Pereira2018.384sentences-ridge",
+          "original_filename": "ceiling_raw_Pereira2018_384sentences-ridge.nc",
+          "sha1": "d7cae647a0c26c73c4f7f000eaebba65b3805dfb",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/ceiling_raw_Pereira2018_384sentences-ridge.nc",
+            "version_id": "i1p2WSiKGxiRpclDEhl0rPlAoN5IhYYp",
+            "version_semantics": "explicit_version_id"
+          },
+          "required_for": [
+            "official_ceiling_chain",
+            "ceiling_audit"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/benchmarks/pereira2018/benchmark.py",
+            "line": 43,
+            "source_file_sha256": "3d37fbd0ef61b6c373f7d038a33784afec77ce248956be29c0a7a4dcd9e765a8",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/pereira2018/benchmark.py#L43"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false,
+          "score_class": "brainscore_core.metrics.Score",
+          "raw_parent_asset_id": "Pereira2018.384sentences-ridge:ceiling",
+          "attached_as": "attrs.raw"
+        },
+        {
+          "asset_id": "Pereira2018.384sentences-ridge:ceiling:raw:raw",
+          "kind": "ceiling_raw",
+          "format": "nc",
+          "upstream_identifier": "Pereira2018.384sentences-ridge",
+          "original_filename": "ceiling_raw_raw_Pereira2018_384sentences-ridge.nc",
+          "sha1": "8b8017a2d685b88546f089bfd23686a5181d6af7",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/ceiling_raw_raw_Pereira2018_384sentences-ridge.nc",
+            "version_id": "_enewpFHrEO3ZCVexDljLMatTNMIoTCU",
+            "version_semantics": "explicit_version_id"
+          },
+          "required_for": [
+            "official_ceiling_chain",
+            "ceiling_audit"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/benchmarks/pereira2018/benchmark.py",
+            "line": 43,
+            "source_file_sha256": "3d37fbd0ef61b6c373f7d038a33784afec77ce248956be29c0a7a4dcd9e765a8",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/pereira2018/benchmark.py#L43"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false,
+          "score_class": "brainscore_core.metrics.Score",
+          "raw_parent_asset_id": "Pereira2018.384sentences-ridge:ceiling:raw",
+          "attached_as": "attrs.raw"
+        }
+      ],
+      "import_contract": {
+        "data_only": {
+          "loader": "brainscore_core.supported_data_standards.brainio.assemblies.AssemblyLoader",
+          "assembly_class": "NeuroidAssembly",
+          "network_required": false,
+          "warning": "Stimulus text and presentation metadata are embedded in the assembly; do not fetch image packages."
+        },
+        "metadata_complete": {
+          "loader": "AssemblyLoader",
+          "requires_stimulus_csv": false,
+          "requires_images_for_metadata_merge": false,
+          "requires_images_for_live_vision_execution": false,
+          "warning": null
+        },
+        "identity_postload": "Pereira2018.language"
+      },
+      "access": {
+        "source_level_status": "registered_loader_no_private_marker_in_data_test",
+        "runtime_access": "not_checked",
+        "test_source": {
+          "repository": "brain-score/language",
+          "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+          "path": "brainscore_language/data/pereira2018/test.py",
+          "line": 1,
+          "source_file_sha256": "2c9d23641cc57dfadfe95050a45de531ccc7ab9d81d2a149afb02f5ed940fe85",
+          "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/pereira2018/test.py#L1"
+        }
+      },
+      "license": {
+        "repository_code_license": "MIT",
+        "dataset_license": "not_resolved_from_selected_family_source_files",
+        "stimulus_license": "not_resolved_from_selected_family_source_files",
+        "redistribution_authorized_by_this_lock": false,
+        "note": "Repository code license, public loader naming and an available URL do not establish data, image or text redistribution rights."
+      },
+      "ceiling": {
+        "source": "precomputed_artifact_chain",
+        "artifact_chains": [
+          {
+            "benchmark_id": "Pereira2018.243sentences-ridge",
+            "top_level_asset_id": "Pereira2018.243sentences-ridge:ceiling",
+            "assets_in_load_order": [
+              "Pereira2018.243sentences-ridge:ceiling",
+              "Pereira2018.243sentences-ridge:ceiling:raw",
+              "Pereira2018.243sentences-ridge:ceiling:raw:raw"
+            ]
+          },
+          {
+            "benchmark_id": "Pereira2018.384sentences-ridge",
+            "top_level_asset_id": "Pereira2018.384sentences-ridge:ceiling",
+            "assets_in_load_order": [
+              "Pereira2018.384sentences-ridge:ceiling",
+              "Pereira2018.384sentences-ridge:ceiling:raw",
+              "Pereira2018.384sentences-ridge:ceiling:raw:raw"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_id": "fedorenko2016",
+      "domain": "language",
+      "data_registry_id": "Fedorenko2016.language",
+      "benchmark_ids": [
+        "Fedorenko2016-ridge"
+      ],
+      "stimulus_registry_id": null,
+      "assets": [
+        {
+          "asset_id": "Fedorenko2016.language:assembly",
+          "kind": "data_only_assembly",
+          "format": "nc",
+          "upstream_identifier": "Fedorenko2016.language",
+          "original_filename": "assy_Fedorenko2016_language.nc",
+          "sha1": "2966b6d78e972a72068aa6907377483f427e8d9a",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/assy_Fedorenko2016_language.nc",
+            "version_id": null,
+            "version_semantics": "unspecified_latest_subject_to_sha1_check"
+          },
+          "required_for": [
+            "data_only_import",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/data/fedorenko2016/__init__.py",
+            "line": 20,
+            "source_file_sha256": "419c74ea537ea49c8c0a25dff3efe6775ed6c9332c5efe9b2c267e1c004f29a7",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/fedorenko2016/__init__.py#L20"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        }
+      ],
+      "import_contract": {
+        "data_only": {
+          "loader": "brainscore_core.supported_data_standards.brainio.assemblies.AssemblyLoader",
+          "assembly_class": "NeuroidAssembly",
+          "network_required": false,
+          "warning": "Stimulus text and presentation metadata are embedded in the assembly; do not fetch image packages."
+        },
+        "metadata_complete": {
+          "loader": "AssemblyLoader",
+          "requires_stimulus_csv": false,
+          "requires_images_for_metadata_merge": false,
+          "requires_images_for_live_vision_execution": false,
+          "warning": null
+        },
+        "identity_postload": "Fedorenko2016.language"
+      },
+      "access": {
+        "source_level_status": "registered_loader_no_private_marker_in_data_test",
+        "runtime_access": "not_checked",
+        "test_source": {
+          "repository": "brain-score/language",
+          "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+          "path": "brainscore_language/data/fedorenko2016/test.py",
+          "line": 1,
+          "source_file_sha256": "0d0926490524b18dfa7a840f0fdb78054803ebba5aecd57d399daca84b719f7d",
+          "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/fedorenko2016/test.py#L1"
+        }
+      },
+      "license": {
+        "repository_code_license": "MIT",
+        "dataset_license": "not_resolved_from_selected_family_source_files",
+        "stimulus_license": "not_resolved_from_selected_family_source_files",
+        "redistribution_authorized_by_this_lock": false,
+        "note": "Repository code license, public loader naming and an available URL do not establish data, image or text redistribution rights."
+      },
+      "ceiling": {
+        "source": "computed_subject_extrapolation",
+        "artifact_chains": []
+      }
+    },
+    {
+      "source_id": "blank2014",
+      "domain": "language",
+      "data_registry_id": "Blank2014.fROI",
+      "benchmark_ids": [
+        "Blank2014-ridge"
+      ],
+      "stimulus_registry_id": null,
+      "assets": [
+        {
+          "asset_id": "Blank2014.fROI:assembly",
+          "kind": "data_only_assembly",
+          "format": "nc",
+          "upstream_identifier": "Blank2014.fROI",
+          "original_filename": "assy_Blank2014_fROI.nc",
+          "sha1": "af1e868821b897cb1684e4c8dcd33977121ef552",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/assy_Blank2014_fROI.nc",
+            "version_id": null,
+            "version_semantics": "unspecified_latest_subject_to_sha1_check"
+          },
+          "required_for": [
+            "data_only_import",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/data/blank2014/__init__.py",
+            "line": 19,
+            "source_file_sha256": "5d4409b9af233abfcb8387805923a7b941b4e10effa491813728e606211025bf",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/blank2014/__init__.py#L19"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        }
+      ],
+      "import_contract": {
+        "data_only": {
+          "loader": "brainscore_core.supported_data_standards.brainio.assemblies.AssemblyLoader",
+          "assembly_class": "NeuroidAssembly",
+          "network_required": false,
+          "warning": "Stimulus text and presentation metadata are embedded in the assembly; do not fetch image packages."
+        },
+        "metadata_complete": {
+          "loader": "AssemblyLoader",
+          "requires_stimulus_csv": false,
+          "requires_images_for_metadata_merge": false,
+          "requires_images_for_live_vision_execution": false,
+          "warning": null
+        },
+        "identity_postload": "Blank2014.fROI"
+      },
+      "access": {
+        "source_level_status": "registered_loader_no_private_marker_in_data_test",
+        "runtime_access": "not_checked",
+        "test_source": {
+          "repository": "brain-score/language",
+          "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+          "path": "brainscore_language/data/blank2014/test.py",
+          "line": 1,
+          "source_file_sha256": "ec607599c35507eb7d5d1fe673bdcfa9119cfa50c97e1e1536f532fbb56fc6ef",
+          "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/blank2014/test.py#L1"
+        }
+      },
+      "license": {
+        "repository_code_license": "MIT",
+        "dataset_license": "not_resolved_from_selected_family_source_files",
+        "stimulus_license": "not_resolved_from_selected_family_source_files",
+        "redistribution_authorized_by_this_lock": false,
+        "note": "Repository code license, public loader naming and an available URL do not establish data, image or text redistribution rights."
+      },
+      "ceiling": {
+        "source": "computed_subject_extrapolation",
+        "artifact_chains": []
+      }
+    },
+    {
+      "source_id": "futrell2018",
+      "domain": "language",
+      "data_registry_id": "Futrell2018",
+      "benchmark_ids": [
+        "Futrell2018-pearsonr"
+      ],
+      "stimulus_registry_id": null,
+      "assets": [
+        {
+          "asset_id": "Futrell2018:assembly",
+          "kind": "data_only_assembly",
+          "format": "nc",
+          "upstream_identifier": "Futrell2018",
+          "original_filename": "assy_Futrell2018.nc",
+          "sha1": "381ccc8038fbdb31235b5f3e1d350f359b5e287f",
+          "sha1_scope": "original_file_bytes_before_any_reserialization_or_extraction",
+          "sha256": null,
+          "byte_size": null,
+          "storage": {
+            "provider": "s3",
+            "bucket": "brainscore-storage",
+            "key": "brainscore-language/assy_Futrell2018.nc",
+            "version_id": null,
+            "version_semantics": "unspecified_latest_subject_to_sha1_check"
+          },
+          "required_for": [
+            "data_only_import",
+            "benchmark_execution"
+          ],
+          "source_code": {
+            "repository": "brain-score/language",
+            "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+            "path": "brainscore_language/data/futrell2018/__init__.py",
+            "line": 19,
+            "source_file_sha256": "90c747dfebb27f69fd91692b55d812e21653aa658e2093e7d9518482c69816d0",
+            "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/futrell2018/__init__.py#L19"
+          },
+          "remote_access_checked": false,
+          "original_bytes_verified": false
+        }
+      ],
+      "import_contract": {
+        "data_only": {
+          "loader": "brainscore_core.supported_data_standards.brainio.assemblies.AssemblyLoader",
+          "assembly_class": "NeuroidAssembly",
+          "network_required": false,
+          "warning": "Stimulus text and presentation metadata are embedded in the assembly; do not fetch image packages."
+        },
+        "metadata_complete": {
+          "loader": "AssemblyLoader",
+          "requires_stimulus_csv": false,
+          "requires_images_for_metadata_merge": false,
+          "requires_images_for_live_vision_execution": false,
+          "warning": null
+        },
+        "identity_postload": "Futrell2018"
+      },
+      "access": {
+        "source_level_status": "registered_loader_no_private_marker_in_data_test",
+        "runtime_access": "not_checked",
+        "test_source": {
+          "repository": "brain-score/language",
+          "commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+          "path": "brainscore_language/data/futrell2018/test.py",
+          "line": 1,
+          "source_file_sha256": "c02bfef611179967f6d9c86cefe81d5e6df8d9ce083bfe627d6c5c8224081d2a",
+          "url": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/futrell2018/test.py#L1"
+        }
+      },
+      "license": {
+        "repository_code_license": "MIT",
+        "dataset_license": "not_resolved_from_selected_family_source_files",
+        "stimulus_license": "not_resolved_from_selected_family_source_files",
+        "redistribution_authorized_by_this_lock": false,
+        "note": "Repository code license, public loader naming and an available URL do not establish data, image or text redistribution rights."
+      },
+      "ceiling": {
+        "source": "computed_subject_split_half",
+        "artifact_chains": []
+      }
+    }
+  ],
+  "excluded_scope": [
+    "Private Vision variants",
+    "Temporal MajajHong variants",
+    "FreemanZiemba noaperture variants",
+    "Pereira auditory atlas",
+    "Legacy linear-shuffle ceilings",
+    "Model weights and Hugging Face metadata handled separately by parent agent"
+  ],
+  "unresolved": [
+    "Actual S3 reachability/authentication and original artifact byte lengths are untested.",
+    "Per-image content checksums are not declared by these selected registry entries; only whole ZIP SHA1 is pinned.",
+    "Each dataset and stimulus redistribution license remains unresolved from selected source files.",
+    "Language assembly version_id is omitted upstream; SHA1 pins content but not an explicit S3 version.",
+    "Vision string null version_id is preserved literally and must not be confused with omitted/null JSON version_id.",
+    "Computed ceilings for non-Pereira families require actual locally supplied data; no fabricated ceiling is included."
+  ]
+}

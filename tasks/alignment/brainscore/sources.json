@@ -1,0 +1,312 @@
+{
+  "schema": "bpb-bs-sources/1",
+  "reviewed_at": "2026-11-11",
+  "environments": {
+    "vision": {
+      "repository": "brain-score/vision",
+      "upstream_commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+      "python_version": "3.11",
+      "dependency_lock_sha256": "bea2dc05c403bdafbff06f5defcd9a6c94c72eacc89011c032b3dc2a8c4c80d5",
+      "image_digest": "sha256:8861b2c0f91a93a3ee551cf2c0f78da096b0652db86fde27999d6ba1c540e382"
+    },
+    "language": {
+      "repository": "brain-score/language",
+      "upstream_commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+      "python_version": "3.11",
+      "dependency_lock_sha256": "2de372cf3730fbff5cffe4772b53b6a50f021238c998c2c0737e80f425139b3f",
+      "image_digest": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0"
+    }
+  },
+  "families": [
+    {
+      "id": "majajhong2015",
+      "dataset_family_id": "majajhong2015",
+      "stimulus_family_id": "MajajHong2015public",
+      "ecosystem": "vision",
+      "data_scope": "public",
+      "upstream_commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+      "source_links": {
+        "registry": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/benchmarks/majajhong2015/__init__.py",
+        "data_tests": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/majajhong2015/test.py"
+      },
+      "data_status": "deferred-no-download",
+      "license_status": "pending",
+      "source_files": null,
+      "observed_counts": null,
+      "candidate_ids": [
+        "pixels",
+        "alexnet"
+      ],
+      "benchmarks": [
+        {
+          "id": "MajajHong2015public.V4-pls",
+          "endpoint": "v4",
+          "adapter": "vision-neural",
+          "readout": "pls",
+          "split_group": null,
+          "measurement_unit": "neuron",
+          "source_declared_version": 4,
+          "runtime_version": 4,
+          "protocol_sha256": "d25334328f266080b37aa09a99c234efbe8155bd2e55ed9b1e7936be94a3c3cb",
+          "normalization": "vision-explained-variance",
+          "protocol_status": "official-metric-synthetic-validated"
+        },
+        {
+          "id": "MajajHong2015public.IT-pls",
+          "endpoint": "it",
+          "adapter": "vision-neural",
+          "readout": "pls",
+          "split_group": null,
+          "measurement_unit": "neuron",
+          "source_declared_version": 4,
+          "runtime_version": 4,
+          "protocol_sha256": "9f27231c9a6cbb977c3cfcdcdc3f5206f526608836ccb29c89809d3fb8b4713a",
+          "normalization": "vision-explained-variance",
+          "protocol_status": "official-metric-synthetic-validated"
+        }
+      ],
+      "audit_notes": [
+        "Public subset only; private stimulus counts do not establish public counts.",
+        "Freeze visual degrees, time averaging, repetition handling and region-to-layer mapping."
+      ],
+      "license_evidence": "SOURCE_AUDIT.md; independent dataset/stimulus terms remain unresolved"
+    },
+    {
+      "id": "freemanziemba2013",
+      "dataset_family_id": "freemanziemba2013",
+      "stimulus_family_id": "FreemanZiemba2013public",
+      "ecosystem": "vision",
+      "data_scope": "public",
+      "upstream_commit": "c5608668783fe654f83611305fb7e717db0a0cbf",
+      "source_links": {
+        "registry": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/benchmarks/freemanziemba2013/__init__.py",
+        "data_tests": "https://github.com/brain-score/vision/blob/c5608668783fe654f83611305fb7e717db0a0cbf/brainscore_vision/data/freemanziemba2013/test.py"
+      },
+      "data_status": "deferred-no-download",
+      "license_status": "pending",
+      "source_files": null,
+      "observed_counts": null,
+      "candidate_ids": [
+        "pixels",
+        "alexnet"
+      ],
+      "benchmarks": [
+        {
+          "id": "FreemanZiemba2013public.V1-pls",
+          "endpoint": "v1",
+          "adapter": "vision-neural",
+          "readout": "pls",
+          "split_group": null,
+          "measurement_unit": "neuron",
+          "source_declared_version": 1,
+          "runtime_version": 1,
+          "protocol_sha256": "54bacbf42dacbd13eecaa2b4003837a4406f31dd49c0fd96d2dc09bc4c31ac28",
+          "normalization": "vision-explained-variance",
+          "protocol_status": "official-metric-synthetic-validated"
+        },
+        {
+          "id": "FreemanZiemba2013public.V2-pls",
+          "endpoint": "v2",
+          "adapter": "vision-neural",
+          "readout": "pls",
+          "split_group": null,
+          "measurement_unit": "neuron",
+          "source_declared_version": 1,
+          "runtime_version": 1,
+          "protocol_sha256": "ce8bf591cef891df69d14f59369aec7e7555ba23a645e81676cadf31b5650787",
+          "normalization": "vision-explained-variance",
+          "protocol_status": "official-metric-synthetic-validated"
+        }
+      ],
+      "audit_notes": [
+        "Public subset only; preserve texture/noise conditions and aperture.",
+        "Preserve the official 50\u2013200 ms averaging and V1/V2 identities."
+      ],
+      "license_evidence": "SOURCE_AUDIT.md; independent dataset/stimulus terms remain unresolved"
+    },
+    {
+      "id": "pereira2018",
+      "dataset_family_id": "pereira2018",
+      "stimulus_family_id": "Pereira2018",
+      "ecosystem": "language",
+      "data_scope": "upstream-packaged",
+      "upstream_commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+      "source_links": {
+        "registry": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/pereira2018/__init__.py",
+        "data_tests": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/pereira2018/test.py"
+      },
+      "data_status": "partial-local-verified",
+      "license_status": "pending",
+      "source_files": {
+        "Pereira2018.language:assembly": "9e4d695a8446485920a108b3681cdf0d9bf7bb55780d32d367d68542363629f8",
+        "Pereira2018.384sentences-ridge:ceiling": "000d05433df1f4993715ac86bf282f74744e1dda2787d19b0524332cce8eb357",
+        "Pereira2018.384sentences-ridge:ceiling:raw": "3e21639d6849b6f34e11128f00b0b4a8ab2a33cd4d966d803a997a10a2194ba3",
+        "Pereira2018.384sentences-ridge:ceiling:raw:raw": "595f1a732f786ed2b7c3ec8174bf5827d1d74a48fea95db820abb0e2e5f03520"
+      },
+      "observed_counts": {
+        "presentations_384": 384,
+        "measurement_units_384": 12155
+      },
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "benchmarks": [
+        {
+          "id": "Pereira2018.243sentences-ridge",
+          "endpoint": "243sentences",
+          "adapter": "language-neural",
+          "readout": "ridge",
+          "split_group": "story",
+          "measurement_unit": "voxel",
+          "source_declared_version": 1,
+          "runtime_version": null,
+          "protocol_sha256": "797f78b6676ef6865128031b0fe8929ccb06f973b78dedf8d788eb463f672a1d",
+          "normalization": "language-ceiling",
+          "protocol_status": "official-metric-synthetic-validated"
+        },
+        {
+          "id": "Pereira2018.384sentences-ridge",
+          "endpoint": "384sentences",
+          "adapter": "language-neural",
+          "readout": "ridge",
+          "split_group": "story",
+          "measurement_unit": "voxel",
+          "source_declared_version": 1,
+          "runtime_version": 1,
+          "protocol_sha256": "3ba3f7195306137330981f2eeec9df6fdbbc7406bb7131768e3c6c66c96a2a5b",
+          "normalization": "language-ceiling",
+          "protocol_status": "live-cache-equivalence-verified",
+          "local_source_status": "local-verified"
+        }
+      ],
+      "audit_notes": [
+        "Separate 243 and 384 sentence experiments; preserve passage context and story groups.",
+        "Retain subject coverage and missing values; legacy cache uses a different upstream commit."
+      ],
+      "license_evidence": "SOURCE_AUDIT.md; independent dataset/stimulus terms remain unresolved"
+    },
+    {
+      "id": "fedorenko2016",
+      "dataset_family_id": "fedorenko2016",
+      "stimulus_family_id": "Fedorenko2016",
+      "ecosystem": "language",
+      "data_scope": "upstream-packaged",
+      "upstream_commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+      "source_links": {
+        "registry": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/fedorenko2016/__init__.py",
+        "data_tests": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/fedorenko2016/test.py"
+      },
+      "data_status": "deferred-no-download",
+      "license_status": "pending",
+      "source_files": null,
+      "observed_counts": null,
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "benchmarks": [
+        {
+          "id": "Fedorenko2016-ridge",
+          "endpoint": "ecog",
+          "adapter": "language-neural",
+          "readout": "ridge",
+          "split_group": "sentence_id",
+          "measurement_unit": "electrode",
+          "source_declared_version": 3,
+          "runtime_version": 3,
+          "protocol_sha256": "37c8588966c6abf6742783580e374a3089a045b0178bdb72a0645e1322be096c",
+          "normalization": "language-ceiling",
+          "protocol_status": "official-metric-synthetic-validated"
+        }
+      ],
+      "audit_notes": [
+        "Preserve word/sentence/electrode/subject mapping and sentence_id groups.",
+        "Freeze tokenizer-to-word alignment and context."
+      ],
+      "license_evidence": "SOURCE_AUDIT.md; independent dataset/stimulus terms remain unresolved"
+    },
+    {
+      "id": "blank2014",
+      "dataset_family_id": "blank2014",
+      "stimulus_family_id": "Blank2014",
+      "ecosystem": "language",
+      "data_scope": "upstream-packaged",
+      "upstream_commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+      "source_links": {
+        "registry": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/blank2014/__init__.py",
+        "data_tests": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/blank2014/test.py"
+      },
+      "data_status": "deferred-no-download",
+      "license_status": "pending",
+      "source_files": null,
+      "observed_counts": null,
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "benchmarks": [
+        {
+          "id": "Blank2014-ridge",
+          "endpoint": "fmri",
+          "adapter": "language-neural",
+          "readout": "ridge",
+          "split_group": "story",
+          "measurement_unit": "froi",
+          "source_declared_version": 1,
+          "runtime_version": 1,
+          "protocol_sha256": "3dd4e41a5755cb70362ce7d0e6541be875b522c94d73bd98d78b870cedd11d26",
+          "normalization": "language-ceiling",
+          "protocol_status": "official-metric-synthetic-validated"
+        }
+      ],
+      "audit_notes": [
+        "Preserve story order, segment context, subject and fROI identities.",
+        "Do not substitute random segment splits for official story-group splits."
+      ],
+      "license_evidence": "SOURCE_AUDIT.md; independent dataset/stimulus terms remain unresolved"
+    },
+    {
+      "id": "futrell2018",
+      "dataset_family_id": "futrell2018",
+      "stimulus_family_id": "Futrell2018",
+      "ecosystem": "language",
+      "data_scope": "upstream-packaged",
+      "upstream_commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+      "source_links": {
+        "registry": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/benchmarks/futrell2018/__init__.py",
+        "data_tests": "https://github.com/brain-score/language/blob/cc9f623151b5e64be1919c8a8a8b08edc317b784/brainscore_language/data/futrell2018/test.py"
+      },
+      "data_status": "deferred-no-download",
+      "license_status": "reviewed",
+      "source_files": null,
+      "observed_counts": null,
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "benchmarks": [
+        {
+          "id": "Futrell2018-pearsonr",
+          "endpoint": "reading-times",
+          "adapter": "language-behavior",
+          "readout": "none",
+          "split_group": null,
+          "measurement_unit": "subject",
+          "source_declared_version": 1,
+          "runtime_version": 1,
+          "protocol_sha256": "9cce99cbfe87f697fbd00e802b9a1da44947cddadaefe5accdf53964dea5b3bc",
+          "normalization": "language-ceiling",
+          "protocol_status": "official-metric-synthetic-validated"
+        }
+      ],
+      "audit_notes": [
+        "Use model reading-times outputs directly; no fitted readout or invented CV folds.",
+        "Preserve first-word exclusion, missing responses and official aggregation."
+      ],
+      "license_evidence": "SOURCE_AUDIT.md",
+      "license_scope": "upstream corpus CC BY-NC-SA 4.0; artifact lineage must be retained",
+      "data_version_review": "pending: Natural Stories 2025-05-12 reading-time alignment correction not established for pinned artifact"
+    }
+  ]
+}

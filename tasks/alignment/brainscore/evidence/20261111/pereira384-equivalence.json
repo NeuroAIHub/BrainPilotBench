@@ -1,0 +1,86 @@
+{
+  "schema": "bpb-bs-official-equivalence/1",
+  "benchmark_id": "Pereira2018.384sentences-ridge",
+  "candidate_id": "distilgpt2",
+  "synthetic_only": false,
+  "cache_manifest_sha256": "3655a71b4ea36f2da065c05f21f96c71a7ae6a475b160e0fa1ffb56fa32b9c88",
+  "passed": true,
+  "live_normalized": 0.5831730146921874,
+  "cached_score": {
+    "raw": 0.07885228013320371,
+    "ceiling": 0.13521249808656496,
+    "normalized": 0.5831730146921874,
+    "unclipped": 0.5831730146921874,
+    "normalization": "language-ceiling",
+    "aggregation": "median neuroids within each split, then mean splits"
+  },
+  "checks": [
+    "official-constructor",
+    "live-versus-cached-score",
+    "fold-predictions",
+    "unit-metrics",
+    "selected-alpha"
+  ],
+  "tolerances": {
+    "atol": 1e-06,
+    "rtol": 1e-05,
+    "status": "provisional"
+  },
+  "runtime": {
+    "ecosystem": "language",
+    "upstream_commit": "cc9f623151b5e64be1919c8a8a8b08edc317b784",
+    "package_tree_sha256": "a77ab00d2dd62f0caa36bb0e080597330197b77e487eb26f8ad5736701ce6785",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.17.1",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.7.2",
+      "torch": "2.6.0+cu124",
+      "xarray": "2022.3.0",
+      "brainscore-core": "2.5.0",
+      "transformers": "4.57.6",
+      "tokenizers": "0.22.2",
+      "safetensors": "0.8.0",
+      "pillow": "13.0.0"
+    },
+    "python": "3.11.18",
+    "network": "disabled",
+    "device": "cpu"
+  },
+  "source_audit": {
+    "source_id": "pereira2018",
+    "benchmark_id": "Pereira2018.384sentences-ridge",
+    "files": {
+      "Pereira2018.language:assembly": {
+        "path": "/tmp/bpb-bs-local-pereira-20261111/assy_Pereira2018_language.nc",
+        "sha1": "f8434b4022f5b2c862f0ff2854d5b3f5f2a7fb96",
+        "sha256": "9e4d695a8446485920a108b3681cdf0d9bf7bb55780d32d367d68542363629f8",
+        "bytes": 35604141
+      },
+      "Pereira2018.384sentences-ridge:ceiling": {
+        "path": "/tmp/bpb-bs-local-pereira-20261111/ceiling_Pereira2018_384sentences-ridge.nc",
+        "sha1": "167005f57c3f2826a9e6a24ba36d96640fcbf3df",
+        "sha256": "000d05433df1f4993715ac86bf282f74744e1dda2787d19b0524332cce8eb357",
+        "bytes": 1205
+      },
+      "Pereira2018.384sentences-ridge:ceiling:raw": {
+        "path": "/tmp/bpb-bs-local-pereira-20261111/ceiling_raw_Pereira2018_384sentences-ridge.nc",
+        "sha1": "d7cae647a0c26c73c4f7f000eaebba65b3805dfb",
+        "sha256": "3e21639d6849b6f34e11128f00b0b4a8ab2a33cd4d966d803a997a10a2194ba3",
+        "bytes": 3622201
+      },
+      "Pereira2018.384sentences-ridge:ceiling:raw:raw": {
+        "path": "/tmp/bpb-bs-local-pereira-20261111/ceiling_raw_raw_Pereira2018_384sentences-ridge.nc",
+        "sha1": "8b8017a2d685b88546f089bfd23686a5181d6af7",
+        "sha256": "595f1a732f786ed2b7c3ec8174bf5827d1d74a48fea95db820abb0e2e5f03520",
+        "bytes": 29855048
+      }
+    },
+    "missing": [],
+    "local_objects_complete": true,
+    "remote_access_attempted": false
+  },
+  "image_digest": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0",
+  "wall_seconds": 121.26155533082783,
+  "peak_rss_kib": 2805172
+}

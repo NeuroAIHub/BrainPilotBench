@@ -1,0 +1,183 @@
+[
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scored",
+    "analysis_success": 1,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-blank2014-fmri-distilgpt2-reproduce",
+    "synthetic_only": true,
+    "input_manifest_sha256": "4a22dc9b0d1d3eeabece7b9057330ba738f276abe0f61659e351f759a00b04e0",
+    "image": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0",
+    "worker_limits": {
+      "timeout_seconds": 900.0,
+      "cpus": 2.0,
+      "memory": "8g"
+    },
+    "comparisons": [
+      {
+        "kind": "rerun",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "saved",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "functional-control",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      }
+    ],
+    "inputs_unchanged": true,
+    "source_unchanged": true,
+    "wall_seconds": 19.909841895103455
+  },
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scored",
+    "analysis_success": 1,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-blank2014-compare",
+    "synthetic_only": true,
+    "input_manifest_sha256": "078eef666c644ce4945cc1f2ae98104f23eb731de90bc20a9301261fc37f5123",
+    "image": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0",
+    "worker_limits": {
+      "timeout_seconds": 900.0,
+      "cpus": 2.0,
+      "memory": "8g"
+    },
+    "comparisons": [
+      {
+        "kind": "rerun",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "saved",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "functional-control",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      }
+    ],
+    "inputs_unchanged": true,
+    "source_unchanged": true,
+    "wall_seconds": 20.97985826805234
+  },
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scored",
+    "analysis_success": 1,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-futrell2018-reading-times-distilgpt2-reproduce",
+    "synthetic_only": true,
+    "input_manifest_sha256": "fde93e9b88805893b9cdea01ece6aba6d33c65471f01b3cff97c1f87b5d354cd",
+    "image": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0",
+    "worker_limits": {
+      "timeout_seconds": 900.0,
+      "cpus": 2.0,
+      "memory": "8g"
+    },
+    "comparisons": [
+      {
+        "kind": "rerun",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "saved",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "functional-control",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      }
+    ],
+    "inputs_unchanged": true,
+    "source_unchanged": true,
+    "wall_seconds": 12.045931495726109
+  },
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scored",
+    "analysis_success": 0,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-blank2014-fmri-distilgpt2-reproduce",
+    "synthetic_only": true,
+    "input_manifest_sha256": "4a22dc9b0d1d3eeabece7b9057330ba738f276abe0f61659e351f759a00b04e0",
+    "image": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0",
+    "worker_limits": {
+      "timeout_seconds": 900.0,
+      "cpus": 2.0,
+      "memory": "8g"
+    },
+    "comparisons": [
+      {
+        "kind": "rerun",
+        "passed": true,
+        "errors": [],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      },
+      {
+        "kind": "functional-control",
+        "passed": false,
+        "errors": [
+          "results/summary.json differs",
+          "ScaleUpError: unit metrics differ"
+        ],
+        "atol": 1e-06,
+        "rtol": 1e-05
+      }
+    ],
+    "inputs_unchanged": true,
+    "source_unchanged": true,
+    "wall_seconds": 5.624268593266606
+  },
+  {
+    "schema": "bpb-bs-grade/1",
+    "state": "scoring_failed",
+    "analysis_success": null,
+    "isolation": "docker",
+    "prose_review": "not_assessed",
+    "acceptance": "experimental-data-and-agent-validation-pending",
+    "instance_id": "alignment-bs-blank2014-fmri-distilgpt2-reproduce",
+    "synthetic_only": true,
+    "input_manifest_sha256": "4a22dc9b0d1d3eeabece7b9057330ba738f276abe0f61659e351f759a00b04e0",
+    "error": "InfrastructureError: local worker image missing (never pulled automatically)",
+    "wall_seconds": 0.076956856995821
+  }
+]

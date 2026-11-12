@@ -4,10 +4,21 @@ import { join } from 'node:path';
 
 export function readAlignmentCandidates(root) {
   const base = join(root, 'tasks/alignment');
-  return readdirSync(base, { withFileTypes: true }).filter(e => e.isDirectory() && !e.name.startsWith('_')).map(e => {
+  return readdirSync(base, { withFileTypes: true }).filter(e => e.isDirectory() && !e.name.startsWith('_')).flatMap(e => {
     const directory = `tasks/alignment/${e.name}`;
     const dir = join(root, directory);
     if (existsSync(join(dir, 'task.yaml'))) throw new Error(`${directory}: alignment real-data acceptance is pending; cannot be runnable`);
+    // The scale-up registry describes planned instances, not candidate task cards.
+    // Keep this exception explicit so other incomplete candidate folders still fail.
+    if (e.name === 'brainscore') {
+      for (const name of ['sources', 'candidates', 'instances']) {
+        const manifest = JSON.parse(readFileSync(join(dir, `${name}.json`), 'utf8'));
+        if (manifest.schema !== `bpb-bs-${name}/1` || (name === 'instances' &&
+            (!Array.isArray(manifest.instances) || manifest.instances.some(i => i.status !== 'planned'))))
+          throw new Error(`${directory}: invalid planning registry; run brainscore_cli.py validate`);
+      }
+      return [];
+    }
     const card = JSON.parse(readFileSync(join(dir, 'candidate.json'), 'utf8'));
     if (card.schema !== 'bpb-alignment-candidate/1' || card.id !== e.name || card.domain !== 'alignment' ||
         card.status !== 'offline_scaffold_data_pending' || card.runnable !== false || card.validated !== false ||
@@ -21,7 +32,7 @@ export function readAlignmentCandidates(root) {
     if (protocol.allow_fallback !== false || !['not-implemented-not-accepted', 'implemented-not-validated'].includes(protocol.status) ||
         protocol.upstream.commit !== card.upstream_source_sha)
       throw new Error(`${directory}: candidate protocol binding/status differs`);
-    return { card, directory };
+    return [{ card, directory }];
   });
 }
 

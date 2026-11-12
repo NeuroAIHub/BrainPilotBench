@@ -1,0 +1,43 @@
+{
+  "schema": "bpb-bs-grade/1",
+  "state": "scored",
+  "analysis_success": 1,
+  "isolation": "docker",
+  "prose_review": "not_assessed",
+  "acceptance": "experimental-data-and-agent-validation-pending",
+  "instance_id": "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce",
+  "synthetic_only": false,
+  "input_manifest_sha256": "99b79297f6f4df62ea0e1ae461bc9d497ceddd92047659f60bc959666151d3d5",
+  "image": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0",
+  "worker_limits": {
+    "timeout_seconds": 900.0,
+    "cpus": 2.0,
+    "memory": "8g"
+  },
+  "comparisons": [
+    {
+      "kind": "rerun",
+      "passed": true,
+      "errors": [],
+      "atol": 1e-06,
+      "rtol": 1e-05
+    },
+    {
+      "kind": "saved",
+      "passed": true,
+      "errors": [],
+      "atol": 1e-06,
+      "rtol": 1e-05
+    },
+    {
+      "kind": "functional-control",
+      "passed": true,
+      "errors": [],
+      "atol": 1e-06,
+      "rtol": 1e-05
+    }
+  ],
+  "inputs_unchanged": true,
+  "source_unchanged": true,
+  "wall_seconds": 72.11645013839006
+}

@@ -3,6 +3,10 @@
 Task one evaluates whether an Agent performs the specified analysis correctly and
 reproducibly. A fixed representation's high brain score is not the Agent metric.
 
+For a detailed Chinese explanation of expansion tasks A–F, see
+[数据、模型、测验方法与 Agent 能力](TASKS_A_F_GUIDE.zh-CN.md), covering the implemented
+profiles, scientific metrics, Agent grading, reference results and scope limits.
+
 - [Pereira2018 candidate](alignment-pereira2018-analysis/README.md): offline scaffold;
   real server execution/equivalence validated separately; canonical promotion and
   scientific/Agent acceptance pending; not in the runnable collection.

@@ -65,7 +65,8 @@
     "test:alignment": "node scripts/test-alignment.mjs",
     "test:alignment-profile": "node scripts/test-alignment-profile.mjs",
     "test:alignment-incremental": "node scripts/test-alignment-incremental.mjs",
-    "test:alignment-expansion": "node scripts/test-alignment-expansion.mjs"
+    "test:alignment-expansion": "node scripts/test-alignment-expansion.mjs",
+    "test:alignment-brainscore": "node scripts/test-alignment-brainscore.mjs"
   },
   "engines": {
     "node": ">=22"

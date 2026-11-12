@@ -1,0 +1,104 @@
+{
+  "distilgpt2": {
+    "repository": "distilbert/distilgpt2",
+    "revision": "2290a62682d06624634c1f46a6ad5be0f47f38aa",
+    "files": [
+      {
+        "name": "config.json",
+        "git_blob_sha1": "fed02aafb76b46aa5da200966f9e42262e758023",
+        "bytes": 762,
+        "sha256": null
+      },
+      {
+        "name": "generation_config.json",
+        "git_blob_sha1": "057e43033439e068b325f32af95dde9efc9552ae",
+        "bytes": 124,
+        "sha256": null
+      },
+      {
+        "name": "generation_config_for_text_generation.json",
+        "git_blob_sha1": "c791c4d01fc484a57262ee57c878dd5b35863fe7",
+        "bytes": 165,
+        "sha256": null
+      },
+      {
+        "name": "merges.txt",
+        "git_blob_sha1": "226b0752cac7789c48f0cb3ec53eda48b7be36cc",
+        "bytes": 456318,
+        "sha256": null
+      },
+      {
+        "name": "model.safetensors",
+        "git_blob_sha1": "4a39931cbb1d0cbf2285b4f9afde21d69fca9dce",
+        "bytes": 352824413,
+        "sha256": "e1ff18884359fe8beb795a5f414feb85a6ce3d929ad019c0d958c039d2b94a1b"
+      },
+      {
+        "name": "tokenizer.json",
+        "git_blob_sha1": "4b988bccc9dc5adacd403c00b4704976196548f8",
+        "bytes": 1355256,
+        "sha256": null
+      },
+      {
+        "name": "tokenizer_config.json",
+        "git_blob_sha1": "be4d21d94f3b4687e5a54d84bf6ab46ed0f8defd",
+        "bytes": 26,
+        "sha256": null
+      },
+      {
+        "name": "vocab.json",
+        "git_blob_sha1": "1f1d9aaca301414e7f6c9396df506798ff4eb9a6",
+        "bytes": 1042301,
+        "sha256": null
+      }
+    ]
+  },
+  "gpt2-small": {
+    "repository": "openai-community/gpt2",
+    "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "files": [
+      {
+        "name": "config.json",
+        "git_blob_sha1": "10c66461e4c109db5a2196bff4bb59be30396ed8",
+        "bytes": 665,
+        "sha256": null
+      },
+      {
+        "name": "generation_config.json",
+        "git_blob_sha1": "3dc481ecc3b2c47a06ab4e20dba9d7f4b447bdf3",
+        "bytes": 124,
+        "sha256": null
+      },
+      {
+        "name": "merges.txt",
+        "git_blob_sha1": "226b0752cac7789c48f0cb3ec53eda48b7be36cc",
+        "bytes": 456318,
+        "sha256": null
+      },
+      {
+        "name": "model.safetensors",
+        "git_blob_sha1": "44b36d6e32d13c8fb28b0feab0ac8bfefa7efeda",
+        "bytes": 548105171,
+        "sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707"
+      },
+      {
+        "name": "tokenizer.json",
+        "git_blob_sha1": "4b988bccc9dc5adacd403c00b4704976196548f8",
+        "bytes": 1355256,
+        "sha256": null
+      },
+      {
+        "name": "tokenizer_config.json",
+        "git_blob_sha1": "be4d21d94f3b4687e5a54d84bf6ab46ed0f8defd",
+        "bytes": 26,
+        "sha256": null
+      },
+      {
+        "name": "vocab.json",
+        "git_blob_sha1": "1f1d9aaca301414e7f6c9396df506798ff4eb9a6",
+        "bytes": 1042301,
+        "sha256": null
+      }
+    ]
+  }
+}

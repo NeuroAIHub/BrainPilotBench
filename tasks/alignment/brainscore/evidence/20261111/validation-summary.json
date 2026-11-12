@@ -1,0 +1,74 @@
+{
+  "schema": "bpb-bs-validation-summary/1",
+  "date": "2026-11-11",
+  "dataset_or_model_downloads": false,
+  "software_and_metadata_fetched": true,
+  "existing_local_assets_reused": true,
+  "suites": [
+    {
+      "suite": "contracts",
+      "tests": 21,
+      "skipped_in_other_ecosystem": 0,
+      "seconds": 0.617,
+      "passed": true,
+      "log_sha256": "64d638db31ddf7c9e61223762f78fb0ee22e9731b4d6ae6ade6e6b287a8553d3"
+    },
+    {
+      "suite": "language-scientific",
+      "tests": 7,
+      "skipped_in_other_ecosystem": 0,
+      "seconds": 74.418,
+      "passed": true,
+      "log_sha256": "82cb9553a4a908be47c9a7a8ebec498e91d8308bb82419f28e9598115dcc2806"
+    },
+    {
+      "suite": "vision-scientific",
+      "tests": 7,
+      "skipped_in_other_ecosystem": 1,
+      "seconds": 79.528,
+      "passed": true,
+      "log_sha256": "52ce4c59eb8b540429122affa189b0b43f905cce61ed5ade2f847c737402197f"
+    },
+    {
+      "suite": "language-bindings",
+      "tests": 5,
+      "skipped_in_other_ecosystem": 3,
+      "seconds": 11.0,
+      "passed": true,
+      "log_sha256": "804f4af6756b532a178409d085bcb014f8d90b1cfeec492651948b13d405c3f8"
+    },
+    {
+      "suite": "vision-bindings",
+      "tests": 5,
+      "skipped_in_other_ecosystem": 2,
+      "seconds": 7.951,
+      "passed": true,
+      "log_sha256": "c1a96a2a3344cd45c49cca7519b58043517a64d9eb6a769f8af3f52809b50c0f"
+    }
+  ],
+  "node_catalog_tests_passed": 4,
+  "synthetic_instances": 24,
+  "synthetic_metric_cases": 36,
+  "real_cases": 1,
+  "independent_agent_runs": 0,
+  "canonical_new_tasks": 0,
+  "catalog": {
+    "runnable": 112,
+    "candidate": 6,
+    "total": 118
+  },
+  "cli_steps_passed": [
+    "prepare",
+    "manual-run",
+    "manual-resume",
+    "submit-verify",
+    "schema-validation",
+    "docker-score",
+    "leaderboard"
+  ],
+  "limitations": [
+    "Synthetic inputs do not establish real data equivalence for other sources.",
+    "Maintainer baseline is not an independent Agent.",
+    "Published artifact corrections and dataset/stimulus terms require the documented remaining checks."
+  ]
+}

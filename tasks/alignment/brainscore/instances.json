@@ -1,0 +1,507 @@
+{
+  "schema": "bpb-bs-instances/1",
+  "category": "alignment-analysis",
+  "metric": "analysis_success",
+  "counting": "Planned instances; not runnable tasks or independent datasets. Pereira migration is not net new.",
+  "migrations": [
+    {
+      "legacy_task_id": "alignment-pereira2018-analysis",
+      "legacy_upstream_commit": "3b4fde5d6f53a69c652c7a1128397549995547b0",
+      "target_instance_id": "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce",
+      "status": "equivalence-review-pending",
+      "numerical_equivalence_sha256": "fc78f2c5aa080871a96ecccf9b0cc323b6772733121af3b918103bf759239e41",
+      "review_notes": "Pinned final-layer features, scalar scores and all ten fold predictions/unit metrics match existing legacy reference; overall task admission and independent Agent validation remain pending."
+    }
+  ],
+  "instances": [
+    {
+      "id": "alignment-bs-majajhong2015-it-alexnet-reproduce",
+      "family_id": "majajhong2015",
+      "benchmark_ids": [
+        "MajajHong2015public.IT-pls"
+      ],
+      "candidate_ids": [
+        "alexnet"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P1",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-majajhong2015-it-pixels-reproduce",
+      "family_id": "majajhong2015",
+      "benchmark_ids": [
+        "MajajHong2015public.IT-pls"
+      ],
+      "candidate_ids": [
+        "pixels"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P1",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-freemanziemba2013-v1-alexnet-reproduce",
+      "family_id": "freemanziemba2013",
+      "benchmark_ids": [
+        "FreemanZiemba2013public.V1-pls"
+      ],
+      "candidate_ids": [
+        "alexnet"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P2",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-freemanziemba2013-v1-pixels-reproduce",
+      "family_id": "freemanziemba2013",
+      "benchmark_ids": [
+        "FreemanZiemba2013public.V1-pls"
+      ],
+      "candidate_ids": [
+        "pixels"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P2",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-freemanziemba2013-v2-alexnet-reproduce",
+      "family_id": "freemanziemba2013",
+      "benchmark_ids": [
+        "FreemanZiemba2013public.V2-pls"
+      ],
+      "candidate_ids": [
+        "alexnet"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P2",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-freemanziemba2013-v2-pixels-reproduce",
+      "family_id": "freemanziemba2013",
+      "benchmark_ids": [
+        "FreemanZiemba2013public.V2-pls"
+      ],
+      "candidate_ids": [
+        "pixels"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P2",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-majajhong2015-v4-alexnet-reproduce",
+      "family_id": "majajhong2015",
+      "benchmark_ids": [
+        "MajajHong2015public.V4-pls"
+      ],
+      "candidate_ids": [
+        "alexnet"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P2",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-majajhong2015-v4-pixels-reproduce",
+      "family_id": "majajhong2015",
+      "benchmark_ids": [
+        "MajajHong2015public.V4-pls"
+      ],
+      "candidate_ids": [
+        "pixels"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P2",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-blank2014-fmri-distilgpt2-reproduce",
+      "family_id": "blank2014",
+      "benchmark_ids": [
+        "Blank2014-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-blank2014-fmri-gpt2-small-reproduce",
+      "family_id": "blank2014",
+      "benchmark_ids": [
+        "Blank2014-ridge"
+      ],
+      "candidate_ids": [
+        "gpt2-small"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-fedorenko2016-ecog-distilgpt2-reproduce",
+      "family_id": "fedorenko2016",
+      "benchmark_ids": [
+        "Fedorenko2016-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-fedorenko2016-ecog-gpt2-small-reproduce",
+      "family_id": "fedorenko2016",
+      "benchmark_ids": [
+        "Fedorenko2016-ridge"
+      ],
+      "candidate_ids": [
+        "gpt2-small"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-futrell2018-reading-times-distilgpt2-reproduce",
+      "family_id": "futrell2018",
+      "benchmark_ids": [
+        "Futrell2018-pearsonr"
+      ],
+      "candidate_ids": [
+        "distilgpt2"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-futrell2018-reading-times-gpt2-small-reproduce",
+      "family_id": "futrell2018",
+      "benchmark_ids": [
+        "Futrell2018-pearsonr"
+      ],
+      "candidate_ids": [
+        "gpt2-small"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-pereira2018-243sentences-distilgpt2-reproduce",
+      "family_id": "pereira2018",
+      "benchmark_ids": [
+        "Pereira2018.243sentences-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-pereira2018-243sentences-gpt2-small-reproduce",
+      "family_id": "pereira2018",
+      "benchmark_ids": [
+        "Pereira2018.243sentences-ridge"
+      ],
+      "candidate_ids": [
+        "gpt2-small"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce",
+      "family_id": "pereira2018",
+      "benchmark_ids": [
+        "Pereira2018.384sentences-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": "3655a71b4ea36f2da065c05f21f96c71a7ae6a475b160e0fa1ffb56fa32b9c88",
+        "official_equivalence_sha256": "1b8ef4fabf353b17e30aa31f964f0088eff6368020ba8e504f209434bb6fb473",
+        "isolated_grading_sha256": "96b5bae31077d34cd24b78a5b4fd78788d76a7076fff3603fe418318762036ee",
+        "resource_report_sha256": "ae1638e0ddf6223395d48146ef10b619e9c5170c7107032c48fe82c051485046",
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-pereira2018-384sentences-gpt2-small-reproduce",
+      "family_id": "pereira2018",
+      "benchmark_ids": [
+        "Pereira2018.384sentences-ridge"
+      ],
+      "candidate_ids": [
+        "gpt2-small"
+      ],
+      "template": "t1-reproduce",
+      "phase": "P3",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-blank2014-compare",
+      "family_id": "blank2014",
+      "benchmark_ids": [
+        "Blank2014-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-fedorenko2016-compare",
+      "family_id": "fedorenko2016",
+      "benchmark_ids": [
+        "Fedorenko2016-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-freemanziemba2013-compare",
+      "family_id": "freemanziemba2013",
+      "benchmark_ids": [
+        "FreemanZiemba2013public.V1-pls",
+        "FreemanZiemba2013public.V2-pls"
+      ],
+      "candidate_ids": [
+        "pixels",
+        "alexnet"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-futrell2018-compare",
+      "family_id": "futrell2018",
+      "benchmark_ids": [
+        "Futrell2018-pearsonr"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-majajhong2015-compare",
+      "family_id": "majajhong2015",
+      "benchmark_ids": [
+        "MajajHong2015public.V4-pls",
+        "MajajHong2015public.IT-pls"
+      ],
+      "candidate_ids": [
+        "pixels",
+        "alexnet"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-pereira2018-compare",
+      "family_id": "pereira2018",
+      "benchmark_ids": [
+        "Pereira2018.243sentences-ridge",
+        "Pereira2018.384sentences-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    }
+  ]
+}
