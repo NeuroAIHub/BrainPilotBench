@@ -1,0 +1,146 @@
+{
+  "task": "alignment-global-system-state",
+  "version": 1,
+  "level": 5,
+  "question": "哪种全脑组织读出能解释 CAPS 相对 REST 的主观回避意愿变化？选择整图指标，预测在新参与者中的评分相关，并考虑网络标签打乱对照。",
+  "metric": "avoidance_change_r",
+  "unit": "correlation",
+  "near_zero_threshold": 0.05,
+  "materials": {
+    "study_sha256": "17ca43dbc6ec53f9d9a1ae7b5ad234160d1dfee96dc5d83c714dd4cf87ae7366",
+    "atlas_sha256": "cf7191fd35b08c079acc78bd03813afa9f2e7774cc0f2181f8e242382022514d",
+    "systems": [
+      "visual",
+      "somatomotor",
+      "dAttention",
+      "vAttention",
+      "Limbic",
+      "Frontoparietal",
+      "Default",
+      "Subcortical",
+      "Brainstem/Cerebellum"
+    ],
+    "roi_count": 279,
+    "edge_count": 38781,
+    "ordering_lower_vs_upper_row_major": {
+      "CAPS": [
+        0.8816163137413453,
+        -0.013582138341399508
+      ],
+      "REST": [
+        0.8244882253297349,
+        -0.023379173024189626
+      ]
+    },
+    "participants_fit_dev_held": [
+      28,
+      8,
+      12
+    ],
+    "conditions": [
+      "CAPS",
+      "REST"
+    ],
+    "target": "CAPS minus REST future-avoidance rating, five paired bins",
+    "readout": "train-only standardized ridge, alpha 100; Pearson r across participant mean changes",
+    "control": "fixed permutation of 279 ROI system memberships, preserving network sizes and all FC values"
+  },
+  "candidates": [
+    {
+      "id": "mean_connectivity",
+      "train_value": -0.8387423038884344,
+      "development": {
+        "r": -0.8387423038884344,
+        "permuted_atlas_r": -0.8387423038884344,
+        "binwise_mean_forecast": [
+          0.22843793035221546,
+          0.22626405682765688,
+          0.22003223364029026,
+          0.22151061786276927,
+          0.22576210545041975
+        ],
+        "binwise_mean_observed": [
+          0.3180881316678275,
+          0.32449968387604,
+          0.22553456603808794,
+          0.04587712747386907,
+          -0.06967491952289648
+        ],
+        "n_participants": 8
+      },
+      "features": 1
+    },
+    {
+      "id": "system_segregation",
+      "train_value": 0.1933583977575547,
+      "development": {
+        "r": 0.1933583977575547,
+        "permuted_atlas_r": -0.687380810654276,
+        "binwise_mean_forecast": [
+          0.23977671687115387,
+          0.2125896992269341,
+          0.20886787651840183,
+          0.22432821910984718,
+          0.2247616309476859
+        ],
+        "binwise_mean_observed": [
+          0.3180881316678275,
+          0.32449968387604,
+          0.22553456603808794,
+          0.04587712747386907,
+          -0.06967491952289648
+        ],
+        "n_participants": 8
+      },
+      "features": 10
+    },
+    {
+      "id": "two_step_return",
+      "train_value": 0.2194552017425302,
+      "development": {
+        "r": 0.2194552017425302,
+        "permuted_atlas_r": -0.8383335685529366,
+        "binwise_mean_forecast": [
+          0.21068727787425628,
+          0.19693331195327074,
+          0.193412346649946,
+          0.19431692426862468,
+          0.19824200795721292
+        ],
+        "binwise_mean_observed": [
+          0.3180881316678275,
+          0.32449968387604,
+          0.22553456603808794,
+          0.04587712747386907,
+          -0.06967491952289648
+        ],
+        "n_participants": 8
+      },
+      "features": 10
+    },
+    {
+      "id": "network_blocks",
+      "train_value": 0.33966826597156224,
+      "development": {
+        "r": 0.33966826597156224,
+        "permuted_atlas_r": -0.12690253483840494,
+        "binwise_mean_forecast": [
+          0.2614724489838117,
+          0.21986291204261466,
+          0.19067150152583517,
+          0.20172908001613699,
+          0.18871788656694277
+        ],
+        "binwise_mean_observed": [
+          0.3180881316678275,
+          0.32449968387604,
+          0.22553456603808794,
+          0.04587712747386907,
+          -0.06967491952289648
+        ],
+        "n_participants": 8
+      },
+      "features": 46
+    }
+  ]
+}

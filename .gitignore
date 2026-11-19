@@ -26,3 +26,4 @@ docs/*
 !docs/private-evaluation.md
 !docs/alignment-task1-development-plan.md
 !docs/alignment-task2-development-plan.md
+!docs/alignment-multiscale-agent-demo-plan.zh-CN.md

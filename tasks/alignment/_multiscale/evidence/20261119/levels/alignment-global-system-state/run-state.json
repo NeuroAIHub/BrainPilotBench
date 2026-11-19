@@ -1,0 +1,8 @@
+{
+  "taskId": "alignment-global-system-state",
+  "taskVersion": "0.1-server-draft",
+  "agent": "maintainer-top-development",
+  "adapter": "manual",
+  "workspaceDir": "/tmp/bpb-multiscale-h-i-20261119/workspaces/alignment-global-system-state",
+  "createdAt": "2026-11-18T20:49:13.784Z"
+}

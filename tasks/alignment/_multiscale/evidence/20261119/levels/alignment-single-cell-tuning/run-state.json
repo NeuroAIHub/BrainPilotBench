@@ -1,0 +1,8 @@
+{
+  "taskId": "alignment-single-cell-tuning",
+  "taskVersion": "0.1-server-draft",
+  "agent": "maintainer-top-development",
+  "adapter": "manual",
+  "workspaceDir": "/tmp/bpb-multiscale-h-i-20261119/workspaces/alignment-single-cell-tuning",
+  "createdAt": "2026-11-18T20:49:06.195Z"
+}

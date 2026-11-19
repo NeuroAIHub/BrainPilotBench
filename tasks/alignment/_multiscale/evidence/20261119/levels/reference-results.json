@@ -1,0 +1,50 @@
+{
+  "1": {
+    "task": "alignment-single-cell-tuning",
+    "agent": "maintainer-top-development",
+    "choice": "L0-U2469",
+    "scores": {
+      "unit_tuning_r": -0.25523646166451464,
+      "forecast_absolute_error": 1.2325884111443577,
+      "direction_correct": 0
+    },
+    "forecast": 0.977351949479843,
+    "freeze_sha256": "e7888cd69ce88bdc8fe72e9b79b5c937dfda6366127a989a075bc1cd86ca9c57"
+  },
+  "3": {
+    "task": "alignment-head-mlp-path",
+    "agent": "maintainer-top-development",
+    "choice": "L1-H8-to-L2-MLP",
+    "scores": {
+      "path_specific_gain": 0.000488884069702842,
+      "forecast_absolute_error": 0.0009324428710070526,
+      "direction_correct": 0
+    },
+    "forecast": 0.0014213269407098946,
+    "freeze_sha256": "303c33945b533bfda5c19bf6719ac8bcdcdf837f4ef9ff28d694ff194808f0dc"
+  },
+  "4": {
+    "task": "alignment-language-network-edges",
+    "agent": "maintainer-top-development",
+    "choice": "L4-pre1",
+    "scores": {
+      "edge_change_r": 0.1551944866453338,
+      "forecast_absolute_error": 0.005253183449313803,
+      "direction_correct": 1
+    },
+    "forecast": 0.1604476700946476,
+    "freeze_sha256": "30fe304f912dc8d947d25c6866f8c80d8d06bf0592b52a85a0303b3a8cf54036"
+  },
+  "5": {
+    "task": "alignment-global-system-state",
+    "agent": "maintainer-top-development",
+    "choice": "network_blocks",
+    "scores": {
+      "avoidance_change_r": -0.017733545884396913,
+      "forecast_absolute_error": 0.35740181185595915,
+      "direction_correct": 0
+    },
+    "forecast": 0.33966826597156224,
+    "freeze_sha256": "07498f3747cf8be7072519b1201460be5753a8718ffd3db10d1b83143e6b02a5"
+  }
+}

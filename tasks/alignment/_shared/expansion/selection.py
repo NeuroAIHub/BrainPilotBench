@@ -2,20 +2,38 @@
 import hashlib
 import json
 import os
+from dataclasses import dataclass
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from real_brainscore.common import new_directory, read_json, seal, separate_paths, sha256, write_json
 from . import ExpansionError
 from .packet import array, save, verify
 from .protocol import specification
 
+if TYPE_CHECKING:
+    import numpy as np
 
-def prepare(csv, cache, output, hidden):
+
+@dataclass
+class ResponsePool:
+    metadata: dict
+    train: 'np.ndarray'
+    hidden: 'np.ndarray'
+    train_subjects: list
+    held_subjects: list
+    excluded: list
+    conditions: list[str | None]
+
+
+def stimulus_id(item_id):
+    return 'sentence-' + hashlib.sha256(('tuckute:' + str(item_id)).encode()).hexdigest()[:16]
+
+
+def response_pool(csv):
+    """Build the common F sentence/subject partitions before extracting model features."""
     import numpy as np
     import pandas as pd
-    from .features import local_text_features
-    for a, b in ((output, hidden), (csv, output), (csv, hidden)):
-        separate_paths(a, b)
     frame = pd.read_csv(csv)
     frame = frame[frame['roi'] == 'lang_LH_netw'].copy()
     if frame.duplicated(['item_id', 'target_UID']).any():
@@ -46,9 +64,8 @@ def prepare(csv, cache, output, hidden):
     texts = [str(text[i][0]).strip() for i in all_ids]
     if set(texts[:len(train_ids)]) & set(texts[len(train_ids):]):
         raise ExpansionError('sentence text leaks across partitions')
-    features, feature_provenance = local_text_features(texts, cache)
     # Opaque IDs omit source condition and author model predictions.
-    ids = ['sentence-' + hashlib.sha256(('tuckute:' + str(i)).encode()).hexdigest()[:16] for i in all_ids]
+    ids = [stimulus_id(i) for i in all_ids]
     words = np.asarray([len(s.split()) for s in texts])
     bins = np.digitize(words, specification('F')['length_bins_words'][1:-1])
     pool_bins = bins[len(train_ids):]
@@ -66,17 +83,32 @@ def prepare(csv, cache, output, hidden):
             'candidate_length_bins': pool_bins.tolist(), 'quota_per_group': quota,
             'response_units': 'author session-wise voxel z-scores, then ROI mean',
             'population': 'largest common held-out participant coverage group; ties resolved by candidate count then participant IDs'}
+    condition = candidates.groupby('item_id').cond.unique()
+    return ResponsePool(meta, train_y, hidden_y, train_subjects, held_subjects, missing_train,
+                        [str(condition[i][0]) if len(condition[i]) == 1 else None for i in candidate_ids])
+
+
+def prepare(csv, cache, output, hidden):
+    import numpy as np
+    from .features import local_text_features
+    for a, b in ((output, hidden), (csv, output), (csv, hidden)):
+        separate_paths(a, b)
+    pool = response_pool(csv)
+    meta = pool.metadata
+    n = len(meta['train_ids'])
+    features, feature_provenance = local_text_features(meta['train_sentences'] + meta['candidate_sentences'], cache)
     public = save(new_directory(output), 'F', meta,
-                  {'train_features': features[:len(train_ids)], 'candidate_features': features[len(train_ids):], 'train_responses': train_y},
+                  {'train_features': features[:n], 'candidate_features': features[n:], 'train_responses': pool.train},
                   {'source': 'https://osf.io/ru38b/', 'csv_sha256': sha256(csv), 'features': feature_provenance,
-                   'excluded_incomplete_training_source_ids': missing_train,
+                   'excluded_incomplete_training_source_ids': pool.excluded,
                    'contamination': 'public sentences and labels; offline experimental use only'})
     owner = new_directory(hidden)
-    np.save(owner / 'responses.npy', hidden_y, allow_pickle=False)
-    write_json(owner / 'identities.json', {'candidate_ids': meta['candidate_ids'], 'subjects': [str(s) for s in held_subjects]})
+    np.save(owner / 'responses.npy', pool.hidden, allow_pickle=False)
+    write_json(owner / 'identities.json', {'candidate_ids': meta['candidate_ids'], 'subjects': [str(s) for s in pool.held_subjects]})
     seal(owner, {'schema': 'bpb-selection-hidden/1', 'public_manifest_sha256': public['manifest_sha256']})
-    return {'inputs': str(public['root']), 'hidden': str(owner), 'train_sentences': len(train_ids),
-            'candidate_sentences': len(candidate_ids), 'train_subjects': train_subjects, 'heldout_subjects': held_subjects}
+    return {'inputs': str(public['root']), 'hidden': str(owner), 'train_sentences': n,
+            'candidate_sentences': len(meta['candidate_ids']), 'train_subjects': pool.train_subjects,
+            'heldout_subjects': pool.held_subjects}
 
 
 def balanced_selection(predictions, metadata):

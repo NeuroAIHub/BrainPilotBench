@@ -1,0 +1,151 @@
+{
+  "task": "alignment-head-mlp-path",
+  "version": 1,
+  "level": 3,
+  "question": "选择一条注意力头到 MLP 的直接路径。仅修复这条路径，能把扰动句的目标词 log p 恢复多少？预测相对同层其他头的额外恢复量。",
+  "metric": "path_specific_gain",
+  "unit": "nat",
+  "near_zero_threshold": 0.001,
+  "materials": {
+    "model_revision": "2290a62682d06624634c1f46a6ad5be0f47f38aa",
+    "packet_sha256": "5ba136a95d54d9db8ac0983f387c7cf0036af09a7534a115492a1f4f071ca706",
+    "source_layer": 1,
+    "receiver_layer": 2,
+    "receiver_units": [
+      79,
+      2872,
+      1081,
+      2588,
+      1813,
+      56,
+      2765,
+      1989
+    ],
+    "position": "pre1",
+    "pairs_train_test": [
+      32,
+      32
+    ],
+    "search_sentence_ids": [
+      "sentence-19f4e65d4c9907ac",
+      "sentence-c8cedc3f3e93e767",
+      "sentence-f7fd42b4aaeebbee",
+      "sentence-5476daea9aae7ab8",
+      "sentence-8b1861413f91a5e9",
+      "sentence-e94ddee5e34c9ab1",
+      "sentence-6b60be7f6c50d94f",
+      "sentence-14901dee854de1d4",
+      "sentence-8d69586f37ffa319",
+      "sentence-d367727d41b56ef1",
+      "sentence-5dcd812cb15716a6",
+      "sentence-8b44e602908d1a9b",
+      "sentence-25b82336fb97c2d0",
+      "sentence-7e22f4c65318bd08",
+      "sentence-553a419ecf771974",
+      "sentence-1f6471e7d9dd70f8",
+      "sentence-bbd348012f881af1",
+      "sentence-53f58fae1dfd47a5",
+      "sentence-982efc5761f076f0",
+      "sentence-5c751a7cad0b1c9e",
+      "sentence-76db4e067c3679f2",
+      "sentence-b25582aee82ba1cb",
+      "sentence-906ded495db1f7de",
+      "sentence-c2269258449d5824",
+      "sentence-64f8f84e37c67a9f",
+      "sentence-43ab4c6b27e2ee5e",
+      "sentence-88b73999e3e83ef2",
+      "sentence-216a1df521fb6712",
+      "sentence-c6addf3c3ad1b1e2",
+      "sentence-35a0700fa033f168",
+      "sentence-037c2a697e6e8171",
+      "sentence-a00689d34e774bcf"
+    ],
+    "comparison": "eleven other heads at the same sender layer and receiver"
+  },
+  "candidates": [
+    {
+      "id": "L1-H0-to-L2-MLP",
+      "train_value": 0.00035988742654973805,
+      "patched_logp_gain": 0.0001830458641052246,
+      "other_heads_mean": -0.0001768415624445135,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H1-to-L2-MLP",
+      "train_value": 0.00021862441843206233,
+      "patched_logp_gain": 5.3554773330688477e-05,
+      "other_heads_mean": -0.00016506964510137388,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H2-to-L2-MLP",
+      "train_value": 0.0002286542545665394,
+      "patched_logp_gain": 6.274878978729248e-05,
+      "other_heads_mean": -0.0001659054647792469,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H3-to-L2-MLP",
+      "train_value": -0.00031859766353260397,
+      "patched_logp_gain": -0.00043889880180358887,
+      "other_heads_mean": -0.000120301138270985,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H4-to-L2-MLP",
+      "train_value": -0.0008406205610795453,
+      "patched_logp_gain": -0.0009174197912216187,
+      "other_heads_mean": -7.679923014207319e-05,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H5-to-L2-MLP",
+      "train_value": -0.0008991089734164152,
+      "patched_logp_gain": -0.0009710341691970825,
+      "other_heads_mean": -7.19251957806674e-05,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H6-to-L2-MLP",
+      "train_value": -0.001044874841516668,
+      "patched_logp_gain": -0.0011046528816223145,
+      "other_heads_mean": -5.977804010564631e-05,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H7-to-L2-MLP",
+      "train_value": -7.055022499778055e-06,
+      "patched_logp_gain": -0.00015331804752349854,
+      "other_heads_mean": -0.0001462630250237205,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H8-to-L2-MLP",
+      "train_value": 0.0014213269407098946,
+      "patched_logp_gain": 0.0011560320854187012,
+      "other_heads_mean": -0.00026529485529119324,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H9-to-L2-MLP",
+      "train_value": 0.0005422451279380106,
+      "patched_logp_gain": 0.0003502070903778076,
+      "other_heads_mean": -0.0001920380375602029,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H10-to-L2-MLP",
+      "train_value": 0.00018006563186645505,
+      "patched_logp_gain": 1.8209218978881836e-05,
+      "other_heads_mean": -0.00016185641288757324,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    },
+    {
+      "id": "L1-H11-to-L2-MLP",
+      "train_value": 0.00015945326198231092,
+      "patched_logp_gain": -6.854534149169922e-07,
+      "other_heads_mean": -0.00016013871539722788,
+      "intact_minus_corrupt_logp": 4.791292816400528
+    }
+  ]
+}

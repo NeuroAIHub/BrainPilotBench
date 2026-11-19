@@ -1,0 +1,25 @@
+{
+  "taskId": "alignment-head-mlp-path",
+  "taskVersion": "0.1-server-draft",
+  "primaryMetric": {
+    "id": "path_specific_gain",
+    "direction": "maximize",
+    "unit": "nat"
+  },
+  "evaluationProfile": "alignment-head-mlp-path-v1",
+  "runId": "alignment-head-mlp-path-maintainer-top-development",
+  "version": "maintainer-top-development",
+  "scoredAt": "2026-11-18T20:49:09.997Z",
+  "state": "scored",
+  "results": [
+    {
+      "kind": "exec-script",
+      "value": {
+        "path_specific_gain": 0.000488884069702842,
+        "forecast_absolute_error": 0.0009324428710070526,
+        "direction_correct": 0
+      },
+      "explanation": "exec-script checks/check.sh (exit 0)"
+    }
+  ]
+}

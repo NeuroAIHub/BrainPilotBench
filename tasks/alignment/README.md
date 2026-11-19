@@ -7,6 +7,17 @@ For a detailed Chinese explanation of expansion tasks A–F, see
 [数据、模型、测验方法与 Agent 能力](TASKS_A_F_GUIDE.zh-CN.md), covering the implemented
 profiles, scientific metrics, Agent grading, reference results and scope limits.
 
+The word-order experiment follows a researcher from a frozen group of distilgpt2
+units through causal intervention and sentence-level brain prediction. Its first
+run includes an independent Agent, a fixed top-k baseline and a portable replay.
+[Multiscale experiment and results](_multiscale/README.zh-CN.md) · [Original experiment plan](../../docs/alignment-multiscale-agent-demo-plan.zh-CN.md)
+
+Four additional experimental tasks cover single-cell semantic tuning, head-to-MLP
+path patching, condition-dependent coactivation across five language regions, and
+whole-brain network organization against avoidance ratings. Each has a frozen
+reference submission, held-out measurements and a verified CLI run.
+[Tasks, results and runbook](_multiscale/LEVELS.zh-CN.md) · [Methods and primary sources](_multiscale/METHODS.zh-CN.md)
+
 - [Pereira2018 candidate](alignment-pereira2018-analysis/README.md): offline scaffold;
   real server execution/equivalence validated separately; canonical promotion and
   scientific/Agent acceptance pending; not in the runnable collection.

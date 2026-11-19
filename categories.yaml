@@ -63,3 +63,6 @@ alignment-analysis:
 # emit no effect score. Keep this separate from analysis correctness.
 alignment-selection:
   metrics: [selection_effect, selection_valid]
+
+alignment-interpretability:
+  metrics: [direction_correct, forecast_absolute_error]

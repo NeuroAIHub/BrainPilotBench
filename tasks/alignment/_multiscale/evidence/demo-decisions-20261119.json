@@ -1,0 +1,227 @@
+{
+  "protocol": "tuckute-mlp-word-order-v1",
+  "actor": "codex-researcher-01",
+  "packet_sha256": "5ba136a95d54d9db8ac0983f387c7cf0036af09a7534a115492a1f4f071ca706",
+  "runs": {
+    "agent": [
+      {
+        "stage": "open",
+        "at": "2026-11-18T20:28:13.210980+00:00",
+        "request": {},
+        "hash": "56989c25351107f340fc61f5b644497edd24bea12d933fe3291f3433026a8c35"
+      },
+      {
+        "stage": "inspect1",
+        "at": "2026-11-18T20:28:56.531424+00:00",
+        "request": {
+          "layer": 5,
+          "position": "pre1",
+          "units": [
+            179,
+            2227,
+            1597,
+            1439,
+            2912,
+            182,
+            3066,
+            2900
+          ],
+          "reason": "第5层 pre1 的词序差最大。保留两份榜单共有的2912，加入词序差前四名和脑相关前三名，检验这组单元对开发集脑响应的增量预测力。"
+        },
+        "hash": "ae2997dd73b6bcd5c784a04077e46158421074c471d2e3c510c363375b7c6b11"
+      },
+      {
+        "stage": "inspect2",
+        "at": "2026-11-18T20:29:23.993175+00:00",
+        "request": {
+          "layer": 2,
+          "position": "pre1",
+          "units": [
+            56,
+            79,
+            2872,
+            1081,
+            848,
+            2110,
+            1243,
+            2402
+          ],
+          "reason": "第5层的词序效应复现，但开发集脑Δr仅约0.003。第2层 pre1 的词序差仍较大，且56在脑相关榜居首、也入选词序榜。加入另外四个脑相关靠前的单元和词序差前三名，检验较早一层是否有更大的脑增益。"
+        },
+        "hash": "50501f0c35b2d30da9d07f06861788523dbda258eb9949240d56fa86921c364f"
+      },
+      {
+        "stage": "freeze",
+        "at": "2026-11-18T20:31:03.464856+00:00",
+        "request": {
+          "layer": 2,
+          "position": "pre1",
+          "units": [
+            56,
+            79,
+            2872,
+            1081,
+            848,
+            2110,
+            1243,
+            2402
+          ],
+          "reason": "冻结第2层这组。原句相对反转句的效应在搜索和开发集均为正，开发集脑Δr为0.051，高于第5层组的0.003。选择循环左移，因为它改变末词前的直接上下文，却保留多数中间词的相邻关系。我预计移除这8个单元的额外目标词损失交互较小，三个隐藏参与者的脑增益可能分布在零附近至小幅为正的范围。",
+          "contrast": "rotate",
+          "hypotheses": [
+            {
+              "explanation": "若这组单元主要响应末词之前收束短语的局部词序，循环左移会把首个中间词移到末词之前，破坏原有短语。原句的组平均激活应更高。",
+              "activation": "up"
+            },
+            {
+              "explanation": "若反转效应主要来自中段连续短语被大面积打散，循环左移保留了多数中间词的相邻关系。原句与循环左移句的组平均激活应近似持平。",
+              "activation": "flat"
+            }
+          ],
+          "expected_interaction": "flat",
+          "expected_delta_r": [
+            -0.015,
+            0.1
+          ]
+        },
+        "hash": "d2a5e1ea4f0b1c4a2cb2ac09296805ec786d17912f8e3755b88e2c5d3badc521"
+      },
+      {
+        "stage": "probe",
+        "at": "2026-11-18T20:31:16.224968+00:00",
+        "request": {},
+        "hash": "6290b857f0f51e1b14f4ceb229615a6be1a82e6b925594abccbee85ab379f581"
+      },
+      {
+        "stage": "score",
+        "at": "2026-11-18T20:31:17.001766+00:00",
+        "request": {},
+        "hash": "a7ed23a464715fd2d0e74c95adf1405ade043615be60f95980b0f4ba8d1b5e99"
+      },
+      {
+        "stage": "conclude",
+        "at": "2026-11-18T20:32:24.700629+00:00",
+        "request": {
+          "hypothesis": "first",
+          "interaction": "flat",
+          "positive_participants": 3,
+          "conclusion": "原句的平均激活比循环左移句高0.345个训练标准差，32对中有28对超过正向阈值，支持第一个解释。区分短语收束与末词前词项身份的作用，还需控制该位置的词。平均消融交互为−0.0080 nat，落在预设持平区间。合并500句时，三人的脑预测Δr为0.031至0.044，均高于匹配随机组均值、低于整层。D条件三人均有小幅正增益，S条件两人为负，因此合并材料上的预测收益受条件影响。"
+        },
+        "hash": "f03283b8204f0f3425d7e97a81876d9fdbe8d7e561c36b18a5f15e70bdb61996"
+      }
+    ],
+    "baseline": [
+      {
+        "stage": "open",
+        "at": "2026-11-18T20:28:42.284558+00:00",
+        "request": {},
+        "hash": "36435e4c2b5034b24bc5962fd3a4ee67d65164a905fdaca4ac1060dd7d992642"
+      },
+      {
+        "stage": "inspect1",
+        "at": "2026-11-18T20:28:42.291903+00:00",
+        "request": {
+          "layer": 5,
+          "position": "pre1",
+          "units": [
+            179,
+            2227,
+            1597,
+            1439,
+            317,
+            2662,
+            2912,
+            2775
+          ],
+          "reason": "按搜索集标准化原序减乱序激活差排序，检查排名第 1 的层与读取位置。"
+        },
+        "hash": "9ee30b44b3a2f6de90463bc8a0cff6481d5306a25ea1e4612944062dc4f8cce9"
+      },
+      {
+        "stage": "inspect2",
+        "at": "2026-11-18T20:28:42.298502+00:00",
+        "request": {
+          "layer": 3,
+          "position": "pre1",
+          "units": [
+            421,
+            2046,
+            1606,
+            984,
+            2945,
+            1635,
+            722,
+            2755
+          ],
+          "reason": "按搜索集标准化原序减乱序激活差排序，检查排名第 2 的层与读取位置。"
+        },
+        "hash": "d9b4781434787036f73fa72de3c5315ccc7c2228b2522cd03ee8036d811868d4"
+      },
+      {
+        "stage": "freeze",
+        "at": "2026-11-18T20:28:42.362735+00:00",
+        "request": {
+          "layer": 5,
+          "position": "pre1",
+          "units": [
+            179,
+            317,
+            1439,
+            1597,
+            2227,
+            2662,
+            2775,
+            2912
+          ],
+          "reason": "固定选择训练词序效应排名第一的组合。",
+          "contrast": "reverse",
+          "hypotheses": [
+            {
+              "explanation": "词序偏好会在新句中复现。",
+              "activation": "up"
+            },
+            {
+              "explanation": "偏好来自末词位置，位置匹配后差异接近零。",
+              "activation": "flat"
+            }
+          ],
+          "expected_interaction": "up",
+          "expected_delta_r": [
+            -0.1332825172186277,
+            0.06671748278137232
+          ]
+        },
+        "hash": "5b7a82fefecb1d9eb3ea2c91c0d98879dd7bb02af0976146f9f3220ffd15789c"
+      },
+      {
+        "stage": "probe",
+        "at": "2026-11-18T20:32:02.340871+00:00",
+        "request": {},
+        "hash": "62a0a31da7aedacc9a8cf90f6818de15cbb29929d26cf5b48acc7cb39db0bf54"
+      },
+      {
+        "stage": "score",
+        "at": "2026-11-18T20:32:02.398288+00:00",
+        "request": {},
+        "hash": "983b42c3bbe4edef56415029a55f4fa748ab3529f832c26ffa0cd6ea270b68cc"
+      },
+      {
+        "stage": "conclude",
+        "at": "2026-11-18T20:32:02.410355+00:00",
+        "request": {
+          "hypothesis": "first",
+          "interaction": "up",
+          "positive_participants": 2,
+          "conclusion": "固定策略按确认阈值和逐人增益自动归纳。"
+        },
+        "hash": "05cbc86d64e452fc4becab7f24c073212ba61a0b2d67a17b28817e452f17ce14"
+      }
+    ]
+  },
+  "exported_sha256": {
+    "agent-frozen.json": "8d507fc9e28ec545d335509b3bc703743c1e090491ffeead5ab72f0664384d1a",
+    "baseline-frozen.json": "4325c59b2aabf66300127abf2e696448a0465c142d31f12afb9fbf85e00af7bf",
+    "demo.html": "d0da46323369d054ef7662e6e88f7f5743ea5da5f3b9d5b1555573b855bf82a3",
+    "events.json": "644f54c4b8f07463bfe8d7fd8b150c347b8ca9664d6f2e941c7e37cc19a7a15e"
+  }
+}

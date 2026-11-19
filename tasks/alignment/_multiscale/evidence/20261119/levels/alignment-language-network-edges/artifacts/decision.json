@@ -1,0 +1,7 @@
+{
+  "task": "alignment-language-network-edges",
+  "choice": "L4-pre1",
+  "forecast": 0.1604476700946476,
+  "explanation": "固定参考选择开发指标最大的候选，并用开发值预测独立观测。",
+  "alternative": "材料或参与者变化可能削弱该效应，若留出值接近零或反向则修正解释。"
+}

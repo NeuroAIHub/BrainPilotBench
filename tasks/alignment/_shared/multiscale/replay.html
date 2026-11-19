@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>词序与脑响应 · BrainPilotBench 实验回放</title>
+<style>
+:root {
+  color-scheme:light;
+  --ink:#173831;
+  --paper:#f6f5f0;
+  --muted:#526a62;
+  --line:#c9d4c9;
+  --green:#11654d;
+  --gold:#b57729;
+}
+* {
+  box-sizing:border-box;
+}
+body {
+  margin:0;
+  color:var(--ink);
+  background:var(--paper);
+  font:16px/1.65 "Source Sans 3","PingFang SC","Microsoft YaHei",sans-serif;
+}
+header,main,footer {
+  max-width:1080px;
+  margin:auto;
+  padding:20px clamp(15px,4vw,48px);
+}
+header,footer,.actions {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+header {
+  border-bottom:1px solid var(--line);
+}
+header b {
+  letter-spacing:.03em;
+}
+small,.muted {
+  color:var(--muted);
+}
+select,button {
+  max-width:100%;
+  font:inherit;
+  color:inherit;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+  padding:5px 11px;
+  cursor:pointer;
+}
+button:focus-visible,select:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:2px;
+}
+button:disabled {
+  opacity:.45;
+  cursor:default;
+}
+nav {
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin:22px 0;
+}
+nav button {
+  background:transparent;
+  border-color:transparent;
+}
+nav button[aria-current=step],.primary {
+  background:var(--green);
+  color:#fff;
+  border-color:var(--green);
+}
+h1,h2,h3,p {
+  margin:0 0 .65em;
+}
+h1 {
+  font:600 clamp(28px,4.5vw,52px)/1.25 "STIX Two Text","Songti SC",serif;
+  margin-top:.4em;
+}
+h2 {
+  font-size:1.25rem;
+  margin-top:1em;
+}
+h3 {
+  font-size:1rem;
+}
+.lede {
+  font-size:1.12em;
+  color:var(--muted);
+}
+.panel {
+  padding:clamp(14px,2.4vw,24px);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:9px;
+  margin:12px 0;
+  min-width:0;
+}
+.panel p:last-child {
+  margin-bottom:0;
+}
+.cols {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+  gap:12px;
+}
+.sentence {
+  font:500 clamp(21px,3vw,30px)/1.4 "STIX Two Text",Georgia,serif;
+}
+.tokens {
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:.7em 0;
+}
+.token,code {
+  font:14px/1.6 "IBM Plex Mono",monospace;
+  overflow-wrap:anywhere;
+}
+.token {
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:1px 5px;
+}
+.read {
+  border:2px solid var(--green);
+}
+.target {
+  background:#ffebbc;
+  color:#513610;
+}
+.number {
+  font-variant-numeric:tabular-nums;
+}
+table {
+  border-collapse:collapse;
+  width:100%;
+  font-variant-numeric:tabular-nums;
+  font-size:.95em;
+}
+th,td {
+  text-align:right;
+  border-bottom:1px solid var(--line);
+  padding:8px 5px;
+}
+th:first-child,td:first-child {
+  text-align:left;
+}
+th {
+  color:var(--muted);
+  font-weight:500;
+}
+.scroll {
+  overflow-x:auto;
+}
+.positive {
+  color:var(--green);
+}
+.negative {
+  color:#92420e;
+}
+footer {
+  border-top:1px solid var(--line);
+  margin-top:18px;
+}
+.actions {
+  justify-content:flex-start;
+  flex-wrap:wrap;
+}
+.call {
+  border-left:3px solid var(--green);
+  padding-left:12px;
+  margin:.7em 0;
+}
+.wrap {
+  overflow-wrap:anywhere;
+}
+summary {
+  cursor:pointer;
+}
+details {
+  margin-top:14px;
+}
+.gain-chart {
+  margin:18px 0;
+}
+.gain-row {
+  display:grid;
+  grid-template-columns:3em 1fr 4.5em;
+  gap:10px;
+  align-items:center;
+}
+.gain-row output {
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.gain-track {
+  position:relative;
+  height:14px;
+  background:#edf1ec;
+}
+.gain-track:before {
+  content:"";
+  position:absolute;
+  height:100%;
+  width:1px;
+  left:50%;
+  background:#526a62;
+}
+.gain-bar {
+  position:absolute;
+  height:8px;
+  top:3px;
+  background:var(--green);
+}
+.gain-bar.negative {
+  background:var(--gold);
+}
+@media(max-width:600px) {
+  header {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  main {
+    padding-top:6px;
+  }
+  nav {
+    gap:1px;
+    margin:12px 0;
+  }
+  nav button {
+    padding:4px 6px;
+    font-size:.9rem;
+  }
+  th,td {
+    font-size:.85rem;
+  }
+  footer small {
+    display:none;
+  }
+}
+</style>
+<header><b>BrainPilotBench</b><label>运行 <select id="run"><option value="agent">独立研究 Agent</option><option value="baseline">固定 top-k</option></select></label></header>
+<main><nav id="nav" aria-label="实验步骤"></nav><article id="view" aria-live="polite"></article></main>
+<footer><button id="previous">上一步</button><small id="status"></small><button id="next" class="primary">下一步</button></footer>
+<script id="experiment" type="application/json"><!--EXPERIMENT_DATA--></script>
+<script>
+'use strict';
+const D = JSON.parse(document.getElementById('experiment').textContent);
+const names = ['核对输入', '选择单元', '检验解释', '消融目标词', '揭晓脑响应'];
+const view = document.querySelector('#view'), run = document.querySelector('#run');
+let step = 0, pair = 0, cond = 'all', showProbe = false, showBrain = false;
+function el(tag, text, cls) {
+  const e = document.createElement(tag);
+  if (text !== undefined)
+    e.textContent = text;
+  if (cls)
+    e.className = cls;
+  return e
+}
+function add(parent, tag, text, cls) {
+  const e = el(tag, text, cls);
+  parent.append(e);
+  return e
+}
+function panel(title, parent = view) {
+  const e = add(parent, 'section', undefined, 'panel');
+  if (title)
+    add(e, 'h2', title);
+  return e
+}
+function fmt(v) {
+  return v == null ? '未定义' : (v > 0 ? '+' : '') + v.toFixed(3)
+}
+function sign(s) {
+  return {up: '原句较高', down: '扰动句较高', flat: '落入近零区间'}[s]
+}
+function pos(p) {
+  return p === 'pre1' ? '目标词前 1 个 token' : '目标词前 2 个 token'
+}
+function change(c) {
+  return c === 'reverse' ? '反转中间词' : '将中间词循环左移一位'
+}
+function group(g) {
+  return '第 ' + g.layer + ' 层 · ' + pos(g.position)
+}
+function head(title, lead) {
+  add(view, 'h1', title);
+  add(view, 'p', lead, 'lede')
+}
+function table(parent, headers, rows) {
+  const div = add(parent, 'div', undefined, 'scroll');
+  const t = add(div, 'table');
+  const top = add(add(t, 'thead'), 'tr');
+  headers.forEach(h => add(top, 'th', h));
+  const body = add(t, 'tbody');
+  rows.forEach(values => {
+    const row = add(body, 'tr');
+    values.forEach(v => add(row, 'td', v))
+  });
+  return t
+}
+function button(parent, text, fn) {
+  const e = add(parent, 'button', text, 'primary');
+  e.onclick = fn;
+  return e
+}
+function textPair(parent, title, v, g) {
+  const box = panel(title, parent);
+  add(box, 'p', v.text, 'sentence');
+  const tokens = add(box, 'div', undefined, 'tokens');
+  v.tokens.forEach(
+      (tok, i) =>
+          add(tokens, 'span', tok,
+              'token' + (i === v.start ? ' target' : '') +
+                  (i === v.start - (g === 'pre2' ? 2 : 1) ? ' read' : '')));
+  add(box, 'small', '绿色边框为读取位置，黄色为目标 token。索引从 0 开始。');
+  return box
+}
+function selectPair(parent, obs) {
+  const label = add(parent, 'label', '确认句对 ');
+  const s = add(label, 'select');
+  obs.forEach((v, i) => {
+    const o = add(s, 'option', (i + 1) + ' / ' + obs.length + ' · ' + v.original.target);
+    o.value = i
+  });
+  s.value = pair;
+  s.onchange = () => {
+    pair = Number(s.value);
+    draw()
+  }
+}
+function events() {
+  return Object.fromEntries(D.runs[run.value].map(e => [e.stage, e]))
+}
+function audit(e) {
+  const a = e.open.response.audit;
+  head('人和模型读到了什么', '同一个真实刺激，核对原文、分词与记录位置。');
+  const cols = add(view, 'div', undefined, 'cols');
+  textPair(cols, '人类实验原句', a.original, e.freeze.response.group.position);
+  textPair(cols, '仅用于模型的词序对照', a.model_only, e.freeze.response.group.position);
+  const p = panel('呈现记录');
+  const t = a.human_trial;
+  add(p, 'p',
+      '参与者 ' + t.target_UID + ' · session ' + t.session_id + ' · run ' + t.run_id + ' · trial ' +
+          t.trial_num);
+  add(p, 'code', a.id);
+  add(p, 'p',
+      '训练材料共 988 句。搜索 720 句，开发 144 句，另留 124 句供独立模型确认筛选。脑预测使用另外 500 句原句。');
+}
+function selectUnits(e) {
+  head('检查了哪两组单元？', '两次查询都在冻结前返回开发集结果。');
+  const cols = add(view, 'div', undefined, 'cols');
+  [e.inspect1, e.inspect2].forEach((event, i) => {
+    const d = event.response;
+    const p = panel('查询 ' + (i + 1) + ' · ' + group(d.group), cols);
+    add(p, 'p', event.request.reason);
+    add(p, 'code', d.group.units.join(' · '));
+    table(
+        p, ['开发集', '结果'],
+        [['原句 − 乱序激活', fmt(d.dev_order_z) + ' SD'], ['脑预测 Δr', fmt(d.dev_delta_r)]]);
+    d.examples.forEach((v, j) => {
+      add(p, 'h3', j ? '低激活样例' : '高激活样例');
+      add(p, 'p', v.text);
+      add(p, 'small', v.id + ' · z ' + fmt(v.mean_z))
+    })
+  });
+  const locked = panel('冻结的选择');
+  add(locked, 'p', group(e.freeze.response.group));
+  add(locked, 'p', e.freeze.request.reason, 'call');
+}
+function hypotheses(e) {
+  const f = e.freeze, m = e.probe.response, item = m.observations[pair];
+  head('哪个解释经得起新句子？', '先看冻结预测，再揭晓 32 对独立材料上的实际激活。');
+  const p = panel('事前预测 · ' + change(f.request.contrast));
+  f.request.hypotheses.forEach(
+      (h, i) => add(p, 'p', (i + 1) + '. ' + h.explanation + '　预测为' + sign(h.activation), 'call'));
+  selectPair(p, m.observations);
+  const cols = add(view, 'div', undefined, 'cols');
+  textPair(cols, '原句', item.original, f.response.group.position);
+  textPair(cols, '词序扰动', item.changed, f.response.group.position);
+  if (!showProbe) {
+    button(view, '揭晓激活结果', () => {
+      showProbe = true;
+      draw()
+    });
+    return
+  }
+  const b = panel('实测激活差');
+  add(b, 'p',
+      '当前句对 ' + fmt(item.activation) + ' SD，32 对平均 ' + fmt(m.activation_mean) + ' SD。判定阈值 ±' +
+          e.open.response.thresholds.activation_z + ' SD。');
+  m.hypothesis_scores.forEach(
+      (v, i) =>
+          add(b, 'p',
+              '解释 ' + (i + 1) + ' 的逐对方向命中 ' + v.pair_matches + ' / ' + m.n + '，平均方向' +
+                  (v.mean_matches ? '符合' : '偏离') + '事前预测。'));
+}
+function ablation(e) {
+  const m = e.probe.response, item = m.observations[pair];
+  head(
+      '这些单元会影响目标词概率吗？',
+      '只输入目标词之前的前文。候选组与 8 组激活强度匹配的随机单元在同一位置归零。');
+  const p = panel('目标词 ' + item.original.target);
+  selectPair(p, m.observations);
+  add(p, 'p', item.original.text + '　/　' + item.changed.text, 'sentence');
+  table(
+      p, ['条件', '完整模型 log p', '候选消融 log p', '随机消融 log p 均值', '额外损失'],
+      [['原句', item.cells.original], ['扰动句', item.cells.changed]].map(
+          ([n, c]) =>
+              [n, fmt(c.base_logp), fmt(c.selected_logp),
+               fmt(c.random_logp.reduce((a, b) => a + b, 0) / c.random_logp.length), fmt(c.extra_loss)]));
+  const b = panel('消融效应随词序改变了多少');
+  add(b, 'p',
+      '额外损失为候选消融损失减去随机消融平均损失。两种词序的额外损失之差，当前句对为 ' +
+          fmt(item.interaction) + ' nat，32 对平均为 ' + fmt(m.interaction_mean) + ' nat。');
+  add(b, 'p',
+      '事前判断为' + sign(e.freeze.request.expected_interaction) + '，实测为' +
+          sign(m.interaction_direction) + '。判定阈值 ±' + e.open.response.thresholds.interaction_nats +
+          ' nat。');
+}
+function gainChart(parent, subjects) {
+  const chart = add(parent, 'figure', undefined, 'gain-chart');
+  add(chart, 'figcaption', '逐人 Δr · 中线为零');
+  const allScores = Object.values(D.runs).flatMap(
+      events => Object.values(events.find(e => e.stage === 'score').response.scores));
+  const max = Math.max(
+      .01, ...allScores.flatMap(set => Object.values(set.subjects).map(s => Math.abs(s.delta_r || 0))));
+  Object.entries(subjects).forEach(([id, result]) => {
+    const row = add(chart, 'div', undefined, 'gain-row');
+    add(row, 'span', id);
+    const track = add(row, 'div', undefined, 'gain-track'), delta = result.delta_r;
+    if (delta !== null) {
+      const bar = add(track, 'div', undefined, 'gain-bar' + (delta < 0 ? ' negative' : ''));
+      const width = 48 * Math.abs(delta) / max;
+      bar.style.width = width + '%';
+      bar.style.left = (delta < 0 ? 50 - width : 50) + '%';
+    }
+    add(row, 'output', fmt(delta));
+  });
+}
+function brain(e) {
+  const f = e.freeze;
+  head('这组单元能增加多少脑预测信息？', '冻结 500 个逐句预测后，按参与者计算加入单元前后的相关差 Δr。');
+  const forecast = panel('冻结时的预测');
+  add(forecast, 'p',
+      '每位参与者的总体 Δr 预测区间为 [' + f.request.expected_delta_r.map(fmt).join(', ') + ']。');
+  add(forecast, 'small', '预测与读出映射指纹 ' + f.response.mapping_predictions_sha256, 'wrap');
+  if (!showBrain) {
+    button(view, '揭晓三位参与者的结果', () => {
+      showBrain = true;
+      draw()
+    });
+    return
+  }
+  const sets = {all: '全部候选句', D: '增强条件组内', S: '抑制条件组内'};
+  const p = panel('左半球语言网络');
+  const actions = add(p, 'div', undefined, 'actions');
+  Object.entries(sets).forEach(([k, v]) => {
+    const b = add(actions, 'button', v);
+    b.disabled = k === cond;
+    b.onclick = () => {
+      cond = k;
+      draw()
+    }
+  });
+  const scores = e.score.response.scores[cond],
+        comparison = D.runs[run.value === 'agent' ? 'baseline' : 'agent']
+                         .find(v => v.stage === 'score')
+                         .response.scores[cond];
+  gainChart(p, scores.subjects);
+  table(
+      p,
+      [
+        '参与者', '控制 r', '加入单元 r', 'Δr', '匹配随机 Δr 均值', '整层 Δr',
+        run.value === 'agent' ? '固定 top-k Δr' : '独立 Agent Δr'
+      ],
+      Object.entries(scores.subjects)
+          .map(
+              ([s, r]) =>
+                  [s, fmt(r.control_r), fmt(r.selected_r), fmt(r.delta_r), fmt(r.random_mean),
+                   fmt(r.whole_delta_r), fmt(comparison.subjects[s].delta_r)]));
+  add(p, 'small', sets[cond] + '，每位参与者 ' + scores.n + ' 句。控制量为词数、token 数及平均 surprisal。');
+  const b = panel('运行结论');
+  add(b, 'p', e.conclude.request.conclusion);
+}
+function draw() {
+  const e = events();
+  view.replaceChildren();
+  [audit, selectUnits, hypotheses, ablation, brain][step](e);
+  document.querySelectorAll('#nav button').forEach((b, i) => {
+    if (i === step)
+      b.setAttribute('aria-current', 'step');
+    else
+      b.removeAttribute('aria-current')
+  });
+  document.querySelector('#previous').disabled = step === 0;
+  document.querySelector('#next').disabled = step === 4;
+  document.querySelector('#status').textContent = (step + 1) + ' / 5 · ' + e.open.actor;
+  const trace = add(view, 'details');
+  add(trace, 'summary', '查看对应的运行记录');
+  const keys = [
+    ['open'], ['inspect1', 'inspect2', 'freeze'], showProbe ? ['freeze', 'probe'] : ['freeze'],
+    ['freeze', 'probe'], showBrain ? ['freeze', 'score', 'conclude'] : ['freeze']
+  ][step];
+  keys.forEach(k => add(trace, 'p', k + ' · ' + e[k].at + ' · ' + e[k].hash, 'wrap'));
+}
+function navigate(n) {
+  step = Math.max(0, Math.min(4, n));
+  draw();
+  window.scrollTo(0, 0)
+}
+names.forEach((name, i) => {
+  const b = add(document.querySelector('#nav'), 'button', name);
+  b.onclick = () => navigate(i)
+});
+document.querySelector('#previous').onclick = () => navigate(step - 1);
+document.querySelector('#next').onclick = () => navigate(step + 1);
+run.onchange = () => {
+  pair = 0;
+  cond = 'all';
+  showProbe = false;
+  showBrain = false;
+  draw()
+};
+document.addEventListener('keydown', e => {
+  if (['SELECT', 'BUTTON', 'SUMMARY'].includes(e.target.tagName))
+    return;
+  if (e.key === 'ArrowRight')
+    navigate(step + 1);
+  if (e.key === 'ArrowLeft')
+    navigate(step - 1)
+});
+draw();
+</script></html>

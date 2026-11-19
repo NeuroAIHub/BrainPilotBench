@@ -1,0 +1,25 @@
+{
+  "taskId": "alignment-global-system-state",
+  "taskVersion": "0.1-server-draft",
+  "primaryMetric": {
+    "id": "avoidance_change_r",
+    "direction": "maximize",
+    "unit": "correlation"
+  },
+  "evaluationProfile": "alignment-global-system-state-v1",
+  "runId": "alignment-global-system-state-maintainer-top-development",
+  "version": "maintainer-top-development",
+  "scoredAt": "2026-11-18T20:49:15.010Z",
+  "state": "scored",
+  "results": [
+    {
+      "kind": "exec-script",
+      "value": {
+        "avoidance_change_r": -0.017733545884396913,
+        "forecast_absolute_error": 0.35740181185595915,
+        "direction_correct": 0
+      },
+      "explanation": "exec-script checks/check.sh (exit 0)"
+    }
+  ]
+}

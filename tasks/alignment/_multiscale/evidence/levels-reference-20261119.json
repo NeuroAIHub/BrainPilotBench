@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-19",
+  "policy": "fixed highest development value with ID tie-break, development value as forecast",
+  "validation": [
+    "bp-bench validate (Oracle and NOP)",
+    "manual run/resume",
+    "submit verify",
+    "process score",
+    "byte-identical separate rebuild of public and owner packets",
+    "identical rescore on separate rebuild"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "task": "alignment-single-cell-tuning",
+      "agent": "maintainer-top-development",
+      "choice": "L0-U2469",
+      "scores": {
+        "unit_tuning_r": -0.25523646166451464,
+        "forecast_absolute_error": 1.2325884111443577,
+        "direction_correct": 0
+      },
+      "forecast": 0.977351949479843,
+      "freeze_sha256": "e7888cd69ce88bdc8fe72e9b79b5c937dfda6366127a989a075bc1cd86ca9c57",
+      "unit": "correlation",
+      "near_zero_threshold": 0.05,
+      "controls": {
+        "random_unit_mean_r": 0.048444402878904363,
+        "human_development_vs_confirmation_tuning_r": 0.0692335748935279,
+        "model_development_vs_confirmation_tuning_r": 0.8087885494420922
+      },
+      "profile": "alignment-single-cell-tuning-v1",
+      "public_manifest_sha256": "54700efdca3040116b6e5cc11c17bb365f9350de6458cd72f0c63f484055ff33",
+      "owner_manifest_sha256": "5fc0696cf5bb1055a0625fb5f8fc7aa038208c2e3a2fb85463b30f5b5673d7f9",
+      "cli_score_sha256": "b035ab6a4e0450c8fd022292bc111e489625e9745a229eac2682c9a32b9e6dbf"
+    },
+    {
+      "level": 3,
+      "task": "alignment-head-mlp-path",
+      "agent": "maintainer-top-development",
+      "choice": "L1-H8-to-L2-MLP",
+      "scores": {
+        "path_specific_gain": 0.000488884069702842,
+        "forecast_absolute_error": 0.0009324428710070526,
+        "direction_correct": 0
+      },
+      "forecast": 0.0014213269407098946,
+      "freeze_sha256": "303c33945b533bfda5c19bf6719ac8bcdcdf837f4ef9ff28d694ff194808f0dc",
+      "unit": "nat",
+      "near_zero_threshold": 0.001,
+      "controls": {
+        "patched_logp_gain": 0.0002904720604419708,
+        "other_heads_mean": -0.00019841200926087117,
+        "intact_minus_corrupt_logp": 5.005380667746067
+      },
+      "profile": "alignment-head-mlp-path-v1",
+      "public_manifest_sha256": "2892820423fc2e39fc3d23baa44f10a99f9f7aa1850b07eb96eda303dbbdf9dc",
+      "owner_manifest_sha256": "7d0a5549dd7d53e100a37c3d1bd62964cad7a3d88b007d0ff66348c6bb929689",
+      "cli_score_sha256": "fc0e23c71f2b1a96611b9f837e02f78df92c1e9f37fbe7500ff3ecbddcfe5e4a"
+    },
+    {
+      "level": 4,
+      "task": "alignment-language-network-edges",
+      "agent": "maintainer-top-development",
+      "choice": "L4-pre1",
+      "scores": {
+        "edge_change_r": 0.1551944866453338,
+        "forecast_absolute_error": 0.005253183449313803,
+        "direction_correct": 1
+      },
+      "forecast": 0.1604476700946476,
+      "freeze_sha256": "30fe304f912dc8d947d25c6866f8c80d8d06bf0592b52a85a0303b3a8cf54036",
+      "unit": "correlation",
+      "near_zero_threshold": 0.05,
+      "controls": {
+        "841": {
+          "r": 0.24791230633811234,
+          "permuted_roi_r": -0.014944203171181976
+        },
+        "880": {
+          "r": 0.06247666695255528,
+          "permuted_roi_r": 0.15430527176145975
+        }
+      },
+      "profile": "alignment-language-network-edges-v1",
+      "public_manifest_sha256": "ec65464c7b38cd1550f4ab1d41aba74657ae6ec9ffc3cf7a7fb8bb8a60269804",
+      "owner_manifest_sha256": "905591efc0b7ae0334a11b22d51d465eb3e07f27c8ca9003d01a724b5aa85564",
+      "cli_score_sha256": "14d3c47c6e2397c104e0a9921198e248c30e69e8d235c0afe5fca85ab962271b"
+    },
+    {
+      "level": 5,
+      "task": "alignment-global-system-state",
+      "agent": "maintainer-top-development",
+      "choice": "network_blocks",
+      "scores": {
+        "avoidance_change_r": -0.017733545884396913,
+        "forecast_absolute_error": 0.35740181185595915,
+        "direction_correct": 0
+      },
+      "forecast": 0.33966826597156224,
+      "freeze_sha256": "07498f3747cf8be7072519b1201460be5753a8718ffd3db10d1b83143e6b02a5",
+      "unit": "correlation",
+      "near_zero_threshold": 0.05,
+      "controls": {
+        "permuted_atlas_r": -0.14720180087723683,
+        "mean_connectivity_r": 0.3613925678804997,
+        "two_step_return_r": 0.34714402664501587
+      },
+      "profile": "alignment-global-system-state-v1",
+      "public_manifest_sha256": "64658a3d372a30c3d52488600983faf5ce7f6ba6f94aa96ca43c0453f0414676",
+      "owner_manifest_sha256": "1674cad888df8ddbbc758c2c4707167ab282d47d61a97b3c4d742db6e1d7de81",
+      "cli_score_sha256": "9fe0f6b19a4aa161093cdecdd0348b78d99cc89ffcada63ed6f8b3ce41566da3"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "taskId": "alignment-single-cell-tuning",
+  "taskVersion": "0.1-server-draft",
+  "primaryMetric": {
+    "id": "unit_tuning_r",
+    "direction": "maximize",
+    "unit": "correlation"
+  },
+  "evaluationProfile": "alignment-single-cell-tuning-v1",
+  "runId": "alignment-single-cell-tuning-maintainer-top-development",
+  "version": "maintainer-top-development",
+  "scoredAt": "2026-11-18T20:49:07.505Z",
+  "state": "scored",
+  "results": [
+    {
+      "kind": "exec-script",
+      "value": {
+        "unit_tuning_r": -0.25523646166451464,
+        "forecast_absolute_error": 1.2325884111443577,
+        "direction_correct": 0
+      },
+      "explanation": "exec-script checks/check.sh (exit 0)"
+    }
+  ]
+}
