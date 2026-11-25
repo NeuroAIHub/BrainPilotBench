@@ -43,7 +43,7 @@
       "binding_verified": false,
       "requires_weights": true,
       "weight_revision": null,
-      "weight_files_sha256": null,
+      "weight_files_sha256": "4827b63f12ea399edb4365272c12c147a23e4f2b23868d5f2c3db50e03eb19bb",
       "tokenizer_revision": null,
       "layer_mapping": {
         "V1": "features.2",
@@ -114,7 +114,7 @@
       "binding_verified": false,
       "requires_weights": true,
       "weight_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
-      "weight_files_sha256": null,
+      "weight_files_sha256": "591d9f0eb295eb9bc1715d9ed09fb0c220219eec8b059574db894aed734e0056",
       "tokenizer_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
       "layer_mapping": {
         "language_system": "transformer.h.11"

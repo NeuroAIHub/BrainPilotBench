@@ -1,0 +1,9 @@
+{
+  "schema": "bpb-bs-local-model/1",
+  "candidate_id": "alexnet",
+  "weight_revision": null,
+  "tokenizer_revision": null,
+  "files": {
+    "alexnet.pth": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02"
+  }
+}
