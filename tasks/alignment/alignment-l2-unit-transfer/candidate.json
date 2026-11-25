@@ -1,0 +1,14 @@
+{
+  "schema": "bpb-alignment-candidate/1",
+  "id": "alignment-l2-unit-transfer",
+  "domain": "alignment",
+  "status": "preparation_ready_data_pending",
+  "runnable": false,
+  "preparation_entry": "tasks/alignment/_shared/unit_transfer_cli.py",
+  "primary_metric": {
+    "id": "search_delta_r",
+    "direction": "maximize",
+    "unit": "correlation"
+  },
+  "reason": "An operator prepares public and private packets from local Tuckute and Pereira384 inputs, then stages a runnable instance for each model and researcher."
+}

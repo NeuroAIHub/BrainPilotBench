@@ -14,6 +14,16 @@ ROIS = ['lang_LH_IFGorb', 'lang_LH_IFG', 'lang_LH_MFG', 'lang_LH_AntTemp', 'lang
 EDGES = list(combinations(range(len(ROIS)), 2))
 
 
+def search_halves(ids, conditions):
+    """The existing L4 development and confirmation sentences, balanced within D/S."""
+    dev, held = [], []
+    for condition in ('D', 'S'):
+        order = sorted(np.flatnonzero(conditions == condition), key=lambda i: fingerprint(['L4-split', ids[i]]))
+        dev.extend(order[:len(order) // 2])
+        held.extend(order[len(order) // 2:])
+    return dev, held
+
+
 def edge_change(activity, condition, runs):
     edges = []
     for name in ('D', 'S'):
@@ -65,11 +75,7 @@ def network_task(directory, csv_file):
     ids = [packet.meta['ids'][i] for i in test]
     trials = df[df.roi == ROIS[0]].set_index(['target_UID', 'sid'])
     cond = trials.loc[797].loc[ids]['cond'].to_numpy()
-    dev, held = [], []
-    for c in ('D', 'S'):
-        order = sorted(np.flatnonzero(cond == c), key=lambda i: fingerprint(['L4-split', ids[i]]))
-        dev.extend(order[:len(order) // 2])
-        held.extend(order[len(order) // 2:])
+    dev, held = search_halves(ids, cond)
     cohorts = [('797', dev), ('841', held), ('880', held)]
     observations = []
     for subject, indices in cohorts:

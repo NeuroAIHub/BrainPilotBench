@@ -23,9 +23,17 @@ export function readAlignmentCandidates(root) {
     }
     const card = JSON.parse(readFileSync(join(dir, 'candidate.json'), 'utf8'));
     if (card.schema !== 'bpb-alignment-candidate/1' || card.id !== e.name || card.domain !== 'alignment' ||
-        card.status !== 'offline_scaffold_data_pending' || card.runnable !== false || card.validated !== false ||
-        card.primary_metric?.id !== 'analysis_success' || card.primary_metric?.direction !== 'maximize' ||
-        !/^[0-9a-f]{40}$/.test(card.upstream_source_sha) || !card.reason)
+        card.runnable !== false || card.primary_metric?.direction !== 'maximize' || !card.reason)
+      throw new Error(`${directory}: invalid pending alignment candidate`);
+    if (card.id === 'alignment-l2-unit-transfer') {
+      if (card.status !== 'preparation_ready_data_pending' || card.primary_metric.id !== 'search_delta_r' ||
+          card.primary_metric.unit !== 'correlation' || card.preparation_entry !== 'tasks/alignment/_shared/unit_transfer_cli.py' ||
+          !existsSync(join(root, card.preparation_entry)) || !existsSync(join(dir, 'README.md')))
+        throw new Error(`${directory}: invalid unit-selection task or missing preparation entry`);
+      return [{ card, directory }];
+    }
+    if (card.status !== 'offline_scaffold_data_pending' || card.validated !== false ||
+        card.primary_metric.id !== 'analysis_success' || !/^[0-9a-f]{40}$/.test(card.upstream_source_sha))
       throw new Error(`${directory}: invalid pending alignment candidate`);
     for (const file of ['README.md', 'contract.json', 'protocol.json']) {
       if (!existsSync(join(dir, file))) throw new Error(`${directory}: missing ${file}`);
@@ -39,7 +47,11 @@ export function readAlignmentCandidates(root) {
 }
 
 export function alignmentCatalogRow({ card, directory }) {
-  return { task_id: card.id, domain: 'alignment', directory, entry_kind: 'candidate',
+  const entry = { task_id: card.id, domain: 'alignment', directory, entry_kind: 'candidate' };
+  if (card.status === 'preparation_ready_data_pending')
+    return { ...entry, validation: 'preparation_recipe_checked_data_pending', primary_metric: card.primary_metric,
+      preparation_available: true, preparation_entry: card.preparation_entry, reason: card.reason };
+  return { ...entry,
     validation: 'offline_scaffold_only_not_data_accepted', primary_metric: card.primary_metric,
     source_task_id: card.source_task_id, reason: card.reason,
     agent_benchmark_results: 'not_available' };

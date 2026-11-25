@@ -66,3 +66,6 @@ alignment-selection:
 
 alignment-interpretability:
   metrics: [direction_correct, forecast_absolute_error]
+
+alignment-unit-transfer:
+  metrics: [search_delta_r]

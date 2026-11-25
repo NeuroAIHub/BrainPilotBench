@@ -2,15 +2,30 @@
   "schema": "brainpilotbench-task-collection/1",
   "date": "2026-10-23",
   "release_status": "integration_candidate_not_released",
-  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment synthetic scaffold only, not real-data acceptance; no formal Agent results or historical private Test replay",
+  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment entries cover an offline scaffold and an operator-staged unit-selection task; no formal Agent results or historical private Test replay",
   "counts": {
-    "total": 118,
+    "total": 119,
     "runnable": 112,
-    "candidate": 6,
-    "preparation_ready": 4,
+    "candidate": 7,
+    "preparation_ready": 5,
     "representative_runs": 11
   },
   "tasks": [
+    {
+      "task_id": "alignment-l2-unit-transfer",
+      "domain": "alignment",
+      "directory": "tasks/alignment/alignment-l2-unit-transfer",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "primary_metric": {
+        "id": "search_delta_r",
+        "direction": "maximize",
+        "unit": "correlation"
+      },
+      "preparation_available": true,
+      "preparation_entry": "tasks/alignment/_shared/unit_transfer_cli.py",
+      "reason": "An operator prepares public and private packets from local Tuckute and Pereira384 inputs, then stages a runnable instance for each model and researcher."
+    },
     {
       "task_id": "alignment-pereira2018-analysis",
       "domain": "alignment",

@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { test } from 'node:test';
-import { readAlignmentCandidates } from './alignment-candidates.mjs';
+import { alignmentCatalogRow, readAlignmentCandidates } from './alignment-candidates.mjs';
 
 function registry(t) {
   const root = mkdtempSync(join(tmpdir(), 'bpb-alignment-registry-'));
@@ -19,9 +19,12 @@ function registry(t) {
   return { root, dir };
 }
 
-test('repository plans add no task candidates', () => {
+test('the catalog lists one unit-selection task across all staged model variants', () => {
   const entries = readAlignmentCandidates(resolve(import.meta.dirname, '..'));
-  assert.deepEqual(entries.map(e => e.card.id), ['alignment-pereira2018-analysis']);
+  assert.deepEqual(entries.map(e => e.card.id).sort(), ['alignment-l2-unit-transfer', 'alignment-pereira2018-analysis']);
+  const task = alignmentCatalogRow(entries.find(e => e.card.id === 'alignment-l2-unit-transfer'));
+  assert.equal(task.preparation_available, true);
+  assert.equal(task.primary_metric.id, 'search_delta_r');
 });
 
 test('planning registry is excluded, unknown incomplete task folders still fail', t => {

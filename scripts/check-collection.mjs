@@ -215,7 +215,8 @@ const counts = {
   invasiveCandidate: invasiveCandidates.size,
   alignmentCandidate: alignmentCandidates.size,
   candidate: eegCandidates.size + psychCandidates.size + invasiveCandidates.size + alignmentCandidates.size,
-  preparation_ready: [...eegCandidates.values(), ...invasiveCandidates.values()].filter(e => e.card.status === "preparation_ready_data_pending").length,
+  preparation_ready: [...eegCandidates.values(), ...invasiveCandidates.values(), ...alignmentCandidates.values()]
+    .filter(e => e.card.status === "preparation_ready_data_pending").length,
   total: identities.size,
 };
 if (counts.runnable < baseline.runnable || counts.total < baseline.total) {

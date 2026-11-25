@@ -37,8 +37,12 @@ def site(packet, group):
 
 
 def check_group(packet, data):
-    layer, position, units = data['layer'], data['position'], data['units']
     _, layers, _, width = packet.arrays['units'].shape
+    return checked_units(data, layers, width)
+
+
+def checked_units(data, layers, width):
+    layer, position, units = data['layer'], data['position'], data['units']
     if type(layer) is not int or not 0 <= layer < layers or position not in POSITIONS:
         raise ValueError('invalid layer or read position')
     if (not isinstance(units, list) or len(units) != K

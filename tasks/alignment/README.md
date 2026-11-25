@@ -2,6 +2,8 @@
 
 The [dataset inventory (中文)](DATASETS.zh-CN.md) lists sample counts, download sizes, source files and access terms for each dataset used in real Alignment runs.
 
+The L2 unit-selection task lets an Agent choose eight MLP units on Tuckute, query development feedback twice, and test the frozen choice on held-out Tuckute and Pereira384 data. [Task and preparation guide](alignment-l2-unit-transfer/README.md)
+
 Task one evaluates whether an Agent performs the specified analysis correctly and
 reproducibly. A fixed representation's high brain score is not the Agent metric.
 
