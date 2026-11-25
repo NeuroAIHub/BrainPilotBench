@@ -1,5 +1,7 @@
 # Alignment analysis
 
+The [dataset inventory (中文)](DATASETS.zh-CN.md) lists sample counts, download sizes, source files and access terms for each dataset used in real Alignment runs.
+
 Task one evaluates whether an Agent performs the specified analysis correctly and
 reproducibly. A fixed representation's high brain score is not the Agent metric.
 
