@@ -1,0 +1,14 @@
+{
+  "schema": "bpb-alignment-candidate/1",
+  "id": "alignment-l3-circuit-paths",
+  "domain": "alignment",
+  "status": "preparation_ready_data_pending",
+  "runnable": false,
+  "preparation_entry": "tasks/alignment/_shared/circuit_paths_cli.py",
+  "primary_metric": {
+    "id": "path_specific_gain",
+    "direction": "maximize",
+    "unit": "nat"
+  },
+  "reason": "An operator stages public path-search features from local Tuckute sentences and model weights. Private paired interventions and brain responses are evaluated after replay."
+}

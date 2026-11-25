@@ -37,7 +37,7 @@ This repository does not add a top-level `runtimes/` layer.
 The five EEG candidates remain outside the 112 runnable tasks.
 The [Alignment task-one candidate](../tasks/alignment/README.md) adds an offline
 synthetic scaffold only; it also remains outside that runnable count.
-Operators can stage model-specific unit-selection and regional network-edge tasks from local data for each researcher. [L2 preparation guide](../tasks/alignment/alignment-l2-unit-transfer/README.md) · [L4 preparation guide](../tasks/alignment/alignment-l4-network-edges/README.md)
+Operators can stage four model-specific alignment tasks from local data for each researcher. [L1 single-cell guide](../tasks/alignment/alignment-l1-cell-tuning/README.md) · [L2 preparation guide](../tasks/alignment/alignment-l2-unit-transfer/README.md) · [L3 circuit guide](../tasks/alignment/alignment-l3-circuit-paths/README.md) · [L4 preparation guide](../tasks/alignment/alignment-l4-network-edges/README.md)
 Invasive recordings groups `tasks/ieeg/` and `tasks/intracortical/` under one reader-facing category.
 Their canonical directories and catalog domain identifiers remain distinct.
 The v1 collection name does not replace task protocol versions or change their scoring contracts.

@@ -16,7 +16,7 @@ from . import PROTOCOL
 from .session import record
 
 
-def serve_dev(packet, actor, exchange, once=False):
+def serve_dev(packet, actor, exchange, once=False, *, training=False):
     separate_paths(packet.root, exchange)
     # The Docker runner binds pre-staged entries read-only. Let the client create
     # the mailbox after the container starts, then keep that directory open.
@@ -38,7 +38,7 @@ def serve_dev(packet, actor, exchange, once=False):
                         if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1 or st.st_size > 16_384:
                             raise ValueError('invalid development request file')
                         data = json.loads(stream.read(16_385))
-                    answer = record(packet, actor, data)
+                    answer = record(packet, actor, data, training=training)
                 except (OSError, ValueError, TypeError, KeyError) as exc:
                     answer = {'error': str(exc)}
                 pending = uuid.uuid4().hex + '.tmp'

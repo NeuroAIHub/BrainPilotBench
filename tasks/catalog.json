@@ -2,15 +2,30 @@
   "schema": "brainpilotbench-task-collection/1",
   "date": "2026-10-23",
   "release_status": "integration_candidate_not_released",
-  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment entries cover an offline scaffold and operator-staged unit-selection and network-edge tasks; no formal Agent results or historical private Test replay",
+  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment entries cover an offline scaffold and operator-staged single-cell, unit-selection, circuit and network-edge tasks; no formal Agent results or historical private Test replay",
   "counts": {
-    "total": 120,
+    "total": 122,
     "runnable": 112,
-    "candidate": 8,
-    "preparation_ready": 6,
+    "candidate": 10,
+    "preparation_ready": 8,
     "representative_runs": 11
   },
   "tasks": [
+    {
+      "task_id": "alignment-l1-cell-tuning",
+      "domain": "alignment",
+      "directory": "tasks/alignment/alignment-l1-cell-tuning",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "primary_metric": {
+        "id": "unit_tuning_r",
+        "direction": "maximize",
+        "unit": "correlation"
+      },
+      "preparation_available": true,
+      "preparation_entry": "tasks/alignment/_shared/cell_tuning_cli.py",
+      "reason": "An operator stages a fixed panel of human cells from local Jamali recordings and model weights. Independent trials and words are held by the operator."
+    },
     {
       "task_id": "alignment-l2-unit-transfer",
       "domain": "alignment",
@@ -25,6 +40,21 @@
       "preparation_available": true,
       "preparation_entry": "tasks/alignment/_shared/unit_transfer_cli.py",
       "reason": "An operator prepares public and private packets from local Tuckute and Pereira384 inputs, then stages a runnable instance for each model and researcher."
+    },
+    {
+      "task_id": "alignment-l3-circuit-paths",
+      "domain": "alignment",
+      "directory": "tasks/alignment/alignment-l3-circuit-paths",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "primary_metric": {
+        "id": "path_specific_gain",
+        "direction": "maximize",
+        "unit": "nat"
+      },
+      "preparation_available": true,
+      "preparation_entry": "tasks/alignment/_shared/circuit_paths_cli.py",
+      "reason": "An operator stages public path-search features from local Tuckute sentences and model weights. Private paired interventions and brain responses are evaluated after replay."
     },
     {
       "task_id": "alignment-l4-network-edges",

@@ -3,8 +3,10 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const stagedProtocols = new Map([
-  ['alignment-l2-unit-transfer', ['search_delta_r', 'unit_transfer_cli.py']],
-  ['alignment-l4-network-edges', ['network_edge_r', 'network_edges_cli.py']],
+  ['alignment-l1-cell-tuning', ['unit_tuning_r', 'correlation', 'cell_tuning_cli.py']],
+  ['alignment-l2-unit-transfer', ['search_delta_r', 'correlation', 'unit_transfer_cli.py']],
+  ['alignment-l3-circuit-paths', ['path_specific_gain', 'nat', 'circuit_paths_cli.py']],
+  ['alignment-l4-network-edges', ['network_edge_r', 'correlation', 'network_edges_cli.py']],
 ]);
 
 export function readAlignmentCandidates(root) {
@@ -32,9 +34,9 @@ export function readAlignmentCandidates(root) {
       throw new Error(`${directory}: invalid pending alignment candidate`);
     const prepared = stagedProtocols.get(card.id);
     if (prepared) {
-      const [metric, cli] = prepared;
+      const [metric, unit, cli] = prepared;
       if (card.status !== 'preparation_ready_data_pending' || card.primary_metric.id !== metric ||
-          card.primary_metric.unit !== 'correlation' || card.preparation_entry !== `tasks/alignment/_shared/${cli}` ||
+          card.primary_metric.unit !== unit || card.preparation_entry !== `tasks/alignment/_shared/${cli}` ||
           !existsSync(join(root, card.preparation_entry)) || !existsSync(join(dir, 'README.md')))
         throw new Error(`${directory}: invalid staged alignment task or missing preparation entry`);
       return [{ card, directory }];

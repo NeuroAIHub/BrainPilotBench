@@ -72,3 +72,9 @@ alignment-unit-transfer:
 
 alignment-network-edges:
   metrics: [network_edge_r]
+
+alignment-cell-tuning:
+  metrics: [unit_tuning_r]
+
+alignment-circuit-paths:
+  metrics: [path_specific_gain]

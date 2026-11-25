@@ -1,0 +1,14 @@
+{
+  "schema": "bpb-alignment-candidate/1",
+  "id": "alignment-l1-cell-tuning",
+  "domain": "alignment",
+  "status": "preparation_ready_data_pending",
+  "runnable": false,
+  "preparation_entry": "tasks/alignment/_shared/cell_tuning_cli.py",
+  "primary_metric": {
+    "id": "unit_tuning_r",
+    "direction": "maximize",
+    "unit": "correlation"
+  },
+  "reason": "An operator stages a fixed panel of human cells from local Jamali recordings and model weights. Independent trials and words are held by the operator."
+}

@@ -122,7 +122,7 @@ tasks.sort((a,b) => a.task_id.localeCompare(b.task_id));
 const catalog = {
   schema: "brainpilotbench-task-collection/1", date: "2026-10-23",
   release_status: "integration_candidate_not_released",
-  validation_policy: "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment entries cover an offline scaffold and operator-staged unit-selection and network-edge tasks; no formal Agent results or historical private Test replay",
+  validation_policy: "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment entries cover an offline scaffold and operator-staged single-cell, unit-selection, circuit and network-edge tasks; no formal Agent results or historical private Test replay",
   counts: {
     total: tasks.length, runnable: tasks.filter(t => t.entry_kind === "runnable").length,
     candidate: tasks.filter(t => t.entry_kind === "candidate").length,

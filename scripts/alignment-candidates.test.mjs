@@ -21,12 +21,17 @@ function registry(t) {
 
 test('the catalog lists each staged alignment protocol once across its model variants', () => {
   const entries = readAlignmentCandidates(resolve(import.meta.dirname, '..'));
-  assert.deepEqual(entries.map(e => e.card.id).sort(),
-    ['alignment-l2-unit-transfer', 'alignment-l4-network-edges', 'alignment-pereira2018-analysis']);
-  for (const [id, metric] of [['alignment-l2-unit-transfer', 'search_delta_r'], ['alignment-l4-network-edges', 'network_edge_r']]) {
+  const metrics = [
+    ['alignment-l1-cell-tuning', 'unit_tuning_r', 'correlation'],
+    ['alignment-l2-unit-transfer', 'search_delta_r', 'correlation'],
+    ['alignment-l3-circuit-paths', 'path_specific_gain', 'nat'],
+    ['alignment-l4-network-edges', 'network_edge_r', 'correlation'],
+  ];
+  assert.deepEqual(entries.map(e => e.card.id).sort(), [...metrics.map(row => row[0]), 'alignment-pereira2018-analysis']);
+  for (const [id, metric, unit] of metrics) {
     const task = alignmentCatalogRow(entries.find(e => e.card.id === id));
     assert.equal(task.preparation_available, true);
-    assert.equal(task.primary_metric.id, metric);
+    assert.deepEqual(task.primary_metric, { id: metric, direction: 'maximize', unit });
   }
 });
 

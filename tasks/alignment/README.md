@@ -2,7 +2,11 @@
 
 The [dataset inventory (中文)](DATASETS.zh-CN.md) lists sample counts, download sizes, source files and access terms for each dataset used in real Alignment runs.
 
+The L1 task maps individual model units to a fixed panel of human neurons on independent words and sentence trials. [L1 task and preparation guide](alignment-l1-cell-tuning/README.md)
+
 The L2 unit-selection task lets an Agent choose eight MLP units on Tuckute, query development feedback twice, and test the frozen choice on held-out Tuckute and Pereira384 data. [Task and preparation guide](alignment-l2-unit-transfer/README.md)
+
+The L3 task lets an Agent select an attention head and units in a later MLP, test the direct path by intervention, and measure its contribution to predicting human responses. [L3 task and preparation guide](alignment-l3-circuit-paths/README.md)
 
 The L4 network-edge task lets an Agent map five disjoint groups of eight MLP units to five language regions and predict changes in their ten pairwise correlations on held-out participants and sentences. [L4 task and preparation guide](alignment-l4-network-edges/README.md)
 

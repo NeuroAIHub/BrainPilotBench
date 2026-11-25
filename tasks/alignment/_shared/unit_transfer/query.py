@@ -29,5 +29,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('choice', type=Path)
     parser.add_argument('--exchange', type=Path, default=Path('dev'))
+    parser.add_argument('--timeout', type=float, default=90, help='seconds to wait for an owner reply')
     args = parser.parse_args()
-    print(json.dumps(query(json.loads(args.choice.read_text()), args.exchange), allow_nan=False))
+    print(json.dumps(query(json.loads(args.choice.read_text()), args.exchange, timeout=args.timeout), allow_nan=False))

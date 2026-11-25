@@ -6,7 +6,7 @@ from execution import Executor
 from real_brainscore.common import read_json, write_json
 
 # The worker starts analyze.py with public inputs and an empty output directory.
-# Only the frozen development transcript accompanies the submitted source.
+# Only operator-recorded public training and development receipts accompany the submitted source.
 LAUNCHER = '''import argparse
 from pathlib import Path
 import resource
@@ -27,6 +27,8 @@ with TemporaryDirectory() as tmp:
     (workspace / "public").symlink_to(args.inputs.resolve(), target_is_directory=True)
     for name in ("strategy.py", "feedback.json"):
         shutil.copyfile(name, workspace / name)
+    if Path("training_feedback.json").is_file():
+        shutil.copyfile("training_feedback.json", workspace / "training_feedback.json")
     with (args.output / "choice.json").open("xb") as output:
         run = subprocess.run([sys.executable, "-B", "strategy.py", "public", "feedback.json"],
                              cwd=workspace, stdout=output)
@@ -43,6 +45,8 @@ def replay(packet, source, receipt):
         (submission / 'analyze.py').write_text(LAUNCHER)
         (submission / 'strategy.py').write_bytes(source)
         write_json(submission / 'feedback.json', receipt['feedback'])
+        if hasattr(packet, 'training_feedback'):
+            write_json(submission / 'training_feedback.json', receipt.get('training_feedback', []))
         executor.run(submission, packet.root / 'public', output)
         if packet.choice(read_json(output / 'choice.json')) != receipt['choice']:
             raise ValueError('replayed choice differs from frozen submission')
