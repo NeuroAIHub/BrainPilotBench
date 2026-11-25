@@ -6,7 +6,7 @@ from .bundle import create as create_bundle
 from .official import split_manifest
 from .packet import save_fixture
 from .protocols import specification
-from .registry import require
+from .registry import require, resolve_instance
 from .runtime import offline, check
 from real_brainscore.common import new_directory
 
@@ -58,8 +58,7 @@ def packet(output, registry, benchmark_id, candidate_id):
 
 
 def create(output, registry, instance_id):
-    require(instance_id in registry['instances'], 'unknown instance')
-    instance = registry['instances'][instance_id]
+    instance = resolve_instance(registry, instance_id)
     root = new_directory(output)
     with offline():
         check(registry['families'][instance['family_id']]['ecosystem'], registry['root'])

@@ -1,6 +1,6 @@
 """Reviewable task drafts; no runnable task.yaml until real acceptance exists."""
 from real_brainscore.common import new_directory, separate_paths, write_json
-from ..registry import blockers, require
+from ..registry import blockers, require, select_instances
 
 
 def contract(registry, instance):
@@ -11,6 +11,7 @@ def contract(registry, instance):
         'protocol_id': 'bpb-bs-t1-reproduce-draft/1' if t1 else 'bpb-bs-t2-descriptive-draft/1',
         'entrypoint': 'python submission/analyze.py --inputs DIR --output DIR',
         'category': 'alignment-analysis', 'metric': 'analysis_success',
+        **({'parent_id': instance['parent_id']} if t1 else {'subtask_ids': instance['subtask_ids']}),
         'candidate_ids': instance['candidate_ids'], 'benchmark_ids': instance['benchmark_ids'],
         'outputs': ['submission/analyze.py', 'results/summary.json', 'results/trace.json',
                     'results/*.npy', 'conclusion.json', 'report.md'],
@@ -20,7 +21,7 @@ def contract(registry, instance):
         'comparison': None if t1 else {'paired_candidates': True, 'same_stimuli_and_protocol': True,
                       'keep_each_endpoint': True, 'scope': 'descriptive', 'cv_folds_are_independent_samples': False},
         'reference_visibility': 'owner-only; do not copy into agent workspace',
-        'validation': {'saved_outputs_and_isolated_rerun': True, 'functional_controls': True,
+        'validation': {'saved_outputs_and_isolated_rerun': True, 'functional_controls': True, 'functional_control_per_benchmark': True,
                        'numerical_tolerance': {'atol': 1e-6, 'rtol': 1e-5, 'status': 'provisional'},
                        'limits': {'cpus': 2, 'memory': '8g', 'timeout_seconds': 900, 'output_bytes': 536870912},
                        'free_text_quality': 'human-review-pending'},
@@ -47,8 +48,8 @@ def render_prompt(value):
             'The trusted evaluator must rerun the program and check saved outputs; stdout is not a score.\n')
 
 
-def draft(registry, output, phase=None):
-    selected = [i for i in registry['instances'].values() if phase is None or i['phase'] == phase]
+def draft(registry, output, phase=None, subtasks=False):
+    selected = select_instances(registry, phase, subtasks)
     require(selected, 'no instances selected')
     separate_paths(registry['root'], output)
     root = new_directory(output)

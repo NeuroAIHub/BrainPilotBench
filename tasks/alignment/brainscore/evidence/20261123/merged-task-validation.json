@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-23",
+  "synthetic_only": true,
+  "submission": "maintainer baseline",
+  "grader_schema": "bpb-bs-grade/2",
+  "worker_images": {
+    "language": "sha256:df63a77d40f943c26dd069cdd35e73424cb697116d3eb5d0118c1d0477c258f0",
+    "vision": "sha256:8861b2c0f91a93a3ee551cf2c0f78da096b0652db86fde27999d6ba1c540e382"
+  },
+  "source_tasks": {
+    "alignment-bs-blank2014-compare": {
+      "input_manifest_sha256": "078eef666c644ce4945cc1f2ae98104f23eb731de90bc20a9301261fc37f5123",
+      "analysis_success": 1,
+      "subtask_scores": {
+        "alignment-bs-blank2014-fmri-distilgpt2-reproduce": 1,
+        "alignment-bs-blank2014-fmri-gpt2-small-reproduce": 1
+      },
+      "comparison_scores": {
+        "Blank2014-ridge": 1
+      },
+      "control_passed": {
+        "Blank2014-ridge": true
+      }
+    },
+    "alignment-bs-fedorenko2016-compare": {
+      "input_manifest_sha256": "53446ba3dec00e517e7f98fcf49353b7daa31c9485ecccc93fefe99bb44aff2f",
+      "analysis_success": 1,
+      "subtask_scores": {
+        "alignment-bs-fedorenko2016-ecog-distilgpt2-reproduce": 1,
+        "alignment-bs-fedorenko2016-ecog-gpt2-small-reproduce": 1
+      },
+      "comparison_scores": {
+        "Fedorenko2016-ridge": 1
+      },
+      "control_passed": {
+        "Fedorenko2016-ridge": true
+      }
+    },
+    "alignment-bs-freemanziemba2013-compare": {
+      "input_manifest_sha256": "92596f59fadb88575ff8f3522e67534a80a464beb5e607abc6f7942ffa218866",
+      "analysis_success": 1,
+      "subtask_scores": {
+        "alignment-bs-freemanziemba2013-v1-alexnet-reproduce": 1,
+        "alignment-bs-freemanziemba2013-v1-pixels-reproduce": 1,
+        "alignment-bs-freemanziemba2013-v2-alexnet-reproduce": 1,
+        "alignment-bs-freemanziemba2013-v2-pixels-reproduce": 1
+      },
+      "comparison_scores": {
+        "FreemanZiemba2013public.V1-pls": 1,
+        "FreemanZiemba2013public.V2-pls": 1
+      },
+      "control_passed": {
+        "FreemanZiemba2013public.V1-pls": true,
+        "FreemanZiemba2013public.V2-pls": true
+      }
+    },
+    "alignment-bs-futrell2018-compare": {
+      "input_manifest_sha256": "2891cf402f6231235e6e54edc2475d90f54f17650e9d507593a910539c70e547",
+      "analysis_success": 1,
+      "subtask_scores": {
+        "alignment-bs-futrell2018-reading-times-distilgpt2-reproduce": 1,
+        "alignment-bs-futrell2018-reading-times-gpt2-small-reproduce": 1
+      },
+      "comparison_scores": {
+        "Futrell2018-pearsonr": 1
+      },
+      "control_passed": {
+        "Futrell2018-pearsonr": true
+      }
+    },
+    "alignment-bs-majajhong2015-compare": {
+      "input_manifest_sha256": "dd33e863e3930873185cc5b8bd8ef992836125b638ff3627addc8d9e7454f1fb",
+      "analysis_success": 1,
+      "subtask_scores": {
+        "alignment-bs-majajhong2015-it-alexnet-reproduce": 1,
+        "alignment-bs-majajhong2015-it-pixels-reproduce": 1,
+        "alignment-bs-majajhong2015-v4-alexnet-reproduce": 1,
+        "alignment-bs-majajhong2015-v4-pixels-reproduce": 1
+      },
+      "comparison_scores": {
+        "MajajHong2015public.V4-pls": 1,
+        "MajajHong2015public.IT-pls": 1
+      },
+      "control_passed": {
+        "MajajHong2015public.V4-pls": true,
+        "MajajHong2015public.IT-pls": true
+      }
+    },
+    "alignment-bs-pereira2018-compare": {
+      "input_manifest_sha256": "9936560e18b8213a944f2577b061e5b161e000530baddc95120e81bed88a2fa0",
+      "analysis_success": 1,
+      "subtask_scores": {
+        "alignment-bs-pereira2018-243sentences-distilgpt2-reproduce": 1,
+        "alignment-bs-pereira2018-243sentences-gpt2-small-reproduce": 1,
+        "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce": 1,
+        "alignment-bs-pereira2018-384sentences-gpt2-small-reproduce": 1
+      },
+      "comparison_scores": {
+        "Pereira2018.243sentences-ridge": 1,
+        "Pereira2018.384sentences-ridge": 1
+      },
+      "control_passed": {
+        "Pereira2018.243sentences-ridge": true,
+        "Pereira2018.384sentences-ridge": true
+      }
+    }
+  },
+  "deliberately_incorrect_saved_results": [
+    {
+      "instance_id": "alignment-bs-pereira2018-compare",
+      "analysis_success": 0,
+      "subtask_scores": {
+        "alignment-bs-pereira2018-243sentences-distilgpt2-reproduce": 0,
+        "alignment-bs-pereira2018-243sentences-gpt2-small-reproduce": 1,
+        "alignment-bs-pereira2018-384sentences-distilgpt2-reproduce": 1,
+        "alignment-bs-pereira2018-384sentences-gpt2-small-reproduce": 1
+      },
+      "comparison_scores": {
+        "Pereira2018.243sentences-ridge": 1,
+        "Pereira2018.384sentences-ridge": 0
+      }
+    },
+    {
+      "instance_id": "alignment-bs-freemanziemba2013-compare",
+      "analysis_success": 0,
+      "subtask_scores": {
+        "alignment-bs-freemanziemba2013-v1-alexnet-reproduce": 0,
+        "alignment-bs-freemanziemba2013-v1-pixels-reproduce": 1,
+        "alignment-bs-freemanziemba2013-v2-alexnet-reproduce": 1,
+        "alignment-bs-freemanziemba2013-v2-pixels-reproduce": 1
+      },
+      "comparison_scores": {
+        "FreemanZiemba2013public.V1-pls": 1,
+        "FreemanZiemba2013public.V2-pls": 0
+      }
+    }
+  ],
+  "cli_run": {
+    "taskId": "example-alignment-bs-pereira2018-compare",
+    "taskVersion": "0.3-offline-experimental",
+    "evaluationProfile": "bpb-bs-t2-compare-v2",
+    "version": "maintainer-synthetic-family-check",
+    "state": "scored"
+  },
+  "cli_scores": {
+    "analysis_success": 1,
+    "reproduction.alignment-bs-pereira2018-243sentences-distilgpt2-reproduce": 1,
+    "reproduction.alignment-bs-pereira2018-243sentences-gpt2-small-reproduce": 1,
+    "reproduction.alignment-bs-pereira2018-384sentences-distilgpt2-reproduce": 1,
+    "reproduction.alignment-bs-pereira2018-384sentences-gpt2-small-reproduce": 1,
+    "comparison.Pereira2018.243sentences-ridge": 1,
+    "comparison.Pereira2018.384sentences-ridge": 1
+  },
+  "exact_historical_matrix_matches": {
+    "language": 14,
+    "vision": 10
+  },
+  "comparison_scores_with_one_failed_worker": {
+    "alignment-bs-pereira2018-compare": {
+      "Pereira2018.243sentences-ridge": 1,
+      "Pereira2018.384sentences-ridge": 0
+    },
+    "alignment-bs-freemanziemba2013-compare": {
+      "FreemanZiemba2013public.V1-pls": 1,
+      "FreemanZiemba2013public.V2-pls": 0
+    }
+  }
+}

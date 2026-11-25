@@ -4,7 +4,7 @@ import shutil
 
 from real_brainscore.common import new_directory, read_json, seal, separate_paths, sha256, write_json
 from .packet import load as load_packet
-from .registry import require
+from .registry import require, resolve_instance
 from .protocols import specification
 
 
@@ -14,8 +14,7 @@ def load(root, registry):
     root = root.resolve()
     manifest = read_json(root / 'manifest.json')
     require(manifest.get('schema') == 'bpb-bs-instance-inputs/1', 'invalid instance input schema')
-    instance = registry['instances'].get(manifest.get('instance_id'))
-    require(instance is not None, 'instance is not whitelisted')
+    instance = resolve_instance(registry, manifest.get('instance_id'))
     public_instance = {key: instance[key] for key in ('id', 'template', 'benchmark_ids', 'candidate_ids')}
     require(read_json(root / 'instance.json') == public_instance, 'public instance protocol differs from whitelist')
     entries = read_json(root / 'bundle.json')
@@ -63,7 +62,7 @@ def load(root, registry):
 
 
 def create(packet_paths, output, instance_id, registry):
-    require(instance_id in registry['instances'], 'unknown instance')
+    instance = resolve_instance(registry, instance_id)
     packets = [load_packet(path, registry) for path in packet_paths]
     for packet in packets:
         separate_paths(packet['root'], output)
@@ -75,7 +74,6 @@ def create(packet_paths, output, instance_id, registry):
         shutil.copytree(packet['root'], root / name)
         entries.append({'directory': name, 'manifest_sha256': packet['manifest_sha256']})
     write_json(root / 'bundle.json', entries)
-    instance = registry['instances'][instance_id]
     write_json(root / 'instance.json', {key: instance[key] for key in ('id', 'template', 'benchmark_ids', 'candidate_ids')})
     # Unlike the legacy seal helper, bundle inventories include child manifests.
     files = {p.relative_to(root).as_posix(): {'bytes': p.stat().st_size, 'sha256': sha256(p)}

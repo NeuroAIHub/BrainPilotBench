@@ -7,6 +7,8 @@ For a detailed Chinese explanation of expansion tasks A–F, see
 [数据、模型、测验方法与 Agent 能力](TASKS_A_F_GUIDE.zh-CN.md), covering the implemented
 profiles, scientific metrics, Agent grading, reference results and scope limits.
 
+The offline Brain-Score extension groups 18 independently runnable model reproductions and nine paired comparisons into six source tasks. [Task guide (中文)](brainscore/TASK_GUIDE.zh-CN.md)
+
 The word-order experiment follows a researcher from a frozen group of distilgpt2
 units through causal intervention and sentence-level brain prediction. Its first
 run includes an independent Agent, a fixed top-k baseline and a portable replay.

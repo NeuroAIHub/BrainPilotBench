@@ -44,3 +44,13 @@ test('a registry task.yaml cannot bypass real-data acceptance', t => {
   writeFileSync(join(dir, 'task.yaml'), '{}');
   assert.throws(() => readAlignmentCandidates(root), /cannot be runnable/);
 });
+
+test('grouped source tasks and their subtasks both require planned status', t => {
+  const { root, dir } = registry(t);
+  const grouped = { schema: 'bpb-bs-instances/2', instances: [{ status: 'planned' }], subtasks: [{ status: 'planned' }] };
+  writeFileSync(join(dir, 'instances.json'), JSON.stringify(grouped));
+  assert.deepEqual(readAlignmentCandidates(root), []);
+  grouped.subtasks[0].status = 'ready';
+  writeFileSync(join(dir, 'instances.json'), JSON.stringify(grouped));
+  assert.throws(() => readAlignmentCandidates(root), /invalid planning registry/);
+});

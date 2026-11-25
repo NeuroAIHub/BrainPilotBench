@@ -19,7 +19,7 @@ from brainscore import ScaleUpError
 from brainscore.analysis import run
 from brainscore.baseline import export
 from brainscore.bundle import load as load_bundle
-from brainscore.evaluation import compare, control_inputs, evaluate
+from brainscore.evaluation import compare, control_inputs, evaluate, same
 from brainscore.local_sources import audit, unpack_images
 from brainscore.official import compute
 from brainscore.packet import save_fixture
@@ -36,7 +36,7 @@ class ScientificTests(unittest.TestCase):
         cls.root = Path(OPTIONS.output or tempfile.mkdtemp(prefix='bpb-bs-scientific-' + OPTIONS.ecosystem + '-'))
         cls.root.mkdir(parents=True, exist_ok=True)
         cls.registry = load()
-        cls.instances = [row for row in cls.registry['instances'].values()
+        cls.instances = [row for row in [*cls.registry['instances'].values(), *cls.registry['subtasks'].values()]
                          if cls.registry['families'][row['family_id']]['ecosystem'] == OPTIONS.ecosystem]
         cls.bundles, cls.results, cls.matrix = {}, {}, []
         # Cache creation and reference execution are prerequisite integration work,
@@ -59,7 +59,11 @@ class ScientificTests(unittest.TestCase):
                     and b['packets'][0]['metadata']['protocol']['readout'] != 'none')
 
     def test_all_whitelisted_instances_execute_official_protocol(self):
-        self.assertEqual(len(self.matrix), 14 if OPTIONS.ecosystem == 'language' else 10)
+        history = self.registry['root'] / 'evidence/20261111' / f'synthetic-{OPTIONS.ecosystem}-matrix.json'
+        expected = {row['instance_id']: row for row in read_json(history)}
+        self.assertCountEqual([row['instance_id'] for row in self.matrix], expected)
+        for row in self.matrix:
+            self.assertTrue(same(row, expected[row['instance_id']], 1e-6, 1e-5), row['instance_id'])
         for bundle in self.bundles.values():
             summary = read_json(self.results[bundle['instance']['id']] / 'results/summary.json')
             self.assertTrue(summary['synthetic_only'])
@@ -68,6 +72,12 @@ class ScientificTests(unittest.TestCase):
             self.assertTrue(compare(self.results[bundle['instance']['id']], self.results[bundle['instance']['id']])['passed'])
             for case in summary['cases']:
                 self.assertTrue(np.isfinite(case['score']['normalized']))
+                if 'subtask_ids' in bundle['instance']:
+                    subtask = next(self.registry['subtasks'][key] for key in bundle['instance']['subtask_ids']
+                                   if self.registry['subtasks'][key]['benchmark_ids'] == [case['benchmark_id']]
+                                   and self.registry['subtasks'][key]['candidate_ids'] == [case['candidate_id']])
+                    single, = read_json(self.results[subtask['id']] / 'results/summary.json')['cases']
+                    self.assertEqual({**single, 'id': case['id']}, case)
 
     def test_trace_identity_alignment_and_numerical_corruption(self):
         bundle = self.neural()
@@ -92,7 +102,7 @@ class ScientificTests(unittest.TestCase):
 
     def test_control_changes_test_scores_without_first_fold_training_leakage(self):
         bundle = self.neural()
-        control = control_inputs(bundle, self.root / 'control-check', self.registry)
+        control = control_inputs(bundle, self.root / 'control-check', self.registry, bundle['instance']['benchmark_ids'][0])
         with offline():
             original, before = compute(bundle['packets'][0])
             changed, after = compute(control['packets'][0])
@@ -100,6 +110,35 @@ class ScientificTests(unittest.TestCase):
         self.assertEqual(before[0]['alpha'], after[0]['alpha'])
         self.assertFalse(np.allclose(before[0]['unit_scores'], after[0]['unit_scores']))
         self.assertNotEqual(original['raw'], changed['raw'])
+
+    def test_each_benchmark_has_a_paired_control_and_independent_scores(self):
+        bundle = next(b for b in self.bundles.values() if len(b['instance']['benchmark_ids']) == 2)
+        endpoints = bundle['instance']['benchmark_ids']
+        for i, bid in enumerate(endpoints):
+            control = control_inputs(bundle, self.root / f'paired-control-{i}', self.registry, bid)
+            for original, changed in zip(bundle['packets'], control['packets']):
+                targeted = original['manifest']['benchmark_id'] == bid
+                self.assertEqual(original['manifest_sha256'] != changed['manifest_sha256'], targeted)
+                self.assertEqual('functional_control' in changed['metadata'], targeted)
+
+        reference = self.results[bundle['instance']['id']]
+        wrong = self.root / 'partially-correct'
+        shutil.copytree(reference, wrong)
+        summary = read_json(wrong / 'results/summary.json')
+        trace = read_json(wrong / 'results/trace.json')
+        case = next(row for row in summary['cases'] if row['benchmark_id'] == endpoints[0])
+        fold = next(row for row in trace if row['case_id'] == case['id'])['folds'][0]
+        prediction_file = wrong / 'results' / fold['predictions_file']
+        prediction = np.load(prediction_file)
+        prediction[0, 0] += 1
+        np.save(prediction_file, prediction, allow_pickle=False)
+        conclusion = read_json(wrong / 'conclusion.json')
+        conclusion['rankings'][1]['second_minus_first_normalized'] += 1
+        write_json(wrong / 'conclusion.json', conclusion)
+        check = compare(wrong, reference)
+        self.assertFalse(check['passed'])
+        self.assertEqual(check['case_passed'], {row['id']: row['id'] != case['id'] for row in summary['cases']})
+        self.assertEqual(check['comparison_passed'], {endpoints[0]: True, endpoints[1]: False})
 
     def test_synthetic_staging_gate_and_public_workspace(self):
         for index, bundle in enumerate(self.bundles.values()):
@@ -109,6 +148,8 @@ class ScientificTests(unittest.TestCase):
             value = stage(bundle['root'], destination, self.registry, allow_synthetic=True)
             self.assertTrue(value['task_id'].startswith('example-'))
             self.assertTrue((destination / 'checks/check.sh').is_file())
+            task = json.loads((destination / 'task.yaml').read_text().split('\n', 1)[1])
+            self.assertEqual(task['scoring']['scorers'][0]['timeout_min'], 75 if len(bundle['instance']['benchmark_ids']) == 2 else 45)
         first = self.root / 'staged-00'
         work = self.root / 'public-workspace'
         workspace(first / 'public-inputs', work, first / 'INPUT_CONTRACT.md', self.registry)
@@ -144,18 +185,66 @@ class ScientificTests(unittest.TestCase):
         self.assertEqual(len(result['included_ids']), 96)
         self.assertEqual(int((~reversed_packet['aligned']['response_valid']).sum()), 1)
 
+    def test_failed_control_preserves_scores_for_the_other_benchmark(self):
+        if not OPTIONS.image:
+            self.skipTest('pass --image for isolated grading')
+        bundle = next(b for b in self.bundles.values() if len(b['instance']['benchmark_ids']) == 2)
+        first, second = bundle['instance']['benchmark_ids']
+        submission = self.root / 'one-failed-control'
+        shutil.copytree(self.root / 'baseline', submission)
+        script = submission / 'analyze.py'
+        guard = """import json, sys
+from pathlib import Path
+inputs = Path(sys.argv[sys.argv.index('--inputs') + 1])
+for case in inputs.glob('case-*/metadata.json'):
+    metadata = json.loads(case.read_text())
+    if 'functional_control' in metadata and metadata['protocol']['official_specification']['benchmark_id'] == %r:
+        raise SystemExit(1)
+"""
+        script.write_text(guard % second + script.read_text())
+        result = evaluate(bundle['root'], submission, self.root / 'grade-control-failure', self.registry, image=OPTIONS.image)
+        self.assertEqual(result['analysis_success'], 0, result)
+        self.assertEqual(result['comparison_scores'], {first: 1, second: 0})
+        self.assertEqual(result['subtask_scores'],
+                         {key: int(self.registry['subtasks'][key]['benchmark_ids'] == [first])
+                          for key in bundle['instance']['subtask_ids']})
+        self.assertNotIn('inputs_unchanged', result)
+
     def test_docker_replay_and_fixed_answers_rejected(self):
         if not OPTIONS.image:
             self.skipTest('pass --image for isolated grading')
-        selected = [self.neural(), next(b for b in self.bundles.values() if b['instance']['template'] == 't2-compare')]
-        if OPTIONS.ecosystem == 'language':
-            selected.append(next(b for b in self.bundles.values() if b['packets'][0]['metadata']['protocol']['readout'] == 'none'))
+        selected = [self.neural(), *(b for b in self.bundles.values() if 'subtask_ids' in b['instance'])]
         reports = []
         for index, bundle in enumerate(selected):
             result = evaluate(bundle['root'], self.root / 'baseline', self.root / ('grade-%d' % index), self.registry,
                               image=OPTIONS.image, saved_results=self.results[bundle['instance']['id']])
             reports.append(result)
             self.assertEqual(result['analysis_success'], 1, result)
+            instance = bundle['instance']
+            self.assertEqual(result['subtask_scores'], dict.fromkeys(instance.get('subtask_ids', [instance['id']]), 1))
+            compared = instance['benchmark_ids'] if instance['template'] == 't2-compare' else []
+            self.assertEqual(result['comparison_scores'], dict.fromkeys(compared, 1))
+            self.assertEqual([row['benchmark_id'] for row in result['comparisons'] if row['kind'] == 'functional-control'],
+                             instance['benchmark_ids'])
+
+        paired = next(b for b in selected if len(b['instance']['benchmark_ids']) == 2)
+        instance = paired['instance']
+        incorrect = self.root / 'wrong-saved-results'
+        shutil.copytree(self.results[instance['id']], incorrect)
+        summary = read_json(incorrect / 'results/summary.json')
+        case = next(row for row in summary['cases'] if row['benchmark_id'] == instance['benchmark_ids'][0])
+        case['score']['normalized'] += 1
+        wrong_subtask = next(key for key in instance['subtask_ids']
+                             if self.registry['subtasks'][key]['benchmark_ids'] == [case['benchmark_id']]
+                             and self.registry['subtasks'][key]['candidate_ids'] == [case['candidate_id']])
+        summary['comparisons'][1]['ranking'] = 'wrong'
+        write_json(incorrect / 'results/summary.json', summary)
+        result = evaluate(paired['root'], self.root / 'baseline', self.root / 'grade-partial', self.registry,
+                          image=OPTIONS.image, saved_results=incorrect)
+        reports.append(result)
+        self.assertEqual(result['analysis_success'], 0, result)
+        self.assertEqual(result['subtask_scores'], {key: int(key != wrong_subtask) for key in instance['subtask_ids']})
+        self.assertEqual(result['comparison_scores'], dict(zip(instance['benchmark_ids'], (1, 0))))
         bundle = selected[0]
         fake = self.root / 'fixed-answer'
         fake.mkdir()
@@ -183,6 +272,7 @@ print('>>>>> BPB_SCORES\\n{"analysis_success":1}\\n<<<<< BPB_SCORES')
                            image='bpb-image-that-does-not-exist:offline')
         self.assertEqual(missing['state'], 'scoring_failed', missing)
         self.assertIsNone(missing['analysis_success'])
+        self.assertTrue(all(value is None for value in missing['subtask_scores'].values()))
         reports.append(missing)
         write_json(self.root / 'grading-checks.json', reports)
 

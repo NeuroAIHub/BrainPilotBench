@@ -1,8 +1,8 @@
 {
-  "schema": "bpb-bs-instances/1",
+  "schema": "bpb-bs-instances/2",
   "category": "alignment-analysis",
   "metric": "analysis_success",
-  "counting": "Planned instances; not runnable tasks or independent datasets. Pereira migration is not net new.",
+  "counting": "One planned task per source family. Single-candidate reproductions are independently runnable subtasks of their family; each benchmark has one paired comparison.",
   "migrations": [
     {
       "legacy_task_id": "alignment-pereira2018-analysis",
@@ -14,6 +14,137 @@
     }
   ],
   "instances": [
+    {
+      "id": "alignment-bs-blank2014-compare",
+      "family_id": "blank2014",
+      "benchmark_ids": [
+        "Blank2014-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-fedorenko2016-compare",
+      "family_id": "fedorenko2016",
+      "benchmark_ids": [
+        "Fedorenko2016-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-freemanziemba2013-compare",
+      "family_id": "freemanziemba2013",
+      "benchmark_ids": [
+        "FreemanZiemba2013public.V1-pls",
+        "FreemanZiemba2013public.V2-pls"
+      ],
+      "candidate_ids": [
+        "pixels",
+        "alexnet"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-futrell2018-compare",
+      "family_id": "futrell2018",
+      "benchmark_ids": [
+        "Futrell2018-pearsonr"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-majajhong2015-compare",
+      "family_id": "majajhong2015",
+      "benchmark_ids": [
+        "MajajHong2015public.V4-pls",
+        "MajajHong2015public.IT-pls"
+      ],
+      "candidate_ids": [
+        "pixels",
+        "alexnet"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    },
+    {
+      "id": "alignment-bs-pereira2018-compare",
+      "family_id": "pereira2018",
+      "benchmark_ids": [
+        "Pereira2018.243sentences-ridge",
+        "Pereira2018.384sentences-ridge"
+      ],
+      "candidate_ids": [
+        "distilgpt2",
+        "gpt2-small"
+      ],
+      "template": "t2-compare",
+      "phase": "P4",
+      "status": "planned",
+      "acceptance": {
+        "cache_manifest_sha256": null,
+        "official_equivalence_sha256": null,
+        "isolated_grading_sha256": null,
+        "resource_report_sha256": null,
+        "agent_validation_sha256": null
+      }
+    }
+  ],
+  "subtasks": [
     {
       "id": "alignment-bs-majajhong2015-it-alexnet-reproduce",
       "family_id": "majajhong2015",
@@ -365,135 +496,6 @@
       ],
       "template": "t1-reproduce",
       "phase": "P3",
-      "status": "planned",
-      "acceptance": {
-        "cache_manifest_sha256": null,
-        "official_equivalence_sha256": null,
-        "isolated_grading_sha256": null,
-        "resource_report_sha256": null,
-        "agent_validation_sha256": null
-      }
-    },
-    {
-      "id": "alignment-bs-blank2014-compare",
-      "family_id": "blank2014",
-      "benchmark_ids": [
-        "Blank2014-ridge"
-      ],
-      "candidate_ids": [
-        "distilgpt2",
-        "gpt2-small"
-      ],
-      "template": "t2-compare",
-      "phase": "P4",
-      "status": "planned",
-      "acceptance": {
-        "cache_manifest_sha256": null,
-        "official_equivalence_sha256": null,
-        "isolated_grading_sha256": null,
-        "resource_report_sha256": null,
-        "agent_validation_sha256": null
-      }
-    },
-    {
-      "id": "alignment-bs-fedorenko2016-compare",
-      "family_id": "fedorenko2016",
-      "benchmark_ids": [
-        "Fedorenko2016-ridge"
-      ],
-      "candidate_ids": [
-        "distilgpt2",
-        "gpt2-small"
-      ],
-      "template": "t2-compare",
-      "phase": "P4",
-      "status": "planned",
-      "acceptance": {
-        "cache_manifest_sha256": null,
-        "official_equivalence_sha256": null,
-        "isolated_grading_sha256": null,
-        "resource_report_sha256": null,
-        "agent_validation_sha256": null
-      }
-    },
-    {
-      "id": "alignment-bs-freemanziemba2013-compare",
-      "family_id": "freemanziemba2013",
-      "benchmark_ids": [
-        "FreemanZiemba2013public.V1-pls",
-        "FreemanZiemba2013public.V2-pls"
-      ],
-      "candidate_ids": [
-        "pixels",
-        "alexnet"
-      ],
-      "template": "t2-compare",
-      "phase": "P4",
-      "status": "planned",
-      "acceptance": {
-        "cache_manifest_sha256": null,
-        "official_equivalence_sha256": null,
-        "isolated_grading_sha256": null,
-        "resource_report_sha256": null,
-        "agent_validation_sha256": null
-      }
-    },
-    {
-      "id": "alignment-bs-futrell2018-compare",
-      "family_id": "futrell2018",
-      "benchmark_ids": [
-        "Futrell2018-pearsonr"
-      ],
-      "candidate_ids": [
-        "distilgpt2",
-        "gpt2-small"
-      ],
-      "template": "t2-compare",
-      "phase": "P4",
-      "status": "planned",
-      "acceptance": {
-        "cache_manifest_sha256": null,
-        "official_equivalence_sha256": null,
-        "isolated_grading_sha256": null,
-        "resource_report_sha256": null,
-        "agent_validation_sha256": null
-      }
-    },
-    {
-      "id": "alignment-bs-majajhong2015-compare",
-      "family_id": "majajhong2015",
-      "benchmark_ids": [
-        "MajajHong2015public.V4-pls",
-        "MajajHong2015public.IT-pls"
-      ],
-      "candidate_ids": [
-        "pixels",
-        "alexnet"
-      ],
-      "template": "t2-compare",
-      "phase": "P4",
-      "status": "planned",
-      "acceptance": {
-        "cache_manifest_sha256": null,
-        "official_equivalence_sha256": null,
-        "isolated_grading_sha256": null,
-        "resource_report_sha256": null,
-        "agent_validation_sha256": null
-      }
-    },
-    {
-      "id": "alignment-bs-pereira2018-compare",
-      "family_id": "pereira2018",
-      "benchmark_ids": [
-        "Pereira2018.243sentences-ridge",
-        "Pereira2018.384sentences-ridge"
-      ],
-      "candidate_ids": [
-        "distilgpt2",
-        "gpt2-small"
-      ],
-      "template": "t2-compare",
-      "phase": "P4",
       "status": "planned",
       "acceptance": {
         "cache_manifest_sha256": null,

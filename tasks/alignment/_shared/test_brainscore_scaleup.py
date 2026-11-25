@@ -15,7 +15,7 @@ from brainscore import ScaleUpError
 from brainscore.adapters import align_rows, validate
 from brainscore.fixtures import create
 from brainscore.packet import load as load_packet, array
-from brainscore.registry import DEFAULT_ROOT, blockers, load, summary
+from brainscore.registry import DEFAULT_ROOT, blockers, load, resolve_instance, select_instances, summary
 from brainscore.scores import normalize
 from brainscore.templates import draft
 from real_brainscore.common import read_json, write_json
@@ -61,21 +61,25 @@ class ScaleUpTests(unittest.TestCase):
 
     def test_exact_planned_inventory_and_pilot(self):
         counts = summary(self.registry)
-        self.assertEqual((counts['families'], counts['benchmarks'], counts['planned_t1'], counts['planned_t2'], counts['runnable']), (6, 9, 18, 6, 0))
-        self.assertEqual(counts['phase_counts'], {'P1': 2, 'P2': 6, 'P3': 10, 'P4': 6})
-        pilot = [i for i in self.registry['instances'].values() if i['phase'] == 'P1']
+        self.assertEqual((counts['families'], counts['benchmarks'], counts['planned_tasks'], counts['reproduction_subtasks'],
+                          counts['benchmark_comparisons'], counts['runnable']), (6, 9, 6, 18, 9, 0))
+        ids = [subtask_id for task in select_instances(self.registry) for subtask_id in task['subtask_ids']]
+        self.assertCountEqual(ids, self.registry['subtasks'])
+        pilot = select_instances(self.registry, phase='P1')
         self.assertEqual({i['candidate_ids'][0] for i in pilot}, {'pixels', 'alexnet'})
         self.assertTrue(all(i['benchmark_ids'] == ['MajajHong2015public.IT-pls'] for i in pilot))
 
     def test_all_instances_blocked_and_migration_explicit(self):
-        for instance in self.registry['instances'].values():
+        for instance in [*self.registry['instances'].values(), *self.registry['subtasks'].values()]:
             reasons = blockers(self.registry, instance)
             self.assertIn('acceptance:agent_validation_sha256', reasons)
             self.assertNotIn('environment:dependency_lock_sha256', reasons)
             self.assertNotIn('runtime:official-adapter-and-isolated-grader-pending', reasons)
         migration, = self.registry['migrations']
-        target = self.registry['instances'][migration['target_instance_id']]
+        target = resolve_instance(self.registry, migration['target_instance_id'])
         self.assertEqual(target['benchmark_ids'], ['Pereira2018.384sentences-ridge'])
+        self.assertIn(target['id'], self.registry['instances'][target['parent_id']]['subtask_ids'])
+        self.assertIsNotNone(target['acceptance']['official_equivalence_sha256'])
         self.assertNotEqual(migration['legacy_upstream_commit'], self.registry['environments']['language']['upstream_commit'])
 
     def test_commit_mismatch_rejected(self):
@@ -103,6 +107,24 @@ class ScaleUpTests(unittest.TestCase):
         with self.assertRaisesRegex(ScaleUpError, 'promotion requires'):
             load(root)
 
+    def test_missing_subtask_and_reversed_comparison_rejected(self):
+        root = self.changed_registry('instances', lambda d: d['subtasks'].pop())
+        with self.assertRaisesRegex(ScaleUpError, 'cover every benchmark'):
+            load(root)
+        value = read_json(DEFAULT_ROOT / 'instances.json')
+        value['instances'][0]['candidate_ids'].reverse()
+        write_json(root / 'instances.json', value)
+        with self.assertRaisesRegex(ScaleUpError, 'candidate order'):
+            load(root)
+
+    def test_old_flat_registry_resolves_the_same_ids_and_evidence(self):
+        def flatten(value):
+            value['schema'] = 'bpb-bs-instances/1'
+            value['instances'] = value.pop('subtasks') + value['instances']
+        legacy = load(self.changed_registry('instances', flatten))
+        for key in ('instances', 'subtasks', 'migrations'):
+            self.assertEqual(legacy[key], self.registry[key])
+
     def test_omitted_unresolved_field_cannot_disappear_from_preflight(self):
         root = self.changed_registry('candidates', lambda d: d['candidates'][0].pop('configuration_sha256'))
         with self.assertRaisesRegex(ScaleUpError, 'missing candidate field'):
@@ -112,7 +134,11 @@ class ScaleUpTests(unittest.TestCase):
         # -S removes installed site packages, including NumPy, Torch and Brain-Score.
         run = subprocess.run([sys.executable, '-B', '-S', str(CLI), 'validate'], capture_output=True, text=True, timeout=15)
         self.assertEqual(run.returncode, 0, run.stderr)
-        self.assertEqual(json.loads(run.stdout)['planned_t1'], 18)
+        self.assertEqual(json.loads(run.stdout)['reproduction_subtasks'], 18)
+        for flags, collection in (([], 'instances'), (['--subtasks'], 'subtasks')):
+            listed = subprocess.run([sys.executable, '-B', '-S', str(CLI), 'list', *flags],
+                                    capture_output=True, text=True, check=True)
+            self.assertCountEqual([row['id'] for row in json.loads(listed.stdout)['instances']], self.registry[collection])
         probe = subprocess.run([sys.executable, '-B', '-S', '-c',
                                 'import sys; sys.path.insert(0, ' + repr(str(CLI.parent)) + '); '
                                 'import brainscore_cli; brainscore_cli.load(); '
@@ -124,13 +150,14 @@ class ScaleUpTests(unittest.TestCase):
         run = subprocess.run([sys.executable, '-B', '-S', str(CLI), 'preflight', '--require-ready'],
                              capture_output=True, text=True, timeout=15)
         self.assertEqual(run.returncode, 2, run.stderr)
-        self.assertEqual(len(json.loads(run.stdout)['instances']), 24)
+        self.assertEqual(len(json.loads(run.stdout)['instances']), 6)
         self.assertNotIn('BPB_SCORES', run.stdout)
 
     def test_drafts_are_reviewable_without_runnable_task_or_answers(self):
         destination = self.root / 'drafts'
         result = draft(self.registry, destination)
-        self.assertEqual(result['drafts'], 24)
+        self.assertEqual(result['drafts'], 6)
+        self.assertEqual(draft(self.registry, self.root / 'subtask-drafts', subtasks=True)['drafts'], 18)
         self.assertFalse(list(destination.rglob('task.yaml')))
         self.assertFalse(list(destination.rglob('analyze.py')))
         for path in destination.glob('*/contract.draft.json'):

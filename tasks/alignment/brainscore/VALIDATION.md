@@ -1,10 +1,20 @@
 # Brain-Score scale-up 验证记录
 
+## 2026-11-23 来源任务合并
+
+在冻结的 Vision 和 Language 环境中，使用合成输入计算了 6 个来源任务，并与 18 个独立子项逐一核对。按原 ID 对照，语言 14 条、视觉 10 条结果与 11 月 11 日留存的合成数值记录逐值一致。6 份维护者提交均通过 Docker 隔离评分。18 个复现分、9 个比较分均为 1，9 个基准各有一次单独的扰动重跑。[逐任务评分记录](evidence/20261123/merged-task-validation.json)
+
+两份故意改错的提交均得整题 0 分。视觉提交分别在 FreemanZiemba V1 的 AlexNet 复现和 V2 的比较上失分。语言提交分别在 Pereira243 的 distilgpt2 复现和 Pereira384 的比较上失分。其余分项均为 1。测试还覆盖了固定答案重放、缺少评分镜像以及旧版清单读取。[评分回归测试](../_shared/test_brainscore_scientific.py)
+
+合成 Pereira 来源任务走通了标准 CLI 的准备、手动提交、产物回收、提交校验和 Docker 评分。`scores.json` 包含 1 个整题分、4 个复现分和 2 个比较分。真实输入等价性的已验证范围仍为下文的 Pereira384 × distilgpt2 子项，6 个来源任务的真实数据验收和独立 Agent 验收尚待完成。
+
+## 2026-11-11 原始 T1/T2 验证
+
 日期：2026-11-11。执行边界：没有下载数据、刺激或模型权重；获取了官方软件源码、依赖和元数据。Pereira384 的真实验证复用本机原有文件，所有新缓存、参考结果和 staged task 均在仓外。原环境、原缓存和历史成绩没有覆盖。
 
 机器可读汇总：[validation-summary.json](evidence/20261111/validation-summary.json)。本目录证据只包含哈希、版本、指标和诊断，不包含数据、刺激文本、权重或预测数组。
 
-## 软件与方法
+### 软件与方法
 
 | 环境 | 上游 commit | 关键版本 |
 |---|---|---|
@@ -20,7 +30,7 @@
 
 上游协议的审计与关键区别见 [SOURCE_AUDIT.md](SOURCE_AUDIT.md)：视觉为不裁剪的 `r²/ceiling`，语言为裁剪的 `r/ceiling`；Futrell raw 是绝对 Pearson r，保留 signed r；语言使用官方 RidgeGCVTorch；Freeman public version 为 1。
 
-## 无新数据验证
+### 无新数据验证
 
 - **21 项 Python 契约检查、4 项 Node catalog 检查通过**：白名单、源码版本、无站点包 CLI、ID 对齐、泄漏、缺失掩码、文件完整性、禁止虚假准入、归一化以及向量化描述性计算。
 - **24 个实例、36 个 benchmark × candidate case 通过官方合成计算**：Language 14 个实例/20 cases；Vision 10 个实例/16 cases。每个实例还生成实验 task，拒绝未显式标记的合成 staging，公开工作区没有答案程序。
@@ -29,7 +39,7 @@
 
 最终数值矩阵：[Language](evidence/20261111/synthetic-language-matrix.json)、[Vision](evidence/20261111/synthetic-vision-matrix.json)。隔离评分证据：[Language](evidence/20261111/synthetic-language-grading.json)、[Vision](evidence/20261111/synthetic-vision-grading.json)。测试中的跨生态 skip 是不适用项；独立环境内适用项全部通过。
 
-## Pereira384 真实验证
+### Pereira384 真实验证
 
 输入：本机已有原始 assembly、对应的三层 ceiling、固定 revision `2290a62682d06624634c1f46a6ad5be0f47f38aa` 的 distilgpt2 模型/tokenizer。逐文件核对上游 SHA1 或 Hub Git/LFS 校验信息，再记录 SHA256；没有重新下载。使用最终层 `transformer.h.5`，CPU float32，按官方 passage 上下文计算。
 
@@ -54,7 +64,7 @@
 
 本机重查入口：`/tmp/bpb-bs-real-task-20261111`、`/tmp/bpb-bs-real-runs-20261111/baseline`、`/tmp/bpb-bs-pereira384-inputs-20261111`。这些是临时执行产物；持久的审阅证据已复制到本目录。
 
-## 当前准入边界
+### 当前准入边界
 
 `npm run test:collection`、`npm run catalog:check` 通过：正式清单仍为 **112 runnable + 6 candidate = 118**。本次没有把 24 个计划实例或合成例子计入正式数量。
 

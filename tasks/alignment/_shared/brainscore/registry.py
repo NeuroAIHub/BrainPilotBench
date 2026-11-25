@@ -47,8 +47,10 @@ def load(root=DEFAULT_ROOT):
     from .protocols import fingerprint, specification
     root = Path(root)
     sources, candidates, instances = [read_json(root / (name + '.json')) for name in ('sources', 'candidates', 'instances')]
-    for document, schema in zip((sources, candidates, instances), ('sources', 'candidates', 'instances')):
+    for document, schema in ((sources, 'sources'), (candidates, 'candidates')):
         require(isinstance(document, dict) and document.get('schema') == 'bpb-bs-' + schema + '/1', 'unsupported ' + schema + ' schema')
+    require(isinstance(instances, dict) and instances.get('schema') in ('bpb-bs-instances/1', 'bpb-bs-instances/2'),
+            'unsupported instances schema')
     envs = sources.get('environments')
     require(isinstance(envs, dict) and set(envs) == {'vision', 'language'}, 'separate vision/language environments required')
     for ecosystem, env in envs.items():
@@ -118,7 +120,16 @@ def load(root=DEFAULT_ROOT):
             require(benchmark['protocol_sha256'] in (None, fingerprint(spec)), 'protocol fingerprint differs')
             benchmark_map[bid] = {**benchmark, 'family_id': family['id']}
     require(instances.get('category') == 'alignment-analysis' and instances.get('metric') == 'analysis_success', 'analysis metric differs')
-    instance_map = index(instances.get('instances'), 'instances')
+    rows = index(instances.get('instances'), 'instances')
+    if instances['schema'] == 'bpb-bs-instances/1':
+        # Historical registries and exported maintainer baselines used a flat whitelist.
+        subtasks = {key: row for key, row in rows.items() if row.get('template') == 't1-reproduce'}
+        tasks = {key: row for key, row in rows.items() if key not in subtasks}
+    else:
+        tasks = rows
+        subtasks = index(instances.get('subtasks'), 'subtasks')
+    require(not (tasks.keys() & subtasks.keys()), 'duplicate task/subtask id')
+    instance_map = {**tasks, **subtasks}
     signatures = set()
     for instance in instance_map.values():
         require(re.fullmatch('alignment-bs-[a-z0-9-]+', instance['id']), 'unsafe task id')
@@ -128,6 +139,7 @@ def load(root=DEFAULT_ROOT):
         distinct(instance.get('candidate_ids'), family['candidate_ids'], 'instance candidates')
         require(instance.get('template') in ('t1-reproduce', 't2-compare'), 'unknown template')
         t1 = instance['template'] == 't1-reproduce'
+        require(t1 == (instance['id'] in subtasks), 'single-model reproductions must be subtasks')
         require((len(instance['benchmark_ids']) == len(instance['candidate_ids']) == 1) if t1
                 else len(instance['candidate_ids']) == 2 and set(instance['benchmark_ids']) == {b['id'] for b in family['benchmarks']},
                 'template cardinality differs')
@@ -140,12 +152,35 @@ def load(root=DEFAULT_ROOT):
         signature = (instance['template'], tuple(sorted(instance['benchmark_ids'])), tuple(sorted(instance['candidate_ids'])))
         require(signature not in signatures, 'duplicate scientific instance')
         signatures.add(signature)
+    parents = {task['family_id']: task for task in tasks.values()}
+    require(set(parents) == set(family_map) and len(parents) == len(tasks), 'one task required per source family')
+    for parent in parents.values():
+        require(parent['candidate_ids'] == family_map[parent['family_id']]['candidate_ids'], 'comparison candidate order differs')
+        children = [item for item in subtasks.values() if item['family_id'] == parent['family_id']]
+        pairs = {(child['benchmark_ids'][0], child['candidate_ids'][0]) for child in children}
+        require(pairs == {(bid, cid) for bid in parent['benchmark_ids'] for cid in parent['candidate_ids']},
+                'subtasks must cover every benchmark and candidate in the source task')
+        parent['subtask_ids'] = [child['id'] for child in children]
+        for child in children:
+            child['parent_id'] = parent['id']
     for migration in instances.get('migrations', []):
         require(migration.get('target_instance_id') in instance_map, 'unknown migration target')
         digest(migration.get('legacy_upstream_commit'), 'legacy commit', 40)
         require(migration.get('status') == 'equivalence-review-pending', 'legacy scores cannot be silently migrated')
     return {'root': root, 'environments': envs, 'families': family_map, 'benchmarks': benchmark_map,
-            'candidates': candidate_map, 'instances': instance_map, 'migrations': instances.get('migrations', [])}
+            'candidates': candidate_map, 'instances': tasks, 'subtasks': subtasks, 'migrations': instances.get('migrations', [])}
+
+
+def resolve_instance(registry, instance_id):
+    instance = registry['instances'].get(instance_id) or registry['subtasks'].get(instance_id)
+    require(instance is not None, 'unknown instance: ' + str(instance_id))
+    return instance
+
+
+def select_instances(registry, phase=None, subtasks=False):
+    # P1–P3 historically select single-model pilots; P4 contains the source tasks.
+    entries = registry['subtasks' if subtasks or phase in ('P1', 'P2', 'P3') else 'instances']
+    return [entry for entry in entries.values() if phase is None or entry['phase'] == phase]
 
 
 def blockers(registry, instance):
@@ -185,9 +220,8 @@ def blockers(registry, instance):
 
 
 def summary(registry):
-    instances = list(registry['instances'].values())
     return {'families': len(registry['families']), 'benchmarks': len(registry['benchmarks']),
-            'planned_t1': sum(i['template'] == 't1-reproduce' for i in instances),
-            'planned_t2': sum(i['template'] == 't2-compare' for i in instances), 'runnable': 0,
-            'phase_counts': {phase: sum(i['phase'] == phase for i in instances) for phase in ('P1', 'P2', 'P3', 'P4')},
+            'planned_tasks': len(registry['instances']), 'reproduction_subtasks': len(registry['subtasks']),
+            'benchmark_comparisons': sum(len(task['benchmark_ids']) for task in registry['instances'].values()),
+            'runnable': 0,
             'data_downloaded_by_this_workflow': False}

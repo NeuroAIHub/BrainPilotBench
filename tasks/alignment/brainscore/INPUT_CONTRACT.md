@@ -1,4 +1,6 @@
-# Brain-Score analysis contract v1
+# Brain-Score source tasks and reproduction subtasks
+
+Each source task (`t2-compare`) contains two fixed candidates for each of its benchmarks. Produce the single-model results and the paired comparisons in one submission. Each reproduction (`t1-reproduce`) also runs on its own under its original ID. Both modes use the v1 input, summary and conclusion formats below.
 
 Implement `python submission/analyze.py --inputs DIR --output DIR`. Read only the supplied local inputs; write results to the output directory. No downloads or weights are needed for cached analysis. Public responses are visible: scientific held-out folds are not hidden labels.
 
@@ -52,6 +54,11 @@ T1 has `comparisons: []`. T2 compares two fixed candidates within each declared 
 
 ## Evaluation
 
-The owner recomputes a reference and reruns submitted code in a container with no network, read-only source/inputs and no owner answers. The evaluator also changes supplied inputs: neural controls perturb only the first fold's held-out responses; behavioral controls rotate included model predictions. Recompute from the supplied packet each run. Fixed answers, altered masks, wrong splits, wrong aggregation and mismatched saved outputs fail. Submission stdout cannot assign a score.
+The evaluator checks the saved artifacts and replays the code on the original inputs in an offline container. It then runs one additional replay per benchmark. Each control changes that benchmark's first-fold held-out neural responses for both candidates, or rotates each candidate's included behavioral predictions. All other benchmarks retain their original packets for that replay.
 
-`analysis_success=1` requires the saved artifacts (when supplied), rerun and functional control to pass. A correct negative result can pass. Missing datasets, images, dependencies or invalid owner inputs are infrastructure failures, with no task score. Prose quality and independent scientific/Agent acceptance remain separate reviews. Synthetic instances validate software only and never establish real-data equivalence.
+`analysis_success` is 1 when every required artifact and every replay passes. The grader also emits binary scores for each reproduction and comparison. Each uses the original replay, the saved artifacts when supplied, and the control for its own benchmark.
+
+- `reproduction.<subtask_id>` checks the case summary, decomposition and full numerical trace against the reference.
+- `comparison.<benchmark_id>` checks the paired difference, ranking and scope in the summary and structured conclusion. A standalone reproduction has no comparison scores.
+
+These metrics appear in the runner's scores and as `subtask_scores` and `comparison_scores` in the evaluator's `grade.json`. An infrastructure failure produces no score. Report quality and independent Agent acceptance require separate review.

@@ -13,8 +13,10 @@ export function readAlignmentCandidates(root) {
     if (e.name === 'brainscore') {
       for (const name of ['sources', 'candidates', 'instances']) {
         const manifest = JSON.parse(readFileSync(join(dir, `${name}.json`), 'utf8'));
-        if (manifest.schema !== `bpb-bs-${name}/1` || (name === 'instances' &&
-            (!Array.isArray(manifest.instances) || manifest.instances.some(i => i.status !== 'planned'))))
+        const grouped = name === 'instances' && manifest.schema === 'bpb-bs-instances/2';
+        const planned = rows => Array.isArray(rows) && rows.every(row => row?.status === 'planned');
+        if ((!grouped && manifest.schema !== `bpb-bs-${name}/1`) ||
+            (name === 'instances' && !planned(manifest.instances)) || (grouped && !planned(manifest.subtasks)))
           throw new Error(`${directory}: invalid planning registry; run brainscore_cli.py validate`);
       }
       return [];

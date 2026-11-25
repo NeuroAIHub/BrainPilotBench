@@ -6,7 +6,7 @@ import os
 import sys
 
 from brainscore import ScaleUpError
-from brainscore.registry import ADAPTERS, DEFAULT_ROOT, blockers, load, summary
+from brainscore.registry import ADAPTERS, DEFAULT_ROOT, blockers, load, resolve_instance, select_instances, summary
 from real_brainscore import BackendError
 
 
@@ -23,6 +23,8 @@ def main():
     draft = commands.add_parser('draft', help='Render contracts/prompts outside Git without registering tasks')
     draft.add_argument('--output', required=True)
     draft.add_argument('--phase', choices=['P1', 'P2', 'P3', 'P4'])
+    for command in (listing, preflight, draft):
+        command.add_argument('--subtasks', action='store_true', help='Select the independently runnable single-model reproductions')
     fixture = commands.add_parser('fixture', help='Generate a tiny synthetic cache-contract example')
     fixture.add_argument('--output', required=True)
     fixture.add_argument('--adapter', choices=sorted(ADAPTERS), default='vision-neural')
@@ -82,14 +84,9 @@ def main():
     if args.command == 'validate':
         result = {'registry_valid': True, **summary(registry)}
     elif args.command == 'list':
-        result = {'summary': summary(registry), 'instances': [i for i in registry['instances'].values()
-                  if args.phase is None or i['phase'] == args.phase]}
+        result = {'summary': summary(registry), 'instances': select_instances(registry, args.phase, args.subtasks)}
     elif args.command == 'preflight':
-        selected = list(registry['instances'].values())
-        if args.instance:
-            if args.instance not in registry['instances']:
-                raise ScaleUpError('unknown instance: ' + args.instance)
-            selected = [registry['instances'][args.instance]]
+        selected = [resolve_instance(registry, args.instance)] if args.instance else select_instances(registry, subtasks=args.subtasks)
         entries = [{'id': i['id'], 'blockers': blockers(registry, i)} for i in selected]
         for entry in entries:
             entry['ready'] = not entry['blockers']
@@ -97,7 +94,7 @@ def main():
         code = 2 if args.require_ready and any(not entry['ready'] for entry in entries) else 0
     elif args.command == 'draft':
         from brainscore.templates import draft
-        result = draft(registry, args.output, args.phase)
+        result = draft(registry, args.output, args.phase, args.subtasks)
     elif args.command in ('fixture', 'verify-packet'):
         if args.command == 'fixture':
             from brainscore.fixtures import create
@@ -149,7 +146,10 @@ def main():
             from brainscore.evaluation import evaluate
             result = evaluate(**values)
             if result['state'] == 'scored':
-                print('>>>>> BPB_SCORES\n' + json.dumps({'analysis_success': result['analysis_success']}) + '\n<<<<< BPB_SCORES')
+                scores = {'analysis_success': result['analysis_success']}
+                scores.update({'reproduction.' + key: value for key, value in result['subtask_scores'].items()})
+                scores.update({'comparison.' + key: value for key, value in result['comparison_scores'].items()})
+                print('>>>>> BPB_SCORES\n' + json.dumps(scores) + '\n<<<<< BPB_SCORES')
             else:
                 code = 1
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))

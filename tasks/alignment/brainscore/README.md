@@ -1,22 +1,22 @@
 # Brain-Score alignment scale-up
 
-2026-11-11：**已实现本地来源导入、固定模型封装、官方计算、缓存一致性验证、T1/T2 分析、隔离评分和实验任务导出。** 本轮没有下载数据、刺激或模型权重；安装了软件依赖，并复用了本机已有的 Pereira384 与 distilgpt2 文件。
+本扩展有 **6 个来源任务**。每个任务提交该来源的单模型复现和逐基准比较，合计 18 个复现子项、9 个比较结果。单模型子项保留原 ID，可单独运行和评分。
 
 | 范围 | 当前状态 |
 |---|---|
 | 来源和协议 | 6 个来源家族、9 个官方 benchmark，固定源码 commit、原文件对象锁和协议 |
-| T1 / T2 | 18 个复现实例、6 个来源内比较实例；全部通过合成数据计算和任务导出检查 |
+| 任务清单 | `instances.json` 的 `instances` 列出 6 个来源任务（T2），`subtasks` 列出按来源归属的 18 个单模型子项（T1） |
 | 官方方法 | 视觉 PLS、语言 RidgeGCVTorch、Futrell 直接行为比较；调用固定的上游实现 |
 | 运行环境 | Vision / Language 分开；软件版本、源码指纹、依赖锁和本地 Docker 镜像已冻结 |
-| 评分 | 保存结果核对、容器重跑、逐折预测核对、输入扰动控制；stdout 不作为成绩 |
+| 评分 | 整题通过分、逐模型复现分、逐基准比较分。每个基准独立执行一次扰动重跑 |
 | 真实验证 | Pereira384 × distilgpt2 官方/cache 等价及完整 CLI 评分通过；384 个刺激、12,155 个单元 |
 | 正式准入 | 新增 canonical task 仍为 0；实验 staging 与合成例子不计入正式数量 |
 
-真实验证的 raw 为 `0.07885228013320371`、ceiling 为 `0.13521249808656496`、归一化分数为 `0.5831730146921874`，维护者基线 `analysis_success=1`。这是新冻结版本的验证结果，不继承旧 Pereira 成绩，也不是独立 Agent 成绩。详见 [VALIDATION.md](VALIDATION.md)。
+2026-11-11 的 Pereira384 × distilgpt2 真实运行得到 raw `0.07885228013320371`、ceiling `0.13521249808656496` 和归一化分数 `0.5831730146921874`，当时的维护者基线得到 `analysis_success=1`。2026-11-23 的来源任务合并使用合成输入验证。[验证记录](VALIDATION.md)
 
 ## 文件与入口
 
-- [TASK_GUIDE.zh-CN.md](TASK_GUIDE.zh-CN.md)：24 个实例的中文逐任务说明，包括 Agent 要做什么、提供哪些数据、提交产物和当前就绪程度。
+- [任务与子项说明](TASK_GUIDE.zh-CN.md)列出各来源的候选、测量、提交产物和就绪程度。
 - [BASELINE_AUDIT.md](BASELINE_AUDIT.md)：逐项核验官方基线；10 个语言组合有网页成绩，视觉 public 配置与普通榜单不能直接对分，并列出源码测试、教程示例和本地参考的区别。
 - [sources.json](sources.json)、[candidates.json](candidates.json)、[instances.json](instances.json)：显式白名单、固定模型和逐实例验收证据。
 - [source-assets.json](source-assets.json)：16 个上游对象的原文件名、SHA1、版本和来源；没有远程取回这些对象。
@@ -30,12 +30,13 @@
 
 ```bash
 python3 -B tasks/alignment/_shared/brainscore_cli.py validate
-python3 -B tasks/alignment/_shared/brainscore_cli.py list --phase P1
+python3 -B tasks/alignment/_shared/brainscore_cli.py list
+python3 -B tasks/alignment/_shared/brainscore_cli.py list --subtasks
 python3 -B tasks/alignment/_shared/brainscore_cli.py preflight --require-ready
 python3 -B tasks/alignment/_shared/brainscore_cli.py draft --output /tmp/bs-contract-drafts
 ```
 
-`validate` 只确认清单有效；`preflight --require-ready` 对未完成验收返回 2，并逐项列出缺口。不能靠修改 `planned` 状态把实例计入正式 catalog。
+`list`、`draft` 和 `preflight` 默认处理 6 个来源任务，加 `--subtasks` 可处理 18 个单模型子项。`list` 输出的 `subtask_ids` 和 `parent_id` 可以双向查找。向 `bundle --instance`、`fixture-instance --instance` 或 `preflight --instance` 传入任务或子项 ID 即可单独选择。`preflight --require-ready` 对未完成验收返回 2，并逐项列出缺口。
 
 ## 环境与本地准备
 
@@ -74,7 +75,7 @@ BS_CLI=tasks/alignment/_shared/brainscore_cli.py
 
 `prepare` 保留官方 constructor/预处理，只替换远程对象解析。运行固定候选后，它比较 live 与 cache 的分数、逐折预测、单元指标及 alpha。证据留在 owner 目录，任务仅获得公开输入。`pixels` 无需模型文件；AlexNet 使用通过官方发布校验前缀验证的 `alexnet.pth`；语言模型验证固定 Hub 元数据对应的 safetensors/tokenizer 字节。
 
-T2 对每个 benchmark 的两候选分别准备 cache，再重复传 `bundle --packet`。同 endpoint 的目标、ID、协议和排除项必须相同。`instance.json` 明确比较顺序；不把 CV 折当独立研究。
+上例单独打包了 Pereira384 的 distilgpt2 子项。要运行完整的 `alignment-bs-pereira2018-compare`，对 243 句和 384 句两个实验分别准备 distilgpt2、gpt2-small 缓存，再用该任务 ID 和四个 `--packet` 一次打包。同一基准两候选的目标、ID、协议和排除项必须相同。提交会产生四个复现分和两个比较分。
 
 ## 执行和评分
 
@@ -104,14 +105,16 @@ BPB_ALIGNMENT_PYTHON="$BS_LANGUAGE_PY" npm run test:alignment-brainscore
 "$BS_VISION_PY" -B tasks/alignment/_shared/test_brainscore_bindings.py --ecosystem vision
 ```
 
-合成实例用 `fixture-instance --instance ID --output DIR` 生成；staging 需 `--allow-synthetic`，任务 ID 加 `example-`。覆盖全部 24 实例、官方划分/求解、上下文、视觉时间窗与重复平均、坐标重排、缺失掩码、错误数值、固定答案、伪造 stdout 和镜像缺失。
+合成输入用 `fixture-instance --instance ID --output DIR` 生成。导出合成任务需要 `--allow-synthetic`，任务 ID 加 `example-`。回归测试核对各来源任务内的复现是否与独立子项一致，并分别检验错误的预测、排名和逐基准扰动。
 
-输入数组只读 mmap，每文件上限 8 GiB；同序候选避免复制全矩阵。voxel 描述性相关按列向量化，控制输入只复制被修改数组。评分输出上限 512 MiB。默认 2 CPU、8 GiB、单次 worker 900 秒属于实验配置；完整视觉 pixels 的资源需求须用真实规模校准，可通过 `evaluate --memory/--cpus/--timeout` 调整。
+输入数组使用只读 mmap，每文件上限 8 GiB。同序候选避免复制全矩阵。voxel 描述性相关按列向量化，控制输入只修改目标基准的指定数组。评分输出上限为 512 MiB，单次 worker 默认为 2 CPU、8 GiB、900 秒。导出任务的评分总时限为单基准 45 分钟、双基准 75 分钟，给第二个基准的参考计算和隔离重跑各预留 15 分钟。完整视觉 pixels 的资源需求仍须用真实规模校准，可通过 `evaluate --memory/--cpus/--timeout` 调整。
 
 ## 未完成的真实验收
 
-其余来源原文件/刺激、Pereira243 ceiling、AlexNet/GPT-2 权重没有下载，故相应真实分数、资源校准和 T2 真实比较待执行。流程入口已具备：先校验本地资产，再执行 `prepare → bundle → evaluate → stage`。
+2026-11-25 已从官方来源下载 AlexNet 和 GPT-2 small，并用 `seal-model` 核验权重及 GPT-2 分词器。逐文件 SHA-256 见 [AlexNet 清单](evidence/20261125/alexnet-model-manifest.json)和 [GPT-2 small 清单](evidence/20261125/gpt2-small-model-manifest.json)。
+
+其余来源原文件、刺激和 Pereira243 ceiling 仍待准备，相应真实分数、资源校准和 T2 真实比较待执行。校验本地资产后，执行 `prepare → bundle → evaluate → stage`。
 
 许可审查已完成可公开查证部分；未找到原权利人明确授权的资产保留缺口，不把代码 MIT 当数据许可。Natural Stories 明确 CC BY-NC-SA 4.0；固定 Futrell artifact 是否包含作者 2025 年阅读时间对齐修正仍需核查，详见来源审计。
 
-正式准入还需独立 Agent 校准、相应资源验收和来源条件确认。既有 Task1、Task2、A–F、旧环境及旧成绩保留。本次 24 个白名单实例包含 Pereira 迁移，不表示净增 24 个独立数据集。
+正式准入还需独立 Agent 校准、相应资源验收和来源条件确认。Pereira384 单模型子项保留了原有的真实输入等价性证据。

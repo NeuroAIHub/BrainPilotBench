@@ -1,6 +1,6 @@
 # Brain-Score 扩展任务的 Agent 工作与输入数据
 
-更新日期：2026-11-11。本文对应 [instances.json](instances.json) 中的 **24 个实例：18 个 T1 单模型复现、6 个 T2 双模型比较**，覆盖 6 个数据来源家族、9 个官方 benchmark。它们是固定分析协议的不同实例，不代表 24 个独立数据集。
+每个数据来源对应 **1 个任务**。6 个来源任务覆盖 9 个官方 benchmark，要求提交 18 个单模型结果和 9 个双模型比较。每个单模型计算也可以用原 ID 单独运行。[任务与子项清单](instances.json)
 
 Agent 的工作是读取给定数据、编写并运行分析程序、复现科学指标、提交可核对的结果和结论。**候选模型特征已经算好；Agent 需要拟合规定的预测映射或计算行为相关，而不是训练候选模型。** Agent 的成绩是分析是否正确，候选模型的 Brain-Score 高低是科学结果。
 
@@ -108,9 +108,9 @@ distilgpt2 固定使用 `transformer.h.5`，gpt2-small 固定使用 `transformer
 
 这里的模型输出是 surprisal，单位为 bit，不能解释成毫秒。该任务没有拟合读出映射，也没有交叉验证折。描述性相关和上游 p-value 本身不构成额外的显著性结论。
 
-## 4 全部 18 个 T1 单模型复现实例
+## 4 可独立运行的 18 个单模型复现子项（T1）
 
-每行是一项完整 task：使用第 2 节对应来源的数据，执行第 3 节指定流程，并提交第 6 节全部产物。
+每行对应一个来源任务中的一次计算。独立运行该子项时，使用同一份候选缓存，执行第 3 节对应流程，提交第 6 节所列的单模型产物。
 
 | Task ID | 响应数据 | 候选及固定表示 | Agent 执行流程 |
 |---|---|---|---|
@@ -133,7 +133,7 @@ distilgpt2 固定使用 `transformer.h.5`，gpt2-small 固定使用 `transformer
 | `alignment-bs-futrell2018-reading-times-distilgpt2-reproduce` | Futrell 逐词人类阅读时间 | distilgpt2 逐词 surprisal | B，复现行为相关 |
 | `alignment-bs-futrell2018-reading-times-gpt2-small-reproduce` | Futrell 逐词人类阅读时间 | gpt2-small 逐词 surprisal | B，复现行为相关 |
 
-## 5 全部 6 个 T2 双模型比较实例
+## 5 主清单中的 6 个来源任务（T2）
 
 T2 提供同一来源下两个候选模型的数据。Agent 须先对每个 case 完整执行 V、L 或 B，再在相同刺激、测量单元和协议下比较；不能只读现成分数写排名。
 
@@ -179,9 +179,9 @@ JSON schema、确切字段、数组约束与数值容差见 [INPUT_CONTRACT.md](
 
 ## 7 怎样判断 Agent 完成了任务
 
-主评分为二元 `analysis_success`。保存的结果、隔离重跑和输入扰动检查均通过才为 1；模型与脑或行为的对应很弱，也可以得到 1。
+主评分 `analysis_success` 为 1 表示整份提交通过。每个复现子项和每个基准比较另有独立的 0/1 分数，分别记录在 `grade.json` 的 `subtask_scores` 和 `comparison_scores` 中。复现分核对候选结果和数值轨迹，比较分核对该基准在结果与结论中报告的分差、排名和适用范围。
 
-评分器核对逐折预测、单元指标、掩码、聚合和结论字段，不仅比较最终一个数。它会在无网络环境中重跑提交源码，并对神经任务修改第一折测试响应、对行为任务轮换纳入词的模型输出，以检查程序是否重新计算。固定答案和伪造 stdout 无法代替分析。
+评分器核对保存的产物，在断网环境下按原输入重跑，再对每个基准单独扰动并重跑。神经数据改变该基准第一折的测试响应，行为数据轮换纳入词的模型输出。例如 Pereira 有两次控制运行，分别改变 243 句和 384 句实验的数据。
 
 数据或环境缺失属于基础设施失败，不算 Agent 得 0。报告文字质量和独立 Agent 验收另行审阅；合成数据测试不能代替真实数据验证。
 
@@ -189,9 +189,9 @@ JSON schema、确切字段、数组约束与数值容差见 [INPUT_CONTRACT.md](
 
 | 范围 | 当前状态 |
 |---|---|
-| 24 个实例定义、输入契约、分析与评分流程 | 已实现，全部通过合成数据流程验证 |
+| 6 个来源任务、18 个复现子项、9 个逐基准比较 | 已实现，可用合成输入验证数值与评分 |
 | Pereira384 × distilgpt2 | 已复用本机真实文件，完成官方与缓存等价验证、维护者基线及完整 CLI 评分 |
 | 其余真实组合与 T2 真实比较 | 等待对应来源资产、固定权重或 ceiling；尚未完成真实数据验收 |
 | 独立 Agent 成绩及正式任务准入 | 尚未完成；新增正式 canonical task 为 0 |
 
-逐实例机器可读定义见 [instances.json](instances.json)，操作命令见 [README.md](README.md)，真实验证证据见 [VALIDATION.md](VALIDATION.md)，上游出处和来源条件见 [SOURCE_AUDIT.md](SOURCE_AUDIT.md)。维护者也可使用 README 中的 `draft` 命令导出每个实例的 `prompt.draft.md` 和 `contract.draft.json` 进行逐项审阅。
+维护者可用 `draft` 导出 6 个来源任务的题面与契约，或用 `draft --subtasks` 导出单模型子项。[操作命令](README.md) · [验证记录](VALIDATION.md) · [上游出处和来源条件](SOURCE_AUDIT.md)
