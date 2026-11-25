@@ -27,3 +27,13 @@ docs/*
 !docs/alignment-task1-development-plan.md
 !docs/alignment-task2-development-plan.md
 !docs/alignment-multiscale-agent-demo-plan.zh-CN.md
+# The reader guide and its published figures accompany the task catalog.
+!docs/research/
+docs/research/*
+!docs/research/alignment-l1-l4-guide.zh-CN.md
+!docs/research/alignment-l1-l4-guide.zh-CN.pdf
+!docs/research/figures/
+docs/research/figures/*
+!docs/research/figures/alignment-l1-l4/
+docs/research/figures/alignment-l1-l4/*
+!docs/research/figures/alignment-l1-l4/0[1-5]-*.png
