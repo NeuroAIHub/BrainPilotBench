@@ -2,12 +2,12 @@
   "schema": "brainpilotbench-task-collection/1",
   "date": "2026-10-23",
   "release_status": "integration_candidate_not_released",
-  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment entries cover an offline scaffold and an operator-staged unit-selection task; no formal Agent results or historical private Test replay",
+  "validation_policy": "Four first-batch reference checks; version-bound local invasive task acceptance with fixed references and isolated owner Test interface checks; alignment entries cover an offline scaffold and operator-staged unit-selection and network-edge tasks; no formal Agent results or historical private Test replay",
   "counts": {
-    "total": 119,
+    "total": 120,
     "runnable": 112,
-    "candidate": 7,
-    "preparation_ready": 5,
+    "candidate": 8,
+    "preparation_ready": 6,
     "representative_runs": 11
   },
   "tasks": [
@@ -25,6 +25,21 @@
       "preparation_available": true,
       "preparation_entry": "tasks/alignment/_shared/unit_transfer_cli.py",
       "reason": "An operator prepares public and private packets from local Tuckute and Pereira384 inputs, then stages a runnable instance for each model and researcher."
+    },
+    {
+      "task_id": "alignment-l4-network-edges",
+      "domain": "alignment",
+      "directory": "tasks/alignment/alignment-l4-network-edges",
+      "entry_kind": "candidate",
+      "validation": "preparation_recipe_checked_data_pending",
+      "primary_metric": {
+        "id": "network_edge_r",
+        "direction": "maximize",
+        "unit": "correlation"
+      },
+      "preparation_available": true,
+      "preparation_entry": "tasks/alignment/_shared/network_edges_cli.py",
+      "reason": "An operator stages a model-specific five-region discovery task from local Tuckute data and weights. Hidden responses and development feedback stay with the operator."
     },
     {
       "task_id": "alignment-pereira2018-analysis",

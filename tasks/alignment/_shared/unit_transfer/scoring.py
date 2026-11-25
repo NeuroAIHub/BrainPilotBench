@@ -55,6 +55,11 @@ class Packet:
         _, layers, _, width = self.train.units.shape
         return {'packet_sha256': self.identity, **checked_units(data, layers, width)}
 
+    query_choice = choice
+
+    def development_feedback(self, choice):
+        return {'dev_delta_r': self.scores('dev', choice)['delta_r']}
+
     def scores(self, name, choice):
         target = self.splits[name]
         per_person = name == 'pereira'

@@ -1,0 +1,14 @@
+{
+  "schema": "bpb-alignment-candidate/1",
+  "id": "alignment-l4-network-edges",
+  "domain": "alignment",
+  "status": "preparation_ready_data_pending",
+  "runnable": false,
+  "preparation_entry": "tasks/alignment/_shared/network_edges_cli.py",
+  "primary_metric": {
+    "id": "network_edge_r",
+    "direction": "maximize",
+    "unit": "correlation"
+  },
+  "reason": "An operator stages a model-specific five-region discovery task from local Tuckute data and weights. Hidden responses and development feedback stay with the operator."
+}

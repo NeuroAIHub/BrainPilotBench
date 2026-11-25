@@ -123,7 +123,14 @@ class UnitTransferTest(unittest.TestCase):
                 self.assertEqual(len(failures), 1)
                 self.assertIn('budget', str(failures[0]))
             code = Path(tmp) / 'strategy.py'
-            code.write_text('import json,sys\nprint(json.dumps(json.load(open(sys.argv[2]))[0]["choice"]))\n')
+            code.write_text(
+                'import json, sys\n'
+                'from pathlib import Path\n'
+                'assert sys.argv[1:] == ["public", "feedback.json"]\n'
+                'assert Path("public/manifest.json").is_file()\n'
+                'assert not Path("feedback.json").is_symlink()\n'
+                'print(json.dumps(json.loads(Path("feedback.json").read_text())[0]["choice"]))\n'
+            )
             result = grade(packet, 'actor', first, code)
             self.assertTrue(result['replay']['verified'])
             self.assertEqual(result, grade(packet, 'actor', first, code))

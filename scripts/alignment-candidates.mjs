@@ -2,6 +2,11 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+const stagedProtocols = new Map([
+  ['alignment-l2-unit-transfer', ['search_delta_r', 'unit_transfer_cli.py']],
+  ['alignment-l4-network-edges', ['network_edge_r', 'network_edges_cli.py']],
+]);
+
 export function readAlignmentCandidates(root) {
   const base = join(root, 'tasks/alignment');
   return readdirSync(base, { withFileTypes: true }).filter(e => e.isDirectory() && !e.name.startsWith('_')).flatMap(e => {
@@ -25,11 +30,13 @@ export function readAlignmentCandidates(root) {
     if (card.schema !== 'bpb-alignment-candidate/1' || card.id !== e.name || card.domain !== 'alignment' ||
         card.runnable !== false || card.primary_metric?.direction !== 'maximize' || !card.reason)
       throw new Error(`${directory}: invalid pending alignment candidate`);
-    if (card.id === 'alignment-l2-unit-transfer') {
-      if (card.status !== 'preparation_ready_data_pending' || card.primary_metric.id !== 'search_delta_r' ||
-          card.primary_metric.unit !== 'correlation' || card.preparation_entry !== 'tasks/alignment/_shared/unit_transfer_cli.py' ||
+    const prepared = stagedProtocols.get(card.id);
+    if (prepared) {
+      const [metric, cli] = prepared;
+      if (card.status !== 'preparation_ready_data_pending' || card.primary_metric.id !== metric ||
+          card.primary_metric.unit !== 'correlation' || card.preparation_entry !== `tasks/alignment/_shared/${cli}` ||
           !existsSync(join(root, card.preparation_entry)) || !existsSync(join(dir, 'README.md')))
-        throw new Error(`${directory}: invalid unit-selection task or missing preparation entry`);
+        throw new Error(`${directory}: invalid staged alignment task or missing preparation entry`);
       return [{ card, directory }];
     }
     if (card.status !== 'offline_scaffold_data_pending' || card.validated !== false ||

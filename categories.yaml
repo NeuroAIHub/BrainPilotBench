@@ -69,3 +69,6 @@ alignment-interpretability:
 
 alignment-unit-transfer:
   metrics: [search_delta_r]
+
+alignment-network-edges:
+  metrics: [network_edge_r]

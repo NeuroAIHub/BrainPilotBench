@@ -14,7 +14,7 @@ from .replay import replay
 def record(packet, actor, choice, source_digest=None):
     if not isinstance(actor, str) or not actor.strip():
         raise ValueError('an operator-assigned actor is required')
-    selection = packet.choice(choice)
+    selection = packet.choice(choice) if source_digest is not None else packet.query_choice(choice)
     key = fingerprint([packet.identity, packet.owner_identity])
     with closing(sqlite3.connect(packet.root / 'sessions.sqlite3', timeout=60)) as db, db:
         db.execute('BEGIN IMMEDIATE')
@@ -43,7 +43,7 @@ def record(packet, actor, choice, source_digest=None):
             if len(queries) >= INSPECTIONS:
                 raise ValueError('development query budget exhausted')
             kind, slot = 'query', len(queries) + 1
-            receipt = {'query': slot, 'choice': selection, 'dev_delta_r': packet.scores('dev', selection)['delta_r']}
+            receipt = {'query': slot, 'choice': selection, **packet.development_feedback(selection)}
         db.execute('INSERT INTO events VALUES (?,?,?,?,?)', (key, actor, kind, slot, json.dumps(receipt, allow_nan=False)))
     return receipt
 
@@ -56,13 +56,17 @@ def benchmark_rows(packet):
     return rows
 
 
-def grade(packet, actor, choice, code):
+def freeze_and_replay(packet, actor, choice, code):
     path = Path(code)
     if path.is_symlink() or not path.is_file() or not 0 < path.stat().st_size <= 1024 * 1024:
         raise ValueError('expected a nonempty strategy.py of at most 1 MiB')
     source = path.read_bytes()
     receipt = record(packet, actor, choice, hashlib.sha256(source).hexdigest())
-    verified = replay(packet, source, receipt)
+    return receipt, replay(packet, source, receipt)
+
+
+def grade(packet, actor, choice, code):
+    receipt, verified = freeze_and_replay(packet, actor, choice, code)
     scores = packet.results(receipt['choice'])
     return {'model': packet.protocol['model']['id'], 'actor': actor, 'freeze': receipt, 'replay': verified,
             'results': {'agent': {'choice': receipt['choice'], 'scores': scores}, **benchmark_rows(packet)}}

@@ -8,19 +8,29 @@ from real_brainscore.common import read_json, write_json
 # The worker starts analyze.py with public inputs and an empty output directory.
 # Only the frozen development transcript accompanies the submitted source.
 LAUNCHER = '''import argparse
-import os
 from pathlib import Path
 import resource
+import shutil
+import subprocess
 import sys
+from tempfile import TemporaryDirectory
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--inputs", required=True)
+parser.add_argument("--inputs", required=True, type=Path)
 parser.add_argument("--output", required=True, type=Path)
 args = parser.parse_args()
 resource.setrlimit(resource.RLIMIT_FSIZE, (1024 * 1024, 1024 * 1024))
-with (args.output / "choice.json").open("xb") as output:
-    os.dup2(output.fileno(), 1)
-os.execv(sys.executable, [sys.executable, "-B", "strategy.py", args.inputs, "feedback.json"])
+# Present the same relative paths as the research workspace. The public data
+# still lives on the worker's read-only input mount.
+with TemporaryDirectory() as tmp:
+    workspace = Path(tmp)
+    (workspace / "public").symlink_to(args.inputs.resolve(), target_is_directory=True)
+    for name in ("strategy.py", "feedback.json"):
+        shutil.copyfile(name, workspace / name)
+    with (args.output / "choice.json").open("xb") as output:
+        run = subprocess.run([sys.executable, "-B", "strategy.py", "public", "feedback.json"],
+                             cwd=workspace, stdout=output)
+sys.exit(run.returncode)
 '''
 
 

@@ -9,16 +9,17 @@ from real_brainscore.common import sha256
 from . import CSV_SHA256, POSITIONS, fingerprint
 from .analysis import pearson
 from .preparation import Packet
+from .roi_reference import specific_groups
 
 ROIS = ['lang_LH_IFGorb', 'lang_LH_IFG', 'lang_LH_MFG', 'lang_LH_AntTemp', 'lang_LH_PostTemp']
 EDGES = list(combinations(range(len(ROIS)), 2))
 
 
-def search_halves(ids, conditions):
-    """The existing L4 development and confirmation sentences, balanced within D/S."""
+def search_halves(ids, conditions, split_key='L4-split'):
+    """Balance D/S in both halves; the default key reproduces the reference-card split."""
     dev, held = [], []
     for condition in ('D', 'S'):
-        order = sorted(np.flatnonzero(conditions == condition), key=lambda i: fingerprint(['L4-split', ids[i]]))
+        order = sorted(np.flatnonzero(conditions == condition), key=lambda i: fingerprint([split_key, ids[i]]))
         dev.extend(order[:len(order) // 2])
         held.extend(order[len(order) // 2:])
     return dev, held
@@ -44,18 +45,8 @@ def modules(x, train, target):
     """Give each ROI eight distinct units fitted on baseline sentences and participants only."""
     mu, sd = x[train].mean(axis=0, dtype='float64'), x[train].std(axis=0, dtype='float64')
     z = (x - mu) / np.where(sd > 0, sd, 1.)
-    specific = target - target.mean(axis=1, keepdims=True)
-    specific -= specific.mean(axis=0)
-    relevance = z[train].T @ specific
-    outputs, chosen = [], []
-    occupied = set()
-    for j in range(len(ROIS)):
-        ordered = np.argsort(-relevance[:, j], kind='stable')
-        units = [int(u) for u in ordered if u not in occupied][:8]
-        occupied.update(units)
-        outputs.append(z[:, units].mean(axis=1))
-        chosen.append(units)
-    return np.stack(outputs, axis=1), chosen
+    chosen, _ = specific_groups(z[train], target, 8)
+    return np.column_stack([z[:, group].mean(axis=1) for group in chosen]), chosen
 
 
 def network_task(directory, csv_file):

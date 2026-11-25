@@ -19,12 +19,15 @@ function registry(t) {
   return { root, dir };
 }
 
-test('the catalog lists one unit-selection task across all staged model variants', () => {
+test('the catalog lists each staged alignment protocol once across its model variants', () => {
   const entries = readAlignmentCandidates(resolve(import.meta.dirname, '..'));
-  assert.deepEqual(entries.map(e => e.card.id).sort(), ['alignment-l2-unit-transfer', 'alignment-pereira2018-analysis']);
-  const task = alignmentCatalogRow(entries.find(e => e.card.id === 'alignment-l2-unit-transfer'));
-  assert.equal(task.preparation_available, true);
-  assert.equal(task.primary_metric.id, 'search_delta_r');
+  assert.deepEqual(entries.map(e => e.card.id).sort(),
+    ['alignment-l2-unit-transfer', 'alignment-l4-network-edges', 'alignment-pereira2018-analysis']);
+  for (const [id, metric] of [['alignment-l2-unit-transfer', 'search_delta_r'], ['alignment-l4-network-edges', 'network_edge_r']]) {
+    const task = alignmentCatalogRow(entries.find(e => e.card.id === id));
+    assert.equal(task.preparation_available, true);
+    assert.equal(task.primary_metric.id, metric);
+  }
 });
 
 test('planning registry is excluded, unknown incomplete task folders still fail', t => {
